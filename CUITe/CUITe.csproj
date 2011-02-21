@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{947E624B-7124-43F8-A1E5-3ED62277E561}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CUITe</RootNamespace>
+    <AssemblyName>CUITe</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.SHDocVw">
+      <HintPath>lib\Interop.SHDocVw.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\HtmlControls\CUITe_BrowserDialog.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_BrowserWindow.cs" />
+    <Compile Include="Controls\CUITe_ControlBase.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlPassword.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlButton.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlCheckBox.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlComboBox.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlEdit.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlHyperlink.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTabItem.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTable.cs" />
+    <Compile Include="Exceptions\CUITe_Exceptions.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlButton.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlCell.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlCheckBox.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlComboBox.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlDiv.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlEdit.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlFileInput.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHyperlink.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlImage.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlInputButton.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlLabel.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlList.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlRadioButton.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlSpan.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlTable.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlTextArea.cs" />
+    <Compile Include="ObjectRepositoryManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
