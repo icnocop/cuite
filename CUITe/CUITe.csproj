@@ -68,6 +68,7 @@
     <Compile Include="Controls\SilverlightControls\CUITe_SlHyperlink.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTabItem.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTable.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlText.cs" />
     <Compile Include="Exceptions\CUITe_Exceptions.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlButton.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlCell.cs" />

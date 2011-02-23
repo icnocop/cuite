@@ -123,6 +123,9 @@ namespace CUITe.Controls
                             case "automationid":
                                 this._control.SearchProperties.Add(SilverlightControl.PropertyNames.AutomationId, sValue);
                                 break;
+                            case "text":
+                                this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);
+                                break;
                         }
                     }
                 }

@@ -160,6 +160,11 @@ namespace CUITe
                     CUITe_SlTable field = (CUITe_SlTable)fieldinfo.GetValue(browserWindow);
                     field.Wrap(new SilverlightTable(browserWindow.SlObjectContainer));
                 }
+                if (sNodeName == "SilverlightControls.CUITe_SlText")
+                {
+                    CUITe_SlText field = (CUITe_SlText)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightText(browserWindow.SlObjectContainer));
+                }
 
                 #endregion
             }
