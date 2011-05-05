@@ -23,5 +23,21 @@ namespace CUITe.Controls.HtmlControls
         {
             return this._htmlInputButton;
         }
+
+        public string InnerText
+        {
+            get
+            {
+                return this._htmlInputButton.InnerText;
+            }
+        }
+
+        public string DisplayText
+        {
+            get
+            {
+                return this._htmlInputButton.DisplayText;
+            }
+        }
     }
 }
