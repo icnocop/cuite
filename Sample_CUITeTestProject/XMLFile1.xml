@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <datarow id="tc0">
+    <nationality>Indian</nationality>
+    <lastname>Bala</lastname>
+  </datarow>
+  <datarow id="tc1" inherits="tc0">
+    <firstname>Suresh</firstname>
+    <lastname>Balasubramanian</lastname>
+    <age>38</age>
+    <dob>04/19/1973</dob>
+  </datarow>
+  <datarow id="tc2" inherits="tc1">
+    <test>test</test>
+    <address>Kondapur, Hyderabad</address>
+    <age>37</age>
+  </datarow>
+</data>

@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 using System.Collections;
+using CUITe;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using Sample_CUITeTestProject.ObjectRepository;
@@ -58,6 +59,18 @@ namespace Sample_CUITeTestProject
             //        }
             //    }
             //}
+        }
+
+        [TestMethod]
+        public void TestMethod1()
+        {
+            Hashtable ht = CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.SampleTests1"), "XMLFile1.xml", "tc2");
+            string s = "";
+            foreach (string x in ht.Keys)
+            {
+                s += x + ": " + ht[x].ToString() + "\n";
+            }
+            MessageBox.Show(s);
         }
     }
 }
