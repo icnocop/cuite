@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
+using CUITe.Controls.TelerikControls;
 
 namespace CUITe
 {
@@ -164,6 +165,26 @@ namespace CUITe
                 {
                     CUITe_SlText field = (CUITe_SlText)fieldinfo.GetValue(browserWindow);
                     field.Wrap(new SilverlightText(browserWindow.SlObjectContainer));
+                }
+                if (sNodeName == "SilverlightControls.CUITe_SlControl")
+                {
+                    CUITe_SlControl field = (CUITe_SlControl)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightControl(browserWindow.SlObjectContainer));
+                }
+                if (sNodeName == "SilverlightControls.CUITe_SlDataPager")
+                {
+                    CUITe_SlDataPager field = (CUITe_SlDataPager)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightDataPager(browserWindow.SlObjectContainer));
+                }
+
+                #endregion
+
+                # region TelerikControls
+
+                if (sNodeName == "TelerikControls.Telerik_ComboBox")
+                {
+                    Telerik_ComboBox field = (Telerik_ComboBox)fieldinfo.GetValue(browserWindow);
+                    field.SetWindow(browserWindow);
                 }
 
                 #endregion

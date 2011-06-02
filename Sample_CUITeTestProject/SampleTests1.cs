@@ -14,6 +14,7 @@ using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using Sample_CUITeTestProject.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using System.Threading;
 
 namespace Sample_CUITeTestProject
 {
@@ -71,6 +72,21 @@ namespace Sample_CUITeTestProject
                 s += x + ": " + ht[x].ToString() + "\n";
             }
             MessageBox.Show(s);
+        }
+
+        [TestMethod]
+        public void Telerik_Combo()
+        {
+            CUITe_BrowserWindow.CloseAllBrowsers();
+            CUITe_BrowserWindow.Launch("http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
+            ASPNETComboBoxDemoFirstLook pgPage = CUITe_BrowserWindow.GetBrowserWindow<ASPNETComboBoxDemoFirstLook>();
+            Thread.Sleep(5000);
+            pgPage.Refresh();
+            Thread.Sleep(5000);
+            pgPage.combo1.SelectItemByText("Tofu", 5000);
+            pgPage.combo2.SelectItemByText("Bloomfield Hills", 5000);
+            pgPage.combo3.SelectItemByText("Exotic Liquids", 5000);
+            pgPage.combo4.SelectItemByText("American Express", 5000);
         }
     }
 }

@@ -64,11 +64,14 @@
     <Compile Include="Controls\SilverlightControls\CUITe_SlButton.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlCheckBox.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlComboBox.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlControl.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlDataPager.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlEdit.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlHyperlink.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTabItem.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTable.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlText.cs" />
+    <Compile Include="Controls\TelerikControls\Telerik_ComboBox.cs" />
     <Compile Include="CUITe_DataManager.cs" />
     <Compile Include="Exceptions\CUITe_Exceptions.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlButton.cs" />
