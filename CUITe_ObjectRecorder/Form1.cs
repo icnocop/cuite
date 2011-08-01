@@ -584,9 +584,12 @@ namespace CUITe_ObjectRecorder
         {
             if (this.listBox1.Items.Count > 0)
             {
-                if (!this.listBox1.SelectedItem.ToString().StartsWith("public new string sWindowTitle = "))
+                if (this.listBox1.SelectedItems.Count > 0)
                 {
-                    this.listBox1.Items.Remove(this.listBox1.SelectedItem);
+                    if (!this.listBox1.SelectedItem.ToString().StartsWith("public new string sWindowTitle = "))
+                    {
+                        this.listBox1.Items.Remove(this.listBox1.SelectedItem);
+                    }
                 }
             }
         }
