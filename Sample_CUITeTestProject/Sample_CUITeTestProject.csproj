@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObjectRepository\GoogleSearch.cs" />
+    <Compile Include="ObjectRepository\ASPNETComboBoxDemoFirstLook.cs" />
     <Compile Include="SampleTests1.cs" />
     <Compile Include="ObjectRepository\GoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
