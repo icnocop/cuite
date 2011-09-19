@@ -22,7 +22,7 @@ namespace CUITe.Controls
             this._SearchProperties = sSearchProperties;
         }
 
-        protected void Wrap(UITestControl control)
+        internal void Wrap(UITestControl control)
         {
             this._control = control;
             this.fillSearchProperties();

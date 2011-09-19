@@ -88,5 +88,14 @@ namespace Sample_CUITeTestProject
             pgPage.combo3.SelectItemByText("Exotic Liquids", 5000);
             pgPage.combo4.SelectItemByText("American Express", 5000);
         }
+
+        [TestMethod]
+        public void Test_FeatureRequest_608()
+        {
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("Gmail: Email from Google");
+            bWin.GetHtmlEdit("Id=Email").SetText("xyz@gmail.com");
+            bWin.GetHtmlPassword("Id=Password").SetText("MyPa$$Word");
+            bWin.GetHtmlInputButton("Id=signIn").Click();
+        }
     }
 }
