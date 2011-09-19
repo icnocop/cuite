@@ -7,11 +7,16 @@ namespace CUITe
 {
     public class CUITe_GenericException : Exception
     {
-        public CUITe_GenericException(string sMessage) : base("CUITe_GenericException: " + sMessage) { }
+        public CUITe_GenericException(string sMessage) : base(sMessage) { }
     }
 
     public class CUITe_WrongPageExpectedException : Exception
     {
-        public CUITe_WrongPageExpectedException(string sMessage) : base("CUITe_WrongPageExpectedException: " + sMessage) { }
+        public CUITe_WrongPageExpectedException(string sMessage) : base(sMessage) { }
+    }
+
+    public class CUITe_InvalidSearchKey : Exception
+    {
+        public CUITe_InvalidSearchKey(string sKey) : base(string.Format("Search Pattern Key not supported -> {0}.", sKey)) { }
     }
 }

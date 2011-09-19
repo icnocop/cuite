@@ -97,5 +97,13 @@ namespace Sample_CUITeTestProject
             bWin.GetHtmlPassword("Id=Password").SetText("MyPa$$Word");
             bWin.GetHtmlInputButton("Id=signIn").Click();
         }
+
+        [TestMethod]
+        public void Test_FeatureRequest_588()
+        {
+            CUITe_BrowserWindow.Launch("http://www.google.com");
+            GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
+            pgGHomePage.div588.Click();
+        }
     }
 }
