@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightCheckBox _SlCheckBox;
 
+        public CUITe_SlCheckBox() : base() { }
         public CUITe_SlCheckBox(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightCheckBox control)

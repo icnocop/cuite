@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlButton _htmlButton;
 
+        public CUITe_HtmlButton() : base() { }
         public CUITe_HtmlButton(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlButton control)

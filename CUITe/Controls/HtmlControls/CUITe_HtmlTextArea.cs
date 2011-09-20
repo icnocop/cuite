@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlTextArea _htmlTextArea;
 
+        public CUITe_HtmlTextArea() : base() { }
         public CUITe_HtmlTextArea(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlTextArea control)

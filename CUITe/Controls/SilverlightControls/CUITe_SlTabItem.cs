@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightTabItem _SlTabItem;
 
+        public CUITe_SlTabItem() : base() { }
         public CUITe_SlTabItem(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightTabItem control)

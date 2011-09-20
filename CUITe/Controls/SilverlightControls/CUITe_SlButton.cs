@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightButton _SlButton;
 
+        public CUITe_SlButton() : base() { }
         public CUITe_SlButton(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightButton control)

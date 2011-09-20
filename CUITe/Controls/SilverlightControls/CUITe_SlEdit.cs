@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightEdit _SlEdit;
 
+        public CUITe_SlEdit() : base() { }
         public CUITe_SlEdit(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightEdit control)

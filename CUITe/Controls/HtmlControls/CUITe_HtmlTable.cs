@@ -21,6 +21,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlTable _htmlTable;
 
+        public CUITe_HtmlTable() : base() { }
         public CUITe_HtmlTable(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlTable control)

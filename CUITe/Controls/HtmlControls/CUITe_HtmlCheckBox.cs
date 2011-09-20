@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlCheckBox _htmlCheckBox;
 
+        public CUITe_HtmlCheckBox() : base() { }        
         public CUITe_HtmlCheckBox(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlCheckBox control)

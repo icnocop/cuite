@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlSpan _htmlSpan;
 
+        public CUITe_HtmlSpan() : base() { }
         public CUITe_HtmlSpan(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlSpan control)

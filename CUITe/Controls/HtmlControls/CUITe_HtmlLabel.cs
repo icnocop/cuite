@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlLabel _htmlLabel;
 
+        public CUITe_HtmlLabel() : base() { }
         public CUITe_HtmlLabel(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlLabel control)

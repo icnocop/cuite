@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightText _SlText;
 
+        public CUITe_SlText() : base() { }
         public CUITe_SlText(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightText control)

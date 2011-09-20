@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlDiv _htmlDiv;
 
+        public CUITe_HtmlDiv() : base() { }
         public CUITe_HtmlDiv(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlDiv control)

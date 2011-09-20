@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlRadioButton _htmlRadioButton;
 
+        public CUITe_HtmlRadioButton() : base() { }
         public CUITe_HtmlRadioButton(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlRadioButton control)

@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlList _htmlList;
 
+        public CUITe_HtmlList() : base() { }
         public CUITe_HtmlList(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlList control)

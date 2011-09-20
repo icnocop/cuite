@@ -20,6 +20,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightTable _SlTable;
 
+        public CUITe_SlTable() : base() { }
         public CUITe_SlTable(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightTable control)

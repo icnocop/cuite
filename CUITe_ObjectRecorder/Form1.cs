@@ -461,7 +461,6 @@ namespace CUITe_ObjectRecorder
                         document.onmouseout = null;
                         document.onclick = null;
                     }
-                    // specific for EPP platform, will not harm others anyways!
                     function setVarNameFromId(sId) 
                     {
                         var sVarEval = '';

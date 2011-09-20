@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlHyperlink _htmlHyperlink;
 
+        public CUITe_HtmlHyperlink() : base() { }
         public CUITe_HtmlHyperlink(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlHyperlink control)

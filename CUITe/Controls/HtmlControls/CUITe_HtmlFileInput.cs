@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlFileInput _htmlFileInput;
 
+        public CUITe_HtmlFileInput() : base() { }
         public CUITe_HtmlFileInput(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlFileInput control)

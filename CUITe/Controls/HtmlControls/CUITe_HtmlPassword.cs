@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlEdit _htmlPassword;
 
+        public CUITe_HtmlPassword() : base() { }
         public CUITe_HtmlPassword(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlEdit control)

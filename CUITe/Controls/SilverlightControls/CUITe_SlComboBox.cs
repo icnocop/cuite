@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightComboBox _SlComboBox;
 
+        public CUITe_SlComboBox() : base() { }
         public CUITe_SlComboBox(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightComboBox control)

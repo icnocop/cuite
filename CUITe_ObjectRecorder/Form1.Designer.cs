@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnRecord = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnShowCode = new System.Windows.Forms.ToolStripButton();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
@@ -38,7 +39,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -76,6 +76,25 @@
             this.btnRecord.Size = new System.Drawing.Size(61, 22);
             this.btnRecord.Text = "Record";
             this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.Enabled = false;
+            this.toolStripDropDownButton1.Items.AddRange(new object[] {
+            "Filter:",
+            "TABLE",
+            "TD",
+            "SPAN",
+            "DIV",
+            "A",
+            "INPUT",
+            "LABEL",
+            "TEXTAREA",
+            "BUTTON"});
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(75, 25);
+            this.toolStripDropDownButton1.Text = "Filter: ";
+            this.toolStripDropDownButton1.TextChanged += new System.EventHandler(this.toolStripDropDownButton1_TextChanged);
             // 
             // toolStripButton1
             // 
@@ -131,25 +150,6 @@
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(680, 25);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.Enabled = false;
-            this.toolStripDropDownButton1.Items.AddRange(new object[] {
-            "Filter:",
-            "TABLE",
-            "TD",
-            "SPAN",
-            "DIV",
-            "A",
-            "INPUT",
-            "LABEL",
-            "TEXTAREA",
-            "BUTTON"});
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(75, 25);
-            this.toolStripDropDownButton1.Text = "Filter: ";
-            this.toolStripDropDownButton1.TextChanged += new System.EventHandler(this.toolStripDropDownButton1_TextChanged);
             // 
             // tableLayoutPanel1
             // 

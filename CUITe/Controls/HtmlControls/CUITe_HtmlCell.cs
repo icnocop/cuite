@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlCell _htmlCell;
 
+        public CUITe_HtmlCell() : base() { }
         public CUITe_HtmlCell(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlCell control)

@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlComboBox _htmlComboBox;
 
+        public CUITe_HtmlComboBox() : base() { }
         public CUITe_HtmlComboBox(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlComboBox control)

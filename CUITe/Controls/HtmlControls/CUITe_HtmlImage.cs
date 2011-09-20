@@ -11,6 +11,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlImage _htmlImage;
 
+        public CUITe_HtmlImage() : base() { }
         public CUITe_HtmlImage(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlImage control)

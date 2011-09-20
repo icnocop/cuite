@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightDataPager _SlDataPager;
 
+        public CUITe_SlDataPager() : base() { }
         public CUITe_SlDataPager(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightDataPager control)

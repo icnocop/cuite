@@ -11,6 +11,7 @@ namespace CUITe.Controls.SilverlightControls
     {
         private SilverlightHyperlink _SlHyperlink;
 
+        public CUITe_SlHyperlink() : base() { }
         public CUITe_SlHyperlink(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(SilverlightHyperlink control)
