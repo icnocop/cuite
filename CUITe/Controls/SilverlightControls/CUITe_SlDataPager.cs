@@ -19,6 +19,24 @@ namespace CUITe.Controls.SilverlightControls
             this._SlDataPager = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a SilverlightDataPager with a CUITe_SlDataPager to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_SlDataPager slEdit = new CUITe_SlDataPager();
+        /// slEdit.WrapReady(edit);
+        /// slEdit.Click();
+        /// </code>
+        /// Here 'edit' is a SilverlightDataPager object.
+        /// </example>
+        public void WrapReady(SilverlightDataPager control)
+        {
+            base.WrapReady(control);
+            this._SlDataPager = control;
+        }
+
         public SilverlightDataPager UnWrap()
         {
             return this._SlDataPager;

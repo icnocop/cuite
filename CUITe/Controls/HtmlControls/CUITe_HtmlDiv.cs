@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlDiv = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlDiv control with a CUITe_HtmlDiv to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlDiv divEdit = new CUITe_HtmlDiv();
+        /// divEdit.WrapReady(edit);
+        /// divEdit.Click();
+        /// </code>
+        /// Here 'edit' is a HtmlDiv object.
+        /// </example>
+        public void WrapReady(HtmlDiv control)
+        {
+            base.WrapReady(control);
+            this._htmlDiv = control;
+        }
+
         public HtmlDiv UnWrap()
         {
             return this._htmlDiv;

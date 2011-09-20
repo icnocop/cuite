@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlFileInput = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlFileInput control with a CUITe_HtmlFileInput to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlFileInput finEdit = new CUITe_HtmlFileInput();
+        /// finEdit.WrapReady(edit);
+        /// finEdit.Click();
+        /// </code>
+        /// Here 'edit' is a HtmlFileInput object.
+        /// </example>
+        public void WrapReady(HtmlFileInput control)
+        {
+            base.WrapReady(control);
+            this._htmlFileInput = control;
+        }
+
         public HtmlFileInput UnWrap()
         {
             return this._htmlFileInput;

@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlRadioButton = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlRadioButton control with a CUITe_HtmlRadioButton to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlRadioButton radEdit = new CUITe_HtmlRadioButton();
+        /// radEdit.WrapReady(edit);
+        /// radEdit.Select();
+        /// </code>
+        /// Here 'edit' is a HtmlRadioButton object.
+        /// </example>
+        public void WrapReady(HtmlRadioButton control)
+        {
+            base.WrapReady(control);
+            this._htmlRadioButton = control;
+        }
+
         public HtmlRadioButton UnWrap()
         {
             return this._htmlRadioButton;

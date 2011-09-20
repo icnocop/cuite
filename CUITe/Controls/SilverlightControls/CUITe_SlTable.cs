@@ -28,6 +28,24 @@ namespace CUITe.Controls.SilverlightControls
             this._SlTable = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a SilverlightTable control with a CUITe_SlTable to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_SlTable tblEdit = new CUITe_SlTable();
+        /// tblEdit.WrapReady(edit);
+        /// tblEdit.FindCellAndClick(10, 3);
+        /// </code>
+        /// Here 'edit' is a SilverlightTable object.
+        /// </example>
+        public void WrapReady(SilverlightTable control)
+        {
+            base.WrapReady(control);
+            this._SlTable = control;
+        }
+
         public SilverlightTable UnWrap()
         {
             return this._SlTable;

@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlTextArea = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlTextArea control with a CUITe_HtmlTextArea to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlTextArea txtEdit = new CUITe_HtmlTextArea();
+        /// txtEdit.WrapReady(edit);
+        /// txtEdit.SetText("Coded UI Test enhanced Framework");
+        /// </code>
+        /// Here 'edit' is a HtmlTextArea object.
+        /// </example>
+        public void WrapReady(HtmlTextArea control)
+        {
+            base.WrapReady(control);
+            this._htmlTextArea = control;
+        }
+
         public HtmlTextArea UnWrap()
         {
             return this._htmlTextArea;

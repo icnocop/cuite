@@ -16,10 +16,15 @@ namespace CUITe.Controls
         private UITestControl _control;
         private string _SearchProperties;
 
+        protected CUITe_ControlBase() { }
         protected CUITe_ControlBase(string sSearchProperties) 
         {
             if (sSearchProperties == null) throw new Exception("Parameter 'SearchProperties' cannot be null");
-            this._SearchProperties = sSearchProperties;
+            this._SearchProperties = sSearchProperties.Trim();
+            if (this._SearchProperties.Substring(this._SearchProperties.Length - 1) == ";")
+            {
+                this._SearchProperties = this._SearchProperties.Substring(0, this._SearchProperties.Length - 1);
+            }
         }
 
         internal void Wrap(UITestControl control)
@@ -29,7 +34,7 @@ namespace CUITe.Controls
             this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
 
-        internal void WrapReady(UITestControl control)
+        protected void WrapReady(UITestControl control)
         {
             this._control = control;
         }
@@ -92,7 +97,7 @@ namespace CUITe.Controls
                 foreach (string sKeyValue in saKeyValuePairs)
                 {
                     string[] saKeyVal = sKeyValue.Split('=');
-                    if (saKeyVal.Length != 2) throw new CUITe_GenericException("'sKey1=sValue1;sKey2=sValue2' format is not followed while passing sSearchParameters");
+                    if (saKeyVal.Length != 2) throw new CUITe_InvalidSearchParameterFormat(this._SearchProperties);
                     string sKey = saKeyVal[0].ToLower();
                     string sValue = saKeyVal[1];
                     if (sValue != "")
@@ -127,7 +132,7 @@ namespace CUITe.Controls
                                 this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);
                                 break;
                             default:
-                                throw new CUITe_InvalidSearchKey(sKey);
+                                throw new CUITe_InvalidSearchKey(saKeyVal[0], this._SearchProperties);
                         }
                     }
                 }

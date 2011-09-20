@@ -19,6 +19,24 @@ namespace CUITe.Controls.SilverlightControls
             this._SlTabItem = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a SilverlightTabItem control with a CUITe_SlTabItem to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_SlTabItem tabEdit = new CUITe_SlTabItem();
+        /// tabEdit.WrapReady(edit);
+        /// tabEdit.Click();
+        /// </code>
+        /// Here 'edit' is a SilverlightTabItem object.
+        /// </example>
+        public void WrapReady(SilverlightTabItem control)
+        {
+            base.WrapReady(control);
+            this._SlTabItem = control;
+        }
+
         public SilverlightTabItem UnWrap()
         {
             return this._SlTabItem;

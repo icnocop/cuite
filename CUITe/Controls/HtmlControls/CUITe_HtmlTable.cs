@@ -29,6 +29,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlTable = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlTable control with a CUITe_HtmlTable to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlTable tblEdit = new CUITe_HtmlTable();
+        /// tblEdit.WrapReady(edit);
+        /// tblEdit.FindCellAndClick(10, 3);
+        /// </code>
+        /// Here 'edit' is a HtmlTable object.
+        /// </example>
+        public void WrapReady(HtmlTable control)
+        {
+            base.WrapReady(control);
+            this._htmlTable = control;
+        }
+
         public HtmlTable UnWrap()
         {
             return this._htmlTable;

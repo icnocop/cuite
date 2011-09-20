@@ -19,7 +19,19 @@ namespace CUITe.Controls.SilverlightControls
             this._SlCheckBox = control;
         }
 
-        internal void WrapReady(SilverlightCheckBox control)
+        /// <summary>
+        /// Helps you wrap a SilverlightCheckBox control with a CUITe_SlCheckBox to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_SlCheckBox chkEdit = new CUITe_SlCheckBox();
+        /// chkEdit.WrapReady(edit);
+        /// chkEdit.Check();
+        /// </code>
+        /// Here 'edit' is a SilverlightCheckBox object.
+        /// </example>
+        public void WrapReady(SilverlightCheckBox control)
         {
             base.WrapReady(control);
             this._SlCheckBox = control;

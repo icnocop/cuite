@@ -19,6 +19,24 @@ namespace CUITe.Controls.SilverlightControls
             this._SlButton = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a SilverlightButton control with a CUITe_SlButton to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_SlButton btnEdit = new CUITe_SlButton();
+        /// btnEdit.WrapReady(edit);
+        /// btnEdit.Click();
+        /// </code>
+        /// Here 'edit' is a SilverlightButton object.
+        /// </example>
+        public void WrapReady(SilverlightButton control)
+        {
+            base.WrapReady(control);
+            this._SlButton = control;
+        }
+
         public SilverlightButton UnWrap()
         {
             return this._SlButton;

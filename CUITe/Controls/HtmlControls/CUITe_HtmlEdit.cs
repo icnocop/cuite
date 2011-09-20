@@ -11,11 +11,30 @@ namespace CUITe.Controls.HtmlControls
     {
         private HtmlEdit _htmlEdit;
 
+        public CUITe_HtmlEdit() : base() { }
         public CUITe_HtmlEdit(string sSearchParameters) : base(sSearchParameters) { }
 
         public void Wrap(HtmlEdit control)
         {
             base.Wrap(control);
+            this._htmlEdit = control;
+        }
+
+        /// <summary>
+        /// Helps you wrap a HtmlEdit control with a CUITe_HtmlEdit to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlEdit txtEdit = new CUITe_HtmlEdit();
+        /// txtEdit.WrapReady(edit);
+        /// txtEdit.SetText("Coded UI Test enhanced Framework");
+        /// </code>
+        /// Here 'edit' is a HtmlEdit object.
+        /// </example>
+        public void WrapReady(HtmlEdit control)
+        {
+            base.WrapReady(control);
             this._htmlEdit = control;
         }
 

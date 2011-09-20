@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlLabel = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlLabel control with a CUITe_HtmlLabel to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlLabel lblEdit = new CUITe_HtmlLabel();
+        /// lblEdit.WrapReady(edit);
+        /// lblEdit.Click();
+        /// </code>
+        /// Here 'edit' is a HtmlLabel object.
+        /// </example>
+        public void WrapReady(HtmlLabel control)
+        {
+            base.WrapReady(control);
+            this._htmlLabel = control;
+        }
+
         public HtmlLabel UnWrap()
         {
             return this._htmlLabel;

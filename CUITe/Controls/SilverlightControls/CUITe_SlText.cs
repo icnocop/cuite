@@ -19,6 +19,24 @@ namespace CUITe.Controls.SilverlightControls
             this._SlText = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a SilverlightText control with a CUITe_SlText to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_SlText txtEdit = new CUITe_SlText();
+        /// txtEdit.WrapReady(edit);
+        /// txtEdit.SetText("Coded UI Test enhanced Framework");
+        /// </code>
+        /// Here 'edit' is a SilverlightText object.
+        /// </example>
+        public void WrapReady(SilverlightText control)
+        {
+            base.WrapReady(control);
+            this._SlText = control;
+        }
+
         public SilverlightText UnWrap()
         {
             return this._SlText;

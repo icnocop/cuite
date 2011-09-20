@@ -102,8 +102,22 @@ namespace Sample_CUITeTestProject
         public void Test_FeatureRequest_588()
         {
             CUITe_BrowserWindow.Launch("http://www.google.com");
+            Google pgGHome = CUITe_BrowserWindow.GetBrowserWindow<Google>();
+            pgGHome.div588.Click();
+        }
+
+        [TestMethod]
+        public void Test_FeatureRequest_589()
+        {
+            CUITe_BrowserWindow.Launch("http://www.google.com");
             GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
-            pgGHomePage.div588.Click();
+            
+            HtmlEdit tmp = new HtmlEdit(pgGHomePage);
+            tmp.SearchProperties.Add("Id", "lst-ib");
+
+            CUITe_HtmlEdit txtEdit = new CUITe_HtmlEdit();
+            txtEdit.WrapReady(tmp);
+            txtEdit.SetText("Coded UI Test enhanced Framework");
         }
     }
 }

@@ -80,6 +80,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectRepository\Google.cs" />
     <Compile Include="ObjectRepository\GoogleSearch.cs" />
     <Compile Include="ObjectRepository\ASPNETComboBoxDemoFirstLook.cs" />
     <Compile Include="SampleTests1.cs" />

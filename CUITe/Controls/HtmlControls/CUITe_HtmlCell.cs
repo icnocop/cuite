@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlCell = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlCell control with a CUITe_HtmlCell to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlCell clEdit = new CUITe_HtmlCell();
+        /// clEdit.WrapReady(edit);
+        /// clEdit.Click();
+        /// </code>
+        /// Here 'edit' is a HtmlCell object.
+        /// </example>
+        public void WrapReady(HtmlCell control)
+        {
+            base.WrapReady(control);
+            this._htmlCell = control;
+        }
+
         public HtmlCell UnWrap()
         {
             return this._htmlCell;

@@ -19,6 +19,24 @@ namespace CUITe.Controls.HtmlControls
             this._htmlCheckBox = control;
         }
 
+        /// <summary>
+        /// Helps you wrap a HtmlCheckBox control with a CUITe_HtmlCheckBox to leverage CUITe's convenient methods.
+        /// </summary>
+        /// <param name="control"></param>
+        /// <example>
+        /// <code>
+        /// CUITe_HtmlCheckBox chkEdit = new CUITe_HtmlCheckBox();
+        /// chkEdit.WrapReady(edit);
+        /// chkEdit.Check();
+        /// </code>
+        /// Here 'edit' is a HtmlCheckBox object.
+        /// </example>
+        public void WrapReady(HtmlCheckBox control)
+        {
+            base.WrapReady(control);
+            this._htmlCheckBox = control;
+        }
+
         public HtmlCheckBox UnWrap()
         {
             return this._htmlCheckBox;
