@@ -22,19 +22,25 @@
         "Entry"
         {
         "MsmKey" = "8:_445C1D19CEA95FD29DDC3147AB376CB7"
-        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
+        "OwnerKey" = "8:_01A0C4A0016E4D5AA485181BAB12B624"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_445C1D19CEA95FD29DDC3147AB376CB7"
-        "OwnerKey" = "8:_01A0C4A0016E4D5AA485181BAB12B624"
+        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5F5FEA2B966E3B59529BC5D165C7D98B"
         "OwnerKey" = "8:_445C1D19CEA95FD29DDC3147AB376CB7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5F5FEA2B966E3B59529BC5D165C7D98B"
+        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,13 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_85D5D532F3C8200864A476CFF7361B6B"
-        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
+        "OwnerKey" = "8:_01A0C4A0016E4D5AA485181BAB12B624"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_85D5D532F3C8200864A476CFF7361B6B"
-        "OwnerKey" = "8:_01A0C4A0016E4D5AA485181BAB12B624"
+        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,6 +94,12 @@
         "Entry"
         {
         "MsmKey" = "8:_98DA66AE8ED44EA2898E845FA695DAD9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AA02D432AEA941F58C07975445E6DF38"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -142,6 +154,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7BFAEA9B9F314BBEB895D5EC74587CE2"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -149,12 +167,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_01A0C4A0016E4D5AA485181BAB12B624"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B894A5B979FFA69053E2663CD4363E80"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -296,7 +308,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CUITe, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:CUITe, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_01A0C4A0016E4D5AA485181BAB12B624"
@@ -440,7 +452,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CUITe_ObjectRecorder, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:CUITe_ObjectRecorder, Version=1.0.3.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_7BFAEA9B9F314BBEB895D5EC74587CE2"
@@ -502,6 +514,26 @@
             {
             "SourcePath" = "8:..\\CUITe\\bin\\Release\\CUITe.pdb"
             "TargetName" = "8:CUITe.pdb"
+            "Tag" = "8:"
+            "Folder" = "8:_353E711F6CFF4F3C8EC8833063E5DC35"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AA02D432AEA941F58C07975445E6DF38"
+            {
+            "SourcePath" = "8:..\\CUITe\\bin\\Release\\CUITe.XML"
+            "TargetName" = "8:CUITe.XML"
             "Tag" = "8:"
             "Folder" = "8:_353E711F6CFF4F3C8EC8833063E5DC35"
             "Condition" = "8:"
@@ -739,7 +771,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CUITe"
         "ProductCode" = "8:{F72EA523-5A91-450D-B0E1-9F9C57AD6CE0}"
-        "PackageCode" = "8:{F81468A9-5A49-4856-BB05-89C23DA9AE9E}"
+        "PackageCode" = "8:{9786A8FB-A8B8-4CBB-A081-4ECF763BBF3B}"
         "UpgradeCode" = "8:{44F78F5B-25D3-434B-A386-2E3F87E45D3F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
