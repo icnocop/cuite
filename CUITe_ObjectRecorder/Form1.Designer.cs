@@ -33,7 +33,12 @@
             this.btnRecord = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnLanguage = new System.Windows.Forms.ToolStripSplitButton();
+            this.menuItemVB = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemCSharp = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowCode = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,7 +60,10 @@
             this.btnRecord,
             this.toolStripDropDownButton1,
             this.toolStripButton1,
+            this.toolStripSeparator2,
+            this.btnLanguage,
             this.btnShowCode,
+            this.toolStripSeparator3,
             this.btnClear,
             this.btnCopy,
             this.toolStripSeparator1,
@@ -105,6 +113,42 @@
             this.toolStripButton1.Text = "Del";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnLanguage
+            // 
+            this.btnLanguage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnLanguage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemCSharp,
+            this.menuItemVB});
+            this.btnLanguage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLanguage.Name = "btnLanguage";
+            this.btnLanguage.Size = new System.Drawing.Size(35, 22);
+            this.btnLanguage.Text = "C#";
+            this.btnLanguage.ToolTipText = "Select Language";
+            this.btnLanguage.ButtonClick += new System.EventHandler(this.btnLanguage_ButtonClick);
+            // 
+            // menuItemVB
+            // 
+            this.menuItemVB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuItemVB.Name = "menuItemVB";
+            this.menuItemVB.Size = new System.Drawing.Size(152, 22);
+            this.menuItemVB.Text = "VB";
+            this.menuItemVB.Click += new System.EventHandler(this.menuItemVB_Click);
+            // 
+            // menuItemCSharp
+            // 
+            this.menuItemCSharp.Checked = true;
+            this.menuItemCSharp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuItemCSharp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuItemCSharp.Name = "menuItemCSharp";
+            this.menuItemCSharp.Size = new System.Drawing.Size(152, 22);
+            this.menuItemCSharp.Text = "C#";
+            this.menuItemCSharp.Click += new System.EventHandler(this.menuItemCSharp_Click);
+            // 
             // btnShowCode
             // 
             this.btnShowCode.Image = ((System.Drawing.Image)(resources.GetObject("btnShowCode.Image")));
@@ -113,6 +157,11 @@
             this.btnShowCode.Size = new System.Drawing.Size(52, 22);
             this.btnShowCode.Text = "Code";
             this.btnShowCode.Click += new System.EventHandler(this.btnShowCode_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnClear
             // 
@@ -239,6 +288,11 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripButton btnCopy;
         private System.Windows.Forms.ToolStripComboBox toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSplitButton btnLanguage;
+        private System.Windows.Forms.ToolStripMenuItem menuItemVB;
+        private System.Windows.Forms.ToolStripMenuItem menuItemCSharp;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 
