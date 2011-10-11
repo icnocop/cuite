@@ -11,13 +11,25 @@ using mshtml;
 
 namespace CUITe.Controls
 {
-    public abstract class CUITe_ControlBase
+    public class CUITe_ControlBaseFactory
     {
-        private UITestControl _control;
+        public static T Create<T>(string sSearchProperties)
+            where T : ICUITe_ControlBase
+        {
+            Type type = typeof(T);
+
+            return (T)Activator.CreateInstance(type, new object[]{sSearchProperties});
+        }
+    }
+
+    public class CUITe_ControlBase<T> : ICUITe_ControlBase
+        where T : UITestControl
+    {
+        public T _control;
         private string _SearchProperties;
 
-        protected CUITe_ControlBase() { }
-        protected CUITe_ControlBase(string sSearchProperties) 
+        public CUITe_ControlBase() { }
+        public CUITe_ControlBase(string sSearchProperties) 
         {
             if (sSearchProperties == null) throw new Exception("Parameter 'SearchProperties' cannot be null");
             this._SearchProperties = sSearchProperties.Trim();
@@ -27,16 +39,26 @@ namespace CUITe.Controls
             }
         }
 
-        internal void Wrap(UITestControl control)
+        public Type GetBaseType()
         {
-            this._control = control;
+            return typeof(T);
+        }
+
+        public virtual void Wrap(object control)
+        {
+            this._control = control as T;
             this.fillSearchProperties();
             this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
 
-        protected void WrapReady(UITestControl control)
+        public T UnWrap()
         {
-            this._control = control;
+            return this._control;
+        }
+
+        public void WrapReady(object control)
+        {
+            this._control = control as T;
         }
 
         public void WaitForControlReady()

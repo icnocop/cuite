@@ -21,10 +21,15 @@ namespace Sample_CUITeTestProject
     [CodedUITest]
     public class SampleTests1
     {
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            CUITe_BrowserWindow.CloseAllBrowsers();
+        }
+
         [TestMethod]
         public void SampleTestNumber1()
         {
-            CUITe_BrowserWindow.CloseAllBrowsers();
             CUITe_BrowserWindow.Launch("http://www.google.com");
             GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
@@ -66,18 +71,18 @@ namespace Sample_CUITeTestProject
         public void TestMethod1()
         {
             Hashtable ht = CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.SampleTests1"), "XMLFile1.xml", "tc2");
-            string s = "";
-            foreach (string x in ht.Keys)
-            {
-                s += x + ": " + ht[x].ToString() + "\n";
-            }
-            MessageBox.Show(s);
+            Assert.AreEqual("test", ht["test"]);
+            Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
+            Assert.AreEqual("Suresh", ht["firstname"]);
+            Assert.AreEqual("Balasubramanian", ht["lastname"]);
+            Assert.AreEqual("04/19/1973", ht["dob"]);
+            Assert.AreEqual("37", ht["age"]);
+            Assert.AreEqual("Indian", ht["nationality"]);
         }
 
         [TestMethod]
         public void Telerik_Combo()
         {
-            CUITe_BrowserWindow.CloseAllBrowsers();
             CUITe_BrowserWindow.Launch("http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
             ASPNETComboBoxDemoFirstLook pgPage = CUITe_BrowserWindow.GetBrowserWindow<ASPNETComboBoxDemoFirstLook>();
             Thread.Sleep(5000);
@@ -92,13 +97,15 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_FeatureRequest_608()
         {
+            CUITe_BrowserWindow.Launch("http://mail.google.com");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("Gmail: Email from Google");
-            bWin.GetHtmlEdit("Id=Email").SetText("xyz@gmail.com");
-            bWin.GetHtmlPassword("Id=Password").SetText("MyPa$$Word");
-            bWin.GetHtmlInputButton("Id=signIn").Click();
+            bWin.Get<CUITe_HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
+            bWin.Get<CUITe_HtmlPassword>("Id=Password").SetText("MyPa$$Word");
+            bWin.Get<CUITe_HtmlInputButton>("Id=signIn").Click();
         }
 
         [TestMethod]
+        [ExpectedException(typeof(CUITe_InvalidSearchKey))]
         public void Test_FeatureRequest_588()
         {
             CUITe_BrowserWindow.Launch("http://www.google.com");

@@ -17,47 +17,16 @@ namespace CUITe.Controls.HtmlControls
         EndsWith
     }
 
-    public class CUITe_HtmlTable : CUITe_ControlBase
+    public class CUITe_HtmlTable : CUITe_ControlBase<HtmlTable>
     {
-        private HtmlTable _htmlTable;
-
         public CUITe_HtmlTable() : base() { }
         public CUITe_HtmlTable(string sSearchParameters) : base(sSearchParameters) { }
-
-        public void Wrap(HtmlTable control)
-        {
-            base.Wrap(control);
-            this._htmlTable = control;
-        }
-
-        /// <summary>
-        /// Helps you wrap a HtmlTable control with a CUITe_HtmlTable to leverage CUITe's convenient methods.
-        /// </summary>
-        /// <param name="control"></param>
-        /// <example>
-        /// <code>
-        /// CUITe_HtmlTable tblEdit = new CUITe_HtmlTable();
-        /// tblEdit.WrapReady(edit);
-        /// tblEdit.FindCellAndClick(10, 3);
-        /// </code>
-        /// Here 'edit' is a HtmlTable object.
-        /// </example>
-        public void WrapReady(HtmlTable control)
-        {
-            base.WrapReady(control);
-            this._htmlTable = control;
-        }
-
-        public HtmlTable UnWrap()
-        {
-            return this._htmlTable;
-        }
 
         public int RowCount
         {
             get {
-                this._htmlTable.WaitForControlReady();
-                return this._htmlTable.Rows.Count; 
+                this._control.WaitForControlReady();
+                return this._control.Rows.Count; 
             }
         }
 
@@ -97,10 +66,10 @@ namespace CUITe.Controls.HtmlControls
 
         public int FindRow(int iCol, string sValueToSearch, CUITe_HtmlTableSearchOptions option)
         {
-            this._htmlTable.WaitForControlReady();
+            this._control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
-            foreach (HtmlRow cont in this._htmlTable.Rows)
+            foreach (HtmlRow cont in this._control.Rows)
             {
                 rowCount++;
                 int colCount = -1;
@@ -152,10 +121,10 @@ namespace CUITe.Controls.HtmlControls
 
         private HtmlCell GetCell(int iRow, int iCol)
         {
-            this._htmlTable.WaitForControlReady();
+            this._control.WaitForControlReady();
             HtmlCell _htmlCell = null;
             int rowCount = -1;
-            foreach (HtmlRow cont in this._htmlTable.Rows)
+            foreach (HtmlRow cont in this._control.Rows)
             {
                 rowCount++;
                 if (rowCount == iRow)
@@ -212,7 +181,7 @@ namespace CUITe.Controls.HtmlControls
             mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
-            HtmlCheckBox chk = new HtmlCheckBox(this._htmlTable.Container);
+            HtmlCheckBox chk = new HtmlCheckBox(this._control.Container);
             foreach (string sTemp in saTemp)
             {
                 if (sTemp.IndexOf('=') > 0)

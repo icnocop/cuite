@@ -16,48 +16,17 @@ namespace CUITe.Controls.SilverlightControls
         EndsWith
     }
 
-    public class CUITe_SlTable : CUITe_ControlBase
+    public class CUITe_SlTable : CUITe_ControlBase<SilverlightTable>
     {
-        private SilverlightTable _SlTable;
-
         public CUITe_SlTable() : base() { }
         public CUITe_SlTable(string sSearchParameters) : base(sSearchParameters) { }
-
-        public void Wrap(SilverlightTable control)
-        {
-            base.Wrap(control);
-            this._SlTable = control;
-        }
-
-        /// <summary>
-        /// Helps you wrap a SilverlightTable control with a CUITe_SlTable to leverage CUITe's convenient methods.
-        /// </summary>
-        /// <param name="control"></param>
-        /// <example>
-        /// <code>
-        /// CUITe_SlTable tblEdit = new CUITe_SlTable();
-        /// tblEdit.WrapReady(edit);
-        /// tblEdit.FindCellAndClick(10, 3);
-        /// </code>
-        /// Here 'edit' is a SilverlightTable object.
-        /// </example>
-        public void WrapReady(SilverlightTable control)
-        {
-            base.WrapReady(control);
-            this._SlTable = control;
-        }
-
-        public SilverlightTable UnWrap()
-        {
-            return this._SlTable;
-        }
 
         public int RowCount
         {
             get
             {
-                this._SlTable.WaitForControlReady();
-                return this._SlTable.RowCount;
+                this._control.WaitForControlReady();
+                return this._control.RowCount;
             }
         }
 
@@ -97,10 +66,10 @@ namespace CUITe.Controls.SilverlightControls
 
         public int FindRow(int iCol, string sValueToSearch, CUITe_SlTableSearchOptions option)
         {
-            this._SlTable.WaitForControlReady();
+            this._control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
-            foreach (SilverlightRow cont in this._SlTable.Rows)
+            foreach (SilverlightRow cont in this._control.Rows)
             {
                 rowCount++;
                 int colCount = -1;
@@ -152,10 +121,10 @@ namespace CUITe.Controls.SilverlightControls
 
         private SilverlightCell GetCell(int iRow, int iCol)
         {
-            this._SlTable.WaitForControlReady();
+            this._control.WaitForControlReady();
             SilverlightCell _SlCell = null;
             int rowCount = -1;
-            foreach (SilverlightRow cont in this._SlTable.Rows)
+            foreach (SilverlightRow cont in this._control.Rows)
             {
                 rowCount++;
                 if (rowCount == iRow)
@@ -181,7 +150,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public CUITe_SlCheckBox GetRowHeaderCheckBox(int iRow)
         {
-            SilverlightCheckBox _checkbox = (SilverlightCheckBox)this._SlTable.Rows[iRow].GetChildren()[0].GetChildren()[0];
+            SilverlightCheckBox _checkbox = (SilverlightCheckBox)this._control.Rows[iRow].GetChildren()[0].GetChildren()[0];
             CUITe_SlCheckBox retObj = new CUITe_SlCheckBox("*");
             retObj.WrapReady(_checkbox);
             return retObj;

@@ -14,16 +14,7 @@ namespace CUITe
     {
         private static XmlTextReader GetXmlTextReader(Assembly _assembly, Type type, string sFileName)
         {
-            XmlTextReader _xmlTextReader = null;
-            try
-            {
-                _xmlTextReader = new XmlTextReader(_assembly.GetManifestResourceStream(type, sFileName));
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message.ToString());
-            }
-            return _xmlTextReader;
+            return new XmlTextReader(_assembly.GetManifestResourceStream(type, sFileName));
         }
 
         private static Hashtable GetDataRow(Assembly _assembly, Type type, string sFileName, string sDataRowId, Hashtable ht)
