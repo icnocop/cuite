@@ -64,12 +64,26 @@ namespace CUITe.Controls.HtmlControls
             Mouse.DoubleClick(this.GetCell(iRow, iCol));
         }
 
+        public bool IsHeaderPresent()
+        {
+            HtmlControl control = this._control.Rows[0] as HtmlControl;
+            if ((control != null) && (control.ControlType == ControlType.RowHeader))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public int FindRow(int iCol, string sValueToSearch, CUITe_HtmlTableSearchOptions option)
         {
             this._control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
-            foreach (HtmlRow cont in this._control.Rows)
+
+            bool isHeaderPresent = IsHeaderPresent();
+            UITestControlCollection coltemp = RemoveHeaders(this._control.Rows);
+
+            foreach (HtmlRow cont in coltemp)
             {
                 rowCount++;
                 int colCount = -1;
@@ -119,12 +133,57 @@ namespace CUITe.Controls.HtmlControls
             return sResult;
         }
 
+        public CUITe_HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
+        {
+            string sSearchProperties = "";
+            mshtml.IHTMLElement td = (mshtml.IHTMLElement)GetCell(iRow, iCol).NativeElement;
+            mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
+            string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
+            string[] saTemp = sOuterHTML.Split(' ');
+            HtmlCheckBox chk = new HtmlCheckBox(this._control.Container);
+            foreach (string sTemp in saTemp)
+            {
+                if (sTemp.IndexOf('=') > 0)
+                {
+                    string[] saKeyValue = sTemp.Split('=');
+                    string sValue = saKeyValue[1];
+                    if (saKeyValue[0].ToLower() == "name")
+                    {
+                        sSearchProperties += ";Name=" + sValue;
+                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue);
+                    }
+                    if (saKeyValue[0].ToLower() == "id")
+                    {
+                        sSearchProperties += ";Id=" + sValue;
+                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue);
+                    }
+                    if (saKeyValue[0].ToLower() == "class")
+                    {
+                        sSearchProperties += ";Class=" + sValue;
+                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue);
+                    }
+                }
+            }
+
+            if (sSearchProperties.Length > 1)
+            {
+                sSearchProperties = sSearchProperties.Substring(1);
+            }
+            CUITe_HtmlCheckBox retChk = new CUITe_HtmlCheckBox(sSearchProperties);
+            retChk.Wrap(chk);
+            return retChk;
+        }
+
         private HtmlCell GetCell(int iRow, int iCol)
         {
             this._control.WaitForControlReady();
             HtmlCell _htmlCell = null;
             int rowCount = -1;
-            foreach (HtmlRow cont in this._control.Rows)
+
+            bool isHeaderPresent = IsHeaderPresent();
+            UITestControlCollection coltemp = RemoveHeaders(this._control.Rows);
+
+            foreach (HtmlRow cont in coltemp)
             {
                 rowCount++;
                 if (rowCount == iRow)
@@ -174,45 +233,13 @@ namespace CUITe.Controls.HtmlControls
             return null;
         }
 
-        public CUITe_HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
+        private UITestControlCollection RemoveHeaders(UITestControlCollection collection)
         {
-            string sSearchProperties = "";
-            mshtml.IHTMLElement td = (mshtml.IHTMLElement)GetCell(iRow, iCol).NativeElement;
-            mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
-            string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
-            string[] saTemp = sOuterHTML.Split(' ');
-            HtmlCheckBox chk = new HtmlCheckBox(this._control.Container);
-            foreach (string sTemp in saTemp)
+            if (IsHeaderPresent())
             {
-                if (sTemp.IndexOf('=') > 0)
-                {
-                    string[] saKeyValue = sTemp.Split('=');
-                    string sValue = saKeyValue[1];
-                    if (saKeyValue[0].ToLower() == "name")
-                    {
-                        sSearchProperties += ";Name=" + sValue;
-                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue);
-                    }
-                    if (saKeyValue[0].ToLower() == "id")
-                    {
-                        sSearchProperties += ";Id=" + sValue;
-                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue);
-                    }
-                    if (saKeyValue[0].ToLower() == "class")
-                    {
-                        sSearchProperties += ";Class=" + sValue;
-                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue);
-                    }
-                }
+                collection.RemoveAt(0);
             }
-
-            if (sSearchProperties.Length > 1)
-            {
-                sSearchProperties = sSearchProperties.Substring(1);
-            }
-            CUITe_HtmlCheckBox retChk = new CUITe_HtmlCheckBox(sSearchProperties);
-            retChk.Wrap(chk);
-            return retChk;
+            return collection;
         }
     }
 }

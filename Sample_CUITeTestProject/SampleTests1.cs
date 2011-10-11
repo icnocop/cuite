@@ -15,12 +15,34 @@ using CUITe.Controls.HtmlControls;
 using Sample_CUITeTestProject.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 using System.Threading;
+using System.Reflection;
+using System.IO;
 
 namespace Sample_CUITeTestProject
 {
     [CodedUITest]
+    [DeploymentItem(@"Sample_CUITeTestProject\XMLFile2.xml")]
+    [DeploymentItem(@"Sample_CUITeTestProject\calc.html")]
     public class SampleTests1
     {
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
         [TestInitialize]
         public void TestInitialize()
         {
@@ -68,7 +90,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void Test_DataManager_EmbeddedResource()
         {
             Hashtable ht = CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.SampleTests1"), "XMLFile1.xml", "tc2");
             Assert.AreEqual("test", ht["test"]);
@@ -79,6 +101,19 @@ namespace Sample_CUITeTestProject
             Assert.AreEqual("37", ht["age"]);
             Assert.AreEqual("Indian", ht["nationality"]);
         }
+
+        //[TestMethod]
+        //public void Test_DataManager_DeploymentItem()
+        //{
+        //    Hashtable ht = CUITe_DataManager.GetDataRow("XMLFile2.xml", "content2");
+        //    Assert.AreEqual("SomeTest", ht["test"]);
+        //    Assert.AreEqual("Somewhere, Somewhere", ht["address"]);
+        //    Assert.AreEqual("SomeFirstName", ht["firstname"]);
+        //    Assert.AreEqual("SomeLastNameBigger", ht["lastname"]);
+        //    Assert.AreEqual("01/01/1900", ht["dob"]);
+        //    Assert.AreEqual("101", ht["age"]);
+        //    Assert.AreEqual("USA", ht["nationality"]);
+        //}
 
         [TestMethod]
         public void Telerik_Combo()
@@ -125,6 +160,28 @@ namespace Sample_CUITeTestProject
             CUITe_HtmlEdit txtEdit = new CUITe_HtmlEdit();
             txtEdit.WrapReady(tmp);
             txtEdit.SetText("Coded UI Test enhanced Framework");
+        }
+
+        [TestMethod]
+        public void Test_HtmlTableIssue_638_WithHeaders()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
+            tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
+            Assert.IsTrue(tbl.GetCellValue(2,2).Trim() == "9");
+        }
+
+        [TestMethod]
+        public void Test_HtmlTableIssue_638_WithOutHeaders()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithOutHeaders");
+            tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
+            Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
         }
     }
 }
