@@ -183,5 +183,14 @@ namespace Sample_CUITeTestProject
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
             Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
         }
+
+        [TestMethod]
+        public void Test_Value_As_SearchParameterKey()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+        }
     }
 }

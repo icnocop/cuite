@@ -153,6 +153,9 @@ namespace CUITe.Controls
                             case "text":
                                 this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);
                                 break;
+                            case "value":
+                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, sValue);
+                                break;
                             default:
                                 throw new CUITe_InvalidSearchKey(saKeyVal[0], this._SearchProperties);
                         }
