@@ -7,6 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// CUITe wrapper for SilverlightCell.
+    /// </summary>
     public class CUITe_SlCell : CUITe_SlControl<SilverlightCell>
     {
         public CUITe_SlCell() : base() { }

@@ -7,6 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// CUITe wrapper for SilverlightButton.
+    /// </summary>
     public class CUITe_SlButton : CUITe_SlControl<SilverlightButton>
     {
         public CUITe_SlButton() : base() { }

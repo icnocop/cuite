@@ -7,6 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// CUITe wrapper for SilverlightCheckBox.
+    /// </summary>
     public class CUITe_SlCheckBox : CUITe_SlControl<SilverlightCheckBox>
     {
         public CUITe_SlCheckBox() : base() { }

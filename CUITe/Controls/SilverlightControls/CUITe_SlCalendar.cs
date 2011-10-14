@@ -7,6 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// CUITe wrapper for SilverlightCalendar.
+    /// </summary>
     public class CUITe_SlCalendar : CUITe_SlControl<SilverlightCalendar>
     {
         public CUITe_SlCalendar() : base() { }

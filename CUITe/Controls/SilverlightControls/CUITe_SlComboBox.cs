@@ -7,6 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// CUITe wrapper for SilverlightComboBox.
+    /// </summary>
     public class CUITe_SlComboBox : CUITe_SlControl<SilverlightComboBox>
     {
         public CUITe_SlComboBox() : base() { }

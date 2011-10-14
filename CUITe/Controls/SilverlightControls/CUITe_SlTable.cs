@@ -16,6 +16,9 @@ namespace CUITe.Controls.SilverlightControls
         EndsWith
     }
 
+    /// <summary>
+    /// CUITe wrapper for SilverlightTable.
+    /// </summary>
     public class CUITe_SlTable : CUITe_SlControl<SilverlightTable>
     {
         public CUITe_SlTable() : base() { }

@@ -7,11 +7,17 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// CUITe wrapper for SilverlightList.
+    /// </summary>
     public class CUITe_SlList : CUITe_SlControl<SilverlightList>
     {
         public CUITe_SlList() : base() { }
         public CUITe_SlList(string sSearchParameters) : base(sSearchParameters) { }
 
+        /// <summary>
+        /// Gets the collection of child list items of the list
+        /// </summary>
         public UITestControlCollection Items
         {
             get
@@ -21,6 +27,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the indices of the selected items of the list.
+        /// </summary>
         public int[] SelectedIndices
         {
             get
@@ -35,6 +44,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected items in the listbox.
+        /// </summary>
         public string[] SelectedItems
         {
             get
@@ -49,6 +61,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected items of the list in a comma separated format.
+        /// </summary>
         public string SelectedItemsAsString
         {
             get
@@ -63,6 +78,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating the selection mode of the list
+        /// </summary>
         public System.Windows.Forms.SelectionMode SelectionMode
         {
             get

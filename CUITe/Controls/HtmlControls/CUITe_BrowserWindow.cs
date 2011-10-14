@@ -29,16 +29,16 @@ namespace CUITe.Controls.HtmlControls
             this.sWindowTitle = sTitle;
         }
 
-        internal void SetWidowTitle(string sWindowTitle) 
-        {
-            this.sWindowTitle = sWindowTitle;
-        }
-
         public static new void Launch(string sURL)
         {
             BrowserWindow.Launch(new Uri(sURL));
         }
 
+        /// <summary>
+        /// Gets the instance of T, which is an Object repository class (page definition).
+        /// </summary>
+        /// <typeparam name="T">Object repository class</typeparam>
+        /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>()
         {
             return (T)(object)ObjectRepositoryManager.GetInstance<T>();
@@ -54,10 +54,20 @@ namespace CUITe.Controls.HtmlControls
             GetBrowserWindow().WaitForControlReady(milliSecondsTimeOut);
         }
 
+        /// <summary>
+        /// Closes the CUITe_BrowserWindow instance.
+        /// </summary>
         public new void Close()
         {
             BrowserWindow window = BrowserWindow.Locate(this.sWindowTitle);
             window.Close();
+        }
+
+        #region internal methods
+
+        internal void SetWidowTitle(string sWindowTitle)
+        {
+            this.sWindowTitle = sWindowTitle;
         }
 
         internal BrowserWindow GetBrowserWindow()
@@ -65,11 +75,30 @@ namespace CUITe.Controls.HtmlControls
             return BrowserWindow.Locate(this.sWindowTitle);
         }
 
+        internal HtmlCustom SlObjectContainer
+        {
+            get
+            {
+                if ((this.mSlObjectContainer == null))
+                {
+                    this.mSlObjectContainer = new HtmlCustom(this);
+                    this.mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
+                    this.mSlObjectContainer.WindowTitles.Add(this.sWindowTitle);
+                }
+                return this.mSlObjectContainer;
+            }
+        }
+
+        #endregion
+
         public void NavigateToUrl(string sUrl)
         {
             this.NavigateToUrl(new Uri(sUrl));
         }
 
+        /// <summary>
+        /// Closes all IE instances.
+        /// </summary>
         public static void CloseAllBrowsers()
         {
             Process[] pro_list = Process.GetProcessesByName("iexplore");
@@ -79,6 +108,10 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
+        /// <summary>
+        /// Run/evaluate JavaScript code in the DOM context.
+        /// </summary>
+        /// <param name="sCode">JavaScript code as string</param>
         public void RunScript(string sCode)
         {
             InternetExplorer IE = null;
@@ -106,22 +139,15 @@ namespace CUITe.Controls.HtmlControls
             Mouse.Click(winTemp2.UIOKButton);
         }
 
-        internal HtmlCustom SlObjectContainer
-        {
-            get
-            {
-                if ((this.mSlObjectContainer == null))
-                {
-                    this.mSlObjectContainer = new HtmlCustom(this);
-                    this.mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
-                    this.mSlObjectContainer.WindowTitles.Add(this.sWindowTitle);
-                }
-                return this.mSlObjectContainer;
-            }
-        }
-
         #region Objects initialized at runtime without ObjectRepository entries
 
+        /// <summary>
+        /// Gets the CUITe control object when search parameters are passed. 
+        /// You don't have to create the object repository entry for this.
+        /// </summary>
+        /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
+        /// <param name="sSearchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname'</param>
+        /// <returns>CUITe_* control object</returns>
         public T Get<T>(string sSearchParameters)
             where T : ICUITe_ControlBase
         {
