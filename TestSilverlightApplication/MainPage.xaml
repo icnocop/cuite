@@ -61,6 +61,14 @@
             <ListBoxItem Content="Coded UI Test" />
             <ListBoxItem Content="Rational Robot" />
         </ListBox>
+        <ComboBox Height="22" HorizontalAlignment="Left" Margin="26,311,0,0" Name="comboBox1" VerticalAlignment="Top" Width="269">
+            <ComboBoxItem Content="India" />
+            <ComboBoxItem Content="China" />
+            <ComboBoxItem Content="United States of America" />
+            <ComboBoxItem Content="Iran" />
+            <ComboBoxItem Content="Namibia" />
+            <ComboBoxItem Content="Cambodia" />
+        </ComboBox>
     </Grid>
 
 </UserControl>

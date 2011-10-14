@@ -63,6 +63,17 @@ namespace Sample_CUITeTestProject
             oList.SelectedIndices = new int[] { 2 };
             Assert.IsTrue(oList.SelectedItemsAsString == "Coded UI Test");
         }
+
+        [TestMethod]
+        public void Test_SlComboBox()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
+            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            b.SetFocus();
+            CUITe_SlComboBox oCombo = b.Get<CUITe_SlComboBox>("Name=comboBox1");
+            oCombo.SelectItem(3);
+        }
     }
 }
 

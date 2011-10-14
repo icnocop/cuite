@@ -15,18 +15,59 @@ namespace CUITe.Controls.SilverlightControls
         public CUITe_SlComboBox() : base() { }
         public CUITe_SlComboBox(string sSearchParameters) : base(sSearchParameters) { }
 
+        /// <summary>
+        /// Selects the item in the combobox.
+        /// </summary>
+        /// <param name="sItem">Item as string</param>
         public void SelectItem(string sItem)
         {
             this._control.WaitForControlReady();
             this._control.SelectedItem = sItem;
         }
 
+        /// <summary>
+        /// Selects the item in the combobox by index.
+        /// </summary>
+        /// <param name="sItem">index of item</param>
+        public void SelectItem(int index)
+        {
+            this._control.WaitForControlReady();
+            this._control.SelectedIndex = index;
+        }
+
+        /// <summary>
+        /// Gets the selected item in a combobox.
+        /// </summary>
         public string SelectedItem
         {
             get 
             {
                 this._control.WaitForControlReady();
                 return this._control.SelectedItem; 
+            }
+        }
+
+        /// <summary>
+        /// Gets the selected index in a combobox.
+        /// </summary>
+        public int SelectedIndex
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.SelectedIndex;
+            }
+        }
+
+        /// <summary>
+        /// Gets the count of the items in the combobox.
+        /// </summary>
+        public int ItemCount
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.Items.Count;
             }
         }
     }
