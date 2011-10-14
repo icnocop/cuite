@@ -1,31 +1,26 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Windows.Forms;
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
-using System.Collections;
-using CUITe;
-using CUITe.Controls;
-using CUITe.Controls.HtmlControls;
-using CUITe.Controls.SilverlightControls;
-using Sample_CUITeTestProject.ObjectRepository;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 using System.Threading;
 using System.Reflection;
 using System.IO;
+using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITe.Controls.HtmlControls;
+using CUITe.Controls.SilverlightControls;
+using Sample_CUITeTestProject.ObjectRepository;
 
 namespace Sample_CUITeTestProject
 {
     [CodedUITest]
     [DeploymentItem(@"Sample_CUITeTestProject\XMLFile2.xml")]
     [DeploymentItem(@"Sample_CUITeTestProject\calc.html")]
-    public class SampleTests1
+    public class Tests_for_HtmlControls
     {
         private TestContext testContextInstance;
 
@@ -74,27 +69,12 @@ namespace Sample_CUITeTestProject
                     }
                 }
             }
-
-            //ArrayList col = pgSearch.divSearchResults.GetChildren();
-
-            //foreach (CUITe_ControlBase bas in col)
-            //{
-            //    if (bas.GetType() == typeof(CUITe_HtmlDiv)) 
-            //    {
-            //        CUITe_HtmlDiv div = (CUITe_HtmlDiv)bas;
-            //        if (div.UnWrap().GetProperty("class").ToString() == "s")
-            //        {
-            //            string sContent = div.InnerText;
-            //            MessageBox.Show(sContent);
-            //        }
-            //    }
-            //}
         }
 
         [TestMethod]
         public void Test_DataManager_EmbeddedResource()
         {
-            Hashtable ht = CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.SampleTests1"), "XMLFile1.xml", "tc2");
+            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.SampleTests1"), "XMLFile1.xml", "tc2");
             Assert.AreEqual("test", ht["test"]);
             Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
             Assert.AreEqual("Suresh", ht["firstname"]);
@@ -142,7 +122,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        [ExpectedException(typeof(CUITe_InvalidSearchKey))]
+        [ExpectedException(typeof(CUITe.CUITe_InvalidSearchKey))]
         public void Test_FeatureRequest_588()
         {
             CUITe_BrowserWindow.Launch("http://www.google.com");
@@ -194,27 +174,6 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
         }
-
-        [TestMethod]
-        public void t1()
-        {
-            //CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("SilverlightApplication1");
-            //bWin.SetFocus();
-            //CUITe_SlText xx = bWin.Get<CUITe_SlText>("Name=textBox1");
-            //xx.SetText("dsdadas");
-            //CUITe_SlDatePicker dp1 = bWin.Get<CUITe_SlDatePicker>("AutomationId=dp1");
-            //System.Windows.Forms.MessageBox.Show(dp1.UnWrap().LabeledBy);
-            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
-            b.SetFocus();
-            b.Get<CUITe_SlButton>("Name=button1").Click();
-            CUITe_SlEdit oEdit = b.Get<CUITe_SlEdit>("Name=textBox1");
-            oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
-            //System.Windows.Forms.MessageBox.Show(oEdit.UnWrap().LabeledBy);
-            CUITe_SlDatePicker dp = b.Get<CUITe_SlDatePicker>("Name=datePicker1");
-            dp.UnWrap().SelectedDateAsString = "5/11/11";
-            //System.Windows.Forms.MessageBox.Show();
-        }
-
     }
 }
 

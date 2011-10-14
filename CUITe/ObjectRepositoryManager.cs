@@ -161,6 +161,21 @@ namespace CUITe
                     CUITe_SlHyperlink field = (CUITe_SlHyperlink)fieldinfo.GetValue(browserWindow);
                     field.Wrap(new SilverlightHyperlink(browserWindow.SlObjectContainer));
                 }
+                if (sNodeName == "SilverlightControls.CUITe_SlImage")
+                {
+                    CUITe_SlImage field = (CUITe_SlImage)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightImage(browserWindow.SlObjectContainer));
+                }
+                if (sNodeName == "SilverlightControls.CUITe_SlLabel")
+                {
+                    CUITe_SlLabel field = (CUITe_SlLabel)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightLabel(browserWindow.SlObjectContainer));
+                }
+                if (sNodeName == "SilverlightControls.CUITe_SlList")
+                {
+                    CUITe_SlList field = (CUITe_SlList)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightList(browserWindow.SlObjectContainer));
+                }
                 if (sNodeName == "SilverlightControls.CUITe_SlTabItem")
                 {
                     CUITe_SlTabItem field = (CUITe_SlTabItem)fieldinfo.GetValue(browserWindow);

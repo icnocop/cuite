@@ -25,7 +25,7 @@ namespace CUITe.Controls
     public class CUITe_ControlBase<T> : ICUITe_ControlBase
         where T : UITestControl
     {
-        public T _control;
+        protected T _control;
         private string _SearchProperties;
 
         public CUITe_ControlBase() { }
@@ -139,6 +139,9 @@ namespace CUITe.Controls
                                     break;
                                 case "automationid":
                                     this._control.SearchProperties.Add(SilverlightControl.PropertyNames.AutomationId, sValue);
+                                    break;
+                                case "src":
+                                    this._control.SearchProperties.Add(SilverlightImage.PropertyNames.Source, sValue);
                                     break;
                                 case "text":
                                     this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);

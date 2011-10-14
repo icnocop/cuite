@@ -80,10 +80,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests_for_SilverlightControls.cs" />
     <Compile Include="ObjectRepository\Google.cs" />
     <Compile Include="ObjectRepository\GoogleSearch.cs" />
     <Compile Include="ObjectRepository\ASPNETComboBoxDemoFirstLook.cs" />
-    <Compile Include="SampleTests1.cs" />
+    <Compile Include="Tests_for_HtmlControls.cs" />
     <Compile Include="ObjectRepository\GoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="calc.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestSilverlightApplication.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestSilverlightApplication.xap">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="XMLFile2.xml">
