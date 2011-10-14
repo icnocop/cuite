@@ -127,9 +127,17 @@ namespace CUITe.Controls.HtmlControls
         {
             T control = CUITe_ControlBaseFactory.Create<T>(sSearchParameters);
 
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this });
+            if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
+            {
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
+                control.Wrap(baseControl);
+            }
+            else
+            {
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this });
+                control.Wrap(baseControl);
+            }
 
-            control.Wrap(baseControl);
             return control;
         }
 
