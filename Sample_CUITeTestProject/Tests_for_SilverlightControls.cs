@@ -12,6 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using Sample_CUITeTestProject.ObjectRepository;
+using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace Sample_CUITeTestProject
 {
@@ -73,6 +74,10 @@ namespace Sample_CUITeTestProject
             b.SetFocus();
             CUITe_SlComboBox oCombo = b.Get<CUITe_SlComboBox>("Name=comboBox1");
             oCombo.SelectItem(3);
+            foreach (string temp in oCombo.Items)
+            {
+                Console.WriteLine(temp);
+            }
         }
     }
 }

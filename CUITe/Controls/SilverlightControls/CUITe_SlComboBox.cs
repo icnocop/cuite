@@ -28,7 +28,7 @@ namespace CUITe.Controls.SilverlightControls
         /// <summary>
         /// Selects the item in the combobox by index.
         /// </summary>
-        /// <param name="sItem">index of item</param>
+        /// <param name="index">index of item</param>
         public void SelectItem(int index)
         {
             this._control.WaitForControlReady();
@@ -68,6 +68,26 @@ namespace CUITe.Controls.SilverlightControls
             {
                 this._control.WaitForControlReady();
                 return this._control.Items.Count;
+            }
+        }
+
+        /// <summary>
+        /// Gets the items in a string array.
+        /// </summary>
+        public string[] Items
+        {
+            get
+            {
+                string[] saTemp = new string[this.ItemCount];
+                UITestControlCollection col = this._control.Items;
+                int i = 0;
+                foreach (UITestControl con in col)
+                {
+                    SilverlightListItem it = (SilverlightListItem)con;
+                    saTemp[i] = it.Name;
+                    i++;
+                }
+                return saTemp;
             }
         }
     }

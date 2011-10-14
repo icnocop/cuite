@@ -7,6 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
+    /// <summary>
+    /// CUITe wrapper for HtmlComboBox.
+    /// </summary>
     public class CUITe_HtmlComboBox : CUITe_ControlBase<HtmlComboBox>
     {
         public CUITe_HtmlComboBox() : base() { }
@@ -25,7 +28,7 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Selects the item in the combobox by index.
         /// </summary>
-        /// <param name="sItem">index of item</param>
+        /// <param name="index">index of item</param>
         public void SelectItem(int index)
         {
             this._control.WaitForControlReady();
@@ -65,6 +68,25 @@ namespace CUITe.Controls.HtmlControls
             {
                 this._control.WaitForControlReady();
                 return this._control.ItemCount;
+            }
+        }
+
+        /// <summary>
+        /// Gets the items in a string array.
+        /// </summary>
+        public string[] Items
+        {
+            get
+            {
+                string[] saTemp = new string[this.ItemCount];
+                UITestControlCollection col = this._control.Items;
+                int i = 0;
+                foreach (UITestControl con in col)
+                {
+                    saTemp[i] = con.Name;
+                    i++;
+                }
+                return saTemp;
             }
         }
     }
