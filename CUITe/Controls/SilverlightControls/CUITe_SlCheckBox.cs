@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class CUITe_SlCheckBox : CUITe_ControlBase<SilverlightCheckBox>
+    public class CUITe_SlCheckBox : CUITe_SlControl<SilverlightCheckBox>
     {
         public CUITe_SlCheckBox() : base() { }
         public CUITe_SlCheckBox(string sSearchParameters) : base(sSearchParameters) { }

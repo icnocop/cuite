@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class CUITe_SlComboBox : CUITe_ControlBase<SilverlightComboBox>
+    public class CUITe_SlComboBox : CUITe_SlControl<SilverlightComboBox>
     {
         public CUITe_SlComboBox() : base() { }
         public CUITe_SlComboBox(string sSearchParameters) : base(sSearchParameters) { }

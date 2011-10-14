@@ -16,7 +16,7 @@ namespace CUITe.Controls.SilverlightControls
         EndsWith
     }
 
-    public class CUITe_SlTable : CUITe_ControlBase<SilverlightTable>
+    public class CUITe_SlTable : CUITe_SlControl<SilverlightTable>
     {
         public CUITe_SlTable() : base() { }
         public CUITe_SlTable(string sSearchParameters) : base(sSearchParameters) { }

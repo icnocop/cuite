@@ -12,8 +12,10 @@ using System.Collections;
 using CUITe;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
+using CUITe.Controls.SilverlightControls;
 using Sample_CUITeTestProject.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 using System.Threading;
 using System.Reflection;
 using System.IO;
@@ -46,7 +48,7 @@ namespace Sample_CUITeTestProject
         [TestInitialize]
         public void TestInitialize()
         {
-            CUITe_BrowserWindow.CloseAllBrowsers();
+            //CUITe_BrowserWindow.CloseAllBrowsers();
         }
 
         [TestMethod]
@@ -192,5 +194,27 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
         }
+
+        [TestMethod]
+        public void t1()
+        {
+            //CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("SilverlightApplication1");
+            //bWin.SetFocus();
+            //CUITe_SlText xx = bWin.Get<CUITe_SlText>("Name=textBox1");
+            //xx.SetText("dsdadas");
+            //CUITe_SlDatePicker dp1 = bWin.Get<CUITe_SlDatePicker>("AutomationId=dp1");
+            //System.Windows.Forms.MessageBox.Show(dp1.UnWrap().LabeledBy);
+            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            b.SetFocus();
+            b.Get<CUITe_SlButton>("Name=button1").Click();
+            CUITe_SlEdit oEdit = b.Get<CUITe_SlEdit>("Name=textBox1");
+            oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
+            //System.Windows.Forms.MessageBox.Show(oEdit.UnWrap().LabeledBy);
+            CUITe_SlDatePicker dp = b.Get<CUITe_SlDatePicker>("Name=datePicker1");
+            dp.UnWrap().SelectedDateAsString = "5/11/11";
+            //System.Windows.Forms.MessageBox.Show();
+        }
+
     }
 }
+

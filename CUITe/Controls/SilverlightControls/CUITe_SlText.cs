@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class CUITe_SlText : CUITe_ControlBase<SilverlightText>
+    public class CUITe_SlText : CUITe_SlControl<SilverlightText>
     {
         public CUITe_SlText() : base() { }
         public CUITe_SlText(string sSearchParameters) : base(sSearchParameters) { }

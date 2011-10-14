@@ -131,6 +131,16 @@ namespace CUITe
                     CUITe_SlButton field = (CUITe_SlButton)fieldinfo.GetValue(browserWindow);
                     field.Wrap(new SilverlightButton(browserWindow.SlObjectContainer));
                 }
+                if (sNodeName == "SilverlightControls.CUITe_SlCalendar")
+                {
+                    CUITe_SlCalendar field = (CUITe_SlCalendar)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightCalendar(browserWindow.SlObjectContainer));
+                }
+                if (sNodeName == "SilverlightControls.CUITe_SlCell")
+                {
+                    CUITe_SlCell field = (CUITe_SlCell)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightCell(browserWindow.SlObjectContainer));
+                }
                 if (sNodeName == "SilverlightControls.CUITe_SlCheckBox")
                 {
                     CUITe_SlCheckBox field = (CUITe_SlCheckBox)fieldinfo.GetValue(browserWindow);
@@ -166,15 +176,20 @@ namespace CUITe
                     CUITe_SlText field = (CUITe_SlText)fieldinfo.GetValue(browserWindow);
                     field.Wrap(new SilverlightText(browserWindow.SlObjectContainer));
                 }
-                if (sNodeName == "SilverlightControls.CUITe_SlControl")
-                {
-                    CUITe_SlControl field = (CUITe_SlControl)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightControl(browserWindow.SlObjectContainer));
-                }
+                //if (sNodeName == "SilverlightControls.CUITe_SlControl")
+                //{
+                //    CUITe_SlControl field = (CUITe_SlControl)fieldinfo.GetValue(browserWindow);
+                //    field.Wrap(new SilverlightControl(browserWindow.SlObjectContainer));
+                //}
                 if (sNodeName == "SilverlightControls.CUITe_SlDataPager")
                 {
                     CUITe_SlDataPager field = (CUITe_SlDataPager)fieldinfo.GetValue(browserWindow);
                     field.Wrap(new SilverlightDataPager(browserWindow.SlObjectContainer));
+                }
+                if (sNodeName == "SilverlightControls.CUITe_SlDatePicker")
+                {
+                    CUITe_SlDatePicker field = (CUITe_SlDatePicker)fieldinfo.GetValue(browserWindow);
+                    field.Wrap(new SilverlightDatePicker(browserWindow.SlObjectContainer));
                 }
 
                 #endregion

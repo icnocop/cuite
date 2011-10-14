@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class CUITe_SlDataPager : CUITe_ControlBase<SilverlightDataPager>
+    public class CUITe_SlDataPager : CUITe_SlControl<SilverlightDataPager>
     {
         public CUITe_SlDataPager() : base() { }
         public CUITe_SlDataPager(string sSearchParameters) : base(sSearchParameters) { }

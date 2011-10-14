@@ -51,6 +51,12 @@ namespace CUITe.Controls
             this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
 
+        /// <summary>
+        /// UnWraps the CUITe_Html* or CUITe_Sl* controls to expose the underlying UITestControl.
+        /// This helps when you want to use any methods/properties of the underlying UITestControl.
+        /// CUITe_Html* or CUITe_Sl* controls are wrappers/abstractions which hides complexity. UnWrap() helps you break the abstraction.
+        /// </summary>
+        /// <returns>The underlying UITestControl instance. For example, returns HtmlEdit in case of CUITe_HtmlEdit.</returns>
         public T UnWrap()
         {
             return this._control;
@@ -124,40 +130,57 @@ namespace CUITe.Controls
                     string sValue = saKeyVal[1];
                     if (sValue != "")
                     {
-                        switch (sKey)
+                        if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
                         {
-                            case "id":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue);
-                                break;
-                            case "class":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue);
-                                break;
-                            case "title":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Title, sValue);
-                                break;
-                            case "innertext":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.InnerText, sValue);
-                                break;
-                            case "name":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue);
-                                break;
-                            case "href":
-                                this._control.SearchProperties.Add(HtmlHyperlink.PropertyNames.Href, sValue);
-                                break;
-                            case "absolutepath":
-                                this._control.SearchProperties.Add(HtmlImage.PropertyNames.AbsolutePath, sValue);
-                                break;
-                            case "automationid":
-                                this._control.SearchProperties.Add(SilverlightControl.PropertyNames.AutomationId, sValue);
-                                break;
-                            case "text":
-                                this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);
-                                break;
-                            case "value":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, sValue);
-                                break;
-                            default:
-                                throw new CUITe_InvalidSearchKey(saKeyVal[0], this._SearchProperties);
+                            switch (sKey)
+                            {
+                                case "name":
+                                    this._control.SearchProperties.Add(SilverlightControl.PropertyNames.Name, sValue);
+                                    break;
+                                case "automationid":
+                                    this._control.SearchProperties.Add(SilverlightControl.PropertyNames.AutomationId, sValue);
+                                    break;
+                                case "text":
+                                    this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);
+                                    break;
+                                default:
+                                    throw new CUITe_InvalidSearchKey(saKeyVal[0], this._SearchProperties);
+                            }
+                        }
+                        if (typeof(T).Namespace.Equals("CUITe.Controls.HtmlControls"))
+                        {
+                            switch (sKey)
+                            {
+                                case "id":
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue);
+                                    break;
+                                case "class":
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue);
+                                    break;
+                                case "title":
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.Title, sValue);
+                                    break;
+                                case "innertext":
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.InnerText, sValue);
+                                    break;
+                                case "name":
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue);
+                                    break;
+                                case "value":
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, sValue);
+                                    break;
+                                case "href":
+                                    this._control.SearchProperties.Add(HtmlHyperlink.PropertyNames.Href, sValue);
+                                    break;
+                                case "absolutepath":
+                                    this._control.SearchProperties.Add(HtmlImage.PropertyNames.AbsolutePath, sValue);
+                                    break;
+                                case "src":
+                                    this._control.SearchProperties.Add(HtmlImage.PropertyNames.Src, sValue);
+                                    break;
+                                default:
+                                    throw new CUITe_InvalidSearchKey(saKeyVal[0], this._SearchProperties);
+                            }
                         }
                     }
                 }

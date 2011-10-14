@@ -7,9 +7,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class CUITe_SlTabItem : CUITe_SlControl<SilverlightTabItem>
+    public class CUITe_SlDatePicker : CUITe_SlControl<SilverlightDatePicker>
     {
-        public CUITe_SlTabItem() : base() { }
-        public CUITe_SlTabItem(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlDatePicker() : base() { }
+        public CUITe_SlDatePicker(string sSearchParameters) : base(sSearchParameters) { }
     }
 }

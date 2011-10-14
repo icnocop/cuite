@@ -63,6 +63,9 @@
     <Compile Include="Controls\CUITe_ControlBase.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlPassword.cs" />
     <Compile Include="Controls\ICUITe_ControlBase.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlDatePicker.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlCell.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlCalendar.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlButton.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlCheckBox.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlComboBox.cs" />
