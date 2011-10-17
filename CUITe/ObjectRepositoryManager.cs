@@ -36,175 +36,201 @@ namespace CUITe
 
                 #region HtmlControls
 
-                if (sNodeName == "HtmlControls.CUITe_HtmlHyperlink")
+                if (sNodeName.StartsWith("HtmlControls.CUITe_Html"))
                 {
-                    CUITe_HtmlHyperlink field = (CUITe_HtmlHyperlink)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlHyperlink(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlDiv")
-                {
-                    CUITe_HtmlDiv field = (CUITe_HtmlDiv)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlDiv(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlCell")
-                {
-                    CUITe_HtmlCell field = (CUITe_HtmlCell)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlCell(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlInputButton")
-                {
-                    CUITe_HtmlInputButton field = (CUITe_HtmlInputButton)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlInputButton(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlComboBox")
-                {
-                    CUITe_HtmlComboBox field = (CUITe_HtmlComboBox)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlComboBox(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlTextArea")
-                {
-                    CUITe_HtmlTextArea field = (CUITe_HtmlTextArea)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlTextArea(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlTable")
-                {
-                    CUITe_HtmlTable field = (CUITe_HtmlTable)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlTable(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlCheckBox")
-                {
-                    CUITe_HtmlCheckBox field = (CUITe_HtmlCheckBox)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlCheckBox(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlRadioButton")
-                {
-                    CUITe_HtmlRadioButton field = (CUITe_HtmlRadioButton)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlRadioButton(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlButton")
-                {
-                    CUITe_HtmlButton field = (CUITe_HtmlButton)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlButton(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlEdit")
-                {
-                    CUITe_HtmlEdit field = (CUITe_HtmlEdit)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlEdit(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlPassword")
-                {
-                    CUITe_HtmlPassword field = (CUITe_HtmlPassword)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlEdit(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlList")
-                {
-                    CUITe_HtmlList field = (CUITe_HtmlList)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlList(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlFileInput")
-                {
-                    CUITe_HtmlFileInput field = (CUITe_HtmlFileInput)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlFileInput(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlLabel")
-                {
-                    CUITe_HtmlLabel field = (CUITe_HtmlLabel)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlLabel(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlImage")
-                {
-                    CUITe_HtmlImage field = (CUITe_HtmlImage)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlImage(browserWindow));
-                }
-                if (sNodeName == "HtmlControls.CUITe_HtmlSpan")
-                {
-                    CUITe_HtmlSpan field = (CUITe_HtmlSpan)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new HtmlSpan(browserWindow));
+                    if (sNodeName == "HtmlControls.CUITe_HtmlHyperlink")
+                    {
+                        CUITe_HtmlHyperlink field = (CUITe_HtmlHyperlink)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlHyperlink(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlDiv")
+                    {
+                        CUITe_HtmlDiv field = (CUITe_HtmlDiv)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlDiv(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlCell")
+                    {
+                        CUITe_HtmlCell field = (CUITe_HtmlCell)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlCell(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlInputButton")
+                    {
+                        CUITe_HtmlInputButton field = (CUITe_HtmlInputButton)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlInputButton(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlComboBox")
+                    {
+                        CUITe_HtmlComboBox field = (CUITe_HtmlComboBox)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlComboBox(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlTextArea")
+                    {
+                        CUITe_HtmlTextArea field = (CUITe_HtmlTextArea)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlTextArea(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlTable")
+                    {
+                        CUITe_HtmlTable field = (CUITe_HtmlTable)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlTable(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlCheckBox")
+                    {
+                        CUITe_HtmlCheckBox field = (CUITe_HtmlCheckBox)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlCheckBox(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlRadioButton")
+                    {
+                        CUITe_HtmlRadioButton field = (CUITe_HtmlRadioButton)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlRadioButton(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlButton")
+                    {
+                        CUITe_HtmlButton field = (CUITe_HtmlButton)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlButton(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlEdit")
+                    {
+                        CUITe_HtmlEdit field = (CUITe_HtmlEdit)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlEdit(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlPassword")
+                    {
+                        CUITe_HtmlPassword field = (CUITe_HtmlPassword)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlEdit(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlList")
+                    {
+                        CUITe_HtmlList field = (CUITe_HtmlList)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlList(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlFileInput")
+                    {
+                        CUITe_HtmlFileInput field = (CUITe_HtmlFileInput)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlFileInput(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlLabel")
+                    {
+                        CUITe_HtmlLabel field = (CUITe_HtmlLabel)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlLabel(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlImage")
+                    {
+                        CUITe_HtmlImage field = (CUITe_HtmlImage)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlImage(browserWindow));
+                    }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlSpan")
+                    {
+                        CUITe_HtmlSpan field = (CUITe_HtmlSpan)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlSpan(browserWindow));
+                    }
                 }
 
                 #endregion
 
                 # region SilverlightControls
 
-                if (sNodeName == "SilverlightControls.CUITe_SlButton")
+                if (sNodeName.StartsWith("SilverlightControls.CUITe_Sl"))
                 {
-                    CUITe_SlButton field = (CUITe_SlButton)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightButton(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlCalendar")
-                {
-                    CUITe_SlCalendar field = (CUITe_SlCalendar)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightCalendar(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlCell")
-                {
-                    CUITe_SlCell field = (CUITe_SlCell)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightCell(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlCheckBox")
-                {
-                    CUITe_SlCheckBox field = (CUITe_SlCheckBox)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightCheckBox(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlComboBox")
-                {
-                    CUITe_SlComboBox field = (CUITe_SlComboBox)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightComboBox(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlEdit")
-                {
-                    CUITe_SlEdit field = (CUITe_SlEdit)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightEdit(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlHyperlink")
-                {
-                    CUITe_SlHyperlink field = (CUITe_SlHyperlink)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightHyperlink(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlImage")
-                {
-                    CUITe_SlImage field = (CUITe_SlImage)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightImage(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlLabel")
-                {
-                    CUITe_SlLabel field = (CUITe_SlLabel)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightLabel(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlList")
-                {
-                    CUITe_SlList field = (CUITe_SlList)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightList(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlTabItem")
-                {
-                    CUITe_SlTabItem field = (CUITe_SlTabItem)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightTabItem(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlTable")
-                {
-                    CUITe_SlTable field = (CUITe_SlTable)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightTable(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlText")
-                {
-                    CUITe_SlText field = (CUITe_SlText)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightText(browserWindow.SlObjectContainer));
-                }
-                //if (sNodeName == "SilverlightControls.CUITe_SlControl")
-                //{
-                //    CUITe_SlControl field = (CUITe_SlControl)fieldinfo.GetValue(browserWindow);
-                //    field.Wrap(new SilverlightControl(browserWindow.SlObjectContainer));
-                //}
-                if (sNodeName == "SilverlightControls.CUITe_SlDataPager")
-                {
-                    CUITe_SlDataPager field = (CUITe_SlDataPager)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightDataPager(browserWindow.SlObjectContainer));
-                }
-                if (sNodeName == "SilverlightControls.CUITe_SlDatePicker")
-                {
-                    CUITe_SlDatePicker field = (CUITe_SlDatePicker)fieldinfo.GetValue(browserWindow);
-                    field.Wrap(new SilverlightDatePicker(browserWindow.SlObjectContainer));
+                    if (sNodeName == "SilverlightControls.CUITe_SlButton")
+                    {
+                        CUITe_SlButton field = (CUITe_SlButton)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightButton(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlCalendar")
+                    {
+                        CUITe_SlCalendar field = (CUITe_SlCalendar)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightCalendar(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlCell")
+                    {
+                        CUITe_SlCell field = (CUITe_SlCell)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightCell(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlCheckBox")
+                    {
+                        CUITe_SlCheckBox field = (CUITe_SlCheckBox)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightCheckBox(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlComboBox")
+                    {
+                        CUITe_SlComboBox field = (CUITe_SlComboBox)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightComboBox(browserWindow.SlObjectContainer));
+                    }
+                    //if (sNodeName == "SilverlightControls.CUITe_SlControl")
+                    //{
+                    //    CUITe_SlControl field = (CUITe_SlControl)fieldinfo.GetValue(browserWindow);
+                    //    field.Wrap(new SilverlightControl(browserWindow.SlObjectContainer));
+                    //}
+                    if (sNodeName == "SilverlightControls.CUITe_SlDataPager")
+                    {
+                        CUITe_SlDataPager field = (CUITe_SlDataPager)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightDataPager(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlDatePicker")
+                    {
+                        CUITe_SlDatePicker field = (CUITe_SlDatePicker)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightDatePicker(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlEdit")
+                    {
+                        CUITe_SlEdit field = (CUITe_SlEdit)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightEdit(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlHyperlink")
+                    {
+                        CUITe_SlHyperlink field = (CUITe_SlHyperlink)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightHyperlink(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlImage")
+                    {
+                        CUITe_SlImage field = (CUITe_SlImage)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightImage(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlLabel")
+                    {
+                        CUITe_SlLabel field = (CUITe_SlLabel)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightLabel(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlList")
+                    {
+                        CUITe_SlList field = (CUITe_SlList)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightList(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlRadioButton")
+                    {
+                        CUITe_SlRadioButton field = (CUITe_SlRadioButton)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightRadioButton(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlSlider")
+                    {
+                        CUITe_SlSlider field = (CUITe_SlSlider)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightSlider(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlTab")
+                    {
+                        CUITe_SlTab field = (CUITe_SlTab)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightTab(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlTabItem")
+                    {
+                        CUITe_SlTabItem field = (CUITe_SlTabItem)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightTabItem(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlTable")
+                    {
+                        CUITe_SlTable field = (CUITe_SlTable)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightTable(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlText")
+                    {
+                        CUITe_SlText field = (CUITe_SlText)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightText(browserWindow.SlObjectContainer));
+                    }
+                    if (sNodeName == "SilverlightControls.CUITe_SlTree")
+                    {
+                        CUITe_SlTree field = (CUITe_SlTree)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new SilverlightTree(browserWindow.SlObjectContainer));
+                    }
                 }
 
                 #endregion

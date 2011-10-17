@@ -99,6 +99,20 @@ namespace Sample_CUITeTestProject
             }
             b.Close();
         }
+
+        [TestMethod]
+        public void Test_SlTab()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
+            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            b.SetFocus();
+            CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
+            oTab.UnWrap().SelectedItem = "tabItem2";
+            System.Windows.Forms.MessageBox.Show(oTab.UnWrap().Items[0].Name);
+            b.Close();
+        }
+
     }
 }
 

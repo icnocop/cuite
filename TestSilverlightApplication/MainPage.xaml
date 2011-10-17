@@ -5,7 +5,7 @@
     xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" 
     xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480" xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls">
+    mc:Ignorable="d" d:DesignWidth="626" d:DesignHeight="678" xmlns:dataInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.Input" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls">
 
     <Grid x:Name="LayoutRoot" Style="{StaticResource LayoutRootGridStyle}">
 
@@ -69,6 +69,12 @@
             <ComboBoxItem Content="Namibia" />
             <ComboBoxItem Content="Cambodia" />
         </ComboBox>
+        <controls:TabControl Height="120" HorizontalAlignment="Left" Margin="301,311,0,0" Name="tabControl1" VerticalAlignment="Top" Width="313">
+            <controls:TabItem Header="tabItem1" Name="tabItem1">
+                <Grid />
+            </controls:TabItem>
+            <controls:TabItem Header="Second Tab" Name="tabItem2"/>
+        </controls:TabControl>
     </Grid>
 
 </UserControl>
