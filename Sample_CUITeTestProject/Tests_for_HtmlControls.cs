@@ -61,7 +61,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_DataManager_EmbeddedResource()
         {
-            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.SampleTests1"), "XMLFile1.xml", "tc2");
+            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.Tests_for_HtmlControls"), "XMLFile1.xml", "tc2");
             Assert.AreEqual("test", ht["test"]);
             Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
             Assert.AreEqual("Suresh", ht["firstname"]);
