@@ -43,7 +43,7 @@ namespace Sample_CUITeTestProject
         [TestInitialize]
         public void TestInitialize()
         {
-            //CUITe_BrowserWindow.CloseAllBrowsers();
+            CUITe_BrowserWindow.CloseAllBrowsers();
         }
 
         [TestMethod]
@@ -52,23 +52,10 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow.Launch("http://www.google.com");
             GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
-            pgGHomePage.btnGoogleSearch.Click();
             GoogleSearch pgSearch = CUITe_BrowserWindow.GetBrowserWindow<GoogleSearch>();
-
             UITestControlCollection col = pgSearch.divSearchResults.UnWrap().GetChildren();
-
-            foreach (UITestControl bas in col)
-            {
-                if (bas.GetType() == typeof(HtmlDiv))
-                {
-                    HtmlDiv div = (HtmlDiv)bas;
-                    if (div.GetProperty("class").ToString() == "s")
-                    {
-                        string sContent = div.InnerText;
-                        MessageBox.Show(sContent);
-                    }
-                }
-            }
+            //do something with collection            
+            pgSearch.Close();
         }
 
         [TestMethod]
@@ -109,6 +96,7 @@ namespace Sample_CUITeTestProject
             pgPage.combo2.SelectItemByText("Bloomfield Hills", 5000);
             pgPage.combo3.SelectItemByText("Exotic Liquids", 5000);
             pgPage.combo4.SelectItemByText("American Express", 5000);
+            pgPage.Close();
         }
 
         [TestMethod]
@@ -119,6 +107,7 @@ namespace Sample_CUITeTestProject
             bWin.Get<CUITe_HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
             bWin.Get<CUITe_HtmlPassword>("Id=Password").SetText("MyPa$$Word");
             bWin.Get<CUITe_HtmlInputButton>("Id=signIn").Click();
+            bWin.Close();
         }
 
         [TestMethod]
@@ -128,6 +117,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow.Launch("http://www.google.com");
             Google pgGHome = CUITe_BrowserWindow.GetBrowserWindow<Google>();
             pgGHome.div588.Click();
+            pgGHome.Close();
         }
 
         [TestMethod]
@@ -142,6 +132,8 @@ namespace Sample_CUITeTestProject
             CUITe_HtmlEdit txtEdit = new CUITe_HtmlEdit();
             txtEdit.WrapReady(tmp);
             txtEdit.SetText("Coded UI Test enhanced Framework");
+            GoogleSearch pgSearch = CUITe_BrowserWindow.GetBrowserWindow<GoogleSearch>();
+            pgSearch.Close();
         }
 
         [TestMethod]
@@ -153,6 +145,7 @@ namespace Sample_CUITeTestProject
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
             Assert.IsTrue(tbl.GetCellValue(2,2).Trim() == "9");
+            bWin.Close();
         }
 
         [TestMethod]
@@ -164,6 +157,7 @@ namespace Sample_CUITeTestProject
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithOutHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
             Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
+            bWin.Close();
         }
 
         [TestMethod]
@@ -173,6 +167,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+            bWin.Close();
         }
     }
 }

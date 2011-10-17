@@ -39,6 +39,12 @@ namespace Sample_CUITeTestProject
             }
         }
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            CUITe_BrowserWindow.CloseAllBrowsers();
+        }
+
         [TestMethod]
         public void Test_SlButtonAndEditAndDTP()
         {
@@ -51,10 +57,22 @@ namespace Sample_CUITeTestProject
             oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
             CUITe_SlDatePicker dp = b.Get<CUITe_SlDatePicker>("Name=datePicker1");
             dp.UnWrap().SelectedDateAsString = "5/11/11";
+            b.Close();
         }
 
         [TestMethod]
-        public void Test_SlList()
+        public void Test_SlList_ViaObjectRepository()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
+            SlTestPage oSlTestPage = CUITe_BrowserWindow.GetBrowserWindow<SlTestPage>();
+            oSlTestPage.oList.SelectedIndices = new int[] { 2 };
+            Assert.IsTrue(oSlTestPage.oList.SelectedItemsAsString == "Coded UI Test");
+            oSlTestPage.Close();
+        }
+
+        [TestMethod]
+        public void Test_SlList_DynamicObjectRecognition()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
@@ -63,6 +81,7 @@ namespace Sample_CUITeTestProject
             CUITe_SlList oList = b.Get<CUITe_SlList>("Name=listBox1");
             oList.SelectedIndices = new int[] { 2 };
             Assert.IsTrue(oList.SelectedItemsAsString == "Coded UI Test");
+            b.Close();
         }
 
         [TestMethod]
@@ -78,6 +97,7 @@ namespace Sample_CUITeTestProject
             {
                 Console.WriteLine(temp);
             }
+            b.Close();
         }
     }
 }
