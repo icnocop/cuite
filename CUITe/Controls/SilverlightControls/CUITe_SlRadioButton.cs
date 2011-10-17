@@ -14,5 +14,20 @@ namespace CUITe.Controls.SilverlightControls
     {
         public CUITe_SlRadioButton() : base() { }
         public CUITe_SlRadioButton(string sSearchParameters) : base(sSearchParameters) { }
+
+        public void Select()
+        {
+            this._control.WaitForControlReady();
+            this._control.Selected = true;
+        }
+
+        public bool IsSelected
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.Selected;
+            }
+        }
     }
 }

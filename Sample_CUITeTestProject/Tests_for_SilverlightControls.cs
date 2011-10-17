@@ -108,7 +108,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
             b.SetFocus();
             CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
-            oTab.UnWrap().SelectedItem = "tabItem2";
+            oTab.UnWrap().SelectedIndex= 1;
             System.Windows.Forms.MessageBox.Show(oTab.UnWrap().Items[0].Name);
             b.Close();
         }

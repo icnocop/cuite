@@ -14,5 +14,17 @@ namespace CUITe.Controls.SilverlightControls
     {
         public CUITe_SlTab() : base() { }
         public CUITe_SlTab(string sSearchParameters) : base(sSearchParameters) { }
+
+        // select by index
+        
+        // select by text
+
+        // get currently selected index
+
+        // get currently selected text
+
+        // get number of tab items
+
+        // tab item enabled or disabled
     }
 }
