@@ -169,6 +169,16 @@ namespace Sample_CUITeTestProject
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
         }
+
+        [TestMethod]
+        public void Test_FileInput()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            bWin.Get<CUITe_HtmlFileInput>("Id=ctl00_PlaceHolderMain_ctl01_ctl02_InputFile").SetFile(@"C:\Demo\info.txt");
+            bWin.Close();
+        }
     }
 }
 
