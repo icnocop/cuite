@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1824CBC81B2F43FA996EA4BB21CDBD20"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2C6A864A40C34F26BD0FEEA525F6D52D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -327,6 +333,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_353E711F6CFF4F3C8EC8833063E5DC35"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1824CBC81B2F43FA996EA4BB21CDBD20"
+            {
+            "SourcePath" = "8:..\\CUITe_ObjectRecorder\\images\\cuite_icon.ico"
+            "TargetName" = "8:cuite_icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_87D09456D3BA4399B43EF6FB4C28FD9B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -939,7 +965,7 @@
             "Target" = "8:_7BFAEA9B9F314BBEB895D5EC74587CE2"
             "Folder" = "8:_AEA075FF26D4446BA7A6D678FAA012DA"
             "WorkingFolder" = "8:_353E711F6CFF4F3C8EC8833063E5DC35"
-            "Icon" = "8:"
+            "Icon" = "8:_1824CBC81B2F43FA996EA4BB21CDBD20"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_86910858DE624CFDB136CBC6978B73F6"
@@ -953,7 +979,7 @@
             "Target" = "8:_7BFAEA9B9F314BBEB895D5EC74587CE2"
             "Folder" = "8:_0E08799F5D6F43889AE0C120B35A94C4"
             "WorkingFolder" = "8:_353E711F6CFF4F3C8EC8833063E5DC35"
-            "Icon" = "8:"
+            "Icon" = "8:_1824CBC81B2F43FA996EA4BB21CDBD20"
             "Feature" = "8:"
             }
         }
