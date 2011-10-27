@@ -117,7 +117,7 @@ namespace CUITe.Controls
             this._control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
         }
 
-        private void fillSearchProperties()
+        protected void fillSearchProperties()
         {
             if (this._SearchProperties != "*" && this._SearchProperties !=null)
             {

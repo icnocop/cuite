@@ -109,7 +109,7 @@ namespace Sample_CUITeTestProject
             b.SetFocus();
             CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
             oTab.UnWrap().SelectedIndex= 1;
-            System.Windows.Forms.MessageBox.Show(oTab.UnWrap().Items[0].Name);
+            Assert.IsTrue(oTab.UnWrap().Items[0].Name == "tabItem1");
             b.Close();
         }
 

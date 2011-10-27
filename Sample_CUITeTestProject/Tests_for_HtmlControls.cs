@@ -209,6 +209,16 @@ namespace Sample_CUITeTestProject
             Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
             bWin.Close();
         }
+
+        [TestMethod]
+        public void Test_CUITe_HtmlParagraph()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            Assert.IsTrue(bWin.Get<CUITe_HtmlParagraph>("Id=para1").InnerText.Contains("CUITe_HtmlParagraph"));
+            bWin.Close();
+        }
     }
 }
 
