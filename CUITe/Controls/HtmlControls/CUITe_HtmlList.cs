@@ -11,11 +11,5 @@ namespace CUITe.Controls.HtmlControls
     {
         public CUITe_HtmlList() : base() { }
         public CUITe_HtmlList(string sSearchParameters) : base(sSearchParameters) { }
-
-        public void Select(string sItem)
-        {
-            this._control.WaitForControlReady();
-            this._control.SelectedItemsAsString = sItem;
-        }
     }
 }
