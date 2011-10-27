@@ -179,6 +179,19 @@ namespace Sample_CUITeTestProject
             bWin.Get<CUITe_HtmlFileInput>("Id=ctl00_PlaceHolderMain_ctl01_ctl02_InputFile").SetFile(@"C:\Demo\info.txt");
             bWin.Close();
         }
+
+        [TestMethod]
+        public void Test_SharePoint2010()
+        {
+            CUITe_BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
+            CUITe_BrowserWindow.Authenticate("username", "password");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("Suresh Balasubramanian");
+            bWin.Get<CUITe_HtmlHyperlink>("Id=idHomePageNewDocument").Click();
+            var closeLink = bWin.Get<CUITe_HtmlHyperlink>("Title=Close;class=ms-dlgCloseBtn");
+            //clicking closeLink directly doesn't work as the maximizeLink is clicked due to the controls being placed too close to each other
+            Mouse.Click(closeLink.UnWrap().GetChildren()[0].GetChildren()[0]); 
+            bWin.RunScript(@"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
+        }
     }
 }
 
