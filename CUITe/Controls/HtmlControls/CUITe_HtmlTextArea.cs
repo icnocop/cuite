@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlTextArea : CUITe_ControlBase<HtmlTextArea>
+    public class CUITe_HtmlTextArea : CUITe_HtmlControl<HtmlTextArea>
     {
         public CUITe_HtmlTextArea() : base() { }
         public CUITe_HtmlTextArea(string sSearchParameters) : base(sSearchParameters) { }

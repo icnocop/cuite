@@ -7,18 +7,10 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlInputButton : CUITe_ControlBase<HtmlInputButton>
+    public class CUITe_HtmlInputButton : CUITe_HtmlControl<HtmlInputButton>
     {
         public CUITe_HtmlInputButton() : base() { }
         public CUITe_HtmlInputButton(string sSearchParameters) : base(sSearchParameters) { }
-
-        public string InnerText
-        {
-            get
-            {
-                return this._control.InnerText;
-            }
-        }
 
         public string DisplayText
         {

@@ -61,6 +61,7 @@
     <Compile Include="Controls\HtmlControls\CUITe_BrowserDialog.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_BrowserWindow.cs" />
     <Compile Include="Controls\CUITe_ControlBase.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlControl.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlPassword.cs" />
     <Compile Include="Controls\ICUITe_ControlBase.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTree.cs" />

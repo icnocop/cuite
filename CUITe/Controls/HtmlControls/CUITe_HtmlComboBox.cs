@@ -10,7 +10,7 @@ namespace CUITe.Controls.HtmlControls
     /// <summary>
     /// CUITe wrapper for HtmlComboBox.
     /// </summary>
-    public class CUITe_HtmlComboBox : CUITe_ControlBase<HtmlComboBox>
+    public class CUITe_HtmlComboBox : CUITe_HtmlControl<HtmlComboBox>
     {
         public CUITe_HtmlComboBox() : base() { }
         public CUITe_HtmlComboBox(string sSearchParameters) : base(sSearchParameters) { }

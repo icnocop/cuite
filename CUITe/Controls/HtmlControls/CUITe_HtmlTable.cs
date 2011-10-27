@@ -17,7 +17,7 @@ namespace CUITe.Controls.HtmlControls
         EndsWith
     }
 
-    public class CUITe_HtmlTable : CUITe_ControlBase<HtmlTable>
+    public class CUITe_HtmlTable : CUITe_HtmlControl<HtmlTable>
     {
         public CUITe_HtmlTable() : base() { }
         public CUITe_HtmlTable(string sSearchParameters) : base(sSearchParameters) { }

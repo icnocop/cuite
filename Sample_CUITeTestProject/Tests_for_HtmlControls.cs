@@ -11,6 +11,7 @@ using System.IO;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using Sample_CUITeTestProject.ObjectRepository;
@@ -43,7 +44,7 @@ namespace Sample_CUITeTestProject
         [TestInitialize]
         public void TestInitialize()
         {
-            CUITe_BrowserWindow.CloseAllBrowsers();
+            //CUITe_BrowserWindow.CloseAllBrowsers();
         }
 
         [TestMethod]
@@ -184,13 +185,29 @@ namespace Sample_CUITeTestProject
         public void Test_SharePoint2010()
         {
             CUITe_BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
-            CUITe_BrowserWindow.Authenticate("username", "password");
+            CUITe_BrowserWindow.Authenticate("username", "passwd");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("Suresh Balasubramanian");
             bWin.Get<CUITe_HtmlHyperlink>("Id=idHomePageNewDocument").Click();
             var closeLink = bWin.Get<CUITe_HtmlHyperlink>("Title=Close;class=ms-dlgCloseBtn");
             //clicking closeLink directly doesn't work as the maximizeLink is clicked due to the controls being placed too close to each other
             Mouse.Click(closeLink.UnWrap().GetChildren()[0].GetChildren()[0]); 
             bWin.RunScript(@"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
+        }
+
+        [TestMethod]
+        public void Test_HtmlGetChildren()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            var div = bWin.Get<CUITe_HtmlDiv>("id=calculatorContainer1");
+            var col = div.GetChildren();
+            Assert.IsTrue(col[0].GetBaseType().Name == "HtmlDiv");
+            Assert.IsTrue(col[1].GetBaseType().Name == "HtmlTable");
+            Assert.IsTrue(((CUITe_HtmlDiv)col[0]).InnerText == "calcWithHeaders");
+            var tbl = (CUITe_HtmlTable)col[1];
+            Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
+            bWin.Close();
         }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlFileInput : CUITe_ControlBase<HtmlFileInput>
+    public class CUITe_HtmlFileInput : CUITe_HtmlControl<HtmlFileInput>
     {
         public CUITe_HtmlFileInput() : base() { }
         public CUITe_HtmlFileInput(string sSearchParameters) : base(sSearchParameters) { }

@@ -42,7 +42,7 @@ namespace Sample_CUITeTestProject
         [TestInitialize]
         public void TestInitialize()
         {
-            CUITe_BrowserWindow.CloseAllBrowsers();
+            //CUITe_BrowserWindow.CloseAllBrowsers();
         }
 
         [TestMethod]

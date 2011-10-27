@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlCheckBox : CUITe_ControlBase<HtmlCheckBox>
+    public class CUITe_HtmlCheckBox : CUITe_HtmlControl<HtmlCheckBox>
     {
         public CUITe_HtmlCheckBox() : base() { }        
         public CUITe_HtmlCheckBox(string sSearchParameters) : base(sSearchParameters) { }
