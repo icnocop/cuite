@@ -18,7 +18,7 @@ namespace CUITe.Controls
         {
             Type type = typeof(T);
 
-            return (T)Activator.CreateInstance(type, new object[]{sSearchProperties});
+            return (T)Activator.CreateInstance(type, new object[] { sSearchProperties });
         }
     }
 
@@ -202,5 +202,19 @@ namespace CUITe.Controls
             }
             IE.Document.parentWindow.execScript(sCode);
         }
+
+        #region implementing parent, sibling etc methods as virtual
+
+        public virtual ICUITe_ControlBase Parent { get { return null; } }
+
+        public virtual ICUITe_ControlBase PreviousSibling { get { return null; } }
+
+        public virtual ICUITe_ControlBase NextSibling { get { return null; } }
+
+        public virtual ICUITe_ControlBase FirstChild { get { return null; } }
+
+        public virtual List<ICUITe_ControlBase> GetChildren() { return null; }
+
+        #endregion
     }
 }

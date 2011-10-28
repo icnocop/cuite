@@ -8,11 +8,18 @@ using System.Collections;
 
 namespace CUITe.Controls.HtmlControls
 {
+    /// <summary>
+    /// Base class for all CUITe_Html controls, inherits from CUITe_ControlBase
+    /// </summary>
+    /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
     public class CUITe_HtmlControl<T> : CUITe_ControlBase<T> where T : HtmlControl
     {
         public CUITe_HtmlControl() : base() { }
         public CUITe_HtmlControl(string sSearchParameters) : base(sSearchParameters) { }
 
+        /// <summary>
+        /// Gets the text content of this control.
+        /// </summary>
         public string InnerText
         {
             get
@@ -22,6 +29,9 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
+        /// <summary>
+        /// Gets the value of the Help Text attribute of this control.
+        /// </summary>
         public string HelpText
         {
             get
@@ -31,6 +41,9 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
+        /// <summary>
+        /// Gets the value of the Title attribute of this control.
+        /// </summary>
         public string Title
         {
             get
@@ -40,6 +53,9 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
+        /// <summary>
+        /// Gets the value of the Value attribute of this control.
+        /// </summary>
         public string ValueAttribute
         {
             get
@@ -49,6 +65,9 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
+        /// <summary>
+        /// Gets the value of the AccessKey attribute of this control.
+        /// </summary>
         public string AccessKey
         {
             get
@@ -58,103 +77,151 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
-        public List<ICUITe_ControlBase> GetChildren()
+        /// <summary>
+        /// Gets the parent of the current CUITe control.
+        /// </summary>
+        public override ICUITe_ControlBase Parent
         {
-            List<ICUITe_ControlBase> uicol = new List<ICUITe_ControlBase>();
+            get
+            {
+                return WrapUtil((HtmlControl)this._control.GetParent());
+            }
+        }
+
+        /// <summary>
+        /// Gets the previous sibling of the current CUITe control.
+        /// </summary>
+        public override ICUITe_ControlBase PreviousSibling
+        {
+            get
+            {
+                return WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+            }
+        }
+
+        /// <summary>
+        /// Gets the next sibling of the current CUITe control.
+        /// </summary>
+        public override ICUITe_ControlBase NextSibling
+        {
+            get
+            {
+                return WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+            }
+        }
+
+        /// <summary>
+        /// Gets the first child of the current CUITe control.
+        /// </summary>
+        public override ICUITe_ControlBase FirstChild
+        {
+            get
+            {
+                return WrapUtil((HtmlControl)this._control.GetChildren()[0]);
+            }
+        }
+        
+        /// <summary>
+        /// Returns a list of all first level children of the current CUITe control.
+        /// </summary>
+        /// <returns>list of all first level children</returns>
+        public override List<ICUITe_ControlBase> GetChildren()
+        {
+            var uicol = new List<ICUITe_ControlBase>();
             foreach (UITestControl uitestcontrol in this._control.GetChildren())
             {
-                if (uitestcontrol.GetType() == typeof(HtmlButton))
-                {
-                    var _con = new CUITe_HtmlButton();
-                    _con.WrapReady((HtmlButton)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlCheckBox))
-                {
-                    var _con = new CUITe_HtmlCheckBox();
-                    _con.WrapReady((HtmlCheckBox)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlComboBox))
-                {
-                    var _con = new CUITe_HtmlComboBox();
-                    _con.WrapReady((HtmlComboBox)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlDiv))
-                {
-                    var _con = new CUITe_HtmlDiv();
-                    _con.WrapReady((HtmlDiv)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlEdit))
-                {
-                    var _con = new CUITe_HtmlEdit();
-                    _con.WrapReady((HtmlEdit)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlFileInput))
-                {
-                    var _con = new CUITe_HtmlFileInput();
-                    _con.WrapReady((HtmlFileInput)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlHyperlink))
-                {
-                    var _con = new CUITe_HtmlHyperlink();
-                    _con.WrapReady((HtmlHyperlink)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlImage))
-                {
-                    var _con = new CUITe_HtmlImage();
-                    _con.WrapReady((HtmlImage)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlInputButton))
-                {
-                    var _con = new CUITe_HtmlInputButton();
-                    _con.WrapReady((HtmlInputButton)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlLabel))
-                {
-                    var _con = new CUITe_HtmlLabel();
-                    _con.WrapReady((HtmlLabel)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlList))
-                {
-                    var _con = new CUITe_HtmlList();
-                    _con.WrapReady((HtmlList)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlRadioButton))
-                {
-                    var _con = new CUITe_HtmlRadioButton();
-                    _con.WrapReady((HtmlRadioButton)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlSpan))
-                {
-                    var _con = new CUITe_HtmlSpan();
-                    _con.WrapReady((HtmlSpan)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlTable))
-                {
-                    var _con = new CUITe_HtmlTable();
-                    _con.WrapReady((HtmlTable)uitestcontrol);
-                    uicol.Add(_con);
-                }
-                if (uitestcontrol.GetType() == typeof(HtmlTextArea))
-                {
-                    var _con = new CUITe_HtmlTextArea();
-                    _con.WrapReady((HtmlTextArea)uitestcontrol);
-                    uicol.Add(_con);
-                }
+                uicol.Add(WrapUtil((HtmlControl)uitestcontrol));
             }
             return uicol;
+        }
+
+        private ICUITe_ControlBase WrapUtil(HtmlControl control)
+        {
+            ICUITe_ControlBase _con = null;
+            if (control.GetType() == typeof(HtmlButton))
+            {
+                _con = new CUITe_HtmlButton();
+            }
+            if (control.GetType() == typeof(HtmlCheckBox))
+            {
+                _con = new CUITe_HtmlCheckBox();
+            }
+            if (control.GetType() == typeof(HtmlComboBox))
+            {
+                _con = new CUITe_HtmlComboBox();
+            }
+            if (control.GetType() == typeof(HtmlDiv))
+            {
+                _con = new CUITe_HtmlDiv();
+            }
+            if (control.GetType() == typeof(HtmlEdit))
+            {
+                _con = new CUITe_HtmlEdit();
+            }
+            if (control.GetType() == typeof(HtmlFileInput))
+            {
+                _con = new CUITe_HtmlFileInput();
+            }
+            if (control.GetType() == typeof(HtmlHyperlink))
+            {
+                _con = new CUITe_HtmlHyperlink();
+            }
+            if (control.GetType() == typeof(HtmlImage))
+            {
+                _con = new CUITe_HtmlImage();
+            }
+            if (control.GetType() == typeof(HtmlInputButton))
+            {
+                _con = new CUITe_HtmlInputButton();
+            }
+            if (control.GetType() == typeof(HtmlLabel))
+            {
+                _con = new CUITe_HtmlLabel();
+            }
+            if (control.GetType() == typeof(HtmlList))
+            {
+                _con = new CUITe_HtmlList();
+            }
+            if (control.TagName == "p")
+            {
+                _con = new CUITe_HtmlParagraph();
+            }
+            if (control.GetType() == typeof(HtmlEdit) && control.Type == "PASSWORD")
+            {
+                _con = new CUITe_HtmlPassword();
+            }
+            if (control.GetType() == typeof(HtmlRadioButton))
+            {
+                _con = new CUITe_HtmlRadioButton();
+            }
+            if (control.GetType() == typeof(HtmlSpan))
+            {
+                _con = new CUITe_HtmlSpan();
+            }
+            if (control.GetType() == typeof(HtmlTable))
+            {
+                _con = new CUITe_HtmlTable();
+            }
+            if (control.GetType() == typeof(HtmlTextArea))
+            {
+                _con = new CUITe_HtmlTextArea();
+            }
+            ((ICUITe_ControlBase)_con).WrapReady(control);
+            return _con;
+        }
+
+        private int GetMyIndexAmongSiblings()
+        {
+            int i = -1;
+            foreach (UITestControl uitestcontrol in this._control.GetParent().GetChildren())
+            {
+                i++;
+                if (uitestcontrol == this._control)
+                {
+                    break;
+                }
+            }
+            return i;
         }
     }
 }

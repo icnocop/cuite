@@ -103,6 +103,11 @@ namespace CUITe
                         CUITe_HtmlList field = (CUITe_HtmlList)fieldinfo.GetValue(browserWindow);
                         field.Wrap(new HtmlList(browserWindow));
                     }
+                    if (sNodeName == "HtmlControls.CUITe_HtmlParagraph")
+                    {
+                        CUITe_HtmlParagraph field = (CUITe_HtmlParagraph)fieldinfo.GetValue(browserWindow);
+                        field.Wrap(new HtmlCustom(browserWindow));
+                    }
                     if (sNodeName == "HtmlControls.CUITe_HtmlFileInput")
                     {
                         CUITe_HtmlFileInput field = (CUITe_HtmlFileInput)fieldinfo.GetValue(browserWindow);

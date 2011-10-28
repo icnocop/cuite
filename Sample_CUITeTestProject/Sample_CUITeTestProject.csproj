@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObjectRepository\SlTestPage.cs" />
+    <Compile Include="ObjectRepository\TestHtmlPage.cs" />
     <Compile Include="Tests_for_SilverlightControls.cs" />
     <Compile Include="ObjectRepository\Google.cs" />
     <Compile Include="ObjectRepository\GoogleSearch.cs" />
@@ -93,7 +94,7 @@
     <EmbeddedResource Include="XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="calc.html">
+    <Content Include="TestHtmlPage.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestSilverlightApplication.html">

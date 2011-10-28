@@ -40,5 +40,15 @@ namespace CUITe.Controls
         void SetSearchProperty(string sPropertyName, string sValue);
 
         void SetSearchPropertyRegx(string sPropertyName, string sValue);
+
+        ICUITe_ControlBase Parent { get; }
+
+        ICUITe_ControlBase PreviousSibling { get; }
+
+        ICUITe_ControlBase NextSibling { get; }
+
+        ICUITe_ControlBase FirstChild { get; }
+
+        List<ICUITe_ControlBase> GetChildren();
     }
 }

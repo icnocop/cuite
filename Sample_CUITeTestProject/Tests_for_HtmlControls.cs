@@ -20,7 +20,7 @@ namespace Sample_CUITeTestProject
 {
     [CodedUITest]
     [DeploymentItem(@"Sample_CUITeTestProject\XMLFile2.xml")]
-    [DeploymentItem(@"Sample_CUITeTestProject\calc.html")]
+    [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
     public class Tests_for_HtmlControls
     {
         private TestContext testContextInstance;
@@ -141,7 +141,7 @@ namespace Sample_CUITeTestProject
         public void Test_HtmlTableIssue_638_WithHeaders()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
@@ -153,7 +153,7 @@ namespace Sample_CUITeTestProject
         public void Test_HtmlTableIssue_638_WithOutHeaders()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithOutHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
@@ -165,7 +165,7 @@ namespace Sample_CUITeTestProject
         public void Test_Value_As_SearchParameterKey()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
@@ -175,7 +175,7 @@ namespace Sample_CUITeTestProject
         public void Test_FileInput()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             bWin.Get<CUITe_HtmlFileInput>("Id=ctl00_PlaceHolderMain_ctl01_ctl02_InputFile").SetFile(@"C:\Demo\info.txt");
             bWin.Close();
@@ -198,7 +198,7 @@ namespace Sample_CUITeTestProject
         public void Test_HtmlGetChildren()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             var div = bWin.Get<CUITe_HtmlDiv>("id=calculatorContainer1");
             var col = div.GetChildren();
@@ -214,11 +214,37 @@ namespace Sample_CUITeTestProject
         public void Test_CUITe_HtmlParagraph()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/calc.html");
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             Assert.IsTrue(bWin.Get<CUITe_HtmlParagraph>("Id=para1").InnerText.Contains("CUITe_HtmlParagraph"));
             bWin.Close();
         }
+
+        [TestMethod]
+        public void Test_CUITe_HtmlParagraph_objrep()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            TestHtmlPage testpage = CUITe_BrowserWindow.GetBrowserWindow<TestHtmlPage>();
+            string content = testpage.p.InnerText;
+            Assert.IsTrue(content.Contains("CUITe_HtmlParagraph"));
+            testpage.Close();
+        }
+
+        [TestMethod]
+        public void Test_Traversals()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            var p = bWin.Get<CUITe_HtmlParagraph>("Id=para1");
+            Assert.IsTrue(((CUITe_HtmlEdit)p.PreviousSibling).UnWrap().Name == "text1_test");
+            Assert.IsTrue(((CUITe_HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
+            Assert.IsTrue(((CUITe_HtmlDiv)p.Parent).UnWrap().Id == "parentdiv");
+            Assert.IsTrue(((CUITe_HtmlPassword)p.Parent.FirstChild).UnWrap().Name == "pass");
+            bWin.Close();
+        }
+
     }
 }
 
