@@ -94,6 +94,12 @@
     <EmbeddedResource Include="XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="iframe.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="iframe_test.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestHtmlPage.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -245,6 +245,17 @@ namespace Sample_CUITeTestProject
             bWin.Close();
         }
 
+        [TestMethod]
+        [DeploymentItem(@"Sample_CUITeTestProject\iframe_test.html")]
+        [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
+        public void Html_ClickButtonInIFrame()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/iframe_test.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("iframe Test Main");
+            bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+            bWin.Close();
+        }
     }
 }
 
