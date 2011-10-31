@@ -126,14 +126,6 @@ namespace Sample_CUITeTestProject
             var btnOK = b.Get<CUITe_SlButton>("AutomationID=OKButtonInTabItem1");
             var tmp = btnOK.PreviousSibling;
             ((CUITe_SlEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
-            MessageBox.Show(oTab.FirstChild.FirstChild.NextSibling.GetType().Name);
-            //var lbl = (CUITe_SlText)oTab.FirstChild.FirstChild;
-            //MessageBox.Show(lbl.Text);
-            //Assert.IsTrue(lbl.Text == "Enter name here:");
-            var edt = (CUITe_SlEdit)oTab.FirstChild.FirstChild.FirstChild.NextSibling;
-            Assert.IsTrue(edt.Text.Trim() == "blah blah hurray");
-            var btn = (CUITe_SlButton)oTab.FirstChild.FirstChild.NextSibling.NextSibling;
-            Assert.IsTrue(btn.DisplayText == "OK");
             foreach (ICUITe_ControlBase control in oTab.GetChildren())
             {
                 if (control.GetType() == typeof(CUITe_SlEdit))
@@ -142,8 +134,7 @@ namespace Sample_CUITeTestProject
                     break;
                 }
             }
-            Assert.IsTrue(edt.Text.Trim() == "Text Changed");
-            Assert.IsTrue(((CUITe_SlTab)btnOK.Parent.Parent).SelectedItem == "tabItem1");
+            Assert.IsTrue(((CUITe_SlTab)btnOK.Parent).SelectedItem == "tabItem1");
             b.Close();
         }
     }
