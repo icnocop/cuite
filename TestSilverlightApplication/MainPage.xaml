@@ -71,7 +71,12 @@
         </ComboBox>
         <controls:TabControl Height="120" HorizontalAlignment="Left" Margin="301,311,0,0" Name="tabControl1" VerticalAlignment="Top" Width="313">
             <controls:TabItem Header="tabItem1" Name="tabItem1">
-                <Grid />
+                <Grid>
+                    <dataInput:Label Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label2" VerticalAlignment="Top" Width="194" Content="Enter name here:" />
+                    <TextBox Height="21" HorizontalAlignment="Left" Margin="6,25,0,0" Name="textBox2" VerticalAlignment="Top" Width="289" />
+                    <Button Content="OK" Height="23" HorizontalAlignment="Left" Margin="131,54,0,0" Name="button3" VerticalAlignment="Top" Width="75" AutomationProperties.AutomationId="OKButtonInTabItem1"/>
+                    <Button Content="Cancel" Height="25" HorizontalAlignment="Left" Margin="213,52,0,0" Name="button2" VerticalAlignment="Top" Width="82" />                    
+                </Grid>
             </controls:TabItem>
             <controls:TabItem Header="Second Tab" Name="tabItem2"/>
         </controls:TabControl>

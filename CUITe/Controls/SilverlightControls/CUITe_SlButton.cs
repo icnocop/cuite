@@ -14,5 +14,17 @@ namespace CUITe.Controls.SilverlightControls
     {
         public CUITe_SlButton() : base() { }
         public CUITe_SlButton(string sSearchParameters) : base(sSearchParameters) { }
+
+        /// <summary>
+        /// Gets the text displayed on the Silverlight Button.
+        /// </summary>
+        public string DisplayText
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.DisplayText;
+            }
+        }
     }
 }

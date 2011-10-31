@@ -15,6 +15,23 @@ namespace CUITe.Controls.SilverlightControls
         public CUITe_SlEdit() : base() { }
         public CUITe_SlEdit(string sSearchParameters) : base(sSearchParameters) { }
 
+        /// <summary>
+        /// Gets or sets the text displayed on the Silverlight Edit.
+        /// </summary>
+        public string Text
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.Text;
+            }
+            set
+            {
+                this._control.WaitForControlReady();
+                this._control.Text = value;
+            }
+        }
+
         public void SetText(string sText)
         {
             this._control.WaitForControlReady();

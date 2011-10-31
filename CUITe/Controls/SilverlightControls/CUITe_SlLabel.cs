@@ -14,5 +14,17 @@ namespace CUITe.Controls.SilverlightControls
     {
         public CUITe_SlLabel() : base() { }
         public CUITe_SlLabel(string sSearchParameters) : base(sSearchParameters) { }
+
+        /// <summary>
+        /// Gets the text displayed on the label.
+        /// </summary>
+        public string Text
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.Text;
+            }
+        }
     }
 }

@@ -84,7 +84,17 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                return WrapUtil((HtmlControl)this._control.GetParent());
+                this._control.WaitForControlReady();
+                ICUITe_ControlBase ret = null;
+                try
+                {
+                    ret = WrapUtil((HtmlControl)this._control.GetParent());
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    throw new CUITe_InvalidTraversal(string.Format("({0}).Parent", this._control.GetType().Name));
+                }
+                return ret;
             }
         }
 
@@ -95,7 +105,17 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                return WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                this._control.WaitForControlReady();
+                ICUITe_ControlBase ret = null;
+                try
+                {
+                    ret = WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    throw new CUITe_InvalidTraversal(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
+                }
+                return ret;
             }
         }
 
@@ -106,7 +126,17 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                return WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+                this._control.WaitForControlReady();
+                ICUITe_ControlBase ret = null;
+                try
+                {
+                    ret = WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    throw new CUITe_InvalidTraversal(string.Format("({0}).NextSibling", this._control.GetType().Name));
+                }
+                return ret;
             }
         }
 
@@ -117,7 +147,17 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                return WrapUtil((HtmlControl)this._control.GetChildren()[0]);
+                this._control.WaitForControlReady();
+                ICUITe_ControlBase ret = null;
+                try
+                {
+                    ret = WrapUtil((HtmlControl)this._control.GetChildren()[0]);
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    throw new CUITe_InvalidTraversal(string.Format("({0}).FirstChild", this._control.GetType().Name));
+                }
+                return ret;
             }
         }
         
@@ -127,6 +167,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>list of all first level children</returns>
         public override List<ICUITe_ControlBase> GetChildren()
         {
+            this._control.WaitForControlReady();
             var uicol = new List<ICUITe_ControlBase>();
             foreach (UITestControl uitestcontrol in this._control.GetChildren())
             {

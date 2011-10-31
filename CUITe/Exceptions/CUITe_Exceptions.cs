@@ -24,4 +24,9 @@ namespace CUITe
     {
         public CUITe_InvalidSearchKey(string sKey, string sSearchParameters) : base(string.Format("Search Pattern Key not supported -> '{0}' in '{1}'.", sKey, sSearchParameters)) { }
     }
+
+    public class CUITe_InvalidTraversal : Exception
+    {
+        public CUITe_InvalidTraversal(string sMessage) : base(string.Format("You are trying to traverse to an element/control which is not present in the tree: {0}", sMessage)) { }
+    }
 }

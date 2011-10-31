@@ -9,6 +9,7 @@ using System.Reflection;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using Sample_CUITeTestProject.ObjectRepository;
@@ -108,11 +109,43 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
             b.SetFocus();
             CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
-            oTab.UnWrap().SelectedIndex= 1;
+            oTab.SelectedIndex= 1;
             Assert.IsTrue(oTab.UnWrap().Items[0].Name == "tabItem1");
             b.Close();
         }
 
+        [TestMethod]
+        public void Test_SlTraversals()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
+            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            b.SetFocus();
+            CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
+            oTab.SelectedIndex = 0;
+            var btnOK = b.Get<CUITe_SlButton>("AutomationID=OKButtonInTabItem1");
+            var tmp = btnOK.PreviousSibling;
+            ((CUITe_SlEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
+            MessageBox.Show(oTab.FirstChild.FirstChild.NextSibling.GetType().Name);
+            //var lbl = (CUITe_SlText)oTab.FirstChild.FirstChild;
+            //MessageBox.Show(lbl.Text);
+            //Assert.IsTrue(lbl.Text == "Enter name here:");
+            var edt = (CUITe_SlEdit)oTab.FirstChild.FirstChild.FirstChild.NextSibling;
+            Assert.IsTrue(edt.Text.Trim() == "blah blah hurray");
+            var btn = (CUITe_SlButton)oTab.FirstChild.FirstChild.NextSibling.NextSibling;
+            Assert.IsTrue(btn.DisplayText == "OK");
+            foreach (ICUITe_ControlBase control in oTab.GetChildren())
+            {
+                if (control.GetType() == typeof(CUITe_SlEdit))
+                {
+                    ((CUITe_SlEdit)control).Text = "Text Changed";
+                    break;
+                }
+            }
+            Assert.IsTrue(edt.Text.Trim() == "Text Changed");
+            Assert.IsTrue(((CUITe_SlTab)btnOK.Parent.Parent).SelectedItem == "tabItem1");
+            b.Close();
+        }
     }
 }
 
