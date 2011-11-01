@@ -11,5 +11,16 @@ namespace CUITe.Controls.HtmlControls
     {
         public CUITe_HtmlList() : base() { }
         public CUITe_HtmlList(string sSearchParameters) : base(sSearchParameters) { }
+
+        /// <summary>
+        /// Gets the items in a string array of the html list.
+        /// </summary>
+        public string[] Items
+        {
+            get
+            {
+                return GetPropertyOfChildren<string>(HtmlControl.PropertyNames.InnerText);
+            }
+        }
     }
 }

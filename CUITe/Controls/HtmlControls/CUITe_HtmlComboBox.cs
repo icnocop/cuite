@@ -72,25 +72,13 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Gets the items in a string array.
+        /// Gets the items in a string array of the html combo box.
         /// </summary>
         public string[] Items
         {
             get
             {
-                string[] saTemp = new string[this.ItemCount];
-                UITestControlCollection col = this._control.Items;
-                int i = -1;
-                foreach (UITestControl con in col)
-                {
-                    i++;
-                    var newcon = con as HtmlControl;
-                    if (newcon.InnerText != null && newcon.InnerText.Trim() != "")
-                    {
-                        saTemp[i] = newcon.InnerText;
-                    }
-                }
-                return saTemp;
+                return GetPropertyOfChildren<string>(HtmlControl.PropertyNames.InnerText);
             }
         }
     }

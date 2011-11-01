@@ -176,6 +176,22 @@ namespace CUITe.Controls.HtmlControls
             return uicol;
         }
 
+        protected T[] GetPropertyOfChildren<T>(string propertyName)
+        {
+            this._control.WaitForControlReady();
+            var collection = this._control.GetChildren();
+            if (collection != null)
+            {
+                T[] tmpArray = new T[collection.Count];
+                for (int i = 0; i < tmpArray.Length; i++)
+                {
+                    tmpArray[i] = (T)collection[i].GetProperty(propertyName);
+                }
+                return tmpArray;
+            }
+            return null;
+        }
+
         private ICUITe_ControlBase WrapUtil(HtmlControl control)
         {
             ICUITe_ControlBase _con = null;
