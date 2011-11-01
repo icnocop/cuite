@@ -241,7 +241,9 @@ namespace Sample_CUITeTestProject
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
-            Assert.AreEqual("Football", bWin.Get<CUITe_HtmlComboBox>("Id=select1").Items[1]);
+            var cmb = bWin.Get<CUITe_HtmlComboBox>("Id=select1");
+            Assert.AreEqual("Football", cmb.Items[1]);
+            Assert.IsTrue(cmb.ItemExists("Cricket"));
             bWin.Close();
         }
 

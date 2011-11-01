@@ -22,5 +22,13 @@ namespace CUITe.Controls.HtmlControls
                 return GetPropertyOfChildren<string>(HtmlControl.PropertyNames.InnerText);
             }
         }
+
+        /// <summary>
+        /// Tells whether the specified item is present in the html list or not.
+        /// </summary>
+        public bool ItemExists(string sText)
+        {
+            return this.Items.Contains<string>(sText);
+        }
     }
 }
