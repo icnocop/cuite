@@ -85,17 +85,10 @@ namespace CUITe.Controls.HtmlControls
                 {
                     i++;
                     var newcon = con as HtmlControl;
-                    if (con.GetProperty("Value") != null)
-                    {
-                        saTemp[i] = con.GetProperty("Value").ToString();
-                        continue;
-                    }
                     if (newcon.InnerText != null && newcon.InnerText.Trim() != "")
                     {
                         saTemp[i] = newcon.InnerText;
-                        continue;
                     }
-                    saTemp[i] = con.Name;
                 }
                 return saTemp;
             }
