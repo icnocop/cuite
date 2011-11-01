@@ -138,6 +138,21 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void Test_HtmlTable_GetColumnHeaders()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
+            string[] saExpectedValues = new string[] { "Header1", "Header2", "Header3" };
+            string[] saHeaders = tbl.GetColumnHeaders();
+            Assert.AreEqual(saExpectedValues[0], saHeaders[0]);
+            Assert.AreEqual(saExpectedValues[1], saHeaders[1]);
+            Assert.AreEqual(saExpectedValues[2], saHeaders[2]);
+            bWin.Close();
+        }
+
+        [TestMethod]
         public void Test_HtmlTableIssue_638_WithHeaders()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
@@ -217,6 +232,16 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             Assert.IsTrue(bWin.Get<CUITe_HtmlParagraph>("Id=para1").InnerText.Contains("CUITe_HtmlParagraph"));
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void Test_CUITe_HtmlComboBox_Items()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            Assert.AreEqual("Football", bWin.Get<CUITe_HtmlComboBox>("Id=select1").Items[1]);
             bWin.Close();
         }
 

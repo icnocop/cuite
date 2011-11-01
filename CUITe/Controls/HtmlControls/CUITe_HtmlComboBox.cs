@@ -80,11 +80,22 @@ namespace CUITe.Controls.HtmlControls
             {
                 string[] saTemp = new string[this.ItemCount];
                 UITestControlCollection col = this._control.Items;
-                int i = 0;
+                int i = -1;
                 foreach (UITestControl con in col)
                 {
-                    saTemp[i] = con.Name;
                     i++;
+                    var newcon = con as HtmlControl;
+                    if (con.GetProperty("Value") != null)
+                    {
+                        saTemp[i] = con.GetProperty("Value").ToString();
+                        continue;
+                    }
+                    if (newcon.InnerText != null && newcon.InnerText.Trim() != "")
+                    {
+                        saTemp[i] = newcon.InnerText;
+                        continue;
+                    }
+                    saTemp[i] = con.Name;
                 }
                 return saTemp;
             }

@@ -174,6 +174,30 @@ namespace CUITe.Controls.HtmlControls
             return retChk;
         }
 
+        /// <summary>
+        /// Gets the column headers of the html table.
+        /// </summary>
+        /// <returns>string array</returns>
+        public string[] GetColumnHeaders()
+        {
+            string[] retArray;
+            UITestControlCollection rows = this._control.Rows;
+            if ((rows != null) && (rows.Count > 0))
+            {
+                if ((rows[0] != null) && (rows[0].ControlType == ControlType.RowHeader))
+                {
+                    var headers = rows[0].GetChildren();
+                    retArray = new string[headers.Count];
+                    for (int i = 0; i < retArray.Length; i++)
+                    {
+                        retArray[i] = (string)headers[i].GetProperty("Value");
+                    }
+                    return retArray;
+                }
+            }
+            return null;
+        }
+
         private HtmlCell GetCell(int iRow, int iCol)
         {
             this._control.WaitForControlReady();
