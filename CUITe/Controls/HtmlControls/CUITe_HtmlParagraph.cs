@@ -22,7 +22,7 @@ namespace CUITe.Controls.HtmlControls
         {
             this._control = control as HtmlCustom;
             this.fillSearchProperties();
-            this._control.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "p");
+            this._control.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "p", PropertyExpressionOperator.EqualTo);
             this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
     }

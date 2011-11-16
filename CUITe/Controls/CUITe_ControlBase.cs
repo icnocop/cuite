@@ -109,7 +109,7 @@ namespace CUITe.Controls
 
         public void SetSearchProperty(string sPropertyName, string sValue)
         {
-            this._control.SearchProperties.Add(sPropertyName, sValue);
+            this._control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.EqualTo);
         }
 
         public void SetSearchPropertyRegx(string sPropertyName, string sValue)
@@ -133,51 +133,51 @@ namespace CUITe.Controls
                         switch (sKey)
                         {
                             case "id":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue);
+                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "class":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue);
+                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "title":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Title, sValue);
+                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.Title, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "innertext":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.InnerText, sValue);
+                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.InnerText, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "name":
                                 if (typeof(T).Namespace.Contains(".HtmlControls."))
                                 {
-                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue);
+                                    this._control.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue, PropertyExpressionOperator.EqualTo);
                                 }
                                 if (typeof(T).Namespace.Contains(".SilverlightControls."))
                                 {
-                                    this._control.SearchProperties.Add(SilverlightControl.PropertyNames.Name, sValue);
+                                    this._control.SearchProperties.Add(SilverlightControl.PropertyNames.Name, sValue, PropertyExpressionOperator.EqualTo);
                                 }
                                 break;
                             case "value":
-                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, sValue);
+                                this._control.SearchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "href":
-                                this._control.SearchProperties.Add(HtmlHyperlink.PropertyNames.Href, sValue);
+                                this._control.SearchProperties.Add(HtmlHyperlink.PropertyNames.Href, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "absolutepath":
-                                this._control.SearchProperties.Add(HtmlImage.PropertyNames.AbsolutePath, sValue);
+                                this._control.SearchProperties.Add(HtmlImage.PropertyNames.AbsolutePath, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "src":
                                 if (typeof(T).Namespace.Contains(".HtmlControls."))
                                 {
-                                    this._control.SearchProperties.Add(HtmlImage.PropertyNames.Src, sValue);
+                                    this._control.SearchProperties.Add(HtmlImage.PropertyNames.Src, sValue, PropertyExpressionOperator.EqualTo);
                                 }
                                 if (typeof(T).Namespace.Contains(".SilverlightControls."))
                                 {
-                                    this._control.SearchProperties.Add(SilverlightImage.PropertyNames.Source, sValue);
+                                    this._control.SearchProperties.Add(SilverlightImage.PropertyNames.Source, sValue, PropertyExpressionOperator.EqualTo);
                                 }
                                 break;
                             case "automationid":
-                                this._control.SearchProperties.Add(SilverlightControl.PropertyNames.AutomationId, sValue);
+                                this._control.SearchProperties.Add(SilverlightControl.PropertyNames.AutomationId, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "text":
-                                this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue);
+                                this._control.SearchProperties.Add(SilverlightText.PropertyNames.Text, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             default:
                                 throw new CUITe_InvalidSearchKey(saKeyVal[0], this._SearchProperties);

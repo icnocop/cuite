@@ -15,6 +15,7 @@ using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using Sample_CUITeTestProject.ObjectRepository;
+using Microsoft.VisualStudio.TestTools.UITest.Extension;
 
 namespace Sample_CUITeTestProject
 {
@@ -119,6 +120,15 @@ namespace Sample_CUITeTestProject
             Google pgGHome = CUITe_BrowserWindow.GetBrowserWindow<Google>();
             pgGHome.div588.Click();
             pgGHome.Close();
+        }
+
+        [TestMethod]
+        public void Test_InvalidControlExists()
+        {
+            Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None; //required if you are using .Exists on an invalid control
+            CUITe_BrowserWindow.Launch("http://www.google.com");
+            GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
+            Assert.IsFalse(pgGHomePage.divInvalid.Exists);
         }
 
         [TestMethod]
