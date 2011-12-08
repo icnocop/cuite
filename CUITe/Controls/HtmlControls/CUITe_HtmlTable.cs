@@ -71,6 +71,10 @@ namespace CUITe.Controls.HtmlControls
             {
                 return true;
             }
+            if (control.GetChildren()[0].GetType().Name.Contains("HtmlHeaderCell"))
+            {
+                return true;
+            }
             return false;
         }
 

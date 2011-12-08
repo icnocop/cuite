@@ -187,6 +187,18 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void Test_HtmlTableIssue_TH_inTBODY()
+        {
+            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
+            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=TabContainer1_TabPanel1_gvSourceLuns");
+            tbl.FindRowAndClick(0, "LUN_04", CUITe_HtmlTableSearchOptions.NormalTight);
+            Assert.IsTrue(tbl.GetCellValue(0, 0).Trim() == "LUN_04");
+            bWin.Close();
+        }
+
+        [TestMethod]
         public void Test_Value_As_SearchParameterKey()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
