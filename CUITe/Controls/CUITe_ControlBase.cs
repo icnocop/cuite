@@ -145,11 +145,11 @@ namespace CUITe.Controls
                                 this._control.SearchProperties.Add(HtmlControl.PropertyNames.InnerText, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "name":
-                                if (typeof(T).Namespace.Contains(".HtmlControls."))
+                                if (typeof(T).Namespace.Contains(".HtmlControls"))
                                 {
                                     this._control.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue, PropertyExpressionOperator.EqualTo);
                                 }
-                                if (typeof(T).Namespace.Contains(".SilverlightControls."))
+                                if (typeof(T).Namespace.Contains(".SilverlightControls"))
                                 {
                                     this._control.SearchProperties.Add(SilverlightControl.PropertyNames.Name, sValue, PropertyExpressionOperator.EqualTo);
                                 }
@@ -164,11 +164,11 @@ namespace CUITe.Controls
                                 this._control.SearchProperties.Add(HtmlImage.PropertyNames.AbsolutePath, sValue, PropertyExpressionOperator.EqualTo);
                                 break;
                             case "src":
-                                if (typeof(T).Namespace.Contains(".HtmlControls."))
+                                if (typeof(T).Namespace.Contains(".HtmlControls"))
                                 {
                                     this._control.SearchProperties.Add(HtmlImage.PropertyNames.Src, sValue, PropertyExpressionOperator.EqualTo);
                                 }
-                                if (typeof(T).Namespace.Contains(".SilverlightControls."))
+                                if (typeof(T).Namespace.Contains(".SilverlightControls"))
                                 {
                                     this._control.SearchProperties.Add(SilverlightImage.PropertyNames.Source, sValue, PropertyExpressionOperator.EqualTo);
                                 }

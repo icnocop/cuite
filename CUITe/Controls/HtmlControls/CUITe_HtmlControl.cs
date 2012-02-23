@@ -199,69 +199,100 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new CUITe_HtmlButton();
             }
-            if (control.GetType() == typeof(HtmlCheckBox))
+            else if (control.GetType() == typeof(HtmlCheckBox))
             {
                 _con = new CUITe_HtmlCheckBox();
             }
-            if (control.GetType() == typeof(HtmlComboBox))
+            else if (control.GetType() == typeof(HtmlComboBox))
             {
                 _con = new CUITe_HtmlComboBox();
             }
-            if (control.GetType() == typeof(HtmlDiv))
+            else if (control.GetType() == typeof(HtmlDiv))
             {
                 _con = new CUITe_HtmlDiv();
             }
-            if (control.GetType() == typeof(HtmlEdit))
+            else if (control.GetType() == typeof(HtmlEdit))
             {
                 _con = new CUITe_HtmlEdit();
             }
-            if (control.GetType() == typeof(HtmlFileInput))
+            else if (control.GetType() == typeof(HtmlFileInput))
             {
                 _con = new CUITe_HtmlFileInput();
             }
-            if (control.GetType() == typeof(HtmlHyperlink))
+            else if (control.GetType() == typeof(HtmlHyperlink))
             {
                 _con = new CUITe_HtmlHyperlink();
             }
-            if (control.GetType() == typeof(HtmlImage))
+            else if (control.GetType() == typeof(HtmlImage))
             {
                 _con = new CUITe_HtmlImage();
             }
-            if (control.GetType() == typeof(HtmlInputButton))
+            else if (control.GetType() == typeof(HtmlInputButton))
             {
                 _con = new CUITe_HtmlInputButton();
             }
-            if (control.GetType() == typeof(HtmlLabel))
+            else if (control.GetType() == typeof(HtmlLabel))
             {
                 _con = new CUITe_HtmlLabel();
             }
-            if (control.GetType() == typeof(HtmlList))
+            else if (control.GetType() == typeof(HtmlList))
             {
                 _con = new CUITe_HtmlList();
             }
-            if (control.TagName == "p")
-            {
-                _con = new CUITe_HtmlParagraph();
-            }
-            if (control.GetType() == typeof(HtmlEdit) && control.Type == "PASSWORD")
+            else if (control.GetType() == typeof(HtmlEdit) && control.Type == "PASSWORD")
             {
                 _con = new CUITe_HtmlPassword();
             }
-            if (control.GetType() == typeof(HtmlRadioButton))
+            else if (control.GetType() == typeof(HtmlRadioButton))
             {
                 _con = new CUITe_HtmlRadioButton();
             }
-            if (control.GetType() == typeof(HtmlSpan))
+            else if (control.GetType() == typeof(HtmlSpan))
             {
                 _con = new CUITe_HtmlSpan();
             }
-            if (control.GetType() == typeof(HtmlTable))
+            else if (control.GetType() == typeof(HtmlTable))
             {
                 _con = new CUITe_HtmlTable();
             }
-            if (control.GetType() == typeof(HtmlTextArea))
+            else if (control.GetType() == typeof(HtmlTextArea))
             {
                 _con = new CUITe_HtmlTextArea();
+            }
+            else if (control.GetType() == typeof(HtmlCustom))
+            {
+                if (control.TagName == "p")
+                {
+                    _con = new CUITe_HtmlParagraph();
+                }
+                else if (control.TagName == "h1")
+                {
+                    _con = new CUITe_HtmlHeading1();
+                }
+                else if (control.TagName == "h2")
+                {
+                    _con = new CUITe_HtmlHeading2();
+                }
+                else if (control.TagName == "h3")
+                {
+                    _con = new CUITe_HtmlHeading3();
+                }
+                else if (control.TagName == "h4")
+                {
+                    _con = new CUITe_HtmlHeading4();
+                }
+                else if (control.TagName == "h5")
+                {
+                    _con = new CUITe_HtmlHeading5();
+                }
+                else if (control.TagName == "h6")
+                {
+                    _con = new CUITe_HtmlHeading6();
+                }
+            }
+            else
+            {
+                throw new Exception(string.Format("WrapUtil: '{0}' not supported", control.GetType().Name));
             }
             ((ICUITe_ControlBase)_con).WrapReady(control);
             return _con;

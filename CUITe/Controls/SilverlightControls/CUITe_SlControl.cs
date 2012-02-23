@@ -130,77 +130,81 @@ namespace CUITe.Controls.SilverlightControls
             {
                 _con = new CUITe_SlButton();
             }
-            if (control.GetType() == typeof(SilverlightCalendar))
+            else if (control.GetType() == typeof(SilverlightCalendar))
             {
                 _con = new CUITe_SlCalendar();
             }
-            if (control.GetType() == typeof(SilverlightCell))
+            else if (control.GetType() == typeof(SilverlightCell))
             {
                 _con = new CUITe_SlCell();
             }
-            if (control.GetType() == typeof(SilverlightCheckBox))
+            else if (control.GetType() == typeof(SilverlightCheckBox))
             {
                 _con = new CUITe_SlCheckBox();
             }
-            if (control.GetType() == typeof(SilverlightComboBox))
+            else if (control.GetType() == typeof(SilverlightComboBox))
             {
                 _con = new CUITe_SlComboBox();
             }
-            if (control.GetType() == typeof(SilverlightDataPager))
+            else if (control.GetType() == typeof(SilverlightDataPager))
             {
                 _con = new CUITe_SlDataPager();
             }
-            if (control.GetType() == typeof(SilverlightDatePicker))
+            else if (control.GetType() == typeof(SilverlightDatePicker))
             {
                 _con = new CUITe_SlDatePicker();
             }
-            if (control.GetType() == typeof(SilverlightEdit))
+            else if (control.GetType() == typeof(SilverlightEdit))
             {
                 _con = new CUITe_SlEdit();
             }
-            if (control.GetType() == typeof(SilverlightHyperlink))
+            else if (control.GetType() == typeof(SilverlightHyperlink))
             {
                 _con = new CUITe_SlHyperlink();
             }
-            if (control.GetType() == typeof(SilverlightImage))
+            else if (control.GetType() == typeof(SilverlightImage))
             {
                 _con = new CUITe_SlImage();
             }
-            if (control.GetType() == typeof(SilverlightLabel))
+            else if (control.GetType() == typeof(SilverlightLabel))
             {
                 _con = new CUITe_SlLabel();
             }
-            if (control.GetType() == typeof(SilverlightList))
+            else if (control.GetType() == typeof(SilverlightList))
             {
                 _con = new CUITe_SlList();
             }
-            if (control.GetType() == typeof(SilverlightRadioButton))
+            else if (control.GetType() == typeof(SilverlightRadioButton))
             {
                 _con = new CUITe_SlRadioButton();
             }
-            if (control.GetType() == typeof(SilverlightSlider))
+            else if (control.GetType() == typeof(SilverlightSlider))
             {
                 _con = new CUITe_SlSlider();
             }
-            if (control.GetType() == typeof(SilverlightTab))
+            else if (control.GetType() == typeof(SilverlightTab))
             {
                 _con = new CUITe_SlTab();
             }
-            if (control.GetType() == typeof(SilverlightTabItem))
+            else if (control.GetType() == typeof(SilverlightTabItem))
             {
                 _con = new CUITe_SlTabItem();
             }
-            if (control.GetType() == typeof(SilverlightTable))
+            else if (control.GetType() == typeof(SilverlightTable))
             {
                 _con = new CUITe_SlTable();
             }
-            if (control.GetType() == typeof(SilverlightText))
+            else if (control.GetType() == typeof(SilverlightText))
             {
                 _con = new CUITe_SlText();
             }
-            if (control.GetType() == typeof(SilverlightTree))
+            else if (control.GetType() == typeof(SilverlightTree))
             {
                 _con = new CUITe_SlTree();
+            }
+            else
+            {
+                throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType().ToString()));
             }
             ((ICUITe_ControlBase)_con).WrapReady(control);
             return _con;
