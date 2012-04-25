@@ -17,9 +17,9 @@ namespace CUITe.Controls.HtmlControls
         private HtmlCustom mSlObjectContainer;
 
         public CUITe_BrowserWindow() 
+            : this(null)
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.WindowTitles.Add(this.sWindowTitle);
+            
         }
 
         public CUITe_BrowserWindow(string sTitle)
@@ -29,9 +29,39 @@ namespace CUITe.Controls.HtmlControls
             this.sWindowTitle = sTitle;
         }
 
-        public static new void Launch(string sURL)
+        /// <summary>
+        /// Launches the specified url.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <returns>The launched BrowserWindow</returns>
+        public static new BrowserWindow Launch(string url)
         {
-            BrowserWindow.Launch(new Uri(sURL));
+            return BrowserWindow.Launch(new Uri(url));
+        }
+
+        /// <summary>
+        /// Launches the specified url.
+        /// </summary>
+        /// <param name="url">The url.</param>
+        /// <param name="title">The title.</param>
+        /// <returns>The CUITe_BrowserWindow that matches the title</returns>
+        public static new CUITe_BrowserWindow Launch(string url, string title)
+        {
+            BrowserWindow.Launch(new Uri(url));
+            return new CUITe_BrowserWindow(title);
+        }
+
+        /// <summary>
+        /// Launches the specified url.
+        /// </summary>
+        /// <typeparam name="T">Object repository class</typeparam>
+        /// <param name="url">The url.</param>
+        /// <returns>An instance of the object repository class that matches the title</returns>
+        public static T Launch<T>(string url)
+            where T : CUITe_BrowserWindow
+        {
+            BrowserWindow.Launch(new Uri(url));
+            return CUITe_BrowserWindow.GetBrowserWindow<T>();
         }
 
         /// <summary>
@@ -75,7 +105,7 @@ namespace CUITe.Controls.HtmlControls
             return BrowserWindow.Locate(this.sWindowTitle);
         }
 
-        internal HtmlCustom SlObjectContainer
+        public HtmlCustom SlObjectContainer
         {
             get
             {

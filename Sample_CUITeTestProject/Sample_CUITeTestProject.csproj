@@ -37,9 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CUITe">
-      <HintPath>C:\Program Files (x86)\Microsoft\CUITe\CUITe.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -94,6 +91,10 @@
     <EmbeddedResource Include="XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\TestSilverlightApplication\Bin\Debug\TestSilverlightApplication.xap">
+      <Link>TestSilverlightApplication.xap</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="iframe.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -106,12 +107,15 @@
     <Content Include="TestSilverlightApplication.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestSilverlightApplication.xap">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="XMLFile2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CUITe\CUITe.csproj">
+      <Project>{947E624B-7124-43F8-A1E5-3ED62277E561}</Project>
+      <Name>CUITe</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

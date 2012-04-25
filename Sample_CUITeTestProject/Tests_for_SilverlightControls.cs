@@ -50,8 +50,7 @@ namespace Sample_CUITeTestProject
         public void Test_SlButtonAndEditAndDTP()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
-            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
             b.SetFocus();
             b.Get<CUITe_SlButton>("Name=button1").Click();
             CUITe_SlEdit oEdit = b.Get<CUITe_SlEdit>("Name=textBox1");
@@ -65,8 +64,7 @@ namespace Sample_CUITeTestProject
         public void Test_SlList_ViaObjectRepository()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
-            SlTestPage oSlTestPage = CUITe_BrowserWindow.GetBrowserWindow<SlTestPage>();
+            SlTestPage oSlTestPage = CUITe_BrowserWindow.Launch<SlTestPage>(baseDir + "/TestSilverlightApplication.html");
             oSlTestPage.oList.SelectedIndices = new int[] { 2 };
             Assert.IsTrue(oSlTestPage.oList.SelectedItemsAsString == "Coded UI Test");
             oSlTestPage.Close();
@@ -76,8 +74,7 @@ namespace Sample_CUITeTestProject
         public void Test_SlList_DynamicObjectRecognition()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
-            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
             b.SetFocus();
             CUITe_SlList oList = b.Get<CUITe_SlList>("Name=listBox1");
             oList.SelectedIndices = new int[] { 2 };
@@ -92,7 +89,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
             CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
             b.SetFocus();
-            CUITe_SlComboBox oCombo = b.Get<CUITe_SlComboBox>("Name=comboBox1");
+            CUITe_SlComboBox oCombo = b.Get<CUITe_SlComboBox>("automationid=comboBox1");
             oCombo.SelectItem(3);
             foreach (string temp in oCombo.Items)
             {
@@ -105,8 +102,7 @@ namespace Sample_CUITeTestProject
         public void Test_SlTab()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
-            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
             b.SetFocus();
             CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
             oTab.SelectedIndex= 1;
@@ -118,8 +114,7 @@ namespace Sample_CUITeTestProject
         public void Test_SlTraversals()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
-            CUITe_BrowserWindow b = new CUITe_BrowserWindow("Home");
+            CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
             b.SetFocus();
             CUITe_SlTab oTab = b.Get<CUITe_SlTab>("Name=tabControl1");
             oTab.SelectedIndex = 0;

@@ -8,6 +8,9 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CUITe_Setup", "CUITe_Setup\CUITe_Setup.vdproj", "{8BAD3329-3D34-407D-8CE6-7D731C0946B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject", "Sample_CUITeTestProject\Sample_CUITeTestProject.csproj", "{245897D4-96EC-430F-BF1A-9CA44FD06ECB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B38FF342-51EB-4338-AE14-D73AF81E5622} = {B38FF342-51EB-4338-AE14-D73AF81E5622}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E5BF3C3F-364A-43BA-B7C0-1CAC0A12EF4B}"
 	ProjectSection(SolutionItems) = preProject

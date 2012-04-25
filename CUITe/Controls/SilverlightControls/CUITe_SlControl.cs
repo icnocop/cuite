@@ -206,6 +206,7 @@ namespace CUITe.Controls.SilverlightControls
             {
                 throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType().ToString()));
             }
+
             ((ICUITe_ControlBase)_con).WrapReady(control);
             return _con;
         }
