@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+
+namespace CUITe.Controls.WinControls
+{
+    /// <summary>
+    /// Wrapper class for WinRowHeader
+    /// </summary>
+    public class CUITe_WinRowHeader : CUITe_WinControl<WinRowHeader>
+    {
+        public CUITe_WinRowHeader() : base() { }
+        public CUITe_WinRowHeader(string sSearchParameters) : base(sSearchParameters) { }
+
+        public bool Selected
+        {
+            get { return this.UnWrap().Selected; }
+        }
+    }
+}
