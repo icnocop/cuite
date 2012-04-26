@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 using SHDocVw;
+using System.Linq;
 
 namespace CUITe.Controls
 {
@@ -245,7 +246,7 @@ namespace CUITe.Controls
 
                 if (foundField == null)
                 {
-                    throw new CUITe_InvalidSearchKey(valueName, this._SearchProperties);
+                    throw new CUITe_InvalidSearchKey(valueName, this._SearchProperties, controlProperties.Select(x => x.Name).ToList());
                 }
 
                 // Add the search property, value and type

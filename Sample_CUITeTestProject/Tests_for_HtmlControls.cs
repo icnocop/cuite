@@ -114,9 +114,18 @@ namespace Sample_CUITeTestProject
         [ExpectedException(typeof(CUITe.CUITe_InvalidSearchKey))]
         public void Test_FeatureRequest_588()
         {
-            Google pgGHome = CUITe_BrowserWindow.Launch<Google>("http://www.google.com");
-            pgGHome.div588.Click();
-            pgGHome.Close();
+            try
+            {
+                Google pgGHome = CUITe_BrowserWindow.Launch<Google>("http://www.google.com");
+                pgGHome.div588.Click();
+                pgGHome.Close();
+            }
+            catch (CUITe.CUITe_InvalidSearchKey ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+            
         }
 
         [TestMethod]

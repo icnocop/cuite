@@ -22,7 +22,10 @@ namespace CUITe
 
     public class CUITe_InvalidSearchKey : Exception
     {
-        public CUITe_InvalidSearchKey(string sKey, string sSearchParameters) : base(string.Format("Search Pattern Key not supported -> '{0}' in '{1}'.", sKey, sSearchParameters)) { }
+        public CUITe_InvalidSearchKey(string sKey, string sSearchParameters, List<string> controlProperties)
+            : base(string.Format("Search Pattern Key not supported -> '{0}' in '{1}'. Available Properties: {2}", sKey, sSearchParameters,
+            string.Join(", ", controlProperties)))
+        { }
     }
 
     public class CUITe_InvalidTraversal : Exception
