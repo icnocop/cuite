@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         x:Class="ControlTemplateExamples.MainWindow"
+        Name="winMain"
         Title="ControlTemplate Examples"
         WindowState="Maximized">
   <Window.Resources>
@@ -51,25 +52,19 @@
       <!-- Button -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="Button">
-        <Button Margin="8"
+        <Button Name="btnDefault" Margin="8"
                 IsDefault="True"
                 Content="Default" />
-        <Button Margin="8"
+        <Button Name="btnNormal" Margin="8"
                 Content="Normal" />
-        <Button Margin="8"
-                IsEnabled="False"
-                Content="Disabled" />
+        <Button Name="btnDisabled" Margin="8" IsEnabled="False" Content="Disabled" />
       </HeaderedItemsControl>
 
       <!-- CheckBox -->
-      <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
-                            Header="CheckBox">
-        <CheckBox Margin="8"
-                  Content="Normal" />
-        <CheckBox Margin="8"
-                  IsChecked="true"
-                  Content="Checked" />
-        <CheckBox Margin="8"
+      <HeaderedItemsControl Style="{StaticResource VerticalHIC}" Header="CheckBox">
+        <CheckBox Name="chkNormal" Margin="8"  Content="Normal" />
+        <CheckBox Name="chkChecked" Margin="8"  IsChecked="true" Content="Checked" />
+        <CheckBox Name="chkIndeterminate"  Margin="8"
                   IsThreeState="true"
                   IsChecked="{x:Null}"
                   Content="Indeterminate" />
@@ -78,12 +73,12 @@
       <!-- RadioButton -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="RadioButton">
-        <RadioButton Margin="8"
+        <RadioButton Name="rbNormal" Margin="8"
                      Content="Normal" />
-        <RadioButton Margin="8"
+        <RadioButton Name="rbChecked" Margin="8"
                      IsChecked="true"
                      Content="Checked" />
-        <RadioButton Margin="8"
+        <RadioButton Name="rbNormal2" Margin="8"
                      IsEnabled="False"
                      Content="Normal" />
       </HeaderedItemsControl>
@@ -92,18 +87,18 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="TextBox">
         <StackPanel>
-          <TextBox HorizontalAlignment="Center"
+          <TextBox Name="txtEditMe" HorizontalAlignment="Center"
                    Margin="8"
                    Text="Edit Me" />
-          <TextBox HorizontalAlignment="Center"
+          <TextBox Name="txtReadOnly" HorizontalAlignment="Center"
                    Margin="8"
                    Text="Read only"
                    IsReadOnly="True" />
-          <TextBox HorizontalAlignment="Center"
+          <TextBox Name="txtDisabled" HorizontalAlignment="Center"
                    Margin="8"
                    Text="Disabled"
                    IsEnabled="False" />
-          <PasswordBox HorizontalAlignment="Center"
+          <PasswordBox Name="txtPassword" HorizontalAlignment="Center"
                        Margin="8"
                        Password="Password"
                        PasswordChar="*" />
@@ -115,15 +110,15 @@
                             Background="Red"
                             Header="DatePicker">
 
-        <DatePicker Width="200"
+        <DatePicker Name="dpEnabled" Width="200"
                     Margin="0,5,0,10" />
-        <DatePicker IsEnabled="False" />
+        <DatePicker Name="dpDisabled" IsEnabled="False" />
       </HeaderedItemsControl>
 
       <!-- Calendar -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="Calendar">
-        <Calendar />
+        <Calendar Name="calCalendar"/>
       </HeaderedItemsControl>
 
 
@@ -131,30 +126,30 @@
       <HeaderedItemsControl Style="{StaticResource HorizontalHIC}"
                             Header="Slider">
         <StackPanel>
-          <Slider Margin="8"
+          <Slider Name="slSlider1" Margin="8"
                   Orientation="Horizontal" />
-          <Slider Margin="8"
+          <Slider Name="slSlider2" Margin="8"
                   Orientation="Horizontal"
                   TickPlacement="TopLeft" />
-          <Slider Margin="8"
+          <Slider Name="slSlider3" Margin="8"
                   Orientation="Horizontal"
                   TickPlacement="BottomRight" />
-          <Slider Margin="8"
+          <Slider Name="slSlider4" Margin="8"
                   Orientation="Horizontal"
                   TickPlacement="Both"
                   TickFrequency="2" />
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Top">
-          <Slider Margin="8"
+          <Slider Name="slSlider5" Margin="8"
                   Orientation="Vertical" />
-          <Slider Margin="8"
+          <Slider Name="slSlider6" Margin="8"
                   Orientation="Vertical"
                   TickPlacement="TopLeft" />
-          <Slider Margin="8"
+          <Slider Name="slSlider7" Margin="8"
                   Orientation="Vertical"
                   TickPlacement="BottomRight" />
-          <Slider Margin="8" IsEnabled="False"
+          <Slider Name="slSlider8" Margin="8" IsEnabled="False"
                   Orientation="Vertical"
                   TickPlacement="Both"
                   TickFrequency="2" />
@@ -166,22 +161,22 @@
                             Header="ToolBar">
         <StackPanel>
           <ToolBarTray>
-            <ToolBar Grid.Row="1">
-              <Button Content="Button" />
-              <CheckBox Content="CheckBox" />
-              <TextBox Text="TextBox" />
-              <TextBox Text="Disabled TextBox"
+            <ToolBar Name="tbToolBar1" Grid.Row="1">
+              <Button Name="btnTBButton" Content="Button" />
+              <CheckBox Name="chkTBCheckBox" Content="CheckBox" />
+              <TextBox Name="txtTBTextBox" Text="TextBox" />
+              <TextBox Name="txtTBTextBoxDisabled" Text="Disabled TextBox"
                        IsEnabled="False" />
-              <ToggleButton Content="ToggleButton" />
-              <RadioButton IsChecked="True"
+              <ToggleButton Name="tglTBToggleButton" Content="ToggleButton" />
+              <RadioButton Name="rbTBRadioButton1" IsChecked="True"
                            Content="RadioButton 1" />
-              <RadioButton IsChecked="True"
-                           Content="RadioButton 1" />
-              <Button Content="Button"
+              <RadioButton Name="rbTBRadioButton2" IsChecked="True"
+                           Content="RadioButton 2" />
+              <Button Name="btnTBButtonOverflow" Content="Button"
                       ToolBar.OverflowMode="Always" />
-              <CheckBox Content="CheckBox"
+              <CheckBox Name="chkTBCheckBoxOverflow" Content="CheckBox"
                         ToolBar.OverflowMode="Always" />
-              <TextBox Text="TextBox"
+              <TextBox Name="txtTBTextBoxOverflow" Text="TextBox"
                        ToolBar.OverflowMode="Always" />
             </ToolBar>
           </ToolBarTray>
@@ -191,12 +186,12 @@
       <!-- Menu -->
       <HeaderedItemsControl Style="{StaticResource HorizontalHIC}"
                             Header="Menu / ContextMenu">
-        <Menu Margin="8"
+        <Menu Name="mTop" Margin="8"
               Width="400">
-          <MenuItem Header="Top One">
-            <MenuItem Header="Sub One"
+          <MenuItem Name="miTop1" Header="Top One">
+            <MenuItem Name="miTop1Sub1" Header="Sub One"
                       InputGestureText="Ctrl+L" />
-            <MenuItem Header="Sub Two (With an Icon)"
+            <MenuItem Name="miTop1Sub2" Header="Sub Two (With an Icon)"
                       InputGestureText="Ctrl+A">
               <MenuItem.Icon>
                 <Ellipse Width="16"
@@ -204,34 +199,34 @@
                          Fill="LightBlue" />
               </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Sub Three" />
+            <MenuItem Name="miTop1Sub3" Header="Sub Three" />
             <Separator />
-            <MenuItem Header="Sub Four">
-              <MenuItem Header="Sub One" />
-              <MenuItem Header="Sub Two" />
-              <MenuItem Header="Sub Three" />
+            <MenuItem Name="miTop1Sub4" Header="Sub Four">
+              <MenuItem Name="miTop1Sub4Sub1" Header="Sub One" />
+              <MenuItem Name="miTop1Sub4Sub2" Header="Sub Two" />
+              <MenuItem Name="miTop1Sub4Sub3" Header="Sub Three" />
             </MenuItem>
-            <MenuItem Header="Sub Five" />
+            <MenuItem Name="miTop1Sub4Sub5" Header="Sub Five" />
           </MenuItem>
-          <MenuItem Header="Top Two">
-            <MenuItem Header="Sub One" />
-            <MenuItem Header="Sub Two (Checkable)"
+          <MenuItem Name="miTop2" Header="Top Two">
+            <MenuItem Name="miTop2Sub1" Header="Sub One" />
+            <MenuItem Name="miTop2Sub2" Header="Sub Two (Checkable)"
                       IsCheckable="True" />
-            <MenuItem Header="Sub Three" />
+            <MenuItem Name="miTop2Sub3" Header="Sub Three" />
             <Separator />
-            <MenuItem Header="Sub Four">
-              <MenuItem Header="Sub One" />
-              <MenuItem Header="Sub Two" />
-              <MenuItem Header="Sub Three" />
+            <MenuItem Name="miTop2Sub4" Header="Sub Four">
+              <MenuItem Name="miTop2Sub4Sub1" Header="Sub One" />
+              <MenuItem Name="miTop2Sub4Sub2" Header="Sub Two" />
+              <MenuItem Name="miTop2Sub4Sub3" Header="Sub Three" />
             </MenuItem>
-            <MenuItem Header="Sub Five" />
+            <MenuItem Name="miTop2Sub5" Header="Sub Five" />
           </MenuItem>
-          <MenuItem Header="Top Three">
-            <MenuItem Header="Sub One" />
-            <MenuItem Header="Sub Two" />
-            <MenuItem Header="Sub Three" />
+          <MenuItem Name="miTop3" Header="Top Three">
+            <MenuItem Name="miTop3Sub1" Header="Sub One" />
+            <MenuItem Name="miTop3Sub2" Header="Sub Two" />
+            <MenuItem Name="miTop3Sub3" Header="Sub Three" />
             <Separator />
-            <MenuItem Header="Sub Five" />
+            <MenuItem Name="miTop3Sub5" Header="Sub Five" />
           </MenuItem>
           <MenuItem Header="Menu with Many Items"
                     x:Name="topFour" />
@@ -242,14 +237,14 @@
       <!-- ComboBox -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="ComboBox">
-        <ComboBox Margin="8">
+        <ComboBox Name="cbo1" Margin="8">
           <ComboBoxItem Content="First Normal Item" />
           <ComboBoxItem Content="Second Normal Item" />
           <ComboBoxItem Content="Third Normal Item" />
           <ComboBoxItem Content="Fourth Normal Item" />
           <ComboBoxItem Content="Fifth Normal Item" />
         </ComboBox>
-        <ComboBox Margin="8"
+        <ComboBox Name ="cbo2" Margin="8"
                   IsEditable="True"
                   Text="Edit Me">
           <ComboBoxItem Content="First Normal Item" />
@@ -258,7 +253,7 @@
           <ComboBoxItem Content="Fourth Normal Item" />
           <ComboBoxItem Content="Fifth Normal Item" />
         </ComboBox>
-        <ComboBox Margin="8"
+        <ComboBox Name="cbo3" Margin="8"
                   IsEnabled="False">
           <ComboBoxItem IsSelected="True"
                         Content="First Normal Item" />
@@ -272,8 +267,8 @@
       <!-- ListBox -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="ListBox">
-        <StackPanel Orientation="Horizontal">
-          <ListBox Margin="8"
+        <StackPanel Name="pnlPanel1" Orientation="Horizontal">
+          <ListBox Name="lst1" Margin="8"
                    SelectionMode="Extended"
                    Height="100">
             <ListBoxItem Content="First Normal Item" />
@@ -286,7 +281,7 @@
             <ListBoxItem Content="Seventh Normal Item" />
             <ListBoxItem Content="Eighth Normal Item" />
           </ListBox>
-          <ListBox Margin="8"
+          <ListBox Name="lst2" Margin="8"
                    SelectionMode="Extended"
                    ScrollViewer.VerticalScrollBarVisibility="Visible"
                    Height="100"
@@ -307,7 +302,7 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="ListView">
         <StackPanel>
-          <ListView Margin="8"
+          <ListView Name="lv1" Margin="8"
                     Height="100"
                     Width="150">
             <ListView.View>
@@ -336,7 +331,7 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="TreeView">
         <StackPanel>
-          <TreeView Width="150"
+          <TreeView Name="tv1" Width="150"
                     Height="150"
                     Margin="8">
             <TreeViewItem Header="Top One">
@@ -375,7 +370,7 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="DataGrid">
         <StackPanel>
-          <DataGrid AutoGenerateColumns="False"
+          <DataGrid Name="dg1" AutoGenerateColumns="False"
                     AlternationCount="2"
                     ItemsSource="{Binding Source={StaticResource dataGridData},
                   XPath=*}">
@@ -391,7 +386,7 @@
             </DataGrid.Columns>
           </DataGrid>
 
-          <DataGrid AutoGenerateColumns="False"
+          <DataGrid Name="dg2" AutoGenerateColumns="False"
                     IsEnabled="False"
                     Margin="0,15,0,0"
                     ItemsSource="{Binding Source={StaticResource dataGridData},
@@ -414,17 +409,17 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="TabControl">
         <StackPanel Orientation="Horizontal">
-          <TabControl Margin="8"
+          <TabControl Name="tc1" Margin="8"
                       Height="100"
                       Width="225">
-            <TabItem Header="One"
+            <TabItem Name="tab1" Header="One"
                      Content="One" />
-            <TabItem Header="Two"
+            <TabItem Name="tab2" Header="Two"
                      Content="Two"
                      IsEnabled="False" />
-            <TabItem Header="Three"
+            <TabItem Name="tab3" Header="Three"
                      Content="Three" />
-            <TabItem Header="Four"
+            <TabItem Name="tab4" Header="Four"
                      Content="Four" />
           </TabControl>
         </StackPanel>
@@ -434,27 +429,27 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="Expander">
         <StackPanel Orientation="Horizontal">
-          <Expander Width="200"
+          <Expander Name="ex1" Width="200"
                     Margin="8"
                     Header="Expand down">
             <Border Height="100" />
           </Expander>
-          <Expander Width="200" ExpandDirection="Left"
+          <Expander Name="ex2" Width="200" ExpandDirection="Left"
                     Margin="8"
                     Header="Expand left">
             <Border Height="100" />
           </Expander>
-          <Expander Width="200" ExpandDirection="Right"
+          <Expander Name="ex3" Width="200" ExpandDirection="Right"
                     Margin="8"
                     Header="Expand right">
             <Border Height="100" />
           </Expander>
-          <Expander Width="200" ExpandDirection="Up"
+          <Expander Name="ex4" Width="200" ExpandDirection="Up"
                     Margin="8"
                     Header="Expand up">
             <Border Height="100" />
           </Expander>
-          <Expander Width="200"
+          <Expander Name="ex5" Width="200"
                     Margin="8"
                     Header="Disabled"
                     IsEnabled="False">
@@ -467,11 +462,11 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="StatusBar">
         <StackPanel Width="220">
-          <StatusBar VerticalAlignment="Bottom">
-            <StatusBarItem DockPanel.Dock="Right"
+          <StatusBar Name="sb1" VerticalAlignment="Bottom">
+            <StatusBarItem Name="sbi1" DockPanel.Dock="Right"
                            Content="Ln 181, Col 20" />
-            <Separator DockPanel.Dock="Right" />
-            <StatusBarItem Content="80%" />
+            <Separator Name="sep1" DockPanel.Dock="Right" />
+            <StatusBarItem Name="sbi2" Content="80%" />
           </StatusBar>
         </StackPanel>
       </HeaderedItemsControl>
@@ -480,13 +475,13 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="ProgressBar">
         <StackPanel>
-          <ProgressBar HorizontalAlignment="Center"
+          <ProgressBar Name="pb1" HorizontalAlignment="Center"
                        Margin="8"
                        Value="20" />
-          <ProgressBar HorizontalAlignment="Center"
+          <ProgressBar Name="pb2" HorizontalAlignment="Center"
                        Margin="8"
                        Value="90" />
-          <ProgressBar HorizontalAlignment="Center"
+          <ProgressBar Name="pb3" HorizontalAlignment="Center"
                        Margin="8"
                        IsIndeterminate="True" />
         </StackPanel>
@@ -497,7 +492,7 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="GroupBox">
         <StackPanel>
-          <GroupBox Margin="8"
+          <GroupBox Name="grp1" Margin="8"
                     Header="This is the Header"
                     Width="200">
             <Border Height="100" />
@@ -541,7 +536,7 @@
       <!-- ToolTip -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="ToolTip">
-        <StackPanel>
+        <StackPanel Name="pnlToolTip">
           <Border Margin="8"
                   Width="150"
                   Height="50"
@@ -558,17 +553,17 @@
       <!-- ContextMenu -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="ContextMenu">
-        <StackPanel>
+        <StackPanel Name="pnlContextMenu">
           <Border Margin="8"
                   Width="150"
                   Height="50"
                   CornerRadius="2"
                   Background="#FFC5CBF9">
             <Border.ContextMenu>
-              <ContextMenu>
-                <MenuItem Header="Sub One"
+              <ContextMenu Name="cm1">
+                <MenuItem Name="micm1Sub1" Header="Sub One"
                           InputGestureText="Ctrl+L" />
-                <MenuItem Header="Sub Two (With an Icon)"
+                <MenuItem Name="micm1Sub2" Header="Sub Two (With an Icon)"
                           InputGestureText="Ctrl+A">
                   <MenuItem.Icon>
                     <Ellipse Width="16"
@@ -576,14 +571,14 @@
                              Fill="LightBlue" />
                   </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Sub Three" />
+                <MenuItem Name="micm1Sub3" Header="Sub Three" />
                 <Separator />
-                <MenuItem Header="Sub Four">
-                  <MenuItem Header="Sub One" />
-                  <MenuItem Header="Sub Two" />
-                  <MenuItem Header="Sub Three" />
+                <MenuItem Name="micm1Sub4" Header="Sub Four">
+                  <MenuItem Name="micm1Sub4Sub1" Header="Sub One" />
+                  <MenuItem Name="micm1Sub4Sub2" Header="Sub Two" />
+                  <MenuItem Name="micm1Sub4Sub3" Header="Sub Three" />
                 </MenuItem>
-                <MenuItem Header="Sub Five" />
+                <MenuItem Name="micm1Sub5" Header="Sub Five" />
               </ContextMenu>
             </Border.ContextMenu>
             <TextBlock VerticalAlignment="Center"
@@ -596,7 +591,7 @@
       <!-- Window -->
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="Window">
-        <StackPanel>
+        <StackPanel Name="pnlOpenWindow">
           <Border Margin="8"
                   Width="150"
                   Height="50"
