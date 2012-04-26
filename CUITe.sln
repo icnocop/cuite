@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs23
 		SccLocalPath0 = .
@@ -48,6 +48,15 @@ Global
 		SccProjectUniqueName5 = TestSilverlightApplication\\TestSilverlightApplication.csproj
 		SccProjectName5 = TestSilverlightApplication
 		SccLocalPath5 = TestSilverlightApplication
+		SccProjectUniqueName6 = Sample_CUITeTestProject_WinControls\\Sample_CUITeTestProject_WinControls.csproj
+		SccProjectName6 = Sample_CUITeTestProject_WinControls
+		SccLocalPath6 = Sample_CUITeTestProject_WinControls
+		SccProjectUniqueName7 = Sample_CUITeTestProject_WpfControls\\Sample_CUITeTestProject_WpfControls.csproj
+		SccProjectName7 = Sample_CUITeTestProject_WpfControls
+		SccLocalPath7 = Sample_CUITeTestProject_WpfControls
+		SccProjectUniqueName8 = ControlTemplateExamples\\ControlTemplateExamples.csproj
+		SccProjectName8 = ControlTemplateExamples
+		SccLocalPath8 = ControlTemplateExamples
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CUITe.vsmdi
