@@ -207,6 +207,16 @@ namespace Sample_CUITeTestProject
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+
+            UITestControl popup = new UITestControl(bWin);
+            popup.TechnologyName = "MSAA";
+            popup.SearchProperties.Add("ClassName", "#32770", "Name", "Message from webpage");
+            
+            UITestControl btnOK = new UITestControl(popup);
+            btnOK.TechnologyName = "MSAA";
+            btnOK.SearchProperties.Add("ControlType", "Button", "Name", "OK");
+            Mouse.Click(btnOK);
+
             bWin.Close();
         }
 
