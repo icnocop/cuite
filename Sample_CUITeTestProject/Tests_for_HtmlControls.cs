@@ -16,6 +16,8 @@ using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using Sample_CUITeTestProject.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Sample_CUITeTestProject
 {
@@ -24,6 +26,8 @@ namespace Sample_CUITeTestProject
     [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
     public class Tests_for_HtmlControls
     {
+        private string CurrentDirectory = Directory.GetCurrentDirectory();
+
         private TestContext testContextInstance;
 
         /// <summary>
@@ -55,7 +59,7 @@ namespace Sample_CUITeTestProject
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
             GoogleSearch pgSearch = CUITe_BrowserWindow.GetBrowserWindow<GoogleSearch>();
             UITestControlCollection col = pgSearch.divSearchResults.UnWrap().GetChildren();
-            //do something with collection            
+            //do something with collection
             pgSearch.Close();
         }
 
@@ -155,8 +159,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_HtmlTable_GetColumnHeaders()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
             string[] saExpectedValues = new string[] { "Header1", "Header2", "Header3" };
@@ -170,8 +173,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_HtmlTableIssue_638_WithHeaders()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
             Assert.IsTrue(tbl.GetCellValue(2,2).Trim() == "9");
@@ -181,8 +183,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_HtmlTableIssue_638_WithOutHeaders()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithOutHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
             Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
@@ -192,8 +193,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_HtmlTableIssue_TH_inTBODY()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html");
+            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=TabContainer1_TabPanel1_gvSourceLuns");
             tbl.FindRowAndClick(0, "LUN_04", CUITe_HtmlTableSearchOptions.NormalTight);
@@ -204,8 +204,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_Value_As_SearchParameterKey()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
 
             UITestControl popup = new UITestControl(bWin);
@@ -223,8 +222,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_FileInput()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             bWin.Get<CUITe_HtmlFileInput>("Id=ctl00_PlaceHolderMain_ctl01_ctl02_InputFile").SetFile(@"C:\Demo\info.txt");
             bWin.Close();
         }
@@ -245,8 +243,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_HtmlGetChildren()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var div = bWin.Get<CUITe_HtmlDiv>("id=calculatorContainer1");
             var col = div.GetChildren();
             Assert.IsTrue(col[0].GetBaseType().Name == "HtmlDiv");
@@ -260,8 +257,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_CUITe_HtmlParagraph()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             Assert.IsTrue(bWin.Get<CUITe_HtmlParagraph>("Id=para1").InnerText.Contains("CUITe_HtmlParagraph"));
             bWin.Close();
         }
@@ -269,8 +265,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_CUITe_HtmlComboBox_Items()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var cmb = bWin.Get<CUITe_HtmlComboBox>("Id=select1");
             Assert.AreEqual("Football", cmb.Items[1]);
             Assert.IsTrue(cmb.ItemExists("Cricket"));
@@ -280,8 +275,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_CUITe_HtmlParagraph_objrep()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            TestHtmlPage testpage = CUITe_BrowserWindow.Launch<TestHtmlPage>(baseDir + "/TestHtmlPage.html");
+            TestHtmlPage testpage = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
             string content = testpage.p.InnerText;
             Assert.IsTrue(content.Contains("CUITe_HtmlParagraph"));
             testpage.Close();
@@ -290,8 +284,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void Test_Traversals()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/TestHtmlPage.html", "A Test");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var p = bWin.Get<CUITe_HtmlParagraph>("Id=para1");
             Assert.IsTrue(((CUITe_HtmlEdit)p.PreviousSibling).UnWrap().Name == "text1_test");
             Assert.IsTrue(((CUITe_HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
@@ -305,9 +298,31 @@ namespace Sample_CUITeTestProject
         [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
         public void Html_ClickButtonInIFrame()
         {
-            string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(baseDir + "/iframe_test.html", "iframe Test Main");
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void HtmlInputButton_GetWithValueContainingWhitespace_Succeeds()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+
+            CUITe_HtmlInputButton btnSearch = bWin.Get<CUITe_HtmlInputButton>("Value=   Search   ");
+            btnSearch.Click();
+
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void BrowserWindow_GetExistingBrowserWindow_Succeeds()
+        {
+            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+
+            BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
+
+            Assert.AreEqual("A Test - Windows Internet Explorer", bWin.Title);
+
             bWin.Close();
         }
     }
