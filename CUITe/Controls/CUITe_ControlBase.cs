@@ -17,6 +17,14 @@ namespace CUITe.Controls
     /// </summary>
     public class CUITe_ControlBaseFactory
     {
+        public static T Create<T>()
+            where T : ICUITe_ControlBase
+        {
+            Type type = typeof(T);
+
+            return (T)Activator.CreateInstance(type);
+        }
+
         public static T Create<T>(string sSearchProperties)
             where T : ICUITe_ControlBase
         {
@@ -45,6 +53,17 @@ namespace CUITe.Controls
             {
                 this._SearchProperties = this._SearchProperties.Substring(0, this._SearchProperties.Length - 1);
             }
+        }
+
+        public T Get<T>() where T : ICUITe_ControlBase
+        {
+            T control = CUITe_ControlBaseFactory.Create<T>();
+
+            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
+
+            control.Wrap(baseControl);
+
+            return control;
         }
 
         /// <summary>
@@ -154,6 +173,11 @@ namespace CUITe.Controls
         {
             get 
             {
+                if (this._control == null)
+                {
+                    return false;
+                }
+
                 return this._control.Exists; 
             }
         }
@@ -209,48 +233,51 @@ namespace CUITe.Controls
             else if (this._control is WpfControl)
                 controlProperties.AddRange(typeof(WpfControl.PropertyNames).GetFields());
 
-            // Split on groups of key/value pairs
-            string[] saKeyValuePairs = this._SearchProperties.Split(';');
-            
-            foreach (string sKeyValue in saKeyValuePairs)
+            if (!string.IsNullOrEmpty(this._SearchProperties))
             {
-                PropertyExpressionOperator compareOperator = PropertyExpressionOperator.EqualTo;
+                // Split on groups of key/value pairs
+                string[] saKeyValuePairs = this._SearchProperties.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-                // If split on '=' does not work, then try '~'
-                string[] saKeyVal = sKeyValue.Split('=');
-                if (saKeyVal.Length != 2)
-                { 
-                    // Otherwise try to split on '~'. If it works then compare type is Contains
-                    saKeyVal = sKeyValue.Split('~');
-                    if (saKeyVal.Length == 2)
-                    {
-                        compareOperator = PropertyExpressionOperator.Contains;
-                    }
-                    else
-                    {
-                        throw new CUITe_InvalidSearchParameterFormat(this._SearchProperties);
-                    }
-                }
-
-                // Find the first property in the list of known values
-                string valueName = saKeyVal[0];
-                
-                if ((this._control is HtmlControl) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
+                foreach (string sKeyValue in saKeyValuePairs)
                 {
-                    //support for backward compatibility where search properties like "Value=Log In" are used
-                    valueName += "Attribute";
+                    PropertyExpressionOperator compareOperator = PropertyExpressionOperator.EqualTo;
+
+                    // If split on '=' does not work, then try '~'
+                    string[] saKeyVal = sKeyValue.Split('=');
+                    if (saKeyVal.Length != 2)
+                    {
+                        // Otherwise try to split on '~'. If it works then compare type is Contains
+                        saKeyVal = sKeyValue.Split('~');
+                        if (saKeyVal.Length == 2)
+                        {
+                            compareOperator = PropertyExpressionOperator.Contains;
+                        }
+                        else
+                        {
+                            throw new CUITe_InvalidSearchParameterFormat(this._SearchProperties);
+                        }
+                    }
+
+                    // Find the first property in the list of known values
+                    string valueName = saKeyVal[0];
+
+                    if ((this._control is HtmlControl) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        //support for backward compatibility where search properties like "Value=Log In" are used
+                        valueName += "Attribute";
+                    }
+
+                    FieldInfo foundField = controlProperties.Find(
+                        searchProperty => searchProperty.Name.Equals(valueName, StringComparison.OrdinalIgnoreCase));
+
+                    if (foundField == null)
+                    {
+                        throw new CUITe_InvalidSearchKey(valueName, this._SearchProperties, controlProperties.Select(x => x.Name).ToList());
+                    }
+
+                    // Add the search property, value and type
+                    this._control.SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
                 }
-
-                FieldInfo foundField = controlProperties.Find(
-                    searchProperty => searchProperty.Name.Equals(valueName, StringComparison.OrdinalIgnoreCase));
-
-                if (foundField == null)
-                {
-                    throw new CUITe_InvalidSearchKey(valueName, this._SearchProperties, controlProperties.Select(x => x.Name).ToList());
-                }
-
-                // Add the search property, value and type
-                this._control.SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
             }
         }
 
