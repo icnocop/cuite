@@ -17,20 +17,19 @@ namespace CUITe.Controls
     /// </summary>
     public class CUITe_ControlBaseFactory
     {
-        public static T Create<T>()
+        public static T Create<T>(string sSearchProperties = null)
             where T : ICUITe_ControlBase
         {
             Type type = typeof(T);
 
-            return (T)Activator.CreateInstance(type);
-        }
-
-        public static T Create<T>(string sSearchProperties)
-            where T : ICUITe_ControlBase
-        {
-            Type type = typeof(T);
-
-            return (T)Activator.CreateInstance(type, new object[] { sSearchProperties });
+            if (sSearchProperties == null)
+            {
+                return (T)Activator.CreateInstance(type);
+            }
+            else
+            {
+                return (T)Activator.CreateInstance(type, new object[] { sSearchProperties });
+            }
         }
     }
 

@@ -178,7 +178,7 @@ namespace CUITe.Controls.HtmlControls
         /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
         /// <param name="sSearchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname'</param>
         /// <returns>CUITe_* control object</returns>
-        public T Get<T>(string sSearchParameters)
+        public T Get<T>(string sSearchParameters = null)
             where T : ICUITe_ControlBase
         {
             T control = CUITe_ControlBaseFactory.Create<T>(sSearchParameters);
