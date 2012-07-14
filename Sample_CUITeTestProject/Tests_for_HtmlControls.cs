@@ -325,6 +325,20 @@ namespace Sample_CUITeTestProject
 
             bWin.Close();
         }
+
+        [TestMethod]
+        public void HtmlButton_HiddenByStyle_ControlExistsAndCanAssertOnStyle()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+
+            CUITe_HtmlButton btnHiddenButton = bWin.Get<CUITe_HtmlButton>("id=hiddenButton");
+
+            Assert.IsTrue(btnHiddenButton.Exists);
+
+            Assert.IsTrue(btnHiddenButton.UnWrap().ControlDefinition.Contains("style=\"DISPLAY: none\""));
+
+            bWin.Close();
+        }
     }
 }
 
