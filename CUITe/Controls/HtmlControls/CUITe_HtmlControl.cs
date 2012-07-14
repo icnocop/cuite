@@ -289,6 +289,18 @@ namespace CUITe.Controls.HtmlControls
                 {
                     _con = new CUITe_HtmlHeading6();
                 }
+                else if (control.TagName == "ul")
+                {
+                    _con = new CUITe_HtmlUnorderedList();
+                }
+                else if (control.TagName == "ol")
+                {
+                    _con = new CUITe_HtmlOrderedList();
+                }
+                else if (control.TagName == "LI")
+                {
+                    _con = new CUITe_HtmlListItem();
+                }
             }
             else
             {

@@ -339,6 +339,24 @@ namespace Sample_CUITeTestProject
 
             bWin.Close();
         }
+
+        [TestMethod]
+        public void HtmlCustom_UnorderedList_CanAssertOnListItems()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+
+            CUITe_HtmlUnorderedList list = bWin.Get<CUITe_HtmlUnorderedList>("id=unorderedList");
+
+            IEnumerable<CUITe_HtmlListItem> children = from i in list.GetChildren()
+                                                           select i as CUITe_HtmlListItem;
+            Assert.AreEqual(3, children.Count());
+
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1 "));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2 "));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3 "));
+
+            bWin.Close();
+        }
     }
 }
 
