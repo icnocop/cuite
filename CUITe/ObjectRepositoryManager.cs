@@ -185,6 +185,18 @@ namespace CUITe
                                 field.Wrap(new HtmlCustom(browserWindow));
                             }
                             break;
+                        case "HtmlControls.CUITe_HtmlUnorderedList":
+                            {
+                                CUITe_HtmlUnorderedList field = (CUITe_HtmlUnorderedList)fieldinfo.GetValue(browserWindow);
+                                field.Wrap(new HtmlCustom(browserWindow));
+                            }
+                            break;
+                        case "HtmlControls.CUITe_HtmlOrderedList":
+                            {
+                                CUITe_HtmlOrderedList field = (CUITe_HtmlOrderedList)fieldinfo.GetValue(browserWindow);
+                                field.Wrap(new HtmlCustom(browserWindow));
+                            }
+                            break;
                         default:
                             throw new Exception(string.Format("ObjectRepositoryManager: '{0}' not supported", sNodeName));
                     }

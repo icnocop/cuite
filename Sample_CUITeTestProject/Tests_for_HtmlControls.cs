@@ -266,7 +266,7 @@ namespace Sample_CUITeTestProject
         public void Test_CUITe_HtmlComboBox_Items()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
-            var cmb = bWin.Get<CUITe_HtmlComboBox>("Id=select1");
+            CUITe_HtmlComboBox cmb = bWin.Get<CUITe_HtmlComboBox>("Id=select1");
             Assert.AreEqual("Football", cmb.Items[1]);
             Assert.IsTrue(cmb.ItemExists("Cricket"));
             bWin.Close();
@@ -341,14 +341,30 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void HtmlCustom_UnorderedList_CanAssertOnListItems()
+        public void HtmlUnorderedList_WithListItems_CanAssertOnListItems()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
 
             CUITe_HtmlUnorderedList list = bWin.Get<CUITe_HtmlUnorderedList>("id=unorderedList");
 
             IEnumerable<CUITe_HtmlListItem> children = from i in list.GetChildren()
-                                                           select i as CUITe_HtmlListItem;
+                                                       select i as CUITe_HtmlListItem;
+            Assert.AreEqual(3, children.Count());
+
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1 "));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2 "));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3 "));
+
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
+        {
+            TestHtmlPage bWin = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+
+            IEnumerable<CUITe_HtmlListItem> children = from i in bWin.list.GetChildren()
+                                                       select i as CUITe_HtmlListItem;
             Assert.AreEqual(3, children.Count());
 
             Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1 "));
