@@ -47,7 +47,7 @@ namespace CUITe.Controls
         public CUITe_ControlBase(string sSearchProperties) 
         {
             if (sSearchProperties == null) throw new Exception("Parameter 'SearchProperties' cannot be null");
-            this._SearchProperties = sSearchProperties.Trim();
+            this._SearchProperties = sSearchProperties;
             if (this._SearchProperties.Substring(this._SearchProperties.Length - 1) == ";")
             {
                 this._SearchProperties = this._SearchProperties.Substring(0, this._SearchProperties.Length - 1);

@@ -14,6 +14,6 @@ namespace Sample_CUITeTestProject.ObjectRepository
         public CUITe_HtmlInputButton btnGoogleSearch = new CUITe_HtmlInputButton("Name=btnK;");
         public CUITe_HtmlInputButton btnImFeelingLucky = new CUITe_HtmlInputButton("Name=btnI;");
         public CUITe_HtmlDiv divSearchResults = new CUITe_HtmlDiv("Id=res");
-        public CUITe_HtmlDiv divInvalid = new CUITe_HtmlDiv("Id=invalid");
+        public CUITe_HtmlDiv divNonExistent = new CUITe_HtmlDiv("Id=invalid");
 	}
 }

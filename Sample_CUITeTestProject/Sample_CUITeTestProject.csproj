@@ -79,11 +79,11 @@
   <ItemGroup>
     <Compile Include="ObjectRepository\SlTestPage.cs" />
     <Compile Include="ObjectRepository\TestHtmlPage.cs" />
-    <Compile Include="Tests_for_SilverlightControls.cs" />
-    <Compile Include="ObjectRepository\Google.cs" />
+    <Compile Include="SilverlightControlTests.cs" />
+    <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
     <Compile Include="ObjectRepository\GoogleSearch.cs" />
     <Compile Include="ObjectRepository\ASPNETComboBoxDemoFirstLook.cs" />
-    <Compile Include="Tests_for_HtmlControls.cs" />
+    <Compile Include="HtmlControlTests.cs" />
     <Compile Include="ObjectRepository\GoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -64,34 +64,19 @@ namespace CUITe.Controls.HtmlControls
             Mouse.DoubleClick(this.GetCell(iRow, iCol));
         }
 
-        public bool IsHeaderPresent()
-        {
-            HtmlControl control = this._control.Rows[0] as HtmlControl;
-            if ((control != null) && (control.ControlType == ControlType.RowHeader))
-            {
-                return true;
-            }
-            if (control.GetChildren()[0].GetType().Name.Contains("HtmlHeaderCell"))
-            {
-                return true;
-            }
-            return false;
-        }
-
         public int FindRow(int iCol, string sValueToSearch, CUITe_HtmlTableSearchOptions option)
         {
             this._control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
 
-            bool isHeaderPresent = IsHeaderPresent();
-            UITestControlCollection coltemp = RemoveHeaders(this._control.Rows);
+            UITestControlCollection coltemp = RemoveRowHeaders(this._control.Rows);
 
             foreach (HtmlRow cont in coltemp)
             {
                 rowCount++;
                 int colCount = -1;
-                foreach (HtmlCell cell in cont.Cells)
+                foreach (HtmlCell cell in cont.Cells.OfType<HtmlCell>()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                 {
                     colCount++;
                     bool bSearchOptionResult = false;
@@ -208,8 +193,7 @@ namespace CUITe.Controls.HtmlControls
             HtmlCell _htmlCell = null;
             int rowCount = -1;
 
-            bool isHeaderPresent = IsHeaderPresent();
-            UITestControlCollection coltemp = RemoveHeaders(this._control.Rows);
+            UITestControlCollection coltemp = RemoveRowHeaders(this._control.Rows);
 
             foreach (HtmlRow cont in coltemp)
             {
@@ -217,7 +201,7 @@ namespace CUITe.Controls.HtmlControls
                 if (rowCount == iRow)
                 {
                     int colCount = -1;
-                    foreach (HtmlCell cell in cont.Cells)
+                    foreach (HtmlCell cell in cont.Cells.OfType <HtmlCell>()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                     {
                         colCount++;
                         if (colCount == iCol)
@@ -261,12 +245,15 @@ namespace CUITe.Controls.HtmlControls
             return null;
         }
 
-        private UITestControlCollection RemoveHeaders(UITestControlCollection collection)
+        private UITestControlCollection RemoveRowHeaders(UITestControlCollection collection)
         {
-            if (IsHeaderPresent())
+            HtmlControl control = this._control.Rows[0] as HtmlControl;
+            if ((control != null) && ((control.ControlType == ControlType.RowHeader)
+                || !control.GetChildren().Any(x => string.Compare((x as HtmlControl).TagName, "td", true) == 0)))
             {
                 collection.RemoveAt(0);
             }
+            
             return collection;
         }
     }

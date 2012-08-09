@@ -20,7 +20,7 @@ namespace Sample_CUITeTestProject
     [CodedUITest]
     [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
     [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.html")]
-    public class Tests_for_SilverlightControls
+    public class SilverlightControlTests
     {
         private TestContext testContextInstance;
 
@@ -47,7 +47,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SlButtonAndEditAndDTP()
+        public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
@@ -61,7 +61,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SlList_ViaObjectRepository()
+        public void SlList_InObjectRepository_Succeeds()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             SlTestPage oSlTestPage = CUITe_BrowserWindow.Launch<SlTestPage>(baseDir + "/TestSilverlightApplication.html");
@@ -71,7 +71,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SlList_DynamicObjectRecognition()
+        public void SlList_DynamicObjectRecognition_Succeeds()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
@@ -83,7 +83,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SlComboBox()
+        public void SlComboBox_SelectItem_Succeeds()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html");
@@ -99,7 +99,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SlTab()
+        public void SlTab_SelectedIndex_Succeeds()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");
@@ -111,7 +111,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SlTraversals()
+        public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
             string baseDir = Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).CodeBase);
             CUITe_BrowserWindow b = CUITe_BrowserWindow.Launch(baseDir + "/TestSilverlightApplication.html", "Home");

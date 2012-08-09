@@ -211,6 +211,10 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new CUITe_HtmlDiv();
             }
+            else if (control.GetType() == typeof(HtmlEdit) && (string.Compare(control.Type, "password", true) == 0))
+            {
+                _con = new CUITe_HtmlPassword();
+            }
             else if (control.GetType() == typeof(HtmlEdit))
             {
                 _con = new CUITe_HtmlEdit();
@@ -238,10 +242,6 @@ namespace CUITe.Controls.HtmlControls
             else if (control.GetType() == typeof(HtmlList))
             {
                 _con = new CUITe_HtmlList();
-            }
-            else if (control.GetType() == typeof(HtmlEdit) && control.Type == "PASSWORD")
-            {
-                _con = new CUITe_HtmlPassword();
             }
             else if (control.GetType() == typeof(HtmlRadioButton))
             {

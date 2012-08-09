@@ -68,7 +68,7 @@
   <ItemGroup>
     <Compile Include="ObjectLibrary\winCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="testCalculator.cs" />
+    <Compile Include="CalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe\CUITe.csproj">

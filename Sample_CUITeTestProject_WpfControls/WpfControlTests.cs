@@ -15,7 +15,7 @@ using Sample_CUITeTestProject_WpfControls.ObjectLibrary;
 namespace Sample_CUITeTestProject_WpfControls
 {
     /// <summary>
-    /// Summary description for CodedUITest1
+    /// Summary description for WpfControlTests
     /// </summary>
     [CodedUITest]
     #if DEBUG
@@ -23,39 +23,31 @@ namespace Sample_CUITeTestProject_WpfControls
     #else
     [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Release")]
     #endif
-    public class testWpfControls
+    public class WpfControlTests
     {
-        public testWpfControls() { }
-
+        private TestContext testContextInstance;
         private static string testProcess = "ControlTemplateExamples";
         private ApplicationUnderTest testApp;
         private winWpfControls mainWindow = new winWpfControls();
 
-        [TestMethod]
-        public void testClickButton()
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
+        public TestContext TestContext
         {
-            mainWindow.SetFocus();
-            mainWindow.btnDefault.Click();
-            Assert.AreEqual("Default", mainWindow.btnDefault.DisplayText);
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
         }
-
-        [TestMethod]
-        public void testCheckBox()
-        {
-            mainWindow.SetFocus();
-            Assert.AreEqual(false, mainWindow.chkNormal.Checked);
-            Assert.AreEqual(true, mainWindow.chkChecked.Checked);
-            Assert.AreEqual(true, mainWindow.chkIndeterminate.Indeterminate);
-        }
-
-
-        #region Additional test attributes
-
-        [ClassInitialize]
-        public static void MyClassInitialize(TestContext testContext) { }
 
         [ClassCleanup]
-        public static void MyClassCleanup()
+        public static void ClassCleanup()
         {
             // Close the app after all tests are finished
             Playback.Initialize();
@@ -74,9 +66,9 @@ namespace Sample_CUITeTestProject_WpfControls
                 Playback.Cleanup();
             }
         }
-        
+
         [TestInitialize()]
-        public void MyTestInitialize()
+        public void TestInitialize()
         {
             if (Process.GetProcessesByName(testProcess).Length == 0)
             {
@@ -85,7 +77,7 @@ namespace Sample_CUITeTestProject_WpfControls
         }
 
         [TestCleanup()]
-        public void MyTestCleanup()
+        public void TestCleanup()
         {
             if (testContextInstance.CurrentTestOutcome != UnitTestOutcome.Passed)
             {
@@ -93,23 +85,21 @@ namespace Sample_CUITeTestProject_WpfControls
             }
         }
 
-        #endregion
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+        [TestMethod]
+        public void WpfButton_Click_Succeeds()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            mainWindow.SetFocus();
+            mainWindow.btnDefault.Click();
+            Assert.AreEqual("Default", mainWindow.btnDefault.DisplayText);
         }
-        private TestContext testContextInstance;
+
+        [TestMethod]
+        public void WpfCheckBox_Checked_Succeeds()
+        {
+            mainWindow.SetFocus();
+            Assert.AreEqual(false, mainWindow.chkNormal.Checked);
+            Assert.AreEqual(true, mainWindow.chkChecked.Checked);
+            Assert.AreEqual(true, mainWindow.chkIndeterminate.Indeterminate);
+        }
     }
 }

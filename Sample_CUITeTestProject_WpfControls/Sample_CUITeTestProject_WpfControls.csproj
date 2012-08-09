@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObjectLibrary\winWpfControls.cs" />
-    <Compile Include="testWpfControls.cs" />
+    <Compile Include="WpfControlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

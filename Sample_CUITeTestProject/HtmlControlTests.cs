@@ -24,7 +24,7 @@ namespace Sample_CUITeTestProject
     [CodedUITest]
     [DeploymentItem(@"Sample_CUITeTestProject\XMLFile2.xml")]
     [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
-    public class Tests_for_HtmlControls
+    public class HtmlControlTests
     {
         private string CurrentDirectory = Directory.GetCurrentDirectory();
 
@@ -53,7 +53,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void SampleTestNumber1()
+        public void HtmlEdit_SetText_Succeeds()
         {
             GoogleHomePage pgGHomePage = CUITe_BrowserWindow.Launch<GoogleHomePage>("http://www.google.com");
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
@@ -64,9 +64,9 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_DataManager_EmbeddedResource()
+        public void DataManager_GetDataRowUsingEmbeddedResource_Succeeds()
         {
-            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.Tests_for_HtmlControls"), "XMLFile1.xml", "tc2");
+            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.HtmlControlTests"), "XMLFile1.xml", "tc2");
             Assert.AreEqual("test", ht["test"]);
             Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
             Assert.AreEqual("Suresh", ht["firstname"]);
@@ -77,9 +77,9 @@ namespace Sample_CUITeTestProject
         }
 
         //[TestMethod]
-        //public void Test_DataManager_DeploymentItem()
+        //public void DataManager_GetDataRowUsingFile_Succeeds()
         //{
-        //    Hashtable ht = CUITe_DataManager.GetDataRow("XMLFile2.xml", "content2");
+        //    Hashtable ht = CUITe.CUITe_DataManager.GetDataRow("XMLFile2.xml", "content2");
         //    Assert.AreEqual("SomeTest", ht["test"]);
         //    Assert.AreEqual("Somewhere, Somewhere", ht["address"]);
         //    Assert.AreEqual("SomeFirstName", ht["firstname"]);
@@ -90,7 +90,7 @@ namespace Sample_CUITeTestProject
         //}
 
         [TestMethod]
-        public void Telerik_Combo()
+        public void TelerikComboBox_SelectItemByText_Succeeds()
         {
             ASPNETComboBoxDemoFirstLook pgPage = CUITe_BrowserWindow.Launch<ASPNETComboBoxDemoFirstLook>(
                 "http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
@@ -105,7 +105,8 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_FeatureRequest_608()
+        [WorkItem(608)]
+        public void BrowserWindow_GetControlsDynamically_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch("http://mail.google.com", "Gmail: Email from Google");
             bWin.Get<CUITe_HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
@@ -115,34 +116,33 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        [ExpectedException(typeof(CUITe.CUITe_InvalidSearchKey))]
-        public void Test_FeatureRequest_588()
+        [WorkItem(588)]
+        public void HtmlControl_WithInvalidSearchProperties_ThrowsInvalidSearchKeyException()
         {
             try
             {
-                Google pgGHome = CUITe_BrowserWindow.Launch<Google>("http://www.google.com");
-                pgGHome.div588.Click();
-                pgGHome.Close();
+                GoogleHomePageWithInvalidControlSearchProperties pgGHome = CUITe_BrowserWindow.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
+
+                Assert.Fail("CUITe_InvalidSearchKey not thrown");
             }
             catch (CUITe.CUITe_InvalidSearchKey ex)
             {
                 Console.WriteLine(ex.ToString());
-                throw;
             }
-            
         }
 
         [TestMethod]
-        public void Test_InvalidControlExists()
+        public void HtmlControl_NonExistent_DoesNotExist()
         {
             Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None; //required if you are using .Exists on an invalid control
             CUITe_BrowserWindow.Launch("http://www.google.com");
             GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
-            Assert.IsFalse(pgGHomePage.divInvalid.Exists);
+            Assert.IsFalse(pgGHomePage.divNonExistent.Exists);
         }
 
         [TestMethod]
-        public void Test_FeatureRequest_589()
+        [WorkItem(589)]
+        public void HtmlEdit_Wrap_Succeeds()
         {
             GoogleHomePage pgGHomePage = CUITe_BrowserWindow.Launch<GoogleHomePage>("http://www.google.com");
             
@@ -157,7 +157,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_HtmlTable_GetColumnHeaders()
+        public void HtmlTable_GetColumnHeaders_Succeeds()
         {
             CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
@@ -171,7 +171,8 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_HtmlTableIssue_638_WithHeaders()
+        [WorkItem(638)]
+        public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
@@ -181,7 +182,8 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_HtmlTableIssue_638_WithOutHeaders()
+        [WorkItem(638)]
+        public void HtmlTable_FindRowUsingTableWithoutRowHeaders_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithOutHeaders");
@@ -191,18 +193,30 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_HtmlTableIssue_TH_inTBODY()
+        public void HtmlTable_GetCellValueWithHeaderCell_Succeeds()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+
+            CUITe_HtmlTable termTable = bWin.Get<CUITe_HtmlTable>("Id=calcWithHeaderCells");
+
+            Assert.AreEqual("4", termTable.GetCellValue(1, 1));
+
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void HtmlTable_GetCellValueUsingTableWithTHInTBODY_Succeeds()
         {
             CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=TabContainer1_TabPanel1_gvSourceLuns");
             tbl.FindRowAndClick(0, "LUN_04", CUITe_HtmlTableSearchOptions.NormalTight);
-            Assert.IsTrue(tbl.GetCellValue(0, 0).Trim() == "LUN_04");
+            Assert.AreEqual("LUN_04", tbl.GetCellValue(0, 0).Trim());
             bWin.Close();
         }
 
         [TestMethod]
-        public void Test_Value_As_SearchParameterKey()
+        public void HtmlInputButton_UsingSearchParameterWithValueAsKey_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
@@ -220,7 +234,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_FileInput()
+        public void HtmlFileInput_SetFile_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             bWin.Get<CUITe_HtmlFileInput>("Id=ctl00_PlaceHolderMain_ctl01_ctl02_InputFile").SetFile(@"C:\Demo\info.txt");
@@ -228,7 +242,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_SharePoint2010()
+        public void HtmlHyperlink_OnSharePoint2010_Succeeds()
         {
             CUITe_BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
             CUITe_BrowserWindow.Authenticate("username", "passwd");
@@ -241,7 +255,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_HtmlGetChildren()
+        public void HtmlControl_GetChildren_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var div = bWin.Get<CUITe_HtmlDiv>("id=calculatorContainer1");
@@ -255,7 +269,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_CUITe_HtmlParagraph()
+        public void HtmlParagraph_InnertText_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             Assert.IsTrue(bWin.Get<CUITe_HtmlParagraph>("Id=para1").InnerText.Contains("CUITe_HtmlParagraph"));
@@ -263,7 +277,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_CUITe_HtmlComboBox_Items()
+        public void HtmlComboBox_Items_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlComboBox cmb = bWin.Get<CUITe_HtmlComboBox>("Id=select1");
@@ -273,7 +287,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_CUITe_HtmlParagraph_objrep()
+        public void HtmlParagraph_InObjectRepository_Succeeds()
         {
             TestHtmlPage testpage = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
             string content = testpage.p.InnerText;
@@ -282,7 +296,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void Test_Traversals()
+        public void HtmlParagraph_TraverseSiblingsParentAndChildren_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var p = bWin.Get<CUITe_HtmlParagraph>("Id=para1");
@@ -296,7 +310,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         [DeploymentItem(@"Sample_CUITeTestProject\iframe_test.html")]
         [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
-        public void Html_ClickButtonInIFrame()
+        public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
@@ -304,6 +318,7 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        [WorkItem(882)]
         public void HtmlInputButton_GetWithValueContainingWhitespace_Succeeds()
         {
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");

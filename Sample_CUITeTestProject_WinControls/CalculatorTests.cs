@@ -14,53 +14,35 @@ using Sample_CUITeTestProject_WinControls.ObjectLibrary;
 namespace Sample_CUITeTestProject_WinControls
 {
     /// <summary>
-    /// Summary description for TestCalculator
+    /// Summary description for CalculatorTests
     /// </summary>
     [CodedUITest]
-    public class testCalculator
+    public class CalculatorTests
     {
-        public testCalculator() { }
+        private TestContext testContextInstance;
 
         private static string testProcess = "calc";
         private ApplicationUnderTest testApp;
         private winCalculator mainWindow = new winCalculator();
 
-        [TestMethod, Description("Switch to Scientific view")]
-        public void TestSwitchToScientific()
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
+        public TestContext TestContext
         {
-            mainWindow.SetFocus();
-
-            // Pick the Scientific menu
-            mainWindow.miView.Click();
-            mainWindow.miScientific.Click();
-
-            // Make menu is checked and Degrees radio button is now present
-            Assert.IsTrue(mainWindow.miScientific.Checked);
-            Assert.IsTrue(mainWindow.rbDegrees.Exists);
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
         }
-
-        [TestMethod, Description("Add two numbers")]
-        public void TestCalculate()
-        {
-            mainWindow.SetFocus();
-
-            mainWindow.btnClear.Click(); // Clear
-            mainWindow.btn1.Click(); // Click 1
-            mainWindow.btnAdd.Click(); // Click +
-            mainWindow.btn2.Click(); // Click 2
-            mainWindow.btnEquals.Click(); // Click =
-
-            Assert.AreEqual("3", mainWindow.txtResult.DisplayText);
-        }
-
-
-        #region Additional test attributes
-
-        [ClassInitialize]
-        public static void MyClassInitialize(TestContext testContext) { }
 
         [ClassCleanup]
-        public static void MyClassCleanup()
+        public static void ClassCleanup()
         {
             // Close the app after all tests are finished
             Playback.Initialize();
@@ -81,7 +63,7 @@ namespace Sample_CUITeTestProject_WinControls
         }
 
         [TestInitialize()]
-        public void MyTestInitialize()
+        public void TestInitialize()
         {
             // Launch Calculator if not already running
             if (Process.GetProcessesByName(testProcess).Length == 0)
@@ -99,7 +81,7 @@ namespace Sample_CUITeTestProject_WinControls
         }
 
         [TestCleanup()]
-        public void MyTestCleanup()
+        public void TestCleanup()
         {
             // If test failed, then close the app. The next test will restart
             if (testContextInstance.CurrentTestOutcome != UnitTestOutcome.Passed)
@@ -108,23 +90,32 @@ namespace Sample_CUITeTestProject_WinControls
             }
         }
 
-        #endregion
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+        [TestMethod, Description("Switch to Scientific view")]
+        public void WinMenuItem_Click_Succeeds()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            mainWindow.SetFocus();
+
+            // Pick the Scientific menu
+            mainWindow.miView.Click();
+            mainWindow.miScientific.Click();
+
+            // Make menu is checked and Degrees radio button is now present
+            Assert.IsTrue(mainWindow.miScientific.Checked);
+            Assert.IsTrue(mainWindow.rbDegrees.Exists);
         }
-        private TestContext testContextInstance;
+
+        [TestMethod, Description("Add two numbers")]
+        public void WinButton_Click_Succeeds()
+        {
+            mainWindow.SetFocus();
+
+            mainWindow.btnClear.Click(); // Clear
+            mainWindow.btn1.Click(); // Click 1
+            mainWindow.btnAdd.Click(); // Click +
+            mainWindow.btn2.Click(); // Click 2
+            mainWindow.btnEquals.Click(); // Click =
+
+            Assert.AreEqual("3", mainWindow.txtResult.DisplayText);
+        }
     }
 }
