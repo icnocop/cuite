@@ -199,7 +199,7 @@ namespace Sample_CUITeTestProject
 
             CUITe_HtmlTable termTable = bWin.Get<CUITe_HtmlTable>("Id=calcWithHeaderCells");
 
-            Assert.AreEqual("4", termTable.GetCellValue(1, 1));
+            Assert.AreEqual("3", termTable.GetCellValue(1, 1));
 
             bWin.Close();
         }
@@ -218,6 +218,10 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlInputButton_UsingSearchParameterWithValueAsKey_Succeeds()
         {
+            //Internet Explorer may display the message: Internet Explorer restricted this webpage from running scripts or ActiveX controls.
+            //This security restriction prevents the alert message to appear.
+            //To enable running scripts on the local computer, go to Tools > Internet options > Advanced > Security > [checkmark] Allow active content to run in files on My Computer
+
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
 

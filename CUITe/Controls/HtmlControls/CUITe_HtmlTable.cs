@@ -76,7 +76,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 rowCount++;
                 int colCount = -1;
-                foreach (HtmlCell cell in cont.Cells.OfType<HtmlCell>()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+                foreach (HtmlControl cell in cont.Cells) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                 {
                     colCount++;
                     bool bSearchOptionResult = false;
@@ -117,7 +117,7 @@ namespace CUITe.Controls.HtmlControls
         public string GetCellValue(int iRow, int iCol)
         {
             string sResult = "";
-            HtmlCell _htmlCell = this.GetCell(iRow, iCol);
+            HtmlControl _htmlCell = this.GetCell(iRow, iCol);
             if (_htmlCell != null) sResult = _htmlCell.InnerText;
             return sResult;
         }
@@ -187,10 +187,10 @@ namespace CUITe.Controls.HtmlControls
             return null;
         }
 
-        private HtmlCell GetCell(int iRow, int iCol)
+        private HtmlControl GetCell(int iRow, int iCol)
         {
             this._control.WaitForControlReady();
-            HtmlCell _htmlCell = null;
+            HtmlControl _htmlCell = null;
             int rowCount = -1;
 
             UITestControlCollection coltemp = RemoveRowHeaders(this._control.Rows);
@@ -201,7 +201,7 @@ namespace CUITe.Controls.HtmlControls
                 if (rowCount == iRow)
                 {
                     int colCount = -1;
-                    foreach (HtmlCell cell in cont.Cells.OfType <HtmlCell>()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+                    foreach (HtmlControl cell in cont.Cells) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                     {
                         colCount++;
                         if (colCount == iCol)
