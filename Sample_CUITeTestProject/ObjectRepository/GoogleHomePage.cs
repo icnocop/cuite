@@ -7,13 +7,13 @@ using CUITe.Controls.HtmlControls;
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-	public class GoogleHomePage : CUITe_BrowserWindow
-	{
-		public new string sWindowTitle = "Google";
+    public class GoogleHomePage : CUITe_BrowserWindow
+    {
+        public new string sWindowTitle = "Google";
         public CUITe_HtmlEdit txtSearch = new CUITe_HtmlEdit("Id=lst-ib");
         public CUITe_HtmlInputButton btnGoogleSearch = new CUITe_HtmlInputButton("Name=btnK;");
         public CUITe_HtmlInputButton btnImFeelingLucky = new CUITe_HtmlInputButton("Name=btnI;");
         public CUITe_HtmlDiv divSearchResults = new CUITe_HtmlDiv("Id=res");
         public CUITe_HtmlDiv divNonExistent = new CUITe_HtmlDiv("Id=invalid");
-	}
+    }
 }
