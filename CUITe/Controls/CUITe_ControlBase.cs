@@ -218,19 +218,20 @@ namespace CUITe.Controls
         /// </summary>
         protected void fillSearchProperties()
         {
-            // List of properties for all UI controls
-            // Note: Some properties may not be valid to use for search. MS does not provide and exact list
-            List<FieldInfo> controlProperties = new List<FieldInfo>(typeof(UITestControl.PropertyNames).GetFields());
+            // iterate through the class inheritance hierarchy to get a list of property names for the specific control
+            // Note: Some properties may not be valid to use for search (ex. filter property names). MS does not provide and exact list
+            List<FieldInfo> controlProperties = new List<FieldInfo>();
+
+            Type nestedType = typeof(T);
+            Type nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
             
-            // Append technology-specific properties to the list
-            if (this._control is WinControl)
-                controlProperties.AddRange(typeof(WinControl.PropertyNames).GetFields());
-            else if (this._control is HtmlControl)
-                controlProperties.AddRange(typeof(HtmlControl.PropertyNames).GetFields());
-            else if (this._control is SilverlightControl)
-                controlProperties.AddRange(typeof(SilverlightControl.PropertyNames).GetFields());
-            else if (this._control is WpfControl)
-                controlProperties.AddRange(typeof(WpfControl.PropertyNames).GetFields());
+            while (nestedPropertyNamesType != null)
+            {
+                controlProperties.AddRange(nestedPropertyNamesType.GetFields());
+
+                nestedType = nestedType.BaseType;
+                nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
+            }
 
             if (!string.IsNullOrEmpty(this._SearchProperties))
             {

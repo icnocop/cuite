@@ -81,6 +81,7 @@
     <Compile Include="Controls\HtmlControls\CUITe_HtmlParagraph.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlPassword.cs" />
     <Compile Include="Controls\ICUITe_ControlBase.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlPassword.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTree.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTab.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlSlider.cs" />
