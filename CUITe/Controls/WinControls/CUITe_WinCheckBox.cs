@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinCheckBox : CUITe_WinControl<WinCheckBox>
     {
         public CUITe_WinCheckBox() : base() { }
-        public CUITe_WinCheckBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinCheckBox(string searchParameters) : base(searchParameters) { }
 
         public bool Checked { 
             get { return this._control.Checked; } 

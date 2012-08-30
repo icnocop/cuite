@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfListItem : CUITe_WpfControl<WpfListItem>
     {
         public CUITe_WpfListItem() : base() { }
-        public CUITe_WpfListItem(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfListItem(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

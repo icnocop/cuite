@@ -10,6 +10,6 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlDiv : CUITe_HtmlControl<HtmlDiv>
     {
         public CUITe_HtmlDiv() : base() { }
-        public CUITe_HtmlDiv(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlDiv(string searchParameters) : base(searchParameters) { }
     }
 }

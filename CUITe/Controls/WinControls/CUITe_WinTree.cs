@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinTree : CUITe_WinControl<WinTree>
     {
         public CUITe_WinTree() : base() { }
-        public CUITe_WinTree(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinTree(string searchParameters) : base(searchParameters) { }
 
         public UITestControl HorizontalScrollBar
         {

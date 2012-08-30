@@ -14,7 +14,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinMenuItem : CUITe_WinControl<WinMenuItem>
     {
         public CUITe_WinMenuItem() : base() { }
-        public CUITe_WinMenuItem(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinMenuItem(string searchParameters) : base(searchParameters) { }
 
         public bool Checked
         {

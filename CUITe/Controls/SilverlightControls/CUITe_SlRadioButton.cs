@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlRadioButton : CUITe_SlControl<SilverlightRadioButton>
     {
         public CUITe_SlRadioButton() : base() { }
-        public CUITe_SlRadioButton(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlRadioButton(string searchParameters) : base(searchParameters) { }
 
         public void Select()
         {

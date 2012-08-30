@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlTab : CUITe_SlControl<SilverlightTab>
     {
         public CUITe_SlTab() : base() { }
-        public CUITe_SlTab(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlTab(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets or sets the index of the selected tab item.

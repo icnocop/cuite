@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlEdit : CUITe_SlControl<SilverlightEdit>
     {
         public CUITe_SlEdit() : base() { }
-        public CUITe_SlEdit(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlEdit(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets or sets the text displayed on the Silverlight Edit.

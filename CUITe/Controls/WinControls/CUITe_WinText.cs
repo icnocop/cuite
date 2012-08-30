@@ -14,7 +14,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinText : CUITe_WinControl<WinText>
     {
         public CUITe_WinText() : base() { }
-        public CUITe_WinText(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinText(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

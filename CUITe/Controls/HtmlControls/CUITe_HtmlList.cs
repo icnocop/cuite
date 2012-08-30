@@ -10,7 +10,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlList : CUITe_HtmlControl<HtmlList>
     {
         public CUITe_HtmlList() : base() { }
-        public CUITe_HtmlList(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlList(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the items in a string array of the html list.

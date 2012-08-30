@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlCell : CUITe_SlControl<SilverlightCell>
     {
         public CUITe_SlCell() : base() { }
-        public CUITe_SlCell(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlCell(string searchParameters) : base(searchParameters) { }
 
         public bool Checked
         {

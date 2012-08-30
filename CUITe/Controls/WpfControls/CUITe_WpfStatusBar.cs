@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfStatusBar : CUITe_WpfControl<WpfStatusBar>
     {
         public CUITe_WpfStatusBar() : base() { }
-        public CUITe_WpfStatusBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfStatusBar(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Panels
         {

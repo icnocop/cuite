@@ -13,6 +13,6 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinCustom : CUITe_WinControl<WinCustom>
     {
         public CUITe_WinCustom() : base() { }
-        public CUITe_WinCustom(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinCustom(string searchParameters) : base(searchParameters) { }
     }
 }

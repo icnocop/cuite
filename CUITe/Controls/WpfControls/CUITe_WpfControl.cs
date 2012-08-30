@@ -49,7 +49,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfControl<T> : CUITe_ControlBase<T> where T : WpfControl
     {
         public CUITe_WpfControl() : base() { }
-        public CUITe_WpfControl(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfControl(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.

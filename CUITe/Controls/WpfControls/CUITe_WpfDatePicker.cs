@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfDatePicker : CUITe_WpfControl<WpfDatePicker>
     {
         public CUITe_WpfDatePicker() : base() { }
-        public CUITe_WpfDatePicker(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfDatePicker(string searchParameters) : base(searchParameters) { }
 
         public CUITe_WpfCalendar Calendar
         {

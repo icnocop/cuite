@@ -13,6 +13,6 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinClient : CUITe_WinControl<WinClient>
     {
         public CUITe_WinClient() : base() { }
-        public CUITe_WinClient(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinClient(string searchParameters) : base(searchParameters) { }
     }
 }

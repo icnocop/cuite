@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfText : CUITe_WpfControl<WpfText>
     {
         public CUITe_WpfText() : base() { }
-        public CUITe_WpfText(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfText(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

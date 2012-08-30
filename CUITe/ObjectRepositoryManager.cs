@@ -25,10 +25,21 @@ namespace CUITe
             return (T)(object)GetInstance(typeof(T));
         }
 
+        public static T GetInstance<T>(params object[] args)
+        {
+            return (T)(object)ObjectRepositoryManager.GetInstance(typeof(T), args);
+        }
+
         private static CUITe_BrowserWindow GetInstance(Type typePageDefinition)
         {
-            CUITe_BrowserWindow browserWindow = (CUITe_BrowserWindow)Activator.CreateInstance(typePageDefinition);
-            browserWindow.SetWidowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
+            return GetInstance(typePageDefinition, null);
+        }
+
+        private static CUITe_BrowserWindow GetInstance(Type typePageDefinition, params object[] args)
+        {
+            CUITe_BrowserWindow browserWindow = (CUITe_BrowserWindow)Activator.CreateInstance(typePageDefinition, args);
+
+            browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
 
             FieldInfo[] finfo = browserWindow.GetType().GetFields();
             foreach (FieldInfo fieldinfo in finfo) 

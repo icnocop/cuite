@@ -14,7 +14,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinCalendar : CUITe_WinControl<WinCalendar>
     {
         public CUITe_WinCalendar() : base() { }
-        public CUITe_WinCalendar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinCalendar(string searchParameters) : base(searchParameters) { }
 
         public SelectionRange SelectionRange
         {

@@ -14,7 +14,7 @@ namespace CUITe.Controls.WpfControls
     {
         public CUITe_WpfWindow() : base() { }
 
-        public CUITe_WpfWindow(string sSearchParameters) : base(sSearchParameters) 
+        public CUITe_WpfWindow(string searchParameters) : base(searchParameters) 
         {
             WpfWindow baseControl = new WpfWindow();
             this.Wrap(baseControl);

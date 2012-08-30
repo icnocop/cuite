@@ -13,6 +13,6 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinToolTip : CUITe_WinControl<WinToolTip>
     {
         public CUITe_WinToolTip() : base() { }
-        public CUITe_WinToolTip(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinToolTip(string searchParameters) : base(searchParameters) { }
     }
 }

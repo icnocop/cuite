@@ -10,7 +10,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlRadioButton : CUITe_HtmlControl<HtmlRadioButton>
     {
         public CUITe_HtmlRadioButton() : base() { }
-        public CUITe_HtmlRadioButton(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlRadioButton(string searchParameters) : base(searchParameters) { }
 
         public void Select()
         {

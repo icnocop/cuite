@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfExpander : CUITe_WpfControl<WpfExpander>
     {
         public CUITe_WpfExpander() : base() { }
-        public CUITe_WpfExpander(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfExpander(string searchParameters) : base(searchParameters) { }
 
         public bool Expanded
         {

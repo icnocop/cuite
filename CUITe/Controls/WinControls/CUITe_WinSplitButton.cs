@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinSplitButton : CUITe_WinControl<WinSplitButton>
     {
         public CUITe_WinSplitButton() : base() { }
-        public CUITe_WinSplitButton(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinSplitButton(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

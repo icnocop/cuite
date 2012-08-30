@@ -13,6 +13,6 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfPane : CUITe_WpfControl<WpfPane>
     {
         public CUITe_WpfPane() : base() { }
-        public CUITe_WpfPane(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfPane(string searchParameters) : base(searchParameters) { }
     }
 }

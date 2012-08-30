@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfCalendar : CUITe_WpfControl<WpfCalendar>
     {
         public CUITe_WpfCalendar() : base() { }
-        public CUITe_WpfCalendar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfCalendar(string searchParameters) : base(searchParameters) { }
 
         public DateTime[] SelectedDates
         {

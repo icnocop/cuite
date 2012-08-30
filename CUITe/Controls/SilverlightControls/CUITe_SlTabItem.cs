@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlTabItem : CUITe_SlControl<SilverlightTabItem>
     {
         public CUITe_SlTabItem() : base() { }
-        public CUITe_SlTabItem(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlTabItem(string searchParameters) : base(searchParameters) { }
     }
 }

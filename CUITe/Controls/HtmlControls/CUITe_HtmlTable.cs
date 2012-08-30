@@ -20,7 +20,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlTable : CUITe_HtmlControl<HtmlTable>
     {
         public CUITe_HtmlTable() : base() { }
-        public CUITe_HtmlTable(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlTable(string searchParameters) : base(searchParameters) { }
 
         public int RowCount
         {

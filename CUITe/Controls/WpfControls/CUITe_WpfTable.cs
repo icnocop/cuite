@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfTable : CUITe_WpfControl<WpfTable>
     {
         public CUITe_WpfTable() : base() { }
-        public CUITe_WpfTable(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfTable(string searchParameters) : base(searchParameters) { }
 
         public bool CanSelectMultiple
         {

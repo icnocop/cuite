@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinHyperlink : CUITe_WinControl<WinHyperlink>
     {
         public CUITe_WinHyperlink() : base() { }
-        public CUITe_WinHyperlink(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinHyperlink(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

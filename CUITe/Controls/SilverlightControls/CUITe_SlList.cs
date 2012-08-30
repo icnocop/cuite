@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlList : CUITe_SlControl<SilverlightList>
     {
         public CUITe_SlList() : base() { }
-        public CUITe_SlList(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlList(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the collection of child list items of the list

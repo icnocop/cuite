@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinTable : CUITe_WinControl<WinTable>
     {
         public CUITe_WinTable() : base() { }
-        public CUITe_WinTable(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinTable(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Cells
         {

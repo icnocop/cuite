@@ -10,7 +10,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlInputButton : CUITe_HtmlControl<HtmlInputButton>
     {
         public CUITe_HtmlInputButton() : base() { }
-        public CUITe_HtmlInputButton(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlInputButton(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

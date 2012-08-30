@@ -15,7 +15,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlControl<T> : CUITe_ControlBase<T> where T : HtmlControl
     {
         public CUITe_HtmlControl() : base() { }
-        public CUITe_HtmlControl(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlControl(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the text content of this control.

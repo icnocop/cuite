@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinButton : CUITe_WinControl<WinButton>
     {
         public CUITe_WinButton() : base() { }
-        public CUITe_WinButton(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinButton(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText 
         { 

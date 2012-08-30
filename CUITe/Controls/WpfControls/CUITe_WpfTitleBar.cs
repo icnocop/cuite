@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfTitleBar : CUITe_WpfControl<WpfTitleBar>
     {
         public CUITe_WpfTitleBar() : base() { }
-        public CUITe_WpfTitleBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfTitleBar(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

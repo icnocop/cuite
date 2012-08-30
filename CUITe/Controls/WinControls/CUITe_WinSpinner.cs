@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinSpinner : CUITe_WinControl<WinSpinner>
     {
         public CUITe_WinSpinner() : base() { }
-        public CUITe_WinSpinner(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinSpinner(string searchParameters) : base(searchParameters) { }
 
         public int MaximumValue
         {

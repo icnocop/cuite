@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfImage : CUITe_WpfControl<WpfImage>
     {
         public CUITe_WpfImage() : base() { }
-        public CUITe_WpfImage(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfImage(string searchParameters) : base(searchParameters) { }
 
         public string Alt
         {

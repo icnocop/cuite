@@ -63,6 +63,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HtmlControls\CUITe_DynamicBrowserWindow.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlListItem.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlOrderedList.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlUnorderedList.cs" />

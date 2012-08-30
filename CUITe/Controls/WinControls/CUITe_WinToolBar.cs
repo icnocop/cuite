@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinToolBar : CUITe_WinControl<WinToolBar>
     {
         public CUITe_WinToolBar() : base() { }
-        public CUITe_WinToolBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinToolBar(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Items
         {

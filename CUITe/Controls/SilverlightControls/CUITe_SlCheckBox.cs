@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlCheckBox : CUITe_SlControl<SilverlightCheckBox>
     {
         public CUITe_SlCheckBox() : base() { }
-        public CUITe_SlCheckBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlCheckBox(string searchParameters) : base(searchParameters) { }
 
         public void Check()
         {

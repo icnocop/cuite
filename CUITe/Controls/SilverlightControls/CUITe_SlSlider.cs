@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlSlider : CUITe_SlControl<SilverlightSlider>
     {
         public CUITe_SlSlider() : base() { }
-        public CUITe_SlSlider(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlSlider(string searchParameters) : base(searchParameters) { }
     }
 }

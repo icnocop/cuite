@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfScrollBar : CUITe_WpfControl<WpfScrollBar>
     {
         public CUITe_WpfScrollBar() : base() { }
-        public CUITe_WpfScrollBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfScrollBar(string searchParameters) : base(searchParameters) { }
 
         public double MaximumPosition
         {

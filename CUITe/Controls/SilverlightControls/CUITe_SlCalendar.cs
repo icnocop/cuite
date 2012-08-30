@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlCalendar : CUITe_SlControl<SilverlightCalendar>
     {
         public CUITe_SlCalendar() : base() { }
-        public CUITe_SlCalendar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlCalendar(string searchParameters) : base(searchParameters) { }
 
         public System.Windows.Forms.SelectionRange SelectedDateRange
         {

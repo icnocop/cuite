@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfEdit : CUITe_WpfControl<WpfEdit>
     {
         public CUITe_WpfEdit() : base() { }
-        public CUITe_WpfEdit(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfEdit(string searchParameters) : base(searchParameters) { }
 
         public string CopyPastedText
         {

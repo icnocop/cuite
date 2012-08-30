@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlDatePicker : CUITe_SlControl<SilverlightDatePicker>
     {
         public CUITe_SlDatePicker() : base() { }
-        public CUITe_SlDatePicker(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlDatePicker(string searchParameters) : base(searchParameters) { }
     }
 }

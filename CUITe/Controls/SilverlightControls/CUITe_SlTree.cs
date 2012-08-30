@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlTree : CUITe_SlControl<SilverlightTree>
     {
         public CUITe_SlTree() : base() { }
-        public CUITe_SlTree(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlTree(string searchParameters) : base(searchParameters) { }
     }
 }

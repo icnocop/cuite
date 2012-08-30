@@ -105,17 +105,6 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        [WorkItem(608)]
-        public void BrowserWindow_GetControlsDynamically_Succeeds()
-        {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch("http://mail.google.com", "Gmail: Email from Google");
-            bWin.Get<CUITe_HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
-            bWin.Get<CUITe_HtmlPassword>("Id=Password").SetText("MyPa$$Word");
-            bWin.Get<CUITe_HtmlInputButton>("Id=signIn").Click();
-            bWin.Close();
-        }
-
-        [TestMethod]
         [WorkItem(588)]
         public void HtmlControl_WithInvalidSearchProperties_ThrowsInvalidSearchKeyException()
         {
@@ -329,18 +318,6 @@ namespace Sample_CUITeTestProject
 
             CUITe_HtmlInputButton btnSearch = bWin.Get<CUITe_HtmlInputButton>("Value=   Search   ");
             btnSearch.Click();
-
-            bWin.Close();
-        }
-
-        [TestMethod]
-        public void BrowserWindow_GetExistingBrowserWindow_Succeeds()
-        {
-            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
-
-            BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
-
-            Assert.AreEqual("A Test - Windows Internet Explorer", bWin.Title);
 
             bWin.Close();
         }

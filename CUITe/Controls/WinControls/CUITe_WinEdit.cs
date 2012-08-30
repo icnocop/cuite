@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinEdit : CUITe_ControlBase<WinEdit>
     {
         public CUITe_WinEdit() : base() { }
-        public CUITe_WinEdit(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinEdit(string searchParameters) : base(searchParameters) { }
 
         public string CopyPastedText
         {

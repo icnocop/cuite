@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfCheckBox : CUITe_WpfControl<WpfCheckBox>
     {
         public CUITe_WpfCheckBox() : base() { }
-        public CUITe_WpfCheckBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfCheckBox(string searchParameters) : base(searchParameters) { }
 
         public bool Checked
         {

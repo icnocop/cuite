@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinTitleBar : CUITe_WinControl<WinTitleBar>
     {
         public CUITe_WinTitleBar() : base() { }
-        public CUITe_WinTitleBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinTitleBar(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

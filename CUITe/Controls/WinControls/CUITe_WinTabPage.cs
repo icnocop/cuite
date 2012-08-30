@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinTabPage : CUITe_WinControl<WinTabPage>
     {
         public CUITe_WinTabPage() : base() { }
-        public CUITe_WinTabPage(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinTabPage(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

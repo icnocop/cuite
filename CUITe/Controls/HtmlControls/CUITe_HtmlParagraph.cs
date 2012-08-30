@@ -11,7 +11,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlParagraph : CUITe_HtmlControl<HtmlCustom>
     {
         public CUITe_HtmlParagraph() : base() { }
-        public CUITe_HtmlParagraph(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlParagraph(string searchParameters) : base(searchParameters) { }
 
         public Type GetBaseType()
         {

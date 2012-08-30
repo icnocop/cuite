@@ -10,7 +10,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlCheckBox : CUITe_HtmlControl<HtmlCheckBox>
     {
         public CUITe_HtmlCheckBox() : base() { }        
-        public CUITe_HtmlCheckBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlCheckBox(string searchParameters) : base(searchParameters) { }
 
         public void Check()
         {

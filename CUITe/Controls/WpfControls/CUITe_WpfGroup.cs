@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfGroup : CUITe_WpfControl<WpfGroup>
     {
         public CUITe_WpfGroup() : base() { }
-        public CUITe_WpfGroup(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfGroup(string searchParameters) : base(searchParameters) { }
 
         public string Header
         {

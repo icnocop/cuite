@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlDataPager : CUITe_SlControl<SilverlightDataPager>
     {
         public CUITe_SlDataPager() : base() { }
-        public CUITe_SlDataPager(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlDataPager(string searchParameters) : base(searchParameters) { }
     }
 }

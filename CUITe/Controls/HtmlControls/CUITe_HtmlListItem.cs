@@ -11,7 +11,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlListItem : CUITe_HtmlControl<HtmlCustom>
     {
         public CUITe_HtmlListItem() : base() { }
-        public CUITe_HtmlListItem(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlListItem(string searchParameters) : base(searchParameters) { }
 
         public Type GetBaseType()
         {

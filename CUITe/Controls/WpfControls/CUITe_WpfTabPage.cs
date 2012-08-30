@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfTabPage : CUITe_WpfControl<WpfTabPage>
     {
         public CUITe_WpfTabPage() : base() { }
-        public CUITe_WpfTabPage(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfTabPage(string searchParameters) : base(searchParameters) { }
 
         public string Header
         {

@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlComboBox : CUITe_SlControl<SilverlightComboBox>
     {
         public CUITe_SlComboBox() : base() { }
-        public CUITe_SlComboBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlComboBox(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Selects the item in the combobox.

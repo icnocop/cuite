@@ -13,7 +13,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlComboBox : CUITe_HtmlControl<HtmlComboBox>
     {
         public CUITe_HtmlComboBox() : base() { }
-        public CUITe_HtmlComboBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlComboBox(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Selects the item in the combobox.

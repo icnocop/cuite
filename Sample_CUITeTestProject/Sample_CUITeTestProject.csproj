@@ -77,6 +77,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowserWindowTests.cs" />
+    <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
     <Compile Include="ObjectRepository\SlTestPage.cs" />
     <Compile Include="ObjectRepository\TestHtmlPage.cs" />
     <Compile Include="SilverlightControlTests.cs" />
@@ -93,6 +95,15 @@
   <ItemGroup>
     <Content Include="..\TestSilverlightApplication\Bin\Debug\TestSilverlightApplication.xap">
       <Link>TestSilverlightApplication.xap</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DynamicBrowserWindowTitle.2.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DynamicBrowserWindowTitle.1.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DynamicBrowserWindowTitle.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="iframe.html">

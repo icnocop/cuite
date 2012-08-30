@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfList : CUITe_WpfControl<WpfList>
     {
         public CUITe_WpfList() : base() { }
-        public CUITe_WpfList(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfList(string searchParameters) : base(searchParameters) { }
 
         public bool IsMultipleSelection
         {

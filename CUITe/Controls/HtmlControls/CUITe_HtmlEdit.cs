@@ -10,7 +10,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlEdit : CUITe_HtmlControl<HtmlEdit>
     {
         public CUITe_HtmlEdit() : base() { }
-        public CUITe_HtmlEdit(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlEdit(string searchParameters) : base(searchParameters) { }
 
         public void SetText(string sText)
         {

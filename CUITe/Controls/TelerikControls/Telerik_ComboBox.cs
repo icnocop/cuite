@@ -13,9 +13,9 @@ namespace CUITe.Controls.TelerikControls
         private string id;
         private CUITe_BrowserWindow _window;
 
-        public Telerik_ComboBox(string sSearchParameters) 
+        public Telerik_ComboBox(string searchParameters) 
         {
-            this.id = sSearchParameters.Trim().Split('=')[1];
+            this.id = searchParameters.Trim().Split('=')[1];
         }
 
         internal void SetWindow(CUITe_BrowserWindow window) 

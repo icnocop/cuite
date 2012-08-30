@@ -13,7 +13,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlText : CUITe_SlControl<SilverlightText>
     {
         public CUITe_SlText() : base() { }
-        public CUITe_SlText(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlText(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the text displayed on the SilverlightText block.

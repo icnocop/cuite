@@ -14,7 +14,7 @@ namespace CUITe.Controls.WinControls
     {
         public CUITe_WinWindow() : base() { }
         
-        public CUITe_WinWindow(string sSearchParameters) : base(sSearchParameters) 
+        public CUITe_WinWindow(string searchParameters) : base(searchParameters) 
         {
             WinWindow baseControl = new WinWindow();
             this.Wrap(baseControl);

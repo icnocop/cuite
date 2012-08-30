@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfSlider : CUITe_WpfControl<WpfSlider>
     {
         public CUITe_WpfSlider() : base() { }
-        public CUITe_WpfSlider(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfSlider(string searchParameters) : base(searchParameters) { }
 
         public double LargeChange
         {

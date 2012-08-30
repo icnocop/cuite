@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlHyperlink : CUITe_SlControl<SilverlightHyperlink>
     {
         public CUITe_SlHyperlink() : base() { }
-        public CUITe_SlHyperlink(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlHyperlink(string searchParameters) : base(searchParameters) { }
     }
 }

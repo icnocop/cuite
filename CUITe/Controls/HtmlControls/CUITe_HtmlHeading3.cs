@@ -11,7 +11,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlHeading3 : CUITe_HtmlControl<HtmlCustom>
     {
         public CUITe_HtmlHeading3() : base() { }
-        public CUITe_HtmlHeading3(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlHeading3(string searchParameters) : base(searchParameters) { }
 
         public Type GetBaseType()
         {

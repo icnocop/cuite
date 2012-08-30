@@ -13,6 +13,6 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinColumnHeader : CUITe_WinControl<WinColumnHeader>
     {
         public CUITe_WinColumnHeader() : base() { }
-        public CUITe_WinColumnHeader(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinColumnHeader(string searchParameters) : base(searchParameters) { }
     }
 }

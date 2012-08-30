@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinProgressBar : CUITe_WinControl<WinProgressBar>
     {
         public CUITe_WinProgressBar() : base() { }
-        public CUITe_WinProgressBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinProgressBar(string searchParameters) : base(searchParameters) { }
 
         public double MaximumValue
         {

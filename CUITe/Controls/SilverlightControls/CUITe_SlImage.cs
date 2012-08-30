@@ -13,6 +13,6 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlImage : CUITe_SlControl<SilverlightImage>
     {
         public CUITe_SlImage() : base() { }
-        public CUITe_SlImage(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlImage(string searchParameters) : base(searchParameters) { }
     }
 }

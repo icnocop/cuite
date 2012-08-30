@@ -49,7 +49,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinControl<T> : CUITe_ControlBase<T> where T : WinControl
     {
         public CUITe_WinControl() : base() { }
-        public CUITe_WinControl(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinControl(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.

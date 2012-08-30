@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinTreeItem : CUITe_WinControl<WinTreeItem>
     {
         public CUITe_WinTreeItem() : base() { }
-        public CUITe_WinTreeItem(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinTreeItem(string searchParameters) : base(searchParameters) { }
 
         public bool Expanded
         {

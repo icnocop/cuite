@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
     public class CUITe_WpfToolBar : CUITe_WpfControl<WpfToolBar>
     {
         public CUITe_WpfToolBar() : base() { }
-        public CUITe_WpfToolBar(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WpfToolBar(string searchParameters) : base(searchParameters) { }
 
         public string Header
         {

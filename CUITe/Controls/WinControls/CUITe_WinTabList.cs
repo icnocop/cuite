@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinTabList : CUITe_WinControl<WinTabList>
     {
         public CUITe_WinTabList() : base() { }
-        public CUITe_WinTabList(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinTabList(string searchParameters) : base(searchParameters) { }
 
         public int SelectedIndex
         {

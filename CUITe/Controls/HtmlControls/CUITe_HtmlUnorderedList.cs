@@ -11,7 +11,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_HtmlUnorderedList : CUITe_HtmlControl<HtmlCustom>
     {
         public CUITe_HtmlUnorderedList() : base() { }
-        public CUITe_HtmlUnorderedList(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_HtmlUnorderedList(string searchParameters) : base(searchParameters) { }
 
         public Type GetBaseType()
         {

@@ -13,6 +13,6 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinSeparator : CUITe_WinControl<WinSeparator>
     {
         public CUITe_WinSeparator() : base() { }
-        public CUITe_WinSeparator(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinSeparator(string searchParameters) : base(searchParameters) { }
     }
 }

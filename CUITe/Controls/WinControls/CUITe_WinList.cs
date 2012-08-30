@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinList : CUITe_WinControl<WinList>
     {
         public CUITe_WinList() : base() { }
-        public CUITe_WinList(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinList(string searchParameters) : base(searchParameters) { }
 
         public int[] CheckedIndices
         {

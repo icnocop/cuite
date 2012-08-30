@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
     public class CUITe_WinComboBox : CUITe_WinControl<WinComboBox>
     {
         public CUITe_WinComboBox() : base() { }
-        public CUITe_WinComboBox(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_WinComboBox(string searchParameters) : base(searchParameters) { }
 
         public string EditableItem
         {

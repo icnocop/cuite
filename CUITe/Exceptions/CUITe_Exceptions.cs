@@ -12,7 +12,7 @@ namespace CUITe
 
     public class CUITe_InvalidSearchParameterFormat : Exception
     {
-        public CUITe_InvalidSearchParameterFormat(string sSearchParameters) : base(string.Format("Search Parameter Format is not valid -> '{0}', should be like 'sKey1=sValue1;sKey2=sValue2;'.", sSearchParameters)) { }
+        public CUITe_InvalidSearchParameterFormat(string searchParameters) : base(string.Format("Search Parameter Format is not valid -> '{0}', should be like 'sKey1=sValue1;sKey2=sValue2;'.", searchParameters)) { }
     }
 
     public class CUITe_WrongPageExpectedException : Exception
@@ -22,8 +22,8 @@ namespace CUITe
 
     public class CUITe_InvalidSearchKey : Exception
     {
-        public CUITe_InvalidSearchKey(string sKey, string sSearchParameters, List<string> controlProperties)
-            : base(string.Format("Search Pattern Key not supported -> '{0}' in '{1}'. Available Properties: {2}", sKey, sSearchParameters,
+        public CUITe_InvalidSearchKey(string sKey, string searchParameters, List<string> controlProperties)
+            : base(string.Format("Search Pattern Key not supported -> '{0}' in '{1}'. Available Properties: {2}", sKey, searchParameters,
             string.Join(", ", controlProperties)))
         { }
     }

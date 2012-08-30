@@ -22,7 +22,7 @@ namespace CUITe.Controls.SilverlightControls
     public class CUITe_SlTable : CUITe_SlControl<SilverlightTable>
     {
         public CUITe_SlTable() : base() { }
-        public CUITe_SlTable(string sSearchParameters) : base(sSearchParameters) { }
+        public CUITe_SlTable(string searchParameters) : base(searchParameters) { }
 
         public int RowCount
         {
