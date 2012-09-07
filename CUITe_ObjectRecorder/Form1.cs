@@ -387,7 +387,7 @@ namespace CUITe_ObjectRecorder
                         sVarPrefix = 'btn';
                         sCode = sCode.replace(/type/g, 'CUITe_HtmlButton');
                     }
-                    if (sNodeName == 'input' && (sNodeType == 'button' || sNodeType == 'submit')) {
+                    if (sNodeName == 'input' && (sNodeType == 'button' || sNodeType == 'submit' || sNodeType == 'image')) {
                         sVarPrefix = 'btn';
                         sCode = sCode.replace(/type/g, 'CUITe_HtmlInputButton');
                     }
