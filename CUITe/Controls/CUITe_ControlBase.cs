@@ -224,10 +224,13 @@ namespace CUITe.Controls
 
             Type nestedType = typeof(T);
             Type nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
-            
-            while (nestedPropertyNamesType != null)
+
+            while (nestedType != typeof(object))
             {
-                controlProperties.AddRange(nestedPropertyNamesType.GetFields());
+                if (nestedPropertyNamesType != null)
+                {
+                    controlProperties.AddRange(nestedPropertyNamesType.GetFields());
+                }
 
                 nestedType = nestedType.BaseType;
                 nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
