@@ -41,16 +41,83 @@ namespace CUITe.Controls
         where T : UITestControl
     {
         protected T _control;
-        private string _SearchProperties;
+        protected PropertyExpressionCollection SearchProperties;
 
-        public CUITe_ControlBase() { }
-        public CUITe_ControlBase(string sSearchProperties) 
+        public CUITe_ControlBase()
         {
-            if (sSearchProperties == null) throw new Exception("Parameter 'SearchProperties' cannot be null");
-            this._SearchProperties = sSearchProperties;
-            if (this._SearchProperties.Substring(this._SearchProperties.Length - 1) == ";")
+            this.SearchProperties = new PropertyExpressionCollection();
+        }
+
+        public CUITe_ControlBase(string searchProperties) 
+            : this()
+        {
+            if (searchProperties == null)
             {
-                this._SearchProperties = this._SearchProperties.Substring(0, this._SearchProperties.Length - 1);
+                throw new ArgumentNullException("searchProperties");
+            }
+
+            // fill the UITestControl's search properties based on the search string provided
+
+            // iterate through the class inheritance hierarchy to get a list of property names for the specific control
+            // Note: Some properties may not be valid to use for search (ex. filter property names). MS does not provide and exact list
+            List<FieldInfo> controlProperties = new List<FieldInfo>();
+
+            Type nestedType = typeof(T);
+            Type nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
+
+            while (nestedType != typeof(object))
+            {
+                if (nestedPropertyNamesType != null)
+                {
+                    controlProperties.AddRange(nestedPropertyNamesType.GetFields());
+                }
+
+                nestedType = nestedType.BaseType;
+                nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
+            }
+
+            // Split on groups of key/value pairs
+            string[] saKeyValuePairs = searchProperties.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string sKeyValue in saKeyValuePairs)
+            {
+                PropertyExpressionOperator compareOperator = PropertyExpressionOperator.EqualTo;
+
+                // If split on '=' does not work, then try '~'
+                string[] saKeyVal = sKeyValue.Split('=');
+                if (saKeyVal.Length != 2)
+                {
+                    // Otherwise try to split on '~'. If it works then compare type is Contains
+                    saKeyVal = sKeyValue.Split('~');
+                    if (saKeyVal.Length == 2)
+                    {
+                        compareOperator = PropertyExpressionOperator.Contains;
+                    }
+                    else
+                    {
+                        throw new CUITe_InvalidSearchParameterFormat(searchProperties);
+                    }
+                }
+
+                // Find the first property in the list of known values
+                string valueName = saKeyVal[0];
+
+                if ((typeof(T).IsSubclassOf(typeof(HtmlControl))) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
+                {
+                    //support for backward compatibility where search properties like "Value=Log In" are used
+                    valueName += "Attribute";
+                }
+
+                FieldInfo foundField = controlProperties.Find(
+                    searchProperty => searchProperty.Name.Equals(valueName, StringComparison.OrdinalIgnoreCase));
+
+                if (foundField == null)
+                {
+                    throw new CUITe_InvalidSearchKey(valueName, searchProperties, controlProperties.Select(x => x.Name).ToList());
+                }
+
+                // Add the search property, value and type
+                this.SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
             }
         }
 
@@ -102,7 +169,7 @@ namespace CUITe.Controls
         public virtual void Wrap(object control)
         {
             this._control = control as T;
-            this.fillSearchProperties();
+            this._control.SearchProperties.AddRange(this.SearchProperties);
             this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
 
@@ -210,78 +277,6 @@ namespace CUITe.Controls
         public void SetSearchPropertyRegx(string sPropertyName, string sValue)
         {
             this._control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
-        }
-
-        /// <summary>
-        /// Fills the UITestControl's search properties based on search string provided when the CUITe
-        /// object was created.
-        /// </summary>
-        protected void fillSearchProperties()
-        {
-            // iterate through the class inheritance hierarchy to get a list of property names for the specific control
-            // Note: Some properties may not be valid to use for search (ex. filter property names). MS does not provide and exact list
-            List<FieldInfo> controlProperties = new List<FieldInfo>();
-
-            Type nestedType = typeof(T);
-            Type nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
-
-            while (nestedType != typeof(object))
-            {
-                if (nestedPropertyNamesType != null)
-                {
-                    controlProperties.AddRange(nestedPropertyNamesType.GetFields());
-                }
-
-                nestedType = nestedType.BaseType;
-                nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
-            }
-
-            if (!string.IsNullOrEmpty(this._SearchProperties))
-            {
-                // Split on groups of key/value pairs
-                string[] saKeyValuePairs = this._SearchProperties.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (string sKeyValue in saKeyValuePairs)
-                {
-                    PropertyExpressionOperator compareOperator = PropertyExpressionOperator.EqualTo;
-
-                    // If split on '=' does not work, then try '~'
-                    string[] saKeyVal = sKeyValue.Split('=');
-                    if (saKeyVal.Length != 2)
-                    {
-                        // Otherwise try to split on '~'. If it works then compare type is Contains
-                        saKeyVal = sKeyValue.Split('~');
-                        if (saKeyVal.Length == 2)
-                        {
-                            compareOperator = PropertyExpressionOperator.Contains;
-                        }
-                        else
-                        {
-                            throw new CUITe_InvalidSearchParameterFormat(this._SearchProperties);
-                        }
-                    }
-
-                    // Find the first property in the list of known values
-                    string valueName = saKeyVal[0];
-
-                    if ((this._control is HtmlControl) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
-                    {
-                        //support for backward compatibility where search properties like "Value=Log In" are used
-                        valueName += "Attribute";
-                    }
-
-                    FieldInfo foundField = controlProperties.Find(
-                        searchProperty => searchProperty.Name.Equals(valueName, StringComparison.OrdinalIgnoreCase));
-
-                    if (foundField == null)
-                    {
-                        throw new CUITe_InvalidSearchKey(valueName, this._SearchProperties, controlProperties.Select(x => x.Name).ToList());
-                    }
-
-                    // Add the search property, value and type
-                    this._control.SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
-                }
-            }
         }
 
         protected void RunScript(string sCode)

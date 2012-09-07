@@ -10,20 +10,21 @@ namespace CUITe.Controls.HtmlControls
 {
     public class CUITe_HtmlHeading5 : CUITe_HtmlControl<HtmlCustom>
     {
-        public CUITe_HtmlHeading5() : base() { }
-        public CUITe_HtmlHeading5(string searchParameters) : base(searchParameters) { }
-
-        public Type GetBaseType()
+        public CUITe_HtmlHeading5()
+            : base()
         {
-            return typeof(HtmlCustom);
+            Initialize();
         }
 
-        public void Wrap(object control)
+        public CUITe_HtmlHeading5(string searchParameters)
+            : base(searchParameters)
         {
-            this._control = control as HtmlCustom;
-            this.fillSearchProperties();
-            this._control.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "h5", PropertyExpressionOperator.EqualTo);
-            this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "h5", PropertyExpressionOperator.EqualTo);
         }
     }
 }

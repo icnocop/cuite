@@ -59,7 +59,8 @@ namespace CUITe
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow }));
                     }
-                    else if (field.GetBaseType().IsSubclassOf(typeof(SilverlightControl)))
+                    else if ((field.GetBaseType() == typeof(SilverlightControl))
+                        || (field.GetBaseType().IsSubclassOf(typeof(SilverlightControl))))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow.SlObjectContainer }));
                     }

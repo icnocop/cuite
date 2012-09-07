@@ -10,20 +10,21 @@ namespace CUITe.Controls.HtmlControls
 {
     public class CUITe_HtmlOrderedList : CUITe_HtmlControl<HtmlCustom>
     {
-        public CUITe_HtmlOrderedList() : base() { }
-        public CUITe_HtmlOrderedList(string searchParameters) : base(searchParameters) { }
-
-        public Type GetBaseType()
+        public CUITe_HtmlOrderedList()
+            : base()
         {
-            return typeof(HtmlCustom);
+            Initialize();
         }
 
-        public void Wrap(object control)
+        public CUITe_HtmlOrderedList(string searchParameters)
+            : base(searchParameters)
         {
-            this._control = control as HtmlCustom;
-            this.fillSearchProperties();
-            this._control.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "ol", PropertyExpressionOperator.EqualTo);
-            this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "ol", PropertyExpressionOperator.EqualTo);
         }
     }
 }

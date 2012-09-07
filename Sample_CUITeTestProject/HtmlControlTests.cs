@@ -18,6 +18,7 @@ using Sample_CUITeTestProject.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using System.Diagnostics;
 using System.Linq;
+using CUITe;
 
 namespace Sample_CUITeTestProject
 {
@@ -114,9 +115,11 @@ namespace Sample_CUITeTestProject
 
                 Assert.Fail("CUITe_InvalidSearchKey not thrown");
             }
-            catch (CUITe.CUITe_InvalidSearchKey ex)
+            catch (System.Reflection.TargetInvocationException ex)
             {
                 Console.WriteLine(ex.ToString());
+
+                Assert.AreEqual(typeof(CUITe_InvalidSearchKey), ex.InnerException.GetType());
             }
         }
 
