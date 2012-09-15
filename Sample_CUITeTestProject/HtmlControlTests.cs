@@ -365,6 +365,19 @@ namespace Sample_CUITeTestProject
 
             bWin.Close();
         }
+
+        [TestMethod]
+        public void HtmlCheckBox_DisabledByStyle_ControlExistsAndCanGetCheckedState()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+
+            CUITe_HtmlCheckBox chkBox1 = bWin.Get<CUITe_HtmlCheckBox>("id=checkBox1");
+
+            Assert.IsTrue(chkBox1.Exists);
+            Assert.IsTrue(chkBox1.Checked);
+
+            bWin.Close();
+        }
     }
 }
 
