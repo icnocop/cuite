@@ -7,6 +7,10 @@ http://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName
 
 It has been modified to include Name attributes on controls which add AutomationIds for each control to better integrate with CUITe's WinControls test project.
 
+DataGrid AutomationIds are generated using binding as indicated here:
+http://stackoverflow.com/questions/9020724/xaml-binding-row-and-column-index-of-cell-to-automation-id/9134325#9134325
+
+
 The following license accompanies only the ControlTemplateExamples project.
 
 MICROSOFT PUBLIC LICENSE (Ms-PL)

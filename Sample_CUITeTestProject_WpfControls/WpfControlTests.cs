@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
-using System.Windows.Forms;
-using System.Drawing;
 using System.Diagnostics;
 using System.IO;
+using CUITe.Controls.WpfControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using Keyboard = Microsoft.VisualStudio.TestTools.UITesting.Keyboard;
 using Sample_CUITeTestProject_WpfControls.ObjectLibrary;
 
 namespace Sample_CUITeTestProject_WpfControls
@@ -100,6 +94,14 @@ namespace Sample_CUITeTestProject_WpfControls
             Assert.AreEqual(false, mainWindow.chkNormal.Checked);
             Assert.AreEqual(true, mainWindow.chkChecked.Checked);
             Assert.AreEqual(true, mainWindow.chkIndeterminate.Indeterminate);
+        }
+
+        [TestMethod]
+        public void WpfTable_GetRowAndCellByAutomationId_CanGetCellValue()
+        {
+            CUITe_WpfRow row0 = mainWindow.dg1.Get<CUITe_WpfRow>("AutomationId=Row0");
+            CUITe_WpfCell row0cell0 = row0.Get<CUITe_WpfCell>("AutomationId=cellRow0Col0");
+            Assert.AreEqual("XML in Action", row0cell0.Value);
         }
     }
 }

@@ -16,5 +16,7 @@ namespace Sample_CUITeTestProject_WpfControls.ObjectLibrary
         public CUITe_WpfCheckBox chkChecked { get { return Get<CUITe_WpfCheckBox>("AutomationID=chkChecked"); } }
         public CUITe_WpfCheckBox chkIndeterminate { get { return Get<CUITe_WpfCheckBox>("AutomationID=chkIndeterminate"); } }
 
+        public CUITe_WpfTable dg1 { get { return Get<CUITe_WpfTable>("AutomationID=dg1"); } }
+
     }
 }

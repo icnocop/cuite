@@ -242,7 +242,6 @@ namespace CUITe.Controls.HtmlControls
                     }
                 }
             }
-            return null;
         }
 
         private UITestControlCollection RemoveRowHeaders(UITestControlCollection collection)

@@ -370,21 +370,58 @@
       <HeaderedItemsControl Style="{StaticResource VerticalHIC}"
                             Header="DataGrid">
         <StackPanel>
-          <DataGrid Name="dg1" AutoGenerateColumns="False"
-                    AlternationCount="2"
-                    ItemsSource="{Binding Source={StaticResource dataGridData},
-                  XPath=*}">
-            <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding XPath=Title}"
+          <DataGrid
+              Name="dg1"
+              AutoGenerateColumns="False"
+              AlternationCount="2"
+              ItemsSource="{Binding Source={StaticResource dataGridData}, XPath=*}"
+              LoadingRow="dg1_LoadingRow">
+              <DataGrid.ItemContainerStyle>
+                  <Style TargetType="{x:Type DataGridRow}">
+                      <Setter Property="AutomationProperties.AutomationId">
+                          <Setter.Value>
+                              <MultiBinding StringFormat="Row{0}">
+                                  <Binding Path="(DataGridRow.Tag)" RelativeSource="{RelativeSource Mode=Self}" />
+                                        </MultiBinding>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="AutomationProperties.Name">
+                                    <Setter.Value>
+                                        <MultiBinding StringFormat="Row{0}">
+                                            <Binding Path="(DataGridRow.Tag)" RelativeSource="{RelativeSource Mode=Self}" />
+                                        </MultiBinding>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.ItemContainerStyle>
+                        <DataGrid.CellStyle>
+                            <Style>
+                                <Setter Property="AutomationProperties.AutomationId">
+                                    <Setter.Value>
+                                        <MultiBinding StringFormat="cell{0}Col{1}">
+
+                                            <!-- bind to row automation name (which contains row index) -->
+                                            <Binding Path="(AutomationProperties.Name)" RelativeSource="{RelativeSource AncestorType=DataGridRow}" />
+
+                                            <!-- bind to column index -->
+                                            <Binding Path="(DataGridCell.TabIndex)" RelativeSource="{RelativeSource Mode=Self}" />
+
+                                        </MultiBinding>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding XPath=Title}"
                                   Header="Name" />
-              <DataGridTextColumn Binding="{Binding XPath=Summary}"
+                            <DataGridTextColumn Binding="{Binding XPath=Summary}"
                                   Header="Description" />
-              <DataGridCheckBoxColumn Binding="{Binding XPath=@InStock}"
+                            <DataGridCheckBoxColumn Binding="{Binding XPath=@InStock}"
                                       Header="InStock" />
-              <DataGridTextColumn Binding="{Binding XPath=@Number}"
+                            <DataGridTextColumn Binding="{Binding XPath=@Number}"
                                   Header="Count" />
-            </DataGrid.Columns>
-          </DataGrid>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
           <DataGrid Name="dg2" AutoGenerateColumns="False"
                     IsEnabled="False"

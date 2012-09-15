@@ -32,5 +32,10 @@ namespace ControlTemplateExamples
             new TestNavigationWindow().Visibility = Visibility.Visible;
         }
 
+        private void dg1_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Tag = (e.Row.GetIndex()).ToString();
+        }
+
     }
 }
