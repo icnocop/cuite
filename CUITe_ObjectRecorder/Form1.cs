@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Text;
-using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 namespace CUITe_ObjectRecorder
 {

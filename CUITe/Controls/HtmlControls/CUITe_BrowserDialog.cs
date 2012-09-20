@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using System.Runtime.InteropServices;
-using SHDocVw;
-using mshtml;
-using System.Diagnostics;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.Controls.HtmlControls
 {

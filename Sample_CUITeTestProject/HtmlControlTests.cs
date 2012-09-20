@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Threading;
-using System.Reflection;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using CUITe.Controls;
-using CUITe.Controls.HtmlControls;
-using CUITe.Controls.SilverlightControls;
-using Sample_CUITeTestProject.ObjectRepository;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using CUITe;
+using CUITe.Controls.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UITest.Extension;
+using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sample_CUITeTestProject.ObjectRepository;
 
 namespace Sample_CUITeTestProject
 {

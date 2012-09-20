@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Collections;
-using System.IO;
 using System.Reflection;
-using System.Xml;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using CUITe.Controls.HtmlControls;
-using CUITe.Controls.SilverlightControls;
-using CUITe.Controls.TelerikControls;
 using CUITe.Controls;
+using CUITe.Controls.HtmlControls;
+using CUITe.Controls.TelerikControls;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe
 {

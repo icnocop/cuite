@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
-using CUITe.Controls.WinControls;
+﻿using CUITe.Controls.WinControls;
 
 namespace Sample_CUITeTestProject_WinControls.ObjectLibrary
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CUITe.Controls.WpfControls;
+﻿using CUITe.Controls.WpfControls;
 
 namespace Sample_CUITeTestProject_WpfControls.ObjectLibrary
 {

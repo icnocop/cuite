@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows.Input;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Sample_CUITeTestProject_WinControls.ObjectLibrary;
 
 namespace Sample_CUITeTestProject_WinControls

@@ -1,13 +1,5 @@
-﻿﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
-using SHDocVw;
-using mshtml;
+﻿ using System;
+ using System.Collections.Generic;
 
 namespace CUITe.Controls
 {

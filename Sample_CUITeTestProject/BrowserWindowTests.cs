@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CUITe.Controls.HtmlControls;
-using Sample_CUITeTestProject.ObjectRepository;
+﻿using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using CUITe.Controls.HtmlControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sample_CUITeTestProject.ObjectRepository;
 
 namespace Sample_CUITeTestProject
 {

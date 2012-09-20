@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
-using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
-using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 using SHDocVw;
-using System.Linq;
 
 namespace CUITe.Controls
 {

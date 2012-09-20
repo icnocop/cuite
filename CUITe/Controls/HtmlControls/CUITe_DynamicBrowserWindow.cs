@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using SHDocVw;
-using mshtml;
-using System.Reflection;
-
-namespace CUITe.Controls.HtmlControls
+﻿namespace CUITe.Controls.HtmlControls
 {
     public class CUITe_DynamicBrowserWindow : CUITe_BrowserWindow
     {
