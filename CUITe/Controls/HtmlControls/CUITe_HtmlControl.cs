@@ -11,8 +11,21 @@ namespace CUITe.Controls.HtmlControls
     /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
     public class CUITe_HtmlControl<T> : CUITe_ControlBase<T> where T : HtmlControl
     {
-        public CUITe_HtmlControl() : base() { }
-        public CUITe_HtmlControl(string searchParameters) : base(searchParameters) { }
+        public CUITe_HtmlControl()
+            : base()
+        {
+        }
+
+        public CUITe_HtmlControl(string searchParameters)
+            : base(searchParameters)
+        {
+        }
+
+        public CUITe_HtmlControl(HtmlControl control)
+            : base()
+        {
+            this._control = (T)control;
+        }
 
         /// <summary>
         /// Gets the text content of this control.
@@ -251,6 +264,10 @@ namespace CUITe.Controls.HtmlControls
             else if (control.GetType() == typeof(HtmlTable))
             {
                 _con = new CUITe_HtmlTable();
+            }
+            else if (control.GetType() == typeof(HtmlCell))
+            {
+                _con = new CUITe_HtmlCell();
             }
             else if (control.GetType() == typeof(HtmlTextArea))
             {

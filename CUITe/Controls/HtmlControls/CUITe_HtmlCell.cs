@@ -6,5 +6,6 @@ namespace CUITe.Controls.HtmlControls
     {
         public CUITe_HtmlCell() : base() { }
         public CUITe_HtmlCell(string sSearchProperties) : base(sSearchProperties) { }
+        public CUITe_HtmlCell(HtmlControl control) : base(control) { }
     }
 }
