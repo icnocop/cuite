@@ -117,5 +117,22 @@ namespace Sample_CUITeTestProject
 
             page2.Close();
         }
+
+        [TestMethod]
+        public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
+        {
+            //Arrange
+            TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+
+            //Act
+            CUITe_HtmlDocument doc = window.Get<CUITe_HtmlDocument>();
+
+            //Assert
+            string expected = "<BODY>";
+
+            Assert.AreEqual(expected, doc.UnWrap().GetProperty("OuterHtml").ToString().Substring("\r\n".Length, expected.Length));
+
+            window.Close();
+        }
     }
 }
