@@ -275,49 +275,44 @@ namespace CUITe.Controls.HtmlControls
             }
             else if (control.GetType() == typeof(HtmlCustom))
             {
-                if (control.TagName == "p")
+                switch (control.TagName.ToLower())
                 {
-                    _con = new CUITe_HtmlParagraph();
-                }
-                else if (control.TagName == "h1")
-                {
-                    _con = new CUITe_HtmlHeading1();
-                }
-                else if (control.TagName == "h2")
-                {
-                    _con = new CUITe_HtmlHeading2();
-                }
-                else if (control.TagName == "h3")
-                {
-                    _con = new CUITe_HtmlHeading3();
-                }
-                else if (control.TagName == "h4")
-                {
-                    _con = new CUITe_HtmlHeading4();
-                }
-                else if (control.TagName == "h5")
-                {
-                    _con = new CUITe_HtmlHeading5();
-                }
-                else if (control.TagName == "h6")
-                {
-                    _con = new CUITe_HtmlHeading6();
-                }
-                else if (control.TagName == "ul")
-                {
-                    _con = new CUITe_HtmlUnorderedList();
-                }
-                else if (control.TagName == "ol")
-                {
-                    _con = new CUITe_HtmlOrderedList();
-                }
-                else if (control.TagName == "LI")
-                {
-                    _con = new CUITe_HtmlListItem();
-                }
-                else
-                {
-                    _con = new CUITe_HtmlCustom(control.TagName);
+                    case "p":
+                        _con = new CUITe_HtmlParagraph();
+                        break;
+                    case "h1":
+                        _con = new CUITe_HtmlHeading1();
+                        break;
+                    case "h2":
+                        _con = new CUITe_HtmlHeading2();
+                        break;
+                    case "h3":
+                        _con = new CUITe_HtmlHeading3();
+                        break;
+                    case "h4":
+                        _con = new CUITe_HtmlHeading4();
+                        break;
+                    case "h5":
+                        _con = new CUITe_HtmlHeading5();
+                        break;
+                    case "h6":
+                        _con = new CUITe_HtmlHeading6();
+                        break;
+                    case "ul":
+                        _con = new CUITe_HtmlUnorderedList();
+                        break;
+                    case "ol":
+                        _con = new CUITe_HtmlOrderedList();
+                        break;
+                    case "li":
+                        _con = new CUITe_HtmlListItem();
+                        break;
+                    case "ins":
+                        _con = new CUITe_HtmlIns();
+                        break;
+                    default:
+                        _con = new CUITe_HtmlCustom(control.TagName);
+                        break;
                 }
             }
             else
