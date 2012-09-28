@@ -186,16 +186,16 @@ namespace CUITe.Controls.HtmlControls
             return uicol;
         }
 
-        protected T[] GetPropertyOfChildren<T>(string propertyName)
+        protected T1[] GetPropertyOfChildren<T1>(string propertyName)
         {
             this._control.WaitForControlReady();
             var collection = this._control.GetChildren();
             if (collection != null)
             {
-                T[] tmpArray = new T[collection.Count];
+                T1[] tmpArray = new T1[collection.Count];
                 for (int i = 0; i < tmpArray.Length; i++)
                 {
-                    tmpArray[i] = (T)collection[i].GetProperty(propertyName);
+                    tmpArray[i] = (T1)collection[i].GetProperty(propertyName);
                 }
                 return tmpArray;
             }
@@ -314,6 +314,10 @@ namespace CUITe.Controls.HtmlControls
                 else if (control.TagName == "LI")
                 {
                     _con = new CUITe_HtmlListItem();
+                }
+                else
+                {
+                    _con = new CUITe_HtmlCustom(control.TagName);
                 }
             }
             else

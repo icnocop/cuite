@@ -118,9 +118,9 @@ namespace CUITe.Controls
             }
         }
 
-        public T Get<T>() where T : ICUITe_ControlBase
+        public T1 Get<T1>() where T1 : ICUITe_ControlBase
         {
-            T control = CUITe_ControlBaseFactory.Create<T>();
+            T1 control = CUITe_ControlBaseFactory.Create<T1>();
 
             var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
 
@@ -137,9 +137,9 @@ namespace CUITe.Controls
         /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
         /// or use '~' for Contains such as 'Id~first'</param>
         /// <returns>CUITe_* control object</returns>
-        public T Get<T>(string searchParameters) where T : ICUITe_ControlBase
+        public T1 Get<T1>(string searchParameters) where T1 : ICUITe_ControlBase
         {
-            T control = CUITe_ControlBaseFactory.Create<T>(searchParameters);
+            T1 control = CUITe_ControlBaseFactory.Create<T1>(searchParameters);
 
             var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
 
