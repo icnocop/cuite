@@ -3,16 +3,16 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlUnorderedList : CUITe_HtmlCustom
+    public class CUITe_HtmlXml : CUITe_HtmlCustom
     {
-        private const string _tagName = "ul";
+        private const string _tagName = "xml";
 
-        public CUITe_HtmlUnorderedList()
+        public CUITe_HtmlXml()
             : base(_tagName)
         {
         }
 
-        public CUITe_HtmlUnorderedList(string searchParameters)
+        public CUITe_HtmlXml(string searchParameters)
             : base(_tagName, searchParameters)
         {
         }

@@ -8,6 +8,17 @@ namespace CUITe.Controls.HtmlControls
         public CUITe_HtmlCustom(string tagName)
             : base()
         {
+            Initialize(tagName);
+        }
+
+        public CUITe_HtmlCustom(string tagName, string searchParameters)
+            : base(searchParameters)
+        {
+            Initialize(tagName);
+        }
+
+        private void Initialize(string tagName)
+        {
             this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
         }
     }

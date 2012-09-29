@@ -3,23 +3,18 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlHeading5 : CUITe_HtmlControl<HtmlCustom>
+    public class CUITe_HtmlHeading5 : CUITe_HtmlCustom
     {
+        private const string _tagName = "h5";
+
         public CUITe_HtmlHeading5()
-            : base()
+            : base(_tagName)
         {
-            Initialize();
         }
 
         public CUITe_HtmlHeading5(string searchParameters)
-            : base(searchParameters)
+            : base(_tagName, searchParameters)
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, "h5", PropertyExpressionOperator.EqualTo);
         }
     }
 }
