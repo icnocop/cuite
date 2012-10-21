@@ -18,6 +18,15 @@ namespace CUITe.Controls.HtmlControls
         public CUITe_HtmlTable() : base() { }
         public CUITe_HtmlTable(string searchParameters) : base(searchParameters) { }
 
+        public int ColumnCount
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return this._control.ColumnCount;
+            }
+        }
+
         public int RowCount
         {
             get {

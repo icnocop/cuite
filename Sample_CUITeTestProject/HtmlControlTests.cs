@@ -155,6 +155,16 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void HtmlTable_ColumnCount_Succeeds()
+        {
+            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
+            Assert.AreEqual(3, tbl.ColumnCount);
+            bWin.Close();
+        }
+
+        [TestMethod]
         public void HtmlTable_ClickOnColumnHeader_Succeeds()
         {
             CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
