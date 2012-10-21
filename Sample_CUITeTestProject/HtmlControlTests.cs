@@ -155,6 +155,17 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void HtmlTable_ClickOnColumnHeader_Succeeds()
+        {
+            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=tableWithAlertOnHeaderClick");
+            tbl.FindHeaderAndClick(0, 0);
+            bWin.PerformDialogAction(BrowserDialogAction.Ok);
+            bWin.Close();
+        }
+
+        [TestMethod]
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
         {

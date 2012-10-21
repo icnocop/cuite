@@ -50,6 +50,11 @@ namespace CUITe.Controls.HtmlControls
             FindCellAndDoubleClick(iRow, iCol);
         }
 
+        public void FindHeaderAndClick(int iRow, int iCol)
+        {
+            this.GetHeader(iRow, iCol).Click();
+        }
+
         public void FindCellAndClick(int iRow, int iCol)
         {
             this.GetCell(iRow, iCol).Click();
@@ -185,6 +190,48 @@ namespace CUITe.Controls.HtmlControls
                 }
             }
             return null;
+        }
+
+        public CUITe_HtmlHeaderCell GetHeader(int iRow, int iCol)
+        {
+            this._control.WaitForControlReady();
+            HtmlControl _htmlHeaderCell = null;
+            int rowCount = -1;
+
+            foreach (HtmlControl control in this._control.Rows)
+            {
+                if (control.ControlType != ControlType.RowHeader)
+                {
+                    continue;
+                }
+
+                rowCount++;
+                if (rowCount == iRow)
+                {
+                    int colCount = -1;
+
+                    foreach (HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+                    {
+                        if (!(cell is HtmlHeaderCell))
+                        {
+                            continue;
+                        }
+
+                        colCount++;
+                        if (colCount == iCol)
+                        {
+                            _htmlHeaderCell = cell;
+                            break;
+                        }
+                    }
+                }
+                if (_htmlHeaderCell != null)
+                {
+                    break;
+                }
+            }
+
+            return new CUITe_HtmlHeaderCell(_htmlHeaderCell);
         }
 
         public CUITe_HtmlCell GetCell(int iRow, int iCol)
