@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -66,7 +68,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void FindCellAndClick(int iRow, int iCol)
         {
-            this.GetCell(iRow, iCol).Click();
+            this.GetCell<CUITe_HtmlControl<HtmlControl>>(iRow, iCol).Click();
         }
 
         public void FindCellAndDoubleClick(int iRow, int iCol)
@@ -126,8 +128,18 @@ namespace CUITe.Controls.HtmlControls
 
         public string GetCellValue(int iRow, int iCol)
         {
+            return GetCellValue<CUITe_HtmlCell>(iRow, iCol);
+        }
+
+        public string GetHeaderCellValue(int iRow, int iCol)
+        {
+            return GetCellValue<CUITe_HtmlHeaderCell>(iRow, iCol);
+        }
+
+        private string GetCellValue<T>(int iRow, int iCol) where T : ICUITe_HtmlControl
+        {
             string innerText = "";
-            CUITe_HtmlCell htmlCell = this.GetCell(iRow, iCol);
+            T htmlCell = this.GetCell<T>(iRow, iCol);
             if (htmlCell != null)
             {
                 innerText = htmlCell.InnerText;
@@ -203,77 +215,53 @@ namespace CUITe.Controls.HtmlControls
 
         public CUITe_HtmlHeaderCell GetHeader(int iRow, int iCol)
         {
-            this._control.WaitForControlReady();
-            HtmlControl _htmlHeaderCell = null;
-            int rowCount = -1;
-
-            foreach (HtmlControl control in this._control.Rows)
-            {
-                if (control.ControlType != ControlType.RowHeader)
-                {
-                    continue;
-                }
-
-                rowCount++;
-                if (rowCount == iRow)
-                {
-                    int colCount = -1;
-
-                    foreach (HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
-                    {
-                        if (!(cell is HtmlHeaderCell))
-                        {
-                            continue;
-                        }
-
-                        colCount++;
-                        if (colCount == iCol)
-                        {
-                            _htmlHeaderCell = cell;
-                            break;
-                        }
-                    }
-                }
-                if (_htmlHeaderCell != null)
-                {
-                    break;
-                }
-            }
-
-            return new CUITe_HtmlHeaderCell(_htmlHeaderCell);
+            return GetCell<CUITe_HtmlHeaderCell>(iRow, iCol);
         }
 
         public CUITe_HtmlCell GetCell(int iRow, int iCol)
         {
+            return GetCell<CUITe_HtmlCell>(iRow, iCol);
+        }
+
+        private T GetCell<T>(int iRow, int iCol) where T : ICUITe_HtmlControl
+        {
             this._control.WaitForControlReady();
-            HtmlControl _htmlCell = null;
+            HtmlControl htmlCell = null;
             int rowCount = -1;
 
-            UITestControlCollection coltemp = RemoveRowHeaders(this._control.Rows);
-
-            foreach (HtmlRow cont in coltemp)
+            foreach (HtmlControl control in this._control.Rows)
             {
+                //control could be of ControlType.RowHeader or ControlType.Row
+
                 rowCount++;
-                if (rowCount == iRow)
+                if (rowCount != iRow)
                 {
-                    int colCount = -1;
-                    foreach (HtmlControl cell in cont.Cells) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
-                    {
-                        colCount++;
-                        if (colCount == iCol)
-                        {
-                            _htmlCell = cell;
-                            break;
-                        }
-                    }
+                    continue;
                 }
-                if (_htmlCell != null)
+
+                int colCount = -1;
+
+                foreach (HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+                {
+                    colCount++;
+                    if (colCount != iCol)
+                    {
+                        continue;
+                    }
+
+                    htmlCell = cell;
+                    break;
+                }
+
+                if (htmlCell != null)
                 {
                     break;
                 }
             }
 
-            return new CUITe_HtmlCell(_htmlCell);
+            Type t = typeof(T);
+            ConstructorInfo ctor = t.GetConstructor(new Type[] { typeof(HtmlControl) });
+            return (T)ctor.Invoke(new object[] { htmlCell }); // call constructor
         }
 
         private mshtml.IHTMLElement GetEmbeddedCheckBoxNativeElement(mshtml.IHTMLElement parent)

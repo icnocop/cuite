@@ -63,6 +63,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HtmlControls\ICUITe_HtmlControl.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlHeaderCell.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlXml.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlIns.cs" />

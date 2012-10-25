@@ -155,6 +155,15 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void HtmlTable_FindHeaderAndClick_Succeeds()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=QuarterlyTable");
+            tbl.FindHeaderAndClick(0, 2);
+            bWin.Close();
+        }
+
+        [TestMethod]
         public void HtmlTable_ColumnCount_Succeeds()
         {
             CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
@@ -182,7 +191,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
-            Assert.IsTrue(tbl.GetCellValue(2,2).Trim() == "9");
+            Assert.AreEqual("9", tbl.GetCellValue(3, 2).Trim());
             bWin.Close();
         }
 
@@ -216,7 +225,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=TabContainer1_TabPanel1_gvSourceLuns");
             tbl.FindRowAndClick(0, "LUN_04", CUITe_HtmlTableSearchOptions.NormalTight);
-            Assert.AreEqual("LUN_04", tbl.GetCellValue(0, 0).Trim());
+            Assert.AreEqual("LUN_04", tbl.GetCellValue(1, 0).Trim());
             bWin.Close();
         }
 
