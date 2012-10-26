@@ -202,7 +202,7 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=calcWithOutHeaders");
             tbl.FindRowAndClick(2, "9", CUITe_HtmlTableSearchOptions.NormalTight);
-            Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
+            Assert.AreEqual("9", tbl.GetCellValue(2, 2).Trim());
             bWin.Close();
         }
 

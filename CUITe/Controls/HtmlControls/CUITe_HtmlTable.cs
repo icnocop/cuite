@@ -82,13 +82,15 @@ namespace CUITe.Controls.HtmlControls
             int iRow = -1;
             int rowCount = -1;
 
-            UITestControlCollection coltemp = RemoveRowHeaders(this._control.Rows);
-
-            foreach (HtmlRow cont in coltemp)
+            foreach (HtmlControl control in this._control.Rows)
             {
+                 //control could be of ControlType.RowHeader or ControlType.Row
+
                 rowCount++;
+
                 int colCount = -1;
-                foreach (HtmlControl cell in cont.Cells) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+
+                foreach (HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                 {
                     colCount++;
                     bool bSearchOptionResult = false;
@@ -287,18 +289,6 @@ namespace CUITe.Controls.HtmlControls
                     }
                 }
             }
-        }
-
-        private UITestControlCollection RemoveRowHeaders(UITestControlCollection collection)
-        {
-            HtmlControl control = this._control.Rows[0] as HtmlControl;
-            if ((control != null) && ((control.ControlType == ControlType.RowHeader)
-                || !control.GetChildren().Any(x => string.Compare((x as HtmlControl).TagName, "td", true) == 0)))
-            {
-                collection.RemoveAt(0);
-            }
-            
-            return collection;
         }
     }
 }
