@@ -315,14 +315,14 @@
                                 Width="100" />
               </GridView>
             </ListView.View>
-            <ListViewItem Content="First Item" />
-            <ListViewItem Content="Second Item" />
-            <ListViewItem Content="Third Item" />
-            <ListViewItem Content="Fourth Item" />
-            <ListViewItem Content="Fifth Item" />
-            <ListViewItem Content="Sixth Item" />
-            <ListViewItem Content="Seventh Item" />
-            <ListViewItem Content="Eighth Item" />
+            <ListViewItem Content="First Item" AutomationProperties.AutomationId="Item0" />
+            <ListViewItem Content="Second Item" AutomationProperties.AutomationId="Item1" />
+            <ListViewItem Content="Third Item" AutomationProperties.AutomationId="Item2" />
+            <ListViewItem Content="Fourth Item" AutomationProperties.AutomationId="Item3" />
+            <ListViewItem Content="Fifth Item" AutomationProperties.AutomationId="Item4" />
+            <ListViewItem Content="Sixth Item" AutomationProperties.AutomationId="Item5" />
+            <ListViewItem Content="Seventh Item" AutomationProperties.AutomationId="Item6" />
+              <ListViewItem Content="Eighth Item" AutomationProperties.AutomationId="Item7" />
           </ListView>
         </StackPanel>
       </HeaderedItemsControl>
