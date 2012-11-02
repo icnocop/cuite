@@ -230,6 +230,10 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new CUITe_HtmlEdit();
             }
+            else if (control.GetType() == typeof(HtmlEditableDiv))
+            {
+                _con = new CUITe_HtmlEditableDiv();
+            }
             else if (control.GetType() == typeof(HtmlFileInput))
             {
                 _con = new CUITe_HtmlFileInput();
@@ -261,6 +265,10 @@ namespace CUITe.Controls.HtmlControls
             else if (control.GetType() == typeof(HtmlSpan))
             {
                 _con = new CUITe_HtmlSpan();
+            }
+            else if (control.GetType() == typeof(HtmlEditableSpan))
+            {
+                _con = new CUITe_HtmlEditableSpan();
             }
             else if (control.GetType() == typeof(HtmlTable))
             {

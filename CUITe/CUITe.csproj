@@ -63,6 +63,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableDiv.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableSpan.cs" />
     <Compile Include="Controls\HtmlControls\ICUITe_HtmlControl.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlHeaderCell.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlXml.cs" />
