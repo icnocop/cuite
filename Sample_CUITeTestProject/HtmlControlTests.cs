@@ -400,6 +400,87 @@ namespace Sample_CUITeTestProject
 
             bWin.Close();
         }
+
+        [TestMethod]
+        public void SelectItem_UsingHtmlComboBoxThatAlertsOnChange_Succeeds()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            CUITe_HtmlComboBox cmb = bWin.Get<CUITe_HtmlComboBox>("Id=selectAndAlertOnChange");
+            cmb.SelectItem("Banana");
+
+            bWin.PerformDialogAction(BrowserDialogAction.Ok);
+
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void SetText_OnHtmlEdit_Succeeds()
+        {
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div id=""div1"">
+            <input type=""text""/>
+        </div>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("test");
+            CUITe_HtmlDiv div1 = bWin.Get<CUITe_HtmlDiv>("id=div1");
+            CUITe_HtmlEdit inputTextBox = div1.Get<CUITe_HtmlEdit>();
+
+            //Act
+            inputTextBox.SetText("text");
+
+            //Assert
+            Assert.AreEqual("text", inputTextBox.GetText());
+
+            bWin.Close();
+        }
+
+        [TestMethod]
+        public void SetText_OnHtmlEditWithOverlappedDiv_Succeeds()
+        {
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div class=""textbox"" id=""idDiv_PWD_UsernameTb"" style=""margin-bottom: 8px;"">
+            <div style=""width: 100%; position: relative;"">
+                <input name=""login"" id=""i0116"" style=""ime-mode: inactive;"" type=""email"" maxLength=""113""/>
+                <div class=""phholder"" style=""left: 0px; top: 0px; width: 100%; position: absolute; z-index: 5;"">
+                    <div class=""placeholder"" id=""idDiv_PWD_UsernameExample"" style=""cursor: text;"">
+                    Text - someone@example.com
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("test");
+            CUITe_HtmlEdit txtUserName = bWin.Get<CUITe_HtmlEdit>("id=i0116");
+
+            //Act
+            txtUserName.SetText("hello");
+
+            //Assert
+            Assert.AreEqual("hello", txtUserName.GetText());
+
+            bWin.Close();
+        }
     }
 }
 

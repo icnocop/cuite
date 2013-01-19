@@ -134,5 +134,13 @@ namespace Sample_CUITeTestProject
 
             window.Close();
         }
+
+        [TestMethod]
+        public void CloseBrowserWindow_UsingLaunchedBrowserWindow_Succeeds()
+        {
+            TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+
+            window.Close();
+        }
     }
 }
