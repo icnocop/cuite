@@ -443,6 +443,8 @@ namespace Sample_CUITeTestProject
             Assert.AreEqual("text", inputTextBox.GetText());
 
             bWin.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
@@ -480,6 +482,45 @@ namespace Sample_CUITeTestProject
             Assert.AreEqual("hello", txtUserName.GetText());
 
             bWin.Close();
+
+            File.Delete(tempFilePath);
+        }
+
+        [TestMethod]
+        public void SelectedItems_OnHtmlList_Succeeds()
+        {
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <select id=""selectId"" multiple=""multiple"">
+            <option value=""1"">1</option>
+            <option value=""2"">2</option>
+            <option value=""3"">3</option>
+        </select>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("test");
+            CUITe_HtmlList list = bWin.Get<CUITe_HtmlList>("id=selectId");
+
+            string[] itemsToSelect = new string[] { "1", "2" };
+
+            //Act
+            list.SelectedItems = itemsToSelect;
+
+            //Assert
+            CollectionAssert.AreEqual(itemsToSelect, list.SelectedItems);
+
+            bWin.Close();
+
+            File.Delete(tempFilePath);
         }
     }
 }

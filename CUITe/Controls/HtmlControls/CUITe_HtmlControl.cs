@@ -141,7 +141,15 @@ namespace CUITe.Controls.HtmlControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+                    UITestControl parent = this._control.GetParent();
+
+                    UITestControlCollection children = parent.GetChildren();
+
+                    int thisIndex = GetMyIndexAmongSiblings();
+
+                    UITestControl child = children[thisIndex + 1];
+
+                    ret = WrapUtil((HtmlControl)child);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {

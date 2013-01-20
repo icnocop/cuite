@@ -26,5 +26,25 @@ namespace CUITe.Controls.HtmlControls
         {
             return this.Items.Contains<string>(sText);
         }
+
+        /// <summary>
+        /// Gets or sets the selected items.
+        /// </summary>
+        /// <value>
+        /// The selected items.
+        /// </value>
+        public string[] SelectedItems
+        {
+            get
+            {
+                this._control.WaitForControlReady();
+                return _control.SelectedItems;
+            }
+            set
+            {
+                this._control.WaitForControlReady();
+                _control.SelectedItems = value;
+            }
+        }
     }
 }
