@@ -118,10 +118,45 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlControl_NonExistent_DoesNotExist()
         {
-            Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None; //required if you are using .Exists on an invalid control
-            CUITe_BrowserWindow.Launch("http://www.google.com");
-            GoogleHomePage pgGHomePage = CUITe_BrowserWindow.GetBrowserWindow<GoogleHomePage>();
-            Assert.IsFalse(pgGHomePage.divNonExistent.Exists);
+            //Arrange
+            SmartMatchOptions smartMatchOptions = SmartMatchOptions.Control;
+
+            try
+            {
+                //set SmartMatchOptions to None because we are using .Exists on an invalid control
+                //remember previous setting so that it can be reset
+                smartMatchOptions = Playback.PlaybackSettings.SmartMatchOptions;
+                Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None;
+
+                string tempFilePath = Path.GetTempFileName();
+
+                File.WriteAllText(tempFilePath,
+    @"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+    </body>
+</html>");
+
+                CUITe_BrowserWindow.Launch(tempFilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                //Act
+                CUITe_HtmlDiv div = window.Get<CUITe_HtmlDiv>("Id=invalid");
+
+                //Assert
+                Assert.IsFalse(div.Exists);
+
+                window.Close();
+
+                File.Delete(tempFilePath);
+            }
+            finally
+            {
+                //reset default setting
+                Playback.PlaybackSettings.SmartMatchOptions = smartMatchOptions;
+            }
         }
 
         [TestMethod]
@@ -157,10 +192,83 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_FindHeaderAndClick_Succeeds()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
-            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=QuarterlyTable");
-            tbl.FindHeaderAndClick(0, 2);
-            bWin.Close();
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <table style=""width: 100%;"" id=""tableId"">
+            <tbody>
+                <tr>
+                    <td>Commitment</td>
+                    <th>September</th>
+                    <th>October</th>
+                    <th>November</th>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Beginning Balance</td>
+                    <td>¥21,570,253</td>
+                    <td>¥21,375,491</td>
+                    <td>¥21,200,873</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>New Purchases</td>
+                    <td>¥0</td>
+                    <td>¥0</td>
+                    <td>¥0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Utilized</td>
+                    <td>¥194,762</td>
+                    <td>¥174,618</td>
+                    <td>¥0</td>
+                    <td>¥369,380</td>
+                </tr>
+                <tr>
+                    <td>Ending Balance</td>
+                    <td>¥21,375,491</td>
+                    <td>¥21,200,873</td>
+                    <td>¥21,200,873</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>Overage</b></td> 
+                    <td>¥0</td>
+                    <td>¥0</td>
+                    <td>¥0</td>
+                    <td>¥0</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>Total Usage</b></td>
+                    <td>¥194,762</td>
+                    <td>¥174,618</td>
+                    <td>¥0</td>
+                    <td>¥369,380</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlTable table = window.Get<CUITe_HtmlTable>("id=tableId");
+
+            //Act
+            table.FindHeaderAndClick(0, 2);
+            
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
@@ -221,12 +329,60 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_GetCellValueUsingTableWithTHInTBODY_Succeeds()
         {
-            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
-            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("A Test");
-            CUITe_HtmlTable tbl = bWin.Get<CUITe_HtmlTable>("id=TabContainer1_TabPanel1_gvSourceLuns");
-            tbl.FindRowAndClick(0, "LUN_04", CUITe_HtmlTableSearchOptions.NormalTight);
-            Assert.AreEqual("LUN_04", tbl.GetCellValue(1, 0).Trim());
-            bWin.Close();
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <table id=""tableId"" border=""1"">
+            <tbody>
+                <tr>
+                    <th>Lun</th>
+                    <th>Used Space</th>
+                    <th>Free Space</th>
+                    <th>Usage %</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <td>LUN_04</td>
+                    <td>26534605227</td>
+                    <td>15405750418</td>
+                    <td>
+                        <dl>
+                            <dd>
+                                <dl>
+                                    <dd>
+                                        <span>64.27%</span>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlTable table = window.Get<CUITe_HtmlTable>("id=tableId");
+
+            //Act
+            table.FindRowAndClick(0, "LUN_04", CUITe_HtmlTableSearchOptions.NormalTight);
+
+            //Assert
+            Assert.AreEqual("LUN_04", table.GetCellValue(1, 0).Trim());
+            
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
@@ -236,23 +392,68 @@ namespace Sample_CUITeTestProject
             //This security restriction prevents the alert message to appear.
             //To enable running scripts on the local computer, go to Tools > Internet options > Advanced > Security > [checkmark] Allow active content to run in files on My Computer
 
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
-            bWin.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
 
-            bWin.PerformDialogAction(BrowserDialogAction.Ok);
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input type=""submit"" value=""Log In"" onclick=""alert('onclick');""/>
+    </body>
+</html>");
 
-            bWin.Close();
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlInputButton button = window.Get<CUITe_HtmlInputButton>("Value=Log In");
+
+            //Act
+            button.Click();
+
+            window.PerformDialogAction(BrowserDialogAction.Ok);
+
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
         public void HtmlFileInput_SetFile_Succeeds()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
-            bWin.Get<CUITe_HtmlFileInput>("Id=ctl00_PlaceHolderMain_ctl01_ctl02_InputFile").SetFile(@"C:\Demo\info.txt");
-            bWin.Close();
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input name=""inputName"" type=""file"" id=""inputId"" />
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlFileInput fileInput = window.Get<CUITe_HtmlFileInput>("Id=inputId");
+
+            string tempInputFilePath = Path.GetTempFileName();
+
+            //Act
+            fileInput.SetFile(tempInputFilePath);
+
+            window.Close();
+
+            File.Delete(tempInputFilePath);
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
+        [Ignore]
         public void HtmlHyperlink_OnSharePoint2010_Succeeds()
         {
             CUITe_BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
@@ -275,7 +476,7 @@ namespace Sample_CUITeTestProject
             Assert.IsTrue(col[1].GetBaseType().Name == "HtmlTable");
             Assert.IsTrue(((CUITe_HtmlDiv)col[0]).InnerText == "calcWithHeaders");
             var tbl = (CUITe_HtmlTable)col[1];
-            Assert.IsTrue(tbl.GetCellValue(2, 2).Trim() == "9");
+            Assert.AreEqual("6", tbl.GetCellValue(2, 2).Trim());
             bWin.Close();
         }
 
@@ -290,11 +491,36 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlComboBox_Items_Succeeds()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
-            CUITe_HtmlComboBox cmb = bWin.Get<CUITe_HtmlComboBox>("Id=select1");
-            Assert.AreEqual("Football", cmb.Items[1]);
-            Assert.IsTrue(cmb.ItemExists("Cricket"));
-            bWin.Close();
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <select id=""selectId"">
+            <option>Cricket</option>
+            <option>Football</option>
+            <option>Tennis</option>
+        </select>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            //Act
+            CUITe_HtmlComboBox comboBox = window.Get<CUITe_HtmlComboBox>("Id=selectId");
+
+            //Assert
+            Assert.AreEqual("Football", comboBox.Items[1]);
+            Assert.IsTrue(comboBox.ItemExists("Cricket"));
+
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
@@ -332,26 +558,62 @@ namespace Sample_CUITeTestProject
         [WorkItem(882)]
         public void HtmlInputButton_GetWithValueContainingWhitespace_Succeeds()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
 
-            CUITe_HtmlInputButton btnSearch = bWin.Get<CUITe_HtmlInputButton>("Value=   Search   ");
-            btnSearch.Click();
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input name=""inputName"" type=""submit"" value=""   Search   "" />
+    </body>
+</html>");
 
-            bWin.Close();
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlInputButton button = window.Get<CUITe_HtmlInputButton>("Value=   Search   ");
+
+            //Act
+            button.Click();
+            
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
         public void HtmlButton_HiddenByStyle_ControlExistsAndCanAssertOnStyle()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
 
-            CUITe_HtmlButton btnHiddenButton = bWin.Get<CUITe_HtmlButton>("id=hiddenButton");
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <button id=""buttonId"" style=""display: none;"" >Hidden</button>
+    </body>
+</html>");
 
-            Assert.IsTrue(btnHiddenButton.Exists);
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
 
-            Assert.IsTrue(btnHiddenButton.UnWrap().ControlDefinition.Contains("style=\"DISPLAY: none\""));
+            //Act
+            CUITe_HtmlButton button = window.Get<CUITe_HtmlButton>("id=buttonId");
 
-            bWin.Close();
+            //Assert
+            Assert.IsTrue(button.Exists);
+
+            Assert.IsTrue(button.UnWrap().ControlDefinition.Contains("style=\"DISPLAY: none\""));
+
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
@@ -391,26 +653,67 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlCheckBox_DisabledByStyle_ControlExistsAndCanGetCheckedState()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
 
-            CUITe_HtmlCheckBox chkBox1 = bWin.Get<CUITe_HtmlCheckBox>("id=checkBox1");
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input type=""checkbox"" id=""checkBoxId"" disabled=""disabled"" name=""checkBoxName"" checked=""checked"" />
+    </body>
+</html>");
 
-            Assert.IsTrue(chkBox1.Exists);
-            Assert.IsTrue(chkBox1.Checked);
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
 
-            bWin.Close();
+            //Act
+            CUITe_HtmlCheckBox checkBox = window.Get<CUITe_HtmlCheckBox>("id=checkBoxId");
+
+            //Assert
+            Assert.IsTrue(checkBox.Exists);
+            Assert.IsTrue(checkBox.Checked);
+
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
         public void SelectItem_UsingHtmlComboBoxThatAlertsOnChange_Succeeds()
         {
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
-            CUITe_HtmlComboBox cmb = bWin.Get<CUITe_HtmlComboBox>("Id=selectAndAlertOnChange");
-            cmb.SelectItem("Banana");
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
 
-            bWin.PerformDialogAction(BrowserDialogAction.Ok);
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <select id=""selectId"" onchange=""alert('onchange');"">
+            <option>Apple</option>
+            <option>Banana</option>
+            <option>Carrot</option>
+        </select>
+    </body>
+</html>");
 
-            bWin.Close();
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlComboBox comboBox = window.Get<CUITe_HtmlComboBox>("Id=selectId");
+
+            //Act
+            comboBox.SelectItem("Banana");
+
+            window.PerformDialogAction(BrowserDialogAction.Ok);
+
+            window.Close();
+
+            File.Delete(tempFilePath);
         }
 
         [TestMethod]
@@ -432,9 +735,9 @@ namespace Sample_CUITeTestProject
 </html>");
 
             CUITe_BrowserWindow.Launch(tempFilePath);
-            CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("test");
-            CUITe_HtmlDiv div1 = bWin.Get<CUITe_HtmlDiv>("id=div1");
-            CUITe_HtmlEdit inputTextBox = div1.Get<CUITe_HtmlEdit>();
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+            CUITe_HtmlDiv div = window.Get<CUITe_HtmlDiv>("id=div1");
+            CUITe_HtmlEdit inputTextBox = div.Get<CUITe_HtmlEdit>();
 
             //Act
             inputTextBox.SetText("text");
@@ -442,7 +745,7 @@ namespace Sample_CUITeTestProject
             //Assert
             Assert.AreEqual("text", inputTextBox.GetText());
 
-            bWin.Close();
+            window.Close();
 
             File.Delete(tempFilePath);
         }

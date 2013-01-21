@@ -60,6 +60,7 @@ namespace Sample_CUITeTestProject_WinControls
             // Launch Calculator if not already running
             if (Process.GetProcessesByName(testProcess).Length == 0)
             {
+                //TODO: do not hard code paths
                 testApp = ApplicationUnderTest.Launch(@"C:\Windows\system32\" + testProcess + ".exe");
             }
 
@@ -75,7 +76,7 @@ namespace Sample_CUITeTestProject_WinControls
         [TestCleanup()]
         public void TestCleanup()
         {
-            // If test failed, then close the app. The next test will restart
+            // If test failed, then close the app. The next test will restart it
             if (testContextInstance.CurrentTestOutcome != UnitTestOutcome.Passed)
             {
                 testApp.Close();
@@ -85,14 +86,21 @@ namespace Sample_CUITeTestProject_WinControls
         [TestMethod, Description("Switch to Scientific view")]
         public void WinMenuItem_Click_Succeeds()
         {
+            //Arrange
             mainWindow.SetFocus();
 
-            // Pick the Scientific menu
+            //Act
+			
+            //change to scientific view
             mainWindow.miView.Click();
             mainWindow.miScientific.Click();
 
-            // Make menu is checked and Degrees radio button is now present
+            //Assert
+            
+            //menu item is checked
             Assert.IsTrue(mainWindow.miScientific.Checked);
+
+            //Degrees radio button exists
             Assert.IsTrue(mainWindow.rbDegrees.Exists);
         }
 

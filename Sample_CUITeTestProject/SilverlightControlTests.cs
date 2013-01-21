@@ -10,7 +10,11 @@ using Sample_CUITeTestProject.ObjectRepository;
 namespace Sample_CUITeTestProject
 {
     [CodedUITest]
-    [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
+    #if NET40
+        [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
+    #else
+        [DeploymentItem(@"Sample_CUITeTestProject (NET45)\TestSilverlightApplication.xap")]
+    #endif
     [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.html")]
     public class SilverlightControlTests
     {
