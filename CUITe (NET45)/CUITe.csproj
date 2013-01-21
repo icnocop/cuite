@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{947E624B-7124-43F8-A1E5-3ED62277E561}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CUITe</RootNamespace>
+    <AssemblyName>CUITe</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\CUITe.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\CUITe.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\CUITe.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.SHDocVw">
+      <HintPath>..\CUITe\lib\Interop.SHDocVw.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(Program Files)\Common Files\microsoft shared\VSTT\11.0\UITestExtensionPackages\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CUITe\Controls\CUITe_ControlBase.cs">
+      <Link>Controls\CUITe_ControlBase.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_BrowserDialog.cs">
+      <Link>Controls\HtmlControls\CUITe_BrowserDialog.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_BrowserWindow.cs">
+      <Link>Controls\HtmlControls\CUITe_BrowserWindow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_DynamicBrowserWindow.cs">
+      <Link>Controls\HtmlControls\CUITe_DynamicBrowserWindow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlButton.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlCell.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlCell.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlCheckBox.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlCheckBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlComboBox.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlComboBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlControl.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlControl.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlCustom.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlDiv.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlDiv.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlDocument.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlEdit.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlEdit.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlEditableDiv.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlEditableDiv.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlEditableSpan.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlEditableSpan.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlFileInput.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlFileInput.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeaderCell.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeaderCell.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeading1.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeading1.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeading2.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeading2.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeading3.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeading3.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeading4.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeading4.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeading5.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeading5.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHeading6.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHeading6.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHyperlink.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlHyperlink.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlImage.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlImage.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlInputButton.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlInputButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlIns.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlIns.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlLabel.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlLabel.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlList.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlListItem.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlListItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlOrderedList.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlOrderedList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlParagraph.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlParagraph.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlPassword.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlPassword.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlRadioButton.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlRadioButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlSpan.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlSpan.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlTable.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlTable.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlTextArea.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlTextArea.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlUnorderedList.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlUnorderedList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlXml.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlXml.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\ICUITe_HtmlControl.cs">
+      <Link>Controls\HtmlControls\ICUITe_HtmlControl.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\ICUITe_ControlBase.cs">
+      <Link>Controls\ICUITe_ControlBase.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlButton.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlCalendar.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlCalendar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlCell.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlCell.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlCheckBox.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlCheckBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlComboBox.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlComboBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlControl.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlControl.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlDataPager.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlDataPager.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlDatePicker.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlDatePicker.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlEdit.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlEdit.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlHyperlink.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlHyperlink.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlImage.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlImage.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlLabel.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlLabel.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlList.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlPassword.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlPassword.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlRadioButton.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlRadioButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlSlider.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlSpinner.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlSpinner.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlTab.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlTab.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlTabItem.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlTabItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlTable.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlTable.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlText.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlText.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\SilverlightControls\CUITe_SlTree.cs">
+      <Link>Controls\SilverlightControls\CUITe_SlTree.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\TelerikControls\Telerik_ComboBox.cs">
+      <Link>Controls\TelerikControls\Telerik_ComboBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\UIWindowsSecurityWindow.cs">
+      <Link>Controls\UIWindowsSecurityWindow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinButton.cs">
+      <Link>Controls\WinControls\CUITe_WinButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinCalendar.cs">
+      <Link>Controls\WinControls\CUITe_WinCalendar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinCell.cs">
+      <Link>Controls\WinControls\CUITe_WinCell.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinCheckBox.cs">
+      <Link>Controls\WinControls\CUITe_WinCheckBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinCheckBoxTreeItem.cs">
+      <Link>Controls\WinControls\CUITe_WinCheckBoxTreeItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinClient.cs">
+      <Link>Controls\WinControls\CUITe_WinClient.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinColumnHeader.cs">
+      <Link>Controls\WinControls\CUITe_WinColumnHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinComboBox.cs">
+      <Link>Controls\WinControls\CUITe_WinComboBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinControl.cs">
+      <Link>Controls\WinControls\CUITe_WinControl.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinCustom.cs">
+      <Link>Controls\WinControls\CUITe_WinCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinDateTimePicker.cs">
+      <Link>Controls\WinControls\CUITe_WinDateTimePicker.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinEdit.cs">
+      <Link>Controls\WinControls\CUITe_WinEdit.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinGroup.cs">
+      <Link>Controls\WinControls\CUITe_WinGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinHyperlink.cs">
+      <Link>Controls\WinControls\CUITe_WinHyperlink.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinList.cs">
+      <Link>Controls\WinControls\CUITe_WinList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinListItem.cs">
+      <Link>Controls\WinControls\CUITe_WinListItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinMenu.cs">
+      <Link>Controls\WinControls\CUITe_WinMenu.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinMenuBar.cs">
+      <Link>Controls\WinControls\CUITe_WinMenuBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinMenuItem.cs">
+      <Link>Controls\WinControls\CUITe_WinMenuItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinPane.cs">
+      <Link>Controls\WinControls\CUITe_WinPane.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinProgressBar.cs">
+      <Link>Controls\WinControls\CUITe_WinProgressBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinRadioButton.cs">
+      <Link>Controls\WinControls\CUITe_WinRadioButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinRow.cs">
+      <Link>Controls\WinControls\CUITe_WinRow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinRowHeader.cs">
+      <Link>Controls\WinControls\CUITe_WinRowHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinScrollBar.cs">
+      <Link>Controls\WinControls\CUITe_WinScrollBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinSeparator.cs">
+      <Link>Controls\WinControls\CUITe_WinSeparator.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinSlider.cs">
+      <Link>Controls\WinControls\CUITe_WinSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinSpinner.cs">
+      <Link>Controls\WinControls\CUITe_WinSpinner.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinSplitButton.cs">
+      <Link>Controls\WinControls\CUITe_WinSplitButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinStatusBar.cs">
+      <Link>Controls\WinControls\CUITe_WinStatusBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinTable.cs">
+      <Link>Controls\WinControls\CUITe_WinTable.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinTabList.cs">
+      <Link>Controls\WinControls\CUITe_WinTabList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinTabPage.cs">
+      <Link>Controls\WinControls\CUITe_WinTabPage.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinText.cs">
+      <Link>Controls\WinControls\CUITe_WinText.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinTitleBar.cs">
+      <Link>Controls\WinControls\CUITe_WinTitleBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinToolBar.cs">
+      <Link>Controls\WinControls\CUITe_WinToolBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinToolTip.cs">
+      <Link>Controls\WinControls\CUITe_WinToolTip.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinTree.cs">
+      <Link>Controls\WinControls\CUITe_WinTree.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinTreeItem.cs">
+      <Link>Controls\WinControls\CUITe_WinTreeItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WinControls\CUITe_WinWindow.cs">
+      <Link>Controls\WinControls\CUITe_WinWindow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfButton.cs">
+      <Link>Controls\WpfControls\CUITe_WpfButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfCalendar.cs">
+      <Link>Controls\WpfControls\CUITe_WpfCalendar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfCell.cs">
+      <Link>Controls\WpfControls\CUITe_WpfCell.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfCheckBox.cs">
+      <Link>Controls\WpfControls\CUITe_WpfCheckBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfComboBox.cs">
+      <Link>Controls\WpfControls\CUITe_WpfComboBox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfControl.cs">
+      <Link>Controls\WpfControls\CUITe_WpfControl.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfCustom.cs">
+      <Link>Controls\WpfControls\CUITe_WpfCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfDatePicker.cs">
+      <Link>Controls\WpfControls\CUITe_WpfDatePicker.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfEdit.cs">
+      <Link>Controls\WpfControls\CUITe_WpfEdit.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfExpander.cs">
+      <Link>Controls\WpfControls\CUITe_WpfExpander.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfGroup.cs">
+      <Link>Controls\WpfControls\CUITe_WpfGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfHyperlink.cs">
+      <Link>Controls\WpfControls\CUITe_WpfHyperlink.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfImage.cs">
+      <Link>Controls\WpfControls\CUITe_WpfImage.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfList.cs">
+      <Link>Controls\WpfControls\CUITe_WpfList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfListItem.cs">
+      <Link>Controls\WpfControls\CUITe_WpfListItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfMenu.cs">
+      <Link>Controls\WpfControls\CUITe_WpfMenu.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfMenuItem.cs">
+      <Link>Controls\WpfControls\CUITe_WpfMenuItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfPane.cs">
+      <Link>Controls\WpfControls\CUITe_WpfPane.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfProgressBar.cs">
+      <Link>Controls\WpfControls\CUITe_WpfProgressBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfRadioButton.cs">
+      <Link>Controls\WpfControls\CUITe_WpfRadioButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfRow.cs">
+      <Link>Controls\WpfControls\CUITe_WpfRow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfScrollBar.cs">
+      <Link>Controls\WpfControls\CUITe_WpfScrollBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfSeparator.cs">
+      <Link>Controls\WpfControls\CUITe_WpfSeparator.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfSlider.cs">
+      <Link>Controls\WpfControls\CUITe_WpfSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfStatusBar.cs">
+      <Link>Controls\WpfControls\CUITe_WpfStatusBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfTable.cs">
+      <Link>Controls\WpfControls\CUITe_WpfTable.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfTabList.cs">
+      <Link>Controls\WpfControls\CUITe_WpfTabList.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfTabPage.cs">
+      <Link>Controls\WpfControls\CUITe_WpfTabPage.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfText.cs">
+      <Link>Controls\WpfControls\CUITe_WpfText.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfTitleBar.cs">
+      <Link>Controls\WpfControls\CUITe_WpfTitleBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfToggleButton.cs">
+      <Link>Controls\WpfControls\CUITe_WpfToggleButton.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfToolBar.cs">
+      <Link>Controls\WpfControls\CUITe_WpfToolBar.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfToolTip.cs">
+      <Link>Controls\WpfControls\CUITe_WpfToolTip.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfTree.cs">
+      <Link>Controls\WpfControls\CUITe_WpfTree.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfTreeItem.cs">
+      <Link>Controls\WpfControls\CUITe_WpfTreeItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Controls\WpfControls\CUITe_WpfWindow.cs">
+      <Link>Controls\WpfControls\CUITe_WpfWindow.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\CUITe_DataManager.cs">
+      <Link>CUITe_DataManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Exceptions\CUITe_Exceptions.cs">
+      <Link>Exceptions\CUITe_Exceptions.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\ObjectRepositoryManager.cs">
+      <Link>ObjectRepositoryManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\CUITe\images\CUITe.bmp">
+      <Link>images\CUITe.bmp</Link>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
