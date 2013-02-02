@@ -524,6 +524,42 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void SelectItem_ByIndexOnHtmlComboBox_Succeeds()
+        {
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <select id=""selectId"">
+            <option>Cricket</option>
+            <option>Football</option>
+            <option>Tennis</option>
+        </select>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            //Act
+            CUITe_HtmlComboBox comboBox = window.Get<CUITe_HtmlComboBox>("Id=selectId");
+
+            comboBox.SelectItem(1);
+
+            //Assert
+            Assert.AreEqual("Football", comboBox.SelectedItem);
+
+            window.Close();
+
+            File.Delete(tempFilePath);
+        }
+
+        [TestMethod]
         public void HtmlParagraph_InObjectRepository_Succeeds()
         {
             TestHtmlPage testpage = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
