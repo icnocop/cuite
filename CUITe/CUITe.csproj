@@ -73,8 +73,13 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Browsers\Chrome.cs" />
+    <Compile Include="Browsers\Browser.cs" />
+    <Compile Include="Browsers\Firefox.cs" />
+    <Compile Include="Browsers\IBrowser.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableDiv.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableSpan.cs" />
+    <Compile Include="Browsers\InternetExplorer.cs" />
     <Compile Include="Controls\HtmlControls\ICUITe_HtmlControl.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlHeaderCell.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlXml.cs" />

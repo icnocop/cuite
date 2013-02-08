@@ -1,26 +1,71 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using SHDocVw;
 
 namespace CUITe.Controls.HtmlControls
 {
+    /// <summary>
+    /// The browser window
+    /// </summary>
     public class CUITe_BrowserWindow : BrowserWindow
     {
         public string sWindowTitle;
         private HtmlCustom mSlObjectContainer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CUITe_BrowserWindow"/> class.
+        /// </summary>
         public CUITe_BrowserWindow()
             : this(null)
         {
             
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CUITe_BrowserWindow"/> class.
+        /// </summary>
+        /// <param name="title">The title.</param>
         public CUITe_BrowserWindow(string title)
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
+            this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
+
             SetWindowTitle(title);
+        }
+
+        public static IBrowser GetCurrentBrowser()
+        {
+            InternetExplorer ie = new InternetExplorer();
+
+            string currentBrowserName = BrowserWindow.CurrentBrowser;
+
+            if (currentBrowserName == null)
+            {
+                //default browser
+                return ie;
+            }
+
+            List<IBrowser> supportedBrowsers = new List<IBrowser>()
+            {
+                ie,
+                new Firefox(),
+                new Chrome()
+            };
+
+            IBrowser currentBrowser = supportedBrowsers.SingleOrDefault(x => currentBrowserName.StartsWith(x.Name, StringComparison.OrdinalIgnoreCase));
+
+            if (currentBrowser == null)
+            {
+                //default browser
+                return ie;
+            }
+
+            currentBrowser.Name = currentBrowserName;
+
+            return currentBrowser;
         }
 
         /// <summary>
@@ -41,8 +86,11 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>The CUITe_BrowserWindow that matches the title</returns>
         public static new CUITe_BrowserWindow Launch(string url, string title)
         {
-            BrowserWindow.Launch(new Uri(url));
-            return new CUITe_BrowserWindow(title);
+            CUITe_BrowserWindow browserWindow = new CUITe_BrowserWindow();
+
+            browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+
+            return browserWindow;
         }
 
         /// <summary>
@@ -54,8 +102,13 @@ namespace CUITe.Controls.HtmlControls
         public static T Launch<T>(string url)
             where T : CUITe_BrowserWindow
         {
-            BrowserWindow.Launch(new Uri(url));
-            return CUITe_BrowserWindow.GetBrowserWindow<T>();
+            BrowserWindow browserWindow = BrowserWindow.Launch(new Uri(url));
+
+            T instance = Activator.CreateInstance<T>();
+
+            instance.CopyFrom(browserWindow);
+
+            return instance;
         }
 
         /// <summary>
@@ -68,37 +121,15 @@ namespace CUITe.Controls.HtmlControls
             return (T)(object)ObjectRepositoryManager.GetInstance<T>();
         }
 
+        /// <summary>
+        /// Sets the window title.
+        /// </summary>
+        /// <param name="title">The title.</param>
         public void SetWindowTitle(string title)
         {
             this.WindowTitles.Clear();
             this.WindowTitles.Add(title);
             this.sWindowTitle = title;
-        }
-
-        public new void WaitForControlReady()
-        {
-            GetBrowserWindow().WaitForControlReady();
-        }
-
-        public new void WaitForControlReady(int milliSecondsTimeOut)
-        {
-            GetBrowserWindow().WaitForControlReady(milliSecondsTimeOut);
-        }
-
-        /// <summary>
-        /// Closes the CUITe_BrowserWindow instance.
-        /// </summary>
-        public new void Close()
-        {
-            BrowserWindow window = BrowserWindow.Locate(this.sWindowTitle);
-            window.Close();
-        }
-
-        #region internal methods
-
-        internal BrowserWindow GetBrowserWindow()
-        {
-            return BrowserWindow.Locate(this.sWindowTitle);
         }
 
         public HtmlCustom SlObjectContainer
@@ -115,53 +146,51 @@ namespace CUITe.Controls.HtmlControls
             }
         }
 
-        #endregion
-
+        /// <summary>
+        /// Navigates to the specified URL.
+        /// </summary>
+        /// <param name="sUrl">The s URL.</param>
         public void NavigateToUrl(string sUrl)
         {
             this.NavigateToUrl(new Uri(sUrl));
         }
 
         /// <summary>
-        /// Closes all IE instances.
+        /// Closes all instances of the current browser.
         /// </summary>
         public static void CloseAllBrowsers()
         {
-            Process[] pro_list = Process.GetProcessesByName("iexplore");
+            Process[] pro_list = Process.GetProcessesByName(GetCurrentBrowser().ProcessName);
             foreach (Process pro in pro_list)
             {
-                pro.Kill(); // Kill All Open IE's
+                //kill all open browsers
+                pro.Kill();
             }
         }
 
         /// <summary>
         /// Run/evaluate JavaScript code in the DOM context.
         /// </summary>
-        /// <param name="sCode">JavaScript code as string</param>
-        public void RunScript(string sCode)
+        /// <param name="code">The JavaScript code</param>
+        public void RunScript(string code)
         {
-            InternetExplorer IE = null;
-            ShellWindows shws = new ShellWindows();
-            foreach(InternetExplorer shwin in shws) 
-            {
-                if (shwin.HWND == GetBrowserWindow().WindowHandle.ToInt32())
-                {
-                    IE = shwin;
-                    break;
-                }
-            }
-            IE.Document.parentWindow.execScript(sCode);
+            InternetExplorer.RunScript(this, code);
         }
 
-        public static void Authenticate(string sUserName, string sPassword)
+        /// <summary>
+        /// Authenticates the user with the specified user name and password.
+        /// </summary>
+        /// <param name="userName">The user name.</param>
+        /// <param name="password">The password.</param>
+        public static void Authenticate(string userName, string password)
         {
             UIWindowsSecurityWindow winTemp2 = new CUITe.Controls.UIWindowsSecurityWindow();
             if (winTemp2.UIUseAnotherAccountText.Exists)
             {
                 Mouse.Click(winTemp2.UIUseAnotherAccountText);
             }
-            winTemp2.UIUsernameEdit.Text = sUserName;
-            winTemp2.UIPasswordEdit.Text = sPassword;
+            winTemp2.UIUsernameEdit.Text = userName;
+            winTemp2.UIPasswordEdit.Text = password;
             Mouse.Click(winTemp2.UIOKButton);
         }
 

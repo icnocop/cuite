@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using SHDocVw;
 
 namespace CUITe.Controls
 {
@@ -276,20 +276,14 @@ namespace CUITe.Controls
             this._control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
         }
 
-        protected void RunScript(string sCode)
+        /// <summary>
+        /// Run/evaluate JavaScript code in the DOM context.
+        /// </summary>
+        /// <param name="code">The JavaScript code.</param>
+        protected void RunScript(string code)
         {
-            BrowserWindow _bw = (BrowserWindow)this._control.TopParent;
-            InternetExplorer IE = null;
-            ShellWindows shws = new ShellWindows();
-            foreach (InternetExplorer shwin in shws)
-            {
-                if (shwin.HWND == _bw.WindowHandle.ToInt32())
-                {
-                    IE = shwin;
-                    break;
-                }
-            }
-            IE.Document.parentWindow.execScript(sCode);
+            BrowserWindow browserWindow = (BrowserWindow)this._control.TopParent;
+            InternetExplorer.RunScript(browserWindow, code);
         }
 
         #region implementing parent, sibling etc methods as virtual

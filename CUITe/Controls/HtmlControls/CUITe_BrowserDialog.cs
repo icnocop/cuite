@@ -4,10 +4,9 @@ namespace CUITe.Controls.HtmlControls
 {
     public class CUITe_BrowserDialog : CUITe_BrowserWindow
     {
-        public CUITe_BrowserDialog() 
+        public CUITe_BrowserDialog()
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = "Internet Explorer_TridentDlgFrame";
+            this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().DialogClassName;
             this.WindowTitles.Add(this.sWindowTitle);
         }
 

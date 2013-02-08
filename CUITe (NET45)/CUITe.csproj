@@ -78,6 +78,21 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\CUITe\Browsers\Browser.cs">
+      <Link>Browsers\Browser.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Browsers\Chrome.cs">
+      <Link>Browsers\Chrome.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Browsers\Firefox.cs">
+      <Link>Browsers\Firefox.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Browsers\IBrowser.cs">
+      <Link>Browsers\IBrowser.cs</Link>
+    </Compile>
+    <Compile Include="..\CUITe\Browsers\InternetExplorer.cs">
+      <Link>Browsers\InternetExplorer.cs</Link>
+    </Compile>
     <Compile Include="..\CUITe\Controls\CUITe_ControlBase.cs">
       <Link>Controls\CUITe_ControlBase.cs</Link>
     </Compile>
