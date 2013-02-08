@@ -81,12 +81,6 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CUITe\CUITe.csproj">
-      <Project>{947E624B-7124-43F8-A1E5-3ED62277E561}</Project>
-      <Name>CUITe</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\Sample_CUITeTestProject_WinControls\CalculatorTests.cs">
       <Link>CalculatorTests.cs</Link>
     </Compile>
@@ -118,6 +112,12 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CUITe %28NET45%29\CUITe.csproj">
+      <Project>{947e624b-7124-43f8-a1e5-3ed62277e561}</Project>
+      <Name>CUITe</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
