@@ -421,6 +421,37 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void PointAndClick_OnHtmlInputButton_Succeeds()
+        {
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input type=""submit"" value=""Log In"" onclick=""alert('onclick');""/>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlInputButton button = window.Get<CUITe_HtmlInputButton>("Value=Log In");
+
+            //Act
+            button.PointAndClick();
+
+            window.PerformDialogAction(BrowserDialogAction.Ok);
+
+            window.Close();
+
+            File.Delete(tempFilePath);
+        }
+
+        [TestMethod]
         public void HtmlFileInput_SetFile_Succeeds()
         {
             //Arrange
