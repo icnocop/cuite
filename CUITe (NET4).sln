@@ -1,0 +1,147 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E5BF3C3F-364A-43BA-B7C0-1CAC0A12EF4B}"
+	ProjectSection(SolutionItems) = preProject
+		build.cmd = build.cmd
+		build.proj = build.proj
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+		CUITe.snk = CUITe.snk
+		CUITe.vsmdi = CUITe.vsmdi
+		Local.testsettings = Local.testsettings
+		readme.txt = readme.txt
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe", "CUITe (NET4)\CUITe.csproj", "{947E624B-7124-43F8-A1E5-3ED62277E561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject", "Sample_CUITeTestProject (NET4)\Sample_CUITeTestProject.csproj", "{245897D4-96EC-430F-BF1A-9CA44FD06ECB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B38FF342-51EB-4338-AE14-D73AF81E5622} = {B38FF342-51EB-4338-AE14-D73AF81E5622}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "ControlTemplateExamples (NET4)\ControlTemplateExamples.csproj", "{F7C9F461-67A4-492C-96B1-6BC0D113F323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe_ObjectRecorder", "CUITe_ObjectRecorder (NET4)\CUITe_ObjectRecorder.csproj", "{76864E39-F4DD-4C23-B84D-B29521309D96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject_WinControls", "Sample_CUITeTestProject_WinControls (NET4)\Sample_CUITeTestProject_WinControls.csproj", "{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject_WpfControls", "Sample_CUITeTestProject_WpfControls (NET4)\Sample_CUITeTestProject_WpfControls.csproj", "{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSilverlightApplication", "TestSilverlightApplication (SL4)\TestSilverlightApplication.csproj", "{B38FF342-51EB-4338-AE14-D73AF81E5622}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs23
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CUITe\u0020(NET4)\\CUITe.csproj
+		SccProjectName1 = CUITe\u0020(NET4)
+		SccLocalPath1 = CUITe\u0020(NET4)
+		SccProjectUniqueName2 = Sample_CUITeTestProject\u0020(NET4)\\Sample_CUITeTestProject.csproj
+		SccProjectName2 = Sample_CUITeTestProject\u0020(NET4)
+		SccLocalPath2 = Sample_CUITeTestProject\u0020(NET4)
+		SccProjectUniqueName3 = ControlTemplateExamples\u0020(NET4)\\ControlTemplateExamples.csproj
+		SccProjectName3 = ControlTemplateExamples\u0020(NET4)
+		SccLocalPath3 = ControlTemplateExamples\u0020(NET4)
+		SccProjectUniqueName4 = CUITe_ObjectRecorder\u0020(NET4)\\CUITe_ObjectRecorder.csproj
+		SccProjectName4 = CUITe_ObjectRecorder\u0020(NET4)
+		SccLocalPath4 = CUITe_ObjectRecorder\u0020(NET4)
+		SccProjectUniqueName5 = Sample_CUITeTestProject_WinControls\u0020(NET4)\\Sample_CUITeTestProject_WinControls.csproj
+		SccProjectName5 = Sample_CUITeTestProject_WinControls\u0020(NET4)
+		SccLocalPath5 = Sample_CUITeTestProject_WinControls\u0020(NET4)
+		SccProjectUniqueName6 = Sample_CUITeTestProject_WpfControls\u0020(NET4)\\Sample_CUITeTestProject_WpfControls.csproj
+		SccProjectName6 = Sample_CUITeTestProject_WpfControls\u0020(NET4)
+		SccLocalPath6 = Sample_CUITeTestProject_WpfControls\u0020(NET4)
+		SccProjectUniqueName7 = TestSilverlightApplication\u0020(SL4)\\TestSilverlightApplication.csproj
+		SccProjectName7 = TestSilverlightApplication\u0020(SL4)
+		SccLocalPath7 = TestSilverlightApplication\u0020(SL4)
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CUITe.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{947E624B-7124-43F8-A1E5-3ED62277E561}.Release|x86.ActiveCfg = Release|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{245897D4-96EC-430F-BF1A-9CA44FD06ECB}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Debug|x86.ActiveCfg = Debug|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Debug|x86.Build.0 = Debug|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Release|Any CPU.ActiveCfg = Release|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Release|Mixed Platforms.Build.0 = Release|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Release|x86.ActiveCfg = Release|x86
+		{F7C9F461-67A4-492C-96B1-6BC0D113F323}.Release|x86.Build.0 = Release|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Debug|x86.ActiveCfg = Debug|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Debug|x86.Build.0 = Debug|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Release|Any CPU.ActiveCfg = Release|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Release|Mixed Platforms.Build.0 = Release|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Release|x86.ActiveCfg = Release|x86
+		{76864E39-F4DD-4C23-B84D-B29521309D96}.Release|x86.Build.0 = Release|x86
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{16A1EC43-CB5B-4C4A-ACFF-BB93AAF495F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8F811F38-8F6A-41A1-8AA7-4DFE4B7E3D15}.Release|x86.ActiveCfg = Release|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B38FF342-51EB-4338-AE14-D73AF81E5622}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

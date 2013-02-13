@@ -86,6 +86,8 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>The CUITe_BrowserWindow that matches the title</returns>
         public static new CUITe_BrowserWindow Launch(string url, string title)
         {
+            //TODO: High: title is not used
+
             CUITe_BrowserWindow browserWindow = new CUITe_BrowserWindow();
 
             browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));
