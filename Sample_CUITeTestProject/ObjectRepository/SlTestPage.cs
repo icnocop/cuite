@@ -5,7 +5,18 @@ namespace Sample_CUITeTestProject.ObjectRepository
 {
     public class SlTestPage : CUITe_BrowserWindow
     {
-        public new string sWindowTitle = "Home";
-        public CUITe_SlList oList = new CUITe_SlList("Name=listBox1");
+        public SlTestPage()
+            : base("Home")
+        {
+
+        }
+
+        public CUITe_SlList oList
+        {
+            get
+            {
+                return Get<CUITe_SlList>("AutomationId=listBox1");
+            }
+        }
     }
 }

@@ -36,6 +36,10 @@ namespace CUITe.Controls.HtmlControls
             SetWindowTitle(title);
         }
 
+        /// <summary>
+        /// Gets the current browser.
+        /// </summary>
+        /// <returns></returns>
         public static IBrowser GetCurrentBrowser()
         {
             InternetExplorer ie = new InternetExplorer();
@@ -86,11 +90,11 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>The CUITe_BrowserWindow that matches the title</returns>
         public static new CUITe_BrowserWindow Launch(string url, string title)
         {
-            //TODO: High: title is not used
-
             CUITe_BrowserWindow browserWindow = new CUITe_BrowserWindow();
 
-            browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+            browserWindow.CopyFrom(Launch(url));
+            
+            browserWindow.SetWindowTitle(title);
 
             return browserWindow;
         }
