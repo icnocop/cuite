@@ -11,7 +11,11 @@ namespace Sample_CUITeTestProject
 {
     [CodedUITest]
     #if NET40
-        [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
+        #if VS2010
+            [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
+        #else
+            [DeploymentItem(@"Sample_CUITeTestProject (NET4)\TestSilverlightApplication.xap")]
+        #endif
     #else
         [DeploymentItem(@"Sample_CUITeTestProject (NET45)\TestSilverlightApplication.xap")]
     #endif
