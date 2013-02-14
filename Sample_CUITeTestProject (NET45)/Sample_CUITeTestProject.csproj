@@ -110,6 +110,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Sample_CUITeTestProject %28NET4%29\CrossBrowserHtmlControlTests.cs">
+      <Link>CrossBrowserHtmlControlTests.cs</Link>
+    </Compile>
     <Compile Include="..\Sample_CUITeTestProject\BrowserWindowTests.cs">
       <Link>BrowserWindowTests.cs</Link>
     </Compile>
@@ -143,7 +146,6 @@
     <Compile Include="..\Sample_CUITeTestProject\SilverlightControlTests.cs">
       <Link>SilverlightControlTests.cs</Link>
     </Compile>
-    <Compile Include="CrossBrowserHtmlControlTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe %28NET45%29\CUITe.csproj">
