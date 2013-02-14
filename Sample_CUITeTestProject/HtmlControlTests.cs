@@ -892,6 +892,37 @@ namespace Sample_CUITeTestProject
 
             File.Delete(tempFilePath);
         }
+
+        [TestMethod]
+        public void Click_OnHtmlInputButtonWithEqualsSignInSearchParameterValue_Succeeds()
+        {
+            //Arrange
+            string tempFilePath = Path.GetTempFileName();
+
+            File.WriteAllText(tempFilePath,
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input type=""submit"" value=""="" onclick=""alert('onclick');""/>
+    </body>
+</html>");
+
+            CUITe_BrowserWindow.Launch(tempFilePath);
+            CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+            CUITe_HtmlInputButton button = window.Get<CUITe_HtmlInputButton>("Value==");
+
+            //Act
+            button.Click();
+
+            window.PerformDialogAction(BrowserDialogAction.Ok);
+
+            window.Close();
+
+            File.Delete(tempFilePath);
+        }
     }
 }
 

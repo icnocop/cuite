@@ -82,11 +82,13 @@ namespace CUITe.Controls
                 PropertyExpressionOperator compareOperator = PropertyExpressionOperator.EqualTo;
 
                 // If split on '=' does not work, then try '~'
-                string[] saKeyVal = sKeyValue.Split('=');
+                // Split at the first instance of '='. Other instances are considered part of the value.
+                string[] saKeyVal = sKeyValue.Split(new char[] { '=' }, 2);
                 if (saKeyVal.Length != 2)
                 {
                     // Otherwise try to split on '~'. If it works then compare type is Contains
-                    saKeyVal = sKeyValue.Split('~');
+                    // Split at the first instance of '~'. Other instances are considered part of the value.
+                    saKeyVal = sKeyValue.Split(new char[] { '~' }, 2);
                     if (saKeyVal.Length == 2)
                     {
                         compareOperator = PropertyExpressionOperator.Contains;
