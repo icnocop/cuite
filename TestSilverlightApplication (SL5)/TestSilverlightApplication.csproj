@@ -92,7 +92,6 @@
     <Reference Include="System.Windows.Controls" />
     <Reference Include="System.Windows.Controls.Navigation" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ApplicationDefinition Include="..\TestSilverlightApplication\App.xaml">
       <Link>App.xaml</Link>
@@ -149,6 +148,11 @@
     <None Include="..\TestSilverlightApplication\Properties\AppManifest.xml">
       <Link>Properties\AppManifest.xml</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\TestSilverlightApplication\Assets\Images\CUITe.jpg">
+      <Link>Assets\Images\CUITe.jpg</Link>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

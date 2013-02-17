@@ -54,7 +54,7 @@
         <dataInput:Label Height="23" HorizontalAlignment="Left" Margin="26,133,0,0" Name="label1" VerticalAlignment="Top" Width="164" Content="Enter your Name:" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="196,133,0,0" Name="textBox1" VerticalAlignment="Top" Width="419" AutomationProperties.LabeledBy="{Binding ElementName=TextBlock}" />
         <controls:DatePicker HorizontalAlignment="Left" Margin="196,162,0,0" Name="datePicker1" VerticalAlignment="Top" DataContext="{Binding}" Width="120" />
-        <Image Height="113" HorizontalAlignment="Left" Margin="25,192,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="270" Source="file:///c:/users/sureba/desktop/CUITe.jpg" />
+        <Image Height="113" HorizontalAlignment="Left" Margin="25,192,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="270" Source="/TestSilverlightApplication;component/Assets/Images/CUITe.jpg" />
         <ListBox Height="113" HorizontalAlignment="Left" Margin="301,192,0,0" Name="listBox1" VerticalAlignment="Top" Width="313">
             <ListBoxItem Content="QTP" />
             <ListBoxItem Content="SilkTest" />
