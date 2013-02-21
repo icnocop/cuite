@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using CUITe;
 using CUITe.Controls.HtmlControls;
+using CUITe.Controls.WinControls;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -412,6 +413,14 @@ namespace Sample_CUITeTestProject
 
             //Act
             button.Click();
+
+            if (CUITe_BrowserWindow.GetCurrentBrowser() is CUITe.Browsers.InternetExplorer)
+            {
+                //read JavaScript alert text
+                CUITe_WinWindow popup = new CUITe_WinWindow("ClassName=#32770;Name=Message from webpage");
+                CUITe_WinText text = popup.Get<CUITe_WinText>();
+                Assert.AreEqual("onclick", text.DisplayText);
+            }
 
             window.PerformDialogAction(BrowserDialogAction.Ok);
 

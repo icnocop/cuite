@@ -2,7 +2,7 @@
 
 namespace Sample_CUITeTestProject_WinControls.ObjectLibrary
 {
-    public class winCalculator :CUITe_WinWindow
+    public class winCalculator : CUITe_WinWindow
     {
         public winCalculator() : base("Name=Calculator") { }
 
