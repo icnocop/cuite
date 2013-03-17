@@ -149,6 +149,9 @@
     <Compile Include="..\Sample_CUITeTestProject\SilverlightControlTests.cs">
       <Link>SilverlightControlTests.cs</Link>
     </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\TempFile.cs">
+      <Link>TempFile.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe %28NET45%29\CUITe.csproj">

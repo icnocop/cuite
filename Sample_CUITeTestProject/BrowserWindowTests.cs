@@ -21,15 +21,24 @@ namespace Sample_CUITeTestProject
         public void FromProcess_GetWindowTitle_Succeeds()
         {
             //Arrange
-            CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>A Test</title>
+    </head>
+    <body/>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
 
-            //Act
-            BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
+                //Act
+                BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
 
-            //Assert
-            Assert.AreEqual("A Test - Windows Internet Explorer", bWin.Title);
+                //Assert
+                Assert.AreEqual("A Test - Windows Internet Explorer", bWin.Title);
 
-            bWin.Close();
+                bWin.Close();
+            }
         }
 
         [TestMethod]

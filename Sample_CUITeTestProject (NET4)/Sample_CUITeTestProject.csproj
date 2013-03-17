@@ -144,6 +144,9 @@
     <Compile Include="..\Sample_CUITeTestProject\SilverlightControlTests.cs">
       <Link>SilverlightControlTests.cs</Link>
     </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\TempFile.cs">
+      <Link>TempFile.cs</Link>
+    </Compile>
     <Compile Include="CrossBrowserHtmlControlTests.cs" />
   </ItemGroup>
   <ItemGroup>
