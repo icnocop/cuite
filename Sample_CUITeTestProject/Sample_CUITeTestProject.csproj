@@ -89,6 +89,7 @@
     <Compile Include="HtmlControlTests.cs" />
     <Compile Include="ObjectRepository\GoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="XMLFile1.xml" />
