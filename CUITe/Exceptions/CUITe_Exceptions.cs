@@ -10,7 +10,9 @@ namespace CUITe
 
     public class CUITe_InvalidSearchParameterFormat : Exception
     {
-        public CUITe_InvalidSearchParameterFormat(string searchParameters) : base(string.Format("Search Parameter Format is not valid -> '{0}', should be like 'sKey1=sValue1;sKey2=sValue2;'.", searchParameters)) { }
+        public CUITe_InvalidSearchParameterFormat(string searchParameters)
+            : base(string.Format("Search Parameter Format is not valid -> '{0}', should be like 'sKey1=sValue1;sKey2=sValue2;'.", searchParameters))
+        { }
     }
 
     public class CUITe_WrongPageExpectedException : Exception
@@ -28,6 +30,8 @@ namespace CUITe
 
     public class CUITe_InvalidTraversal : Exception
     {
-        public CUITe_InvalidTraversal(string sMessage) : base(string.Format("You are trying to traverse to an element/control which is not present in the tree: {0}", sMessage)) { }
+        public CUITe_InvalidTraversal(string sMessage)
+            : base(string.Format("You are trying to traverse to an element/control which is not present in the tree: {0}", sMessage))
+        { }
     }
 }

@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserWindowTests.cs" />
+    <Compile Include="DataManagerTests.cs" />
     <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
     <Compile Include="ObjectRepository\SlTestPage.cs" />
     <Compile Include="ObjectRepository\TestHtmlPage.cs" />

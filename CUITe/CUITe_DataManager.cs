@@ -1,78 +1,102 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
 using System.Reflection;
 using System.Xml;
+using CUITe.Exceptions;
 
 namespace CUITe
 {
+    /// <summary>
+    /// Data Manager
+    /// </summary>
     public class CUITe_DataManager
     {
-        private static XmlTextReader GetXmlTextReader(Assembly _assembly, Type type, string sFileName)
+        private static XmlTextReader GetXmlTextReader(Assembly assembly, Type type, string fileName)
         {
-            return new XmlTextReader(_assembly.GetManifestResourceStream(type, sFileName));
+            Stream stream = assembly.GetManifestResourceStream(type, fileName);
+            if (stream == null)
+            {
+                throw new ResourceNotFoundException(assembly.FullName, type.ToString(), fileName);
+            }
+
+            return new XmlTextReader(stream);
         }
 
-        private static Hashtable GetDataRow(Assembly _assembly, Type type, string sFileName, string sDataRowId, Hashtable ht)
+        private static Hashtable GetDataRow(Assembly assembly, Type type, string fileName, string dataRowId, Hashtable ht)
         {
-            XmlTextReader _xmlTextReader = GetXmlTextReader(_assembly, type, sFileName);
-            bool bStartParsing = false;
-            string sKey = string.Empty;
-            string sInherits = string.Empty;
-            bool bKeyAdded2Ht = false;
-            while (_xmlTextReader.Read())
+            XmlTextReader xmlTextReader = GetXmlTextReader(assembly, type, fileName);
+            bool startParsing = false;
+            string key = string.Empty;
+            string inherits = string.Empty;
+            bool keyAdded2Ht = false;
+            while (xmlTextReader.Read())
             {
-                if (_xmlTextReader.NodeType != XmlNodeType.Whitespace)
+                if (xmlTextReader.NodeType != XmlNodeType.Whitespace)
                 {
-                    if (_xmlTextReader.IsStartElement() && _xmlTextReader.Name.ToLower() == "datarow" && _xmlTextReader.GetAttribute("id") == sDataRowId)
+                    if (xmlTextReader.IsStartElement() && xmlTextReader.Name.ToLower() == "datarow" && xmlTextReader.GetAttribute("id") == dataRowId)
                     {
-                        if (_xmlTextReader.GetAttribute("inherits") != null)
+                        if (xmlTextReader.GetAttribute("inherits") != null)
                         {
-                            sInherits = _xmlTextReader.GetAttribute("inherits");
+                            inherits = xmlTextReader.GetAttribute("inherits");
                         }
-                        bStartParsing = true;
+
+                        startParsing = true;
                     }
 
-                    if (bStartParsing == true && _xmlTextReader.NodeType == XmlNodeType.EndElement && _xmlTextReader.Name.ToLower() == "datarow")
+                    if (startParsing == true && xmlTextReader.NodeType == XmlNodeType.EndElement && xmlTextReader.Name.ToLower() == "datarow")
                     {
-                        bStartParsing = false;
+                        startParsing = false;
                         break;
                     }
 
-                    if (bStartParsing == true && _xmlTextReader.Name.ToLower() != "datarow")
+                    if (startParsing == true && xmlTextReader.Name.ToLower() != "datarow")
                     {
-                        if (_xmlTextReader.IsStartElement())
+                        if (xmlTextReader.IsStartElement())
                         {
-                            sKey = _xmlTextReader.Name.ToLower();
-                            if (!ht.Contains(sKey))
+                            key = xmlTextReader.Name.ToLower();
+                            if (!ht.Contains(key))
                             {
-                                bKeyAdded2Ht = true;
-                                ht.Add(sKey, null);
+                                keyAdded2Ht = true;
+                                ht.Add(key, null);
                             }
                         }
-                        if (bKeyAdded2Ht == true && _xmlTextReader.NodeType == XmlNodeType.Text)
+                        
+                        if (keyAdded2Ht == true && xmlTextReader.NodeType == XmlNodeType.Text)
                         {
-                            bKeyAdded2Ht = false;
-                            ht[sKey] = _xmlTextReader.Value;
+                            keyAdded2Ht = false;
+                            ht[key] = xmlTextReader.Value;
                         }
-                        if (_xmlTextReader.NodeType == XmlNodeType.EndElement)
+
+                        if (xmlTextReader.NodeType == XmlNodeType.EndElement)
                         {
-                            sKey = string.Empty;
+                            key = string.Empty;
                         }
                     }
                 }
             }
-            _xmlTextReader.Close();
-            if (sInherits.Length > 0)
+
+            xmlTextReader.Close();
+            
+            if (inherits.Length > 0)
             {
-                ht = GetDataRow(_assembly, type, sFileName, sInherits, ht);
+                ht = GetDataRow(assembly, type, fileName, inherits, ht);
             }
+
             return ht;
         }
 
-        public static Hashtable GetDataRow(Type type, string sFileName, string sDataRowId)
+        /// <summary>
+        /// Gets the data row.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="dataRowId">The data row id.</param>
+        /// <returns></returns>
+        public static Hashtable GetDataRow(Type type, string fileName, string dataRowId)
         {
-            Assembly _assembly = Assembly.GetCallingAssembly();
-            return GetDataRow(_assembly, type, sFileName, sDataRowId, new Hashtable());
+            Assembly assembly = Assembly.GetCallingAssembly();
+            return GetDataRow(assembly, type, fileName, dataRowId, new Hashtable());
         }
     }
 }

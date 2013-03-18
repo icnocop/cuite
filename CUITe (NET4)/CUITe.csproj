@@ -522,6 +522,9 @@
     <Compile Include="..\CUITe\Exceptions\CUITe_Exceptions.cs">
       <Link>Exceptions\CUITe_Exceptions.cs</Link>
     </Compile>
+    <Compile Include="..\CUITe\Exceptions\ResourceNotFoundException.cs">
+      <Link>Exceptions\ResourceNotFoundException.cs</Link>
+    </Compile>
     <Compile Include="..\CUITe\ObjectRepositoryManager.cs">
       <Link>ObjectRepositoryManager.cs</Link>
     </Compile>

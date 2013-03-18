@@ -114,6 +114,9 @@
     <Compile Include="..\Sample_CUITeTestProject\BrowserWindowTests.cs">
       <Link>BrowserWindowTests.cs</Link>
     </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\DataManagerTests.cs">
+      <Link>DataManagerTests.cs</Link>
+    </Compile>
     <Compile Include="..\Sample_CUITeTestProject\HtmlControlTests.cs">
       <Link>HtmlControlTests.cs</Link>
     </Compile>
