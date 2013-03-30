@@ -125,8 +125,8 @@
     <Compile Include="..\Sample_CUITeTestProject\HtmlControlTests.cs">
       <Link>HtmlControlTests.cs</Link>
     </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\ASPNETComboBoxDemoFirstLook.cs">
-      <Link>ObjectRepository\ASPNETComboBoxDemoFirstLook.cs</Link>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs">
+      <Link>ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs</Link>
     </Compile>
     <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\DynamicBrowserWindowTitleRepository.cs">
       <Link>ObjectRepository\DynamicBrowserWindowTitleRepository.cs</Link>

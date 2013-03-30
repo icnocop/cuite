@@ -86,7 +86,7 @@
     <Compile Include="SilverlightControlTests.cs" />
     <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
     <Compile Include="ObjectRepository\GoogleSearch.cs" />
-    <Compile Include="ObjectRepository\ASPNETComboBoxDemoFirstLook.cs" />
+    <Compile Include="ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs" />
     <Compile Include="HtmlControlTests.cs" />
     <Compile Include="ObjectRepository\GoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

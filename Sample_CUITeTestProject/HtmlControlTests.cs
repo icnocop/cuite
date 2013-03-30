@@ -84,18 +84,21 @@ namespace Sample_CUITeTestProject
         //}
 
         [TestMethod]
-        public void TelerikComboBox_SelectItemByText_Succeeds()
+        public void SetText_OnTelerikASPNETComboBox_SelectsItemByText()
         {
-            ASPNETComboBoxDemoFirstLook pgPage = CUITe_BrowserWindow.Launch<ASPNETComboBoxDemoFirstLook>(
+            DemosOfTeleriksASPNETComboBoxControl window = CUITe_BrowserWindow.Launch<DemosOfTeleriksASPNETComboBoxControl>(
                 "http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
-            Thread.Sleep(5000);
-            pgPage.Refresh();
-            Thread.Sleep(5000);
-            pgPage.combo1.SelectItemByText("Tofu", 5000);
-            pgPage.combo2.SelectItemByText("Bloomfield Hills", 5000);
-            pgPage.combo3.SelectItemByText("Exotic Liquids", 5000);
-            pgPage.combo4.SelectItemByText("American Express", 5000);
-            pgPage.Close();
+            window.Product.SetText("Tofu");
+            Keyboard.SendKeys("{Tab}"); // close drop down menu
+            window.Region.SetText("Bloomfield Hills");
+            Keyboard.SendKeys("{Tab}"); // close drop down menu
+            window.Dealer.SetText("Exotic Liquids");
+            Keyboard.SendKeys("{Tab}"); // close drop down menu
+            window.PaymentMethod.Click(); // America Express
+            Keyboard.SendKeys("{Down}"); // MasterCard
+            Keyboard.SendKeys("{Down}"); // Visa
+            Keyboard.SendKeys("{Tab}"); // close drop down menu
+            window.Close();
         }
 
         [TestMethod]

@@ -1,8 +1,10 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using CUITe.Controls.HtmlControls;
 
 namespace CUITe.Controls.TelerikControls
 {
+    [Obsolete]
     public class Telerik_ComboBox
     {
         private string id;
