@@ -914,6 +914,8 @@ namespace Sample_CUITeTestProject
                 CUITe_HtmlComboBox comboBox = window.Get<CUITe_HtmlComboBox>("Id=selectId");
                 
                 //Assert
+                Assert.AreEqual(3, comboBox.ItemCount);
+                CollectionAssert.AreEqual(new string[] { "1", "2", "3" }, comboBox.Items);
                 Assert.AreEqual("1 2 3 ", comboBox.InnerText);
 
                 window.Close();

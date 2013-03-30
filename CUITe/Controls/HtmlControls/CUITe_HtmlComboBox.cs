@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
@@ -74,7 +75,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                return GetPropertyOfChildren<string>(HtmlControl.PropertyNames.InnerText);
+                //trying to call InnerText of children will cause errors if child items are disabled
+                return InnerText.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
             }
         }
 
