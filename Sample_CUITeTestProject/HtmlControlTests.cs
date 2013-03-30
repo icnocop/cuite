@@ -889,6 +889,36 @@ namespace Sample_CUITeTestProject
                 window.Close();
             }
         }
+
+        [TestMethod]
+        public void InnerText_OnHtmlComboBoxWithDisabledItems_Succeeds()
+        {
+            //Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <select id=""selectId"">
+            <option value=""1"">1</option>
+            <option value=""2"" disabled=""disabled"">2</option>
+            <option value=""3"" disabled=""disabled"">3</option>
+        </select>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                CUITe_HtmlComboBox comboBox = window.Get<CUITe_HtmlComboBox>("Id=selectId");
+                
+                //Assert
+                Assert.AreEqual("1 2 3 ", comboBox.InnerText);
+
+                window.Close();
+            }
+        }
     }
 }
 
