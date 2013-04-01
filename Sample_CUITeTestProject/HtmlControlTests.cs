@@ -84,6 +84,18 @@ namespace Sample_CUITeTestProject
         //}
 
         [TestMethod]
+        public void SelectItemByText_OnTelerikASPNETComboBox_Succeeds()
+        {
+            DemosOfTeleriksASPNETComboBoxControl pgPage = CUITe_BrowserWindow.Launch<DemosOfTeleriksASPNETComboBoxControl>(
+                "http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
+            pgPage.cbProduct.SelectItemByText("Tofu", 5000);
+            pgPage.cbRegion.SelectItemByText("Bloomfield Hills", 5000);
+            pgPage.cbDealer.SelectItemByText("Exotic Liquids", 5000);
+            pgPage.cbPaymentMethod.SelectItemByText("American Express", 5000);
+            pgPage.Close();
+        }
+
+        [TestMethod]
         public void SetText_OnTelerikASPNETComboBox_SelectsItemByText()
         {
             DemosOfTeleriksASPNETComboBoxControl window = CUITe_BrowserWindow.Launch<DemosOfTeleriksASPNETComboBoxControl>(

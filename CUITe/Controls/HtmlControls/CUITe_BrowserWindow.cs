@@ -219,6 +219,11 @@ namespace CUITe.Controls.HtmlControls
                 var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
                 control.Wrap(baseControl);
             }
+            else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
+            {
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
+                (control as TelerikControls.Telerik_ComboBox).SetWindow(this);
+            }
             else
             {
                 var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this });
