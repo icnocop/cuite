@@ -933,6 +933,40 @@ namespace Sample_CUITeTestProject
                 window.Close();
             }
         }
+
+        [TestMethod]
+        public void LabelFor_OnHtmlLabel_Succeeds()
+        {
+            //Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <form>
+          <label for=""male"">Male</label>
+          <input type=""radio"" name=""sex"" id=""male"" value=""male""><br>
+          <label for=""female"">Female</label>
+          <input type=""radio"" name=""sex"" id=""female"" value=""female""><br>
+          <label id=""other"" for=""other"">Other</label>
+          <input type=""radio"" name=""sex"" id=""other"" value=""other""><br>
+          <input type=""submit"" value=""Submit"">
+        </form> 
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                CUITe_HtmlLabel label = window.Get<CUITe_HtmlLabel>("id=other");
+
+                //Assert
+                Assert.AreEqual("other", label.LabelFor);
+
+                window.Close();
+            }
+        }
     }
 }
 
