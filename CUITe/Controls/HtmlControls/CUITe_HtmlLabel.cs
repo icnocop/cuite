@@ -7,12 +7,6 @@ namespace CUITe.Controls.HtmlControls
         public CUITe_HtmlLabel() : base() { }
         public CUITe_HtmlLabel(string searchParameters) : base(searchParameters) { }
 
-        public string GetLabelFor()
-        {
-            this._control.WaitForControlReady();
-            return this._control.LabelFor;
-        }
-
         /// <summary>
         /// Gets the name of the control that is associated with this label.
         /// </summary>
