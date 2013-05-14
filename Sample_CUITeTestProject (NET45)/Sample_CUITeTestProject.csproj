@@ -140,6 +140,18 @@
     <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleSearch.cs">
       <Link>ObjectRepository\GoogleSearch.cs</Link>
     </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.cs">
+      <Link>ObjectRepository\HtmlTestPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.Div1.cs">
+      <Link>ObjectRepository\HtmlTestPage.Div1.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.Div2.cs">
+      <Link>ObjectRepository\HtmlTestPage.Div2.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPageFeeds.cs">
+      <Link>ObjectRepository\HtmlTestPageFeeds.cs</Link>
+    </Compile>
     <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\SlTestPage.cs">
       <Link>ObjectRepository\SlTestPage.cs</Link>
     </Compile>

@@ -58,6 +58,7 @@ namespace Sample_CUITeTestProject
             window.Close();
         }
 
+        [Ignore] // TODO: use known html
         [TestMethod]
         [WorkItem(608)]
         public void GenericGet_WithHtmlControls_GetsControlsDynamically()
@@ -139,7 +140,7 @@ namespace Sample_CUITeTestProject
             //Assert
             string expected = "<BODY>";
 
-            Assert.AreEqual(expected, doc.UnWrap().GetProperty("OuterHtml").ToString().Substring("\r\n".Length, expected.Length));
+            Assert.AreEqual(expected, doc.UnWrap().GetProperty("OuterHtml").ToString().Substring(0, expected.Length), true);
 
             window.Close();
         }
@@ -150,6 +151,23 @@ namespace Sample_CUITeTestProject
             TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
 
             window.Close();
+        }
+
+        [TestMethod]
+        public void FromProcess_FindAllBrowserWindows_CanGetUriAndTitle()
+        {
+            Process[] processes = Process.GetProcessesByName("iexplore");
+            foreach (Process process in processes)
+            {
+                if (string.IsNullOrEmpty(process.MainWindowTitle))
+                {
+                    continue;
+                }
+
+                BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(process);
+
+                Trace.WriteLine(string.Format("Found browser window: {0} {1}", bWin.Uri, bWin.Title));
+            }
         }
     }
 }

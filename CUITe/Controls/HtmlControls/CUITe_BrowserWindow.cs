@@ -90,13 +90,9 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>The CUITe_BrowserWindow that matches the title</returns>
         public static new CUITe_BrowserWindow Launch(string url, string title)
         {
-            CUITe_BrowserWindow browserWindow = new CUITe_BrowserWindow();
+            BrowserWindow.Launch(new Uri(url));
 
-            browserWindow.CopyFrom(Launch(url));
-            
-            browserWindow.SetWindowTitle(title);
-
-            return browserWindow;
+            return new CUITe_BrowserWindow(title);
         }
 
         /// <summary>
@@ -108,13 +104,9 @@ namespace CUITe.Controls.HtmlControls
         public static T Launch<T>(string url)
             where T : CUITe_BrowserWindow
         {
-            BrowserWindow browserWindow = BrowserWindow.Launch(new Uri(url));
-
-            T instance = Activator.CreateInstance<T>();
-
-            instance.CopyFrom(browserWindow);
-
-            return instance;
+            BrowserWindow.Launch(new Uri(url));
+            
+            return CUITe_BrowserWindow.GetBrowserWindow<T>();
         }
 
         /// <summary>

@@ -7,12 +7,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "ins";
 
-        public CUITe_HtmlIns()
-            : base(_tagName)
-        {
-        }
-
-        public CUITe_HtmlIns(string searchParameters)
+        public CUITe_HtmlIns(string searchParameters = null)
             : base(_tagName, searchParameters)
         {
         }

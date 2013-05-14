@@ -7,12 +7,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "li";
 
-        public CUITe_HtmlListItem()
-            : base(_tagName)
-        {
-        }
-
-        public CUITe_HtmlListItem(string searchParameters)
+        public CUITe_HtmlListItem(string searchParameters = null)
             : base(_tagName, searchParameters)
         {
         }

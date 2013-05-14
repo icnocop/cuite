@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading;
+using System.Reflection;
 using CUITe;
+using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.WinControls;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
@@ -46,6 +48,7 @@ namespace Sample_CUITeTestProject
             //CUITe_BrowserWindow.CloseAllBrowsers();
         }
 
+        [Ignore] //TODO: use known html
         [TestMethod]
         public void HtmlEdit_SetText_Succeeds()
         {
@@ -117,6 +120,7 @@ namespace Sample_CUITeTestProject
         [WorkItem(588)]
         public void HtmlControl_WithInvalidSearchProperties_ThrowsInvalidSearchKeyException()
         {
+            //TODO: use known html
             try
             {
                 GoogleHomePageWithInvalidControlSearchProperties pgGHome = CUITe_BrowserWindow.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
@@ -172,6 +176,7 @@ namespace Sample_CUITeTestProject
             }
         }
 
+        [Ignore] //TODO: use known html
         [TestMethod]
         [WorkItem(589)]
         public void HtmlEdit_Wrap_Succeeds()
@@ -673,7 +678,7 @@ namespace Sample_CUITeTestProject
                 //Assert
                 Assert.IsTrue(button.Exists);
 
-                Assert.IsTrue(button.UnWrap().ControlDefinition.Contains("style=\"DISPLAY: none\""));
+                Assert.IsTrue(button.UnWrap().ControlDefinition.Contains("style=\"display: none;\""));
 
                 window.Close();
             }
@@ -686,13 +691,13 @@ namespace Sample_CUITeTestProject
 
             CUITe_HtmlUnorderedList list = bWin.Get<CUITe_HtmlUnorderedList>("id=unorderedList");
 
-            IEnumerable<CUITe_HtmlListItem> children = from i in list.GetChildren()
-                                                       select i as CUITe_HtmlListItem;
+            List<CUITe_HtmlListItem> children = (from i in list.GetChildren()
+                                                       select i as CUITe_HtmlListItem).ToList();
             Assert.AreEqual(3, children.Count());
 
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1 "));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2 "));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3 "));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1"));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2"));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3"));
 
             bWin.Close();
         }
@@ -702,13 +707,13 @@ namespace Sample_CUITeTestProject
         {
             TestHtmlPage bWin = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
 
-            IEnumerable<CUITe_HtmlListItem> children = from i in bWin.list.GetChildren()
-                                                       select i as CUITe_HtmlListItem;
+            List<CUITe_HtmlListItem> children = (from i in bWin.list.GetChildren()
+                                                 select i as CUITe_HtmlListItem).ToList();
             Assert.AreEqual(3, children.Count());
 
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1 "));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2 "));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3 "));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1"));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2"));
+            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3"));
 
             bWin.Close();
         }
@@ -963,6 +968,301 @@ namespace Sample_CUITeTestProject
 
                 //Assert
                 Assert.AreEqual("other", label.LabelFor);
+
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/440347
+        /// </summary>
+        [TestMethod]
+        public void ClickAllControlsOnPage_UsingReflection_Succeeds()
+        {
+            //Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <a href=""#"">test</a>
+        <button>test</button>
+<input type=""text"" value=""test""/>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                ICUITe_ControlBase a = (ICUITe_ControlBase)window.Get<CUITe_HtmlHyperlink>("InnerText=test");
+                a.Click();
+
+                List<Type> list = new List<Type>();
+                list.Add(typeof(CUITe_HtmlHyperlink));
+                list.Add(typeof(CUITe_HtmlButton));
+                list.Add(typeof(CUITe_HtmlEdit));
+
+                MethodInfo getMethodInfo = typeof(CUITe_BrowserWindow).GetMethod("Get");
+
+                foreach(Type t in list)
+                {
+                    MethodInfo test = getMethodInfo.MakeGenericMethod(t);
+                    
+                    ICUITe_ControlBase control;
+
+                    if ((t == typeof(CUITe_HtmlEdit)) || (t == typeof(CUITe_HtmlTextArea)))
+                    {
+                        control = (ICUITe_ControlBase)test.Invoke(window, new object[] { "Value=test" });
+                    }
+                    else
+                    {
+                        //window.Get<t>("InnerText=test");
+                        control = (ICUITe_ControlBase)test.Invoke(window, new object[] { "InnerText=test" });
+                    }
+
+                    //Act
+                    control.Click();
+
+                    if (control is CUITe_HtmlEdit)
+                    {
+                        (control as CUITe_HtmlEdit).SetText("text");
+                    }
+                    else if (control is CUITe_HtmlTextArea)
+                    {
+                        (control as CUITe_HtmlTextArea).SetText("text");
+                    }
+                }
+
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/440720
+        /// </summary>
+        [TestMethod]
+        public void SetText_UsingControlsDefinedInObjectRepositoryHierarchy_Succeeds()
+        {
+            //Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div id=""div1"" >
+            <div id=""div2"" >
+                <input type=""text"" id=""edit""/>
+            </div>
+        </div>
+    </body>
+</html>"))
+            {
+                HtmlTestPage window = CUITe_BrowserWindow.Launch<HtmlTestPage>(tempFile.FilePath);
+
+                //Act
+                window.div1.div2.edit.SetText("test");
+
+                //Assert
+                Assert.IsTrue(window.div1.div2.edit.Exists);
+                Assert.IsTrue(window.div1.div2.Exists);
+                Assert.IsTrue(window.div1.Exists);
+
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/440922
+        /// </summary>
+        [TestMethod]
+        public void GetChildren_UsingHyperlinks_CanFindHyperlinkByInnerText()
+        {
+            //Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div id=""div1"">
+            <a href=""#"">A - B - C</a>
+            <a href=""#"">A - F - E</a>
+            <a href=""#"">A - D - E</a>
+            <a href=""#"">Z - B - C</a>
+            <a href=""#"">Z - D - E</a>
+        </div>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                //Act
+                List<ICUITe_ControlBase> collection = window.Get<CUITe_HtmlDiv>("id=div1").GetChildren();
+                foreach (ICUITe_ControlBase control in collection)
+                {
+                    if (control is CUITe_HtmlHyperlink)
+                    {
+                        CUITe_HtmlHyperlink link = (CUITe_HtmlHyperlink)control;
+                        if (link.InnerText.StartsWith("A"))
+                        {
+                            Trace.WriteLine(string.Format("found: {0}", link.InnerText));
+                        }
+                    }
+                }
+
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/440742
+        /// </summary>
+        [TestMethod]
+        public void Launch_UsingNewInstanceOfABrowserWindow_CanUsePartialWindowTitle()
+        {
+            //Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test 1 2 3</title>
+    </head>
+    <body>
+        <button id=""buttonId"" >Button</button>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                //Act
+                CUITe_HtmlButton button = window.Get<CUITe_HtmlButton>("id=buttonId");
+
+                //Assert
+                Assert.AreEqual(button.InnerText, "Button");
+
+                Trace.WriteLine(window.Uri.ToString());
+
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/442631
+        /// </summary>
+        [TestMethod]
+        public void Launch_ObjectRepositoryTempHtmlFile_CanFindUnorderedListsByTagAndClassName()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div id=""feed_tabs"" class=""ui-tabs"">
+            <ul class=""dataFeedTab ui-tabs-nav"">
+                <li data-bind-iterate=""."" class=""ui-tabs-selected ui-state-active"">
+                    <a href=""#ui-tabs-1"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">Attack Correlation Details</a>
+                </li>
+                <li data-bind-iterate="""" iterate-limit="""" class="""">
+                    <a href=""#ui-tabs-2"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">Common Details</a>
+                </li>
+                <li data-bind-iterate="""" iterate-limit="" class="">
+                    <a href=""#ui-tabs-3"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">Exposure Details</a>
+                </li>
+                <li data-bind-iterate="" iterate-limit="" class=""><a href=""#ui-tabs-4"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">IP Reputation Feed</a>
+                </li>
+            </ul>
+          </div>
+    </body>
+</html>"))
+            {
+                // Act
+                HtmlTestPageFeeds window = CUITe_BrowserWindow.Launch<HtmlTestPageFeeds>(tempFile.FilePath);
+
+                HtmlCustom cus = new HtmlCustom(window.divFeedTabs.UnWrap());
+                cus.SearchProperties.Add(HtmlCustom.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
+                cus.SearchProperties.Add(HtmlCustom.PropertyNames.Class, "dataFeedTab ui-tabs-nav", PropertyExpressionOperator.EqualTo);
+
+                Assert.IsTrue(cus.Exists);
+
+                CUITe_HtmlCustom cusDataFeedTabsNav = window.Get<CUITe_HtmlCustom>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                Assert.IsTrue(cusDataFeedTabsNav.Exists);
+
+                // Assert
+                Assert.IsTrue(window.cusDataFeedTabsNav.Exists);
+                Assert.IsTrue(window.cusdatafeedtabsnav1.Exists);
+                Assert.IsTrue(window.cusDataFeedTabsNav2.Exists);
+                Assert.IsTrue(window.cusDataFeedTabsNav3.Exists);
+                
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/443094
+        /// </summary>
+        [TestMethod]
+        public void Launch_TempHtmlFile_CanFindHyperlinkByHref()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div class=""login"" style=""border: none;"">
+        <div class=""member_box"">
+            <span>APPLY FOR MEMBERSHIP</span> <a href=""/registration""> </a>
+        </div>
+    </body>
+</html>"))
+            {
+                // Act
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                // Assert
+                CUITe_HtmlHyperlink SignUpHyperLink = window.Get<CUITe_HtmlHyperlink>("href~registration");
+                Assert.IsTrue(SignUpHyperLink.Exists, "SignUp not found");
+                
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/443146
+        /// </summary>
+        [TestMethod]
+        public void Launch_TempHtmlFileWithInputWithMaxLength_CanSetTextWhichExceedsMaxLength()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input id=""input"" type=""text"" maxlength=10 />
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                CUITe_HtmlEdit input = window.Get<CUITe_HtmlEdit>("id=input");
+
+                // Act
+                string inputText = "12345678901";
+                string outputText = "1234567890";
+                Keyboard.SendKeys(input.UnWrap(), inputText);
+
+                // Assert
+                Assert.AreEqual(input.GetText(), outputText);
 
                 window.Close();
             }

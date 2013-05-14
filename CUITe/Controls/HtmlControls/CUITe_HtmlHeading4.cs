@@ -7,12 +7,7 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "h4";
 
-        public CUITe_HtmlHeading4()
-            : base(_tagName)
-        {
-        }
-
-        public CUITe_HtmlHeading4(string searchParameters)
+        public CUITe_HtmlHeading4(string searchParameters = null)
             : base(_tagName, searchParameters)
         {
         }

@@ -49,11 +49,6 @@ namespace CUITe.Controls
         public CUITe_ControlBase(string searchProperties) 
             : this()
         {
-            if (searchProperties == null)
-            {
-                throw new ArgumentNullException("searchProperties");
-            }
-
             // fill the UITestControl's search properties based on the search string provided
 
             // iterate through the class inheritance hierarchy to get a list of property names for the specific control
@@ -72,6 +67,11 @@ namespace CUITe.Controls
 
                 nestedType = nestedType.BaseType;
                 nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
+            }
+
+            if (searchProperties == null)
+            {
+                return;
             }
 
             // Split on groups of key/value pairs
