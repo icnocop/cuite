@@ -1267,6 +1267,84 @@ namespace Sample_CUITeTestProject
                 window.Close();
             }
         }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/439644
+        /// </summary>
+        [TestMethod]
+        public void GetHtmlDiv_ByClass_Succeeds()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div class=""button""><a href=""/main"">main text</a></div>
+        <div class=""button""><a href=""/about"">about text</a></div>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                // Act
+                CUITe_HtmlDiv div = window.Get<CUITe_HtmlDiv>("class=button");
+
+                CUITe_HtmlHyperlink about = window.Get<CUITe_HtmlHyperlink>("InnerText=about text;href~about");
+                CUITe_HtmlDiv div2 = about.Parent as CUITe_HtmlDiv;
+
+                // Assert
+                Assert.IsTrue(div.Exists);
+                Assert.AreEqual("main text", div.UnWrap().InnerText);
+
+                Assert.IsTrue(about.Exists);
+
+                Assert.IsTrue(div2.Exists);
+                Assert.AreEqual("about text", div2.UnWrap().InnerText);
+
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/443509
+        /// </summary>
+        [TestMethod]
+        public void GetHtmlRow_ById_Succeeds()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <table class=""cart"" cellspacing=""0"">
+          <tbody>
+            <tr id=""555002_gp2"">
+                <td>
+                    banana
+                </td>
+            </tr>
+          </tbody>
+        </table>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                // Act
+                CUITe_HtmlRow row = window.Get<CUITe_HtmlRow>("id=555002_gp2");
+
+                // Assert
+                Assert.IsTrue(row.Exists);
+
+                window.Close();
+            }
+        }
     }
 }
 

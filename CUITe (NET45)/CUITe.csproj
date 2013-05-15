@@ -195,6 +195,9 @@
     <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlRadioButton.cs">
       <Link>Controls\HtmlControls\CUITe_HtmlRadioButton.cs</Link>
     </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlRow.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlRow.cs</Link>
+    </Compile>
     <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlSpan.cs">
       <Link>Controls\HtmlControls\CUITe_HtmlSpan.cs</Link>
     </Compile>
