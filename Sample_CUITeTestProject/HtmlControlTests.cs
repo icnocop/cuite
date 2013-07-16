@@ -629,6 +629,17 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        [DeploymentItem(@"Sample_CUITeTestProject\iframe_test.html")]
+        [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
+        public void HtmlInputButton_ClickInCUITeIFrame_Succeeds()
+        {
+            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
+            CUITe_HtmlIFrame iFrame = bWin.Get<CUITe_HtmlIFrame>();
+            iFrame.Get<CUITe_HtmlInputButton>("Value=Log In").Click();
+            bWin.Close();
+        }
+
+        [TestMethod]
         [WorkItem(882)]
         public void HtmlInputButton_GetWithValueContainingWhitespace_Succeeds()
         {

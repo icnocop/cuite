@@ -77,6 +77,7 @@
     <Compile Include="Browsers\Browser.cs" />
     <Compile Include="Browsers\Firefox.cs" />
     <Compile Include="Browsers\IBrowser.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlIFrame.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlRow.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableDiv.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableSpan.cs" />

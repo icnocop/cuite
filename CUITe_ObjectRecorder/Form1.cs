@@ -168,6 +168,7 @@ namespace CUITe_ObjectRecorder
                 var objInQuestion;
                 var vTempCounter = 0;
                 /**
+                * http://www.javascripttoolbox.com/lib/objectposition/source.php
                 * Copyright (c)2005-2009 Matt Kruse (javascripttoolbox.com)
                 *
                 * Permission is hereby granted, free of charge, to any person obtaining

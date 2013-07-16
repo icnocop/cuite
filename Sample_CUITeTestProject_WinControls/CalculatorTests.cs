@@ -90,7 +90,7 @@ namespace Sample_CUITeTestProject_WinControls
             mainWindow.SetFocus();
 
             //Act
-			
+            
             //change to scientific view
             mainWindow.miView.Click();
             mainWindow.miScientific.Click();

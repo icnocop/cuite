@@ -274,6 +274,10 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new CUITe_HtmlTextArea();
             }
+            else if (control.GetType() == typeof(HtmlIFrame))
+            {
+                _con = new CUITe_HtmlIFrame();
+            }
             else if (control.GetType() == typeof(HtmlCustom))
             {
                 switch (control.TagName.ToLower())

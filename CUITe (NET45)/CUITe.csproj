@@ -165,6 +165,9 @@
     <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlHyperlink.cs">
       <Link>Controls\HtmlControls\CUITe_HtmlHyperlink.cs</Link>
     </Compile>
+    <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlIFrame.cs">
+      <Link>Controls\HtmlControls\CUITe_HtmlIFrame.cs</Link>
+    </Compile>
     <Compile Include="..\CUITe\Controls\HtmlControls\CUITe_HtmlImage.cs">
       <Link>Controls\HtmlControls\CUITe_HtmlImage.cs</Link>
     </Compile>

@@ -53,7 +53,7 @@ namespace Sample_CUITeTestProject
             CUITe_SlEdit oEdit = b.Get<CUITe_SlEdit>("AutomationId=textBox1");
             oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
             CUITe_SlDatePicker dp = b.Get<CUITe_SlDatePicker>("AutomationId=datePicker1");
-            dp.UnWrap().SelectedDateAsString = "11-May-2011";
+            dp.UnWrap().SelectedDate = new DateTime(2011, 5, 11);
             b.Close();
         }
 
