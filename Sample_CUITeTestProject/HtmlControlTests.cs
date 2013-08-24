@@ -1356,6 +1356,32 @@ namespace Sample_CUITeTestProject
                 window.Close();
             }
         }
+
+        [TestMethod]
+        public void Enabled_OnDisabledHtmlInputButton_ReturnsFalse()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input name=""inputName"" type=""submit"" value=""Click here"" disabled=""disabled"" />
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                CUITe_HtmlInputButton button = window.Get<CUITe_HtmlInputButton>("Value=Click here");
+
+                // Act and Assert
+                Assert.IsFalse(button.Enabled);
+
+                window.Close();
+            }
+        }
     }
 }
 
