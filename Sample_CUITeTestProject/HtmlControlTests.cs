@@ -1382,6 +1382,64 @@ namespace Sample_CUITeTestProject
                 window.Close();
             }
         }
+
+        [TestMethod]
+        public void Get_UsingMultipleValuesOfClassAttributeWithContainsOperatorOfHtmlSpan_ReturnsTheSpecificElementWithAllSpecifiedClassValues()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <span name=""span1"" class=""class1"" />
+        <span name=""span2"" class=""class1 class4"" />
+        <span name=""span3"" class=""class1 class2 class3"" />
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                CUITe_HtmlSpan span3 = window.Get<CUITe_HtmlSpan>("Class~class1;Class~class2");
+
+                // Act and Assert
+                Assert.AreEqual("span3", span3.UnWrap().Name);
+
+                window.Close();
+            }
+        }
+
+        [TestMethod]
+        public void GetSelectedValue_OfRadioButton_Succeeds()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <input type=""radio"" name=""radio:tab1:gender.type.male"" value=""male"" checked=checked>Male</input><br/>
+        <input type=""radio"" name=""radio:tab1:gender.type.female"" value=""female"">Female</input><br/>
+        <input type=""radio"" name=""radio:tab1:gender.type.other"" value=""other"">Other</input><br/>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                // Act
+                CUITe_HtmlRadioButton genderTypeMale = window.Get<CUITe_HtmlRadioButton>("Name=radio:tab1:gender.type.male");
+
+                // Assert
+                Assert.IsTrue(genderTypeMale.IsSelected);
+                Assert.AreEqual("male", genderTypeMale.ValueAttribute);
+
+                window.Close();
+            }
+        }
     }
 }
 
