@@ -35,7 +35,7 @@ namespace Sample_CUITeTestProject
                 BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
 
                 //Assert
-                Assert.AreEqual("A Test - Windows Internet Explorer", bWin.Title);
+                Assert.IsTrue(bWin.Title.Contains("A Test"), bWin.Title);
 
                 bWin.Close();
             }
@@ -47,13 +47,12 @@ namespace Sample_CUITeTestProject
             //Arrange
             string url = CurrentDirectory + "/TestHtmlPage.html";
             string windowTitle = "A Test";
-            string fullWindowTitle = string.Format("{0} - Windows Internet Explorer", windowTitle);
 
             //Act
             TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(url);
 
             //Assert
-            Assert.AreEqual(fullWindowTitle, window.Title);
+            Assert.IsTrue(window.Title.Contains(windowTitle), window.Title);
 
             window.Close();
         }
@@ -77,7 +76,6 @@ namespace Sample_CUITeTestProject
         public void GetBrowserWindow_WithDynamicWindowTitle_CanGetNewWindowTitle()
         {
             string page1GenericWindowTitle = "window title 1";
-            string page1FullWindowTitle = "window title 1 - Windows Internet Explorer";
 
             //Arrange
             DynamicBrowserWindowTitleRepository home = CUITe_BrowserWindow.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
@@ -88,7 +86,7 @@ namespace Sample_CUITeTestProject
             DynamicBrowserWindowTitleRepository page1 = CUITe_DynamicBrowserWindow.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page1GenericWindowTitle);
 
             //Assert
-            Assert.AreEqual(page1FullWindowTitle, page1.Title);
+            Assert.IsTrue(page1.Title.Contains(page1GenericWindowTitle), page1.Title);
 
             page1.Close();
         }
@@ -100,9 +98,7 @@ namespace Sample_CUITeTestProject
             //Arrange
             string page2GenericWindowTitle = "window title 2";
             string page2DynamicGenericWindowTitle = "the window title changed";
-            string page2DynamicFullWindowTitle = "the window title changed - Windows Internet Explorer";
             string homePageGenericWindowTitle = "Clicking the buttons changes the window title";
-            string homePageFullWindowTitle = "Clicking the buttons changes the window title - Windows Internet Explorer";
 
             DynamicBrowserWindowTitleRepository home = CUITe_BrowserWindow.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
 
@@ -113,7 +109,7 @@ namespace Sample_CUITeTestProject
             page2.btnChangeWindowTitle.Click();
 
             //Checkpoint
-            Assert.AreEqual(page2DynamicFullWindowTitle, page2.Title);
+            Assert.IsTrue(page2.Title.Contains(page2DynamicGenericWindowTitle), page2.Title);
 
             //Act
             page2 = CUITe_DynamicBrowserWindow.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2DynamicGenericWindowTitle);
@@ -123,7 +119,7 @@ namespace Sample_CUITeTestProject
             page2.SetWindowTitle(homePageGenericWindowTitle);
 
             //Assert
-            Assert.AreEqual(homePageFullWindowTitle, page2.Title);
+            Assert.IsTrue(page2.Title.Contains(homePageGenericWindowTitle), page2.Title);
 
             page2.Close();
         }

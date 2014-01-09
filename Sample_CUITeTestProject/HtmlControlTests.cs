@@ -61,9 +61,20 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
+        public void DataManager_GetDataRowUsingEmbeddedResourceFromTypeAsString_Succeeds()
+        {
+            AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type.GetType("Sample_CUITeTestProject.HtmlControlTests"));
+        }
+
+        [TestMethod]
         public void DataManager_GetDataRowUsingEmbeddedResource_Succeeds()
         {
-            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(Type.GetType("Sample_CUITeTestProject.HtmlControlTests"), "XMLFile1.xml", "tc2");
+            AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(typeof(HtmlControlTests));
+        }
+
+        private void AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type type)
+        {
+            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(type, "XMLFile1.xml", "tc2");
             Assert.AreEqual("test", ht["test"]);
             Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
             Assert.AreEqual("Suresh", ht["firstname"]);
@@ -775,13 +786,15 @@ namespace Sample_CUITeTestProject
     </body>
 </html>"))
             {
-                CUITe_BrowserWindow.Launch(tempFile.FilePath);
-                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+                CUITe_BrowserWindow window = CUITe_BrowserWindow.Launch(tempFile.FilePath, "test");
 
                 CUITe_HtmlComboBox comboBox = window.Get<CUITe_HtmlComboBox>("Id=selectId");
 
+                comboBox.SetFocus();
+
                 //Act
-                comboBox.SelectItem("Banana");
+                // select item "Banana"
+                Keyboard.SendKeys(comboBox.UnWrap(), "{DOWN}");
 
                 window.PerformDialogAction(BrowserDialogAction.Ok);
 
@@ -821,9 +834,9 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        public void SetText_OnHtmlEditWithOverlappedDiv_Succeeds()
+        public void GetHtmlControl_OnHtml5Control_Succeeds()
         {
-            //Arrange
+            // Arrange
             using (TempFile tempFile = new TempFile(
 @"<html>
     <head>
@@ -842,15 +855,19 @@ namespace Sample_CUITeTestProject
     </body>
 </html>"))
             {
-                CUITe_BrowserWindow.Launch(tempFile.FilePath);
-                CUITe_BrowserWindow bWin = new CUITe_BrowserWindow("test");
-                CUITe_HtmlEdit txtUserName = bWin.Get<CUITe_HtmlEdit>("id=i0116");
+                CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch(tempFile.FilePath, "test");
 
-                //Act
-                txtUserName.SetText("hello");
+                // Act
+                CUITe_HtmlCustom txtUserName = bWin.Get<CUITe_HtmlCustom>("input");
+                txtUserName.SetSearchProperties("id=i0116");
+
+                // Assert
+                Assert.IsTrue(txtUserName.Exists);
+
+                Keyboard.SendKeys(txtUserName.UnWrap(), "hello");
 
                 //Assert
-                Assert.AreEqual("hello", txtUserName.GetText());
+                Assert.AreEqual("hello", txtUserName.ValueAttribute);
 
                 bWin.Close();
             }
@@ -1184,7 +1201,7 @@ namespace Sample_CUITeTestProject
                 <li data-bind-iterate="""" iterate-limit="" class="">
                     <a href=""#ui-tabs-3"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">Exposure Details</a>
                 </li>
-                <li data-bind-iterate="" iterate-limit="" class=""><a href=""#ui-tabs-4"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">IP Reputation Feed</a>
+                <li data-bind-iterate="""" iterate-limit="""" class=""""><a href=""#ui-tabs-4"" data-bind=""createTabLink"" data-bind-type=""function"" class=""JQtab"">IP Reputation Feed</a>
                 </li>
             </ul>
           </div>
@@ -1200,14 +1217,14 @@ namespace Sample_CUITeTestProject
 
                 Assert.IsTrue(cus.Exists);
 
-                CUITe_HtmlCustom cusDataFeedTabsNav = window.Get<CUITe_HtmlCustom>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                CUITe_HtmlCustom cusDataFeedTabsNav = window.Get<CUITe_HtmlCustom>("ul");
+                cusDataFeedTabsNav.SetSearchProperties("Class=dataFeedTab ui-tabs-nav");
                 Assert.IsTrue(cusDataFeedTabsNav.Exists);
 
                 // Assert
                 Assert.IsTrue(window.cusDataFeedTabsNav.Exists);
                 Assert.IsTrue(window.cusdatafeedtabsnav1.Exists);
                 Assert.IsTrue(window.cusDataFeedTabsNav2.Exists);
-                Assert.IsTrue(window.cusDataFeedTabsNav3.Exists);
                 
                 window.Close();
             }
@@ -1436,6 +1453,36 @@ namespace Sample_CUITeTestProject
                 // Assert
                 Assert.IsTrue(genderTypeMale.IsSelected);
                 Assert.AreEqual("male", genderTypeMale.ValueAttribute);
+
+                window.Close();
+            }
+        }
+
+        [TestMethod]
+        public void SetText_OnHtmlPassword_Succeeds()
+        {
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <div class=""row textbox"" id=""idDiv_PWD_PasswordTb"">
+            <div style=""width: 100%; position: relative;"">
+                <input name=""passwd"" id=""i0118"" aria-labelledby=""idDiv_PWD_PasswordExample"" type=""password"" autocomplete=""off"">
+                    <div class=""phholder"" style=""left: 0px; top: 0px; width: 100%; position: absolute; z-index: 5;"">
+                        <div class=""placeholder"" id=""idDiv_PWD_PasswordExample"" aria-hidden=""true"" style=""cursor: text;"">Password</div>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+
+                CUITe_HtmlPassword txtPwd = window.Get<CUITe_HtmlPassword>("id=i0118");
+                txtPwd.SetText("hello");
 
                 window.Close();
             }

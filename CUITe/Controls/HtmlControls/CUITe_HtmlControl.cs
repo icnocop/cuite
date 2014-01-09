@@ -5,6 +5,26 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
+    public class CUITe_HtmlControl : CUITe_ControlBase<HtmlControl>
+    {
+        public CUITe_HtmlControl(string tagName)
+            : base()
+        {
+            Initialize(tagName);
+        }
+
+        public CUITe_HtmlControl(string tagName, string searchParameters)
+            : base(searchParameters)
+        {
+            Initialize(tagName);
+        }
+
+        private void Initialize(string tagName)
+        {
+            this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
+        }
+    }
+
     /// <summary>
     /// Base class for all CUITe_Html controls, inherits from CUITe_ControlBase
     /// </summary>

@@ -16,15 +16,19 @@ namespace Sample_CUITeTestProject
         /// </value>
         public string FilePath { get; private set; }
 
+        public bool DeleteFileOnDispose { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TempFile"/> class.
         /// </summary>
         /// <param name="contents">The contents.</param>
         public TempFile(string contents)
         {
-            FilePath = Path.GetTempFileName();
+            FilePath = Path.GetTempFileName() + ".html";
 
             File.WriteAllText(FilePath, contents);
+
+            this.DeleteFileOnDispose = true;
         }
 
         /// <summary>
@@ -32,7 +36,10 @@ namespace Sample_CUITeTestProject
         /// </summary>
         public void Dispose()
         {
-            File.Delete(FilePath);
+            if (this.DeleteFileOnDispose)
+            {
+                File.Delete(FilePath);
+            }
         }
     }
 }

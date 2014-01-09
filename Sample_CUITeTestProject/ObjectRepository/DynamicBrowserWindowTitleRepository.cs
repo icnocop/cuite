@@ -16,9 +16,36 @@ namespace Sample_CUITeTestProject.ObjectRepository
 
         }
 
-        public CUITe_HtmlButton btnGoToHomePage = new CUITe_HtmlButton("id=Home");
-        public CUITe_HtmlButton btnGoToPage1 = new CUITe_HtmlButton("id=1");
-        public CUITe_HtmlButton btnGoToPage2 = new CUITe_HtmlButton("id=2");
-        public CUITe_HtmlButton btnChangeWindowTitle = new CUITe_HtmlButton("id=Change Window Title");
+        public CUITe_HtmlButton btnGoToHomePage
+        {
+            get
+            {
+                return this.Get<CUITe_HtmlButton>("id=Home");
+            }
+        }
+
+        public CUITe_HtmlButton btnGoToPage1
+        {
+            get
+            {
+                return this.Get<CUITe_HtmlButton>("id=1");
+            }
+        }
+
+        public CUITe_HtmlButton btnGoToPage2
+        {
+            get
+            {
+                return this.Get<CUITe_HtmlButton>("id=2");
+            }
+        }
+
+        public CUITe_HtmlButton btnChangeWindowTitle
+        {
+            get
+            {
+                return this.Get<CUITe_HtmlButton>("id=Change Window Title");
+            }
+        }
     }
 }

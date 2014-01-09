@@ -17,7 +17,7 @@ namespace CUITe.Controls.HtmlControls
             Initialize(tagName);
         }
 
-        private void Initialize(string tagName)
+        public void Initialize(string tagName)
         {
             this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
         }

@@ -13,7 +13,9 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.divFeedTabs.Get<CUITe_HtmlCustom>("Class=dataFeedTab ui-tabs-nav");
+                CUITe_HtmlCustom ul = this.divFeedTabs.Get<CUITe_HtmlCustom>("ul");
+                ul.SetSearchProperties("Class=dataFeedTab ui-tabs-nav");
+                return ul;
             }
         }
 
@@ -37,15 +39,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return (this.divFeedTabs.Get<CUITe_HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul"));
-            }
-        }
-
-        public CUITe_HtmlCustom cusDataFeedTabsNav3
-        {
-            get
-            {
-                return this.divFeedTabs.Get<CUITe_HtmlCustom>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                return this.divFeedTabs.Get<CUITe_HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
             }
         }
     }

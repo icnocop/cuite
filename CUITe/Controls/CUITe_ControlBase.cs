@@ -46,8 +46,13 @@ namespace CUITe.Controls
             this.SearchProperties = new PropertyExpressionCollection();
         }
 
-        public CUITe_ControlBase(string searchProperties) 
+        public CUITe_ControlBase(string searchProperties)
             : this()
+        {
+            SetSearchProperties(searchProperties);
+        }
+
+        public void SetSearchProperties(string searchProperties)
         {
             // fill the UITestControl's search properties based on the search string provided
 
