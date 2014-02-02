@@ -1461,6 +1461,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SetText_OnHtmlPassword_Succeeds()
         {
+            // Arrange
             using (TempFile tempFile = new TempFile(
 @"<html>
     <head>
@@ -1482,8 +1483,48 @@ namespace Sample_CUITeTestProject
                 CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
 
                 CUITe_HtmlPassword txtPwd = window.Get<CUITe_HtmlPassword>("id=i0118");
+
+                // Act
                 txtPwd.SetText("hello");
 
+                // TODO: Assert
+                window.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://cuite.codeplex.com/discussions/522298
+        /// </summary>
+        [TestMethod]
+        public void Click_OnHtmlHyperlink_InTableWithEmptyCell_Succeeds()
+        {
+            // Arrange
+            using (TempFile tempFile = new TempFile(
+@"<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <table id=""tableId"">
+            <tr id=""row"">
+                <td></td>
+                <td><a href=""#"">Details</a></td>
+            </tr>
+        </table>
+    </body>
+</html>"))
+            {
+                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                CUITe_BrowserWindow window = new CUITe_BrowserWindow("test");
+                CUITe_HtmlTable table = window.Get<CUITe_HtmlTable>("Id=tableId");
+
+                CUITe_HtmlCell cell = table.GetCell(0, 1);
+                CUITe_HtmlHyperlink hyperlink = cell.Get<CUITe_HtmlHyperlink>();
+
+                // Act
+                hyperlink.Click();
+
+                // TODO: Assert
                 window.Close();
             }
         }

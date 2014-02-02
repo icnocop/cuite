@@ -134,7 +134,7 @@ namespace Sample_CUITeTestProject
             CUITe_HtmlDocument doc = window.Get<CUITe_HtmlDocument>();
 
             //Assert
-            string expected = "<BODY>";
+            const string expected = "<body>";
 
             Assert.AreEqual(expected, doc.UnWrap().GetProperty("OuterHtml").ToString().Substring(0, expected.Length), true);
 

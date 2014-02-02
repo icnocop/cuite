@@ -17,9 +17,15 @@ namespace Sample_CUITeTestProject_WpfControls
         #if NET40
             #if VS2010
                 [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Debug")]
-            #else
+            #endif
+
+            #if VS2012
                 [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET4)\bin\Debug")]
-            #endif    
+            #endif
+
+            #if VS2013
+                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4 (VS2013)\bin\Debug")]
+            #endif
         #else
             [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET45)\bin\Debug")]
         #endif
@@ -27,8 +33,14 @@ namespace Sample_CUITeTestProject_WpfControls
         #if NET40
             #if VS2010
                 [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Release")]
-            #else
+            #endif
+
+            #if VS2012
                 [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET4)\bin\Release")]
+            #endif
+
+            #if VS2013
+                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4 (VS2013)\bin\Release")]
             #endif
         #else
             [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET45)\bin\Release")]

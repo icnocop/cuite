@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
@@ -6,6 +7,6 @@ namespace CUITe.Controls.HtmlControls
     {
         public CUITe_HtmlCell() : base() { }
         public CUITe_HtmlCell(string sSearchProperties) : base(sSearchProperties) { }
-        public CUITe_HtmlCell(HtmlControl control) : base(control) { }
+        public CUITe_HtmlCell(UITestControl control) : base(control) { }
     }
 }

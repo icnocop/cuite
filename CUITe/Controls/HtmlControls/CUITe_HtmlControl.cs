@@ -42,7 +42,7 @@ namespace CUITe.Controls.HtmlControls
         {
         }
 
-        public CUITe_HtmlControl(HtmlControl control)
+        public CUITe_HtmlControl(UITestControl control)
             : base()
         {
             this._control = (T)control;
@@ -121,7 +121,7 @@ namespace CUITe.Controls.HtmlControls
                 {
                     ret = WrapUtil((HtmlControl)this._control.GetParent());
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
                     throw new CUITe_InvalidTraversal(string.Format("({0}).Parent", this._control.GetType().Name));
                 }
@@ -192,7 +192,7 @@ namespace CUITe.Controls.HtmlControls
                 {
                     ret = WrapUtil((HtmlControl)this._control.GetChildren()[0]);
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
                     throw new CUITe_InvalidTraversal(string.Format("({0}).FirstChild", this._control.GetType().Name));
                 }

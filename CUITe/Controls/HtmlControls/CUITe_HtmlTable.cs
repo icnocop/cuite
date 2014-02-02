@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -228,10 +227,10 @@ namespace CUITe.Controls.HtmlControls
         private T GetCell<T>(int iRow, int iCol) where T : ICUITe_HtmlControl
         {
             this._control.WaitForControlReady();
-            HtmlControl htmlCell = null;
+            UITestControl htmlCell = null;
             int rowCount = -1;
 
-            foreach (HtmlControl control in this._control.Rows)
+            foreach (UITestControl row in this._control.Rows)
             {
                 //control could be of ControlType.RowHeader or ControlType.Row
 
@@ -243,7 +242,7 @@ namespace CUITe.Controls.HtmlControls
 
                 int colCount = -1;
 
-                foreach (HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+                foreach (UITestControl cell in row.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                 {
                     colCount++;
                     if (colCount != iCol)
@@ -262,7 +261,7 @@ namespace CUITe.Controls.HtmlControls
             }
 
             Type t = typeof(T);
-            ConstructorInfo ctor = t.GetConstructor(new Type[] { typeof(HtmlControl) });
+            ConstructorInfo ctor = t.GetConstructor(new Type[] { typeof(UITestControl) });
             return (T)ctor.Invoke(new object[] { htmlCell }); // call constructor
         }
 

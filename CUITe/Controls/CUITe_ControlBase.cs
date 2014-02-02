@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using CUITe.Browsers;
-using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -15,19 +14,10 @@ namespace CUITe.Controls
     /// </summary>
     public class CUITe_ControlBaseFactory
     {
-        public static T Create<T>(string sSearchProperties = null)
+        public static T Create<T>(string searchProperties)
             where T : ICUITe_ControlBase
         {
-            Type type = typeof(T);
-
-            if (sSearchProperties == null)
-            {
-                return (T)Activator.CreateInstance(type);
-            }
-            else
-            {
-                return (T)Activator.CreateInstance(type, new object[] { sSearchProperties });
-            }
+            return (T)Activator.CreateInstance(typeof(T), new object[] { searchProperties });
         }
     }
 
@@ -128,7 +118,7 @@ namespace CUITe.Controls
 
         public T1 Get<T1>() where T1 : ICUITe_ControlBase
         {
-            T1 control = CUITe_ControlBaseFactory.Create<T1>();
+            T1 control = Activator.CreateInstance<T1>();
 
             var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
 
@@ -175,7 +165,6 @@ namespace CUITe.Controls
         {
             this._control = control as T;
             this._control.SearchProperties.AddRange(this.SearchProperties);
-            this._control.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
 
         /// <summary>
