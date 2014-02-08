@@ -58,7 +58,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=11.0.0.0, Culture=neutral, PublicKeyToken=374b4c93160c098c, processorArchitecture=MSIL">
-      <HintPath>$(Program Files)\Common Files\microsoft shared\VSTT\11.0\UITestExtensionPackages\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+      <HintPath>..\Third Party\Microsoft\Visual Studio UI Test Plugin for Silverlight\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
