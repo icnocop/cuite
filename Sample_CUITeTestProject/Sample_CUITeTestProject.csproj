@@ -56,6 +56,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Third Party\Microsoft\Visual Studio 2010 Feature Pack 2\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
