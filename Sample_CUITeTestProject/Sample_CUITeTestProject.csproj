@@ -98,11 +98,19 @@
   <ItemGroup>
     <EmbeddedResource Include="XMLFile1.xml" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
     <Content Include="..\TestSilverlightApplication\Bin\Debug\TestSilverlightApplication.xap">
       <Link>TestSilverlightApplication.xap</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Release'">
+    <Content Include="..\TestSilverlightApplication\Bin\Release\TestSilverlightApplication.xap">
+      <Link>TestSilverlightApplication.xap</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DynamicBrowserWindowTitle.2.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
