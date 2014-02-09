@@ -109,13 +109,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <Content Include="..\TestSilverlightApplication (SL5)\Bin\Debug\TestSilverlightApplication.xap">
+    <Content Include="..\TestSilverlightApplication (SL4)\Bin\Debug\TestSilverlightApplication.xap">
       <Link>TestSilverlightApplication.xap</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <Content Include="..\TestSilverlightApplication (SL5)\Bin\Release\TestSilverlightApplication.xap">
+    <Content Include="..\TestSilverlightApplication (SL4)\Bin\Release\TestSilverlightApplication.xap">
       <Link>TestSilverlightApplication.xap</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
