@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sample_CUITeTestProject</RootNamespace>
+    <AssemblyName>Sample_CUITeTestProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>True</IsCodedUITest>
+    <TestProjectType>CodedUITest</TestProjectType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CassiniDev4-lib">
+      <HintPath>..\Third Party\CassiniDev 3.5.1.8-4.1.0.8 release\CassiniDev4-lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Sample_CUITeTestProject %28NET4%29\CrossBrowserHtmlControlTests.cs">
+      <Link>CrossBrowserHtmlControlTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\BrowserWindowTests.cs">
+      <Link>BrowserWindowTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\DataManagerTests.cs">
+      <Link>DataManagerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\HtmlControlTests.cs">
+      <Link>HtmlControlTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs">
+      <Link>ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\DynamicBrowserWindowTitleRepository.cs">
+      <Link>ObjectRepository\DynamicBrowserWindowTitleRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleHomePage.cs">
+      <Link>ObjectRepository\GoogleHomePage.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs">
+      <Link>ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleSearch.cs">
+      <Link>ObjectRepository\GoogleSearch.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.cs">
+      <Link>ObjectRepository\HtmlTestPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.Div1.cs">
+      <Link>ObjectRepository\HtmlTestPage.Div1.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.Div2.cs">
+      <Link>ObjectRepository\HtmlTestPage.Div2.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPageFeeds.cs">
+      <Link>ObjectRepository\HtmlTestPageFeeds.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\SlTestPage.cs">
+      <Link>ObjectRepository\SlTestPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\TestHtmlPage.cs">
+      <Link>ObjectRepository\TestHtmlPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\SilverlightControlTests.cs">
+      <Link>SilverlightControlTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Sample_CUITeTestProject\TempFile.cs">
+      <Link>TempFile.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Sample_CUITeTestProject\DynamicBrowserWindowTitle.1.html">
+      <Link>DynamicBrowserWindowTitle.1.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\DynamicBrowserWindowTitle.2.html">
+      <Link>DynamicBrowserWindowTitle.2.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\DynamicBrowserWindowTitle.html">
+      <Link>DynamicBrowserWindowTitle.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\iframe.html">
+      <Link>iframe.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\iframe_test.html">
+      <Link>iframe_test.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\TestHtmlPage.html">
+      <Link>TestHtmlPage.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\TestSilverlightApplication.html">
+      <Link>TestSilverlightApplication.html</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\TestSilverlightApplication.xap">
+      <Link>TestSilverlightApplication.xap</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\XMLFile1.xml">
+      <Link>XMLFile1.xml</Link>
+    </Content>
+    <Content Include="..\Sample_CUITeTestProject\XMLFile2.xml">
+      <Link>XMLFile2.xml</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CUITe for .NET v4.5 %28VS2013%29\CUITe.csproj">
+      <Project>{fe093159-2b72-438e-9c73-e3fbaeac5243}</Project>
+      <Name>CUITe</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' Or '$(VisualStudioVersion)' == '11.0') And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="UIAutomationTypes" />
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -95,6 +95,29 @@
       SourceFiles="@(FilesToCopy)"
       DestinationFolder=".\$(Configuration)\.NET v4 (VS2013)" />
 
+    <!-- CUITe for .NET v4.5 (VS2013) -->
+
+    <MSBuild
+      Projects=".\CUITe for .NET v4.5 (VS2013).sln"
+      Properties="Configuration=$(Configuration)"
+      Targets="$(Targets)"
+      BuildInParallel="$(BuildInParallel)" />
+
+    <ItemGroup>
+      <FilesToCopy Remove="@(FilesToCopy)" />
+      <FilesToCopy Include=".\CUITe for .NET v4.5 (VS2013)\bin\$(Configuration)\CUITe.dll" />
+      <FilesToCopy Include=".\CUITe for .NET v4.5 (VS2013)\bin\$(Configuration)\CUITe.pdb" />
+      <FilesToCopy Include=".\CUITe for .NET v4.5 (VS2013)\bin\$(Configuration)\CUITe.xml" />
+      <FilesToCopy Include=".\CUITe_ObjectRecorder for .NET v4.5 (VS2013)\bin\$(Configuration)\CUITe_ObjectRecorder.exe" />
+      <FilesToCopy Include=".\CUITe_ObjectRecorder for .NET v4.5 (VS2013)\bin\$(Configuration)\CUITe_ObjectRecorder.pdb" />
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(FilesToCopy)"
+      DestinationFolder=".\$(Configuration)\.NET v4.5 (VS2013)" />
+    
+    <!-- Zip -->
+
     <ItemGroup>
       <FilesToZip Remove="@(FilesToZip)" />
       <FilesToZip Include=".\$(Configuration)\**\*.*" />
@@ -126,6 +149,10 @@
     <Exec Command="&quot;$(MsTest12)&quot; /testcontainer:&quot;Sample_CUITeTestProject for .NET v4 (VS2013)\bin\$(Configuration)\Sample_CUITeTestProject.dll&quot;" />
     <Exec Command="&quot;$(MsTest12)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WinControls for .NET v4 (VS2013)\bin\$(Configuration)\Sample_CUITeTestProject_WinControls.dll&quot;" />
     <Exec Command="&quot;$(MsTest12)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WpfControls for .NET v4 (VS2013)\bin\$(Configuration)\Sample_CUITeTestProject_WpfControls.dll&quot;" />
+
+    <Exec Command="&quot;$(MsTest12)&quot; /testcontainer:&quot;Sample_CUITeTestProject for .NET v4.5 (VS2013)\bin\$(Configuration)\Sample_CUITeTestProject.dll&quot;" />
+    <Exec Command="&quot;$(MsTest12)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WinControls for .NET v4.5 (VS2013)\bin\$(Configuration)\Sample_CUITeTestProject_WinControls.dll&quot;" />
+    <Exec Command="&quot;$(MsTest12)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WpfControls for .NET v4.5 (VS2013)\bin\$(Configuration)\Sample_CUITeTestProject_WpfControls.dll&quot;" />
   </Target>
   
 </Project>
