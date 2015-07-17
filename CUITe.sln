@@ -31,33 +31,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "ControlTemplateExamples\ControlTemplateExamples.csproj", "{F7C9F461-67A4-492C-96B1-6BC0D113F323}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs23
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CUITe\\CUITe.csproj
-		SccProjectName1 = CUITe
-		SccLocalPath1 = CUITe
-		SccProjectUniqueName2 = CUITe_ObjectRecorder\\CUITe_ObjectRecorder.csproj
-		SccProjectName2 = CUITe_ObjectRecorder
-		SccLocalPath2 = CUITe_ObjectRecorder
-		SccProjectUniqueName3 = Sample_CUITeTestProject\\Sample_CUITeTestProject.csproj
-		SccProjectName3 = Sample_CUITeTestProject
-		SccLocalPath3 = Sample_CUITeTestProject
-		SccProjectUniqueName4 = TestSilverlightApplication\\TestSilverlightApplication.csproj
-		SccProjectName4 = TestSilverlightApplication
-		SccLocalPath4 = TestSilverlightApplication
-		SccProjectUniqueName5 = Sample_CUITeTestProject_WinControls\\Sample_CUITeTestProject_WinControls.csproj
-		SccProjectName5 = Sample_CUITeTestProject_WinControls
-		SccLocalPath5 = Sample_CUITeTestProject_WinControls
-		SccProjectUniqueName6 = Sample_CUITeTestProject_WpfControls\\Sample_CUITeTestProject_WpfControls.csproj
-		SccProjectName6 = Sample_CUITeTestProject_WpfControls
-		SccLocalPath6 = Sample_CUITeTestProject_WpfControls
-		SccProjectUniqueName7 = ControlTemplateExamples\\ControlTemplateExamples.csproj
-		SccProjectName7 = ControlTemplateExamples
-		SccLocalPath7 = ControlTemplateExamples
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CUITe.vsmdi
 	EndGlobalSection

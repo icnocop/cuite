@@ -31,33 +31,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSilverlightApplication", "TestSilverlightApplication (SL5)\TestSilverlightApplication.csproj", "{B38FF342-51EB-4338-AE14-D73AF81E5622}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs23
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CUITe\u0020(NET45)\\CUITe.csproj
-		SccProjectName1 = CUITe\u0020(NET45)
-		SccLocalPath1 = CUITe\u0020(NET45)
-		SccProjectUniqueName2 = Sample_CUITeTestProject\u0020(NET45)\\Sample_CUITeTestProject.csproj
-		SccProjectName2 = Sample_CUITeTestProject\u0020(NET45)
-		SccLocalPath2 = Sample_CUITeTestProject\u0020(NET45)
-		SccProjectUniqueName3 = ControlTemplateExamples\u0020(NET45)\\ControlTemplateExamples.csproj
-		SccProjectName3 = ControlTemplateExamples\u0020(NET45)
-		SccLocalPath3 = ControlTemplateExamples\u0020(NET45)
-		SccProjectUniqueName4 = CUITe_ObjectRecorder\u0020(NET45)\\CUITe_ObjectRecorder.csproj
-		SccProjectName4 = CUITe_ObjectRecorder\u0020(NET45)
-		SccLocalPath4 = CUITe_ObjectRecorder\u0020(NET45)
-		SccProjectUniqueName5 = Sample_CUITeTestProject_WinControls\u0020(NET45)\\Sample_CUITeTestProject_WinControls.csproj
-		SccProjectName5 = Sample_CUITeTestProject_WinControls\u0020(NET45)
-		SccLocalPath5 = Sample_CUITeTestProject_WinControls\u0020(NET45)
-		SccProjectUniqueName6 = Sample_CUITeTestProject_WpfControls\u0020(NET45)\\Sample_CUITeTestProject_WpfControls.csproj
-		SccProjectName6 = Sample_CUITeTestProject_WpfControls\u0020(NET45)
-		SccLocalPath6 = Sample_CUITeTestProject_WpfControls\u0020(NET45)
-		SccProjectUniqueName7 = TestSilverlightApplication\u0020(SL5)\\TestSilverlightApplication.csproj
-		SccProjectName7 = TestSilverlightApplication\u0020(SL5)
-		SccLocalPath7 = TestSilverlightApplication\u0020(SL5)
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CUITe.vsmdi
 	EndGlobalSection

@@ -30,33 +30,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSilverlightApplication", "TestSilverlightApplication (SL5)\TestSilverlightApplication.csproj", "{B38FF342-51EB-4338-AE14-D73AF81E5622}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs23
-		SccProjectUniqueName0 = TestSilverlightApplication\u0020(SL5)\\TestSilverlightApplication.csproj
-		SccProjectName0 = TestSilverlightApplication\u0020(SL5)
-		SccLocalPath0 = TestSilverlightApplication\u0020(SL5)
-		SccLocalPath1 = .
-		SccProjectUniqueName2 = CUITe\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)\\CUITe.csproj
-		SccProjectName2 = CUITe\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccLocalPath2 = CUITe\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccProjectUniqueName3 = ControlTemplateExamples\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)\\ControlTemplateExamples.csproj
-		SccProjectName3 = ControlTemplateExamples\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccLocalPath3 = ControlTemplateExamples\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccProjectUniqueName4 = CUITe_ObjectRecorder\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)\\CUITe_ObjectRecorder.csproj
-		SccProjectName4 = CUITe_ObjectRecorder\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccLocalPath4 = CUITe_ObjectRecorder\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccProjectUniqueName5 = Sample_CUITeTestProject\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)\\Sample_CUITeTestProject.csproj
-		SccProjectName5 = Sample_CUITeTestProject\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccLocalPath5 = Sample_CUITeTestProject\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccProjectUniqueName6 = Sample_CUITeTestProject_WinControls\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)\\Sample_CUITeTestProject_WinControls.csproj
-		SccProjectName6 = Sample_CUITeTestProject_WinControls\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccLocalPath6 = Sample_CUITeTestProject_WinControls\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccProjectUniqueName7 = Sample_CUITeTestProject_WpfControls\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)\\Sample_CUITeTestProject_WpfControls.csproj
-		SccProjectName7 = Sample_CUITeTestProject_WpfControls\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-		SccLocalPath7 = Sample_CUITeTestProject_WpfControls\u0020for\u0020.NET\u0020v4.5\u0020(VS2013)
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms

@@ -27,30 +27,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "ControlTemplateExamples for .NET v4 (VS2013)\ControlTemplateExamples.csproj", "{F7C9F461-67A4-492C-96B1-6BC0D113F323}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs23
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CUITe\u0020for\u0020.NET\u0020v4\u0020(VS2013)\\CUITe.csproj
-		SccProjectName1 = CUITe\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccLocalPath1 = CUITe\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccProjectUniqueName2 = Sample_CUITeTestProject\u0020for\u0020.NET\u0020v4\u0020(VS2013)\\Sample_CUITeTestProject.csproj
-		SccProjectName2 = Sample_CUITeTestProject\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccLocalPath2 = Sample_CUITeTestProject\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccProjectUniqueName3 = Sample_CUITeTestProject_WinControls\u0020for\u0020.NET\u0020v4\u0020(VS2013)\\Sample_CUITeTestProject_WinControls.csproj
-		SccProjectName3 = Sample_CUITeTestProject_WinControls\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccLocalPath3 = Sample_CUITeTestProject_WinControls\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccProjectUniqueName4 = Sample_CUITeTestProject_WpfControls\u0020for\u0020.NET\u0020v4\u0020(VS2013)\\Sample_CUITeTestProject_WpfControls.csproj
-		SccProjectName4 = Sample_CUITeTestProject_WpfControls\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccLocalPath4 = Sample_CUITeTestProject_WpfControls\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccProjectUniqueName5 = CUITe_ObjectRecorder\u0020for\u0020.NET\u0020v4\u0020(VS2013)\\CUITe_ObjectRecorder.csproj
-		SccProjectName5 = CUITe_ObjectRecorder\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccLocalPath5 = CUITe_ObjectRecorder\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccProjectUniqueName6 = ControlTemplateExamples\u0020for\u0020.NET\u0020v4\u0020(VS2013)\\ControlTemplateExamples.csproj
-		SccProjectName6 = ControlTemplateExamples\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-		SccLocalPath6 = ControlTemplateExamples\u0020for\u0020.NET\u0020v4\u0020(VS2013)
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
