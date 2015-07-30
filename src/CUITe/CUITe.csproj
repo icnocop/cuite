@@ -229,9 +229,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\CUITe\images\CUITe.bmp">
-      <Link>images\CUITe.bmp</Link>
-    </Content>
     <Content Include="images\CUITe.bmp" />
   </ItemGroup>
   <ItemGroup />
