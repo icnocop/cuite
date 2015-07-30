@@ -59,209 +59,169 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ApplicationDefinition Include="..\ControlTemplateExamples\App.xaml">
-      <Link>App.xaml</Link>
+    <Resource Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="..\ControlTemplateExamples\MainWindow.xaml">
-      <Link>MainWindow.xaml</Link>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Page1.xaml">
-      <Link>Page1.xaml</Link>
+    <Page Include="Page1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Page2.xaml">
-      <Link>Page2.xaml</Link>
+    <Page Include="Page2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Properties\DesignTimeResources.xaml">
-      <Link>Properties\DesignTimeResources.xaml</Link>
+    <Page Include="Properties\DesignTimeResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Button.xaml">
-      <Link>Resources\Button.xaml</Link>
+    <Page Include="Resources\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Calendar.xaml">
-      <Link>Resources\Calendar.xaml</Link>
+    <Page Include="Resources\Calendar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\CheckBox.xaml">
-      <Link>Resources\CheckBox.xaml</Link>
+    <Page Include="Resources\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ComboBox.xaml">
-      <Link>Resources\ComboBox.xaml</Link>
+    <Page Include="Resources\ComboBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\DataGrid.xaml">
-      <Link>Resources\DataGrid.xaml</Link>
+    <Page Include="Resources\DataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\DatePicker.xaml">
-      <Link>Resources\DatePicker.xaml</Link>
+    <Page Include="Resources\DatePicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\DocumentViewer.xaml">
-      <Link>Resources\DocumentViewer.xaml</Link>
+    <Page Include="Resources\DocumentViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Expander.xaml">
-      <Link>Resources\Expander.xaml</Link>
+    <Page Include="Resources\Expander.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Frame.xaml">
-      <Link>Resources\Frame.xaml</Link>
+    <Page Include="Resources\Frame.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\GroupBox.xaml">
-      <Link>Resources\GroupBox.xaml</Link>
+    <Page Include="Resources\GroupBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Label.xaml">
-      <Link>Resources\Label.xaml</Link>
+    <Page Include="Resources\Label.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ListBox.xaml">
-      <Link>Resources\ListBox.xaml</Link>
+    <Page Include="Resources\ListBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ListView.xaml">
-      <Link>Resources\ListView.xaml</Link>
+    <Page Include="Resources\ListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Menu.xaml">
-      <Link>Resources\Menu.xaml</Link>
+    <Page Include="Resources\Menu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\NavigationWindow.xaml">
-      <Link>Resources\NavigationWindow.xaml</Link>
+    <Page Include="Resources\NavigationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ProgressBar.xaml">
-      <Link>Resources\ProgressBar.xaml</Link>
+    <Page Include="Resources\ProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\RadioButton.xaml">
-      <Link>Resources\RadioButton.xaml</Link>
+    <Page Include="Resources\RadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ResizeGrip.xaml">
-      <Link>Resources\ResizeGrip.xaml</Link>
+    <Page Include="Resources\ResizeGrip.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ScrollBar.xaml">
-      <Link>Resources\ScrollBar.xaml</Link>
+    <Page Include="Resources\ScrollBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ScrollViewer.xaml">
-      <Link>Resources\ScrollViewer.xaml</Link>
+    <Page Include="Resources\ScrollViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Separator.xaml">
-      <Link>Resources\Separator.xaml</Link>
+    <Page Include="Resources\Separator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Shared.xaml">
-      <Link>Resources\Shared.xaml</Link>
+    <Page Include="Resources\Shared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Slider.xaml">
-      <Link>Resources\Slider.xaml</Link>
+    <Page Include="Resources\Slider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\StatusBar.xaml">
-      <Link>Resources\StatusBar.xaml</Link>
+    <Page Include="Resources\StatusBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\TabControl.xaml">
-      <Link>Resources\TabControl.xaml</Link>
+    <Page Include="Resources\TabControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\TextBox.xaml">
-      <Link>Resources\TextBox.xaml</Link>
+    <Page Include="Resources\TextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ToolBar.xaml">
-      <Link>Resources\ToolBar.xaml</Link>
+    <Page Include="Resources\ToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\ToolTip.xaml">
-      <Link>Resources\ToolTip.xaml</Link>
+    <Page Include="Resources\ToolTip.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\TreeView.xaml">
-      <Link>Resources\TreeView.xaml</Link>
+    <Page Include="Resources\TreeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\Resources\Window.xaml">
-      <Link>Resources\Window.xaml</Link>
+    <Page Include="Resources\Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\TestNavigationWindow.xaml">
-      <Link>TestNavigationWindow.xaml</Link>
+    <Page Include="TestNavigationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\ControlTemplateExamples\TestWindow.xaml">
-      <Link>TestWindow.xaml</Link>
+    <Page Include="TestWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ControlTemplateExamples\MainWindow.xaml.cs">
-      <Link>MainWindow.xaml.cs</Link>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\ControlTemplateExamples\TestNavigationWindow.xaml.cs">
-      <Link>TestNavigationWindow.xaml.cs</Link>
+    <Compile Include="TestNavigationWindow.xaml.cs">
+      <DependentUpon>TestNavigationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\ControlTemplateExamples\TestWindow.xaml.cs">
-      <Link>TestWindow.xaml.cs</Link>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="..\ControlTemplateExamples\Readme.txt">
-      <Link>Readme.txt</Link>
-    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

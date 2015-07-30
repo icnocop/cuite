@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe", "CUITe\CUITe.csproj", "{FE093159-2B72-438E-9C73-E3FBAEAC5243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "ControlTemplateExamples for .NET v4.5 (VS2013)\ControlTemplateExamples.csproj", "{3526EEC4-E90B-4868-ACF9-A7D6498E8C15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "ControlTemplateExamples\ControlTemplateExamples.csproj", "{3526EEC4-E90B-4868-ACF9-A7D6498E8C15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe_ObjectRecorder", "CUITe_ObjectRecorder for .NET v4.5 (VS2013)\CUITe_ObjectRecorder.csproj", "{4CA5CDA2-0678-430B-9079-F11906B54070}"
 EndProject
