@@ -26,8 +26,11 @@ namespace Sample_CUITeTestProject_WpfControls
             #if VS2013
                 [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4 (VS2013)\bin\Debug")]
             #endif
-        #else
-            [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET45)\bin\Debug")]
+        #endif
+        #if NET45
+            #if VS2013
+                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4.5 (VS2013)\bin\x86\Debug")]
+            #endif
         #endif
     #else
         #if NET40
@@ -42,8 +45,11 @@ namespace Sample_CUITeTestProject_WpfControls
             #if VS2013
                 [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4 (VS2013)\bin\Release")]
             #endif
-        #else
-            [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET45)\bin\Release")]
+        #endif
+        #if NET45
+            #if VS2013
+                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4.5 (VS2013)\bin\x86\Release")]
+            #endif
         #endif
     #endif
     public class WpfControlTests
