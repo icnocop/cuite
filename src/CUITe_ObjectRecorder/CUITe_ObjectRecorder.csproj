@@ -44,7 +44,15 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Images\clear.gif" />
+    <None Include="Images\Copy.jpg" />
+    <None Include="Images\cuite_icon.ico" />
+    <None Include="Images\Delete.jpg" />
+    <None Include="Images\record.jpg" />
+    <None Include="Images\showcode.jpg" />
+    <None Include="Images\table.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
