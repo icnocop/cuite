@@ -56,21 +56,15 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CUITe for .NET v4.5 %28VS2013%29\CUITe.csproj">
+    <ProjectReference Include="..\CUITe\CUITe.csproj">
       <Project>{fe093159-2b72-438e-9c73-e3fbaeac5243}</Project>
       <Name>CUITe</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Sample_CUITeTestProject_WinControls\CalculatorTests.cs">
-      <Link>CalculatorTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject_WinControls\ObjectLibrary\winCalculator.cs">
-      <Link>ObjectLibrary\winCalculator.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject_WinControls\Properties\AssemblyInfo.cs">
-      <Link>Properties\AssemblyInfo.cs</Link>
-    </Compile>
+    <Compile Include="CalculatorTests.cs" />
+    <Compile Include="ObjectLibrary\winCalculator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
