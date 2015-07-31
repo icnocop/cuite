@@ -2,9 +2,9 @@
 
 namespace Sample_CUITeTestProject_WpfControls.ObjectLibrary
 {
-    public class winWpfControls : CUITe_WpfWindow
+    public class WinWpfControls : CUITe_WpfWindow
     {
-        public winWpfControls() : base("ClassName~ControlTemplateExamples.exe") { }
+        public WinWpfControls() : base("ClassName~ControlTemplateExamples.exe") { }
 
         public CUITe_WpfButton btnDefault { get { return Get<CUITe_WpfButton>("AutomationID=btnDefault"); } }
 

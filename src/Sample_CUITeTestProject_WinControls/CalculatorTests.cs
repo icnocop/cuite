@@ -15,7 +15,7 @@ namespace Sample_CUITeTestProject_WinControls
 
         private static string testProcess = "calc";
         private ApplicationUnderTest testApp;
-        private winCalculator mainWindow = new winCalculator();
+        private WinCalculator mainWindow = new WinCalculator();
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -65,7 +65,7 @@ namespace Sample_CUITeTestProject_WinControls
             }
 
             // Make sure the view is Standard
-            winCalculator mainWindow = new winCalculator();
+            WinCalculator mainWindow = new WinCalculator();
             if (!mainWindow.miStandard.Checked)
             {
                 mainWindow.miView.Click();

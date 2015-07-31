@@ -57,7 +57,7 @@ namespace Sample_CUITeTestProject_WpfControls
         private TestContext testContextInstance;
         private static string testProcess = "ControlTemplateExamples";
         private ApplicationUnderTest testApp;
-        private winWpfControls mainWindow = new winWpfControls();
+        private WinWpfControls mainWindow = new WinWpfControls();
 
         /// <summary>
         ///Gets or sets the test context which provides

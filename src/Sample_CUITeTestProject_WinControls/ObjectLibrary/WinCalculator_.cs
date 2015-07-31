@@ -2,9 +2,9 @@
 
 namespace Sample_CUITeTestProject_WinControls.ObjectLibrary
 {
-    public class winCalculator : CUITe_WinWindow
+    public class WinCalculator : CUITe_WinWindow
     {
-        public winCalculator() : base("Name=Calculator") { }
+        public WinCalculator() : base("Name=Calculator") { }
 
         public CUITe_WinMenuBar mbApplication { get { return Get<CUITe_WinMenuBar>("Name=Application"); } }
         public CUITe_WinMenuItem miView { get { return Get<CUITe_WinMenuItem>("Name=View"); } }

@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculatorTests.cs" />
-    <Compile Include="ObjectLibrary\winCalculator.cs" />
+    <Compile Include="ObjectLibrary\WinCalculator_.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Choose>
