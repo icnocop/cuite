@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CassiniDev4-lib">
-      <HintPath>..\Third Party\CassiniDev 3.5.1.8-4.1.0.8 release\CassiniDev4-lib.dll</HintPath>
+      <HintPath>..\ThirdParty\CassiniDev_3.5.1.8-4.1.0.8_release\CassiniDev4-lib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -59,102 +59,47 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Sample_CUITeTestProject %28NET4%29\CrossBrowserHtmlControlTests.cs">
-      <Link>CrossBrowserHtmlControlTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\BrowserWindowTests.cs">
-      <Link>BrowserWindowTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\DataManagerTests.cs">
-      <Link>DataManagerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\HtmlControlTests.cs">
-      <Link>HtmlControlTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs">
-      <Link>ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\DynamicBrowserWindowTitleRepository.cs">
-      <Link>ObjectRepository\DynamicBrowserWindowTitleRepository.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleHomePage.cs">
-      <Link>ObjectRepository\GoogleHomePage.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs">
-      <Link>ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\GoogleSearch.cs">
-      <Link>ObjectRepository\GoogleSearch.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.cs">
-      <Link>ObjectRepository\HtmlTestPage.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.Div1.cs">
-      <Link>ObjectRepository\HtmlTestPage.Div1.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPage.Div2.cs">
-      <Link>ObjectRepository\HtmlTestPage.Div2.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\HtmlTestPageFeeds.cs">
-      <Link>ObjectRepository\HtmlTestPageFeeds.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\SlTestPage.cs">
-      <Link>ObjectRepository\SlTestPage.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\ObjectRepository\TestHtmlPage.cs">
-      <Link>ObjectRepository\TestHtmlPage.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\SilverlightControlTests.cs">
-      <Link>SilverlightControlTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Sample_CUITeTestProject\TempFile.cs">
-      <Link>TempFile.cs</Link>
-    </Compile>
+    <Compile Include="BrowserWindowTests.cs" />
+    <Compile Include="CrossBrowserHtmlControlTests.cs" />
+    <Compile Include="DataManagerTests.cs" />
+    <Compile Include="HtmlControlTests.cs" />
+    <Compile Include="ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs" />
+    <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
+    <Compile Include="ObjectRepository\GoogleHomePage.cs" />
+    <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
+    <Compile Include="ObjectRepository\GoogleSearch.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPage.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPage.Div1.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPage.Div2.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPageFeeds.cs" />
+    <Compile Include="ObjectRepository\SlTestPage.cs" />
+    <Compile Include="ObjectRepository\TestHtmlPage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SilverlightControlTests.cs" />
+    <Compile Include="TempFile.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Sample_CUITeTestProject\DynamicBrowserWindowTitle.1.html">
-      <Link>DynamicBrowserWindowTitle.1.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\DynamicBrowserWindowTitle.2.html">
-      <Link>DynamicBrowserWindowTitle.2.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\DynamicBrowserWindowTitle.html">
-      <Link>DynamicBrowserWindowTitle.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\iframe.html">
-      <Link>iframe.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\iframe_test.html">
-      <Link>iframe_test.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\TestHtmlPage.html">
-      <Link>TestHtmlPage.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\TestSilverlightApplication.html">
-      <Link>TestSilverlightApplication.html</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\TestSilverlightApplication.xap">
-      <Link>TestSilverlightApplication.xap</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\XMLFile1.xml">
-      <Link>XMLFile1.xml</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\XMLFile2.xml">
-      <Link>XMLFile2.xml</Link>
-    </Content>
+    <Content Include="DynamicBrowserWindowTitle.1.html" />
+    <Content Include="DynamicBrowserWindowTitle.2.html" />
+    <Content Include="DynamicBrowserWindowTitle.html" />
+    <Content Include="iframe.html" />
+    <Content Include="iframe_test.html" />
+    <Content Include="TestHtmlPage.html" />
+    <Content Include="TestSilverlightApplication.html" />
+    <Content Include="TestSilverlightApplication.xap" />
+    <Content Include="XMLFile1.xml" />
+    <Content Include="XMLFile2.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CUITe for .NET v4.5 %28VS2013%29\CUITe.csproj">
+    <ProjectReference Include="..\CUITe\CUITe.csproj">
       <Project>{fe093159-2b72-438e-9c73-e3fbaeac5243}</Project>
       <Name>CUITe</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

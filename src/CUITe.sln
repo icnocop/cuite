@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTemplateExamples", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe_ObjectRecorder", "CUITe_ObjectRecorder\CUITe_ObjectRecorder.csproj", "{4CA5CDA2-0678-430B-9079-F11906B54070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject", "Sample_CUITeTestProject for .NET v4.5 (VS2013)\Sample_CUITeTestProject.csproj", "{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject", "Sample_CUITeTestProject\Sample_CUITeTestProject.csproj", "{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5966864-ABF9-4923-B7E3-F31F95C9AABA}"
 	ProjectSection(SolutionItems) = preProject
