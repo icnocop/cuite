@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyDescription("Coded UI Test enhanced Framework (CUITe) http://cuite.codeplex.com")]
+[assembly: AssemblyDescription("Coded UI Test enhanced Framework (CUITe) https://github.com/icnocop/cuite")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("icnocop")]
 [assembly: AssemblyProduct("CUITe")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011 - 2013")]
+[assembly: AssemblyCopyright("Copyright © icnocop 2011 - 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
