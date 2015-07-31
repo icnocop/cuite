@@ -73,7 +73,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CommonAssemblyInfo.cs"/>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Browsers\Browser.cs" />
     <Compile Include="Browsers\Chrome.cs" />
     <Compile Include="Browsers\Firefox.cs" />
