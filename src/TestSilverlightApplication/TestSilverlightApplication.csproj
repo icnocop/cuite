@@ -32,10 +32,6 @@
     <LinkedServerProject>
     </LinkedServerProject>
     <Production Condition="'$(Production)'==''">False</Production>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
