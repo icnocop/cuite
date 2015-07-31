@@ -13,45 +13,11 @@ namespace Sample_CUITeTestProject_WpfControls
     /// Summary description for WpfControlTests
     /// </summary>
     [CodedUITest]
-    #if DEBUG
-        #if NET40
-            #if VS2010
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Debug")]
-            #endif
-
-            #if VS2012
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET4)\bin\Debug")]
-            #endif
-
-            #if VS2013
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4 (VS2013)\bin\Debug")]
-            #endif
-        #endif
-        #if NET45
-            #if VS2013
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4.5 (VS2013)\bin\x86\Debug")]
-            #endif
-        #endif
-    #else
-        #if NET40
-            #if VS2010
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Release")]
-            #endif
-
-            #if VS2012
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples (NET4)\bin\Release")]
-            #endif
-
-            #if VS2013
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4 (VS2013)\bin\Release")]
-            #endif
-        #endif
-        #if NET45
-            #if VS2013
-                [DeploymentItem(@"..\..\..\ControlTemplateExamples for .NET v4.5 (VS2013)\bin\x86\Release")]
-            #endif
-        #endif
-    #endif
+#if DEBUG
+    [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\x86\Debug")]
+#else
+    [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\x86\Release")]
+#endif
     public class WpfControlTests
     {
         private TestContext testContextInstance;

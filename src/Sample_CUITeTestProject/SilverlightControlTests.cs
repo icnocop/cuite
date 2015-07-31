@@ -11,15 +11,7 @@ using Sample_CUITeTestProject.ObjectRepository;
 namespace Sample_CUITeTestProject
 {
     [CodedUITest]
-    #if NET40
-        #if VS2010
-            [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
-        #else
-            [DeploymentItem(@"Sample_CUITeTestProject (NET4)\TestSilverlightApplication.xap")]
-        #endif
-    #else
-        [DeploymentItem(@"Sample_CUITeTestProject (NET45)\TestSilverlightApplication.xap")]
-    #endif
+    [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.xap")]
     [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.html")]
     public class SilverlightControlTests
     {
