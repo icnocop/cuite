@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe", "CUITe\CUITe.csproj", "{FE093159-2B72-438E-9C73-E3FBAEAC5243}"
 EndProject
@@ -13,8 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample_CUITeTestProject", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5966864-ABF9-4923-B7E3-F31F95C9AABA}"
 	ProjectSection(SolutionItems) = preProject
-		build.cmd = build.cmd
-		build.proj = build.proj
+		..\Build.bat = ..\Build.bat
+		Build.proj = Build.proj
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		CUITe.snk = CUITe.snk
 		CUITe.vsmdi = CUITe.vsmdi
