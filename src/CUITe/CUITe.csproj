@@ -9,27 +9,35 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CUITe</RootNamespace>
     <AssemblyName>CUITe</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath Condition="'$(TargetFrameworkVersion)' == 'v3.5'">bin\Debug\net35\</OutputPath>
+    <OutputPath Condition="'$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\net40\</OutputPath>
+    <OutputPath Condition="'$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\net45\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\CUITe.XML</DocumentationFile>
+    <DocumentationFile Condition="'$(TargetFrameworkVersion)' == 'v3.5'">bin\Debug\net35\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\net45\CUITe.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath Condition="'$(TargetFrameworkVersion)' == 'v3.5'">bin\Release\net35\</OutputPath>
+    <OutputPath Condition="'$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\net40\</OutputPath>
+    <OutputPath Condition="'$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\net45\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\CUITe.XML</DocumentationFile>
+    <DocumentationFile Condition="'$(TargetFrameworkVersion)' == 'v3.5'">bin\Release\net35\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\net45\CUITe.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -39,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.SHDocVw">
-      <HintPath>..\CUITe\lib\Interop.SHDocVw.dll</HintPath>
+      <HintPath>..\ThirdParty\InternetExplorer\Interop.SHDocVw.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -57,14 +65,41 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.TestTools.UITesting.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
+  <Choose>
+    <When Condition="'$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFrameworkVersion)' == 'v4.0'">
+      <ItemGroup>
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFrameworkVersion)' == 'v4.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
+      </ItemGroup>
+    </When>
+  </Choose>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
