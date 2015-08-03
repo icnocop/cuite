@@ -3,44 +3,34 @@
 
   <!-- Properties -->
   <PropertyGroup>
+    <RootPath>.\..\</RootPath>
     <SolutionPath>.\CUITe.sln</SolutionPath>
-    <CUITeProjectPath>.\CUITe\CUITe.csproj</CUITeProjectPath>
-    <ObjectRecorderProjectPath>.\CUITe_ObjectRecorder\CUITe_ObjectRecorder.csproj</ObjectRecorderProjectPath>
+    <ProjectPath>.\CUITe\CUITe.csproj</ProjectPath>
     <MsTestPath>%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe</MsTestPath>
   </PropertyGroup>
 
   <!-- Imports -->
   <Import Project=".\ThirdParty\MSBuildCommunityTasks_1.4.0.56\MSBuild.Community.Tasks.targets" />
   
-  <!-- Build target -->
+  <!-- Builds the solution in all supported configurations -->
   <Target Name="Build">
-      
-    <!-- CUITe for .NET 4.0 -->
+    <!-- .NET 4.5 -->
     <MSBuild
-        Projects="$(CUITeProjectPath)"
-        Properties="Configuration=Release;TargetFrameworkVersion=v4.0"
-        Targets="Rebuild"
-        BuildInParallel="true" />
-
-    <!-- CUITe for .NET 4.5 -->
-    <MSBuild
-      Projects="$(CUITeProjectPath)"
-      Properties="Configuration=Release;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-      
-    <!-- Object Recorder -->
-    <MSBuild
-      Projects="$(ObjectRecorderProjectPath)"
+      Projects="$(SolutionPath)"
       Properties="Configuration=Release"
       Targets="Rebuild"
       BuildInParallel="true" />
-    
+
+    <!-- CUITe for .NET 4.0 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
   </Target>
   
-  <!-- Pack target -->
+  <!-- Creates a zip archive of CUITe deliverables -->
   <Target Name="Pack">
-
     <!-- NET4.0-->
     <ItemGroup>
       <NET40Files Include=".\CUITe\bin\Release\net40\CUITe.dll" />
@@ -50,7 +40,7 @@
     </ItemGroup>
 
     <MSBuild.Community.Tasks.Zip
-      ZipFileName=".\CUITe_NET40.zip"
+      ZipFileName="$(RootPath)\CUITe_NET40.zip"
       Files="@(NET40Files)"
       Flatten="true" />
 
@@ -63,25 +53,16 @@
     </ItemGroup>
 
     <MSBuild.Community.Tasks.Zip
-      ZipFileName=".\CUITe_NET45.zip"
+      ZipFileName="$(RootPath)\CUITe_NET45.zip"
       Files="@(NET45Files)"
       Flatten="true" />
-      
   </Target>
 
-  <!-- Test target -->
+  <!-- Runs all tests -->
   <Target Name="Test">
-    
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=Release"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
     <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll&quot;" />
     <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WinControls\bin\Release\Sample_CUITeTestProject_WinControls.dll&quot;" />
     <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WpfControls\bin\Release\Sample_CUITeTestProject_WpfControls.dll&quot;" />
-
   </Target>
   
 </Project>
