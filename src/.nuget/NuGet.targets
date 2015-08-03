@@ -43,6 +43,8 @@
     <PropertyGroup>
       <PackagesConfig Condition="Exists('$(MSBuildProjectDirectory)\packages.config')">$(MSBuildProjectDirectory)\packages.config</PackagesConfig>
       <PackagesConfig Condition="Exists('$(PackagesProjectConfig)')">$(PackagesProjectConfig)</PackagesConfig>
+
+      <SolutionPackagesConfig Condition="Exists('$(NuGetToolsPath)\packages.config')">$(NuGetToolsPath)\packages.config</SolutionPackagesConfig>
     </PropertyGroup>
     
     <PropertyGroup>
@@ -63,6 +65,7 @@
 
         <!-- Commands -->
         <RestoreCommand>$(NuGetCommand) install "$(PackagesConfig)" -source "$(PackageSources)"  $(NonInteractiveSwitch) $(RequireConsentSwitch) -solutionDir $(PaddedSolutionDir)</RestoreCommand>
+        <RestoreSolutionCommand>$(NuGetCommand) install "$(SolutionPackagesConfig)" -source "$(PackageSources)"  $(NonInteractiveSwitch) $(RequireConsentSwitch) -solutionDir $(PaddedSolutionDir)</RestoreSolutionCommand>
         <BuildCommand>$(NuGetCommand) pack "$(ProjectPath)" -Properties "Configuration=$(Configuration);Platform=$(Platform)" $(NonInteractiveSwitch) -OutputDirectory "$(PackageOutputDir)" -symbols</BuildCommand>
 
         <!-- We need to ensure packages are restored prior to assembly resolve -->
@@ -100,6 +103,10 @@
         <Exec Command="$(RestoreCommand)"
               LogStandardErrorAsError="true"
               Condition="'$(OS)' == 'Windows_NT' And Exists('$(PackagesConfig)')" />
+
+        <Exec Command="$(RestoreSolutionCommand)"
+              LogStandardErrorAsError="true"
+              Condition="'$(OS)' == 'Windows_NT' And Exists('$(SolutionPackagesConfig)')" />
     </Target>
 
     <Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites">
