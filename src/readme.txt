@@ -1,41 +1,14 @@
 Development Environment System Requirements:
 --------------------------------------------
 
-Visual Studio 2010 Premium or Ultimate
+Visual Studio 2013 Premium or Ultimate
 
-Visual Studio 2010 Feature Pack 2
-http://visualstudiogallery.msdn.microsoft.com/90db28aa-528b-4de5-9711-b6c5b8ce83dc
-
-Visual Studio 2012 Premium or Ultimate
-
-Microsoft Visual Studio UI Test Plugin for Silverlight
-http://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4
+Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight
+https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da
 
 
-Building from the Source Code:
-------------------------------
+Building from the command prompt:
+---------------------------------
 
-Run build.cmd from an elevated command prompt to build all solutions using the Debug configuration.
-
-Hint: Redirect stdout and stderr to a text file by running: build.cmd >out.txt 2>&1
-
-Syntax:
-
- build [/p:Targets=[Build|Rebuild]] [/p:Configuration=[Debug|Release]]
-
-Targets:
-
- Build (Default)
- Rebuild
-
-Configuration:
- Debug (Default)
- Release
-
-Examples:
-
-Rebuilds all solutions using the Debug configuration
-    build.cmd /p:Targets=Rebuild
-
-Rebuilds all solutions using the Release configuration
-    build.cmd /p:Targets=Rebuild /p:Configuration=Release
+Run Build.bat from a command prompt to build all projects using the Release configuration.
+Zip files with deliverables will be created and UI tests will be executed.
