@@ -1,14 +1,15 @@
 @echo off
 
-pushd "%~dp0"
-setlocal ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
+rem Environment variables
+if exist "%ProgramFiles%\MSBuild\12.0\bin" set PATH=%ProgramFiles%\MSBuild\12.0\bin;%PATH%
+if exist "%ProgramFiles(x86)%\MSBuild\12.0\bin" set PATH=%ProgramFiles(x86)%\MSBuild\12.0\bin;%PATH%
 
-set ProgramFilesDir=%ProgramFiles%
-if NOT "%ProgramFiles(x86)%"=="" set ProgramFilesDir=%ProgramFiles(x86)%
+rem Parameters
+set PROJECT=.\src\Build.proj
 
-set VisualStudioCmd=%ProgramFilesDir%\Microsoft Visual Studio 12.0\VC\vcvarsall.bat
-if EXIST "%VisualStudioCmd%" call "%VisualStudioCmd%"
+rem Build
+msbuild.exe %PROJECT% /t:Build
+msbuild.exe %PROJECT% /t:Pack
+msbuild.exe %PROJECT% /t:Test
 
-msbuild.exe build.proj %*
-popd
-endlocal
+pause
