@@ -5,6 +5,7 @@
   <PropertyGroup>
     <SolutionPath>.\CUITe.sln</SolutionPath>
     <CUITeProjectPath>.\CUITe\CUITe.csproj</CUITeProjectPath>
+    <ObjectRecorderProjectPath>.\CUITe_ObjectRecorder\CUITe_ObjectRecorder.csproj</ObjectRecorderProjectPath>
     <MsTestPath>%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe</MsTestPath>
   </PropertyGroup>
 
@@ -27,6 +28,13 @@
       Properties="Configuration=Release;TargetFrameworkVersion=v4.5"
       Targets="Rebuild"
       BuildInParallel="true" />
+      
+    <!-- Object Recorder -->
+    <MSBuild
+      Projects="$(ObjectRecorderProjectPath)"
+      Properties="Configuration=Release"
+      Targets="Rebuild"
+      BuildInParallel="true" />
     
   </Target>
   
@@ -38,6 +46,7 @@
       <NET40Files Include=".\CUITe\bin\Release\net40\CUITe.dll" />
       <NET40Files Include=".\CUITe\bin\Release\net40\CUITe.pdb" />
       <NET40Files Include=".\CUITe\bin\Release\net40\CUITe.xml" />
+      <NET40Files Include=".\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" />
     </ItemGroup>
 
     <MSBuild.Community.Tasks.Zip
@@ -50,6 +59,7 @@
       <NET45Files Include=".\CUITe\bin\Release\net45\CUITe.dll" />
       <NET45Files Include=".\CUITe\bin\Release\net45\CUITe.pdb" />
       <NET45Files Include=".\CUITe\bin\Release\net45\CUITe.xml" />
+      <NET45Files Include=".\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" />
     </ItemGroup>
 
     <MSBuild.Community.Tasks.Zip
