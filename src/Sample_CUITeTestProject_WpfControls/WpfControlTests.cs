@@ -14,9 +14,9 @@ namespace Sample_CUITeTestProject_WpfControls
     /// </summary>
     [CodedUITest]
 #if DEBUG
-    [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\x86\Debug")]
+    [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Debug")]
 #else
-    [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\x86\Release")]
+    [DeploymentItem(@"..\..\..\ControlTemplateExamples\bin\Release")]
 #endif
     public class WpfControlTests
     {
