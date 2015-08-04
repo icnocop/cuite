@@ -3,14 +3,16 @@
 
   <!-- Properties -->
   <PropertyGroup>
-    <RootPath>.\..\</RootPath>
-    <SolutionPath>.\CUITe.sln</SolutionPath>
-    <ProjectPath>.\CUITe\CUITe.csproj</ProjectPath>
+    <CurrentDirectory>$(MSBuildProjectDirectory)</CurrentDirectory>
+    <CvsRootPath>$(CurrentDirectory)\..\</CvsRootPath>
+    <SolutionPath>$(CurrentDirectory)\CUITe.sln</SolutionPath>
+    <ProjectPath>$(CurrentDirectory)\CUITe\CUITe.csproj</ProjectPath>
+    <MSBuildCommunityTasksPath>$(CurrentDirectory)\.build\</MSBuildCommunityTasksPath>
     <MsTestPath>%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe</MsTestPath>
   </PropertyGroup>
 
   <!-- Imports -->
-  <Import Project=".\ThirdParty\MSBuildCommunityTasks_1.4.0.56\MSBuild.Community.Tasks.targets" />
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
   
   <!-- Builds the solution in all supported configurations -->
   <Target Name="Build">
@@ -40,7 +42,7 @@
     </ItemGroup>
 
     <MSBuild.Community.Tasks.Zip
-      ZipFileName="$(RootPath)\CUITe_NET40.zip"
+      ZipFileName="$(CvsRootPath)\CUITe_NET40.zip"
       Files="@(NET40Files)"
       Flatten="true" />
 
@@ -53,7 +55,7 @@
     </ItemGroup>
 
     <MSBuild.Community.Tasks.Zip
-      ZipFileName="$(RootPath)\CUITe_NET45.zip"
+      ZipFileName="$(CvsRootPath)\CUITe_NET45.zip"
       Files="@(NET45Files)"
       Flatten="true" />
   </Target>
