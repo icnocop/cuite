@@ -18,7 +18,7 @@ namespace Sample_CUITeTestProject
             [DeploymentItem(@"Sample_CUITeTestProject (NET4)\TestSilverlightApplication.xap")]
         #endif
     #else
-        [DeploymentItem(@"Sample_CUITeTestProject (NET45)\TestSilverlightApplication.xap")]
+        [DeploymentItem(@"TestSilverlightApplication (SL5)\Bin\Debug\TestSilverlightApplication.xap")]
     #endif
     [DeploymentItem(@"Sample_CUITeTestProject\TestSilverlightApplication.html")]
     public class SilverlightControlTests

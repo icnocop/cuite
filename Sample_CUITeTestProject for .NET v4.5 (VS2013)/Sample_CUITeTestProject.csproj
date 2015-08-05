@@ -136,12 +136,12 @@
     <Content Include="..\Sample_CUITeTestProject\TestSilverlightApplication.xap">
       <Link>TestSilverlightApplication.xap</Link>
     </Content>
-    <Content Include="..\Sample_CUITeTestProject\XMLFile1.xml">
+    <EmbeddedResource Include="..\Sample_CUITeTestProject\XMLFile1.xml">
       <Link>XMLFile1.xml</Link>
-    </Content>
-    <Content Include="..\Sample_CUITeTestProject\XMLFile2.xml">
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Sample_CUITeTestProject\XMLFile2.xml">
       <Link>XMLFile2.xml</Link>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -5,6 +5,9 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public enum CUITe_HtmlTableSearchOptions
     {
         Normal,
@@ -261,8 +264,15 @@ namespace CUITe.Controls.HtmlControls
             }
 
             Type t = typeof(T);
-            ConstructorInfo ctor = t.GetConstructor(new Type[] { typeof(UITestControl) });
+            ConstructorInfo ctor = GetConstructor(t, typeof(UITestControl));
             return (T)ctor.Invoke(new object[] { htmlCell }); // call constructor
+        }
+
+        public ConstructorInfo GetConstructor(Type type, Type baseParameterType)
+        {
+            return type.GetConstructors()
+                    .Where(ci => ci.GetParameters().Length == 1)
+                    .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
         }
 
         private mshtml.IHTMLElement GetEmbeddedCheckBoxNativeElement(mshtml.IHTMLElement parent)

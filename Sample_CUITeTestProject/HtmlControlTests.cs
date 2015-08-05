@@ -18,6 +18,7 @@ using Sample_CUITeTestProject.ObjectRepository;
 namespace Sample_CUITeTestProject
 {
     [CodedUITest]
+    [DeploymentItem(@"Sample_CUITeTestProject\XMLFile1.xml")]
     [DeploymentItem(@"Sample_CUITeTestProject\XMLFile2.xml")]
     [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
     public class HtmlControlTests
