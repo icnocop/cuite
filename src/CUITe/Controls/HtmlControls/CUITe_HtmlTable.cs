@@ -2,12 +2,10 @@
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using System.Linq;
 
 namespace CUITe.Controls.HtmlControls
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     public enum CUITe_HtmlTableSearchOptions
     {
         Normal,
