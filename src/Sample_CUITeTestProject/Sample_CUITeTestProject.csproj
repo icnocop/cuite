@@ -87,8 +87,8 @@
     <Content Include="TestHtmlPage.html" />
     <Content Include="TestSilverlightApplication.html" />
     <Content Include="TestSilverlightApplication.xap" />
-    <Content Include="XMLFile1.xml" />
-    <Content Include="XMLFile2.xml" />
+    <EmbeddedResource Include="XMLFile1.xml" />
+    <EmbeddedResource Include="XMLFile2.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
