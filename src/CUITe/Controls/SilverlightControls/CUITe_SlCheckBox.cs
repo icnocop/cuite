@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+﻿#if SILVERLIGHT_SUPPORT
+using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
@@ -38,3 +39,4 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
+#endif

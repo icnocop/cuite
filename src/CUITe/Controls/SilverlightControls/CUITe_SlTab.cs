@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+﻿#if SILVERLIGHT_SUPPORT
+using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
@@ -65,3 +66,4 @@ namespace CUITe.Controls.SilverlightControls
         // tab item enabled or disabled
     }
 }
+#endif

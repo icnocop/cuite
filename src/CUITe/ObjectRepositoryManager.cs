@@ -5,7 +5,9 @@ using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.TelerikControls;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+#endif
 
 namespace CUITe
 {
@@ -50,11 +52,13 @@ namespace CUITe
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow }));
                     }
+#if SILVERLIGHT_SUPPORT
                     else if ((field.GetBaseType() == typeof(SilverlightControl))
                         || (field.GetBaseType().IsSubclassOf(typeof(SilverlightControl))))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow.SlObjectContainer }));
                     }
+#endif
                 }
             }
             return browserWindow;
