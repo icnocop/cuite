@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE093159-2B72-438E-9C73-E3FBAEAC5243}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CUITe</RootNamespace>
+    <AssemblyName>CUITe</AssemblyName>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT_SUPPORT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\CUITe.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v10\Microsoft.VisualStudio.TestTools.UITest.Extension.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v10\Microsoft.VisualStudio.TestTools.UITesting.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v10\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(VisualStudioVersion)' == '11'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v11\Microsoft.VisualStudio.TestTools.UITest.Extension.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v11\Microsoft.VisualStudio.TestTools.UITesting.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=11.0.0.0, Culture=neutral, PublicKeyToken=374b4c93160c098c, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v11\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(VisualStudioVersion)' == '12'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v12\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Browsers\Browser.cs" />
+    <Compile Include="Browsers\Chrome.cs" />
+    <Compile Include="Browsers\Firefox.cs" />
+    <Compile Include="Browsers\IBrowser.cs" />
+    <Compile Include="Browsers\InternetExplorer.cs" />
+    <Compile Include="Controls\CUITe_ControlBase.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_BrowserDialog.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_BrowserWindow.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_DynamicBrowserWindow.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlButton.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlCell.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlCheckBox.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlComboBox.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlControl.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlCustom.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlDiv.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlDocument.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlEdit.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableDiv.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlEditableSpan.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlFileInput.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeaderCell.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeading1.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeading2.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeading3.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeading4.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeading5.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHeading6.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlHyperlink.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlIFrame.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlImage.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlInputButton.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlIns.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlLabel.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlList.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlListItem.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlOrderedList.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlParagraph.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlPassword.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlRadioButton.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlRow.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlSpan.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlTable.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlTextArea.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlUnorderedList.cs" />
+    <Compile Include="Controls\HtmlControls\CUITe_HtmlXml.cs" />
+    <Compile Include="Controls\HtmlControls\ICUITe_HtmlControl.cs" />
+    <Compile Include="Controls\ICUITe_ControlBase.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlButton.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlCalendar.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlCell.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlCheckBox.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlComboBox.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlControl.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlDataPager.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlDatePicker.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlEdit.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlHyperlink.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlImage.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlLabel.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlList.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlPassword.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlRadioButton.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlSlider.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlSpinner.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTab.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTabItem.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTable.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlText.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTree.cs" />
+    <Compile Include="Controls\TelerikControls\Telerik_ComboBox.cs" />
+    <Compile Include="Controls\UIWindowsSecurityWindow.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinButton.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinCalendar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinCell.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinCheckBox.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinCheckBoxTreeItem.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinClient.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinColumnHeader.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinComboBox.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinControl.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinCustom.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinDateTimePicker.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinEdit.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinGroup.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinHyperlink.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinList.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinListItem.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinMenu.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinMenuBar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinMenuItem.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinPane.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinProgressBar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinRadioButton.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinRow.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinRowHeader.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinScrollBar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinSeparator.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinSlider.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinSpinner.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinSplitButton.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinStatusBar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinTable.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinTabList.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinTabPage.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinText.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinTitleBar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinToolBar.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinToolTip.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinTree.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinTreeItem.cs" />
+    <Compile Include="Controls\WinControls\CUITe_WinWindow.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfButton.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfCalendar.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfCell.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfCheckBox.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfComboBox.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfControl.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfCustom.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfDatePicker.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfEdit.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfExpander.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfGroup.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfHyperlink.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfImage.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfList.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfListItem.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfMenu.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfMenuItem.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfPane.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfProgressBar.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfRadioButton.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfRow.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfScrollBar.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfSeparator.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfSlider.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfStatusBar.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfTable.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfTabList.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfTabPage.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfText.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfTitleBar.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfToggleButton.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfToolBar.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfToolTip.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfTree.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfTreeItem.cs" />
+    <Compile Include="Controls\WpfControls\CUITe_WpfWindow.cs" />
+    <Compile Include="CUITe_DataManager.cs" />
+    <Compile Include="Exceptions\CUITe_Exceptions.cs" />
+    <Compile Include="Exceptions\ResourceNotFoundException.cs" />
+    <Compile Include="ObjectRepositoryManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\CUITe.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

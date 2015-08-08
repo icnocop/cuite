@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Properties -->
+  <PropertyGroup>
+    <CurrentDirectory>$(MSBuildProjectDirectory)</CurrentDirectory>
+    <CvsRootPath>$(CurrentDirectory)\..\</CvsRootPath>
+    <SolutionPath>$(CurrentDirectory)\CUITe.sln</SolutionPath>
+    <ProjectPath>$(CurrentDirectory)\CUITe\CUITe.csproj</ProjectPath>
+    <Deliverables>$(CurrentDirectory)\Deliverables</Deliverables>
+    <MSBuildCommunityTasksPath>$(CurrentDirectory)\.build\</MSBuildCommunityTasksPath>
+    <MsTestPath>%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe</MsTestPath>
+  </PropertyGroup>
+
+  <!-- Imports -->
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
+  
+  <!-- Builds the solution in all supported configurations -->
+  <Target Name="Build">
+    <!-- VS2013 .NET45 (build solution) -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=Release"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+    <!-- VS2013 .NET40 (Silverlight not supported) -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0;DefineConstants=TRACE"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2012 .NET45 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+    <!-- VS2012 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2010 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=10;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+  </Target>
+  
+  <!-- Creates zip archives of CUITe deliverables -->
+  <Target Name="Pack">
+    <!-- Clean -->
+    <RemoveDir Directories="$(Deliverables)" />
+    
+    <!-- Copy -->
+    <ItemGroup>
+        <CUITeFiles Include="$(CurrentDirectory)\CUITe\bin\Release\**\*.*" />
+    </ItemGroup>
+      
+    <Copy SourceFiles="@(CUITeFiles)" DestinationFolder="$(Deliverables)\%(RecursiveDir)" />
+    <Copy SourceFiles="$(CurrentDirectory)\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" DestinationFolder="$(Deliverables)\VS2010\" />
+    <Copy SourceFiles="$(CurrentDirectory)\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" DestinationFolder="$(Deliverables)\VS2012\" />
+    <Copy SourceFiles="$(CurrentDirectory)\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" DestinationFolder="$(Deliverables)\VS2013\" />
+      
+    <!-- Pack VS2013 -->
+    <ItemGroup>
+      <VS2013Files Include="$(Deliverables)\VS2013\**" />
+    </ItemGroup>
+
+    <MSBuild.Community.Tasks.Zip
+      ZipFileName="$(CvsRootPath)\CUITe_VS2013.zip"
+      WorkingDirectory="$(Deliverables)\VS2013\"
+      Files="@(VS2013Files)" />
+
+    <!-- Pack VS2012 -->
+    <ItemGroup>
+      <VS2012Files Include="$(Deliverables)\VS2012\**" />
+    </ItemGroup>
+
+    <MSBuild.Community.Tasks.Zip
+      ZipFileName="$(CvsRootPath)\CUITe_VS2012.zip"
+      WorkingDirectory="$(Deliverables)\VS2012\"
+      Files="@(VS2012Files)" />
+
+    <!-- Pack VS2010 -->
+    <ItemGroup>
+      <VS2010Files Include="$(Deliverables)\VS2010\**" />
+    </ItemGroup>
+
+    <MSBuild.Community.Tasks.Zip
+      ZipFileName="$(CvsRootPath)\CUITe_VS2010.zip"
+      WorkingDirectory="$(Deliverables)\VS2010\"
+      Files="@(VS2010Files)" />
+  </Target>
+
+  <!-- Runs all tests -->
+  <Target Name="Test">
+    <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll&quot;" />
+    <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WinControls\bin\Release\Sample_CUITeTestProject_WinControls.dll&quot;" />
+    <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WpfControls\bin\Release\Sample_CUITeTestProject_WpfControls.dll&quot;" />
+  </Target>
+  
+</Project>

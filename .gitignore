@@ -206,3 +206,7 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# Deliverables
+Deliverables
+CUITe*.zip
