@@ -1,8 +1,6 @@
 @echo off
 
-rem Environment variables
-if exist "%ProgramFiles%\MSBuild\12.0\bin" set PATH=%ProgramFiles%\MSBuild\12.0\bin;%PATH%
-if exist "%ProgramFiles(x86)%\MSBuild\12.0\bin" set PATH=%ProgramFiles(x86)%\MSBuild\12.0\bin;%PATH%
+call "%VS120COMNTOOLS%VsDevCmd.bat"
 
 rem Parameters
 set PROJECT=.\src\Build.proj
