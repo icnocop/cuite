@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CUITe.VS2012</id>
+    <version>$version$</version>
+    <authors>icnocop</authors>
+    <title>CUITe (Visual Studio 2012)</title>
+    <language>en-US</language>
+    <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/icnocop/cuite</projectUrl>
+    <!--<iconUrl>TODO?!?</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.</description>
+    <tags>cuit cuite coded ui test enhanced</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\VS2012\net40\CUITe.dll" target="lib\net40\CUITe.dll" />
+    <file src="bin\Release\VS2012\net40\CUITe.xml" target="lib\net40\CUITe.xml" />
+    <file src="..\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" target="tools\CUITe_ObjectRecorder.exe" />
+  </files>
+</package>

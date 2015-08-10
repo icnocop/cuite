@@ -291,6 +291,8 @@
     <Content Include="Images\CUITe.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CUITe.VS2010.nuspec" />
+    <None Include="CUITe.VS2012.nuspec" />
     <None Include="CUITe.VS2013.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
