@@ -7,6 +7,6 @@ set PROJECT=.\src\Build.proj
 
 rem Build
 msbuild.exe %PROJECT% /t:Build
-msbuild.exe %PROJECT% /t:Pack
+msbuild.exe %PROJECT% /t:Test
 
 pause
