@@ -53,15 +53,15 @@
   <Target Name="Pack">
     <!-- VS2013 -->
     <Copy SourceFiles="$(ProjectDir)\CUITe.VS2013.nuspec" DestinationFiles="$(NuGetSpecPath)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Prop VisualStudioVersion=12;Configuration=Release" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12;Configuration=Release" />
 
     <!-- VS2012 -->
     <Copy SourceFiles="$(ProjectDir)\CUITe.VS2012.nuspec" DestinationFiles="$(NuGetSpecPath)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Prop VisualStudioVersion=11;Configuration=Release" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=11;Configuration=Release" />
 
     <!-- VS2010 -->
     <Copy SourceFiles="$(ProjectDir)\CUITe.VS2010.nuspec" DestinationFiles="$(NuGetSpecPath)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Prop VisualStudioVersion=10;TargetFrameworkVersion=v4.0;Configuration=Release" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=10;TargetFrameworkVersion=v4.0;Configuration=Release" />
       
     <!-- Cleanup -->
     <Delete Files="$(NuGetSpecPath)" />
