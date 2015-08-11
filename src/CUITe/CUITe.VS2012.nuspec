@@ -4,7 +4,7 @@
     <id>CUITe.VS2012</id>
     <version>$version$</version>
     <authors>icnocop</authors>
-    <title>CUITe (Visual Studio 2012)</title>
+    <title>CUITe for Visual Studio 2012</title>
     <language>en-US</language>
     <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/icnocop/cuite</projectUrl>
