@@ -10,7 +10,7 @@
     <ProjectPath>$(ProjectDir)\CUITe.csproj</ProjectPath>
     <NuGetSpecPath>$(ProjectDir)\CUITe.nuspec</NuGetSpecPath>
     <NuGetPath>$(CurrentDirectory)\.nuget\NuGet.exe</NuGetPath>
-    <MsTestPath>%ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe</MsTestPath>
+    <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
   </PropertyGroup>
 
   <!-- Builds the solution in all supported configurations -->
@@ -69,9 +69,7 @@
 
   <!-- Runs all tests -->
   <Target Name="Test">
-    <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll&quot;" />
-    <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WinControls\bin\Release\Sample_CUITeTestProject_WinControls.dll&quot;" />
-    <Exec Command="&quot;$(MsTestPath)&quot; /testcontainer:&quot;Sample_CUITeTestProject_WpfControls\bin\Release\Sample_CUITeTestProject_WpfControls.dll&quot;" />
+    <Exec Command="&quot;$(VSTestPath)&quot; Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll Sample_CUITeTestProject_WinControls\bin\Release\Sample_CUITeTestProject_WinControls.dll Sample_CUITeTestProject_WpfControls\bin\Release\Sample_CUITeTestProject_WpfControls.dll" />
   </Target>
   
 </Project>
