@@ -61,7 +61,7 @@
 
     <!-- VS2010 -->
     <Copy SourceFiles="$(ProjectDir)\CUITe.VS2010.nuspec" DestinationFiles="$(NuGetSpecPath)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Prop VisualStudioVersion=10;Configuration=Release" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Prop VisualStudioVersion=10;TargetFrameworkVersion=v4.0;Configuration=Release" />
       
     <!-- Cleanup -->
     <Delete Files="$(NuGetSpecPath)" />
