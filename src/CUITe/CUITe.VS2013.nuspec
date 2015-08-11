@@ -6,7 +6,7 @@
     <authors>icnocop</authors>
     <title>CUITe (Visual Studio 2013)</title>
     <language>en-US</language>
-    <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/LICENSE</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/icnocop/cuite</projectUrl>
     <!--<iconUrl>TODO?!?</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
