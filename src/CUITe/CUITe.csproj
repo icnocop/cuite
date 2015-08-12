@@ -203,7 +203,7 @@
     <Compile Include="Controls\SilverlightControls\CUITe_SlTable.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlText.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTree.cs" />
-    <Compile Include="Controls\TelerikControls\Telerik_ComboBox.cs" />
+    <Compile Include="Controls\TelerikControls\ComboBox.cs" />
     <Compile Include="Controls\UIWindowsSecurityWindow.cs" />
     <Compile Include="Controls\WinControls\WinButton.cs" />
     <Compile Include="Controls\WinControls\WinCalendar.cs" />

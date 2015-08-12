@@ -39,9 +39,9 @@ namespace CUITe
             {
                 Type fieldType = fieldinfo.FieldType;
 
-                if (fieldType.IsAssignableFrom(typeof(Telerik_ComboBox)))
+                if (fieldType.IsAssignableFrom(typeof(ComboBox)))
                 {
-                    Telerik_ComboBox field = (Telerik_ComboBox)fieldinfo.GetValue(browserWindow);
+                    ComboBox field = (ComboBox)fieldinfo.GetValue(browserWindow);
                     field.SetWindow(browserWindow);
                 }
                 else if (fieldType.GetInterfaces().Contains(typeof(ICUITe_ControlBase)))

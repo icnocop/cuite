@@ -4,14 +4,14 @@ using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.TelerikControls
 {
-    public class Telerik_ComboBox : CUITe_HtmlControl<HtmlDiv>
+    public class ComboBox : CUITe_HtmlControl<HtmlDiv>
     {
         private string id;
         private CUITe_BrowserWindow _window;
         
-        public Telerik_ComboBox() : base() { }
+        public ComboBox() : base() { }
 
-        public Telerik_ComboBox(string searchParameters)
+        public ComboBox(string searchParameters)
             : base(searchParameters)
         {
             this.id = searchParameters.Trim().Split('=', '~')[1];

@@ -12,10 +12,10 @@ namespace Sample_CUITeTestProject.ObjectRepository
         public CUITe_HtmlEdit Dealer { get { return Get<CUITe_HtmlEdit>("Id=ctl00_ContentPlaceHolder1_RadComboBoxDealer_Input"); } }
         public CUITe_HtmlEdit PaymentMethod { get { return Get<CUITe_HtmlEdit>("Id=ctl00_ContentPlaceHolder1_RadComboBoxPaymentMethod_Input"); } }
 
-        public Telerik_ComboBox cbProduct { get { return Get<Telerik_ComboBox>("id=ctl00_ContentPlaceHolder1_RadComboBoxProduct"); } }
-        public Telerik_ComboBox cbRegion { get { return Get<Telerik_ComboBox>("id~ctl00_ContentPlaceHolder1_RadComboBoxRegion"); } }
-        public Telerik_ComboBox cbDealer { get { return Get<Telerik_ComboBox>("id~ctl00_ContentPlaceHolder1_RadComboBoxDealer"); } }
-        public Telerik_ComboBox cbPaymentMethod { get { return Get<Telerik_ComboBox>("id~ctl00_ContentPlaceHolder1_RadComboBoxPaymentMethod"); } }
+        public ComboBox cbProduct { get { return Get<ComboBox>("id=ctl00_ContentPlaceHolder1_RadComboBoxProduct"); } }
+        public ComboBox cbRegion { get { return Get<ComboBox>("id~ctl00_ContentPlaceHolder1_RadComboBoxRegion"); } }
+        public ComboBox cbDealer { get { return Get<ComboBox>("id~ctl00_ContentPlaceHolder1_RadComboBoxDealer"); } }
+        public ComboBox cbPaymentMethod { get { return Get<ComboBox>("id~ctl00_ContentPlaceHolder1_RadComboBoxPaymentMethod"); } }
     }
 }
 
