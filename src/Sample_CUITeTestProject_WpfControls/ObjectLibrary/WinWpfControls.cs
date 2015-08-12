@@ -2,17 +2,17 @@
 
 namespace Sample_CUITeTestProject_WpfControls.ObjectLibrary
 {
-    public class WinWpfControls : CUITe_WpfWindow
+    public class WinWpfControls : WpfWindow
     {
         public WinWpfControls() : base("ClassName~ControlTemplateExamples.exe") { }
 
-        public CUITe_WpfButton btnDefault { get { return Get<CUITe_WpfButton>("AutomationID=btnDefault"); } }
+        public WpfButton btnDefault { get { return Get<WpfButton>("AutomationID=btnDefault"); } }
 
-        public CUITe_WpfCheckBox chkNormal { get { return Get<CUITe_WpfCheckBox>("AutomationID=chkNormal"); } }
-        public CUITe_WpfCheckBox chkChecked { get { return Get<CUITe_WpfCheckBox>("AutomationID=chkChecked"); } }
-        public CUITe_WpfCheckBox chkIndeterminate { get { return Get<CUITe_WpfCheckBox>("AutomationID=chkIndeterminate"); } }
+        public WpfCheckBox chkNormal { get { return Get<WpfCheckBox>("AutomationID=chkNormal"); } }
+        public WpfCheckBox chkChecked { get { return Get<WpfCheckBox>("AutomationID=chkChecked"); } }
+        public WpfCheckBox chkIndeterminate { get { return Get<WpfCheckBox>("AutomationID=chkIndeterminate"); } }
 
-        public CUITe_WpfTable dg1 { get { return Get<CUITe_WpfTable>("AutomationID=dg1"); } }
+        public WpfTable dg1 { get { return Get<WpfTable>("AutomationID=dg1"); } }
 
     }
 }
