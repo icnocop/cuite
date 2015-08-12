@@ -11,7 +11,7 @@
     <!--<iconUrl>TODO?!?</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.</description>
-    <tags>cuit cuite coded ui test enhanced</tags>
+    <tags>cuit cuite coded ui test enhanced visual studio 2013 vs2013</tags>
   </metadata>
   <files>
     <file src="bin\Release\VS2013\net40\CUITe.dll" target="lib\net40\CUITe.dll" />
