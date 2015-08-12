@@ -3,7 +3,7 @@
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe_Win* controls, inherits from ControlBase
+    /// Base wrapper class for all CUITe WinForms controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
     public class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl

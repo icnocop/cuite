@@ -3,7 +3,7 @@
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe_Wpf* controls, inherits from CUITe_ControlBase
+    /// Base wrapper class for all CUITe WPF controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
     public class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl

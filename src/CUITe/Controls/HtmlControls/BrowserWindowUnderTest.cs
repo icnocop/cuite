@@ -202,7 +202,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
         /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname'</param>
-        /// <returns>CUITe_* control object</returns>
+        /// <returns>CUITe control object</returns>
         public T Get<T>(string searchParameters = null)
             where T : IControlBase
         {
@@ -227,7 +227,7 @@ namespace CUITe.Controls.HtmlControls
             return control;
         }
 
-        [Obsolete("GetHtmlButton(string) is deprecated, please use Get<CUITe_HtmlButton>(string) instead.")]
+        [Obsolete("GetHtmlButton(string) is deprecated, please use Get<HtmlButton>(string) instead.")]
         public HtmlButton GetHtmlButton(string searchParameters)
         {
             var button = new HtmlButton(searchParameters);
@@ -235,7 +235,7 @@ namespace CUITe.Controls.HtmlControls
             return button;
         }
 
-        [Obsolete("GetHtmlCell(string) is deprecated, please use Get<CUITe_HtmlCell>(string) instead.")]
+        [Obsolete("GetHtmlCell(string) is deprecated, please use Get<HtmlCell>(string) instead.")]
         public HtmlCell GetHtmlCell(string searchParameters)
         {
             var cell = new HtmlCell(searchParameters);
@@ -243,7 +243,7 @@ namespace CUITe.Controls.HtmlControls
             return cell;
         }
 
-        [Obsolete("GetHtmlCheckBox(string) is deprecated, please use Get<CUITe_HtmlCheckBox>(string) instead.")]
+        [Obsolete("GetHtmlCheckBox(string) is deprecated, please use Get<HtmlCheckBox>(string) instead.")]
         public HtmlCheckBox GetHtmlCheckBox(string searchParameters)
         {
             var chk = new HtmlCheckBox(searchParameters);
@@ -251,7 +251,7 @@ namespace CUITe.Controls.HtmlControls
             return chk;
         }
 
-        [Obsolete("GetHtmlComboBox(string) is deprecated, please use Get<CUITe_HtmlComboBox>(string) instead.")]
+        [Obsolete("GetHtmlComboBox(string) is deprecated, please use Get<HtmlComboBox>(string) instead.")]
         public HtmlComboBox GetHtmlComboBox(string searchParameters)
         {
             var cmb = new HtmlComboBox(searchParameters);
@@ -259,7 +259,7 @@ namespace CUITe.Controls.HtmlControls
             return cmb;
         }
 
-        [Obsolete("GetHtmlDiv(string) is deprecated, please use Get<CUITe_HtmlDiv>(string) instead.")]
+        [Obsolete("GetHtmlDiv(string) is deprecated, please use Get<HtmlDiv>(string) instead.")]
         public HtmlDiv GetHtmlDiv(string searchParameters)
         {
             var div = new HtmlDiv(searchParameters);
@@ -267,7 +267,7 @@ namespace CUITe.Controls.HtmlControls
             return div;
         }
 
-        [Obsolete("GetHtmlEdit(string) is deprecated, please use Get<CUITe_HtmlEdit>(string) instead.")]
+        [Obsolete("GetHtmlEdit(string) is deprecated, please use Get<HtmlEdit>(string) instead.")]
         public HtmlEdit GetHtmlEdit(string searchParameters)
         {
             HtmlEdit edit = new HtmlEdit(searchParameters);
@@ -275,7 +275,7 @@ namespace CUITe.Controls.HtmlControls
             return edit;
         }
 
-        [Obsolete("GetHtmlFileInput(string) is deprecated, please use Get<CUITe_HtmlFileInput>(string) instead.")]
+        [Obsolete("GetHtmlFileInput(string) is deprecated, please use Get<HtmlFileInput>(string) instead.")]
         public HtmlFileInput GetHtmlFileInput(string searchParameters)
         {
             HtmlFileInput fin = new HtmlFileInput(searchParameters);
@@ -283,7 +283,7 @@ namespace CUITe.Controls.HtmlControls
             return fin;
         }
 
-        [Obsolete("GetHtmlHyperlink(string) is deprecated, please use Get<CUITe_HtmlHyperlink>(string) instead.")]
+        [Obsolete("GetHtmlHyperlink(string) is deprecated, please use Get<HtmlHyperlink>(string) instead.")]
         public HtmlHyperlink GetHtmlHyperlink(string searchParameters)
         {
             var href = new HtmlHyperlink(searchParameters);
@@ -291,7 +291,7 @@ namespace CUITe.Controls.HtmlControls
             return href;
         }
 
-        [Obsolete("GetHtmlImage(string) is deprecated, please use Get<CUITe_HtmlImage>(string) instead.")]
+        [Obsolete("GetHtmlImage(string) is deprecated, please use Get<HtmlImage>(string) instead.")]
         public HtmlImage GetHtmlImage(string searchParameters)
         {
             var img = new HtmlImage(searchParameters);
@@ -299,7 +299,7 @@ namespace CUITe.Controls.HtmlControls
             return img;
         }
 
-        [Obsolete("GetHtmlInputButton(string) is deprecated, please use Get<CUITe_HtmlInputButton>(string) instead.")]
+        [Obsolete("GetHtmlInputButton(string) is deprecated, please use Get<HtmlInputButton>(string) instead.")]
         public HtmlInputButton GetHtmlInputButton(string searchParameters)
         {
             var input = new HtmlInputButton(searchParameters);
@@ -307,7 +307,7 @@ namespace CUITe.Controls.HtmlControls
             return input;
         }
 
-        [Obsolete("GetHtmlLabel(string) is deprecated, please use Get<CUITe_HtmlLabel>(string) instead.")]
+        [Obsolete("GetHtmlLabel(string) is deprecated, please use Get<HtmlLabel>(string) instead.")]
         public HtmlLabel GetHtmlLabel(string searchParameters)
         {
             var lbl = new HtmlLabel(searchParameters);
@@ -315,7 +315,7 @@ namespace CUITe.Controls.HtmlControls
             return lbl;
         }
 
-        [Obsolete("GetHtmlList(string) is deprecated, please use Get<CUITe_HtmlList>(string) instead.")]
+        [Obsolete("GetHtmlList(string) is deprecated, please use Get<HtmlList>(string) instead.")]
         public HtmlList GetHtmlList(string searchParameters)
         {
             var lst = new HtmlList(searchParameters);
@@ -323,7 +323,7 @@ namespace CUITe.Controls.HtmlControls
             return lst;
         }
 
-        [Obsolete("GetHtmlPassword(string) is deprecated, please use Get<CUITe_HtmlPassword>(string) instead.")]
+        [Obsolete("GetHtmlPassword(string) is deprecated, please use Get<HtmlPassword>(string) instead.")]
         public HtmlPassword GetHtmlPassword(string searchParameters)
         {
             var pwd = new HtmlPassword(searchParameters);
@@ -333,7 +333,7 @@ namespace CUITe.Controls.HtmlControls
             return pwd;
         }
 
-        [Obsolete("GetHtmlRadioButton(string) is deprecated, please use Get<CUITe_HtmlRadioButton>(string) instead.")]
+        [Obsolete("GetHtmlRadioButton(string) is deprecated, please use Get<HtmlRadioButton>(string) instead.")]
         public HtmlRadioButton GetHtmlRadioButton(string searchParameters)
         {
             var rad = new HtmlRadioButton(searchParameters);
@@ -341,7 +341,7 @@ namespace CUITe.Controls.HtmlControls
             return rad;
         }
 
-        [Obsolete("GetHtmlSpan(string) is deprecated, please use Get<CUITe_HtmlSpan>(string) instead.")]
+        [Obsolete("GetHtmlSpan(string) is deprecated, please use Get<HtmlSpan>(string) instead.")]
         public HtmlSpan GetHtmlSpan(string searchParameters)
         {
             var span = new HtmlSpan(searchParameters);
@@ -349,7 +349,7 @@ namespace CUITe.Controls.HtmlControls
             return span;
         }
 
-        [Obsolete("GetHtmlTable(string) is deprecated, please use Get<CUITe_HtmlTable>(string) instead.")]
+        [Obsolete("GetHtmlTable(string) is deprecated, please use Get<HtmlTable>(string) instead.")]
         public HtmlTable GetHtmlTable(string searchParameters)
         {
             HtmlTable tbl = new HtmlTable(searchParameters);
@@ -357,7 +357,7 @@ namespace CUITe.Controls.HtmlControls
             return tbl;
         }
 
-        [Obsolete("GetHtmlTextArea(string) is deprecated, please use Get<CUITe_HtmlTextArea>(string) instead.")]
+        [Obsolete("GetHtmlTextArea(string) is deprecated, please use Get<HtmlTextArea>(string) instead.")]
         public HtmlTextArea GetHtmlTextArea(string searchParameters)
         {
             var tarea = new HtmlTextArea(searchParameters);

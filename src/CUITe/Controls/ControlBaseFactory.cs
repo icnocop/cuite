@@ -3,7 +3,7 @@
 namespace CUITe.Controls
 {
     /// <summary>
-    /// Factory class for creating CUITe* objects
+    /// Factory class for creating CUITe objects
     /// </summary>
     public class ControlBaseFactory
     {

@@ -4,12 +4,12 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Factory class for creating CUITe_Win* controls. Inherits from ControlBaseFactory
+    /// Factory class for creating CUITe WinForms controls. Inherits from ControlBaseFactory
     /// </summary>
     public class WinControlFactory : ControlBaseFactory
     {
         /// <summary>
-        /// Create a CUITe_Win* control based on the type of provided WinControl.
+        /// Create a CUITe WinForms control based on the type of provided WinControl.
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

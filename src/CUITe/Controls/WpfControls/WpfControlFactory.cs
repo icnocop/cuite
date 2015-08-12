@@ -3,12 +3,12 @@
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
-    /// Factory class for creating CUITe_Wpf* controls. Inherits from ControlBaseFactory
+    /// Factory class for creating CUITe WPF controls. Inherits from ControlBaseFactory
     /// </summary>
     public class WpfControlFactory : ControlBaseFactory
     {
         /// <summary>
-        /// Create a CUITe_Wpf* control based on the type of provided WpfControl.
+        /// Create a CUITe WPF control based on the type of provided WpfControl.
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

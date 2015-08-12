@@ -10,7 +10,7 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace CUITe.Controls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe* controls
+    /// Base wrapper class for all CUITe controls
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ControlBase<T> : IControlBase
@@ -122,7 +122,7 @@ namespace CUITe.Controls
         /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
         /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
         /// or use '~' for Contains such as 'Id~first'</param>
-        /// <returns>CUITe_* control object</returns>
+        /// <returns>CUITe control object</returns>
         public T1 Get<T1>(string searchParameters) where T1 : IControlBase
         {
             T1 control = ControlBaseFactory.Create<T1>(searchParameters);
@@ -156,9 +156,9 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// UnWraps the CUITe* controls to expose the underlying UITestControl.
+        /// UnWraps the CUITe controls to expose the underlying UITestControl.
         /// This helps when you want to use any methods/properties of the underlying UITestControl.
-        /// CUITe* controls are wrappers/abstractions which hides complexity. UnWrap() helps you break the abstraction.
+        /// CUITe controls are wrappers/abstractions which hides complexity. UnWrap() helps you break the abstraction.
         /// </summary>
         /// <returns>The underlying UITestControl instance. For example, returns HtmlEdit in case of HtmlEdit.</returns>
         public T UnWrap()
