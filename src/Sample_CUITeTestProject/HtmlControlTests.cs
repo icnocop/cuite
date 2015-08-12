@@ -439,8 +439,8 @@ namespace Sample_CUITeTestProject
                 if (CUITe_BrowserWindow.GetCurrentBrowser() is CUITe.Browsers.InternetExplorer)
                 {
                     //read JavaScript alert text
-                    CUITe_WinWindow popup = new CUITe_WinWindow("ClassName=#32770;Name=Message from webpage");
-                    CUITe_WinText text = popup.Get<CUITe_WinText>();
+                    WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
+                    WinText text = popup.Get<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }
 
