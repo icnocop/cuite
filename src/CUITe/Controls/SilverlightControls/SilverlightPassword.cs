@@ -6,21 +6,21 @@ namespace CUITe.Controls.SilverlightControls
     /// <summary>
     /// CUITe wrapper for SilverlightEdit where IsPassword=true.
     /// </summary>
-    public class CUITe_SlPassword : CUITe_SlEdit
+    public class SilverlightPassword : SilverlightEdit
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CUITe_SlPassword"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
         /// </summary>
-        public CUITe_SlPassword()
+        public SilverlightPassword()
             : base()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CUITe_SlPassword"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
         /// </summary>
         /// <param name="searchParameters">The search parameters.</param>
-        public CUITe_SlPassword(string searchParameters)
+        public SilverlightPassword(string searchParameters)
             : base(searchParameters)
         {
         }

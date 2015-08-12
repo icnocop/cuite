@@ -1,21 +1,21 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for Silverlight Spinner.
     /// </summary>
-    public class CUITe_SlSpinner : CUITe_SlControl<SilverlightControl>
+    public class SilverlightSpinner : SilverlightControl<CUIT.SilverlightControl>
     {
-        public CUITe_SlSpinner()
+        public SilverlightSpinner()
             : base()
         {
             Initialize();
         }
 
-        public CUITe_SlSpinner(string searchParameters)
+        public SilverlightSpinner(string searchParameters)
             : base(searchParameters)
         {
             Initialize();
@@ -26,11 +26,11 @@ namespace CUITe.Controls.SilverlightControls
             this.SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
         }
 
-        private CUITe_SlEdit _TextBox
+        private SilverlightEdit _TextBox
         {
             get
             {
-                return Get<CUITe_SlEdit>();
+                return Get<SilverlightEdit>();
             }
         }
 

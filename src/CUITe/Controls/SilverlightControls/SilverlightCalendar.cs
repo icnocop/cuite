@@ -1,16 +1,16 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using System;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightCalendar.
     /// </summary>
-    public class CUITe_SlCalendar : CUITe_SlControl<SilverlightCalendar>
+    public class SilverlightCalendar : SilverlightControl<CUIT.SilverlightCalendar>
     {
-        public CUITe_SlCalendar() : base() { }
-        public CUITe_SlCalendar(string searchParameters) : base(searchParameters) { }
+        public SilverlightCalendar() : base() { }
+        public SilverlightCalendar(string searchParameters) : base(searchParameters) { }
 
         public System.Windows.Forms.SelectionRange SelectedDateRange
         {

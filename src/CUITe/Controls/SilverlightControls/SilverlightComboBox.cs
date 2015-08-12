@@ -1,16 +1,16 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightComboBox.
     /// </summary>
-    public class CUITe_SlComboBox : CUITe_SlControl<SilverlightComboBox>
+    public class SilverlightComboBox : SilverlightControl<CUIT.SilverlightComboBox>
     {
-        public CUITe_SlComboBox() : base() { }
-        public CUITe_SlComboBox(string searchParameters) : base(searchParameters) { }
+        public SilverlightComboBox() : base() { }
+        public SilverlightComboBox(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Selects the item in the combobox.
@@ -80,7 +80,7 @@ namespace CUITe.Controls.SilverlightControls
                 int i = 0;
                 foreach (UITestControl con in col)
                 {
-                    SilverlightListItem it = (SilverlightListItem)con;
+                    var it = (CUIT.SilverlightListItem)con;
                     saTemp[i] = it.Name;
                     i++;
                 }

@@ -1,16 +1,16 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightList.
     /// </summary>
-    public class CUITe_SlList : CUITe_SlControl<SilverlightList>
+    public class SilverlightList : SilverlightControl<CUIT.SilverlightList>
     {
-        public CUITe_SlList() : base() { }
-        public CUITe_SlList(string searchParameters) : base(searchParameters) { }
+        public SilverlightList() : base() { }
+        public SilverlightList(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the collection of child list items of the list

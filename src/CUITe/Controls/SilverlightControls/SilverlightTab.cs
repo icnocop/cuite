@@ -1,15 +1,15 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightTab.
     /// </summary>
-    public class CUITe_SlTab : CUITe_SlControl<SilverlightTab>
+    public class SilverlightTab : SilverlightControl<CUIT.SilverlightTab>
     {
-        public CUITe_SlTab() : base() { }
-        public CUITe_SlTab(string searchParameters) : base(searchParameters) { }
+        public SilverlightTab() : base() { }
+        public SilverlightTab(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets or sets the index of the selected tab item.

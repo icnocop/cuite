@@ -2,14 +2,14 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class CUITe_SlControl<T> : CUITe_ControlBase<T> where T : SilverlightControl
+    public class SilverlightControl<T> : CUITe_ControlBase<T> where T : CUIT.SilverlightControl
     {
-        public CUITe_SlControl() : base() { }
-        public CUITe_SlControl(string searchParameters) : base(searchParameters) { }
+        public SilverlightControl() : base() { }
+        public SilverlightControl(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the control's label text.
@@ -34,7 +34,7 @@ namespace CUITe.Controls.SilverlightControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((SilverlightControl)this._control.GetParent());
+                    ret = WrapUtil((CUIT.SilverlightControl)this._control.GetParent());
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
@@ -55,7 +55,7 @@ namespace CUITe.Controls.SilverlightControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    ret = WrapUtil((CUIT.SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
@@ -76,7 +76,7 @@ namespace CUITe.Controls.SilverlightControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+                    ret = WrapUtil((CUIT.SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
@@ -97,7 +97,7 @@ namespace CUITe.Controls.SilverlightControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((SilverlightControl)this._control.GetChildren()[0]);
+                    ret = WrapUtil((CUIT.SilverlightControl)this._control.GetChildren()[0]);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
@@ -117,89 +117,89 @@ namespace CUITe.Controls.SilverlightControls
             var uicol = new List<ICUITe_ControlBase>();
             foreach (UITestControl uitestcontrol in this._control.GetChildren())
             {
-                uicol.Add(WrapUtil((SilverlightControl)uitestcontrol));
+                uicol.Add(WrapUtil((CUIT.SilverlightControl)uitestcontrol));
             }
             return uicol;
         }
 
-        private ICUITe_ControlBase WrapUtil(SilverlightControl control)
+        private ICUITe_ControlBase WrapUtil(CUIT.SilverlightControl control)
         {
             ICUITe_ControlBase _con = null;
-            if (control.GetType() == typeof(SilverlightButton))
+            if (control.GetType() == typeof(CUIT.SilverlightButton))
             {
-                _con = new CUITe_SlButton();
+                _con = new SilverlightButton();
             }
-            else if (control.GetType() == typeof(SilverlightCalendar))
+            else if (control.GetType() == typeof(CUIT.SilverlightCalendar))
             {
-                _con = new CUITe_SlCalendar();
+                _con = new SilverlightCalendar();
             }
-            else if (control.GetType() == typeof(SilverlightCell))
+            else if (control.GetType() == typeof(CUIT.SilverlightCell))
             {
-                _con = new CUITe_SlCell();
+                _con = new SilverlightCell();
             }
-            else if (control.GetType() == typeof(SilverlightCheckBox))
+            else if (control.GetType() == typeof(CUIT.SilverlightCheckBox))
             {
-                _con = new CUITe_SlCheckBox();
+                _con = new SilverlightCheckBox();
             }
-            else if (control.GetType() == typeof(SilverlightComboBox))
+            else if (control.GetType() == typeof(CUIT.SilverlightComboBox))
             {
-                _con = new CUITe_SlComboBox();
+                _con = new SilverlightComboBox();
             }
-            else if (control.GetType() == typeof(SilverlightDataPager))
+            else if (control.GetType() == typeof(CUIT.SilverlightDataPager))
             {
-                _con = new CUITe_SlDataPager();
+                _con = new SilverlightDataPager();
             }
-            else if (control.GetType() == typeof(SilverlightDatePicker))
+            else if (control.GetType() == typeof(CUIT.SilverlightDatePicker))
             {
-                _con = new CUITe_SlDatePicker();
+                _con = new SilverlightDatePicker();
             }
-            else if (control.GetType() == typeof(SilverlightEdit))
+            else if (control.GetType() == typeof(CUIT.SilverlightEdit))
             {
-                _con = new CUITe_SlEdit();
+                _con = new SilverlightEdit();
             }
-            else if (control.GetType() == typeof(SilverlightHyperlink))
+            else if (control.GetType() == typeof(CUIT.SilverlightHyperlink))
             {
-                _con = new CUITe_SlHyperlink();
+                _con = new SilverlightHyperlink();
             }
-            else if (control.GetType() == typeof(SilverlightImage))
+            else if (control.GetType() == typeof(CUIT.SilverlightImage))
             {
-                _con = new CUITe_SlImage();
+                _con = new SilverlightImage();
             }
-            else if (control.GetType() == typeof(SilverlightLabel))
+            else if (control.GetType() == typeof(CUIT.SilverlightLabel))
             {
-                _con = new CUITe_SlLabel();
+                _con = new SilverlightLabel();
             }
-            else if (control.GetType() == typeof(SilverlightList))
+            else if (control.GetType() == typeof(CUIT.SilverlightList))
             {
-                _con = new CUITe_SlList();
+                _con = new SilverlightList();
             }
-            else if (control.GetType() == typeof(SilverlightRadioButton))
+            else if (control.GetType() == typeof(CUIT.SilverlightRadioButton))
             {
-                _con = new CUITe_SlRadioButton();
+                _con = new SilverlightRadioButton();
             }
-            else if (control.GetType() == typeof(SilverlightSlider))
+            else if (control.GetType() == typeof(CUIT.SilverlightSlider))
             {
-                _con = new CUITe_SlSlider();
+                _con = new SilverlightSlider();
             }
-            else if (control.GetType() == typeof(SilverlightTab))
+            else if (control.GetType() == typeof(CUIT.SilverlightTab))
             {
-                _con = new CUITe_SlTab();
+                _con = new SilverlightTab();
             }
-            else if (control.GetType() == typeof(SilverlightTabItem))
+            else if (control.GetType() == typeof(CUIT.SilverlightTabItem))
             {
-                _con = new CUITe_SlTabItem();
+                _con = new SilverlightTabItem();
             }
-            else if (control.GetType() == typeof(SilverlightTable))
+            else if (control.GetType() == typeof(CUIT.SilverlightTable))
             {
-                _con = new CUITe_SlTable();
+                _con = new SilverlightTable();
             }
-            else if (control.GetType() == typeof(SilverlightText))
+            else if (control.GetType() == typeof(CUIT.SilverlightText))
             {
-                _con = new CUITe_SlText();
+                _con = new SilverlightText();
             }
-            else if (control.GetType() == typeof(SilverlightTree))
+            else if (control.GetType() == typeof(CUIT.SilverlightTree))
             {
-                _con = new CUITe_SlTree();
+                _con = new SilverlightTree();
             }
             else
             {

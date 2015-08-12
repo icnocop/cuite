@@ -1,15 +1,15 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightCheckBox.
     /// </summary>
-    public class CUITe_SlCheckBox : CUITe_SlControl<SilverlightCheckBox>
+    public class SilverlightCheckBox : SilverlightControl<CUIT.SilverlightCheckBox>
     {
-        public CUITe_SlCheckBox() : base() { }
-        public CUITe_SlCheckBox(string searchParameters) : base(searchParameters) { }
+        public SilverlightCheckBox() : base() { }
+        public SilverlightCheckBox(string searchParameters) : base(searchParameters) { }
 
         public void Check()
         {

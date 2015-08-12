@@ -1,15 +1,15 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightButton.
     /// </summary>
-    public class CUITe_SlButton : CUITe_SlControl<SilverlightButton>
+    public class SilverlightButton : SilverlightControl<CUIT.SilverlightButton>
     {
-        public CUITe_SlButton() : base() { }
-        public CUITe_SlButton(string searchParameters) : base(searchParameters) { }
+        public SilverlightButton() : base() { }
+        public SilverlightButton(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the text displayed on the Silverlight Button.
