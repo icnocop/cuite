@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfTitleBar
     /// </summary>
-    public class WpfTitleBar : WpfControl<CUIT.WpfTitleBar>
+    public class WpfTitleBar : WpfControl<CUITControls.WpfTitleBar>
     {
         public WpfTitleBar() : base() { }
         public WpfTitleBar(string searchParameters) : base(searchParameters) { }

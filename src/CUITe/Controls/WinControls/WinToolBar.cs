@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WpfToolBar
     /// </summary>
-    public class WinToolBar : WinControl<CUIT.WinToolBar>
+    public class WinToolBar : WinControl<CUITControls.WinToolBar>
     {
         public WinToolBar() : base() { }
         public WinToolBar(string searchParameters) : base(searchParameters) { }

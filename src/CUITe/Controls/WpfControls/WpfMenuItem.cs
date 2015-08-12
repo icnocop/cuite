@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfMenuItem
     /// </summary>
-    public class WpfMenuItem : WpfControl<CUIT.WpfMenuItem>
+    public class WpfMenuItem : WpfControl<CUITControls.WpfMenuItem>
     {
         public WpfMenuItem() : base() { }
         public WpfMenuItem(string searchParameters) : base(searchParameters) { }

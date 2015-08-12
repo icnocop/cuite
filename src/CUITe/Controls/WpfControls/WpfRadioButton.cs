@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfRadioButton
     /// </summary>
-    public class WpfRadioButton : WpfControl<CUIT.WpfRadioButton>
+    public class WpfRadioButton : WpfControl<CUITControls.WpfRadioButton>
     {
         public WpfRadioButton() : base() { }
         public WpfRadioButton(string searchParameters) : base(searchParameters) { }

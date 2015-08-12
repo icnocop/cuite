@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinCell
     /// </summary>
-    public class WinCell : WinControl<CUIT.WinCell>
+    public class WinCell : WinControl<CUITControls.WinCell>
     {
         public WinCell() : base() { }
         public WinCell(string searchParameters) : base(searchParameters) { }

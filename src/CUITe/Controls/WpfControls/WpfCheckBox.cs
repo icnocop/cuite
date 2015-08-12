@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfCheckBox
     /// </summary>
-    public class WpfCheckBox : WpfControl<CUIT.WpfCheckBox>
+    public class WpfCheckBox : WpfControl<CUITControls.WpfCheckBox>
     {
         public WpfCheckBox() : base() { }
         public WpfCheckBox(string searchParameters) : base(searchParameters) { }

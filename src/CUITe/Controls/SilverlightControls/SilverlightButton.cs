@@ -1,12 +1,12 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightButton.
     /// </summary>
-    public class SilverlightButton : SilverlightControl<CUIT.SilverlightButton>
+    public class SilverlightButton : SilverlightControl<CUITControls.SilverlightButton>
     {
         public SilverlightButton() : base() { }
         public SilverlightButton(string searchParameters) : base(searchParameters) { }

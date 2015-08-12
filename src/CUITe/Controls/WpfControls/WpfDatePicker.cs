@@ -1,12 +1,12 @@
 ﻿using System;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfDatePicker
     /// </summary>
-    public class WpfDatePicker : WpfControl<CUIT.WpfDatePicker>
+    public class WpfDatePicker : WpfControl<CUITControls.WpfDatePicker>
     {
         public WpfDatePicker() : base() { }
         public WpfDatePicker(string searchParameters) : base(searchParameters) { }

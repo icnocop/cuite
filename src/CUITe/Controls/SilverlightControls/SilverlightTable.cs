@@ -1,13 +1,13 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightTable.
     /// </summary>
-    public class SilverlightTable : SilverlightControl<CUIT.SilverlightTable>
+    public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
         public SilverlightTable() : base() { }
         public SilverlightTable(string searchParameters) : base(searchParameters) { }
@@ -60,11 +60,11 @@ namespace CUITe.Controls.SilverlightControls
             this._control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
-            foreach (CUIT.SilverlightRow cont in this._control.Rows)
+            foreach (CUITControls.SilverlightRow cont in this._control.Rows)
             {
                 rowCount++;
                 int colCount = -1;
-                foreach (CUIT.SilverlightCell cell in cont.Cells)
+                foreach (CUITControls.SilverlightCell cell in cont.Cells)
                 {
                     colCount++;
                     bool bSearchOptionResult = false;
@@ -105,23 +105,23 @@ namespace CUITe.Controls.SilverlightControls
         public string GetCellValue(int iRow, int iCol)
         {
             string sResult = "";
-            CUIT.SilverlightCell _SlCell = this.GetCell(iRow, iCol);
+            CUITControls.SilverlightCell _SlCell = this.GetCell(iRow, iCol);
             if (_SlCell != null) sResult = _SlCell.Value;
             return sResult;
         }
 
-        private CUIT.SilverlightCell GetCell(int iRow, int iCol)
+        private CUITControls.SilverlightCell GetCell(int iRow, int iCol)
         {
             this._control.WaitForControlReady();
-            CUIT.SilverlightCell _SlCell = null;
+            CUITControls.SilverlightCell _SlCell = null;
             int rowCount = -1;
-            foreach (CUIT.SilverlightRow cont in this._control.Rows)
+            foreach (CUITControls.SilverlightRow cont in this._control.Rows)
             {
                 rowCount++;
                 if (rowCount == iRow)
                 {
                     int colCount = -1;
-                    foreach (CUIT.SilverlightCell cell in cont.Cells)
+                    foreach (CUITControls.SilverlightCell cell in cont.Cells)
                     {
                         colCount++;
                         if (colCount == iCol)
@@ -141,7 +141,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public SilverlightCheckBox GetRowHeaderCheckBox(int iRow)
         {
-            CUIT.SilverlightCheckBox _checkbox = (CUIT.SilverlightCheckBox)this._control.Rows[iRow].GetChildren()[0].GetChildren()[0];
+            var _checkbox = (CUITControls.SilverlightCheckBox)this._control.Rows[iRow].GetChildren()[0].GetChildren()[0];
             SilverlightCheckBox retObj = new SilverlightCheckBox("*");
             retObj.WrapReady(_checkbox);
             return retObj;

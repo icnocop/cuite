@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfStatusBar
     /// </summary>
-    public class WpfStatusBar : WpfControl<CUIT.WpfStatusBar>
+    public class WpfStatusBar : WpfControl<CUITControls.WpfStatusBar>
     {
         public WpfStatusBar() : base() { }
         public WpfStatusBar(string searchParameters) : base(searchParameters) { }

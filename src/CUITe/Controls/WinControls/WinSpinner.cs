@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinSpinner
     /// </summary>
-    public class WinSpinner : WinControl<CUIT.WinSpinner>
+    public class WinSpinner : WinControl<CUITControls.WinSpinner>
     {
         public WinSpinner() : base() { }
         public WinSpinner(string searchParameters) : base(searchParameters) { }

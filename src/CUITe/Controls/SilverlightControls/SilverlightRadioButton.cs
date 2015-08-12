@@ -1,12 +1,12 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightRadioButton.
     /// </summary>
-    public class SilverlightRadioButton : SilverlightControl<CUIT.SilverlightRadioButton>
+    public class SilverlightRadioButton : SilverlightControl<CUITControls.SilverlightRadioButton>
     {
         public SilverlightRadioButton() : base() { }
         public SilverlightRadioButton(string searchParameters) : base(searchParameters) { }

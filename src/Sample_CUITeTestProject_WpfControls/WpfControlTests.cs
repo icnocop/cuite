@@ -5,7 +5,7 @@ using CUITe.Controls.WpfControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sample_CUITeTestProject_WpfControls.ObjectLibrary;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace Sample_CUITeTestProject_WpfControls
 {
@@ -110,7 +110,7 @@ namespace Sample_CUITeTestProject_WpfControls
         {
             WpfTable listView = mainWindow.Get<WpfTable>("AutomationId=lv1");
             Assert.AreEqual(8, listView.RowCount);
-            WpfControl<CUIT.WpfControl> control = listView.Get<WpfControl<CUIT.WpfControl>>("AutomationId=Item0");
+            WpfControl<CUITControls.WpfControl> control = listView.Get<WpfControl<CUITControls.WpfControl>>("AutomationId=Item0");
             control.Click();
         }
 
@@ -119,7 +119,7 @@ namespace Sample_CUITeTestProject_WpfControls
         {
             WpfTable listView = mainWindow.Get<WpfTable>("AutomationId=lv1");
             Assert.AreEqual(8, listView.RowCount);
-            WpfControl<CUIT.WpfControl> control = listView.Get<WpfControl<CUIT.WpfControl>>("AutomationId=Item0");
+            WpfControl<CUITControls.WpfControl> control = listView.Get<WpfControl<CUITControls.WpfControl>>("AutomationId=Item0");
             WpfCell cell = control.Get<WpfCell>("ColumnHeader=Content");
             cell.Click();
         }

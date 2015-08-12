@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinList
     /// </summary>
-    public class WinList : WinControl<CUIT.WinList>
+    public class WinList : WinControl<CUITControls.WinList>
     {
         public WinList() : base() { }
         public WinList(string searchParameters) : base(searchParameters) { }
@@ -75,7 +75,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinListItem> list = new List<WinListItem>();
-                foreach (CUIT.WinListItem item in this.UnWrap().Items)
+                foreach (CUITControls.WinListItem item in this.UnWrap().Items)
                 {
                     WinListItem cuiteItem = new WinListItem();
                     cuiteItem.WrapReady(item);
@@ -87,7 +87,7 @@ namespace CUITe.Controls.WinControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUIT.WinListItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in this.UnWrap().Items select ((CUITControls.WinListItem)x).DisplayText).ToList<string>(); }
         }
 
         public int[] SelectedIndices

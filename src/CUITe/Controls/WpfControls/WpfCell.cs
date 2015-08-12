@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfCell
     /// </summary>
-    public class WpfCell : WpfControl<CUIT.WpfCell>
+    public class WpfCell : WpfControl<CUITControls.WpfCell>
     {
         public WpfCell() : base() { }
         public WpfCell(string searchParameters) : base(searchParameters) { }

@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinRow
     /// </summary>
-    public class WinRow : WinControl<CUIT.WinRow>
+    public class WinRow : WinControl<CUITControls.WinRow>
     {
         public WinRow() : base() { }
         public WinRow(string searchParameters) : base(searchParameters) { }
@@ -22,7 +22,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinCell> list = new List<WinCell>();
-                foreach (CUIT.WinCell control in this.UnWrap().Cells)
+                foreach (CUITControls.WinCell control in this.UnWrap().Cells)
                 {
                     WinCell cell = new WinCell();
                     cell.WrapReady(control);

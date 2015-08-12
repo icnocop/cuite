@@ -1,5 +1,5 @@
 ﻿using System;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        public static ICUITe_ControlBase Create(CUIT.WinControl control)
+        public static ICUITe_ControlBase Create(CUITControls.WinControl control)
         {
             string CUITePrefix = ".CUITe_";
             string controlTypeName = control.GetType().Name;

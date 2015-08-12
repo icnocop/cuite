@@ -1,13 +1,13 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using System;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightCalendar.
     /// </summary>
-    public class SilverlightCalendar : SilverlightControl<CUIT.SilverlightCalendar>
+    public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
         public SilverlightCalendar() : base() { }
         public SilverlightCalendar(string searchParameters) : base(searchParameters) { }

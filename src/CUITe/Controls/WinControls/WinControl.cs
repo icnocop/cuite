@@ -1,4 +1,4 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -6,7 +6,7 @@ namespace CUITe.Controls.WinControls
     /// Base wrapper class for all CUITe_Win* controls, inherits from CUITe_ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
-    public class WinControl<T> : CUITe_ControlBase<T> where T : CUIT.WinControl
+    public class WinControl<T> : CUITe_ControlBase<T> where T : CUITControls.WinControl
     {
         public WinControl() : base() { }
         public WinControl(string searchParameters) : base(searchParameters) { }
@@ -24,7 +24,7 @@ namespace CUITe.Controls.WinControls
                 
                 try
                 {
-                    ret = WinControlFactory.Create((CUIT.WinControl)this._control.GetParent());
+                    ret = WinControlFactory.Create((CUITControls.WinControl)this._control.GetParent());
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {

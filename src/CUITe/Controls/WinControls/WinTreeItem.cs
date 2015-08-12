@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinTreeItem
     /// </summary>
-    public class WinTreeItem : WinControl<CUIT.WinTreeItem>
+    public class WinTreeItem : WinControl<CUITControls.WinTreeItem>
     {
         public WinTreeItem() : base() { }
         public WinTreeItem(string searchParameters) : base(searchParameters) { }
@@ -33,7 +33,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinTreeItem> list = new List<WinTreeItem>();
-                foreach (CUIT.WinTreeItem node in this.UnWrap().Nodes)
+                foreach (CUITControls.WinTreeItem node in this.UnWrap().Nodes)
                 {
                     WinTreeItem cuiteItem = new WinTreeItem();
                     cuiteItem.WrapReady(node);

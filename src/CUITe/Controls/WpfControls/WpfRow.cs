@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfRow
     /// </summary>
-    public class WpfRow : WpfControl<CUIT.WpfRow>
+    public class WpfRow : WpfControl<CUITControls.WpfRow>
     {
         public WpfRow() : base() { }
         public WpfRow(string searchParameters) : base(searchParameters) { }
@@ -27,7 +27,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfCell> list = new List<WpfCell>();
-                foreach (CUIT.WpfCell control in this.UnWrap().Cells)
+                foreach (CUITControls.WpfCell control in this.UnWrap().Cells)
                 {
                     WpfCell cell = new WpfCell();
                     cell.WrapReady(control);

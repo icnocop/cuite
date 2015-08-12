@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfToggleButton
     /// </summary>
-    public class WpfToggleButton : WpfControl<CUIT.WpfToggleButton>
+    public class WpfToggleButton : WpfControl<CUITControls.WpfToggleButton>
     {
         public WpfToggleButton() : base() { }
         public WpfToggleButton(string searchParameters) : base(searchParameters) { }

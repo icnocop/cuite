@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfTabList
     /// </summary>
-    public class WpfTabList : WpfControl<CUIT.WpfTabList>
+    public class WpfTabList : WpfControl<CUITControls.WpfTabList>
     {
         public WpfTabList() : base() { }
         public WpfTabList(string searchParameters) : base(searchParameters) { }
@@ -28,7 +28,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfTabPage> list = new List<WpfTabPage>();
-                foreach (CUIT.WpfTabPage control in this.UnWrap().Tabs)
+                foreach (CUITControls.WpfTabPage control in this.UnWrap().Tabs)
                 {
                     WpfTabPage tab = new WpfTabPage();
                     tab.WrapReady(control);

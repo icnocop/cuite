@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinSlider
     /// </summary>
-    public class WinSlider : WinControl<CUIT.WinSlider>
+    public class WinSlider : WinControl<CUITControls.WinSlider>
     {
         public WinSlider() : base() { }
         public WinSlider(string searchParameters) : base(searchParameters) { }

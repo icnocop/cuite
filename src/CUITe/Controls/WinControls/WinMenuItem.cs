@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinMenuItem
     /// </summary>
-    public class WinMenuItem : WinControl<CUIT.WinMenuItem>
+    public class WinMenuItem : WinControl<CUITControls.WinMenuItem>
     {
         public WinMenuItem() : base() { }
         public WinMenuItem(string searchParameters) : base(searchParameters) { }
@@ -44,7 +44,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinMenuItem> list = new List<WinMenuItem>();
-                foreach (CUIT.WinMenuItem item in this.UnWrap().Items)
+                foreach (CUITControls.WinMenuItem item in this.UnWrap().Items)
                 {
                     WinMenuItem cuiteItem = new WinMenuItem();
                     cuiteItem.WrapReady(item);
@@ -56,7 +56,7 @@ namespace CUITe.Controls.WinControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUIT.WinMenuItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in this.UnWrap().Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
         }
 
         public string Shortcut

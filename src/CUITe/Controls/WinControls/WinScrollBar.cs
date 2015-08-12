@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinScrollBar
     /// </summary>
-    public class WinScrollBar : WinControl<CUIT.WinScrollBar>
+    public class WinScrollBar : WinControl<CUITControls.WinScrollBar>
     {
         public WinScrollBar() : base() { }
         public WinScrollBar(string searchParameters) : base(searchParameters) { }

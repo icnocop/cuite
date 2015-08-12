@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinCheckBox
     /// </summary>
-    public class WinCheckBox : WinControl<CUIT.WinCheckBox>
+    public class WinCheckBox : WinControl<CUITControls.WinCheckBox>
     {
         public WinCheckBox() : base() { }
         public WinCheckBox(string searchParameters) : base(searchParameters) { }

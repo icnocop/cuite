@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfSlider
     /// </summary>
-    public class WpfSlider : WpfControl<CUIT.WpfSlider>
+    public class WpfSlider : WpfControl<CUITControls.WpfSlider>
     {
         public WpfSlider() : base() { }
         public WpfSlider(string searchParameters) : base(searchParameters) { }

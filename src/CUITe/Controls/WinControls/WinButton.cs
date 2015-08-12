@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Wrapper class for WinButton
     /// </summary>
-    public class WinButton : WinControl<CUIT.WinButton>
+    public class WinButton : WinControl<CUITControls.WinButton>
     {
         public WinButton() : base() { }
         public WinButton(string searchParameters) : base(searchParameters) { }

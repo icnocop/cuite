@@ -1,17 +1,17 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfWindow
     /// </summary>
-    public class WpfWindow : WpfControl<CUIT.WpfWindow>
+    public class WpfWindow : WpfControl<CUITControls.WpfWindow>
     {
         public WpfWindow() : base() { }
 
         public WpfWindow(string searchParameters) : base(searchParameters) 
         {
-            var baseControl = new CUIT.WpfWindow();
+            var baseControl = new CUITControls.WpfWindow();
             this.Wrap(baseControl);
         }
 

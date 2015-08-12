@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfProgressBar
     /// </summary>
-    public class WpfProgressBar : WpfControl<CUIT.WpfProgressBar>
+    public class WpfProgressBar : WpfControl<CUITControls.WpfProgressBar>
     {
         public WpfProgressBar() : base() { }
         public WpfProgressBar(string searchParameters) : base(searchParameters) { }

@@ -1,12 +1,12 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightHyperlink.
     /// </summary>
-    public class SilverlightHyperlink : SilverlightControl<CUIT.SilverlightHyperlink>
+    public class SilverlightHyperlink : SilverlightControl<CUITControls.SilverlightHyperlink>
     {
         public SilverlightHyperlink() : base() { }
         public SilverlightHyperlink(string searchParameters) : base(searchParameters) { }

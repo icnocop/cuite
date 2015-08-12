@@ -1,12 +1,12 @@
 ﻿using System;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfCalendar
     /// </summary>
-    public class WpfCalendar : WpfControl<CUIT.WpfCalendar>
+    public class WpfCalendar : WpfControl<CUITControls.WpfCalendar>
     {
         public WpfCalendar() : base() { }
         public WpfCalendar(string searchParameters) : base(searchParameters) { }

@@ -1,13 +1,13 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for Silverlight Spinner.
     /// </summary>
-    public class SilverlightSpinner : SilverlightControl<CUIT.SilverlightControl>
+    public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
         public SilverlightSpinner()
             : base()

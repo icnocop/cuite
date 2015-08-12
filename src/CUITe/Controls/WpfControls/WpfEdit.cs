@@ -1,11 +1,11 @@
-﻿using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfEdit
     /// </summary>
-    public class WpfEdit : WpfControl<CUIT.WpfEdit>
+    public class WpfEdit : WpfControl<CUITControls.WpfEdit>
     {
         public WpfEdit() : base() { }
         public WpfEdit(string searchParameters) : base(searchParameters) { }

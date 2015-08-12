@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfComboBox
     /// </summary>
-    public class WpfComboBox : WpfControl<CUIT.WpfComboBox>
+    public class WpfComboBox : WpfControl<CUITControls.WpfComboBox>
     {
         public WpfComboBox() : base() { }
         public WpfComboBox(string searchParameters) : base(searchParameters) { }
@@ -37,7 +37,7 @@ namespace CUITe.Controls.WpfControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUIT.WpfListItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in this.UnWrap().Items select ((CUITControls.WpfListItem)x).DisplayText).ToList<string>(); }
         }
 
         public int SelectedIndex

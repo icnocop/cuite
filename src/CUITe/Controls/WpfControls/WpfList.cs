@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfList
     /// </summary>
-    public class WpfList : WpfControl<CUIT.WpfList>
+    public class WpfList : WpfControl<CUITControls.WpfList>
     {
         public WpfList() : base() { }
         public WpfList(string searchParameters) : base(searchParameters) { }
@@ -28,7 +28,7 @@ namespace CUITe.Controls.WpfControls
             get 
             {
                 List<WpfListItem> list = new List<WpfListItem>();
-                foreach (CUIT.WpfListItem item in this.UnWrap().Items)
+                foreach (CUITControls.WpfListItem item in this.UnWrap().Items)
                 {
                     WpfListItem cuiteItem = new WpfListItem();
                     cuiteItem.WrapReady(item);
@@ -40,7 +40,7 @@ namespace CUITe.Controls.WpfControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUIT.WpfListItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in this.UnWrap().Items select ((CUITControls.WpfListItem)x).DisplayText).ToList<string>(); }
         }
 
         public int[] SelectedIndices

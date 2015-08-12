@@ -1,12 +1,12 @@
 ﻿#if SILVERLIGHT_SUPPORT
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightCell.
     /// </summary>
-    public class SilverlightCell : SilverlightControl<CUIT.SilverlightCell>
+    public class SilverlightCell : SilverlightControl<CUITControls.SilverlightCell>
     {
         public SilverlightCell() : base() { }
         public SilverlightCell(string searchParameters) : base(searchParameters) { }

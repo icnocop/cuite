@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using CUIT = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
     /// Wrapper class for WpfTreeItem
     /// </summary>
-    public class WpfTreeItem : WpfControl<CUIT.WpfTreeItem>
+    public class WpfTreeItem : WpfControl<CUITControls.WpfTreeItem>
     {
         public WpfTreeItem() : base() { }
         public WpfTreeItem(string searchParameters) : base(searchParameters) { }
@@ -38,7 +38,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfTreeItem> list = new List<WpfTreeItem>();
-                foreach (CUIT.WpfTreeItem node in this.UnWrap().Nodes)
+                foreach (CUITControls.WpfTreeItem node in this.UnWrap().Nodes)
                 {
                     WpfTreeItem cuiteItem = new WpfTreeItem();
                     cuiteItem.WrapReady(node);
