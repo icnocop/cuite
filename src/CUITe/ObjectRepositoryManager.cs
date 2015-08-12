@@ -23,14 +23,14 @@ namespace CUITe
             return (T)(object)ObjectRepositoryManager.GetInstance(typeof(T), args);
         }
 
-        private static CUITe_BrowserWindow GetInstance(Type typePageDefinition)
+        private static BrowserWindowUnderTest GetInstance(Type typePageDefinition)
         {
             return GetInstance(typePageDefinition, null);
         }
 
-        private static CUITe_BrowserWindow GetInstance(Type typePageDefinition, params object[] args)
+        private static BrowserWindowUnderTest GetInstance(Type typePageDefinition, params object[] args)
         {
-            var browserWindow = (CUITe_BrowserWindow)Activator.CreateInstance(typePageDefinition, args);
+            var browserWindow = (BrowserWindowUnderTest)Activator.CreateInstance(typePageDefinition, args);
 
             browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
 

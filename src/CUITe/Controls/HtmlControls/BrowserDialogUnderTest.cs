@@ -2,9 +2,9 @@
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_BrowserDialog : CUITe_BrowserWindow
+    public class BrowserDialogUnderTest : BrowserWindowUnderTest
     {
-        public CUITe_BrowserDialog()
+        public BrowserDialogUnderTest()
         {
             this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().DialogClassName;
             this.WindowTitles.Add(this.sWindowTitle);

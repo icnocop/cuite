@@ -24,7 +24,7 @@ namespace Sample_CUITeTestProject
         public void SetTextOnHtmlEdit(string browser)
         {
             //Arrange
-            IBrowser previousBrowser = CUITe_BrowserWindow.GetCurrentBrowser();
+            IBrowser previousBrowser = BrowserWindowUnderTest.GetCurrentBrowser();
 
             try
             {
@@ -44,7 +44,7 @@ namespace Sample_CUITeTestProject
 
                 BrowserWindow.CurrentBrowser = browser;
 
-                CUITe_BrowserWindow window = CUITe_BrowserWindow.Launch(tempFilePath, "test");
+                BrowserWindowUnderTest window = BrowserWindowUnderTest.Launch(tempFilePath, "test");
                 var div = window.Get<HtmlDiv>("id=div1");
                 var inputTextBox = div.Get<HtmlEdit>();
 

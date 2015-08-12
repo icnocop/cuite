@@ -2,7 +2,7 @@
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class DynamicBrowserWindowTitleRepository : CUITe_DynamicBrowserWindow
+    public class DynamicBrowserWindowTitleRepository : DynamicBrowserWindowUnderTest
     {
         public DynamicBrowserWindowTitleRepository(string title)
             : base(title)

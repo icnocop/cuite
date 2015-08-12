@@ -53,9 +53,9 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlEdit_SetText_Succeeds()
         {
-            GoogleHomePage pgGHomePage = CUITe_BrowserWindow.Launch<GoogleHomePage>("http://www.google.com");
+            GoogleHomePage pgGHomePage = BrowserWindowUnderTest.Launch<GoogleHomePage>("http://www.google.com");
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
-            GoogleSearch pgSearch = CUITe_BrowserWindow.GetBrowserWindow<GoogleSearch>();
+            GoogleSearch pgSearch = BrowserWindowUnderTest.GetBrowserWindow<GoogleSearch>();
             UITestControlCollection col = pgSearch.divSearchResults.UnWrap().GetChildren();
             //do something with collection
             pgSearch.Close();
@@ -101,7 +101,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SelectItemByText_OnTelerikASPNETComboBox_Succeeds()
         {
-            DemosOfTeleriksASPNETComboBoxControl pgPage = CUITe_BrowserWindow.Launch<DemosOfTeleriksASPNETComboBoxControl>(
+            DemosOfTeleriksASPNETComboBoxControl pgPage = BrowserWindowUnderTest.Launch<DemosOfTeleriksASPNETComboBoxControl>(
                 "http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
             pgPage.cbProduct.SelectItemByText("Tofu", 5000);
             pgPage.cbRegion.SelectItemByText("Bloomfield Hills", 5000);
@@ -113,7 +113,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SetText_OnTelerikASPNETComboBox_SelectsItemByText()
         {
-            DemosOfTeleriksASPNETComboBoxControl window = CUITe_BrowserWindow.Launch<DemosOfTeleriksASPNETComboBoxControl>(
+            DemosOfTeleriksASPNETComboBoxControl window = BrowserWindowUnderTest.Launch<DemosOfTeleriksASPNETComboBoxControl>(
                 "http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
             window.Product.SetText("Tofu");
             Keyboard.SendKeys("{Tab}"); // close drop down menu
@@ -135,7 +135,7 @@ namespace Sample_CUITeTestProject
             //TODO: use known html
             try
             {
-                GoogleHomePageWithInvalidControlSearchProperties pgGHome = CUITe_BrowserWindow.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
+                GoogleHomePageWithInvalidControlSearchProperties pgGHome = BrowserWindowUnderTest.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
 
                 Assert.Fail("InvalidSearchKeyException not thrown");
             }
@@ -170,7 +170,7 @@ namespace Sample_CUITeTestProject
 </html>"))
                 {
                     BrowserWindow.Launch(tempFile.FilePath);
-                    var window = new CUITe_BrowserWindow("test");
+                    var window = new BrowserWindowUnderTest("test");
 
                     //Act
                     HtmlDiv div = window.Get<HtmlDiv>("Id=invalid");
@@ -193,7 +193,7 @@ namespace Sample_CUITeTestProject
         [WorkItem(589)]
         public void HtmlEdit_Wrap_Succeeds()
         {
-            GoogleHomePage pgGHomePage = CUITe_BrowserWindow.Launch<GoogleHomePage>("http://www.google.com");
+            GoogleHomePage pgGHomePage = BrowserWindowUnderTest.Launch<GoogleHomePage>("http://www.google.com");
             
             CUITControls.HtmlEdit tmp = new CUITControls.HtmlEdit(pgGHomePage);
             tmp.SearchProperties.Add("Id", "lst-ib");
@@ -201,7 +201,7 @@ namespace Sample_CUITeTestProject
             HtmlEdit txtEdit = new HtmlEdit();
             txtEdit.WrapReady(tmp);
             txtEdit.SetText("Coded UI Test enhanced Framework");
-            GoogleSearch pgSearch = CUITe_BrowserWindow.GetBrowserWindow<GoogleSearch>();
+            GoogleSearch pgSearch = BrowserWindowUnderTest.GetBrowserWindow<GoogleSearch>();
             pgSearch.Close();
         }
 
@@ -209,7 +209,7 @@ namespace Sample_CUITeTestProject
         public void HtmlTable_GetColumnHeaders_Succeeds()
         {
             BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
-            var bWin = new CUITe_BrowserWindow("A Test");
+            var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
             string[] saExpectedValues = new string[] { "Header1", "Header2", "Header3" };
             string[] saHeaders = tbl.GetColumnHeaders();
@@ -288,7 +288,7 @@ namespace Sample_CUITeTestProject
             {
 
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 var table = window.Get<HtmlTable>("id=tableId");
 
@@ -303,7 +303,7 @@ namespace Sample_CUITeTestProject
         public void HtmlTable_ColumnCount_Succeeds()
         {
             BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
-            var bWin = new CUITe_BrowserWindow("A Test");
+            var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
             Assert.AreEqual(3, tbl.ColumnCount);
             bWin.Close();
@@ -313,7 +313,7 @@ namespace Sample_CUITeTestProject
         public void HtmlTable_ClickOnColumnHeader_Succeeds()
         {
             BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
-            var bWin = new CUITe_BrowserWindow("A Test");
+            var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=tableWithAlertOnHeaderClick");
             tbl.FindHeaderAndClick(0, 0);
             bWin.PerformDialogAction(BrowserDialogAction.Ok);
@@ -324,7 +324,7 @@ namespace Sample_CUITeTestProject
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
             tbl.FindRowAndClick(2, "9", HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(3, 2).Trim());
@@ -335,7 +335,7 @@ namespace Sample_CUITeTestProject
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithoutRowHeaders_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithOutHeaders");
             tbl.FindRowAndClick(2, "9", HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(2, 2).Trim());
@@ -345,7 +345,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_GetCellValueWithHeaderCell_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
 
             var termTable = bWin.Get<HtmlTable>("Id=calcWithHeaderCells");
 
@@ -396,7 +396,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 var table = window.Get<HtmlTable>("id=tableId");
 
@@ -429,14 +429,14 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Get<HtmlInputButton>("Value=Log In");
 
                 //Act
                 button.Click();
 
-                if (CUITe_BrowserWindow.GetCurrentBrowser() is CUITe.Browsers.InternetExplorer)
+                if (BrowserWindowUnderTest.GetCurrentBrowser() is CUITe.Browsers.InternetExplorer)
                 {
                     //read JavaScript alert text
                     WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
@@ -465,7 +465,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Get<HtmlInputButton>("Value=Log In");
 
@@ -493,7 +493,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlFileInput fileInput = window.Get<HtmlFileInput>("Id=inputId");
 
@@ -513,8 +513,8 @@ namespace Sample_CUITeTestProject
         public void HtmlHyperlink_OnSharePoint2010_Succeeds()
         {
             BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
-            CUITe_BrowserWindow.Authenticate("username", "passwd");
-            var bWin = new CUITe_BrowserWindow("Suresh Balasubramanian");
+            BrowserWindowUnderTest.Authenticate("username", "passwd");
+            var bWin = new BrowserWindowUnderTest("Suresh Balasubramanian");
             bWin.Get<HtmlHyperlink>("Id=idHomePageNewDocument").Click();
             var closeLink = bWin.Get<HtmlHyperlink>("Title=Close;class=ms-dlgCloseBtn");
             //clicking closeLink directly doesn't work as the maximizeLink is clicked due to the controls being placed too close to each other
@@ -525,7 +525,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlControl_GetChildren_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var div = bWin.Get<HtmlDiv>("id=calculatorContainer1");
             var col = div.GetChildren();
             Assert.IsTrue(col[0].GetBaseType().Name == "HtmlDiv");
@@ -539,7 +539,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlParagraph_InnertText_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             Assert.IsTrue(bWin.Get<HtmlParagraph>("Id=para1").InnerText.Contains("HtmlParagraph"));
             bWin.Close();
         }
@@ -563,7 +563,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 //Act
                 HtmlComboBox comboBox = window.Get<HtmlComboBox>("Id=selectId");
@@ -595,7 +595,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 //Act
                 HtmlComboBox comboBox = window.Get<HtmlComboBox>("Id=selectId");
@@ -612,7 +612,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlParagraph_InObjectRepository_Succeeds()
         {
-            var testpage = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            var testpage = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
             string content = testpage.p.InnerText;
             Assert.IsTrue(content.Contains("HtmlParagraph"));
             testpage.Close();
@@ -621,7 +621,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlParagraph_TraverseSiblingsParentAndChildren_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
             var p = bWin.Get<HtmlParagraph>("Id=para1");
             Assert.IsTrue(((HtmlEdit)p.PreviousSibling).UnWrap().Name == "text1_test");
             Assert.IsTrue(((HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
@@ -635,7 +635,7 @@ namespace Sample_CUITeTestProject
         [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
             bWin.Get<HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
         }
@@ -645,7 +645,7 @@ namespace Sample_CUITeTestProject
         [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
         public void HtmlInputButton_ClickInCUITeIFrame_Succeeds()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
             HtmlIFrame iFrame = bWin.Get<HtmlIFrame>();
             iFrame.Get<HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
@@ -667,7 +667,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Get<HtmlInputButton>("Value=   Search   ");
 
@@ -693,7 +693,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 //Act
                 HtmlButton button = window.Get<HtmlButton>("id=buttonId");
@@ -710,7 +710,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlUnorderedList_WithListItems_CanAssertOnListItems()
         {
-            var bWin = CUITe_BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
 
             var list = bWin.Get<HtmlUnorderedList>("id=unorderedList");
 
@@ -728,7 +728,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
         {
-            TestHtmlPage bWin = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            TestHtmlPage bWin = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
 
             List<HtmlListItem> children = (from i in bWin.list.GetChildren()
                                                  select i as HtmlListItem).ToList();
@@ -756,7 +756,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 //Act
                 HtmlCheckBox checkBox = window.Get<HtmlCheckBox>("id=checkBoxId");
@@ -787,7 +787,7 @@ namespace Sample_CUITeTestProject
     </body>
 </html>"))
             {
-                var window = CUITe_BrowserWindow.Launch(tempFile.FilePath, "test");
+                var window = BrowserWindowUnderTest.Launch(tempFile.FilePath, "test");
 
                 HtmlComboBox comboBox = window.Get<HtmlComboBox>("Id=selectId");
 
@@ -820,7 +820,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
                 HtmlDiv div = window.Get<HtmlDiv>("id=div1");
                 HtmlEdit inputTextBox = div.Get<HtmlEdit>();
 
@@ -856,7 +856,7 @@ namespace Sample_CUITeTestProject
     </body>
 </html>"))
             {
-                var bWin = CUITe_BrowserWindow.Launch(tempFile.FilePath, "test");
+                var bWin = BrowserWindowUnderTest.Launch(tempFile.FilePath, "test");
 
                 // Act
                 HtmlCustom txtUserName = bWin.Get<HtmlCustom>("input");
@@ -893,7 +893,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var bWin = new CUITe_BrowserWindow("test");
+                var bWin = new BrowserWindowUnderTest("test");
                 HtmlList list = bWin.Get<HtmlList>("id=selectId");
 
                 string[] itemsToSelect = new string[] { "1", "2" };
@@ -923,7 +923,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Get<HtmlInputButton>("Value==");
 
@@ -955,7 +955,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlComboBox comboBox = window.Get<HtmlComboBox>("Id=selectId");
                 
@@ -991,7 +991,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlLabel label = window.Get<HtmlLabel>("id=other");
 
@@ -1022,7 +1022,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 IControlBase a = (IControlBase)window.Get<HtmlHyperlink>("InnerText=test");
                 a.Click();
@@ -1032,7 +1032,7 @@ namespace Sample_CUITeTestProject
                 list.Add(typeof(HtmlButton));
                 list.Add(typeof(HtmlEdit));
 
-                MethodInfo getMethodInfo = typeof(CUITe_BrowserWindow).GetMethod("Get");
+                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Get");
 
                 foreach(Type t in list)
                 {
@@ -1088,7 +1088,7 @@ namespace Sample_CUITeTestProject
     </body>
 </html>"))
             {
-                var window = CUITe_BrowserWindow.Launch<HtmlTestPage>(tempFile.FilePath);
+                var window = BrowserWindowUnderTest.Launch<HtmlTestPage>(tempFile.FilePath);
 
                 //Act
                 window.div1.div2.edit.SetText("test");
@@ -1126,7 +1126,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 //Act
                 List<IControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
@@ -1164,7 +1164,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 //Act
                 HtmlButton button = window.Get<HtmlButton>("id=buttonId");
@@ -1210,7 +1210,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 // Act
-                HtmlTestPageFeeds window = CUITe_BrowserWindow.Launch<HtmlTestPageFeeds>(tempFile.FilePath);
+                HtmlTestPageFeeds window = BrowserWindowUnderTest.Launch<HtmlTestPageFeeds>(tempFile.FilePath);
 
                 CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(window.divFeedTabs.UnWrap());
                 cus.SearchProperties.Add(CUITControls.HtmlCustom.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
@@ -1253,7 +1253,7 @@ namespace Sample_CUITeTestProject
             {
                 // Act
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 // Assert
                 HtmlHyperlink SignUpHyperLink = window.Get<HtmlHyperlink>("href~registration");
@@ -1281,7 +1281,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlEdit input = window.Get<HtmlEdit>("id=input");
 
@@ -1316,7 +1316,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 // Act
                 HtmlDiv div = window.Get<HtmlDiv>("class=button");
@@ -1363,7 +1363,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 // Act
                 HtmlRow row = window.Get<HtmlRow>("id=555002_gp2");
@@ -1390,7 +1390,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Get<HtmlInputButton>("Value=Click here");
 
@@ -1418,7 +1418,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlSpan span3 = window.Get<HtmlSpan>("Class~class1;Class~class2");
 
@@ -1446,7 +1446,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 // Act
                 HtmlRadioButton genderTypeMale = window.Get<HtmlRadioButton>("Name=radio:tab1:gender.type.male");
@@ -1481,7 +1481,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
 
                 HtmlPassword txtPwd = window.Get<HtmlPassword>("id=i0118");
 
@@ -1516,7 +1516,7 @@ namespace Sample_CUITeTestProject
 </html>"))
             {
                 BrowserWindow.Launch(tempFile.FilePath);
-                var window = new CUITe_BrowserWindow("test");
+                var window = new BrowserWindowUnderTest("test");
                 var table = window.Get<HtmlTable>("Id=tableId");
 
                 HtmlCell cell = table.GetCell(0, 1);

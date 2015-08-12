@@ -2,7 +2,7 @@
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class TestHtmlPage : CUITe_BrowserWindow
+    public class TestHtmlPage : BrowserWindowUnderTest
     {
         public new string sWindowTitle = "A Test";
 

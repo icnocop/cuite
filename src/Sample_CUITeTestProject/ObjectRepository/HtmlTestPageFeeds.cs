@@ -2,7 +2,7 @@
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class HtmlTestPageFeeds : CUITe_BrowserWindow
+    public class HtmlTestPageFeeds : BrowserWindowUnderTest
     {
         public HtmlTestPageFeeds()
             : base("test")

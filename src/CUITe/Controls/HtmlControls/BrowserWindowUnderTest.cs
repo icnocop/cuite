@@ -11,25 +11,25 @@ namespace CUITe.Controls.HtmlControls
     /// <summary>
     /// The browser window
     /// </summary>
-    public class CUITe_BrowserWindow : BrowserWindow
+    public class BrowserWindowUnderTest : BrowserWindow
     {
         public string sWindowTitle;
         private CUITControls.HtmlCustom mSlObjectContainer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CUITe_BrowserWindow"/> class.
+        /// Initializes a new instance of the <see cref="BrowserWindowUnderTest"/> class.
         /// </summary>
-        public CUITe_BrowserWindow()
+        public BrowserWindowUnderTest()
             : this(null)
         {
             
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CUITe_BrowserWindow"/> class.
+        /// Initializes a new instance of the <see cref="BrowserWindowUnderTest"/> class.
         /// </summary>
         /// <param name="title">The title.</param>
-        public CUITe_BrowserWindow(string title)
+        public BrowserWindowUnderTest(string title)
         {
             this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
 
@@ -87,13 +87,13 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         /// <param name="url">The url.</param>
         /// <param name="title">The title.</param>
-        /// <returns>The CUITe_BrowserWindow that matches the title</returns>
-        public static new CUITe_BrowserWindow Launch(string url, string title)
+        /// <returns>The BrowserWindowUnderTest that matches the title</returns>
+        public static new BrowserWindowUnderTest Launch(string url, string title)
         {
-            CUITe_BrowserWindow browserWindow = new CUITe_BrowserWindow();
-            browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+            var browserWindowUnderTest = new BrowserWindowUnderTest();
+            browserWindowUnderTest.CopyFrom(BrowserWindow.Launch(new Uri(url)));
 
-            return browserWindow;
+            return browserWindowUnderTest;
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="url">The url.</param>
         /// <returns>An instance of the object repository class that matches the title</returns>
         public static T Launch<T>(string url)
-            where T : CUITe_BrowserWindow, new()
+            where T : BrowserWindowUnderTest, new()
         {
             T browserWindow = new T();
             browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));

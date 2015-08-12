@@ -3,7 +3,7 @@ using CUITe.Controls.SilverlightControls;
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class SlTestPage : CUITe_BrowserWindow
+    public class SlTestPage : BrowserWindowUnderTest
     {
         public SlTestPage()
             : base("Home")

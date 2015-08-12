@@ -140,9 +140,9 @@
     <Compile Include="Browsers\InternetExplorer.cs" />
     <Compile Include="Controls\ControlBase.cs" />
     <Compile Include="Controls\ControlBaseFactory.cs" />
-    <Compile Include="Controls\HtmlControls\BrowserDialog.cs" />
-    <Compile Include="Controls\HtmlControls\BrowserWindow.cs" />
-    <Compile Include="Controls\HtmlControls\DynamicBrowserWindow.cs" />
+    <Compile Include="Controls\HtmlControls\BrowserDialogUnderTest.cs" />
+    <Compile Include="Controls\HtmlControls\BrowserWindowUnderTest.cs" />
+    <Compile Include="Controls\HtmlControls\DynamicBrowserWindowUnderTest.cs" />
     <Compile Include="Controls\HtmlControls\HtmlButton.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCell.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCheckBox.cs" />

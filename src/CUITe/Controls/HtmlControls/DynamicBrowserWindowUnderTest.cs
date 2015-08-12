@@ -1,8 +1,8 @@
 ﻿namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_DynamicBrowserWindow : CUITe_BrowserWindow
+    public class DynamicBrowserWindowUnderTest : BrowserWindowUnderTest
     {
-        public CUITe_DynamicBrowserWindow(string title)
+        public DynamicBrowserWindowUnderTest(string title)
             : base(title)
         {
             SetWindowTitle(title);

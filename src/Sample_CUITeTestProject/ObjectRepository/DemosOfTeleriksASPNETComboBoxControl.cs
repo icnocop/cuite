@@ -3,7 +3,7 @@ using CUITe.Controls.TelerikControls;
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class DemosOfTeleriksASPNETComboBoxControl : CUITe_BrowserWindow
+    public class DemosOfTeleriksASPNETComboBoxControl : BrowserWindowUnderTest
     {
         public new string sWindowTitle = "Demos of Telerik's ASP.NET ComboBox control";
 
