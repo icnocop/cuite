@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using CUITe.Controls.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.TelerikControls
 {
-    public class ComboBox : CUITe_HtmlControl<HtmlDiv>
+    public class ComboBox : HtmlControl<CUITControls.HtmlDiv>
     {
         private string id;
         private CUITe_BrowserWindow _window;

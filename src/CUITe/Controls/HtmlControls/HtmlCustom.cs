@@ -1,17 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlCustom : CUITe_HtmlControl<HtmlCustom>
+    public class HtmlCustom : HtmlControl<CUITControls.HtmlCustom>
     {
-        public CUITe_HtmlCustom(string tagName)
+        public HtmlCustom(string tagName)
             : base()
         {
             Initialize(tagName);
         }
 
-        public CUITe_HtmlCustom(string tagName, string searchParameters)
+        public HtmlCustom(string tagName, string searchParameters)
             : base(searchParameters)
         {
             Initialize(tagName);
@@ -19,7 +19,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void Initialize(string tagName)
         {
-            this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
+            this.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
         }
     }
 }

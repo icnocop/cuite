@@ -45,8 +45,8 @@ namespace Sample_CUITeTestProject
                 BrowserWindow.CurrentBrowser = browser;
 
                 CUITe_BrowserWindow window = CUITe_BrowserWindow.Launch(tempFilePath, "test");
-                CUITe_HtmlDiv div = window.Get<CUITe_HtmlDiv>("id=div1");
-                CUITe_HtmlEdit inputTextBox = div.Get<CUITe_HtmlEdit>();
+                var div = window.Get<HtmlDiv>("id=div1");
+                var inputTextBox = div.Get<HtmlEdit>();
 
                 //Act
                 inputTextBox.SetText("text");

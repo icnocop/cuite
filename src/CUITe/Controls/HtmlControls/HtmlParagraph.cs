@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlParagraph : CUITe_HtmlCustom
+    public class HtmlParagraph : HtmlCustom
     {
         private const string _tagName = "p";
 
-        public CUITe_HtmlParagraph(string searchParameters = null)
+        public HtmlParagraph(string searchParameters = null)
             : base(_tagName, searchParameters)
         {
         }

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
@@ -14,7 +14,7 @@ namespace CUITe.Controls.HtmlControls
     public class CUITe_BrowserWindow : BrowserWindow
     {
         public string sWindowTitle;
-        private HtmlCustom mSlObjectContainer;
+        private CUITControls.HtmlCustom mSlObjectContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CUITe_BrowserWindow"/> class.
@@ -132,13 +132,13 @@ namespace CUITe.Controls.HtmlControls
             this.sWindowTitle = title;
         }
 
-        public HtmlCustom SlObjectContainer
+        public CUITControls.HtmlCustom SlObjectContainer
         {
             get
             {
                 if ((this.mSlObjectContainer == null))
                 {
-                    this.mSlObjectContainer = new HtmlCustom(this);
+                    this.mSlObjectContainer = new CUITControls.HtmlCustom(this);
                     this.mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
                     this.mSlObjectContainer.WindowTitles.Add(this.sWindowTitle);
                 }
@@ -228,140 +228,140 @@ namespace CUITe.Controls.HtmlControls
         }
 
         [Obsolete("GetHtmlButton(string) is deprecated, please use Get<CUITe_HtmlButton>(string) instead.")]
-        public CUITe_HtmlButton GetHtmlButton(string searchParameters)
+        public HtmlButton GetHtmlButton(string searchParameters)
         {
-            CUITe_HtmlButton button = new CUITe_HtmlButton(searchParameters);
-            button.Wrap(new HtmlButton(this));
+            var button = new HtmlButton(searchParameters);
+            button.Wrap(new CUITControls.HtmlButton(this));
             return button;
         }
 
         [Obsolete("GetHtmlCell(string) is deprecated, please use Get<CUITe_HtmlCell>(string) instead.")]
-        public CUITe_HtmlCell GetHtmlCell(string searchParameters)
+        public HtmlCell GetHtmlCell(string searchParameters)
         {
-            CUITe_HtmlCell cell = new CUITe_HtmlCell(searchParameters);
-            cell.Wrap(new HtmlCell(this));
+            var cell = new HtmlCell(searchParameters);
+            cell.Wrap(new CUITControls.HtmlCell(this));
             return cell;
         }
 
         [Obsolete("GetHtmlCheckBox(string) is deprecated, please use Get<CUITe_HtmlCheckBox>(string) instead.")]
-        public CUITe_HtmlCheckBox GetHtmlCheckBox(string searchParameters)
+        public HtmlCheckBox GetHtmlCheckBox(string searchParameters)
         {
-            CUITe_HtmlCheckBox chk = new CUITe_HtmlCheckBox(searchParameters);
-            chk.Wrap(new HtmlCheckBox(this));
+            var chk = new HtmlCheckBox(searchParameters);
+            chk.Wrap(new CUITControls.HtmlCheckBox(this));
             return chk;
         }
 
         [Obsolete("GetHtmlComboBox(string) is deprecated, please use Get<CUITe_HtmlComboBox>(string) instead.")]
-        public CUITe_HtmlComboBox GetHtmlComboBox(string searchParameters)
+        public HtmlComboBox GetHtmlComboBox(string searchParameters)
         {
-            CUITe_HtmlComboBox cmb = new CUITe_HtmlComboBox(searchParameters);
-            cmb.Wrap(new HtmlComboBox(this));
+            var cmb = new HtmlComboBox(searchParameters);
+            cmb.Wrap(new CUITControls.HtmlComboBox(this));
             return cmb;
         }
 
         [Obsolete("GetHtmlDiv(string) is deprecated, please use Get<CUITe_HtmlDiv>(string) instead.")]
-        public CUITe_HtmlDiv GetHtmlDiv(string searchParameters)
+        public HtmlDiv GetHtmlDiv(string searchParameters)
         {
-            CUITe_HtmlDiv div = new CUITe_HtmlDiv(searchParameters);
-            div.Wrap(new HtmlDiv(this));
+            var div = new HtmlDiv(searchParameters);
+            div.Wrap(new CUITControls.HtmlDiv(this));
             return div;
         }
 
         [Obsolete("GetHtmlEdit(string) is deprecated, please use Get<CUITe_HtmlEdit>(string) instead.")]
-        public CUITe_HtmlEdit GetHtmlEdit(string searchParameters)
+        public HtmlEdit GetHtmlEdit(string searchParameters)
         {
-            CUITe_HtmlEdit edit = new CUITe_HtmlEdit(searchParameters);
-            edit.Wrap(new HtmlEdit(this));
+            HtmlEdit edit = new HtmlEdit(searchParameters);
+            edit.Wrap(new CUITControls.HtmlEdit(this));
             return edit;
         }
 
         [Obsolete("GetHtmlFileInput(string) is deprecated, please use Get<CUITe_HtmlFileInput>(string) instead.")]
-        public CUITe_HtmlFileInput GetHtmlFileInput(string searchParameters)
+        public HtmlFileInput GetHtmlFileInput(string searchParameters)
         {
-            CUITe_HtmlFileInput fin = new CUITe_HtmlFileInput(searchParameters);
-            fin.Wrap(new HtmlFileInput(this));
+            HtmlFileInput fin = new HtmlFileInput(searchParameters);
+            fin.Wrap(new CUITControls.HtmlFileInput(this));
             return fin;
         }
 
         [Obsolete("GetHtmlHyperlink(string) is deprecated, please use Get<CUITe_HtmlHyperlink>(string) instead.")]
-        public CUITe_HtmlHyperlink GetHtmlHyperlink(string searchParameters)
+        public HtmlHyperlink GetHtmlHyperlink(string searchParameters)
         {
-            CUITe_HtmlHyperlink href = new CUITe_HtmlHyperlink(searchParameters);
-            href.Wrap(new HtmlHyperlink(this));
+            var href = new HtmlHyperlink(searchParameters);
+            href.Wrap(new CUITControls.HtmlHyperlink(this));
             return href;
         }
 
         [Obsolete("GetHtmlImage(string) is deprecated, please use Get<CUITe_HtmlImage>(string) instead.")]
-        public CUITe_HtmlImage GetHtmlImage(string searchParameters)
+        public HtmlImage GetHtmlImage(string searchParameters)
         {
-            CUITe_HtmlImage img = new CUITe_HtmlImage(searchParameters);
-            img.Wrap(new HtmlImage(this));
+            var img = new HtmlImage(searchParameters);
+            img.Wrap(new CUITControls.HtmlImage(this));
             return img;
         }
 
         [Obsolete("GetHtmlInputButton(string) is deprecated, please use Get<CUITe_HtmlInputButton>(string) instead.")]
-        public CUITe_HtmlInputButton GetHtmlInputButton(string searchParameters)
+        public HtmlInputButton GetHtmlInputButton(string searchParameters)
         {
-            CUITe_HtmlInputButton input = new CUITe_HtmlInputButton(searchParameters);
-            input.Wrap(new HtmlInputButton(this));
+            var input = new HtmlInputButton(searchParameters);
+            input.Wrap(new CUITControls.HtmlInputButton(this));
             return input;
         }
 
         [Obsolete("GetHtmlLabel(string) is deprecated, please use Get<CUITe_HtmlLabel>(string) instead.")]
-        public CUITe_HtmlLabel GetHtmlLabel(string searchParameters)
+        public HtmlLabel GetHtmlLabel(string searchParameters)
         {
-            CUITe_HtmlLabel lbl = new CUITe_HtmlLabel(searchParameters);
-            lbl.Wrap(new HtmlLabel(this));
+            var lbl = new HtmlLabel(searchParameters);
+            lbl.Wrap(new CUITControls.HtmlLabel(this));
             return lbl;
         }
 
         [Obsolete("GetHtmlList(string) is deprecated, please use Get<CUITe_HtmlList>(string) instead.")]
-        public CUITe_HtmlList GetHtmlList(string searchParameters)
+        public HtmlList GetHtmlList(string searchParameters)
         {
-            CUITe_HtmlList lst = new CUITe_HtmlList(searchParameters);
-            lst.Wrap(new HtmlList(this));
+            var lst = new HtmlList(searchParameters);
+            lst.Wrap(new CUITControls.HtmlList(this));
             return lst;
         }
 
         [Obsolete("GetHtmlPassword(string) is deprecated, please use Get<CUITe_HtmlPassword>(string) instead.")]
-        public CUITe_HtmlPassword GetHtmlPassword(string searchParameters)
+        public HtmlPassword GetHtmlPassword(string searchParameters)
         {
-            CUITe_HtmlPassword pwd = new CUITe_HtmlPassword(searchParameters);
-            HtmlEdit tmp = new HtmlEdit(this);
-            tmp.FilterProperties[HtmlEdit.PropertyNames.Type] = "PASSWORD";
+            var pwd = new HtmlPassword(searchParameters);
+            var tmp = new CUITControls.HtmlEdit(this);
+            tmp.FilterProperties[CUITControls.HtmlEdit.PropertyNames.Type] = "PASSWORD";
             pwd.Wrap(tmp);
             return pwd;
         }
 
         [Obsolete("GetHtmlRadioButton(string) is deprecated, please use Get<CUITe_HtmlRadioButton>(string) instead.")]
-        public CUITe_HtmlRadioButton GetHtmlRadioButton(string searchParameters)
+        public HtmlRadioButton GetHtmlRadioButton(string searchParameters)
         {
-            CUITe_HtmlRadioButton rad = new CUITe_HtmlRadioButton(searchParameters);
-            rad.Wrap(new HtmlRadioButton(this));
+            var rad = new HtmlRadioButton(searchParameters);
+            rad.Wrap(new CUITControls.HtmlRadioButton(this));
             return rad;
         }
 
         [Obsolete("GetHtmlSpan(string) is deprecated, please use Get<CUITe_HtmlSpan>(string) instead.")]
-        public CUITe_HtmlSpan GetHtmlSpan(string searchParameters)
+        public HtmlSpan GetHtmlSpan(string searchParameters)
         {
-            CUITe_HtmlSpan span = new CUITe_HtmlSpan(searchParameters);
-            span.Wrap(new HtmlSpan(this));
+            var span = new HtmlSpan(searchParameters);
+            span.Wrap(new CUITControls.HtmlSpan(this));
             return span;
         }
 
         [Obsolete("GetHtmlTable(string) is deprecated, please use Get<CUITe_HtmlTable>(string) instead.")]
-        public CUITe_HtmlTable GetHtmlTable(string searchParameters)
+        public HtmlTable GetHtmlTable(string searchParameters)
         {
-            CUITe_HtmlTable tbl = new CUITe_HtmlTable(searchParameters);
-            tbl.Wrap(new HtmlTable(this));
+            HtmlTable tbl = new HtmlTable(searchParameters);
+            tbl.Wrap(new CUITControls.HtmlTable(this));
             return tbl;
         }
 
         [Obsolete("GetHtmlTextArea(string) is deprecated, please use Get<CUITe_HtmlTextArea>(string) instead.")]
-        public CUITe_HtmlTextArea GetHtmlTextArea(string searchParameters)
+        public HtmlTextArea GetHtmlTextArea(string searchParameters)
         {
-            CUITe_HtmlTextArea tarea = new CUITe_HtmlTextArea(searchParameters);
-            tarea.Wrap(new HtmlTextArea(this));
+            var tarea = new HtmlTextArea(searchParameters);
+            tarea.Wrap(new CUITControls.HtmlTextArea(this));
             return tarea;
         }
 

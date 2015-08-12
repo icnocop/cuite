@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlHeaderCell : CUITe_HtmlControl<HtmlHeaderCell>
+    public class HtmlHeaderCell : HtmlControl<CUITControls.HtmlHeaderCell>
     {
-        public CUITe_HtmlHeaderCell() : base() { }
-        public CUITe_HtmlHeaderCell(string sSearchProperties) : base(sSearchProperties) { }
-        public CUITe_HtmlHeaderCell(HtmlControl control) : base(control) { }
+        public HtmlHeaderCell() : base() { }
+        public HtmlHeaderCell(string sSearchProperties) : base(sSearchProperties) { }
+        public HtmlHeaderCell(CUITControls.HtmlControl control) : base(control) { }
     }
 }

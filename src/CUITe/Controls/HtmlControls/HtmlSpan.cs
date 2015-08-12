@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlSpan : CUITe_HtmlControl<HtmlSpan>
+    public class HtmlSpan : HtmlControl<CUITControls.HtmlSpan>
     {
-        public CUITe_HtmlSpan() : base() { }
-        public CUITe_HtmlSpan(string searchParameters) : base(searchParameters) { }
+        public HtmlSpan() : base() { }
+        public HtmlSpan(string searchParameters) : base(searchParameters) { }
     }
 }

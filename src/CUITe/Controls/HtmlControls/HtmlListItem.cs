@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlListItem : CUITe_HtmlCustom
+    public class HtmlListItem : HtmlCustom
     {
         private const string _tagName = "li";
 
-        public CUITe_HtmlListItem(string searchParameters = null)
+        public HtmlListItem(string searchParameters = null)
             : base(_tagName, searchParameters)
         {
         }

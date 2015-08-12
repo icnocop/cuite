@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlList : CUITe_HtmlControl<HtmlList>
+    public class HtmlList : HtmlControl<CUITControls.HtmlList>
     {
-        public CUITe_HtmlList() : base() { }
-        public CUITe_HtmlList(string searchParameters) : base(searchParameters) { }
+        public HtmlList() : base() { }
+        public HtmlList(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Gets the items in a string array of the html list.

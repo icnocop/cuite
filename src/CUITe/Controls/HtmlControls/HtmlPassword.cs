@@ -1,17 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlPassword : CUITe_HtmlEdit
+    public class HtmlPassword : HtmlEdit
     {
-        public CUITe_HtmlPassword() : base() { }
-        public CUITe_HtmlPassword(string searchParameters) : base(searchParameters) { }
+        public HtmlPassword() : base() { }
+        public HtmlPassword(string searchParameters) : base(searchParameters) { }
 
         public override void Wrap(object control)
         {
             base.Wrap(control);
-            this._control = control as HtmlEdit;
-            this._control.FilterProperties[HtmlEdit.PropertyNames.Type] = "PASSWORD";
+            this._control = control as CUITControls.HtmlEdit;
+            this._control.FilterProperties[CUITControls.HtmlEdit.PropertyNames.Type] = "PASSWORD";
         }
     }
 }

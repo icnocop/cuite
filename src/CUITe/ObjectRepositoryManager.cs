@@ -4,9 +4,9 @@ using System.Reflection;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.TelerikControls;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITHtmlControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 #if SILVERLIGHT_SUPPORT
-using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITSilverlightControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 #endif
 
 namespace CUITe
@@ -30,7 +30,7 @@ namespace CUITe
 
         private static CUITe_BrowserWindow GetInstance(Type typePageDefinition, params object[] args)
         {
-            CUITe_BrowserWindow browserWindow = (CUITe_BrowserWindow)Activator.CreateInstance(typePageDefinition, args);
+            var browserWindow = (CUITe_BrowserWindow)Activator.CreateInstance(typePageDefinition, args);
 
             browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
 
@@ -48,13 +48,13 @@ namespace CUITe
                 {
                     ICUITe_ControlBase field = (ICUITe_ControlBase)fieldinfo.GetValue(browserWindow);
 
-                    if (field.GetBaseType().IsSubclassOf(typeof(HtmlControl)))
+                    if (field.GetBaseType().IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow }));
                     }
 #if SILVERLIGHT_SUPPORT
-                    else if ((field.GetBaseType() == typeof(CUITControls.SilverlightControl))
-                        || (field.GetBaseType().IsSubclassOf(typeof(CUITControls.SilverlightControl))))
+                    else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl))
+                        || (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow.SlObjectContainer }));
                     }

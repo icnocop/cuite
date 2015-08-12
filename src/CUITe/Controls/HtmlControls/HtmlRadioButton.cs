@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlRadioButton : CUITe_HtmlControl<HtmlRadioButton>
+    public class HtmlRadioButton : HtmlControl<CUITControls.HtmlRadioButton>
     {
-        public CUITe_HtmlRadioButton() : base() { }
-        public CUITe_HtmlRadioButton(string searchParameters) : base(searchParameters) { }
+        public HtmlRadioButton() : base() { }
+        public HtmlRadioButton(string searchParameters) : base(searchParameters) { }
 
         public void Select()
         {

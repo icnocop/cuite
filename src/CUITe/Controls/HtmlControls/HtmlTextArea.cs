@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlTextArea : CUITe_HtmlControl<HtmlTextArea>
+    public class HtmlTextArea : HtmlControl<CUITControls.HtmlTextArea>
     {
-        public CUITe_HtmlTextArea() : base() { }
-        public CUITe_HtmlTextArea(string searchParameters) : base(searchParameters) { }
+        public HtmlTextArea() : base() { }
+        public HtmlTextArea(string searchParameters) : base(searchParameters) { }
 
         public void SetText(string sText)
         {

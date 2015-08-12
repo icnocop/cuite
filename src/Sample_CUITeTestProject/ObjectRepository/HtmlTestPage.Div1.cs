@@ -2,7 +2,7 @@
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class Div1 : CUITe_HtmlDiv
+    public class Div1 : HtmlDiv
     {
         // ReSharper disable once UnusedParameter.Local
         // the constructor requires a parameter in order for it to be dynamically created by CUITe

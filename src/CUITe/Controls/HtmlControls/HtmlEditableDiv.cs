@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlEditableDiv : CUITe_HtmlControl<HtmlEditableDiv>
+    public class HtmlEditableDiv : HtmlControl<CUITControls.HtmlEditableDiv>
     {
-        public CUITe_HtmlEditableDiv() : base() { }
-        public CUITe_HtmlEditableDiv(string searchParameters) : base(searchParameters) { }
+        public HtmlEditableDiv() : base() { }
+        public HtmlEditableDiv(string searchParameters) : base(searchParameters) { }
 
         public void SetText(string sText)
         {

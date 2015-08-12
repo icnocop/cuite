@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlControl : CUITe_ControlBase<HtmlControl>
+    public class HtmlControl : CUITe_ControlBase<CUITControls.HtmlControl>
     {
-        public CUITe_HtmlControl(string tagName)
+        public HtmlControl(string tagName)
             : base()
         {
             Initialize(tagName);
         }
 
-        public CUITe_HtmlControl(string tagName, string searchParameters)
+        public HtmlControl(string tagName, string searchParameters)
             : base(searchParameters)
         {
             Initialize(tagName);
@@ -21,7 +21,7 @@ namespace CUITe.Controls.HtmlControls
 
         private void Initialize(string tagName)
         {
-            this.SearchProperties.Add(HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
+            this.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
         }
     }
 
@@ -29,20 +29,20 @@ namespace CUITe.Controls.HtmlControls
     /// Base class for all CUITe_Html controls, inherits from CUITe_ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
-    public class CUITe_HtmlControl<T> : CUITe_ControlBase<T>, ICUITe_HtmlControl
-        where T : HtmlControl
+    public class HtmlControl<T> : CUITe_ControlBase<T>, IHtmlControl
+        where T : CUITControls.HtmlControl
     {
-        public CUITe_HtmlControl()
+        public HtmlControl()
             : base()
         {
         }
 
-        public CUITe_HtmlControl(string searchParameters)
+        public HtmlControl(string searchParameters)
             : base(searchParameters)
         {
         }
 
-        public CUITe_HtmlControl(UITestControl control)
+        public HtmlControl(UITestControl control)
             : base()
         {
             this._control = (T)control;
@@ -119,7 +119,7 @@ namespace CUITe.Controls.HtmlControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((HtmlControl)this._control.GetParent());
+                    ret = WrapUtil((CUITControls.HtmlControl)this._control.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -140,7 +140,7 @@ namespace CUITe.Controls.HtmlControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    ret = WrapUtil((CUITControls.HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
@@ -169,7 +169,7 @@ namespace CUITe.Controls.HtmlControls
 
                     UITestControl child = children[thisIndex + 1];
 
-                    ret = WrapUtil((HtmlControl)child);
+                    ret = WrapUtil((CUITControls.HtmlControl)child);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
@@ -190,7 +190,7 @@ namespace CUITe.Controls.HtmlControls
                 ICUITe_ControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((HtmlControl)this._control.GetChildren()[0]);
+                    ret = WrapUtil((CUITControls.HtmlControl)this._control.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -210,133 +210,133 @@ namespace CUITe.Controls.HtmlControls
             var uicol = new List<ICUITe_ControlBase>();
             foreach (UITestControl uitestcontrol in this._control.GetChildren())
             {
-                uicol.Add(WrapUtil((HtmlControl)uitestcontrol));
+                uicol.Add(WrapUtil((CUITControls.HtmlControl)uitestcontrol));
             }
             return uicol;
         }
 
-        private ICUITe_ControlBase WrapUtil(HtmlControl control)
+        private ICUITe_ControlBase WrapUtil(CUITControls.HtmlControl control)
         {
             ICUITe_ControlBase _con = null;
-            if (control.GetType() == typeof(HtmlButton))
+            if (control.GetType() == typeof(CUITControls.HtmlButton))
             {
-                _con = new CUITe_HtmlButton();
+                _con = new HtmlButton();
             }
-            else if (control.GetType() == typeof(HtmlCheckBox))
+            else if (control.GetType() == typeof(CUITControls.HtmlCheckBox))
             {
-                _con = new CUITe_HtmlCheckBox();
+                _con = new HtmlCheckBox();
             }
-            else if (control.GetType() == typeof(HtmlComboBox))
+            else if (control.GetType() == typeof(CUITControls.HtmlComboBox))
             {
-                _con = new CUITe_HtmlComboBox();
+                _con = new HtmlComboBox();
             }
-            else if (control.GetType() == typeof(HtmlDiv))
+            else if (control.GetType() == typeof(CUITControls.HtmlDiv))
             {
-                _con = new CUITe_HtmlDiv();
+                _con = new HtmlDiv();
             }
-            else if (control.GetType() == typeof(HtmlEdit) && (string.Compare(control.Type, "password", true) == 0))
+            else if (control.GetType() == typeof(CUITControls.HtmlEdit) && (string.Compare(control.Type, "password", true) == 0))
             {
-                _con = new CUITe_HtmlPassword();
+                _con = new HtmlPassword();
             }
-            else if (control.GetType() == typeof(HtmlEdit))
+            else if (control.GetType() == typeof(CUITControls.HtmlEdit))
             {
-                _con = new CUITe_HtmlEdit();
+                _con = new HtmlEdit();
             }
-            else if (control.GetType() == typeof(HtmlEditableDiv))
+            else if (control.GetType() == typeof(CUITControls.HtmlEditableDiv))
             {
-                _con = new CUITe_HtmlEditableDiv();
+                _con = new HtmlEditableDiv();
             }
-            else if (control.GetType() == typeof(HtmlFileInput))
+            else if (control.GetType() == typeof(CUITControls.HtmlFileInput))
             {
-                _con = new CUITe_HtmlFileInput();
+                _con = new HtmlFileInput();
             }
-            else if (control.GetType() == typeof(HtmlHyperlink))
+            else if (control.GetType() == typeof(CUITControls.HtmlHyperlink))
             {
-                _con = new CUITe_HtmlHyperlink();
+                _con = new HtmlHyperlink();
             }
-            else if (control.GetType() == typeof(HtmlImage))
+            else if (control.GetType() == typeof(CUITControls.HtmlImage))
             {
-                _con = new CUITe_HtmlImage();
+                _con = new HtmlImage();
             }
-            else if (control.GetType() == typeof(HtmlInputButton))
+            else if (control.GetType() == typeof(CUITControls.HtmlInputButton))
             {
-                _con = new CUITe_HtmlInputButton();
+                _con = new HtmlInputButton();
             }
-            else if (control.GetType() == typeof(HtmlLabel))
+            else if (control.GetType() == typeof(CUITControls.HtmlLabel))
             {
-                _con = new CUITe_HtmlLabel();
+                _con = new HtmlLabel();
             }
-            else if (control.GetType() == typeof(HtmlList))
+            else if (control.GetType() == typeof(CUITControls.HtmlList))
             {
-                _con = new CUITe_HtmlList();
+                _con = new HtmlList();
             }
-            else if (control.GetType() == typeof(HtmlRadioButton))
+            else if (control.GetType() == typeof(CUITControls.HtmlRadioButton))
             {
-                _con = new CUITe_HtmlRadioButton();
+                _con = new HtmlRadioButton();
             }
-            else if (control.GetType() == typeof(HtmlSpan))
+            else if (control.GetType() == typeof(CUITControls.HtmlSpan))
             {
-                _con = new CUITe_HtmlSpan();
+                _con = new HtmlSpan();
             }
-            else if (control.GetType() == typeof(HtmlEditableSpan))
+            else if (control.GetType() == typeof(CUITControls.HtmlEditableSpan))
             {
-                _con = new CUITe_HtmlEditableSpan();
+                _con = new HtmlEditableSpan();
             }
-            else if (control.GetType() == typeof(HtmlTable))
+            else if (control.GetType() == typeof(Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlTable))
             {
-                _con = new CUITe_HtmlTable();
+                _con = new HtmlTable();
             }
-            else if (control.GetType() == typeof(HtmlCell))
+            else if (control.GetType() == typeof(CUITControls.HtmlCell))
             {
-                _con = new CUITe_HtmlCell();
+                _con = new HtmlCell();
             }
-            else if (control.GetType() == typeof(HtmlTextArea))
+            else if (control.GetType() == typeof(Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlTextArea))
             {
-                _con = new CUITe_HtmlTextArea();
+                _con = new HtmlTextArea();
             }
-            else if (control.GetType() == typeof(HtmlIFrame))
+            else if (control.GetType() == typeof(CUITControls.HtmlIFrame))
             {
-                _con = new CUITe_HtmlIFrame();
+                _con = new HtmlIFrame();
             }
-            else if (control.GetType() == typeof(HtmlCustom))
+            else if (control.GetType() == typeof(CUITControls.HtmlCustom))
             {
                 switch (control.TagName.ToLower())
                 {
                     case "p":
-                        _con = new CUITe_HtmlParagraph();
+                        _con = new HtmlParagraph();
                         break;
                     case "h1":
-                        _con = new CUITe_HtmlHeading1();
+                        _con = new HtmlHeading1();
                         break;
                     case "h2":
-                        _con = new CUITe_HtmlHeading2();
+                        _con = new HtmlHeading2();
                         break;
                     case "h3":
-                        _con = new CUITe_HtmlHeading3();
+                        _con = new HtmlHeading3();
                         break;
                     case "h4":
-                        _con = new CUITe_HtmlHeading4();
+                        _con = new HtmlHeading4();
                         break;
                     case "h5":
-                        _con = new CUITe_HtmlHeading5();
+                        _con = new HtmlHeading5();
                         break;
                     case "h6":
-                        _con = new CUITe_HtmlHeading6();
+                        _con = new HtmlHeading6();
                         break;
                     case "ul":
-                        _con = new CUITe_HtmlUnorderedList();
+                        _con = new HtmlUnorderedList();
                         break;
                     case "ol":
-                        _con = new CUITe_HtmlOrderedList();
+                        _con = new HtmlOrderedList();
                         break;
                     case "li":
-                        _con = new CUITe_HtmlListItem();
+                        _con = new HtmlListItem();
                         break;
                     case "ins":
-                        _con = new CUITe_HtmlIns();
+                        _con = new HtmlIns();
                         break;
                     default:
-                        _con = new CUITe_HtmlCustom(control.TagName);
+                        _con = new HtmlCustom(control.TagName);
                         break;
                 }
             }

@@ -9,37 +9,37 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
         }
 
-        public CUITe_HtmlCustom cusDataFeedTabsNav2
+        public HtmlCustom cusDataFeedTabsNav2
         {
             get
             {
-                CUITe_HtmlCustom ul = this.divFeedTabs.Get<CUITe_HtmlCustom>("ul");
+                HtmlCustom ul = this.divFeedTabs.Get<HtmlCustom>("ul");
                 ul.SetSearchProperties("Class=dataFeedTab ui-tabs-nav");
                 return ul;
             }
         }
 
-        public CUITe_HtmlUnorderedList cusDataFeedTabsNav
+        public HtmlUnorderedList cusDataFeedTabsNav
         {
             get
             {
-                return this.Get<CUITe_HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                return this.Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
             }
         }
 
-        public CUITe_HtmlDiv divFeedTabs
+        public HtmlDiv divFeedTabs
         {
             get
             {
-                return this.Get<CUITe_HtmlDiv>("Id=feed_tabs");
+                return this.Get<HtmlDiv>("Id=feed_tabs");
             }
         }
 
-        public CUITe_HtmlUnorderedList cusdatafeedtabsnav1
+        public HtmlUnorderedList cusdatafeedtabsnav1
         {
             get
             {
-                return this.divFeedTabs.Get<CUITe_HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                return this.divFeedTabs.Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
             }
         }
     }

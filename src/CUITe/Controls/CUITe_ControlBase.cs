@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls
 {
@@ -97,7 +97,7 @@ namespace CUITe.Controls
                 // Find the first property in the list of known values
                 string valueName = saKeyVal[0];
 
-                if ((typeof(T).IsSubclassOf(typeof(HtmlControl))) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
+                if ((typeof(T).IsSubclassOf(typeof(CUITControls.HtmlControl))) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
                 {
                     //support for backward compatibility where search properties like "Value=Log In" are used
                     valueName += "Attribute";
@@ -172,7 +172,7 @@ namespace CUITe.Controls
         /// This helps when you want to use any methods/properties of the underlying UITestControl.
         /// CUITe* controls are wrappers/abstractions which hides complexity. UnWrap() helps you break the abstraction.
         /// </summary>
-        /// <returns>The underlying UITestControl instance. For example, returns HtmlEdit in case of CUITe_HtmlEdit.</returns>
+        /// <returns>The underlying UITestControl instance. For example, returns HtmlEdit in case of HtmlEdit.</returns>
         public T UnWrap()
         {
             return this._control;

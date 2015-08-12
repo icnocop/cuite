@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlHyperlink : CUITe_HtmlControl<HtmlHyperlink>
+    public class HtmlHyperlink : HtmlControl<CUITControls.HtmlHyperlink>
     {
-        public CUITe_HtmlHyperlink() : base() { }
-        public CUITe_HtmlHyperlink(string searchParameters) : base(searchParameters) { }
+        public HtmlHyperlink() : base() { }
+        public HtmlHyperlink(string searchParameters) : base(searchParameters) { }
     }
 }

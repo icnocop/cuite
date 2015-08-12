@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlCheckBox : CUITe_HtmlControl<HtmlCheckBox>
+    public class HtmlCheckBox : HtmlControl<CUITControls.HtmlCheckBox>
     {
-        public CUITe_HtmlCheckBox() : base() { }        
-        public CUITe_HtmlCheckBox(string searchParameters) : base(searchParameters) { }
+        public HtmlCheckBox() : base() { }        
+        public HtmlCheckBox(string searchParameters) : base(searchParameters) { }
 
         public void Check()
         {

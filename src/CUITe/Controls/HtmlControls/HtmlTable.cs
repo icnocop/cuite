@@ -1,24 +1,15 @@
 ﻿using System;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 using System.Linq;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public enum CUITe_HtmlTableSearchOptions
+    public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        Normal,
-        NormalTight,
-        Greedy,
-        StartsWith,
-        EndsWith
-    }
-
-    public class CUITe_HtmlTable : CUITe_HtmlControl<HtmlTable>
-    {
-        public CUITe_HtmlTable() : base() { }
-        public CUITe_HtmlTable(string searchParameters) : base(searchParameters) { }
+        public HtmlTable() : base() { }
+        public HtmlTable(string searchParameters) : base(searchParameters) { }
 
         public int ColumnCount
         {
@@ -39,11 +30,11 @@ namespace CUITe.Controls.HtmlControls
 
         public void FindRowAndClick(int iCol, string sValueToSearch)
         {
-            int iRow = FindRow(iCol, sValueToSearch, CUITe_HtmlTableSearchOptions.Normal);
+            int iRow = FindRow(iCol, sValueToSearch, HtmlTableSearchOptions.Normal);
             FindCellAndClick(iRow, iCol);
         }
 
-        public void FindRowAndClick(int iCol, string sValueToSearch, CUITe_HtmlTableSearchOptions option)
+        public void FindRowAndClick(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
             int iRow = FindRow(iCol, sValueToSearch, option);
             FindCellAndClick(iRow, iCol);
@@ -51,11 +42,11 @@ namespace CUITe.Controls.HtmlControls
 
         public void FindRowAndDoubleClick(int iCol, string sValueToSearch)
         {
-            int iRow = FindRow(iCol, sValueToSearch, CUITe_HtmlTableSearchOptions.Normal);
+            int iRow = FindRow(iCol, sValueToSearch, HtmlTableSearchOptions.Normal);
             FindCellAndDoubleClick(iRow, iCol);
         }
 
-        public void FindRowAndDoubleClick(int iCol, string sValueToSearch, CUITe_HtmlTableSearchOptions option)
+        public void FindRowAndDoubleClick(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
             int iRow = FindRow(iCol, sValueToSearch, option);
             FindCellAndDoubleClick(iRow, iCol);
@@ -68,7 +59,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void FindCellAndClick(int iRow, int iCol)
         {
-            this.GetCell<CUITe_HtmlControl<HtmlControl>>(iRow, iCol).Click();
+            this.GetCell<HtmlControl<CUITControls.HtmlControl>>(iRow, iCol).Click();
         }
 
         public void FindCellAndDoubleClick(int iRow, int iCol)
@@ -76,13 +67,13 @@ namespace CUITe.Controls.HtmlControls
             this.GetCell(iRow, iCol).DoubleClick();
         }
 
-        public int FindRow(int iCol, string sValueToSearch, CUITe_HtmlTableSearchOptions option)
+        public int FindRow(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
             this._control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
 
-            foreach (HtmlControl control in this._control.Rows)
+            foreach (CUITControls.HtmlControl control in this._control.Rows)
             {
                  //control could be of ControlType.RowHeader or ControlType.Row
 
@@ -90,29 +81,29 @@ namespace CUITe.Controls.HtmlControls
 
                 int colCount = -1;
 
-                foreach (HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
+                foreach (CUITControls.HtmlControl cell in control.GetChildren()) //Cells could be a collection of HtmlCell and HtmlHeaderCell controls
                 {
                     colCount++;
                     bool bSearchOptionResult = false;
                     if (colCount == iCol)
                     {
-                        if (option == CUITe_HtmlTableSearchOptions.Normal)
+                        if (option == HtmlTableSearchOptions.Normal)
                         {
                             bSearchOptionResult = (sValueToSearch == cell.InnerText);
                         }
-                        else if (option == CUITe_HtmlTableSearchOptions.NormalTight)
+                        else if (option == HtmlTableSearchOptions.NormalTight)
                         {
                             bSearchOptionResult = (sValueToSearch == cell.InnerText.Trim());
                         }
-                        else if (option == CUITe_HtmlTableSearchOptions.StartsWith)
+                        else if (option == HtmlTableSearchOptions.StartsWith)
                         {
                             bSearchOptionResult = cell.InnerText.StartsWith(sValueToSearch);
                         }
-                        else if (option == CUITe_HtmlTableSearchOptions.EndsWith)
+                        else if (option == HtmlTableSearchOptions.EndsWith)
                         {
                             bSearchOptionResult = cell.InnerText.EndsWith(sValueToSearch);
                         }
-                        else if (option == CUITe_HtmlTableSearchOptions.Greedy)
+                        else if (option == HtmlTableSearchOptions.Greedy)
                         {
                             bSearchOptionResult = (cell.InnerText.IndexOf(sValueToSearch) > -1);
                         }
@@ -130,15 +121,15 @@ namespace CUITe.Controls.HtmlControls
 
         public string GetCellValue(int iRow, int iCol)
         {
-            return GetCellValue<CUITe_HtmlCell>(iRow, iCol);
+            return GetCellValue<HtmlCell>(iRow, iCol);
         }
 
         public string GetHeaderCellValue(int iRow, int iCol)
         {
-            return GetCellValue<CUITe_HtmlHeaderCell>(iRow, iCol);
+            return GetCellValue<HtmlHeaderCell>(iRow, iCol);
         }
 
-        private string GetCellValue<T>(int iRow, int iCol) where T : ICUITe_HtmlControl
+        private string GetCellValue<T>(int iRow, int iCol) where T : IHtmlControl
         {
             string innerText = "";
             T htmlCell = this.GetCell<T>(iRow, iCol);
@@ -150,14 +141,14 @@ namespace CUITe.Controls.HtmlControls
             return innerText;
         }
 
-        public CUITe_HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
+        public HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
         {
             string sSearchProperties = "";
             mshtml.IHTMLElement td = (mshtml.IHTMLElement)GetCell(iRow, iCol).UnWrap().NativeElement;
             mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
-            HtmlCheckBox chk = new HtmlCheckBox(this._control.Container);
+            var chk = new CUITControls.HtmlCheckBox(this._control.Container);
             foreach (string sTemp in saTemp)
             {
                 if (sTemp.IndexOf('=') > 0)
@@ -167,17 +158,17 @@ namespace CUITe.Controls.HtmlControls
                     if (saKeyValue[0].ToLower() == "name")
                     {
                         sSearchProperties += ";Name=" + sValue;
-                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Name, sValue);
+                        chk.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Name, sValue);
                     }
                     if (saKeyValue[0].ToLower() == "id")
                     {
                         sSearchProperties += ";Id=" + sValue;
-                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Id, sValue);
+                        chk.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Id, sValue);
                     }
                     if (saKeyValue[0].ToLower() == "class")
                     {
                         sSearchProperties += ";Class=" + sValue;
-                        chk.SearchProperties.Add(HtmlControl.PropertyNames.Class, sValue);
+                        chk.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Class, sValue);
                     }
                 }
             }
@@ -186,7 +177,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 sSearchProperties = sSearchProperties.Substring(1);
             }
-            CUITe_HtmlCheckBox retChk = new CUITe_HtmlCheckBox(sSearchProperties);
+            HtmlCheckBox retChk = new HtmlCheckBox(sSearchProperties);
             retChk.Wrap(chk);
             return retChk;
         }
@@ -215,17 +206,17 @@ namespace CUITe.Controls.HtmlControls
             return null;
         }
 
-        public CUITe_HtmlHeaderCell GetHeader(int iRow, int iCol)
+        public HtmlHeaderCell GetHeader(int iRow, int iCol)
         {
-            return GetCell<CUITe_HtmlHeaderCell>(iRow, iCol);
+            return GetCell<HtmlHeaderCell>(iRow, iCol);
         }
 
-        public CUITe_HtmlCell GetCell(int iRow, int iCol)
+        public HtmlCell GetCell(int iRow, int iCol)
         {
-            return GetCell<CUITe_HtmlCell>(iRow, iCol);
+            return GetCell<HtmlCell>(iRow, iCol);
         }
 
-        private T GetCell<T>(int iRow, int iCol) where T : ICUITe_HtmlControl
+        private T GetCell<T>(int iRow, int iCol) where T : IHtmlControl
         {
             this._control.WaitForControlReady();
             UITestControl htmlCell = null;

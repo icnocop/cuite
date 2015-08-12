@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     /// <summary>
     /// CUITe wrapper for HtmlComboBox.
     /// </summary>
-    public class CUITe_HtmlComboBox : CUITe_HtmlControl<HtmlComboBox>
+    public class HtmlComboBox : HtmlControl<CUITControls.HtmlComboBox>
     {
-        public CUITe_HtmlComboBox() : base() { }
-        public CUITe_HtmlComboBox(string searchParameters) : base(searchParameters) { }
+        public HtmlComboBox() : base() { }
+        public HtmlComboBox(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
         /// Selects the item in the combobox.

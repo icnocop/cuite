@@ -1,13 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlHeading3 : CUITe_HtmlCustom
+    public class HtmlHeading3 : HtmlCustom
     {
         private const string _tagName = "h3";
 
-        public CUITe_HtmlHeading3(string searchParameters = null)
+        public HtmlHeading3(string searchParameters = null)
             : base(_tagName, searchParameters)
         {
         }

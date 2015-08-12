@@ -6,19 +6,19 @@ namespace Sample_CUITeTestProject.ObjectRepository
     {
         public new string sWindowTitle = "A Test";
 
-        public CUITe_HtmlParagraph p
+        public HtmlParagraph p
         {
             get
             {
-                return this.Get<CUITe_HtmlParagraph>("id=para1");
+                return this.Get<HtmlParagraph>("id=para1");
             }
         }
 
-        public CUITe_HtmlUnorderedList list
+        public HtmlUnorderedList list
         {
             get
             {
-                return this.Get<CUITe_HtmlUnorderedList>("id=unorderedList");
+                return this.Get<HtmlUnorderedList>("id=unorderedList");
             }
         }
     }

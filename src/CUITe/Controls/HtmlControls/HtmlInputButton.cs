@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlInputButton : CUITe_HtmlControl<HtmlInputButton>
+    public class HtmlInputButton : HtmlControl<CUITControls.HtmlInputButton>
     {
-        public CUITe_HtmlInputButton() : base() { }
-        public CUITe_HtmlInputButton(string searchParameters) : base(searchParameters) { }
+        public HtmlInputButton() : base() { }
+        public HtmlInputButton(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText
         {

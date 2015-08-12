@@ -1,10 +1,7 @@
 ﻿namespace CUITe.Controls.HtmlControls
 {
-    public interface ICUITe_HtmlControl
+    public interface IHtmlControl
     {
-        string InnerText
-        {
-            get;
-        }
+        string InnerText { get; }
     }
 }

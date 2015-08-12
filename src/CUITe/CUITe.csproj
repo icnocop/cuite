@@ -176,6 +176,7 @@
     <Compile Include="Controls\HtmlControls\HtmlRow.cs" />
     <Compile Include="Controls\HtmlControls\HtmlSpan.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTable.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlTableSearchOptions.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTextArea.cs" />
     <Compile Include="Controls\HtmlControls\HtmlUnorderedList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlXml.cs" />

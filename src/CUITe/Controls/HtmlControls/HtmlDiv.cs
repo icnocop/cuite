@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlDiv : CUITe_HtmlControl<HtmlDiv>
+    public class HtmlDiv : HtmlControl<CUITControls.HtmlDiv>
     {
-        public CUITe_HtmlDiv() : base() { }
-        public CUITe_HtmlDiv(string searchParameters) : base(searchParameters) { }
+        public HtmlDiv() : base() { }
+        public HtmlDiv(string searchParameters) : base(searchParameters) { }
     }
 }

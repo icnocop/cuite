@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class CUITe_HtmlImage : CUITe_HtmlControl<HtmlImage>
+    public class HtmlImage : HtmlControl<CUITControls.HtmlImage>
     {
-        public CUITe_HtmlImage() : base() { }
-        public CUITe_HtmlImage(string searchParameters) : base(searchParameters) { }
+        public HtmlImage() : base() { }
+        public HtmlImage(string searchParameters) : base(searchParameters) { }
     }
 }

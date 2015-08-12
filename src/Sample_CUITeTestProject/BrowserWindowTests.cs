@@ -66,9 +66,9 @@ namespace Sample_CUITeTestProject
             CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch("http://mail.google.com", "Gmail: Email from Google");
 
             //Act
-            bWin.Get<CUITe_HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
-            bWin.Get<CUITe_HtmlPassword>("Id=Password").SetText("MyPa$$Word");
-            bWin.Get<CUITe_HtmlInputButton>("Id=signIn").Click();
+            bWin.Get<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
+            bWin.Get<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
+            bWin.Get<HtmlInputButton>("Id=signIn").Click();
             bWin.Close();
         }
 
@@ -131,7 +131,7 @@ namespace Sample_CUITeTestProject
             TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
 
             //Act
-            CUITe_HtmlDocument doc = window.Get<CUITe_HtmlDocument>();
+            var doc = window.Get<HtmlDocument>();
 
             //Assert
             const string expected = "<body>";
