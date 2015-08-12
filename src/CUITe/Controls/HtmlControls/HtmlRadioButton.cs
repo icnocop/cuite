@@ -20,7 +20,7 @@ namespace CUITe.Controls.HtmlControls
             string sId = this._control.Id;
             if (sId == null || sId == "")
             {
-                throw new CUITe_GenericException("Select2(): No ID found for the RadioButton!");
+                throw new GenericException("Select2(): No ID found for the RadioButton!");
             }
             RunScript("document.getElementById('" + sId + "').checked=true;" + sOnClick);
         }

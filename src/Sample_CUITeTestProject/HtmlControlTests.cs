@@ -75,7 +75,7 @@ namespace Sample_CUITeTestProject
 
         private void AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type type)
         {
-            Hashtable ht = CUITe.CUITe_DataManager.GetDataRow(type, "XMLFile1.xml", "tc2");
+            Hashtable ht = DataManager.GetDataRow(type, "XMLFile1.xml", "tc2");
             Assert.AreEqual("test", ht["test"]);
             Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
             Assert.AreEqual("Suresh", ht["firstname"]);
@@ -88,7 +88,7 @@ namespace Sample_CUITeTestProject
         //[TestMethod]
         //public void DataManager_GetDataRowUsingFile_Succeeds()
         //{
-        //    Hashtable ht = CUITe.CUITe_DataManager.GetDataRow("XMLFile2.xml", "content2");
+        //    Hashtable ht = CUITe.DataManager.GetDataRow("XMLFile2.xml", "content2");
         //    Assert.AreEqual("SomeTest", ht["test"]);
         //    Assert.AreEqual("Somewhere, Somewhere", ht["address"]);
         //    Assert.AreEqual("SomeFirstName", ht["firstname"]);
@@ -137,13 +137,13 @@ namespace Sample_CUITeTestProject
             {
                 GoogleHomePageWithInvalidControlSearchProperties pgGHome = CUITe_BrowserWindow.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
 
-                Assert.Fail("CUITe_InvalidSearchKey not thrown");
+                Assert.Fail("InvalidSearchKeyException not thrown");
             }
             catch (System.Reflection.TargetInvocationException ex)
             {
                 Console.WriteLine(ex.ToString());
 
-                Assert.AreEqual(typeof(CUITe_InvalidSearchKey), ex.InnerException.GetType());
+                Assert.AreEqual(typeof(InvalidSearchKeyException), ex.InnerException.GetType());
             }
         }
 
@@ -1024,7 +1024,7 @@ namespace Sample_CUITeTestProject
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new CUITe_BrowserWindow("test");
 
-                ICUITe_ControlBase a = (ICUITe_ControlBase)window.Get<HtmlHyperlink>("InnerText=test");
+                IControlBase a = (IControlBase)window.Get<HtmlHyperlink>("InnerText=test");
                 a.Click();
 
                 List<Type> list = new List<Type>();
@@ -1038,16 +1038,16 @@ namespace Sample_CUITeTestProject
                 {
                     MethodInfo test = getMethodInfo.MakeGenericMethod(t);
                     
-                    ICUITe_ControlBase control;
+                    IControlBase control;
 
                     if ((t == typeof(HtmlEdit)) || (t == typeof(HtmlTextArea)))
                     {
-                        control = (ICUITe_ControlBase)test.Invoke(window, new object[] { "Value=test" });
+                        control = (IControlBase)test.Invoke(window, new object[] { "Value=test" });
                     }
                     else
                     {
                         //window.Get<t>("InnerText=test");
-                        control = (ICUITe_ControlBase)test.Invoke(window, new object[] { "InnerText=test" });
+                        control = (IControlBase)test.Invoke(window, new object[] { "InnerText=test" });
                     }
 
                     //Act
@@ -1129,8 +1129,8 @@ namespace Sample_CUITeTestProject
                 var window = new CUITe_BrowserWindow("test");
 
                 //Act
-                List<ICUITe_ControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
-                foreach (ICUITe_ControlBase control in collection)
+                List<IControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
+                foreach (IControlBase control in collection)
                 {
                     if (control is HtmlHyperlink)
                     {

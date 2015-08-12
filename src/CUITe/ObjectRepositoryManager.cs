@@ -44,9 +44,9 @@ namespace CUITe
                     ComboBox field = (ComboBox)fieldinfo.GetValue(browserWindow);
                     field.SetWindow(browserWindow);
                 }
-                else if (fieldType.GetInterfaces().Contains(typeof(ICUITe_ControlBase)))
+                else if (fieldType.GetInterfaces().Contains(typeof(IControlBase)))
                 {
-                    ICUITe_ControlBase field = (ICUITe_ControlBase)fieldinfo.GetValue(browserWindow);
+                    IControlBase field = (IControlBase)fieldinfo.GetValue(browserWindow);
 
                     if (field.GetBaseType().IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {

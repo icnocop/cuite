@@ -3,7 +3,7 @@
 
 namespace CUITe.Controls
 {
-    public interface ICUITe_ControlBase
+    public interface IControlBase
     {
         Type GetBaseType();
 
@@ -33,14 +33,14 @@ namespace CUITe.Controls
 
         void SetSearchPropertyRegx(string sPropertyName, string sValue);
 
-        ICUITe_ControlBase Parent { get; }
+        IControlBase Parent { get; }
 
-        ICUITe_ControlBase PreviousSibling { get; }
+        IControlBase PreviousSibling { get; }
 
-        ICUITe_ControlBase NextSibling { get; }
+        IControlBase NextSibling { get; }
 
-        ICUITe_ControlBase FirstChild { get; }
+        IControlBase FirstChild { get; }
 
-        List<ICUITe_ControlBase> GetChildren();
+        List<IControlBase> GetChildren();
     }
 }

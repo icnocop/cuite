@@ -3,14 +3,13 @@ using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Xml;
-using CUITe.Exceptions;
 
 namespace CUITe
 {
     /// <summary>
     /// Data Manager
     /// </summary>
-    public class CUITe_DataManager
+    public class DataManager
     {
         private static XmlTextReader GetXmlTextReader(Assembly assembly, Type type, string fileName)
         {

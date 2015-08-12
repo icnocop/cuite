@@ -138,7 +138,8 @@
     <Compile Include="Browsers\Firefox.cs" />
     <Compile Include="Browsers\IBrowser.cs" />
     <Compile Include="Browsers\InternetExplorer.cs" />
-    <Compile Include="Controls\CUITe_ControlBase.cs" />
+    <Compile Include="Controls\ControlBase.cs" />
+    <Compile Include="Controls\ControlBaseFactory.cs" />
     <Compile Include="Controls\HtmlControls\BrowserDialog.cs" />
     <Compile Include="Controls\HtmlControls\BrowserWindow.cs" />
     <Compile Include="Controls\HtmlControls\DynamicBrowserWindow.cs" />
@@ -181,7 +182,7 @@
     <Compile Include="Controls\HtmlControls\HtmlUnorderedList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlXml.cs" />
     <Compile Include="Controls\HtmlControls\IHtmlControl.cs" />
-    <Compile Include="Controls\ICUITe_ControlBase.cs" />
+    <Compile Include="Controls\IControlBase.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightButton.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCalendar.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCell.cs" />
@@ -285,8 +286,11 @@
     <Compile Include="Controls\WpfControls\WpfTree.cs" />
     <Compile Include="Controls\WpfControls\WpfTreeItem.cs" />
     <Compile Include="Controls\WpfControls\WpfWindow.cs" />
-    <Compile Include="CUITe_DataManager.cs" />
-    <Compile Include="Exceptions\CUITe_Exceptions.cs" />
+    <Compile Include="DataManager.cs" />
+    <Compile Include="Exceptions\GenericException.cs" />
+    <Compile Include="Exceptions\InvalidTraversalException.cs" />
+    <Compile Include="Exceptions\InvalidSearchKeyException.cs" />
+    <Compile Include="Exceptions\InvalidSearchParameterFormatException.cs" />
     <Compile Include="Exceptions\ResourceNotFoundException.cs" />
     <Compile Include="ObjectRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

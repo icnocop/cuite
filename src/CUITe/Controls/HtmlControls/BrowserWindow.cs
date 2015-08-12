@@ -204,9 +204,9 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname'</param>
         /// <returns>CUITe_* control object</returns>
         public T Get<T>(string searchParameters = null)
-            where T : ICUITe_ControlBase
+            where T : IControlBase
         {
-            T control = CUITe_ControlBaseFactory.Create<T>(searchParameters);
+            T control = ControlBaseFactory.Create<T>(searchParameters);
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {

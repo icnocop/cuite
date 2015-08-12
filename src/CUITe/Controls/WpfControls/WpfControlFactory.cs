@@ -3,16 +3,16 @@
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
-    /// Factory class for creating CUITe_Wpf* controls. Inherits from CUITe_ControlBaseFactory
+    /// Factory class for creating CUITe_Wpf* controls. Inherits from ControlBaseFactory
     /// </summary>
-    public class WpfControlFactory : CUITe_ControlBaseFactory
+    public class WpfControlFactory : ControlBaseFactory
     {
         /// <summary>
         /// Create a CUITe_Wpf* control based on the type of provided WpfControl.
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        public static ICUITe_ControlBase Create(Microsoft.VisualStudio.TestTools.UITesting.WpfControls.WpfControl control)
+        public static IControlBase Create(Microsoft.VisualStudio.TestTools.UITesting.WpfControls.WpfControl control)
         {
             string CUITePrefix = ".CUITe_";
             string controlTypeName = control.GetType().Name;
@@ -28,12 +28,12 @@ namespace CUITe.Controls.WpfControls
             }
 
             // Create CUITe control
-            ICUITe_ControlBase CUITeControl = (ICUITe_ControlBase)Activator.CreateInstance(CUITeType);
+            IControlBase cuiteControl = (IControlBase)Activator.CreateInstance(CUITeType);
 
             // Wrap WinControl
-            CUITeControl.WrapReady(control);
+            cuiteControl.WrapReady(control);
 
-            return CUITeControl;
+            return cuiteControl;
         }
     }
 }

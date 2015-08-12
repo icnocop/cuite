@@ -4,16 +4,16 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Factory class for creating CUITe_Win* controls. Inherits from CUITe_ControlBaseFactory
+    /// Factory class for creating CUITe_Win* controls. Inherits from ControlBaseFactory
     /// </summary>
-    public class WinControlFactory : CUITe_ControlBaseFactory
+    public class WinControlFactory : ControlBaseFactory
     {
         /// <summary>
         /// Create a CUITe_Win* control based on the type of provided WinControl.
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        public static ICUITe_ControlBase Create(CUITControls.WinControl control)
+        public static IControlBase Create(CUITControls.WinControl control)
         {
             string CUITePrefix = ".CUITe_";
             string controlTypeName = control.GetType().Name;
@@ -29,12 +29,12 @@ namespace CUITe.Controls.WinControls
             }
 
             // Create CUITe control
-            ICUITe_ControlBase CUITeControl = (ICUITe_ControlBase)Activator.CreateInstance(CUITeType);
+            IControlBase cuiteControl = (IControlBase)Activator.CreateInstance(CUITeType);
 
             // Wrap WinControl
-            CUITeControl.WrapReady(control);
+            cuiteControl.WrapReady(control);
 
-            return CUITeControl;
+            return cuiteControl;
         }
     }
 }

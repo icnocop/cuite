@@ -3,10 +3,10 @@
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe_Win* controls, inherits from CUITe_ControlBase
+    /// Base wrapper class for all CUITe_Win* controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
-    public class WinControl<T> : CUITe_ControlBase<T> where T : CUITControls.WinControl
+    public class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
         public WinControl() : base() { }
         public WinControl(string searchParameters) : base(searchParameters) { }
@@ -14,13 +14,13 @@ namespace CUITe.Controls.WinControls
         /// <summary>
         /// Gets the parent of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase Parent
+        public override IControlBase Parent
         {
             get
             {
                 this._control.WaitForControlReady();
                 
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 
                 try
                 {
@@ -28,7 +28,7 @@ namespace CUITe.Controls.WinControls
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
                 }
                 return ret;
             }

@@ -10,33 +10,21 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace CUITe.Controls
 {
     /// <summary>
-    /// Factory class for creating CUITe* objects
-    /// </summary>
-    public class CUITe_ControlBaseFactory
-    {
-        public static T Create<T>(string searchProperties)
-            where T : ICUITe_ControlBase
-        {
-            return (T)Activator.CreateInstance(typeof(T), new object[] { searchProperties });
-        }
-    }
-
-    /// <summary>
     /// Base wrapper class for all CUITe* controls
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class CUITe_ControlBase<T> : ICUITe_ControlBase
+    public class ControlBase<T> : IControlBase
         where T : UITestControl
     {
         protected T _control;
         protected PropertyExpressionCollection SearchProperties;
 
-        public CUITe_ControlBase()
+        public ControlBase()
         {
             this.SearchProperties = new PropertyExpressionCollection();
         }
 
-        public CUITe_ControlBase(string searchProperties)
+        public ControlBase(string searchProperties)
             : this()
         {
             SetSearchProperties(searchProperties);
@@ -90,7 +78,7 @@ namespace CUITe.Controls
                     }
                     else
                     {
-                        throw new CUITe_InvalidSearchParameterFormat(searchProperties);
+                        throw new InvalidSearchParameterFormatException(searchProperties);
                     }
                 }
 
@@ -108,7 +96,7 @@ namespace CUITe.Controls
 
                 if (foundField == null)
                 {
-                    throw new CUITe_InvalidSearchKey(valueName, searchProperties, controlProperties.Select(x => x.Name).ToList());
+                    throw new InvalidSearchKeyException(valueName, searchProperties, controlProperties.Select(x => x.Name).ToList());
                 }
 
                 // Add the search property, value and type
@@ -116,7 +104,7 @@ namespace CUITe.Controls
             }
         }
 
-        public T1 Get<T1>() where T1 : ICUITe_ControlBase
+        public T1 Get<T1>() where T1 : IControlBase
         {
             T1 control = Activator.CreateInstance<T1>();
 
@@ -135,9 +123,9 @@ namespace CUITe.Controls
         /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
         /// or use '~' for Contains such as 'Id~first'</param>
         /// <returns>CUITe_* control object</returns>
-        public T1 Get<T1>(string searchParameters) where T1 : ICUITe_ControlBase
+        public T1 Get<T1>(string searchParameters) where T1 : IControlBase
         {
-            T1 control = CUITe_ControlBaseFactory.Create<T1>(searchParameters);
+            T1 control = ControlBaseFactory.Create<T1>(searchParameters);
 
             var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
 
@@ -298,15 +286,15 @@ namespace CUITe.Controls
 
         #region implementing parent, sibling etc methods as virtual
 
-        public virtual ICUITe_ControlBase Parent { get { return null; } }
+        public virtual IControlBase Parent { get { return null; } }
 
-        public virtual ICUITe_ControlBase PreviousSibling { get { return null; } }
+        public virtual IControlBase PreviousSibling { get { return null; } }
 
-        public virtual ICUITe_ControlBase NextSibling { get { return null; } }
+        public virtual IControlBase NextSibling { get { return null; } }
 
-        public virtual ICUITe_ControlBase FirstChild { get { return null; } }
+        public virtual IControlBase FirstChild { get { return null; } }
 
-        public virtual List<ICUITe_ControlBase> GetChildren() { return null; }
+        public virtual List<IControlBase> GetChildren() { return null; }
 
         #endregion
     }

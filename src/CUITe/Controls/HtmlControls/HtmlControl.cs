@@ -5,7 +5,7 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
-    public class HtmlControl : CUITe_ControlBase<CUITControls.HtmlControl>
+    public class HtmlControl : ControlBase<CUITControls.HtmlControl>
     {
         public HtmlControl(string tagName)
             : base()
@@ -26,10 +26,10 @@ namespace CUITe.Controls.HtmlControls
     }
 
     /// <summary>
-    /// Base class for all CUITe_Html controls, inherits from CUITe_ControlBase
+    /// Base class for all Html controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
-    public class HtmlControl<T> : CUITe_ControlBase<T>, IHtmlControl
+    public class HtmlControl<T> : ControlBase<T>, IHtmlControl
         where T : CUITControls.HtmlControl
     {
         public HtmlControl()
@@ -111,19 +111,19 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Gets the parent of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase Parent
+        public override IControlBase Parent
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.HtmlControl)this._control.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -132,19 +132,19 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Gets the previous sibling of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase PreviousSibling
+        public override IControlBase PreviousSibling
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -153,12 +153,12 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Gets the next sibling of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase NextSibling
+        public override IControlBase NextSibling
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     UITestControl parent = this._control.GetParent();
@@ -173,7 +173,7 @@ namespace CUITe.Controls.HtmlControls
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).NextSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -182,19 +182,19 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Gets the first child of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase FirstChild
+        public override IControlBase FirstChild
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.HtmlControl)this._control.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).FirstChild", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -204,10 +204,10 @@ namespace CUITe.Controls.HtmlControls
         /// Returns a list of all first level children of the current CUITe control.
         /// </summary>
         /// <returns>list of all first level children</returns>
-        public override List<ICUITe_ControlBase> GetChildren()
+        public override List<IControlBase> GetChildren()
         {
             this._control.WaitForControlReady();
-            var uicol = new List<ICUITe_ControlBase>();
+            var uicol = new List<IControlBase>();
             foreach (UITestControl uitestcontrol in this._control.GetChildren())
             {
                 uicol.Add(WrapUtil((CUITControls.HtmlControl)uitestcontrol));
@@ -215,9 +215,9 @@ namespace CUITe.Controls.HtmlControls
             return uicol;
         }
 
-        private ICUITe_ControlBase WrapUtil(CUITControls.HtmlControl control)
+        private IControlBase WrapUtil(CUITControls.HtmlControl control)
         {
-            ICUITe_ControlBase _con = null;
+            IControlBase _con = null;
             if (control.GetType() == typeof(CUITControls.HtmlButton))
             {
                 _con = new HtmlButton();
@@ -344,7 +344,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 throw new Exception(string.Format("WrapUtil: '{0}' not supported", control.GetType().Name));
             }
-            ((ICUITe_ControlBase)_con).WrapReady(control);
+            ((IControlBase)_con).WrapReady(control);
             return _con;
         }
 

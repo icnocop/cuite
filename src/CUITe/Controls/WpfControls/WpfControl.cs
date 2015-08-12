@@ -6,7 +6,7 @@ namespace CUITe.Controls.WpfControls
     /// Base wrapper class for all CUITe_Wpf* controls, inherits from CUITe_ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
-    public class WpfControl<T> : CUITe_ControlBase<T> where T : CUITControls.WpfControl
+    public class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
         public WpfControl() : base() { }
         public WpfControl(string searchParameters) : base(searchParameters) { }
@@ -14,13 +14,13 @@ namespace CUITe.Controls.WpfControls
         /// <summary>
         /// Gets the parent of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase Parent
+        public override IControlBase Parent
         {
             get
             {
                 this._control.WaitForControlReady();
                 
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 
                 try
                 {
@@ -28,7 +28,7 @@ namespace CUITe.Controls.WpfControls
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
                 }
                 return ret;
             }

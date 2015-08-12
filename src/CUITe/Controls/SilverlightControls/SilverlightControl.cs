@@ -6,7 +6,7 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 
 namespace CUITe.Controls.SilverlightControls
 {
-    public class SilverlightControl<T> : CUITe_ControlBase<T> where T : CUITControls.SilverlightControl
+    public class SilverlightControl<T> : ControlBase<T> where T : CUITControls.SilverlightControl
     {
         public SilverlightControl() : base() { }
         public SilverlightControl(string searchParameters) : base(searchParameters) { }
@@ -26,19 +26,19 @@ namespace CUITe.Controls.SilverlightControls
         /// <summary>
         /// Gets the parent of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase Parent
+        public override IControlBase Parent
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetParent());
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -47,19 +47,19 @@ namespace CUITe.Controls.SilverlightControls
         /// <summary>
         /// Gets the previous sibling of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase PreviousSibling
+        public override IControlBase PreviousSibling
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -68,19 +68,19 @@ namespace CUITe.Controls.SilverlightControls
         /// <summary>
         /// Gets the next sibling of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase NextSibling
+        public override IControlBase NextSibling
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).NextSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -89,19 +89,19 @@ namespace CUITe.Controls.SilverlightControls
         /// <summary>
         /// Gets the first child of the current CUITe control.
         /// </summary>
-        public override ICUITe_ControlBase FirstChild
+        public override IControlBase FirstChild
         {
             get
             {
                 this._control.WaitForControlReady();
-                ICUITe_ControlBase ret = null;
+                IControlBase ret = null;
                 try
                 {
                     ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetChildren()[0]);
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new CUITe_InvalidTraversal(string.Format("({0}).FirstChild", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", this._control.GetType().Name));
                 }
                 return ret;
             }
@@ -111,10 +111,10 @@ namespace CUITe.Controls.SilverlightControls
         /// Returns a list of all first level children of the current CUITe control.
         /// </summary>
         /// <returns>list of all first level children</returns>
-        public override List<ICUITe_ControlBase> GetChildren()
+        public override List<IControlBase> GetChildren()
         {
             this._control.WaitForControlReady();
-            var uicol = new List<ICUITe_ControlBase>();
+            var uicol = new List<IControlBase>();
             foreach (UITestControl uitestcontrol in this._control.GetChildren())
             {
                 uicol.Add(WrapUtil((CUITControls.SilverlightControl)uitestcontrol));
@@ -122,9 +122,9 @@ namespace CUITe.Controls.SilverlightControls
             return uicol;
         }
 
-        private ICUITe_ControlBase WrapUtil(CUITControls.SilverlightControl control)
+        private IControlBase WrapUtil(CUITControls.SilverlightControl control)
         {
-            ICUITe_ControlBase _con = null;
+            IControlBase _con = null;
             if (control.GetType() == typeof(CUITControls.SilverlightButton))
             {
                 _con = new SilverlightButton();
@@ -206,7 +206,7 @@ namespace CUITe.Controls.SilverlightControls
                 throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType().ToString()));
             }
 
-            ((ICUITe_ControlBase)_con).WrapReady(control);
+            ((IControlBase)_con).WrapReady(control);
             return _con;
         }
 

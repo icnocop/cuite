@@ -23,7 +23,7 @@ namespace CUITe.Controls.HtmlControls
             string sId = this._control.Id;
             if (sId == null || sId == "")
             {
-                throw new CUITe_GenericException("Check2(): No ID found for the checkbox!");
+                throw new GenericException("Check2(): No ID found for the checkbox!");
             }
             RunScript("document.getElementById('" + sId + "').checked=true;" + sOnClick);
         }

@@ -105,7 +105,7 @@ namespace Sample_CUITeTestProject
             var btnOK = b.Get<SilverlightButton>("AutomationId=OKButtonInTabItem1");
             var tmp = btnOK.PreviousSibling;
             ((SilverlightEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
-            foreach (ICUITe_ControlBase control in oTab.GetChildren())
+            foreach (IControlBase control in oTab.GetChildren())
             {
                 if (control.GetType() == typeof(SilverlightEdit))
                 {
