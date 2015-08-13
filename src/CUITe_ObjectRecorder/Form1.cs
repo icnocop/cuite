@@ -386,63 +386,63 @@ namespace CUITe_ObjectRecorder
 
                     if (sNodeName == 'button') {
                         sVarPrefix = 'btn';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlButton');
+                        sCode = sCode.replace(/type/g, 'HtmlButton');
                     }
                     if (sNodeName == 'input' && (sNodeType == 'button' || sNodeType == 'submit' || sNodeType == 'image')) {
                         sVarPrefix = 'btn';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlInputButton');
+                        sCode = sCode.replace(/type/g, 'HtmlInputButton');
                     }
                     if (sNodeName == 'input' && sNodeType == 'checkbox') {
                         sVarPrefix = 'chk';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlCheckBox');
+                        sCode = sCode.replace(/type/g, 'HtmlCheckBox');
                     }
                     if (sNodeName == 'input' && sNodeType == 'radio') {
                         sVarPrefix = 'rad';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlRadioButton');
+                        sCode = sCode.replace(/type/g, 'HtmlRadioButton');
                     }
                     if (sNodeName == 'a') {
                         sVarPrefix = 'lnk';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlHyperlink');
+                        sCode = sCode.replace(/type/g, 'HtmlHyperlink');
                     }
                     if (sNodeName == 'input' && sNodeType == 'text') {
                         sVarPrefix = 'txt';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlEdit');
+                        sCode = sCode.replace(/type/g, 'HtmlEdit');
                     }
                     if (sNodeName == 'input' && sNodeType == 'password') {
                         sVarPrefix = 'txt';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlPassword');
+                        sCode = sCode.replace(/type/g, 'HtmlPassword');
                     }
                     if (sNodeName == 'textarea') {
                         sVarPrefix = 'txt';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlTextArea');
+                        sCode = sCode.replace(/type/g, 'HtmlTextArea');
                     }
                     if (sNodeName == 'img') {
                         sVarPrefix = 'img';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlImage');
+                        sCode = sCode.replace(/type/g, 'HtmlImage');
                     }
                     if (sNodeName == 'table') {
                         sVarPrefix = 'tbl';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlTable');
+                        sCode = sCode.replace(/type/g, 'HtmlTable');
                     }
                     if (sNodeName == 'label') {
                         sVarPrefix = 'lbl';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlLabel');
+                        sCode = sCode.replace(/type/g, 'HtmlLabel');
                     }
                     if (sNodeName == 'select') {
                         sVarPrefix = 'cbo';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlComboBox');
+                        sCode = sCode.replace(/type/g, 'HtmlComboBox');
                     }
                     if (sNodeName == 'div') {
                         sVarPrefix = 'div';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlDiv');
+                        sCode = sCode.replace(/type/g, 'HtmlDiv');
                     }
                     if (sNodeName == 'span') {
                         sVarPrefix = 'spn';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlSpan');
+                        sCode = sCode.replace(/type/g, 'HtmlSpan');
                     }
                     if (sNodeName == 'td') {
                         sVarPrefix = 'cel';
-                        sCode = sCode.replace(/type/g, 'CUITe_HtmlCell');
+                        sCode = sCode.replace(/type/g, 'HtmlCell');
                     }
 
                     if (sId != '') {
@@ -641,8 +641,8 @@ namespace CUITe_ObjectRecorder
                 sb.AppendLine(languageIsVB ? "Namespace ObjectRepository" : "namespace $ProjectNameSpace$.ObjectRepository");
                 if (!languageIsVB) sb.AppendLine("{");
                 string sWinTitle = (string)doc.InvokeScript("getWinTitForClassName");
-                sb.AppendLine(languageIsVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : CUITe_BrowserWindow");
-                if (languageIsVB) sb.AppendLine("\t\tInherits CUITe_BrowserWindow");
+                sb.AppendLine(languageIsVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : BrowserWindowUnderTest");
+                if (languageIsVB) sb.AppendLine("\t\tInherits BrowserWindowUnderTest");
                 if (!languageIsVB) sb.AppendLine("\t{");
 
                 foreach (string sLine in this.listBox1.Items)

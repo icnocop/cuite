@@ -1,5 +1,4 @@
-﻿using System;
-using CUITe.Exceptions;
+﻿using CUITe;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Sample_CUITeTestProject
@@ -12,7 +11,7 @@ namespace Sample_CUITeTestProject
         {
             try
             {
-                CUITe.CUITe_DataManager.GetDataRow(typeof(DataManagerTests), "EmbeddedResourceThatDoesNotExist", "DoesNotExist");
+                DataManager.GetDataRow(typeof(DataManagerTests), "EmbeddedResourceThatDoesNotExist", "DoesNotExist");
 
                 Assert.Fail("ResourceNotFoundException not thrown");
             }

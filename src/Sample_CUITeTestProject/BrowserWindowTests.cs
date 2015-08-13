@@ -29,10 +29,10 @@ namespace Sample_CUITeTestProject
     <body/>
 </html>"))
             {
-                CUITe_BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindowUnderTest.Launch(tempFile.FilePath);
 
                 //Act
-                BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
+                BrowserWindow bWin = BrowserWindowUnderTest.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
 
                 //Assert
                 Assert.IsTrue(bWin.Title.Contains("A Test"), bWin.Title);
@@ -49,7 +49,7 @@ namespace Sample_CUITeTestProject
             string windowTitle = "A Test";
 
             //Act
-            TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(url);
+            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(url);
 
             //Assert
             Assert.IsTrue(window.Title.Contains(windowTitle), window.Title);
@@ -63,12 +63,12 @@ namespace Sample_CUITeTestProject
         public void GenericGet_WithHtmlControls_GetsControlsDynamically()
         {
             //Arrange
-            CUITe_BrowserWindow bWin = CUITe_BrowserWindow.Launch("http://mail.google.com", "Gmail: Email from Google");
+            BrowserWindowUnderTest bWin = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
 
             //Act
-            bWin.Get<CUITe_HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
-            bWin.Get<CUITe_HtmlPassword>("Id=Password").SetText("MyPa$$Word");
-            bWin.Get<CUITe_HtmlInputButton>("Id=signIn").Click();
+            bWin.Get<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
+            bWin.Get<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
+            bWin.Get<HtmlInputButton>("Id=signIn").Click();
             bWin.Close();
         }
 
@@ -78,12 +78,12 @@ namespace Sample_CUITeTestProject
             string page1GenericWindowTitle = "window title 1";
 
             //Arrange
-            DynamicBrowserWindowTitleRepository home = CUITe_BrowserWindow.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
+            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
 
             home.btnGoToPage1.Click();
 
             //Act
-            DynamicBrowserWindowTitleRepository page1 = CUITe_DynamicBrowserWindow.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page1GenericWindowTitle);
+            DynamicBrowserWindowTitleRepository page1 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page1GenericWindowTitle);
 
             //Assert
             Assert.IsTrue(page1.Title.Contains(page1GenericWindowTitle), page1.Title);
@@ -100,11 +100,11 @@ namespace Sample_CUITeTestProject
             string page2DynamicGenericWindowTitle = "the window title changed";
             string homePageGenericWindowTitle = "Clicking the buttons changes the window title";
 
-            DynamicBrowserWindowTitleRepository home = CUITe_BrowserWindow.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
+            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
 
             home.btnGoToPage2.Click();
 
-            DynamicBrowserWindowTitleRepository page2 = CUITe_DynamicBrowserWindow.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2GenericWindowTitle);
+            DynamicBrowserWindowTitleRepository page2 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2GenericWindowTitle);
 
             page2.btnChangeWindowTitle.Click();
 
@@ -112,7 +112,7 @@ namespace Sample_CUITeTestProject
             Assert.IsTrue(page2.Title.Contains(page2DynamicGenericWindowTitle), page2.Title);
 
             //Act
-            page2 = CUITe_DynamicBrowserWindow.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2DynamicGenericWindowTitle);
+            page2 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2DynamicGenericWindowTitle);
 
             page2.btnGoToHomePage.Click();
 
@@ -128,10 +128,10 @@ namespace Sample_CUITeTestProject
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
             //Arrange
-            TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
 
             //Act
-            CUITe_HtmlDocument doc = window.Get<CUITe_HtmlDocument>();
+            var doc = window.Get<HtmlDocument>();
 
             //Assert
             const string expected = "<body>";
@@ -144,7 +144,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void CloseBrowserWindow_UsingLaunchedBrowserWindow_Succeeds()
         {
-            TestHtmlPage window = CUITe_BrowserWindow.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
 
             window.Close();
         }
@@ -160,7 +160,7 @@ namespace Sample_CUITeTestProject
                     continue;
                 }
 
-                BrowserWindow bWin = CUITe_BrowserWindow.FromProcess(process);
+                BrowserWindow bWin = BrowserWindowUnderTest.FromProcess(process);
 
                 Trace.WriteLine(string.Format("Found browser window: {0} {1}", bWin.Uri, bWin.Title));
             }
