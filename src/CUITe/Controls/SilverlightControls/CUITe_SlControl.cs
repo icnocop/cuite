@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITe.Extensions.Controls.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
@@ -161,6 +162,10 @@ namespace CUITe.Controls.SilverlightControls
             {
                 _con = new CUITe_SlHyperlink();
             }
+            else if (control.GetType() == typeof(SilverlightControl))
+            {
+                _con = new CUITe_SlScrollBar();
+            }
             else if (control.GetType() == typeof(SilverlightImage))
             {
                 _con = new CUITe_SlImage();
@@ -204,6 +209,10 @@ namespace CUITe.Controls.SilverlightControls
             else if (control.GetType() == typeof(SilverlightTree))
             {
                 _con = new CUITe_SlTree();
+            }
+            else if (control.GetType() == typeof(SilverlightTreeItem))
+            {
+                _con = new CUITe_SlTreeItem();
             }
             else
             {
