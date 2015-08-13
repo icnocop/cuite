@@ -3,7 +3,7 @@ using CUITe.Controls.SilverlightControls;
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class SlTestPage : CUITe_BrowserWindow
+    public class SlTestPage : BrowserWindowUnderTest
     {
         public SlTestPage()
             : base("Home")
@@ -11,11 +11,11 @@ namespace Sample_CUITeTestProject.ObjectRepository
 
         }
 
-        public CUITe_SlList oList
+        public SilverlightList oList
         {
             get
             {
-                return Get<CUITe_SlList>("AutomationId=listBox1");
+                return Get<SilverlightList>("AutomationId=listBox1");
             }
         }
     }

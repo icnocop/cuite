@@ -2,7 +2,7 @@
 
 namespace Sample_CUITeTestProject.ObjectRepository
 {
-    public class DynamicBrowserWindowTitleRepository : CUITe_DynamicBrowserWindow
+    public class DynamicBrowserWindowTitleRepository : DynamicBrowserWindowUnderTest
     {
         public DynamicBrowserWindowTitleRepository(string title)
             : base(title)
@@ -16,35 +16,35 @@ namespace Sample_CUITeTestProject.ObjectRepository
 
         }
 
-        public CUITe_HtmlButton btnGoToHomePage
+        public HtmlButton btnGoToHomePage
         {
             get
             {
-                return this.Get<CUITe_HtmlButton>("id=Home");
+                return this.Get<HtmlButton>("id=Home");
             }
         }
 
-        public CUITe_HtmlButton btnGoToPage1
+        public HtmlButton btnGoToPage1
         {
             get
             {
-                return this.Get<CUITe_HtmlButton>("id=1");
+                return this.Get<HtmlButton>("id=1");
             }
         }
 
-        public CUITe_HtmlButton btnGoToPage2
+        public HtmlButton btnGoToPage2
         {
             get
             {
-                return this.Get<CUITe_HtmlButton>("id=2");
+                return this.Get<HtmlButton>("id=2");
             }
         }
 
-        public CUITe_HtmlButton btnChangeWindowTitle
+        public HtmlButton btnChangeWindowTitle
         {
             get
             {
-                return this.Get<CUITe_HtmlButton>("id=Change Window Title");
+                return this.Get<HtmlButton>("id=Change Window Title");
             }
         }
     }

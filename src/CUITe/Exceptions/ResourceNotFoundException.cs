@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CUITe.Exceptions
+namespace CUITe
 {
     /// <summary>
     /// Resource Not Found Exception

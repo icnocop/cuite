@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using CUITe.Controls.WpfControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sample_CUITeTestProject_WpfControls.ObjectLibrary;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace Sample_CUITeTestProject_WpfControls
 {
@@ -100,27 +100,27 @@ namespace Sample_CUITeTestProject_WpfControls
         [TestMethod]
         public void WpfTable_GetRowAndCellByAutomationId_CanGetCellValue()
         {
-            CUITe_WpfRow row0 = mainWindow.dg1.Get<CUITe_WpfRow>("AutomationId=Row0");
-            CUITe_WpfCell row0cell0 = row0.Get<CUITe_WpfCell>("AutomationId=cellRow0Col0");
+            WpfRow row0 = mainWindow.dg1.Get<WpfRow>("AutomationId=Row0");
+            WpfCell row0cell0 = row0.Get<WpfCell>("AutomationId=cellRow0Col0");
             Assert.AreEqual("XML in Action", row0cell0.Value);
         }
 
         [TestMethod]
         public void WpfListView_GetRow_CanClickOnRow()
         {
-            CUITe_WpfTable listView = mainWindow.Get<CUITe_WpfTable>("AutomationId=lv1");
+            WpfTable listView = mainWindow.Get<WpfTable>("AutomationId=lv1");
             Assert.AreEqual(8, listView.RowCount);
-            CUITe_WpfControl<WpfControl> control = listView.Get<CUITe_WpfControl<WpfControl>>("AutomationId=Item0");
+            WpfControl<CUITControls.WpfControl> control = listView.Get<WpfControl<CUITControls.WpfControl>>("AutomationId=Item0");
             control.Click();
         }
 
         [TestMethod]
         public void WpfListView_GetRow_CanClickOnCell()
         {
-            CUITe_WpfTable listView = mainWindow.Get<CUITe_WpfTable>("AutomationId=lv1");
+            WpfTable listView = mainWindow.Get<WpfTable>("AutomationId=lv1");
             Assert.AreEqual(8, listView.RowCount);
-            CUITe_WpfControl<WpfControl> control = listView.Get<CUITe_WpfControl<WpfControl>>("AutomationId=Item0");
-            CUITe_WpfCell cell = control.Get<CUITe_WpfCell>("ColumnHeader=Content");
+            WpfControl<CUITControls.WpfControl> control = listView.Get<WpfControl<CUITControls.WpfControl>>("AutomationId=Item0");
+            WpfCell cell = control.Get<WpfCell>("ColumnHeader=Content");
             cell.Click();
         }
     }
