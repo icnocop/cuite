@@ -207,6 +207,7 @@
     <Compile Include="Controls\SilverlightControls\CUITe_SlListItem.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlPassword.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlRadioButton.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlScrollBar.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlSlider.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlSpinner.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTab.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Controls\SilverlightControls\CUITe_SlTable.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlText.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlTree.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlTreeItem.cs" />
     <Compile Include="Controls\TelerikControls\Telerik_ComboBox.cs" />
     <Compile Include="Controls\UIWindowsSecurityWindow.cs" />
     <Compile Include="Controls\WinControls\CUITe_WinButton.cs" />
