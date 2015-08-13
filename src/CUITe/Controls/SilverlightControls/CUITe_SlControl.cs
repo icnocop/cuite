@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
-using CUITe.Extensions.Controls.SilverlightControls;
+using CUITe.Controls.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {

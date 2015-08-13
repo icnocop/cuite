@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-using CUITe.Extensions;
+using CUITe.Controls.ExtJsControls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 
-namespace CUITe.Extensions.Controls.ExtJsControls
+namespace CUITe.Controls.ExtJsControls
 {
     public class CUITe_ExtJsTAB : CUITe_HtmlControl<HtmlCustom>
     {

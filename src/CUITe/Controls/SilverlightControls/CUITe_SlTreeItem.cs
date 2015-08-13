@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
-using CUITe.Extensions;
+
 using CUITe.Controls.HtmlControls;
 //using Microsoft.VisualStudio.TestTools.UITest.Extension.
 using CUITe.Controls.SilverlightControls;
 
-namespace CUITe.Extensions.Controls.SilverlightControls
+namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// CUITe wrapper for SilverlightTree.

@@ -1,10 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 using System;
-using CUITe.Extensions;
+using CUITe.Controls.ExtJsControls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 
-namespace CUITe.Extensions.Controls.ExtJsControls
+
+namespace CUITe.Controls.ExtJsControls
 {
     public class CUITe_ExtJsTextBox : CUITe_HtmlControl<HtmlEdit>
     {
