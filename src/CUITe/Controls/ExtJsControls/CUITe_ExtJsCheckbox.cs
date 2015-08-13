@@ -1,0 +1,46 @@
+﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using System;
+using CUITe;
+using CUITe.Extensions;
+using CUITe.Controls.HtmlControls;
+using CUITe.Controls.SilverlightControls;
+
+namespace CUITe.Extensions.Controls.ExtJsControls
+{
+    public class CUITe_ExtJsCheckbox : CUITe_HtmlControl<HtmlButton>
+    {
+        public CUITe_ExtJsCheckbox() : base() { }
+        public CUITe_ExtJsCheckbox(string searchParameters) : base(searchParameters) { }
+
+
+
+        public string IdbyItemid(CUITe_BrowserWindow objrepositoryclass_obj, string ItemId, string Idsuffix)
+        {
+            
+                this._control.WaitForControlReady();
+                object Id = objrepositoryclass_obj.ExecuteScript("return Ext.ComponentQuery.query('#"+ItemId+"')[0].id;");
+                return Id.ToString()+Idsuffix;
+            
+        }
+
+        public bool Checked(CUITe_BrowserWindow objrepositoryclass_obj, string ItemId)
+        {
+            this._control.WaitForControlReady();
+            object Id = objrepositoryclass_obj.ExecuteScript("return Ext.ComponentQuery.query('#" + ItemId + "')[0].getValue( );");
+            bool State = (bool)Id;
+            return State;
+        }
+
+        public string IdbyName(CUITe_BrowserWindow objrepositoryclass_obj, string name, string Idsuffix)
+        {
+
+            this._control.WaitForControlReady();
+            object Id = objrepositoryclass_obj.ExecuteScript("return Ext.ComponentQuery.query('[name=" + name + "]')[0].id;");
+            return Id.ToString() + Idsuffix;
+
+        }
+
+        
+
+    }
+}

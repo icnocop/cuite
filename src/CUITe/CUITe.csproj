@@ -139,6 +139,16 @@
     <Compile Include="Browsers\IBrowser.cs" />
     <Compile Include="Browsers\InternetExplorer.cs" />
     <Compile Include="Controls\CUITe_ControlBase.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsButton.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsCell.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsCheckbox.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsComboBox.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsCustom.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsFrame.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsLabel.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsRadioButton.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsTAB.cs" />
+    <Compile Include="Controls\ExtJsControls\CUITe_ExtJsTextBox.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_BrowserDialog.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_BrowserWindow.cs" />
     <Compile Include="Controls\HtmlControls\CUITe_DynamicBrowserWindow.cs" />
