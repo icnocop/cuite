@@ -194,6 +194,7 @@
     <Compile Include="Controls\SilverlightControls\CUITe_SlImage.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlLabel.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlList.cs" />
+    <Compile Include="Controls\SilverlightControls\CUITe_SlListItem.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlPassword.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlRadioButton.cs" />
     <Compile Include="Controls\SilverlightControls\CUITe_SlSlider.cs" />

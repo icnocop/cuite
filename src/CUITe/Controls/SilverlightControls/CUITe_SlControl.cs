@@ -173,6 +173,10 @@ namespace CUITe.Controls.SilverlightControls
             {
                 _con = new CUITe_SlList();
             }
+            else if (control.GetType() == typeof(SilverlightListItem))
+            {
+                _con = new CUITe_SlListItem();
+            }
             else if (control.GetType() == typeof(SilverlightRadioButton))
             {
                 _con = new CUITe_SlRadioButton();
