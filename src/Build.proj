@@ -4,17 +4,15 @@
   <!-- Properties -->
   <PropertyGroup>
     <CurrentDirectory>$(MSBuildProjectDirectory)</CurrentDirectory>
-    <CvsRootPath>$(CurrentDirectory)\..\</CvsRootPath>
+    <CvsRootPath>$(CurrentDirectory)\..</CvsRootPath>
     <SolutionPath>$(CurrentDirectory)\CUITe.sln</SolutionPath>
-    <ProjectPath>$(CurrentDirectory)\CUITe\CUITe.csproj</ProjectPath>
-    <Deliverables>$(CurrentDirectory)\Deliverables</Deliverables>
-    <MSBuildCommunityTasksPath>$(CurrentDirectory)\.build\</MSBuildCommunityTasksPath>
+    <ProjectDir>$(CurrentDirectory)\CUITe</ProjectDir>
+    <ProjectPath>$(ProjectDir)\CUITe.csproj</ProjectPath>
+    <NuGetSpecPath>$(ProjectDir)\CUITe.nuspec</NuGetSpecPath>
+    <NuGetPath>$(CurrentDirectory)\.nuget\NuGet.exe</NuGetPath>
     <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
   </PropertyGroup>
 
-  <!-- Imports -->
-  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets" />
-  
   <!-- Builds the solution in all supported configurations -->
   <Target Name="Build">
     <!-- VS2013 .NET45 (build solution) -->
@@ -53,48 +51,20 @@
   
   <!-- Creates zip archives of CUITe deliverables -->
   <Target Name="Pack">
-    <!-- Clean -->
-    <RemoveDir Directories="$(Deliverables)" />
-    
-    <!-- Copy -->
-    <ItemGroup>
-        <CUITeFiles Include="$(CurrentDirectory)\CUITe\bin\Release\**\*.*" />
-    </ItemGroup>
+    <!-- VS2013 -->
+    <Copy SourceFiles="$(ProjectDir)\CUITe.VS2013.nuspec" DestinationFiles="$(NuGetSpecPath)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12;Configuration=Release" />
+
+    <!-- VS2012 -->
+    <Copy SourceFiles="$(ProjectDir)\CUITe.VS2012.nuspec" DestinationFiles="$(NuGetSpecPath)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=11;Configuration=Release" />
+
+    <!-- VS2010 -->
+    <Copy SourceFiles="$(ProjectDir)\CUITe.VS2010.nuspec" DestinationFiles="$(NuGetSpecPath)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=10;TargetFrameworkVersion=v4.0;Configuration=Release" />
       
-    <Copy SourceFiles="@(CUITeFiles)" DestinationFolder="$(Deliverables)\%(RecursiveDir)" />
-    <Copy SourceFiles="$(CurrentDirectory)\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" DestinationFolder="$(Deliverables)\VS2010\" />
-    <Copy SourceFiles="$(CurrentDirectory)\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" DestinationFolder="$(Deliverables)\VS2012\" />
-    <Copy SourceFiles="$(CurrentDirectory)\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" DestinationFolder="$(Deliverables)\VS2013\" />
-      
-    <!-- Pack VS2013 -->
-    <ItemGroup>
-      <VS2013Files Include="$(Deliverables)\VS2013\**" />
-    </ItemGroup>
-
-    <MSBuild.Community.Tasks.Zip
-      ZipFileName="$(CvsRootPath)\CUITe_VS2013.zip"
-      WorkingDirectory="$(Deliverables)\VS2013\"
-      Files="@(VS2013Files)" />
-
-    <!-- Pack VS2012 -->
-    <ItemGroup>
-      <VS2012Files Include="$(Deliverables)\VS2012\**" />
-    </ItemGroup>
-
-    <MSBuild.Community.Tasks.Zip
-      ZipFileName="$(CvsRootPath)\CUITe_VS2012.zip"
-      WorkingDirectory="$(Deliverables)\VS2012\"
-      Files="@(VS2012Files)" />
-
-    <!-- Pack VS2010 -->
-    <ItemGroup>
-      <VS2010Files Include="$(Deliverables)\VS2010\**" />
-    </ItemGroup>
-
-    <MSBuild.Community.Tasks.Zip
-      ZipFileName="$(CvsRootPath)\CUITe_VS2010.zip"
-      WorkingDirectory="$(Deliverables)\VS2010\"
-      Files="@(VS2010Files)" />
+    <!-- Cleanup -->
+    <Delete Files="$(NuGetSpecPath)" />
   </Target>
 
   <!-- Runs all tests -->
