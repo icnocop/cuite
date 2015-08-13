@@ -7,6 +7,15 @@
     SizeToContent="WidthAndHeight"
     WindowStartupLocation="CenterScreen">
     
+    <!-- Resources -->
+    <Window.Resources>
+        <Style x:Key="DefaultControlStyle" TargetType="{x:Type FrameworkElement}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </Window.Resources>
+    
     <!-- Root element -->
     <Grid>
         <Grid.RowDefinitions>
@@ -29,17 +38,23 @@
         <!-- Button -->
         <controls:ButtonControl />
 
-        <Calendar Grid.Column="1" />
+        <!-- Calendar -->
+        <controls:CalendarControl Grid.Column="1" />
 
-        <CheckBox Grid.Column="2" />
+        <!-- Check box -->
+        <controls:CheckBoxControl Grid.Column="2" />
 
-        <ComboBox Grid.Column="3" />
+        <!-- Combo box -->
+        <controls:ComboBoxControl Grid.Column="3" />
 
-        <DataGrid Grid.Column="4" />
+        <!-- Data grid -->
+        <controls:DataGridControl Grid.Column="4" />
 
-        <DatePicker Grid.Column="5" />
+        <!-- Date picker -->
+        <controls:DatePickerControl Grid.Column="5" />
 
-        <DocumentViewer Grid.Row="1" />
+        <!-- Document viewer -->
+        <controls:DocumentViewerControl Grid.Row="1" />
 
         <Expander Grid.Row="1" Grid.Column="1" />
 

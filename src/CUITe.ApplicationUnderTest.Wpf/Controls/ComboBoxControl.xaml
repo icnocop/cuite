@@ -1,0 +1,16 @@
+﻿<UserControl
+    x:Class="CUITe.ApplicationUnderTest.Wpf.Controls.ComboBoxControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ComboBox
+        SelectedIndex="0"
+        Style="{DynamicResource DefaultControlStyle}">
+        <ComboBox.Items>
+            <ComboBoxItem>First item</ComboBoxItem>
+            <ComboBoxItem>Second item</ComboBoxItem>
+            <ComboBoxItem>Third item</ComboBoxItem>
+        </ComboBox.Items>
+    </ComboBox>
+
+</UserControl>
