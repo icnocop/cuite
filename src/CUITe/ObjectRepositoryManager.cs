@@ -4,9 +4,9 @@ using System.Reflection;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.TelerikControls;
-using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using CUITHtmlControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 #if SILVERLIGHT_SUPPORT
-using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using CUITSilverlightControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 #endif
 
 namespace CUITe
@@ -23,14 +23,14 @@ namespace CUITe
             return (T)(object)ObjectRepositoryManager.GetInstance(typeof(T), args);
         }
 
-        private static CUITe_BrowserWindow GetInstance(Type typePageDefinition)
+        private static BrowserWindowUnderTest GetInstance(Type typePageDefinition)
         {
             return GetInstance(typePageDefinition, null);
         }
 
-        private static CUITe_BrowserWindow GetInstance(Type typePageDefinition, params object[] args)
+        private static BrowserWindowUnderTest GetInstance(Type typePageDefinition, params object[] args)
         {
-            CUITe_BrowserWindow browserWindow = (CUITe_BrowserWindow)Activator.CreateInstance(typePageDefinition, args);
+            var browserWindow = (BrowserWindowUnderTest)Activator.CreateInstance(typePageDefinition, args);
 
             browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
 
@@ -39,22 +39,22 @@ namespace CUITe
             {
                 Type fieldType = fieldinfo.FieldType;
 
-                if (fieldType.IsAssignableFrom(typeof(Telerik_ComboBox)))
+                if (fieldType.IsAssignableFrom(typeof(ComboBox)))
                 {
-                    Telerik_ComboBox field = (Telerik_ComboBox)fieldinfo.GetValue(browserWindow);
+                    ComboBox field = (ComboBox)fieldinfo.GetValue(browserWindow);
                     field.SetWindow(browserWindow);
                 }
-                else if (fieldType.GetInterfaces().Contains(typeof(ICUITe_ControlBase)))
+                else if (fieldType.GetInterfaces().Contains(typeof(IControlBase)))
                 {
-                    ICUITe_ControlBase field = (ICUITe_ControlBase)fieldinfo.GetValue(browserWindow);
+                    IControlBase field = (IControlBase)fieldinfo.GetValue(browserWindow);
 
-                    if (field.GetBaseType().IsSubclassOf(typeof(HtmlControl)))
+                    if (field.GetBaseType().IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow }));
                     }
 #if SILVERLIGHT_SUPPORT
-                    else if ((field.GetBaseType() == typeof(SilverlightControl))
-                        || (field.GetBaseType().IsSubclassOf(typeof(SilverlightControl))))
+                    else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl))
+                        || (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow.SlObjectContainer }));
                     }
