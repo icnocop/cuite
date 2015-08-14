@@ -58,7 +58,7 @@ namespace CUITe.Controls
             }
 
             // Split on groups of key/value pairs
-            string[] saKeyValuePairs = searchProperties.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] saKeyValuePairs = searchProperties.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string sKeyValue in saKeyValuePairs)
             {
@@ -66,12 +66,12 @@ namespace CUITe.Controls
 
                 // If split on '=' does not work, then try '~'
                 // Split at the first instance of '='. Other instances are considered part of the value.
-                string[] saKeyVal = sKeyValue.Split(new char[] { '=' }, 2);
+                string[] saKeyVal = sKeyValue.Split(new[] { '=' }, 2);
                 if (saKeyVal.Length != 2)
                 {
                     // Otherwise try to split on '~'. If it works then compare type is Contains
                     // Split at the first instance of '~'. Other instances are considered part of the value.
-                    saKeyVal = sKeyValue.Split(new char[] { '~' }, 2);
+                    saKeyVal = sKeyValue.Split(new[] { '~' }, 2);
                     if (saKeyVal.Length == 2)
                     {
                         compareOperator = PropertyExpressionOperator.Contains;
@@ -108,7 +108,7 @@ namespace CUITe.Controls
         {
             T1 control = Activator.CreateInstance<T1>();
 
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { UnWrap() });
+            var baseControl = Activator.CreateInstance(control.GetBaseType(), UnWrap());
 
             control.Wrap(baseControl);
 
@@ -127,7 +127,7 @@ namespace CUITe.Controls
         {
             T1 control = ControlBaseFactory.Create<T1>(searchParameters);
 
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { UnWrap() });
+            var baseControl = Activator.CreateInstance(control.GetBaseType(), UnWrap());
 
             control.Wrap(baseControl);
 

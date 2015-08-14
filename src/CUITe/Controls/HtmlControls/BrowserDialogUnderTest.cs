@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-
-namespace CUITe.Controls.HtmlControls
+﻿namespace CUITe.Controls.HtmlControls
 {
     public class BrowserDialogUnderTest : BrowserWindowUnderTest
     {

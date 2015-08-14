@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToggleButton : WpfControl<CUITControls.WpfToggleButton>
     {
-        public WpfToggleButton() : base() { }
+        public WpfToggleButton() { }
         public WpfToggleButton(string searchParameters) : base(searchParameters) { }
 
         public string DisplayText

@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBox : WinControl<CUITControls.WinCheckBox>
     {
-        public WinCheckBox() : base() { }
+        public WinCheckBox() { }
         public WinCheckBox(string searchParameters) : base(searchParameters) { }
 
         public bool Checked { 

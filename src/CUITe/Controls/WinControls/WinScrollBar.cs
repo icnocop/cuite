@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinScrollBar : WinControl<CUITControls.WinScrollBar>
     {
-        public WinScrollBar() : base() { }
+        public WinScrollBar() { }
         public WinScrollBar(string searchParameters) : base(searchParameters) { }
 
         public double MaximumPosition

@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using System;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -8,7 +9,7 @@ namespace CUITe.Controls.WinControls
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
     public class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
-        public WinControl() : base() { }
+        public WinControl() { }
         public WinControl(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
@@ -26,7 +27,7 @@ namespace CUITe.Controls.WinControls
                 {
                     ret = WinControlFactory.Create((CUITControls.WinControl)_control.GetParent());
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).Parent", _control.GetType().Name));
                 }

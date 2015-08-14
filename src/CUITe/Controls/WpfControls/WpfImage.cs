@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfImage : WpfControl<CUITControls.WpfImage>
     {
-        public WpfImage() : base() { }
+        public WpfImage() { }
         public WpfImage(string searchParameters) : base(searchParameters) { }
 
         public string Alt

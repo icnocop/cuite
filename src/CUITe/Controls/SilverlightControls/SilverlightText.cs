@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightText : SilverlightControl<CUITControls.SilverlightText>
     {
-        public SilverlightText() : base() { }
+        public SilverlightText() { }
         public SilverlightText(string searchParameters) : base(searchParameters) { }
 
         /// <summary>

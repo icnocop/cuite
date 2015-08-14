@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCell : WpfControl<CUITControls.WpfCell>
     {
-        public WpfCell() : base() { }
+        public WpfCell() { }
         public WpfCell(string searchParameters) : base(searchParameters) { }
         
         public bool Checked

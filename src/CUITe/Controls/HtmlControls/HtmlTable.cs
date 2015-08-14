@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UITesting;
 using System.Linq;
+using System.Reflection;
+using mshtml;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        public HtmlTable() : base() { }
+        public HtmlTable() { }
         public HtmlTable(string searchParameters) : base(searchParameters) { }
 
         public int ColumnCount
@@ -107,7 +108,7 @@ namespace CUITe.Controls.HtmlControls
                         {
                             bSearchOptionResult = (cell.InnerText.IndexOf(sValueToSearch) > -1);
                         }
-                        if (bSearchOptionResult == true)
+                        if (bSearchOptionResult)
                         {
                             iRow = rowCount;
                             break;
@@ -144,8 +145,8 @@ namespace CUITe.Controls.HtmlControls
         public HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
         {
             string sSearchProperties = "";
-            mshtml.IHTMLElement td = (mshtml.IHTMLElement)GetCell(iRow, iCol).UnWrap().NativeElement;
-            mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
+            IHTMLElement td = (IHTMLElement)GetCell(iRow, iCol).UnWrap().NativeElement;
+            IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
             var chk = new CUITControls.HtmlCheckBox(_control.Container);
@@ -264,11 +265,11 @@ namespace CUITe.Controls.HtmlControls
                     .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
         }
 
-        private mshtml.IHTMLElement GetEmbeddedCheckBoxNativeElement(mshtml.IHTMLElement parent)
+        private IHTMLElement GetEmbeddedCheckBoxNativeElement(IHTMLElement parent)
         {
             while (true)
             {
-                foreach (mshtml.IHTMLElement ele2 in parent.children)
+                foreach (IHTMLElement ele2 in parent.children)
                 {
                     if (ele2.tagName.ToUpper() == "INPUT")
                     {

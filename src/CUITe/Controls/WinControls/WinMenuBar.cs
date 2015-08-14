@@ -10,7 +10,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenuBar : WinControl<CUITControls.WinMenuBar>
     {
-        public WinMenuBar() : base() { }
+        public WinMenuBar() { }
         public WinMenuBar(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Items

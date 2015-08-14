@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinClient : WinControl<CUITControls.WinClient>
     {
-        public WinClient() : base() { }
+        public WinClient() { }
         public WinClient(string searchParameters) : base(searchParameters) { }
     }
 }

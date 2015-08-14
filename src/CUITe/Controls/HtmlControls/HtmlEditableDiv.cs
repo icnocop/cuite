@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableDiv : HtmlControl<CUITControls.HtmlEditableDiv>
     {
-        public HtmlEditableDiv() : base() { }
+        public HtmlEditableDiv() { }
         public HtmlEditableDiv(string searchParameters) : base(searchParameters) { }
 
         public void SetText(string sText)

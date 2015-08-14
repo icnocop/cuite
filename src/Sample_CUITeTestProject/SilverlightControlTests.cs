@@ -53,7 +53,7 @@ namespace Sample_CUITeTestProject
         public void SlList_InObjectRepository_Succeeds()
         {
             SlTestPage oSlTestPage = BrowserWindowUnderTest.Launch<SlTestPage>(TestSilverlightApplicationHtmlPageUrl);
-            oSlTestPage.oList.SelectedIndices = new int[] { 2 };
+            oSlTestPage.oList.SelectedIndices = new[] { 2 };
             Assert.IsTrue(oSlTestPage.oList.SelectedItemsAsString == "Coded UI Test");
             oSlTestPage.Close();
         }
@@ -64,7 +64,7 @@ namespace Sample_CUITeTestProject
             BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(TestSilverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
             SilverlightList oList = b.Get<SilverlightList>("AutomationId=listBox1");
-            oList.SelectedIndices = new int[] { 2 };
+            oList.SelectedIndices = new[] { 2 };
             Assert.IsTrue(oList.SelectedItemsAsString == "Coded UI Test");
             b.Close();
         }

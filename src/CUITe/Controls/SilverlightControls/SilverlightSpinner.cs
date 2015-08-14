@@ -10,7 +10,6 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
         public SilverlightSpinner()
-            : base()
         {
             Initialize();
         }

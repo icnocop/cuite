@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightLabel : SilverlightControl<CUITControls.SilverlightLabel>
     {
-        public SilverlightLabel() : base() { }
+        public SilverlightLabel() { }
         public SilverlightLabel(string searchParameters) : base(searchParameters) { }
 
         /// <summary>

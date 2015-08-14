@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightRadioButton : SilverlightControl<CUITControls.SilverlightRadioButton>
     {
-        public SilverlightRadioButton() : base() { }
+        public SilverlightRadioButton() { }
         public SilverlightRadioButton(string searchParameters) : base(searchParameters) { }
 
         public void Select()

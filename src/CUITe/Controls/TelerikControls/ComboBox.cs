@@ -9,7 +9,7 @@ namespace CUITe.Controls.TelerikControls
         private string id;
         private BrowserWindowUnderTest _window;
         
-        public ComboBox() : base() { }
+        public ComboBox() { }
 
         public ComboBox(string searchParameters)
             : base(searchParameters)

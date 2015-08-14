@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenuItem : WpfControl<CUITControls.WpfMenuItem>
     {
-        public WpfMenuItem() : base() { }
+        public WpfMenuItem() { }
         public WpfMenuItem(string searchParameters) : base(searchParameters) { }
 
         public bool Checked

@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinEdit : ControlBase<CUITControls.WinEdit>
     {
-        public WinEdit() : base() { }
+        public WinEdit() { }
         public WinEdit(string searchParameters) : base(searchParameters) { }
 
         public string CopyPastedText

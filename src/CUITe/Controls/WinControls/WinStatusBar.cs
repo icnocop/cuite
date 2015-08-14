@@ -8,7 +8,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinStatusBar : WinControl<CUITControls.WinStatusBar>
     {
-        public WinStatusBar() : base() { }
+        public WinStatusBar() { }
         public WinStatusBar(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Panels

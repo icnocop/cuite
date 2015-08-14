@@ -9,7 +9,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTree : WpfControl<CUITControls.WpfTree>
     {
-        public WpfTree() : base() { }
+        public WpfTree() { }
         public WpfTree(string searchParameters) : base(searchParameters) { }
 
         public UITestControl HorizontalScrollBar

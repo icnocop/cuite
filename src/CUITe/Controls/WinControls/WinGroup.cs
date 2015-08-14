@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinGroup : WinControl<CUITControls.WinGroup>
     {
-        public WinGroup() : base() { }
+        public WinGroup() { }
         public WinGroup(string searchParameters) : base(searchParameters) { }
     }
 }

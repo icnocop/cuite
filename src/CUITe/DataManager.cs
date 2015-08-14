@@ -43,13 +43,13 @@ namespace CUITe
                         startParsing = true;
                     }
 
-                    if (startParsing == true && xmlTextReader.NodeType == XmlNodeType.EndElement && xmlTextReader.Name.ToLower() == "datarow")
+                    if (startParsing && xmlTextReader.NodeType == XmlNodeType.EndElement && xmlTextReader.Name.ToLower() == "datarow")
                     {
                         startParsing = false;
                         break;
                     }
 
-                    if (startParsing == true && xmlTextReader.Name.ToLower() != "datarow")
+                    if (startParsing && xmlTextReader.Name.ToLower() != "datarow")
                     {
                         if (xmlTextReader.IsStartElement())
                         {
@@ -61,7 +61,7 @@ namespace CUITe
                             }
                         }
                         
-                        if (keyAdded2Ht == true && xmlTextReader.NodeType == XmlNodeType.Text)
+                        if (keyAdded2Ht && xmlTextReader.NodeType == XmlNodeType.Text)
                         {
                             keyAdded2Ht = false;
                             ht[key] = xmlTextReader.Value;

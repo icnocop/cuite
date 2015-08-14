@@ -9,7 +9,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTreeItem : WpfControl<CUITControls.WpfTreeItem>
     {
-        public WpfTreeItem() : base() { }
+        public WpfTreeItem() { }
         public WpfTreeItem(string searchParameters) : base(searchParameters) { }
 
         public bool Expanded

@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfWindow : WpfControl<CUITControls.WpfWindow>
     {
-        public WpfWindow() : base() { }
+        public WpfWindow() { }
 
         public WpfWindow(string searchParameters) : base(searchParameters) 
         {

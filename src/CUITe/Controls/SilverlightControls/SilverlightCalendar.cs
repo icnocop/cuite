@@ -1,5 +1,6 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using System;
+using System.Windows.Forms;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -9,10 +10,10 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
-        public SilverlightCalendar() : base() { }
+        public SilverlightCalendar() { }
         public SilverlightCalendar(string searchParameters) : base(searchParameters) { }
 
-        public System.Windows.Forms.SelectionRange SelectedDateRange
+        public SelectionRange SelectedDateRange
         {
             set
             {

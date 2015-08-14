@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfEdit : WpfControl<CUITControls.WpfEdit>
     {
-        public WpfEdit() : base() { }
+        public WpfEdit() { }
         public WpfEdit(string searchParameters) : base(searchParameters) { }
 
         public string CopyPastedText

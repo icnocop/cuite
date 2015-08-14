@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEdit : HtmlControl<CUITControls.HtmlEdit>
     {
-        public HtmlEdit() : base() { }
+        public HtmlEdit() { }
         public HtmlEdit(string searchParameters) : base(searchParameters) { }
 
         public void SetText(string sText)

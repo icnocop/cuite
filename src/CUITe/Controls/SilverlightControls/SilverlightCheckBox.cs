@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCheckBox : SilverlightControl<CUITControls.SilverlightCheckBox>
     {
-        public SilverlightCheckBox() : base() { }
+        public SilverlightCheckBox() { }
         public SilverlightCheckBox(string searchParameters) : base(searchParameters) { }
 
         public void Check()

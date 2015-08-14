@@ -10,7 +10,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenuItem : WinControl<CUITControls.WinMenuItem>
     {
-        public WinMenuItem() : base() { }
+        public WinMenuItem() { }
         public WinMenuItem(string searchParameters) : base(searchParameters) { }
 
         public bool Checked

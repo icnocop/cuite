@@ -20,7 +20,7 @@ namespace TestSilverlightApplication
             InitializeComponent();
             if (uri != null)
             {
-                ErrorTextBox.Text = "Page not found: \"" + uri.ToString() + "\"";
+                ErrorTextBox.Text = "Page not found: \"" + uri + "\"";
             }
         }
 

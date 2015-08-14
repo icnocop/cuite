@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSlider : WinControl<CUITControls.WinSlider>
     {
-        public WinSlider() : base() { }
+        public WinSlider() { }
         public WinSlider(string searchParameters) : base(searchParameters) { }
 
         public double LineSize

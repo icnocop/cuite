@@ -10,7 +10,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinList : WinControl<CUITControls.WinList>
     {
-        public WinList() : base() { }
+        public WinList() { }
         public WinList(string searchParameters) : base(searchParameters) { }
 
         public int[] CheckedIndices
@@ -105,13 +105,13 @@ namespace CUITe.Controls.WinControls
         public int SelectedIndex
         {
             get { return (UnWrap().SelectedIndices.Length > 0 ? UnWrap().SelectedIndices[0] : -1); }
-            set { UnWrap().SelectedIndices = new int[] { value }; }
+            set { UnWrap().SelectedIndices = new[] { value }; }
         }
 
         public string SelectedItem
         {
             get { return (UnWrap().SelectedIndices.Length > 0 ? UnWrap().SelectedItems[0] : null); }
-            set { UnWrap().SelectedItems = new string[] { value }; }
+            set { UnWrap().SelectedItems = new[] { value }; }
         }
 
         public string SelectedItemsAsString

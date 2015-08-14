@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfHyperlink : WpfControl<CUITControls.WpfHyperlink>
     {
-        public WpfHyperlink() : base() { }
+        public WpfHyperlink() { }
         public WpfHyperlink(string searchParameters) : base(searchParameters) { }
 
         public string Alt

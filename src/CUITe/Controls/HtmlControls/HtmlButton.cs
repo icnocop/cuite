@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlButton : HtmlControl<CUITControls.HtmlButton>
     {
-        public HtmlButton() : base() { }
+        public HtmlButton() { }
         public HtmlButton(string searchParameters) : base(searchParameters) { }
     }
 }

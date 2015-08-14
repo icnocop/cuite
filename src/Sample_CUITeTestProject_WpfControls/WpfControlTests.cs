@@ -62,7 +62,7 @@ namespace Sample_CUITeTestProject_WpfControls
             }
         }
 
-        [TestInitialize()]
+        [TestInitialize]
         public void TestInitialize()
         {
             if (Process.GetProcessesByName(testProcess).Length == 0)
@@ -71,7 +71,7 @@ namespace Sample_CUITeTestProject_WpfControls
             }
         }
 
-        [TestCleanup()]
+        [TestCleanup]
         public void TestCleanup()
         {
             if (testContextInstance.CurrentTestOutcome != UnitTestOutcome.Passed)

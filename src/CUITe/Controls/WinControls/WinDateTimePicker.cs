@@ -10,7 +10,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinDateTimePicker : WinControl<CUITControls.WinDateTimePicker>
     {
-        public WinDateTimePicker() : base() { }
+        public WinDateTimePicker() { }
         public WinDateTimePicker(string searchParameters) : base(searchParameters) { }
 
         public UITestControl Calendar

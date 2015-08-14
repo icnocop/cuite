@@ -9,7 +9,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTabList : WinControl<CUITControls.WinTabList>
     {
-        public WinTabList() : base() { }
+        public WinTabList() { }
         public WinTabList(string searchParameters) : base(searchParameters) { }
 
         public int SelectedIndex

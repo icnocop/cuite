@@ -9,7 +9,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
-        public SilverlightTable() : base() { }
+        public SilverlightTable() { }
         public SilverlightTable(string searchParameters) : base(searchParameters) { }
 
         public int RowCount
@@ -90,7 +90,7 @@ namespace CUITe.Controls.SilverlightControls
                         {
                             bSearchOptionResult = (cell.Value.IndexOf(sValueToSearch) > -1);
                         }
-                        if (bSearchOptionResult == true)
+                        if (bSearchOptionResult)
                         {
                             iRow = rowCount;
                             break;

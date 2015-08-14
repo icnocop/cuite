@@ -6,7 +6,6 @@ namespace CUITe.Controls.HtmlControls
     public class HtmlCustom : HtmlControl<CUITControls.HtmlCustom>
     {
         public HtmlCustom(string tagName)
-            : base()
         {
             Initialize(tagName);
         }

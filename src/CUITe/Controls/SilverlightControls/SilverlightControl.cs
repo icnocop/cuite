@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
 {
     public class SilverlightControl<T> : ControlBase<T> where T : CUITControls.SilverlightControl
     {
-        public SilverlightControl() : base() { }
+        public SilverlightControl() { }
         public SilverlightControl(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
@@ -203,10 +203,10 @@ namespace CUITe.Controls.SilverlightControls
             }
             else
             {
-                throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType().ToString()));
+                throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType()));
             }
 
-            ((IControlBase)_con).WrapReady(control);
+            _con.WrapReady(control);
             return _con;
         }
 

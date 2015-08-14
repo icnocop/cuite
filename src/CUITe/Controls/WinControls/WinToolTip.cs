@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinToolTip : WinControl<CUITControls.WinToolTip>
     {
-        public WinToolTip() : base() { }
+        public WinToolTip() { }
         public WinToolTip(string searchParameters) : base(searchParameters) { }
     }
 }

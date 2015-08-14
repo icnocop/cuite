@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightImage : SilverlightControl<CUITControls.SilverlightImage>
     {
-        public SilverlightImage() : base() { }
+        public SilverlightImage() { }
         public SilverlightImage(string searchParameters) : base(searchParameters) { }
     }
 }

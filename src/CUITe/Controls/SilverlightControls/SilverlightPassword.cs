@@ -12,7 +12,6 @@ namespace CUITe.Controls.SilverlightControls
         /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
         /// </summary>
         public SilverlightPassword()
-            : base()
         {
         }
 

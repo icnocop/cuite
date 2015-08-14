@@ -50,13 +50,13 @@ namespace CUITe
 
                     if (field.GetBaseType().IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
-                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow }));
+                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), browserWindow));
                     }
 #if SILVERLIGHT_SUPPORT
                     else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl))
                         || (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
-                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow.SlObjectContainer }));
+                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), browserWindow.SlObjectContainer));
                     }
 #endif
                 }

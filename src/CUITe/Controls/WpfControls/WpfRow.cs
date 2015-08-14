@@ -9,7 +9,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfRow : WpfControl<CUITControls.WpfRow>
     {
-        public WpfRow() : base() { }
+        public WpfRow() { }
         public WpfRow(string searchParameters) : base(searchParameters) { }
 
         public bool CanSelectMultiple

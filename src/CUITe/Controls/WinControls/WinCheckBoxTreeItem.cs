@@ -8,7 +8,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBoxTreeItem : WinControl<CUITControls.WinCheckBoxTreeItem>
     {
-        public WinCheckBoxTreeItem() : base() { }
+        public WinCheckBoxTreeItem() { }
         public WinCheckBoxTreeItem(string searchParameters) : base(searchParameters) { }
 
         public bool Checked

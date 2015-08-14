@@ -8,7 +8,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCalendar : WinControl<CUITControls.WinCalendar>
     {
-        public WinCalendar() : base() { }
+        public WinCalendar() { }
         public WinCalendar(string searchParameters) : base(searchParameters) { }
 
         public SelectionRange SelectionRange

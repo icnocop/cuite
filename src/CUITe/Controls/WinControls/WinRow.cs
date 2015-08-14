@@ -9,7 +9,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRow : WinControl<CUITControls.WinRow>
     {
-        public WinRow() : base() { }
+        public WinRow() { }
         public WinRow(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Cells

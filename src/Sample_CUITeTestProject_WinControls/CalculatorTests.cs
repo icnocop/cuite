@@ -54,7 +54,7 @@ namespace Sample_CUITeTestProject_WinControls
             }
         }
 
-        [TestInitialize()]
+        [TestInitialize]
         public void TestInitialize()
         {
             // Launch Calculator if not already running
@@ -73,7 +73,7 @@ namespace Sample_CUITeTestProject_WinControls
             }
         }
 
-        [TestCleanup()]
+        [TestCleanup]
         public void TestCleanup()
         {
             // If test failed, then close the app. The next test will restart it

@@ -9,7 +9,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabList : WpfControl<CUITControls.WpfTabList>
     {
-        public WpfTabList() : base() { }
+        public WpfTabList() { }
         public WpfTabList(string searchParameters) : base(searchParameters) { }
 
         public int SelectedIndex

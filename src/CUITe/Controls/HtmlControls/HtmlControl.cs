@@ -8,7 +8,6 @@ namespace CUITe.Controls.HtmlControls
     public class HtmlControl : ControlBase<CUITControls.HtmlControl>
     {
         public HtmlControl(string tagName)
-            : base()
         {
             Initialize(tagName);
         }
@@ -33,7 +32,6 @@ namespace CUITe.Controls.HtmlControls
         where T : CUITControls.HtmlControl
     {
         public HtmlControl()
-            : base()
         {
         }
 
@@ -43,7 +41,6 @@ namespace CUITe.Controls.HtmlControls
         }
 
         public HtmlControl(UITestControl control)
-            : base()
         {
             _control = (T)control;
         }
@@ -282,7 +279,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new HtmlEditableSpan();
             }
-            else if (control.GetType() == typeof(Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlTable))
+            else if (control.GetType() == typeof(CUITControls.HtmlTable))
             {
                 _con = new HtmlTable();
             }
@@ -290,7 +287,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new HtmlCell();
             }
-            else if (control.GetType() == typeof(Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlTextArea))
+            else if (control.GetType() == typeof(CUITControls.HtmlTextArea))
             {
                 _con = new HtmlTextArea();
             }
@@ -344,7 +341,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 throw new Exception(string.Format("WrapUtil: '{0}' not supported", control.GetType().Name));
             }
-            ((IControlBase)_con).WrapReady(control);
+            _con.WrapReady(control);
             return _con;
         }
 

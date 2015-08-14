@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
+using CUITe.Controls.TelerikControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -52,7 +53,7 @@ namespace CUITe.Controls.HtmlControls
                 return ie;
             }
 
-            List<IBrowser> supportedBrowsers = new List<IBrowser>()
+            List<IBrowser> supportedBrowsers = new List<IBrowser>
             {
                 ie,
                 new Firefox(),
@@ -79,7 +80,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>The launched BrowserWindow</returns>
         public static new BrowserWindow Launch(string url)
         {
-            return BrowserWindow.Launch(new Uri(url));
+            return Launch(new Uri(url));
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace CUITe.Controls.HtmlControls
         public static new BrowserWindowUnderTest Launch(string url, string title)
         {
             var browserWindowUnderTest = new BrowserWindowUnderTest();
-            browserWindowUnderTest.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+            browserWindowUnderTest.CopyFrom(Launch(new Uri(url)));
 
             return browserWindowUnderTest;
         }
@@ -106,7 +107,7 @@ namespace CUITe.Controls.HtmlControls
             where T : BrowserWindowUnderTest, new()
         {
             T browserWindow = new T();
-            browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+            browserWindow.CopyFrom(Launch(new Uri(url)));
 
             return browserWindow;
         }
@@ -118,7 +119,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>()
         {
-            return (T)(object)ObjectRepositoryManager.GetInstance<T>();
+            return (T)ObjectRepositoryManager.GetInstance<T>();
         }
 
         /// <summary>
@@ -210,17 +211,17 @@ namespace CUITe.Controls.HtmlControls
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { SlObjectContainer });
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), SlObjectContainer);
                 control.Wrap(baseControl);
             }
             else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { SlObjectContainer });
-                (control as TelerikControls.ComboBox).SetWindow(this);
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), SlObjectContainer);
+                (control as ComboBox).SetWindow(this);
             }
             else
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this });
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), this);
                 control.Wrap(baseControl);
             }
 

@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
@@ -9,7 +10,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightList : SilverlightControl<CUITControls.SilverlightList>
     {
-        public SilverlightList() : base() { }
+        public SilverlightList() { }
         public SilverlightList(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace CUITe.Controls.SilverlightControls
         /// <summary>
         /// Gets a value indicating the selection mode of the list
         /// </summary>
-        public System.Windows.Forms.SelectionMode SelectionMode
+        public SelectionMode SelectionMode
         {
             get
             {

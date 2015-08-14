@@ -10,7 +10,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenu : WpfControl<CUITControls.WpfMenu>
     {
-        public WpfMenu() : base() { }
+        public WpfMenu() { }
         public WpfMenu(string searchParameters) : base(searchParameters) { }
 
         public UITestControlCollection Items

@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlIFrame : HtmlControl<CUITControls.HtmlIFrame>
     {
-        public HtmlIFrame() : base() { }
+        public HtmlIFrame() { }
         public HtmlIFrame(string searchParameters) : base(searchParameters) { }
     }
 }

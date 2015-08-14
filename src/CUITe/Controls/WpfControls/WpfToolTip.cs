@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToolTip : WpfControl<CUITControls.WpfToolTip>
     {
-        public WpfToolTip() : base() { }
+        public WpfToolTip() { }
         public WpfToolTip(string searchParameters) : base(searchParameters) { }
     }
 }

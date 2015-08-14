@@ -8,7 +8,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightEdit : SilverlightControl<CUITControls.SilverlightEdit>
     {
-        public SilverlightEdit() : base() { }
+        public SilverlightEdit() { }
         public SilverlightEdit(string searchParameters) : base(searchParameters) { }
 
         /// <summary>

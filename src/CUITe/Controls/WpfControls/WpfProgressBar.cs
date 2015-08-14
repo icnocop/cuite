@@ -7,7 +7,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfProgressBar : WpfControl<CUITControls.WpfProgressBar>
     {
-        public WpfProgressBar() : base() { }
+        public WpfProgressBar() { }
         public WpfProgressBar(string searchParameters) : base(searchParameters) { }
 
         public double MaximumValue

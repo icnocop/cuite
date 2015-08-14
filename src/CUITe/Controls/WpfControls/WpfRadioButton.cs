@@ -8,7 +8,7 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfRadioButton : WpfControl<CUITControls.WpfRadioButton>
     {
-        public WpfRadioButton() : base() { }
+        public WpfRadioButton() { }
         public WpfRadioButton(string searchParameters) : base(searchParameters) { }
 
         public UITestControl Group

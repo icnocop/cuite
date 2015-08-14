@@ -106,10 +106,10 @@ namespace CUITe_ObjectRecorder
                 toolStripStatusLabel1.Text = "Error: Document not loaded yet, please try again!";
                 return;
             }
-            if (btnRecord.Checked == true)
+            if (btnRecord.Checked)
             {
                 toolStripDropDownButton1.Enabled = true;
-                doc.Click += new HtmlElementEventHandler(webBrowser1_ClickHandler);
+                doc.Click += webBrowser1_ClickHandler;
                 doc.GetElementsByTagName("head")[0].AppendChild(getScript(doc));
                 string getwindowtitleFunction = languageIsVB ? "getWindowTitleVB" : "getWindowTitle";
                 string sWindowTitle = (string)doc.InvokeScript(getwindowtitleFunction);
@@ -126,7 +126,7 @@ namespace CUITe_ObjectRecorder
                         continue;
                     }
                     frameDoc.GetElementsByTagName("head")[0].AppendChild(getScript(frameDoc));
-                    frameDoc.Click += new HtmlElementEventHandler(webBrowser1_ClickHandler);
+                    frameDoc.Click += webBrowser1_ClickHandler;
                 }
             }
             else

@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTextArea : HtmlControl<CUITControls.HtmlTextArea>
     {
-        public HtmlTextArea() : base() { }
+        public HtmlTextArea() { }
         public HtmlTextArea(string searchParameters) : base(searchParameters) { }
 
         public void SetText(string sText)

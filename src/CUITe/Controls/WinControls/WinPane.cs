@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinPane : WinControl<CUITControls.WinPane>
     {
-        public WinPane() : base() { }
+        public WinPane() { }
         public WinPane(string searchParameters) : base(searchParameters) { }
     }
 }

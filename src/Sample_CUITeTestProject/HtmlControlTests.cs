@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using CUITe;
+using CUITe.Browsers;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.WinControls;
@@ -211,7 +212,7 @@ namespace Sample_CUITeTestProject
             BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
-            string[] saExpectedValues = new string[] { "Header1", "Header2", "Header3" };
+            string[] saExpectedValues = { "Header1", "Header2", "Header3" };
             string[] saHeaders = tbl.GetColumnHeaders();
             Assert.AreEqual(saExpectedValues[0], saHeaders[0]);
             Assert.AreEqual(saExpectedValues[1], saHeaders[1]);
@@ -436,7 +437,7 @@ namespace Sample_CUITeTestProject
                 //Act
                 button.Click();
 
-                if (BrowserWindowUnderTest.GetCurrentBrowser() is CUITe.Browsers.InternetExplorer)
+                if (BrowserWindowUnderTest.GetCurrentBrowser() is InternetExplorer)
                 {
                     //read JavaScript alert text
                     WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
@@ -896,7 +897,7 @@ namespace Sample_CUITeTestProject
                 var bWin = new BrowserWindowUnderTest("test");
                 HtmlList list = bWin.Get<HtmlList>("id=selectId");
 
-                string[] itemsToSelect = new string[] { "1", "2" };
+                string[] itemsToSelect = { "1", "2" };
 
                 //Act
                 list.SelectedItems = itemsToSelect;
@@ -961,7 +962,7 @@ namespace Sample_CUITeTestProject
                 
                 //Assert
                 Assert.AreEqual(3, comboBox.ItemCount);
-                CollectionAssert.AreEqual(new string[] { "1", "2", "3" }, comboBox.Items);
+                CollectionAssert.AreEqual(new[] { "1", "2", "3" }, comboBox.Items);
                 Assert.AreEqual("1 2 3 ", comboBox.InnerText);
 
                 window.Close();
@@ -1024,7 +1025,7 @@ namespace Sample_CUITeTestProject
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                IControlBase a = (IControlBase)window.Get<HtmlHyperlink>("InnerText=test");
+                IControlBase a = window.Get<HtmlHyperlink>("InnerText=test");
                 a.Click();
 
                 List<Type> list = new List<Type>();

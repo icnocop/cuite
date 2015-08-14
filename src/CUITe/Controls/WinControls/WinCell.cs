@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCell : WinControl<CUITControls.WinCell>
     {
-        public WinCell() : base() { }
+        public WinCell() { }
         public WinCell(string searchParameters) : base(searchParameters) { }
 
         public bool Checked

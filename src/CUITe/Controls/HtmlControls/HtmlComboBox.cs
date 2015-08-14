@@ -9,7 +9,7 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class HtmlComboBox : HtmlControl<CUITControls.HtmlComboBox>
     {
-        public HtmlComboBox() : base() { }
+        public HtmlComboBox() { }
         public HtmlComboBox(string searchParameters) : base(searchParameters) { }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 //trying to call InnerText of children will cause errors if child items are disabled
-                return InnerText.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
+                return InnerText.Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
             }
         }
 
@@ -85,7 +85,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public bool ItemExists(string sText)
         {
-            return Items.Contains<string>(sText);
+            return Items.Contains(sText);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinWindow : WinControl<CUITControls.WinWindow>
     {
-        public WinWindow() : base() { }
+        public WinWindow() { }
         
         public WinWindow(string searchParameters) : base(searchParameters) 
         {

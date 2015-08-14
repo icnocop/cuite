@@ -9,7 +9,7 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightComboBox : SilverlightControl<CUITControls.SilverlightComboBox>
     {
-        public SilverlightComboBox() : base() { }
+        public SilverlightComboBox() { }
         public SilverlightComboBox(string searchParameters) : base(searchParameters) { }
 
         /// <summary>

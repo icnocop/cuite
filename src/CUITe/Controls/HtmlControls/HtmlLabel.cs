@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlLabel : HtmlControl<CUITControls.HtmlLabel>
     {
-        public HtmlLabel() : base() { }
+        public HtmlLabel() { }
         public HtmlLabel(string searchParameters) : base(searchParameters) { }
 
         /// <summary>

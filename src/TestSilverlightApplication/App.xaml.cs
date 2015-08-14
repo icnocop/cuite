@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace TestSilverlightApplication
@@ -22,7 +23,7 @@ namespace TestSilverlightApplication
         {
             // If the app is running outside of the debugger then report the exception using
             // a ChildWindow control.
-            if (!System.Diagnostics.Debugger.IsAttached)
+            if (!Debugger.IsAttached)
             {
                 // NOTE: This will allow the application to continue running after an exception has been thrown
                 // but not handled. 
