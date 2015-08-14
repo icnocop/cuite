@@ -56,13 +56,17 @@
         <!-- Document viewer -->
         <controls:DocumentViewerControl Grid.Row="1" />
 
-        <Expander Grid.Row="1" Grid.Column="1" />
+        <!-- Expander -->
+        <controls:ExpanderControl Grid.Row="1" Grid.Column="1" />
 
-        <Frame Grid.Row="1" Grid.Column="2" />
+        <!-- Frame -->
+        <controls:FrameControl Grid.Row="1" Grid.Column="2" />
 
-        <GroupBox Grid.Row="1" Grid.Column="3" />
+        <!-- Group box -->
+        <controls:GroupBoxControl Grid.Row="1" Grid.Column="3" />
 
-        <Image Grid.Row="1" Grid.Column="4" />
+        <!-- Image -->
+        <controls:ImageControl Grid.Row="1" Grid.Column="4" />
 
         <Label Grid.Row="1" Grid.Column="5" />
 
