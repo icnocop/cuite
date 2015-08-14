@@ -98,6 +98,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\LabelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,6 +149,12 @@
     </Compile>
     <Compile Include="Controls\ImageControl.xaml.cs">
       <DependentUpon>ImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LabelControl.xaml.cs">
+      <DependentUpon>LabelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListBoxControl.xaml.cs">
+      <DependentUpon>ListBoxControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

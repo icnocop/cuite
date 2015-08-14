@@ -57,20 +57,32 @@
         <controls:DocumentViewerControl Grid.Row="1" />
 
         <!-- Expander -->
-        <controls:ExpanderControl Grid.Row="1" Grid.Column="1" />
+        <controls:ExpanderControl
+            Grid.Row="1"
+            Grid.Column="1" />
 
         <!-- Frame -->
-        <controls:FrameControl Grid.Row="1" Grid.Column="2" />
+        <controls:FrameControl
+            Grid.Row="1"
+            Grid.Column="2" />
 
         <!-- Group box -->
-        <controls:GroupBoxControl Grid.Row="1" Grid.Column="3" />
+        <controls:GroupBoxControl
+            Grid.Row="1"
+            Grid.Column="3" />
 
         <!-- Image -->
-        <controls:ImageControl Grid.Row="1" Grid.Column="4" />
+        <controls:ImageControl
+            Grid.Row="1"
+            Grid.Column="4" />
 
-        <Label Grid.Row="1" Grid.Column="5" />
+        <!-- Label -->
+        <controls:LabelControl
+            Grid.Row="1"
+            Grid.Column="5" />
 
-        <ListBox Grid.Row="2" />
+        <!-- List box -->
+        <controls:ListBoxControl Grid.Row="2" />
 
         <ListView Grid.Row="2" Grid.Column="1" />
 
