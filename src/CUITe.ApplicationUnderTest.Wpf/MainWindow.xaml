@@ -84,15 +84,30 @@
         <!-- List box -->
         <controls:ListBoxControl Grid.Row="2" />
 
-        <ListView Grid.Row="2" Grid.Column="1" />
+        <!-- List view -->
+        <controls:ListViewControl
+            Grid.Row="2"
+            Grid.Column="1" />
 
-        <Menu Grid.Row="2" Grid.Column="2" />
+        <!-- Menu -->
+        <controls:MenuControl
+            Grid.Row="2"
+            Grid.Column="2" />
 
-        <ProgressBar Grid.Row="2" Grid.Column="3" />
+        <!-- Progress bar -->
+        <controls:ProgressBarControl
+            Grid.Row="2"
+            Grid.Column="3" />
 
-        <RadioButton Grid.Row="2" Grid.Column="4" />
+        <!-- Radio button -->
+        <controls:RadioButtonControl
+            Grid.Row="2"
+            Grid.Column="4" />
 
-        <ScrollBar Grid.Row="2" Grid.Column="5" />
+        <!-- Scroll bar -->
+        <controls:ScrollBarControl
+            Grid.Row="2"
+            Grid.Column="5" />
 
         <ScrollViewer Grid.Row="3" />
 

@@ -1,0 +1,26 @@
+﻿<UserControl
+    x:Class="CUITe.ApplicationUnderTest.Wpf.Controls.ListViewControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CUITe.ApplicationUnderTest.Wpf.Controls">
+    
+    <ListView
+        ItemsSource="{Binding Source={x:Static local:Mocked.Persons}}"
+        DisplayMemberPath="Name"
+        Style="{DynamicResource DefaultControlStyle}">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn
+                    Header="Name"
+                    DisplayMemberBinding="{Binding Name}" />
+                <GridViewColumn
+                    Header="Customer"
+                    DisplayMemberBinding="{Binding IsCustomer}" />
+                <GridViewColumn
+                    Header="Gender"
+                    DisplayMemberBinding="{Binding Gender}" />
+            </GridView>
+        </ListView.View>
+    </ListView>
+    
+</UserControl>
