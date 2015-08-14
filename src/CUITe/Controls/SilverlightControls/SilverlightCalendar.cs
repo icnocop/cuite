@@ -1,5 +1,6 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using System;
+using System.Windows.Forms;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -9,15 +10,21 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
-        public SilverlightCalendar() : base() { }
-        public SilverlightCalendar(string searchParameters) : base(searchParameters) { }
+        public SilverlightCalendar()
+        {
+        }
 
-        public System.Windows.Forms.SelectionRange SelectedDateRange
+        public SilverlightCalendar(string searchParameters)
+            : base(searchParameters)
+        {
+        }
+
+        public SelectionRange SelectedDateRange
         {
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedDateRange = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDateRange = value;
             }
         }
 
@@ -25,8 +32,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedDateRangeAsString = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDateRangeAsString = value;
             }
         }
 
@@ -34,22 +41,22 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectionMode;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectionMode;
             }
         }
 
         public DateTime[] SelectedDates
         {
-            get 
+            get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedDates;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedDates;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedDates = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDates = value;
             }
         }
 
@@ -57,13 +64,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedDatesAsString;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedDatesAsString;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedDatesAsString = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDatesAsString = value;
             }
         }
     }

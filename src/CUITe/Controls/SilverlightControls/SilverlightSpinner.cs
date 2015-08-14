@@ -10,7 +10,6 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
         public SilverlightSpinner()
-            : base()
         {
             Initialize();
         }
@@ -23,15 +22,12 @@ namespace CUITe.Controls.SilverlightControls
 
         private void Initialize()
         {
-            this.SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
+            SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
         }
 
         private SilverlightEdit _TextBox
         {
-            get
-            {
-                return Get<SilverlightEdit>();
-            }
+            get { return Get<SilverlightEdit>(); }
         }
 
         /// <summary>
@@ -41,37 +37,34 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-
-
-
-                return this._TextBox.Text;
+                SourceControl.WaitForControlReady();
+                return _TextBox.Text;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._TextBox.Text = value;
+                SourceControl.WaitForControlReady();
+                _TextBox.Text = value;
             }
         }
 
         public void SetText(string sText)
         {
-            this._control.WaitForControlReady();
-            this._TextBox.Text = sText;
+            SourceControl.WaitForControlReady();
+            _TextBox.Text = sText;
         }
 
         public string GetText()
         {
-            this._control.WaitForControlReady();
-            return this._TextBox.Text;
+            SourceControl.WaitForControlReady();
+            return _TextBox.Text;
         }
 
         public bool ReadOnly
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._TextBox.ReadOnly;
+                SourceControl.WaitForControlReady();
+                return _TextBox.ReadOnly;
             }
         }
     }

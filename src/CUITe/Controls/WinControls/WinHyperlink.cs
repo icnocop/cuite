@@ -7,12 +7,18 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinHyperlink : WinControl<CUITControls.WinHyperlink>
     {
-        public WinHyperlink() : base() { }
-        public WinHyperlink(string searchParameters) : base(searchParameters) { }
+        public WinHyperlink()
+        {
+        }
+
+        public WinHyperlink(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
     }
 }

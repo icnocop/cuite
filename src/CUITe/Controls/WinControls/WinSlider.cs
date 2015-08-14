@@ -7,54 +7,60 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSlider : WinControl<CUITControls.WinSlider>
     {
-        public WinSlider() : base() { }
-        public WinSlider(string searchParameters) : base(searchParameters) { }
+        public WinSlider()
+        {
+        }
+
+        public WinSlider(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public double LineSize
         {
-            get { return this.UnWrap().LineSize; }
+            get { return UnWrap().LineSize; }
         }
 
         public double MaximumPosition
         {
-            get { return this.UnWrap().MaximumPosition; }
+            get { return UnWrap().MaximumPosition; }
         }
 
         public double MinimumPosition
         {
-            get { return this.UnWrap().MinimumPosition; }
+            get { return UnWrap().MinimumPosition; }
         }
 
         public double PageSize
         {
-            get { return this.UnWrap().PageSize; }
+            get { return UnWrap().PageSize; }
         }
 
         public double Position
         {
-            get { return this.UnWrap().Position; }
-            set { this.UnWrap().Position = value; }
+            get { return UnWrap().Position; }
+            set { UnWrap().Position = value; }
         }
 
         public string PositionAsString
         {
-            get { return this.UnWrap().PositionAsString; }
-            set { this.UnWrap().PositionAsString = value; }
+            get { return UnWrap().PositionAsString; }
+            set { UnWrap().PositionAsString = value; }
         }
 
         public double TickCount
         {
-            get { return this.UnWrap().TickCount; }
+            get { return UnWrap().TickCount; }
         }
 
         public double TickPosition
         {
-            get { return this.UnWrap().TickPosition; }
+            get { return UnWrap().TickPosition; }
         }
 
         public double TickValue
         {
-            get { return this.UnWrap().TickValue; }
+            get { return UnWrap().TickValue; }
         }
     }
 }

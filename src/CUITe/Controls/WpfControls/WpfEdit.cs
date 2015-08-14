@@ -7,39 +7,45 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfEdit : WpfControl<CUITControls.WpfEdit>
     {
-        public WpfEdit() : base() { }
-        public WpfEdit(string searchParameters) : base(searchParameters) { }
+        public WpfEdit()
+        {
+        }
+
+        public WpfEdit(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string CopyPastedText
         {
-            get { return this.UnWrap().CopyPastedText; }
-            set { this.UnWrap().CopyPastedText = value; }
+            get { return UnWrap().CopyPastedText; }
+            set { UnWrap().CopyPastedText = value; }
         }
 
         public bool IsPassword
         {
-            get { return this.UnWrap().IsPassword; }
+            get { return UnWrap().IsPassword; }
         }
 
         public string Password
         {
-            set { this.UnWrap().Password = value; }
+            set { UnWrap().Password = value; }
         }
 
         public bool ReadOnly
         {
-            get { return this.UnWrap().ReadOnly; }
+            get { return UnWrap().ReadOnly; }
         }
 
         public string SelectionText
         {
-            get { return this.UnWrap().SelectionText; }
+            get { return UnWrap().SelectionText; }
         }
 
         public string Text
         {
-            get { return this.UnWrap().Text; }
-            set { this.UnWrap().Text = value; }
+            get { return UnWrap().Text; }
+            set { UnWrap().Text = value; }
         }
     }
 }

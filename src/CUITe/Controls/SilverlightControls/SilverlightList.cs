@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using System.Windows.Forms;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
@@ -9,8 +10,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightList : SilverlightControl<CUITControls.SilverlightList>
     {
-        public SilverlightList() : base() { }
-        public SilverlightList(string searchParameters) : base(searchParameters) { }
+        public SilverlightList()
+        {
+        }
+
+        public SilverlightList(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the collection of child list items of the list
@@ -19,8 +26,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Items;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Items;
             }
         }
 
@@ -31,13 +38,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedIndices;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedIndices;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedIndices = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedIndices = value;
             }
         }
 
@@ -48,13 +55,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedItems;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItems;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedItems = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedItems = value;
             }
         }
 
@@ -65,25 +72,25 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedItemsAsString;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItemsAsString;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedItemsAsString = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedItemsAsString = value;
             }
         }
 
         /// <summary>
         /// Gets a value indicating the selection mode of the list
         /// </summary>
-        public System.Windows.Forms.SelectionMode SelectionMode
+        public SelectionMode SelectionMode
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectionMode;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectionMode;
             }
         }
     }

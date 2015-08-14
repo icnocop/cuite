@@ -7,12 +7,18 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfGroup : WpfControl<CUITControls.WpfGroup>
     {
-        public WpfGroup() : base() { }
-        public WpfGroup(string searchParameters) : base(searchParameters) { }
+        public WpfGroup()
+        {
+        }
+
+        public WpfGroup(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string Header
         {
-            get { return this.UnWrap().Header; }
+            get { return UnWrap().Header; }
         }
     }
 }

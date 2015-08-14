@@ -7,78 +7,84 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinEdit : ControlBase<CUITControls.WinEdit>
     {
-        public WinEdit() : base() { }
-        public WinEdit(string searchParameters) : base(searchParameters) { }
+        public WinEdit()
+        {
+        }
+
+        public WinEdit(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string CopyPastedText
         {
-            get { return this.UnWrap().CopyPastedText; }
-            set { this.UnWrap().CopyPastedText = value; }
+            get { return UnWrap().CopyPastedText; }
+            set { UnWrap().CopyPastedText = value; }
         }
 
         public int CurrentLine
         {
-            get { return this.UnWrap().CurrentLine; }
+            get { return UnWrap().CurrentLine; }
         }
 
         public int InsertionIndexAbsolute
         {
-            get { return this.UnWrap().InsertionIndexAbsolute; }
-            set { this.UnWrap().InsertionIndexAbsolute = value; }
+            get { return UnWrap().InsertionIndexAbsolute; }
+            set { UnWrap().InsertionIndexAbsolute = value; }
         }
 
         public int InsertionIndexLineRelative
         {
-            get { return this.UnWrap().InsertionIndexLineRelative; }
+            get { return UnWrap().InsertionIndexLineRelative; }
         }
-        
+
         public bool IsPassword
         {
-            get { return this.UnWrap().IsPassword; }
+            get { return UnWrap().IsPassword; }
         }
 
         public int LineCount
         {
-            get { return this.UnWrap().LineCount; }
+            get { return UnWrap().LineCount; }
         }
 
         public int MaxLength
         {
-            get { return this.UnWrap().MaxLength; }
+            get { return UnWrap().MaxLength; }
         }
 
         public string Password
         {
-            set { this.UnWrap().Password = value; }
+            set { UnWrap().Password = value; }
         }
-        
+
         public bool ReadOnly
         {
-            get { return this.UnWrap().ReadOnly; }
+            get { return UnWrap().ReadOnly; }
         }
 
         public int SelectionEnd
         {
-            get { return this.UnWrap().SelectionEnd; }
-            set { this.UnWrap().SelectionEnd = value; }
+            get { return UnWrap().SelectionEnd; }
+            set { UnWrap().SelectionEnd = value; }
         }
 
         public int SelectionStart
         {
-            get { return this.UnWrap().SelectionStart; }
-            set { this.UnWrap().SelectionStart = value; }
+            get { return UnWrap().SelectionStart; }
+            set { UnWrap().SelectionStart = value; }
         }
 
         public string SelectionText
         {
-            get { return this.UnWrap().SelectionText; }
-            set { this.UnWrap().SelectionText = value; }
+            get { return UnWrap().SelectionText; }
+            set { UnWrap().SelectionText = value; }
         }
 
         public string Text
         {
-            get { return this.UnWrap().Text; }
-            set { this.UnWrap().Text = value; }
+            get { return UnWrap().Text; }
+            set { UnWrap().Text = value; }
         }
     }
 }

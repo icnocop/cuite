@@ -15,11 +15,9 @@ namespace ControlTemplateExamples
             for (int i = 0; i < 50; i++)
             {
                 MenuItem newMI = new MenuItem();
-                newMI.Header = "Item " + i.ToString();
+                newMI.Header = "Item " + i;
                 topFour.Items.Add(newMI);
             }
-
-            return;
         }
 
         void OpenWindow(object sender, RoutedEventArgs args)

@@ -20,7 +20,7 @@ namespace CUITe
 
         public static T GetInstance<T>(params object[] args)
         {
-            return (T)(object)ObjectRepositoryManager.GetInstance(typeof(T), args);
+            return (T)(object)GetInstance(typeof(T), args);
         }
 
         private static BrowserWindowUnderTest GetInstance(Type typePageDefinition)
@@ -35,7 +35,7 @@ namespace CUITe
             browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
 
             FieldInfo[] finfo = browserWindow.GetType().GetFields();
-            foreach (FieldInfo fieldinfo in finfo) 
+            foreach (FieldInfo fieldinfo in finfo)
             {
                 Type fieldType = fieldinfo.FieldType;
 
@@ -48,15 +48,15 @@ namespace CUITe
                 {
                     IControlBase field = (IControlBase)fieldinfo.GetValue(browserWindow);
 
-                    if (field.GetBaseType().IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
+                    if (field.SourceType.IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
-                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow }));
+                        field.Wrap(Activator.CreateInstance(field.SourceType, browserWindow));
                     }
 #if SILVERLIGHT_SUPPORT
-                    else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl))
-                        || (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
+                    else if ((field.SourceType == typeof(CUITSilverlightControls.SilverlightControl)) ||
+                             (field.SourceType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
-                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), new object[] { browserWindow.SlObjectContainer }));
+                        field.Wrap(Activator.CreateInstance(field.SourceType, browserWindow.SlObjectContainer));
                     }
 #endif
                 }

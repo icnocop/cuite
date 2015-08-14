@@ -7,12 +7,18 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTitleBar : WpfControl<CUITControls.WpfTitleBar>
     {
-        public WpfTitleBar() : base() { }
-        public WpfTitleBar(string searchParameters) : base(searchParameters) { }
+        public WpfTitleBar()
+        {
+        }
+
+        public WpfTitleBar(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
     }
 }

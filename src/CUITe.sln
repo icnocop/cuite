@@ -37,13 +37,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{73F248
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{55E9E5EB-B7BA-4C47-9F5B-04C8E4190D56}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298-FDAF-430B-A9B0-FD91848BD21B}"
 	ProjectSection(SolutionItems) = preProject
 		..\Build.bat = ..\Build.bat
 		Build.proj = Build.proj
-		.build\MSBuild.Community.Tasks.dll = .build\MSBuild.Community.Tasks.dll
-		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
-		..\Test.bat = ..\Test.bat
+		CUITe\CUITe.VS2010.nuspec = CUITe\CUITe.VS2010.nuspec
+		CUITe\CUITe.VS2012.nuspec = CUITe\CUITe.VS2012.nuspec
+		CUITe\CUITe.VS2013.nuspec = CUITe\CUITe.VS2013.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe.ApplicationUnderTest.Wpf", "CUITe.ApplicationUnderTest.Wpf\CUITe.ApplicationUnderTest.Wpf.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"

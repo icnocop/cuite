@@ -7,39 +7,45 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfSlider : WpfControl<CUITControls.WpfSlider>
     {
-        public WpfSlider() : base() { }
-        public WpfSlider(string searchParameters) : base(searchParameters) { }
+        public WpfSlider()
+        {
+        }
+
+        public WpfSlider(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public double LargeChange
         {
-            get { return this.UnWrap().LargeChange; }
+            get { return UnWrap().LargeChange; }
         }
 
         public double MaximumPosition
         {
-            get { return this.UnWrap().MaximumPosition; }
+            get { return UnWrap().MaximumPosition; }
         }
 
         public double MinimumPosition
         {
-            get { return this.UnWrap().MinimumPosition; }
+            get { return UnWrap().MinimumPosition; }
         }
 
         public double Position
         {
-            get { return this.UnWrap().Position; }
-            set { this.UnWrap().Position = value; }
+            get { return UnWrap().Position; }
+            set { UnWrap().Position = value; }
         }
 
         public string PositionAsString
         {
-            get { return this.UnWrap().PositionAsString; }
-            set { this.UnWrap().PositionAsString = value; }
+            get { return UnWrap().PositionAsString; }
+            set { UnWrap().PositionAsString = value; }
         }
 
         public double SmallChange
         {
-            get { return this.UnWrap().SmallChange; }
+            get { return UnWrap().SmallChange; }
         }
     }
 }

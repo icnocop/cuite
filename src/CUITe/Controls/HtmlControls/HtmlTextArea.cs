@@ -4,21 +4,27 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTextArea : HtmlControl<CUITControls.HtmlTextArea>
     {
-        public HtmlTextArea() : base() { }
-        public HtmlTextArea(string searchParameters) : base(searchParameters) { }
+        public HtmlTextArea()
+        {
+        }
+
+        public HtmlTextArea(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void SetText(string sText)
         {
-            this._control.WaitForControlReady();
-            this._control.Text = sText;
+            SourceControl.WaitForControlReady();
+            SourceControl.Text = sText;
         }
 
         public string Text
         {
-            get 
+            get
             {
-                this._control.WaitForControlReady();
-                return this._control.Text; 
+                SourceControl.WaitForControlReady();
+                return SourceControl.Text;
             }
         }
 
@@ -26,8 +32,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ReadOnly;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ReadOnly;
             }
         }
     }

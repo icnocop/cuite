@@ -4,27 +4,33 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableSpan : HtmlControl<CUITControls.HtmlEditableSpan>
     {
-        public HtmlEditableSpan() : base() { }
-        public HtmlEditableSpan(string searchParameters) : base(searchParameters) { }
+        public HtmlEditableSpan()
+        {
+        }
+
+        public HtmlEditableSpan(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void SetText(string sText)
         {
-            this._control.WaitForControlReady();
-            this._control.CopyPastedText = sText;
+            SourceControl.WaitForControlReady();
+            SourceControl.CopyPastedText = sText;
         }
 
         public string GetText()
         {
-            this._control.WaitForControlReady();
-            return this._control.Text; 
+            SourceControl.WaitForControlReady();
+            return SourceControl.Text;
         }
 
         public bool ReadOnly
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ReadOnly;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ReadOnly;
             }
         }
     }

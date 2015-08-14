@@ -8,21 +8,27 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightRadioButton : SilverlightControl<CUITControls.SilverlightRadioButton>
     {
-        public SilverlightRadioButton() : base() { }
-        public SilverlightRadioButton(string searchParameters) : base(searchParameters) { }
+        public SilverlightRadioButton()
+        {
+        }
+
+        public SilverlightRadioButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void Select()
         {
-            this._control.WaitForControlReady();
-            this._control.Selected = true;
+            SourceControl.WaitForControlReady();
+            SourceControl.Selected = true;
         }
 
         public bool IsSelected
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Selected;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Selected;
             }
         }
     }

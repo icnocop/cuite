@@ -6,27 +6,29 @@ namespace CUITe.Controls.TelerikControls
 {
     public class ComboBox : HtmlControl<CUITControls.HtmlDiv>
     {
-        private string id;
+        private readonly string id;
         private BrowserWindowUnderTest _window;
-        
-        public ComboBox() : base() { }
+
+        public ComboBox()
+        {
+        }
 
         public ComboBox(string searchParameters)
             : base(searchParameters)
         {
-            this.id = searchParameters.Trim().Split('=', '~')[1];
+            id = searchParameters.Trim().Split('=', '~')[1];
         }
 
-        internal void SetWindow(BrowserWindowUnderTest window) 
+        internal void SetWindow(BrowserWindowUnderTest window)
         {
-            this._window = window;
+            _window = window;
         }
 
         public void SelectItemByText(string sText, int milliseconds)
         {
-            this._window.RunScript("var obj = window.$find('" + id + "');obj.toggleDropDown();");
+            _window.RunScript("var obj = window.$find('" + id + "');obj.toggleDropDown();");
             Thread.Sleep(milliseconds);
-            this._window.RunScript("var obj = window.$find('" + id + "');obj.findItemByText('" + sText + "').select();obj.hideDropDown();");
+            _window.RunScript("var obj = window.$find('" + id + "');obj.findItemByText('" + sText + "').select();obj.hideDropDown();");
         }
     }
 }

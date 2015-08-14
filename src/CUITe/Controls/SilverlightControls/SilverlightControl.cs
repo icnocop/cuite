@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
 {
     public class SilverlightControl<T> : ControlBase<T> where T : CUITControls.SilverlightControl
     {
-        public SilverlightControl() : base() { }
-        public SilverlightControl(string searchParameters) : base(searchParameters) { }
+        public SilverlightControl()
+        {
+        }
+
+        public SilverlightControl(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the control's label text.
@@ -18,8 +24,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.LabeledBy;
+                SourceControl.WaitForControlReady();
+                return SourceControl.LabeledBy;
             }
         }
 
@@ -30,15 +36,15 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetParent());
+                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent());
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -51,15 +57,15 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -72,15 +78,15 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -93,15 +99,15 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)this._control.GetChildren()[0]);
+                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -113,9 +119,9 @@ namespace CUITe.Controls.SilverlightControls
         /// <returns>list of all first level children</returns>
         public override List<IControlBase> GetChildren()
         {
-            this._control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             var uicol = new List<IControlBase>();
-            foreach (UITestControl uitestcontrol in this._control.GetChildren())
+            foreach (UITestControl uitestcontrol in SourceControl.GetChildren())
             {
                 uicol.Add(WrapUtil((CUITControls.SilverlightControl)uitestcontrol));
             }
@@ -203,20 +209,20 @@ namespace CUITe.Controls.SilverlightControls
             }
             else
             {
-                throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType().ToString()));
+                throw new Exception(string.Format("WrapUtil: '{0}' is not supported.", control.GetType()));
             }
 
-            ((IControlBase)_con).WrapReady(control);
+            _con.WrapReady(control);
             return _con;
         }
 
         private int GetMyIndexAmongSiblings()
         {
             int i = -1;
-            foreach (UITestControl uitestcontrol in this._control.GetParent().GetChildren())
+            foreach (UITestControl uitestcontrol in SourceControl.GetParent().GetChildren())
             {
                 i++;
-                if (uitestcontrol == this._control)
+                if (uitestcontrol == SourceControl)
                 {
                     break;
                 }

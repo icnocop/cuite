@@ -4,7 +4,7 @@ namespace ControlTemplateExamples
     /// Interaction logic for TestNavigationWindow.xaml
     /// </summary>
 
-    public partial class TestNavigationWindow : System.Windows.Navigation.NavigationWindow
+    public partial class TestNavigationWindow
     {
 
         public TestNavigationWindow()

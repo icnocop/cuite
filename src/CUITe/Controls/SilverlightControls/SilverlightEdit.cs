@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightEdit : SilverlightControl<CUITControls.SilverlightEdit>
     {
-        public SilverlightEdit() : base() { }
-        public SilverlightEdit(string searchParameters) : base(searchParameters) { }
+        public SilverlightEdit()
+        {
+        }
+
+        public SilverlightEdit(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the text displayed on the Silverlight Edit.
@@ -18,34 +24,34 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Text;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Text;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.Text = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.Text = value;
             }
         }
 
         public void SetText(string sText)
         {
-            this._control.WaitForControlReady();
-            this._control.Text = sText;
+            SourceControl.WaitForControlReady();
+            SourceControl.Text = sText;
         }
 
         public string GetText()
         {
-            this._control.WaitForControlReady();
-            return this._control.Text;  
+            SourceControl.WaitForControlReady();
+            return SourceControl.Text;
         }
 
         public bool ReadOnly
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ReadOnly;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ReadOnly;
             }
         }
     }

@@ -4,7 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlDiv : HtmlControl<CUITControls.HtmlDiv>
     {
-        public HtmlDiv() : base() { }
-        public HtmlDiv(string searchParameters) : base(searchParameters) { }
+        public HtmlDiv()
+        {
+        }
+
+        public HtmlDiv(string searchParameters)
+            : base(searchParameters)
+        {
+        }
     }
 }

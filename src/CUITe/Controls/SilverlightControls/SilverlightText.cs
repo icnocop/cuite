@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightText : SilverlightControl<CUITControls.SilverlightText>
     {
-        public SilverlightText() : base() { }
-        public SilverlightText(string searchParameters) : base(searchParameters) { }
+        public SilverlightText()
+        {
+        }
+
+        public SilverlightText(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the text displayed on the SilverlightText block.
@@ -18,8 +24,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Text;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Text;
             }
         }
     }

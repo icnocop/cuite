@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using System;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -8,8 +9,14 @@ namespace CUITe.Controls.WpfControls
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
     public class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
-        public WpfControl() : base() { }
-        public WpfControl(string searchParameters) : base(searchParameters) { }
+        public WpfControl()
+        {
+        }
+
+        public WpfControl(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.
@@ -18,29 +25,28 @@ namespace CUITe.Controls.WpfControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 
                 IControlBase ret = null;
                 
                 try
                 {
-                    ret = WpfControlFactory.Create((CUITControls.WpfControl)this._control.GetParent());
+                    ret = WpfControlFactory.Create((CUITControls.WpfControl)SourceControl.GetParent());
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
                 return ret;
             }
         }
-
 
         /// <summary>
         /// Wrap AcceleratorKey property common to all WPF controls
         /// </summary>
         public string AcceleratorKey
         {
-            get { return this.UnWrap().AcceleratorKey; }
+            get { return UnWrap().AcceleratorKey; }
         }
 
         /// <summary>
@@ -48,7 +54,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AccessKey
         {
-            get { return this.UnWrap().AccessKey; }
+            get { return UnWrap().AccessKey; }
         }
 
         /// <summary>
@@ -56,7 +62,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AutomationId
         {
-            get { return this.UnWrap().AutomationId; }
+            get { return UnWrap().AutomationId; }
         }
 
         /// <summary>
@@ -64,7 +70,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string Font
         {
-            get { return this.UnWrap().Font; }
+            get { return UnWrap().Font; }
         }
 
         /// <summary>
@@ -72,7 +78,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string HelpText
         {
-            get { return this.UnWrap().HelpText; }
+            get { return UnWrap().HelpText; }
         }
 
         /// <summary>
@@ -80,7 +86,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string LabeledBy
         {
-            get { return this.UnWrap().LabeledBy; }
+            get { return UnWrap().LabeledBy; }
         }
     }
 }

@@ -9,17 +9,23 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTable : WpfControl<CUITControls.WpfTable>
     {
-        public WpfTable() : base() { }
-        public WpfTable(string searchParameters) : base(searchParameters) { }
+        public WpfTable()
+        {
+        }
+
+        public WpfTable(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool CanSelectMultiple
         {
-            get { return this.UnWrap().CanSelectMultiple; }
+            get { return UnWrap().CanSelectMultiple; }
         }
 
         public UITestControlCollection Cells
         {
-            get { return this.UnWrap().Cells; }
+            get { return UnWrap().Cells; }
         }
 
         public List<WpfCell> CellsAsCUITe
@@ -27,7 +33,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfCell> list = new List<WpfCell>();
-                foreach (CUITControls.WpfCell control in this.UnWrap().Cells)
+                foreach (CUITControls.WpfCell control in UnWrap().Cells)
                 {
                     WpfCell cell = new WpfCell();
                     cell.WrapReady(control);
@@ -39,27 +45,27 @@ namespace CUITe.Controls.WpfControls
 
         public int ColumnCount
         {
-            get { return this.UnWrap().ColumnCount; }
+            get { return UnWrap().ColumnCount; }
         }
 
         public UITestControlCollection ColumnHeaders
         {
-            get { return this.UnWrap().ColumnHeaders; }
+            get { return UnWrap().ColumnHeaders; }
         }
 
         public int RowCount
         {
-            get { return this.UnWrap().RowCount; }
+            get { return UnWrap().RowCount; }
         }
 
         public UITestControlCollection RowHeaders
         {
-            get { return this.UnWrap().RowHeaders; }
+            get { return UnWrap().RowHeaders; }
         }
 
         public UITestControlCollection Rows
         {
-            get { return this.UnWrap().Rows; }
+            get { return UnWrap().Rows; }
         }
 
         public List<WpfRow> RowsAsCUITe
@@ -67,7 +73,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfRow> list = new List<WpfRow>();
-                foreach (CUITControls.WpfRow control in this.UnWrap().Rows)
+                foreach (CUITControls.WpfRow control in UnWrap().Rows)
                 {
                     WpfRow row = new WpfRow();
                     row.WrapReady(control);
@@ -76,6 +82,5 @@ namespace CUITe.Controls.WpfControls
                 return list;
             }
         }
-
     }
 }

@@ -28,7 +28,7 @@ namespace Sample_CUITeTestProject
 
             File.WriteAllText(FilePath, contents);
 
-            this.DeleteFileOnDispose = true;
+            DeleteFileOnDispose = true;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Sample_CUITeTestProject
         /// </summary>
         public void Dispose()
         {
-            if (this.DeleteFileOnDispose)
+            if (DeleteFileOnDispose)
             {
                 File.Delete(FilePath);
             }

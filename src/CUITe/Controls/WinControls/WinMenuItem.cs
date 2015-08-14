@@ -10,33 +10,39 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenuItem : WinControl<CUITControls.WinMenuItem>
     {
-        public WinMenuItem() : base() { }
-        public WinMenuItem(string searchParameters) : base(searchParameters) { }
+        public WinMenuItem()
+        {
+        }
+
+        public WinMenuItem(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Checked
         {
-            get { return this.UnWrap().Checked; }
-            set { this.UnWrap().Checked = value; }
+            get { return UnWrap().Checked; }
+            set { UnWrap().Checked = value; }
         }
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
 
         public bool HasChildNodes
         {
-            get { return this.UnWrap().HasChildNodes; }
+            get { return UnWrap().HasChildNodes; }
         }
 
         public bool IsTopLevelMenu
         {
-            get { return this.UnWrap().IsTopLevelMenu; }
+            get { return UnWrap().IsTopLevelMenu; }
         }
 
         public UITestControlCollection Items
         {
-            get { return this.UnWrap().Items; }
+            get { return UnWrap().Items; }
         }
 
         public List<WinMenuItem> ItemsAsCUITe
@@ -44,7 +50,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinMenuItem> list = new List<WinMenuItem>();
-                foreach (CUITControls.WinMenuItem item in this.UnWrap().Items)
+                foreach (CUITControls.WinMenuItem item in UnWrap().Items)
                 {
                     WinMenuItem cuiteItem = new WinMenuItem();
                     cuiteItem.WrapReady(item);
@@ -56,13 +62,12 @@ namespace CUITe.Controls.WinControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in UnWrap().Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
         }
 
         public string Shortcut
         {
-            get { return this.UnWrap().Shortcut; }
+            get { return UnWrap().Shortcut; }
         }
-
     }
 }

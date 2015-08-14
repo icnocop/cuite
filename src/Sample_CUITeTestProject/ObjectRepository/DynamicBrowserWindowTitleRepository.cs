@@ -20,7 +20,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlButton>("id=Home");
+                return Get<HtmlButton>("id=Home");
             }
         }
 
@@ -28,7 +28,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlButton>("id=1");
+                return Get<HtmlButton>("id=1");
             }
         }
 
@@ -36,7 +36,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlButton>("id=2");
+                return Get<HtmlButton>("id=2");
             }
         }
 
@@ -44,7 +44,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlButton>("id=Change Window Title");
+                return Get<HtmlButton>("id=Change Window Title");
             }
         }
     }

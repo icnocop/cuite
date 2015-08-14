@@ -8,19 +8,25 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCalendar : WpfControl<CUITControls.WpfCalendar>
     {
-        public WpfCalendar() : base() { }
-        public WpfCalendar(string searchParameters) : base(searchParameters) { }
+        public WpfCalendar()
+        {
+        }
+
+        public WpfCalendar(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public DateTime[] SelectedDates
         {
-            get { return this.UnWrap().SelectedDates; }
-            set { this.UnWrap().SelectedDates = value; }
+            get { return UnWrap().SelectedDates; }
+            set { UnWrap().SelectedDates = value; }
         }
 
         public string SelectedDatesAsString
         {
-            get { return this.UnWrap().SelectedDatesAsString; }
-            set { this.UnWrap().SelectedDatesAsString = value; }
+            get { return UnWrap().SelectedDatesAsString; }
+            set { UnWrap().SelectedDatesAsString = value; }
         }
     }
 }

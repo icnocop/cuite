@@ -4,12 +4,18 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlFileInput : HtmlControl<CUITControls.HtmlFileInput>
     {
-        public HtmlFileInput() : base() { }
-        public HtmlFileInput(string searchParameters) : base(searchParameters) { }
+        public HtmlFileInput()
+        {
+        }
+
+        public HtmlFileInput(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void SetFile(string sFilePath)
         {
-            this._control.FileName = sFilePath;
+            SourceControl.FileName = sFilePath;
         }
     }
 }

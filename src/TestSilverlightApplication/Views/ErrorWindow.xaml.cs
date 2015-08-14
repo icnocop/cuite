@@ -20,7 +20,7 @@ namespace TestSilverlightApplication
             InitializeComponent();
             if (uri != null)
             {
-                ErrorTextBox.Text = "Page not found: \"" + uri.ToString() + "\"";
+                ErrorTextBox.Text = "Page not found: \"" + uri + "\"";
             }
         }
 
@@ -32,7 +32,7 @@ namespace TestSilverlightApplication
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            DialogResult = true;
         }
     }
 }

@@ -9,18 +9,24 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabList : WpfControl<CUITControls.WpfTabList>
     {
-        public WpfTabList() : base() { }
-        public WpfTabList(string searchParameters) : base(searchParameters) { }
+        public WpfTabList()
+        {
+        }
+
+        public WpfTabList(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int SelectedIndex
         {
-            get { return this.UnWrap().SelectedIndex; }
-            set { this.UnWrap().SelectedIndex = value; }
+            get { return UnWrap().SelectedIndex; }
+            set { UnWrap().SelectedIndex = value; }
         }
 
         public UITestControlCollection Tabs
         {
-            get { return this.UnWrap().Tabs; }
+            get { return UnWrap().Tabs; }
         }
 
         public List<WpfTabPage> TabsAsCUITe
@@ -28,7 +34,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfTabPage> list = new List<WpfTabPage>();
-                foreach (CUITControls.WpfTabPage control in this.UnWrap().Tabs)
+                foreach (CUITControls.WpfTabPage control in UnWrap().Tabs)
                 {
                     WpfTabPage tab = new WpfTabPage();
                     tab.WrapReady(control);
@@ -37,6 +43,5 @@ namespace CUITe.Controls.WpfControls
                 return list;
             }
         }
-
     }
 }

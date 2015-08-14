@@ -1,30 +1,38 @@
 ﻿using System;
-using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UITesting;
 using System.Linq;
+using System.Reflection;
+using mshtml;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        public HtmlTable() : base() { }
-        public HtmlTable(string searchParameters) : base(searchParameters) { }
+        public HtmlTable()
+        {
+        }
+
+        public HtmlTable(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int ColumnCount
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ColumnCount;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ColumnCount;
             }
         }
 
         public int RowCount
         {
-            get {
-                this._control.WaitForControlReady();
-                return this._control.Rows.Count; 
+            get
+            {
+                SourceControl.WaitForControlReady();
+                return SourceControl.Rows.Count;
             }
         }
 
@@ -54,28 +62,28 @@ namespace CUITe.Controls.HtmlControls
 
         public void FindHeaderAndClick(int iRow, int iCol)
         {
-            this.GetHeader(iRow, iCol).Click();
+            GetHeader(iRow, iCol).Click();
         }
 
         public void FindCellAndClick(int iRow, int iCol)
         {
-            this.GetCell<HtmlControl<CUITControls.HtmlControl>>(iRow, iCol).Click();
+            GetCell<HtmlControl<CUITControls.HtmlControl>>(iRow, iCol).Click();
         }
 
         public void FindCellAndDoubleClick(int iRow, int iCol)
         {
-            this.GetCell(iRow, iCol).DoubleClick();
+            GetCell(iRow, iCol).DoubleClick();
         }
 
         public int FindRow(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
-            this._control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
 
-            foreach (CUITControls.HtmlControl control in this._control.Rows)
+            foreach (CUITControls.HtmlControl control in SourceControl.Rows)
             {
-                 //control could be of ControlType.RowHeader or ControlType.Row
+                //control could be of ControlType.RowHeader or ControlType.Row
 
                 rowCount++;
 
@@ -107,14 +115,15 @@ namespace CUITe.Controls.HtmlControls
                         {
                             bSearchOptionResult = (cell.InnerText.IndexOf(sValueToSearch) > -1);
                         }
-                        if (bSearchOptionResult == true)
+                        if (bSearchOptionResult)
                         {
                             iRow = rowCount;
                             break;
                         }
                     }
                 }
-                if (iRow > -1) break;
+                if (iRow > -1)
+                    break;
             }
             return iRow;
         }
@@ -132,7 +141,7 @@ namespace CUITe.Controls.HtmlControls
         private string GetCellValue<T>(int iRow, int iCol) where T : IHtmlControl
         {
             string innerText = "";
-            T htmlCell = this.GetCell<T>(iRow, iCol);
+            T htmlCell = GetCell<T>(iRow, iCol);
             if (htmlCell != null)
             {
                 innerText = htmlCell.InnerText;
@@ -144,11 +153,11 @@ namespace CUITe.Controls.HtmlControls
         public HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
         {
             string sSearchProperties = "";
-            mshtml.IHTMLElement td = (mshtml.IHTMLElement)GetCell(iRow, iCol).UnWrap().NativeElement;
-            mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
+            IHTMLElement td = (IHTMLElement)GetCell(iRow, iCol).UnWrap().NativeElement;
+            IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
-            var chk = new CUITControls.HtmlCheckBox(this._control.Container);
+            var chk = new CUITControls.HtmlCheckBox(SourceControl.Container);
             foreach (string sTemp in saTemp)
             {
                 if (sTemp.IndexOf('=') > 0)
@@ -158,7 +167,7 @@ namespace CUITe.Controls.HtmlControls
                     if (saKeyValue[0].ToLower() == "name")
                     {
                         sSearchProperties += ";Name=" + sValue;
-                        chk.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Name, sValue);
+                        chk.SearchProperties.Add(UITestControl.PropertyNames.Name, sValue);
                     }
                     if (saKeyValue[0].ToLower() == "id")
                     {
@@ -189,7 +198,7 @@ namespace CUITe.Controls.HtmlControls
         public string[] GetColumnHeaders()
         {
             string[] retArray;
-            UITestControlCollection rows = this._control.Rows;
+            UITestControlCollection rows = SourceControl.Rows;
             if ((rows != null) && (rows.Count > 0))
             {
                 if ((rows[0] != null) && (rows[0].ControlType == ControlType.RowHeader))
@@ -218,11 +227,11 @@ namespace CUITe.Controls.HtmlControls
 
         private T GetCell<T>(int iRow, int iCol) where T : IHtmlControl
         {
-            this._control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             UITestControl htmlCell = null;
             int rowCount = -1;
 
-            foreach (UITestControl row in this._control.Rows)
+            foreach (UITestControl row in SourceControl.Rows)
             {
                 //control could be of ControlType.RowHeader or ControlType.Row
 
@@ -254,21 +263,25 @@ namespace CUITe.Controls.HtmlControls
 
             Type t = typeof(T);
             ConstructorInfo ctor = GetConstructor(t, typeof(UITestControl));
-            return (T)ctor.Invoke(new object[] { htmlCell }); // call constructor
+            return (T)ctor.Invoke(
+                new object[]
+                {
+                    htmlCell
+                }); // call constructor
         }
 
         public ConstructorInfo GetConstructor(Type type, Type baseParameterType)
         {
             return type.GetConstructors()
-                    .Where(ci => ci.GetParameters().Length == 1)
-                    .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
+                .Where(ci => ci.GetParameters().Length == 1)
+                .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
         }
 
-        private mshtml.IHTMLElement GetEmbeddedCheckBoxNativeElement(mshtml.IHTMLElement parent)
+        private IHTMLElement GetEmbeddedCheckBoxNativeElement(IHTMLElement parent)
         {
             while (true)
             {
-                foreach (mshtml.IHTMLElement ele2 in parent.children)
+                foreach (IHTMLElement ele2 in parent.children)
                 {
                     if (ele2.tagName.ToUpper() == "INPUT")
                     {

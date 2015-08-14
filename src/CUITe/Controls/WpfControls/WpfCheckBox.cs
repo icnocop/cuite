@@ -7,20 +7,25 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCheckBox : WpfControl<CUITControls.WpfCheckBox>
     {
-        public WpfCheckBox() : base() { }
-        public WpfCheckBox(string searchParameters) : base(searchParameters) { }
+        public WpfCheckBox()
+        {
+        }
+
+        public WpfCheckBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Checked
         {
-            get { return this.UnWrap().Checked; }
-            set { this.UnWrap().Checked = value; }
+            get { return UnWrap().Checked; }
+            set { UnWrap().Checked = value; }
         }
 
         public bool Indeterminate
         {
-            get { return this.UnWrap().Indeterminate; }
-            set { this.UnWrap().Indeterminate = value; }
+            get { return UnWrap().Indeterminate; }
+            set { UnWrap().Indeterminate = value; }
         }
-
     }
 }

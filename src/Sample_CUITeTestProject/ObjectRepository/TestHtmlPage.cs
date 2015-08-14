@@ -10,7 +10,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlParagraph>("id=para1");
+                return Get<HtmlParagraph>("id=para1");
             }
         }
 
@@ -18,7 +18,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlUnorderedList>("id=unorderedList");
+                return Get<HtmlUnorderedList>("id=unorderedList");
             }
         }
     }
