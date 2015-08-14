@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControlCollection Panels
         {
-            get { return this.UnWrap().Panels; }
+            get { return UnWrap().Panels; }
         }
     }
 }

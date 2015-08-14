@@ -32,7 +32,7 @@ namespace Sample_CUITeTestProject
                 BrowserWindowUnderTest.Launch(tempFile.FilePath);
 
                 //Act
-                BrowserWindow bWin = BrowserWindowUnderTest.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
+                BrowserWindow bWin = BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
 
                 //Assert
                 Assert.IsTrue(bWin.Title.Contains("A Test"), bWin.Title);
@@ -160,7 +160,7 @@ namespace Sample_CUITeTestProject
                     continue;
                 }
 
-                BrowserWindow bWin = BrowserWindowUnderTest.FromProcess(process);
+                BrowserWindow bWin = BrowserWindow.FromProcess(process);
 
                 Trace.WriteLine(string.Format("Found browser window: {0} {1}", bWin.Uri, bWin.Title));
             }

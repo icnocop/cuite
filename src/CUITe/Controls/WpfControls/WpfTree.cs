@@ -14,12 +14,12 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControl HorizontalScrollBar
         {
-            get { return this.UnWrap().HorizontalScrollBar; }
+            get { return UnWrap().HorizontalScrollBar; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return this.UnWrap().Nodes; }
+            get { return UnWrap().Nodes; }
         }
 
         public List<WpfTreeItem> NodesAsCUITe
@@ -27,7 +27,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfTreeItem> list = new List<WpfTreeItem>();
-                foreach (CUITControls.WpfTreeItem node in this.UnWrap().Nodes)
+                foreach (CUITControls.WpfTreeItem node in UnWrap().Nodes)
                 {
                     WpfTreeItem cuiteItem = new WpfTreeItem();
                     cuiteItem.WrapReady(node);
@@ -39,7 +39,7 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControl VerticalScrollBar
         {
-            get { return this.UnWrap().VerticalScrollBar; }
+            get { return UnWrap().VerticalScrollBar; }
         }
 
     }

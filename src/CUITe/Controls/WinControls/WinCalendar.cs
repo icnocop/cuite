@@ -13,14 +13,14 @@ namespace CUITe.Controls.WinControls
 
         public SelectionRange SelectionRange
         {
-            get { return this.UnWrap().SelectionRange; }
-            set { this.UnWrap().SelectionRange = value; }
+            get { return UnWrap().SelectionRange; }
+            set { UnWrap().SelectionRange = value; }
         }
 
         public string SelectionRangeAsString
         {
-            get { return this.UnWrap().SelectionRangeAsString; }
-            set { this.UnWrap().SelectionRangeAsString = value; }
+            get { return UnWrap().SelectionRangeAsString; }
+            set { UnWrap().SelectionRangeAsString = value; }
         }
     }
 }

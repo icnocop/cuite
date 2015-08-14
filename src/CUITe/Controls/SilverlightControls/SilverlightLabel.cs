@@ -18,8 +18,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Text;
+                _control.WaitForControlReady();
+                return _control.Text;
             }
         }
     }

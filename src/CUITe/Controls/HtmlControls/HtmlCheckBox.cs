@@ -9,18 +9,18 @@ namespace CUITe.Controls.HtmlControls
 
         public void Check()
         {
-            this._control.WaitForControlReady();
-            if (!this._control.Checked)
+            _control.WaitForControlReady();
+            if (!_control.Checked)
             {
-                this._control.Checked = true;
+                _control.Checked = true;
             }
         }
 
         public void Check2()
         {
-            this._control.WaitForControlReady();
-            string sOnClick = (string)this._control.GetProperty("onclick");
-            string sId = this._control.Id;
+            _control.WaitForControlReady();
+            string sOnClick = (string)_control.GetProperty("onclick");
+            string sId = _control.Id;
             if (sId == null || sId == "")
             {
                 throw new GenericException("Check2(): No ID found for the checkbox!");
@@ -30,10 +30,10 @@ namespace CUITe.Controls.HtmlControls
 
         public void UnCheck()
         {
-            this._control.WaitForControlReady();
-            if (this._control.Checked)
+            _control.WaitForControlReady();
+            if (_control.Checked)
             {
-                this._control.Checked = false;
+                _control.Checked = false;
             }
         }
 
@@ -41,8 +41,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get 
             {
-                this._control.WaitForControlReady();
-                return this._control.Checked; 
+                _control.WaitForControlReady();
+                return _control.Checked; 
             }
         }
     }

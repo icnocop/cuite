@@ -12,29 +12,29 @@ namespace CUITe.Controls.WpfControls
 
         public bool Checked
         {
-            get { return this.UnWrap().Checked; }
-            set { this.UnWrap().Checked = value; }
+            get { return UnWrap().Checked; }
+            set { UnWrap().Checked = value; }
         }
 
         public bool Expanded
         {
-            get { return this.UnWrap().Expanded; }
-            set { this.UnWrap().Expanded = value; }
+            get { return UnWrap().Expanded; }
+            set { UnWrap().Expanded = value; }
         }
 
         public bool HasChildNodes
         {
-            get { return this.UnWrap().HasChildNodes; }
+            get { return UnWrap().HasChildNodes; }
         }
 
         public string Header
         {
-            get { return this.UnWrap().Header; }
+            get { return UnWrap().Header; }
         }
 
         public bool IsTopLevelMenu
         {
-            get { return this.UnWrap().IsTopLevelMenu; }
+            get { return UnWrap().IsTopLevelMenu; }
         }
     }
 }

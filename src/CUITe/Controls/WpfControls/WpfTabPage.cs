@@ -12,7 +12,7 @@ namespace CUITe.Controls.WpfControls
 
         public string Header
         {
-            get { return this.UnWrap().Header; }
+            get { return UnWrap().Header; }
         }
     }
 }

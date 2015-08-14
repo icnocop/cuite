@@ -7,15 +7,15 @@ namespace TestSilverlightApplication
     {
         public App()
         {
-            this.Startup += this.Application_Startup;
-            this.UnhandledException += this.Application_UnhandledException;
+            Startup += Application_Startup;
+            UnhandledException += Application_UnhandledException;
 
             InitializeComponent();
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            this.RootVisual = new MainPage();
+            RootVisual = new MainPage();
         }
 
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)

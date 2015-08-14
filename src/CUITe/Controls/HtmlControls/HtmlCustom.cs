@@ -19,7 +19,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void Initialize(string tagName)
         {
-            this.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
+            SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
         }
     }
 }

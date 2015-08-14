@@ -26,7 +26,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public bool ItemExists(string sText)
         {
-            return this.Items.Contains<string>(sText);
+            return Items.Contains<string>(sText);
         }
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                _control.WaitForControlReady();
                 return _control.SelectedItems;
             }
             set
             {
-                this._control.WaitForControlReady();
+                _control.WaitForControlReady();
                 _control.SelectedItems = value;
             }
         }

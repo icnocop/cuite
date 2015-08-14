@@ -15,10 +15,10 @@
 
         public Browser(string name, string processName, string windowClassName, string dialogClassName = null)
         {
-            this.Name = name;
-            this.ProcessName = processName;
-            this.WindowClassName = windowClassName;
-            this.DialogClassName = dialogClassName;
+            Name = name;
+            ProcessName = processName;
+            WindowClassName = windowClassName;
+            DialogClassName = dialogClassName;
         }
     }
 }

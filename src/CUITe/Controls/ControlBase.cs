@@ -21,7 +21,7 @@ namespace CUITe.Controls
 
         public ControlBase()
         {
-            this.SearchProperties = new PropertyExpressionCollection();
+            SearchProperties = new PropertyExpressionCollection();
         }
 
         public ControlBase(string searchProperties)
@@ -100,7 +100,7 @@ namespace CUITe.Controls
                 }
 
                 // Add the search property, value and type
-                this.SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
+                SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
             }
         }
 
@@ -108,7 +108,7 @@ namespace CUITe.Controls
         {
             T1 control = Activator.CreateInstance<T1>();
 
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
+            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { UnWrap() });
 
             control.Wrap(baseControl);
 
@@ -127,7 +127,7 @@ namespace CUITe.Controls
         {
             T1 control = ControlBaseFactory.Create<T1>(searchParameters);
 
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.UnWrap() });
+            var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { UnWrap() });
 
             control.Wrap(baseControl);
 
@@ -151,8 +151,8 @@ namespace CUITe.Controls
         /// <param name="control"></param>
         public virtual void Wrap(object control)
         {
-            this._control = control as T;
-            this._control.SearchProperties.AddRange(this.SearchProperties);
+            _control = control as T;
+            _control.SearchProperties.AddRange(SearchProperties);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace CUITe.Controls
         /// <returns>The underlying UITestControl instance. For example, returns HtmlEdit in case of HtmlEdit.</returns>
         public T UnWrap()
         {
-            return this._control;
+            return _control;
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace CUITe.Controls
         /// <param name="control"></param>
         public void WrapReady(object control)
         {
-            this._control = control as T;
+            _control = control as T;
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace CUITe.Controls
         /// </summary>
         public void WaitForControlReady()
         {
-            this._control.WaitForControlReady();
+            _control.WaitForControlReady();
         }
 
         /// <summary>
@@ -189,8 +189,8 @@ namespace CUITe.Controls
         /// </summary>
         public void Click()
         {
-            this._control.WaitForControlReady();
-            Mouse.Click(this._control);
+            _control.WaitForControlReady();
+            Mouse.Click(_control);
         }
 
         /// <summary>
@@ -200,9 +200,9 @@ namespace CUITe.Controls
         /// </summary>
         public void PointAndClick()
         {
-            this._control.WaitForControlReady();
-            int x = this._control.BoundingRectangle.X + this._control.BoundingRectangle.Width / 2;
-            int y = this._control.BoundingRectangle.Y + this._control.BoundingRectangle.Height / 2;
+            _control.WaitForControlReady();
+            int x = _control.BoundingRectangle.X + _control.BoundingRectangle.Width / 2;
+            int y = _control.BoundingRectangle.Y + _control.BoundingRectangle.Height / 2;
             Mouse.Click(new Point(x, y));
         }
 
@@ -211,8 +211,8 @@ namespace CUITe.Controls
         /// </summary>
         public void DoubleClick()
         {
-            this._control.WaitForControlReady();
-            Mouse.DoubleClick(this._control);
+            _control.WaitForControlReady();
+            Mouse.DoubleClick(_control);
         }
 
         /// <summary>
@@ -222,8 +222,8 @@ namespace CUITe.Controls
         {
             get 
             {
-                this._control.WaitForControlReady();
-                return this._control.Enabled; 
+                _control.WaitForControlReady();
+                return _control.Enabled; 
             }
         }
 
@@ -234,12 +234,12 @@ namespace CUITe.Controls
         {
             get 
             {
-                if (this._control == null)
+                if (_control == null)
                 {
                     return false;
                 }
 
-                return this._control.Exists; 
+                return _control.Exists; 
             }
         }
 
@@ -248,8 +248,8 @@ namespace CUITe.Controls
         /// </summary>
         public void SetFocus()
         {
-            this._control.WaitForControlReady();
-            this._control.SetFocus();
+            _control.WaitForControlReady();
+            _control.SetFocus();
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace CUITe.Controls
         /// <param name="sValue"></param>
         public void SetSearchProperty(string sPropertyName, string sValue)
         {
-            this._control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.EqualTo);
+            _control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.EqualTo);
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace CUITe.Controls
         /// <param name="sValue"></param>
         public void SetSearchPropertyRegx(string sPropertyName, string sValue)
         {
-            this._control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
+            _control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace CUITe.Controls
         /// <param name="code">The JavaScript code.</param>
         protected void RunScript(string code)
         {
-            BrowserWindow browserWindow = (BrowserWindow)this._control.TopParent;
+            BrowserWindow browserWindow = (BrowserWindow)_control.TopParent;
             InternetExplorer.RunScript(browserWindow, code);
         }
 

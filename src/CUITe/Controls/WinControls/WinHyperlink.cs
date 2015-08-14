@@ -12,7 +12,7 @@ namespace CUITe.Controls.WinControls
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
     }
 }

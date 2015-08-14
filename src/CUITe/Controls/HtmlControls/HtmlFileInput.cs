@@ -9,7 +9,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void SetFile(string sFilePath)
         {
-            this._control.FileName = sFilePath;
+            _control.FileName = sFilePath;
         }
     }
 }

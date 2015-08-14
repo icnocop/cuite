@@ -13,12 +13,12 @@ namespace CUITe.Controls.WpfControls
 
         public string Header
         {
-            get { return this.UnWrap().Header; }
+            get { return UnWrap().Header; }
         }
 
         public UITestControlCollection Items
         {
-            get { return this.UnWrap().Items; }
+            get { return UnWrap().Items; }
         }
     }
 }

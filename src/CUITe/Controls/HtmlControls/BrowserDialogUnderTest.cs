@@ -6,8 +6,8 @@ namespace CUITe.Controls.HtmlControls
     {
         public BrowserDialogUnderTest()
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().DialogClassName;
-            this.WindowTitles.Add(this.sWindowTitle);
+            SearchProperties[PropertyNames.ClassName] = GetCurrentBrowser().DialogClassName;
+            WindowTitles.Add(sWindowTitle);
         }
 
         //public new void RunScript(string sCode)

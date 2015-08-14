@@ -12,14 +12,14 @@ namespace CUITe.Controls.WpfControls
 
         public bool Checked
         {
-            get { return this.UnWrap().Checked; }
-            set { this.UnWrap().Checked = value; }
+            get { return UnWrap().Checked; }
+            set { UnWrap().Checked = value; }
         }
 
         public bool Indeterminate
         {
-            get { return this.UnWrap().Indeterminate; }
-            set { this.UnWrap().Indeterminate = value; }
+            get { return UnWrap().Indeterminate; }
+            set { UnWrap().Indeterminate = value; }
         }
 
     }

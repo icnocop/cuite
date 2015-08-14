@@ -12,17 +12,17 @@ namespace CUITe.Controls.WpfControls
 
         public double MaximumPosition
         {
-            get { return this.UnWrap().MaximumPosition; }
+            get { return UnWrap().MaximumPosition; }
         }
 
         public double MinimumPosition
         {
-            get { return this.UnWrap().MinimumPosition; }
+            get { return UnWrap().MinimumPosition; }
         }
 
         public double Position
         {
-            get { return this.UnWrap().Position; }
+            get { return UnWrap().Position; }
         }
     }
 }

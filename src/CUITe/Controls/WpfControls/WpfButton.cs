@@ -10,7 +10,7 @@ namespace CUITe.Controls.WpfControls
         public WpfButton() : base() { }
         public WpfButton(string searchParameters) : base(searchParameters) { }
 
-        public string DisplayText { get { return this.UnWrap().DisplayText; } }
+        public string DisplayText { get { return UnWrap().DisplayText; } }
 
     }
 }

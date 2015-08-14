@@ -15,7 +15,7 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControlCollection Items
         {
-            get { return this.UnWrap().Items; }
+            get { return UnWrap().Items; }
         }
 
         public List<WpfMenuItem> ItemsAsCUITe
@@ -23,7 +23,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfMenuItem> list = new List<WpfMenuItem>();
-                foreach (CUITControls.WpfMenuItem item in this.UnWrap().Items)
+                foreach (CUITControls.WpfMenuItem item in UnWrap().Items)
                 {
                     WpfMenuItem cuiteItem = new WpfMenuItem();
                     cuiteItem.WrapReady(item);
@@ -35,7 +35,7 @@ namespace CUITe.Controls.WpfControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUITControls.WpfMenuItem)x).Header).ToList<string>(); }
+            get { return (from x in UnWrap().Items select ((CUITControls.WpfMenuItem)x).Header).ToList<string>(); }
         }
 
     }

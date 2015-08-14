@@ -13,7 +13,7 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControl Group
         {
-            get { return this.UnWrap().Group; }
+            get { return UnWrap().Group; }
         }
 
         public WpfGroup GroupAsCUITe
@@ -21,15 +21,15 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 WpfGroup group = new WpfGroup();
-                group.WrapReady(this.UnWrap().Group);
+                group.WrapReady(UnWrap().Group);
                 return group;
             }
         }
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
-            set { this.UnWrap().Selected = value; }
+            get { return UnWrap().Selected; }
+            set { UnWrap().Selected = value; }
         }
     }
 }

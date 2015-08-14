@@ -11,14 +11,14 @@ namespace CUITe.Controls.WinControls
         public WinCheckBox(string searchParameters) : base(searchParameters) { }
 
         public bool Checked { 
-            get { return this._control.Checked; } 
-            set { this._control.Checked = value; }
+            get { return _control.Checked; } 
+            set { _control.Checked = value; }
         }
 
         public bool Indeterminate
         {
-            get { return this._control.Indeterminate; }
-            set { this._control.Indeterminate = value; }
+            get { return _control.Indeterminate; }
+            set { _control.Indeterminate = value; }
         }
 
     }

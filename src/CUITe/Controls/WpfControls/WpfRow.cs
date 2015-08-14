@@ -14,12 +14,12 @@ namespace CUITe.Controls.WpfControls
 
         public bool CanSelectMultiple
         {
-            get { return this.UnWrap().CanSelectMultiple; }
+            get { return UnWrap().CanSelectMultiple; }
         }
 
         public UITestControlCollection Cells
         {
-            get { return this.UnWrap().Cells; }
+            get { return UnWrap().Cells; }
         }
 
         public List<WpfCell> CellsAsCUITe
@@ -27,7 +27,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfCell> list = new List<WpfCell>();
-                foreach (CUITControls.WpfCell control in this.UnWrap().Cells)
+                foreach (CUITControls.WpfCell control in UnWrap().Cells)
                 {
                     WpfCell cell = new WpfCell();
                     cell.WrapReady(control);
@@ -39,17 +39,17 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControl Header
         {
-            get { return this.UnWrap().Header; }
+            get { return UnWrap().Header; }
         }
 
         public int RowIndex
         {
-            get { return this.UnWrap().RowIndex; }
+            get { return UnWrap().RowIndex; }
         }
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
+            get { return UnWrap().Selected; }
         }
     }
 }

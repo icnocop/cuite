@@ -15,16 +15,16 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ColumnCount;
+                _control.WaitForControlReady();
+                return _control.ColumnCount;
             }
         }
 
         public int RowCount
         {
             get {
-                this._control.WaitForControlReady();
-                return this._control.Rows.Count; 
+                _control.WaitForControlReady();
+                return _control.Rows.Count; 
             }
         }
 
@@ -54,26 +54,26 @@ namespace CUITe.Controls.HtmlControls
 
         public void FindHeaderAndClick(int iRow, int iCol)
         {
-            this.GetHeader(iRow, iCol).Click();
+            GetHeader(iRow, iCol).Click();
         }
 
         public void FindCellAndClick(int iRow, int iCol)
         {
-            this.GetCell<HtmlControl<CUITControls.HtmlControl>>(iRow, iCol).Click();
+            GetCell<HtmlControl<CUITControls.HtmlControl>>(iRow, iCol).Click();
         }
 
         public void FindCellAndDoubleClick(int iRow, int iCol)
         {
-            this.GetCell(iRow, iCol).DoubleClick();
+            GetCell(iRow, iCol).DoubleClick();
         }
 
         public int FindRow(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
-            this._control.WaitForControlReady();
+            _control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
 
-            foreach (CUITControls.HtmlControl control in this._control.Rows)
+            foreach (CUITControls.HtmlControl control in _control.Rows)
             {
                  //control could be of ControlType.RowHeader or ControlType.Row
 
@@ -132,7 +132,7 @@ namespace CUITe.Controls.HtmlControls
         private string GetCellValue<T>(int iRow, int iCol) where T : IHtmlControl
         {
             string innerText = "";
-            T htmlCell = this.GetCell<T>(iRow, iCol);
+            T htmlCell = GetCell<T>(iRow, iCol);
             if (htmlCell != null)
             {
                 innerText = htmlCell.InnerText;
@@ -148,7 +148,7 @@ namespace CUITe.Controls.HtmlControls
             mshtml.IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
-            var chk = new CUITControls.HtmlCheckBox(this._control.Container);
+            var chk = new CUITControls.HtmlCheckBox(_control.Container);
             foreach (string sTemp in saTemp)
             {
                 if (sTemp.IndexOf('=') > 0)
@@ -158,7 +158,7 @@ namespace CUITe.Controls.HtmlControls
                     if (saKeyValue[0].ToLower() == "name")
                     {
                         sSearchProperties += ";Name=" + sValue;
-                        chk.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Name, sValue);
+                        chk.SearchProperties.Add(UITestControl.PropertyNames.Name, sValue);
                     }
                     if (saKeyValue[0].ToLower() == "id")
                     {
@@ -189,7 +189,7 @@ namespace CUITe.Controls.HtmlControls
         public string[] GetColumnHeaders()
         {
             string[] retArray;
-            UITestControlCollection rows = this._control.Rows;
+            UITestControlCollection rows = _control.Rows;
             if ((rows != null) && (rows.Count > 0))
             {
                 if ((rows[0] != null) && (rows[0].ControlType == ControlType.RowHeader))
@@ -218,11 +218,11 @@ namespace CUITe.Controls.HtmlControls
 
         private T GetCell<T>(int iRow, int iCol) where T : IHtmlControl
         {
-            this._control.WaitForControlReady();
+            _control.WaitForControlReady();
             UITestControl htmlCell = null;
             int rowCount = -1;
 
-            foreach (UITestControl row in this._control.Rows)
+            foreach (UITestControl row in _control.Rows)
             {
                 //control could be of ControlType.RowHeader or ControlType.Row
 

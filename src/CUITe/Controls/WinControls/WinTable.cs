@@ -14,7 +14,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControlCollection Cells
         {
-            get { return this.UnWrap().Cells; }
+            get { return UnWrap().Cells; }
         }
 
         public List<WinCell> CellsAsCUITe
@@ -22,7 +22,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinCell> list = new List<WinCell>();
-                foreach (CUITControls.WinCell control in this.UnWrap().Cells)
+                foreach (CUITControls.WinCell control in UnWrap().Cells)
                 {
                     WinCell cell = new WinCell();
                     cell.WrapReady(control);
@@ -34,22 +34,22 @@ namespace CUITe.Controls.WinControls
 
         public UITestControlCollection ColumnHeaders
         {
-            get { return this.UnWrap().ColumnHeaders; }
+            get { return UnWrap().ColumnHeaders; }
         }
 
         public UITestControl HorizontalScrollBar
         {
-            get { return this.UnWrap().HorizontalScrollBar; }
+            get { return UnWrap().HorizontalScrollBar; }
         }
 
         public UITestControlCollection RowHeaders
         {
-            get { return this.UnWrap().RowHeaders; }
+            get { return UnWrap().RowHeaders; }
         }
 
         public UITestControlCollection Rows
         {
-            get { return this.UnWrap().Rows; }
+            get { return UnWrap().Rows; }
         }
 
         public List<WinRow> RowsAsCUITe
@@ -57,7 +57,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinRow> list = new List<WinRow>();
-                foreach (CUITControls.WinRow control in this.UnWrap().Rows)
+                foreach (CUITControls.WinRow control in UnWrap().Rows)
                 {
                     WinRow row = new WinRow();
                     row.WrapReady(control);
@@ -69,7 +69,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl VerticalScrollBar
         {
-            get { return this.UnWrap().VerticalScrollBar; }
+            get { return UnWrap().VerticalScrollBar; }
         }
     }
 }

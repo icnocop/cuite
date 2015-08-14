@@ -14,18 +14,18 @@ namespace CUITe.Controls.WinControls
 
         public bool Expanded
         {
-            get { return this.UnWrap().Expanded; }
-            set { this.UnWrap().Expanded = value; }
+            get { return UnWrap().Expanded; }
+            set { UnWrap().Expanded = value; }
         }
 
         public bool HasChildNodes
         {
-            get { return this.UnWrap().HasChildNodes; }
+            get { return UnWrap().HasChildNodes; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return this.UnWrap().Nodes; }
+            get { return UnWrap().Nodes; }
         }
 
         public List<WinTreeItem> NodesAsCUITe
@@ -33,7 +33,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinTreeItem> list = new List<WinTreeItem>();
-                foreach (CUITControls.WinTreeItem node in this.UnWrap().Nodes)
+                foreach (CUITControls.WinTreeItem node in UnWrap().Nodes)
                 {
                     WinTreeItem cuiteItem = new WinTreeItem();
                     cuiteItem.WrapReady(node);
@@ -45,13 +45,13 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl ParentNode
         {
-            get { return this.UnWrap().ParentNode; }
+            get { return UnWrap().ParentNode; }
         }
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
-            set { this.UnWrap().Selected = value; }
+            get { return UnWrap().Selected; }
+            set { UnWrap().Selected = value; }
         }
     }
 }

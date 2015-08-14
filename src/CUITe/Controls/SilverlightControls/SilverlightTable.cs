@@ -16,51 +16,51 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.RowCount;
+                _control.WaitForControlReady();
+                return _control.RowCount;
             }
         }
 
         public void FindRowAndClick(int iCol, string sValueToSearch)
         {
             int iRow = FindRow(iCol, sValueToSearch, SilverlightTableSearchOptions.Normal);
-            Mouse.Click(this.GetCell(iRow, iCol));
+            Mouse.Click(GetCell(iRow, iCol));
         }
 
         public void FindRowAndClick(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
         {
             int iRow = FindRow(iCol, sValueToSearch, option);
-            Mouse.Click(this.GetCell(iRow, iCol));
+            Mouse.Click(GetCell(iRow, iCol));
         }
 
         public void FindRowAndDoubleClick(int iCol, string sValueToSearch)
         {
             int iRow = FindRow(iCol, sValueToSearch, SilverlightTableSearchOptions.Normal);
-            Mouse.DoubleClick(this.GetCell(iRow, iCol));
+            Mouse.DoubleClick(GetCell(iRow, iCol));
         }
 
         public void FindRowAndDoubleClick(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
         {
             int iRow = FindRow(iCol, sValueToSearch, option);
-            Mouse.DoubleClick(this.GetCell(iRow, iCol));
+            Mouse.DoubleClick(GetCell(iRow, iCol));
         }
 
         public void FindCellAndClick(int iRow, int iCol)
         {
-            Mouse.Click(this.GetCell(iRow, iCol));
+            Mouse.Click(GetCell(iRow, iCol));
         }
 
         public void FindCellAndDoubleClick(int iRow, int iCol)
         {
-            Mouse.DoubleClick(this.GetCell(iRow, iCol));
+            Mouse.DoubleClick(GetCell(iRow, iCol));
         }
 
         public int FindRow(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
         {
-            this._control.WaitForControlReady();
+            _control.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
-            foreach (CUITControls.SilverlightRow cont in this._control.Rows)
+            foreach (CUITControls.SilverlightRow cont in _control.Rows)
             {
                 rowCount++;
                 int colCount = -1;
@@ -105,17 +105,17 @@ namespace CUITe.Controls.SilverlightControls
         public string GetCellValue(int iRow, int iCol)
         {
             string sResult = "";
-            CUITControls.SilverlightCell _SlCell = this.GetCell(iRow, iCol);
+            CUITControls.SilverlightCell _SlCell = GetCell(iRow, iCol);
             if (_SlCell != null) sResult = _SlCell.Value;
             return sResult;
         }
 
         private CUITControls.SilverlightCell GetCell(int iRow, int iCol)
         {
-            this._control.WaitForControlReady();
+            _control.WaitForControlReady();
             CUITControls.SilverlightCell _SlCell = null;
             int rowCount = -1;
-            foreach (CUITControls.SilverlightRow cont in this._control.Rows)
+            foreach (CUITControls.SilverlightRow cont in _control.Rows)
             {
                 rowCount++;
                 if (rowCount == iRow)
@@ -141,7 +141,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public SilverlightCheckBox GetRowHeaderCheckBox(int iRow)
         {
-            var _checkbox = (CUITControls.SilverlightCheckBox)this._control.Rows[iRow].GetChildren()[0].GetChildren()[0];
+            var _checkbox = (CUITControls.SilverlightCheckBox)_control.Rows[iRow].GetChildren()[0].GetChildren()[0];
             SilverlightCheckBox retObj = new SilverlightCheckBox("*");
             retObj.WrapReady(_checkbox);
             return retObj;

@@ -9,22 +9,22 @@ namespace CUITe.Controls.HtmlControls
 
         public void SetText(string sText)
         {
-            this._control.WaitForControlReady();
-            this._control.Text = sText;
+            _control.WaitForControlReady();
+            _control.Text = sText;
         }
 
         public string GetText()
         {
-            this._control.WaitForControlReady();
-            return this._control.Text; 
+            _control.WaitForControlReady();
+            return _control.Text; 
         }
 
         public bool ReadOnly
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ReadOnly;
+                _control.WaitForControlReady();
+                return _control.ReadOnly;
             }
         }
     }

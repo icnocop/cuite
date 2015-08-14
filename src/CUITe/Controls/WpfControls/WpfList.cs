@@ -15,12 +15,12 @@ namespace CUITe.Controls.WpfControls
 
         public bool IsMultipleSelection
         {
-            get { return this.UnWrap().IsMultipleSelection; }
+            get { return UnWrap().IsMultipleSelection; }
         }
 
         public UITestControlCollection Items
         {
-            get { return this.UnWrap().Items; }
+            get { return UnWrap().Items; }
         }
 
         public List<WpfListItem> ItemsAsCUITe
@@ -28,7 +28,7 @@ namespace CUITe.Controls.WpfControls
             get 
             {
                 List<WpfListItem> list = new List<WpfListItem>();
-                foreach (CUITControls.WpfListItem item in this.UnWrap().Items)
+                foreach (CUITControls.WpfListItem item in UnWrap().Items)
                 {
                     WpfListItem cuiteItem = new WpfListItem();
                     cuiteItem.WrapReady(item);
@@ -40,37 +40,37 @@ namespace CUITe.Controls.WpfControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUITControls.WpfListItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in UnWrap().Items select ((CUITControls.WpfListItem)x).DisplayText).ToList<string>(); }
         }
 
         public int[] SelectedIndices
         {
-            get { return this.UnWrap().SelectedIndices; }
-            set { this.UnWrap().SelectedIndices = value; }
+            get { return UnWrap().SelectedIndices; }
+            set { UnWrap().SelectedIndices = value; }
         }
 
         public string[] SelectedItems
         {
-            get { return this.UnWrap().SelectedItems; }
-            set { this.UnWrap().SelectedItems = value; }
+            get { return UnWrap().SelectedItems; }
+            set { UnWrap().SelectedItems = value; }
         }
 
         public string SelectedItemsAsString
         {
-            get { return this.UnWrap().SelectedItemsAsString; }
-            set { this.UnWrap().SelectedItemsAsString = value; }
+            get { return UnWrap().SelectedItemsAsString; }
+            set { UnWrap().SelectedItemsAsString = value; }
         }
 
         public int SelectedIndex
         {
-            get { return (this.UnWrap().SelectedIndices.Length > 0 ? this.UnWrap().SelectedIndices[0] : -1); }
-            set { this.UnWrap().SelectedIndices = new int[] { value }; }
+            get { return (UnWrap().SelectedIndices.Length > 0 ? UnWrap().SelectedIndices[0] : -1); }
+            set { UnWrap().SelectedIndices = new int[] { value }; }
         }
 
         public string SelectedItem
         {
-            get { return (this.UnWrap().SelectedIndices.Length > 0 ? this.UnWrap().SelectedItems[0] : null); }
-            set { this.UnWrap().SelectedItems = new string[] { value }; }
+            get { return (UnWrap().SelectedIndices.Length > 0 ? UnWrap().SelectedItems[0] : null); }
+            set { UnWrap().SelectedItems = new string[] { value }; }
         }
 
     }

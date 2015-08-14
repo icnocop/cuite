@@ -20,7 +20,7 @@ namespace CUITe
 
         public static T GetInstance<T>(params object[] args)
         {
-            return (T)(object)ObjectRepositoryManager.GetInstance(typeof(T), args);
+            return (T)(object)GetInstance(typeof(T), args);
         }
 
         private static BrowserWindowUnderTest GetInstance(Type typePageDefinition)

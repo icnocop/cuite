@@ -18,17 +18,17 @@ namespace CUITe.Controls.WinControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                _control.WaitForControlReady();
                 
                 IControlBase ret = null;
                 
                 try
                 {
-                    ret = WinControlFactory.Create((CUITControls.WinControl)this._control.GetParent());
+                    ret = WinControlFactory.Create((CUITControls.WinControl)_control.GetParent());
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", _control.GetType().Name));
                 }
                 return ret;
             }

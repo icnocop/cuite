@@ -23,7 +23,7 @@ namespace CUITe.Controls.SilverlightControls
 
         private void Initialize()
         {
-            this.SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
+            SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
         }
 
         private SilverlightEdit _TextBox
@@ -41,37 +41,37 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                _control.WaitForControlReady();
 
 
 
-                return this._TextBox.Text;
+                return _TextBox.Text;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._TextBox.Text = value;
+                _control.WaitForControlReady();
+                _TextBox.Text = value;
             }
         }
 
         public void SetText(string sText)
         {
-            this._control.WaitForControlReady();
-            this._TextBox.Text = sText;
+            _control.WaitForControlReady();
+            _TextBox.Text = sText;
         }
 
         public string GetText()
         {
-            this._control.WaitForControlReady();
-            return this._TextBox.Text;
+            _control.WaitForControlReady();
+            return _TextBox.Text;
         }
 
         public bool ReadOnly
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._TextBox.ReadOnly;
+                _control.WaitForControlReady();
+                return _TextBox.ReadOnly;
             }
         }
     }

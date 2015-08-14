@@ -12,7 +12,7 @@ namespace CUITe.Controls.WpfControls
 
         public string Alt
         {
-            get { return this.UnWrap().Alt; }
+            get { return UnWrap().Alt; }
         }
     }
 }

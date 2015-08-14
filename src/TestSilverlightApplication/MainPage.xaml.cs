@@ -41,7 +41,7 @@ namespace TestSilverlightApplication
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            this.textBlock1.Text = "asdasdadasdasdasdasdadadsd";
+            textBlock1.Text = "asdasdadasdasdasdasdadadsd";
         }
     }
 }

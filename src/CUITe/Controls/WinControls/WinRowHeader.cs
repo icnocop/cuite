@@ -12,7 +12,7 @@ namespace CUITe.Controls.WinControls
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
+            get { return UnWrap().Selected; }
         }
     }
 }

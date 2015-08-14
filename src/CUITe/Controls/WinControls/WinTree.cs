@@ -14,12 +14,12 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl HorizontalScrollBar
         {
-            get { return this.UnWrap().HorizontalScrollBar; }
+            get { return UnWrap().HorizontalScrollBar; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return this.UnWrap().Nodes; }
+            get { return UnWrap().Nodes; }
         }
 
         public List<WinTreeItem> NodesAsCUITe
@@ -27,7 +27,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinTreeItem> list = new List<WinTreeItem>();
-                foreach (CUITControls.WinTreeItem node in this.UnWrap().Nodes)
+                foreach (CUITControls.WinTreeItem node in UnWrap().Nodes)
                 {
                     WinTreeItem cuiteItem = new WinTreeItem();
                     cuiteItem.WrapReady(node);
@@ -39,7 +39,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl VerticalScrollBar
         {
-            get { return this.UnWrap().VerticalScrollBar; }
+            get { return UnWrap().VerticalScrollBar; }
         }
     }
 }

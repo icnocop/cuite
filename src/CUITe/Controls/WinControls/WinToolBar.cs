@@ -13,7 +13,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControlCollection Items
         {
-            get { return this.UnWrap().Items; }
+            get { return UnWrap().Items; }
         }
     }
 }

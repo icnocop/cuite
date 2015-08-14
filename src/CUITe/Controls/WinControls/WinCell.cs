@@ -12,35 +12,35 @@ namespace CUITe.Controls.WinControls
 
         public bool Checked
         {
-            get { return this.UnWrap().Checked; }
-            set { this.UnWrap().Checked = value; }
+            get { return UnWrap().Checked; }
+            set { UnWrap().Checked = value; }
         }
         
         public int ColumnIndex
         {
-            get { return this.UnWrap().ColumnIndex; }
+            get { return UnWrap().ColumnIndex; }
         }
 
         public bool Indeterminate
         {
-            get { return this.UnWrap().Indeterminate; }
-            set { this.UnWrap().Indeterminate = value; }
+            get { return UnWrap().Indeterminate; }
+            set { UnWrap().Indeterminate = value; }
         }
 
         public int RowIndex
         {
-            get { return this.UnWrap().RowIndex; }
+            get { return UnWrap().RowIndex; }
         }
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
+            get { return UnWrap().Selected; }
         }
 
         public string Value
         {
-            get { return this.UnWrap().Value; }
-            set { this.UnWrap().Value = value; }
+            get { return UnWrap().Value; }
+            set { UnWrap().Value = value; }
         }
 
     }

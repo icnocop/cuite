@@ -18,17 +18,17 @@ namespace CUITe.Controls.WpfControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                _control.WaitForControlReady();
                 
                 IControlBase ret = null;
                 
                 try
                 {
-                    ret = WpfControlFactory.Create((CUITControls.WpfControl)this._control.GetParent());
+                    ret = WpfControlFactory.Create((CUITControls.WpfControl)_control.GetParent());
                 }
                 catch (System.ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", _control.GetType().Name));
                 }
                 return ret;
             }
@@ -40,7 +40,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AcceleratorKey
         {
-            get { return this.UnWrap().AcceleratorKey; }
+            get { return UnWrap().AcceleratorKey; }
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AccessKey
         {
-            get { return this.UnWrap().AccessKey; }
+            get { return UnWrap().AccessKey; }
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AutomationId
         {
-            get { return this.UnWrap().AutomationId; }
+            get { return UnWrap().AutomationId; }
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string Font
         {
-            get { return this.UnWrap().Font; }
+            get { return UnWrap().Font; }
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string HelpText
         {
-            get { return this.UnWrap().HelpText; }
+            get { return UnWrap().HelpText; }
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string LabeledBy
         {
-            get { return this.UnWrap().LabeledBy; }
+            get { return UnWrap().LabeledBy; }
         }
     }
 }

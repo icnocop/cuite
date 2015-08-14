@@ -14,13 +14,13 @@ namespace CUITe.Controls.WpfControls
 
         public int SelectedIndex
         {
-            get { return this.UnWrap().SelectedIndex; }
-            set { this.UnWrap().SelectedIndex = value; }
+            get { return UnWrap().SelectedIndex; }
+            set { UnWrap().SelectedIndex = value; }
         }
 
         public UITestControlCollection Tabs
         {
-            get { return this.UnWrap().Tabs; }
+            get { return UnWrap().Tabs; }
         }
 
         public List<WpfTabPage> TabsAsCUITe
@@ -28,7 +28,7 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfTabPage> list = new List<WpfTabPage>();
-                foreach (CUITControls.WpfTabPage control in this.UnWrap().Tabs)
+                foreach (CUITControls.WpfTabPage control in UnWrap().Tabs)
                 {
                     WpfTabPage tab = new WpfTabPage();
                     tab.WrapReady(control);

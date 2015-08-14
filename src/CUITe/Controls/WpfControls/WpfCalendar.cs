@@ -13,14 +13,14 @@ namespace CUITe.Controls.WpfControls
 
         public DateTime[] SelectedDates
         {
-            get { return this.UnWrap().SelectedDates; }
-            set { this.UnWrap().SelectedDates = value; }
+            get { return UnWrap().SelectedDates; }
+            set { UnWrap().SelectedDates = value; }
         }
 
         public string SelectedDatesAsString
         {
-            get { return this.UnWrap().SelectedDatesAsString; }
-            set { this.UnWrap().SelectedDatesAsString = value; }
+            get { return UnWrap().SelectedDatesAsString; }
+            set { UnWrap().SelectedDatesAsString = value; }
         }
     }
 }

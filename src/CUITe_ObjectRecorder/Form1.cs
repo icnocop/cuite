@@ -21,27 +21,27 @@ namespace CUITe_ObjectRecorder
         public void webBrowser1_ClickHandler(object sender, HtmlElementEventArgs ev)
         {
             string sValues = (string)doc.InvokeScript("getValues");
-            if (sValues != null && !this.listBox1.Items.Contains(sValues))
+            if (sValues != null && !listBox1.Items.Contains(sValues))
             {
                 bool objectIdentified = languageIsVB ? !sValues.Contains(" As New type(") : !sValues.StartsWith("public type ");
                 if (objectIdentified)
                 {
-                    this.listBox1.Items.Add(sValues);
-                    this.toolStripStatusLabel1.Text = "Object added!";
+                    listBox1.Items.Add(sValues);
+                    toolStripStatusLabel1.Text = "Object added!";
                 }
                 else
                 {
-                    this.toolStripStatusLabel1.Text = "Warning: Object not identified!";
+                    toolStripStatusLabel1.Text = "Warning: Object not identified!";
                 }
             }
             else
             {
-                this.toolStripStatusLabel1.Text = "Warning: This object was recorded already!!!";
+                toolStripStatusLabel1.Text = "Warning: This object was recorded already!!!";
             }
         }
 
         // code for subwindow
-        public void webBrowser1_CancelEventHandler(object sender, System.ComponentModel.CancelEventArgs canargs)
+        public void webBrowser1_CancelEventHandler(object sender, CancelEventArgs canargs)
         {
             //string x = ((WebBrowser)sender).Document.ActiveElement.OuterHtml;
             //x = x.Substring(x.IndexOf("onclick"));
@@ -78,23 +78,23 @@ namespace CUITe_ObjectRecorder
             frmWB.Show(this);
         }
 
-        public void webBrowser1_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs args)
+        public void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs args)
         {
             doc = webBrowser1.Document;
-            this.btnRecord.Checked = false;
+            btnRecord.Checked = false;
         }
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
-            if (this.toolStripTextBox1.Text.Trim() != "")
+            if (toolStripTextBox1.Text.Trim() != "")
             {
                 try
                 {
-                    webBrowser1.Url = new Uri(this.toolStripTextBox1.Text.Trim());
+                    webBrowser1.Url = new Uri(toolStripTextBox1.Text.Trim());
                 }
                 catch (Exception excep)
                 {
-                    this.toolStripStatusLabel1.Text = excep.Message;
+                    toolStripStatusLabel1.Text = excep.Message;
                 }
             }
         }
@@ -103,17 +103,17 @@ namespace CUITe_ObjectRecorder
         {
             if (doc == null)
             {
-                this.toolStripStatusLabel1.Text = "Error: Document not loaded yet, please try again!";
+                toolStripStatusLabel1.Text = "Error: Document not loaded yet, please try again!";
                 return;
             }
-            if (this.btnRecord.Checked == true)
+            if (btnRecord.Checked == true)
             {
-                this.toolStripDropDownButton1.Enabled = true;
+                toolStripDropDownButton1.Enabled = true;
                 doc.Click += new HtmlElementEventHandler(webBrowser1_ClickHandler);
                 doc.GetElementsByTagName("head")[0].AppendChild(getScript(doc));
                 string getwindowtitleFunction = languageIsVB ? "getWindowTitleVB" : "getWindowTitle";
                 string sWindowTitle = (string)doc.InvokeScript(getwindowtitleFunction);
-                if (!this.listBox1.Items.Contains(sWindowTitle)) this.listBox1.Items.Add(sWindowTitle);
+                if (!listBox1.Items.Contains(sWindowTitle)) listBox1.Items.Add(sWindowTitle);
                 foreach (HtmlWindow frame in doc.Window.Frames)
                 {
                     HtmlDocument frameDoc;
@@ -131,8 +131,8 @@ namespace CUITe_ObjectRecorder
             }
             else
             {
-                this.toolStripDropDownButton1.SelectedIndex = 0;
-                this.toolStripDropDownButton1.Enabled = false;
+                toolStripDropDownButton1.SelectedIndex = 0;
+                toolStripDropDownButton1.Enabled = false;
                 doc.Click -= webBrowser1_ClickHandler;
                 doc.InvokeScript("removeScript");
                 foreach (HtmlWindow frame in doc.Window.Frames)
@@ -612,13 +612,13 @@ namespace CUITe_ObjectRecorder
         // remove
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (this.listBox1.Items.Count > 0)
+            if (listBox1.Items.Count > 0)
             {
-                if (this.listBox1.SelectedItems.Count > 0)
+                if (listBox1.SelectedItems.Count > 0)
                 {
-                    if (!this.listBox1.SelectedItem.ToString().StartsWith("public new string sWindowTitle = "))
+                    if (!listBox1.SelectedItem.ToString().StartsWith("public new string sWindowTitle = "))
                     {
-                        this.listBox1.Items.Remove(this.listBox1.SelectedItem);
+                        listBox1.Items.Remove(listBox1.SelectedItem);
                     }
                 }
             }
@@ -626,7 +626,7 @@ namespace CUITe_ObjectRecorder
 
         private void btnShowCode_Click(object sender, EventArgs e)
         {
-            if (this.listBox1.Items.Count > 0)
+            if (listBox1.Items.Count > 0)
             {
                 string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 StringBuilder sb = new StringBuilder();
@@ -645,7 +645,7 @@ namespace CUITe_ObjectRecorder
                 if (languageIsVB) sb.AppendLine("\t\tInherits BrowserWindowUnderTest");
                 if (!languageIsVB) sb.AppendLine("\t{");
 
-                foreach (string sLine in this.listBox1.Items)
+                foreach (string sLine in listBox1.Items)
                 {
                     sb.AppendLine("\t\t" + sLine.Replace("\n", ""));
                 }
@@ -663,7 +663,7 @@ namespace CUITe_ObjectRecorder
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            this.listBox1.Items.Clear();
+            listBox1.Items.Clear();
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
@@ -671,18 +671,18 @@ namespace CUITe_ObjectRecorder
             string sHtml = (string)doc.InvokeScript("getHtmlCode");
             Clipboard.SetText(sHtml);
             string commentMarker = languageIsVB ? "' " : "// ";
-            this.listBox1.Items.Add(commentMarker + sHtml);
+            listBox1.Items.Add(commentMarker + sHtml);
         }
 
         private void toolStripDropDownButton1_TextChanged(object sender, EventArgs e)
         {
             if (doc != null)
             {
-                doc.InvokeScript("setFilter", new object[] { this.toolStripDropDownButton1.Text.Trim() });
+                doc.InvokeScript("setFilter", new object[] { toolStripDropDownButton1.Text.Trim() });
             }
             else
             {
-                this.toolStripStatusLabel1.Text = "ERROR: Document not loaded yet.";
+                toolStripStatusLabel1.Text = "ERROR: Document not loaded yet.";
             }
         }
 
@@ -720,8 +720,8 @@ namespace CUITe_ObjectRecorder
             languageIsVB = lang == codeLanguage.vb;
 
             //clear
-            this.listBox1.Items.Clear();
-            this.btnRecord.Checked = false;
+            listBox1.Items.Clear();
+            btnRecord.Checked = false;
             btnRecord.PerformClick();
 
         }

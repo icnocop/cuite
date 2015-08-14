@@ -13,35 +13,35 @@ namespace CUITe.Controls.WinControls
 
         public bool Checked
         {
-            get { return this._control.Checked; }
-            set { this._control.Checked = value; }
+            get { return _control.Checked; }
+            set { _control.Checked = value; }
         }
 
         public bool HasChildNodes
         {
-            get { return this.UnWrap().HasChildNodes; }
+            get { return UnWrap().HasChildNodes; }
         }
 
         public bool Indeterminate
         {
-            get { return this._control.Indeterminate; }
-            set { this._control.Indeterminate = value; }
+            get { return _control.Indeterminate; }
+            set { _control.Indeterminate = value; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return this.UnWrap().Nodes; }
+            get { return UnWrap().Nodes; }
         }
 
         public UITestControl ParentNode
         {
-            get { return this.UnWrap().ParentNode; }
+            get { return UnWrap().ParentNode; }
         }
 
         public bool Selected
         {
-            get { return this._control.Selected; }
-            set { this._control.Selected = value; }
+            get { return _control.Selected; }
+            set { _control.Selected = value; }
         }
 
     }

@@ -31,7 +31,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="title">The title.</param>
         public BrowserWindowUnderTest(string title)
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
+            SearchProperties[PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
 
             SetWindowTitle(title);
         }
@@ -44,7 +44,7 @@ namespace CUITe.Controls.HtmlControls
         {
             InternetExplorer ie = new InternetExplorer();
 
-            string currentBrowserName = BrowserWindow.CurrentBrowser;
+            string currentBrowserName = CurrentBrowser;
 
             if (currentBrowserName == null)
             {
@@ -127,22 +127,22 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="title">The title.</param>
         public void SetWindowTitle(string title)
         {
-            this.WindowTitles.Clear();
-            this.WindowTitles.Add(title);
-            this.sWindowTitle = title;
+            WindowTitles.Clear();
+            WindowTitles.Add(title);
+            sWindowTitle = title;
         }
 
         public CUITControls.HtmlCustom SlObjectContainer
         {
             get
             {
-                if ((this.mSlObjectContainer == null))
+                if ((mSlObjectContainer == null))
                 {
-                    this.mSlObjectContainer = new CUITControls.HtmlCustom(this);
-                    this.mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
-                    this.mSlObjectContainer.WindowTitles.Add(this.sWindowTitle);
+                    mSlObjectContainer = new CUITControls.HtmlCustom(this);
+                    mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
+                    mSlObjectContainer.WindowTitles.Add(sWindowTitle);
                 }
-                return this.mSlObjectContainer;
+                return mSlObjectContainer;
             }
         }
 
@@ -152,7 +152,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="sUrl">The s URL.</param>
         public void NavigateToUrl(string sUrl)
         {
-            this.NavigateToUrl(new Uri(sUrl));
+            NavigateToUrl(new Uri(sUrl));
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="password">The password.</param>
         public static void Authenticate(string userName, string password)
         {
-            UIWindowsSecurityWindow winTemp2 = new CUITe.Controls.UIWindowsSecurityWindow();
+            UIWindowsSecurityWindow winTemp2 = new UIWindowsSecurityWindow();
             if (winTemp2.UIUseAnotherAccountText.Exists)
             {
                 Mouse.Click(winTemp2.UIUseAnotherAccountText);
@@ -210,12 +210,12 @@ namespace CUITe.Controls.HtmlControls
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { SlObjectContainer });
                 control.Wrap(baseControl);
             }
             else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
+                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { SlObjectContainer });
                 (control as TelerikControls.ComboBox).SetWindow(this);
             }
             else
@@ -328,7 +328,7 @@ namespace CUITe.Controls.HtmlControls
         {
             var pwd = new HtmlPassword(searchParameters);
             var tmp = new CUITControls.HtmlEdit(this);
-            tmp.FilterProperties[CUITControls.HtmlEdit.PropertyNames.Type] = "PASSWORD";
+            tmp.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
             pwd.Wrap(tmp);
             return pwd;
         }

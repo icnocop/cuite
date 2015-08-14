@@ -12,12 +12,12 @@ namespace CUITe.Controls.WinControls
 
         public int MaximumValue
         {
-            get { return this.UnWrap().MaximumValue; }
+            get { return UnWrap().MaximumValue; }
         }
 
         public int MinimumValue
         {
-            get { return this.UnWrap().MinimumValue; }
+            get { return UnWrap().MinimumValue; }
         }
     }
 }

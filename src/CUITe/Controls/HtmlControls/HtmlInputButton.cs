@@ -11,7 +11,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                return this._control.DisplayText;
+                return _control.DisplayText;
             }
         }
     }

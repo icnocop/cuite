@@ -12,12 +12,12 @@ namespace CUITe.Controls.WinControls
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
+            get { return UnWrap().Selected; }
         }
     }
 }

@@ -10,8 +10,8 @@ namespace CUITe.Controls.HtmlControls
         public override void Wrap(object control)
         {
             base.Wrap(control);
-            this._control = control as CUITControls.HtmlEdit;
-            this._control.FilterProperties[CUITControls.HtmlEdit.PropertyNames.Type] = "PASSWORD";
+            _control = control as CUITControls.HtmlEdit;
+            _control.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
         }
     }
 }

@@ -18,8 +18,8 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="sItem">Item as string</param>
         public void SelectItem(string sItem)
         {
-            this._control.WaitForControlReady();
-            this._control.SelectedItem = sItem;
+            _control.WaitForControlReady();
+            _control.SelectedItem = sItem;
         }
 
         /// <summary>
@@ -28,8 +28,8 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="index">index of item</param>
         public void SelectItem(int index)
         {
-            this._control.WaitForControlReady();
-            this._control.SelectedIndex = index;
+            _control.WaitForControlReady();
+            _control.SelectedIndex = index;
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get 
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedItem; 
+                _control.WaitForControlReady();
+                return _control.SelectedItem; 
             }
         }
 
@@ -51,8 +51,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedIndex;
+                _control.WaitForControlReady();
+                return _control.SelectedIndex;
             }
         }
 
@@ -63,8 +63,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Items.Count;
+                _control.WaitForControlReady();
+                return _control.Items.Count;
             }
         }
 
@@ -75,8 +75,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                string[] saTemp = new string[this.ItemCount];
-                UITestControlCollection col = this._control.Items;
+                string[] saTemp = new string[ItemCount];
+                UITestControlCollection col = _control.Items;
                 int i = 0;
                 foreach (UITestControl con in col)
                 {

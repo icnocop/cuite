@@ -16,27 +16,27 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 WpfCalendar calendar = new WpfCalendar();
-                calendar.WrapReady(this.UnWrap().Calendar);
+                calendar.WrapReady(UnWrap().Calendar);
                 return calendar;
             }
         }
 
         public DateTime Date
         {
-            get { return this.UnWrap().Date; }
-            set { this.UnWrap().Date = value; }
+            get { return UnWrap().Date; }
+            set { UnWrap().Date = value; }
         }
 
         public string DateAsString
         {
-            get { return this.UnWrap().DateAsString; }
-            set { this.UnWrap().DateAsString = value; }
+            get { return UnWrap().DateAsString; }
+            set { UnWrap().DateAsString = value; }
         }
 
         public bool ShowCalendar
         {
-            get { return this.UnWrap().ShowCalendar; }
-            set { this.UnWrap().ShowCalendar = value; }
+            get { return UnWrap().ShowCalendar; }
+            set { UnWrap().ShowCalendar = value; }
         }
     }
 }

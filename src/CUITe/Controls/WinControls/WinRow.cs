@@ -14,7 +14,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControlCollection Cells
         {
-            get { return this.UnWrap().Cells; }
+            get { return UnWrap().Cells; }
         }
 
         public List<WinCell> CellsAsCUITe
@@ -22,7 +22,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinCell> list = new List<WinCell>();
-                foreach (CUITControls.WinCell control in this.UnWrap().Cells)
+                foreach (CUITControls.WinCell control in UnWrap().Cells)
                 {
                     WinCell cell = new WinCell();
                     cell.WrapReady(control);
@@ -34,17 +34,17 @@ namespace CUITe.Controls.WinControls
 
         public int RowIndex
         {
-            get { return this.UnWrap().RowIndex; }
+            get { return UnWrap().RowIndex; }
         }
 
         public bool Selected
         {
-            get { return this.UnWrap().Selected; }
+            get { return UnWrap().Selected; }
         }
 
         public string Value
         {
-            get { return this.UnWrap().Value; }
+            get { return UnWrap().Value; }
         }
     }
 }

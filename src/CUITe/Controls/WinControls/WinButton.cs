@@ -12,12 +12,12 @@ namespace CUITe.Controls.WinControls
 
         public string DisplayText 
         { 
-            get { return this.UnWrap().DisplayText; } 
+            get { return UnWrap().DisplayText; } 
         }
 
         public string Shortcut 
         { 
-            get { return this.UnWrap().Shortcut; } 
+            get { return UnWrap().Shortcut; } 
         }
     }
 }

@@ -139,7 +139,7 @@ namespace Sample_CUITeTestProject
 
                 Assert.Fail("InvalidSearchKeyException not thrown");
             }
-            catch (System.Reflection.TargetInvocationException ex)
+            catch (TargetInvocationException ex)
             {
                 Console.WriteLine(ex.ToString());
 
@@ -1213,8 +1213,8 @@ namespace Sample_CUITeTestProject
                 HtmlTestPageFeeds window = BrowserWindowUnderTest.Launch<HtmlTestPageFeeds>(tempFile.FilePath);
 
                 CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(window.divFeedTabs.UnWrap());
-                cus.SearchProperties.Add(CUITControls.HtmlCustom.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
-                cus.SearchProperties.Add(CUITControls.HtmlCustom.PropertyNames.Class, "dataFeedTab ui-tabs-nav", PropertyExpressionOperator.EqualTo);
+                cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
+                cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Class, "dataFeedTab ui-tabs-nav", PropertyExpressionOperator.EqualTo);
 
                 Assert.IsTrue(cus.Exists);
 

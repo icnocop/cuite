@@ -12,19 +12,19 @@ namespace CUITe.Controls.WpfControls
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
 
         public bool Indeterminate
         {
-            get { return this.UnWrap().Indeterminate; }
-            set { this.UnWrap().Indeterminate = value; }
+            get { return UnWrap().Indeterminate; }
+            set { UnWrap().Indeterminate = value; }
         }
 
         public bool Pressed
         {
-            get { return this.UnWrap().Pressed; }
-            set { this.UnWrap().Pressed = value; }
+            get { return UnWrap().Pressed; }
+            set { UnWrap().Pressed = value; }
         }
         
     }
