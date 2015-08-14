@@ -529,8 +529,8 @@ namespace Sample_CUITeTestProject
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var div = bWin.Get<HtmlDiv>("id=calculatorContainer1");
             var col = div.GetChildren();
-            Assert.IsTrue(col[0].GetBaseType().Name == "HtmlDiv");
-            Assert.IsTrue(col[1].GetBaseType().Name == "HtmlTable");
+            Assert.IsTrue(col[0].SourceType.Name == "HtmlDiv");
+            Assert.IsTrue(col[1].SourceType.Name == "HtmlTable");
             Assert.IsTrue(((HtmlDiv)col[0]).InnerText == "calcWithHeaders");
             var tbl = (HtmlTable)col[1];
             Assert.AreEqual("6", tbl.GetCellValue(2, 2).Trim());

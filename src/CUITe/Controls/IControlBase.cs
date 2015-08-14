@@ -5,7 +5,19 @@ namespace CUITe.Controls
 {
     public interface IControlBase
     {
-        Type GetBaseType();
+        IControlBase Parent { get; }
+
+        IControlBase PreviousSibling { get; }
+
+        IControlBase NextSibling { get; }
+
+        IControlBase FirstChild { get; }
+
+        bool Enabled { get; }
+
+        bool Exists { get; }
+
+        Type SourceType { get; }
 
         void Wrap(object control);
 
@@ -16,24 +28,12 @@ namespace CUITe.Controls
         void Click();
 
         void DoubleClick();
-
-        bool Enabled { get; }
-
-        bool Exists { get; }
-
+        
         void SetFocus();
 
         void SetSearchProperty(string sPropertyName, string sValue);
 
         void SetSearchPropertyRegx(string sPropertyName, string sValue);
-
-        IControlBase Parent { get; }
-
-        IControlBase PreviousSibling { get; }
-
-        IControlBase NextSibling { get; }
-
-        IControlBase FirstChild { get; }
 
         List<IControlBase> GetChildren();
     }

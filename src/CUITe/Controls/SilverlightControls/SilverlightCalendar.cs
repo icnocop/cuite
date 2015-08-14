@@ -23,8 +23,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedDateRange = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDateRange = value;
             }
         }
 
@@ -32,8 +32,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedDateRangeAsString = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDateRangeAsString = value;
             }
         }
 
@@ -41,8 +41,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectionMode;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectionMode;
             }
         }
 
@@ -50,13 +50,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedDates;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedDates;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedDates = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDates = value;
             }
         }
 
@@ -64,13 +64,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedDatesAsString;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedDatesAsString;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedDatesAsString = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedDatesAsString = value;
             }
         }
     }

@@ -14,8 +14,8 @@ namespace CUITe.Controls.WinControls
         public WinWindow(string searchParameters)
             : base(searchParameters)
         {
-            var baseControl = new CUITControls.WinWindow();
-            Wrap(baseControl);
+            var sourceControl = new CUITControls.WinWindow();
+            Wrap(sourceControl);
         }
 
         public bool AlwaysOnTop

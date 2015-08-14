@@ -42,7 +42,7 @@ namespace CUITe.Controls.HtmlControls
 
         public HtmlControl(UITestControl control)
         {
-            _control = (T)control;
+            SourceControl = (T)control;
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.InnerText;
+                SourceControl.WaitForControlReady();
+                return SourceControl.InnerText;
             }
         }
 
@@ -64,8 +64,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.HelpText;
+                SourceControl.WaitForControlReady();
+                return SourceControl.HelpText;
             }
         }
 
@@ -76,8 +76,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Title;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Title;
             }
         }
 
@@ -88,8 +88,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.ValueAttribute;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ValueAttribute;
             }
         }
 
@@ -100,8 +100,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.AccessKey;
+                SourceControl.WaitForControlReady();
+                return SourceControl.AccessKey;
             }
         }
 
@@ -112,15 +112,15 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)_control.GetParent());
+                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", _control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -133,15 +133,15 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)_control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", _control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -154,11 +154,11 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    UITestControl parent = _control.GetParent();
+                    UITestControl parent = SourceControl.GetParent();
 
                     UITestControlCollection children = parent.GetChildren();
 
@@ -170,7 +170,7 @@ namespace CUITe.Controls.HtmlControls
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", _control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -183,15 +183,15 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)_control.GetChildren()[0]);
+                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", _control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -203,9 +203,9 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>list of all first level children</returns>
         public override List<IControlBase> GetChildren()
         {
-            _control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             var uicol = new List<IControlBase>();
-            foreach (UITestControl uitestcontrol in _control.GetChildren())
+            foreach (UITestControl uitestcontrol in SourceControl.GetChildren())
             {
                 uicol.Add(WrapUtil((CUITControls.HtmlControl)uitestcontrol));
             }
@@ -348,10 +348,10 @@ namespace CUITe.Controls.HtmlControls
         private int GetMyIndexAmongSiblings()
         {
             int i = -1;
-            foreach (UITestControl uitestcontrol in _control.GetParent().GetChildren())
+            foreach (UITestControl uitestcontrol in SourceControl.GetParent().GetChildren())
             {
                 i++;
-                if (uitestcontrol == _control)
+                if (uitestcontrol == SourceControl)
                 {
                     break;
                 }

@@ -210,8 +210,8 @@ namespace CUITe.Controls.HtmlControls
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), SlObjectContainer);
-                control.Wrap(baseControl);
+                var sourceControl = Activator.CreateInstance(control.SourceType, SlObjectContainer);
+                control.Wrap(sourceControl);
             }
             else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
             {
@@ -219,8 +219,8 @@ namespace CUITe.Controls.HtmlControls
             }
             else
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), this);
-                control.Wrap(baseControl);
+                var sourceControl = Activator.CreateInstance(control.SourceType, this);
+                control.Wrap(sourceControl);
             }
 
             return control;

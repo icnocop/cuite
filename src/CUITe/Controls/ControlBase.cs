@@ -13,21 +13,192 @@ namespace CUITe.Controls
     /// Base wrapper class for all CUITe controls
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ControlBase<T> : IControlBase
+    public abstract class ControlBase<T> : IControlBase
         where T : UITestControl
     {
-        protected T _control;
-        protected readonly PropertyExpressionCollection SearchProperties;
+        private readonly PropertyExpressionCollection searchProperties;
 
-        public ControlBase()
+        protected ControlBase()
+            : this(null)
         {
-            SearchProperties = new PropertyExpressionCollection();
         }
 
-        public ControlBase(string searchProperties)
-            : this()
+        protected ControlBase(string searchProperties)
         {
+            this.searchProperties = new PropertyExpressionCollection();
+            
             SetSearchProperties(searchProperties);
+        }
+
+        #region IControlBase Members
+
+        public virtual IControlBase Parent
+        {
+            get { return null; }
+        }
+
+        public virtual IControlBase PreviousSibling
+        {
+            get { return null; }
+        }
+
+        public virtual IControlBase NextSibling
+        {
+            get { return null; }
+        }
+
+        public virtual IControlBase FirstChild
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Wraps WaitForControlReady method and Enabled property for a UITestControl.
+        /// </summary>
+        public bool Enabled
+        {
+            get
+            {
+                SourceControl.WaitForControlReady();
+                return SourceControl.Enabled;
+            }
+        }
+
+        /// <summary>
+        /// Wraps the Exists property for a UITestControl.
+        /// </summary>
+        public bool Exists
+        {
+            get
+            {
+                if (SourceControl == null)
+                {
+                    return false;
+                }
+
+                return SourceControl.Exists;
+            }
+        }
+
+        /// <summary>
+        /// Get the Coded UI base type that is being wrapped by CUITe
+        /// </summary>
+        /// <returns></returns>
+        public Type SourceType
+        {
+            get { return typeof(T); }
+        }
+
+        /// <summary>
+        /// Wraps the provided UITestControl in a CUITe object. 
+        /// Fills the Coded UI control's search properties using values 
+        /// set when the CUITe object was created.
+        /// </summary>
+        /// <param name="control"></param>
+        public virtual void Wrap(object control)
+        {
+            SourceControl = control as T;
+            SourceControl.SearchProperties.AddRange(searchProperties);
+        }
+
+        /// <summary>
+        /// Wraps the provided UITestControl in a CUITe object.
+        /// It does nothing with the control's search properties.
+        /// </summary>
+        /// <param name="control"></param>
+        public void WrapReady(object control)
+        {
+            SourceControl = control as T;
+        }
+
+        /// <summary>
+        /// Wraps the WaitForControlReady method for a UITestControl.
+        /// </summary>
+        public void WaitForControlReady()
+        {
+            SourceControl.WaitForControlReady();
+        }
+
+        /// <summary>
+        /// Wraps WaitForControlReady and Click methods for a UITestControl.
+        /// </summary>
+        public void Click()
+        {
+            SourceControl.WaitForControlReady();
+            Mouse.Click(SourceControl);
+        }
+
+        /// <summary>
+        /// Wraps WaitForControlReady and DoubleClick methods for a UITestControl.
+        /// </summary>
+        public void DoubleClick()
+        {
+            SourceControl.WaitForControlReady();
+            Mouse.DoubleClick(SourceControl);
+        }
+
+        /// <summary>
+        /// Wraps WaitForControlReady and SetFocus methods for a UITestControl.
+        /// </summary>
+        public void SetFocus()
+        {
+            SourceControl.WaitForControlReady();
+            SourceControl.SetFocus();
+        }
+
+        /// <summary>
+        /// Wraps the adding of search properties for the UITestControl where
+        /// the property expression is 'EqualTo'.
+        /// </summary>
+        /// <param name="sPropertyName"></param>
+        /// <param name="sValue"></param>
+        public void SetSearchProperty(string sPropertyName, string sValue)
+        {
+            SourceControl.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.EqualTo);
+        }
+
+        /// <summary>
+        /// Wraps the adding of search properties for the UITestControl where
+        /// the property expression is 'Contains'.
+        /// </summary>
+        /// <param name="sPropertyName"></param>
+        /// <param name="sValue"></param>
+        public void SetSearchPropertyRegx(string sPropertyName, string sValue)
+        {
+            SourceControl.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
+        }
+
+        public virtual List<IControlBase> GetChildren()
+        {
+            return null;
+        }
+
+        #endregion
+        
+        public TControl Get<TControl>() where TControl : IControlBase
+        {
+            var control = Activator.CreateInstance<TControl>();
+            var sourceControl = Activator.CreateInstance(control.SourceType, UnWrap());
+
+            control.Wrap(sourceControl);
+            return control;
+        }
+
+        /// <summary>
+        /// Gets the CUITe UI control object from the descendants of this control using the search parameters are passed. 
+        /// You don't have to create the object repository entry for this.
+        /// </summary>
+        /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
+        /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
+        /// or use '~' for Contains such as 'Id~first'</param>
+        /// <returns>CUITe control object</returns>
+        public TControl Get<TControl>(string searchParameters) where TControl : IControlBase
+        {
+            TControl control = ControlBaseFactory.Create<TControl>(searchParameters);
+            var sourceControl = Activator.CreateInstance(control.SourceType, UnWrap());
+
+            control.Wrap(sourceControl);
+            return control;
         }
 
         public void SetSearchProperties(string searchProperties)
@@ -106,59 +277,8 @@ namespace CUITe.Controls
                 }
 
                 // Add the search property, value and type
-                SearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
+                this.searchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
             }
-        }
-
-        public T1 Get<T1>() where T1 : IControlBase
-        {
-            T1 control = Activator.CreateInstance<T1>();
-
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), UnWrap());
-
-            control.Wrap(baseControl);
-
-            return control;
-        }
-
-        /// <summary>
-        /// Gets the CUITe UI control object from the descendants of this control using the search parameters are passed. 
-        /// You don't have to create the object repository entry for this.
-        /// </summary>
-        /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
-        /// <param name="searchParameters">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
-        /// or use '~' for Contains such as 'Id~first'</param>
-        /// <returns>CUITe control object</returns>
-        public T1 Get<T1>(string searchParameters) where T1 : IControlBase
-        {
-            T1 control = ControlBaseFactory.Create<T1>(searchParameters);
-
-            var baseControl = Activator.CreateInstance(control.GetBaseType(), UnWrap());
-
-            control.Wrap(baseControl);
-
-            return control;
-        }
-
-        /// <summary>
-        /// Get the Coded UI base type that is being wrapped by CUITe
-        /// </summary>
-        /// <returns></returns>
-        public Type GetBaseType()
-        {
-            return typeof(T);
-        }
-
-        /// <summary>
-        /// Wraps the provided UITestControl in a CUITe object. 
-        /// Fills the Coded UI control's search properties using values 
-        /// set when the CUITe object was created.
-        /// </summary>
-        /// <param name="control"></param>
-        public virtual void Wrap(object control)
-        {
-            _control = control as T;
-            _control.SearchProperties.AddRange(SearchProperties);
         }
 
         /// <summary>
@@ -169,36 +289,9 @@ namespace CUITe.Controls
         /// <returns>The underlying UITestControl instance. For example, returns HtmlEdit in case of HtmlEdit.</returns>
         public T UnWrap()
         {
-            return _control;
+            return SourceControl;
         }
-
-        /// <summary>
-        /// Wraps the provided UITestControl in a CUITe object.
-        /// It does nothing with the control's search properties.
-        /// </summary>
-        /// <param name="control"></param>
-        public void WrapReady(object control)
-        {
-            _control = control as T;
-        }
-
-        /// <summary>
-        /// Wraps the WaitForControlReady method for a UITestControl.
-        /// </summary>
-        public void WaitForControlReady()
-        {
-            _control.WaitForControlReady();
-        }
-
-        /// <summary>
-        /// Wraps WaitForControlReady and Click methods for a UITestControl.
-        /// </summary>
-        public void Click()
-        {
-            _control.WaitForControlReady();
-            Mouse.Click(_control);
-        }
-
+        
         /// <summary>
         /// Clicks on the center of the UITestControl based on its point on the screen.
         /// This may "work-around" Coded UI tests (on third-party controls) that throw the following exception:
@@ -206,78 +299,17 @@ namespace CUITe.Controls
         /// </summary>
         public void PointAndClick()
         {
-            _control.WaitForControlReady();
-            int x = _control.BoundingRectangle.X + _control.BoundingRectangle.Width / 2;
-            int y = _control.BoundingRectangle.Y + _control.BoundingRectangle.Height / 2;
+            SourceControl.WaitForControlReady();
+            int x = SourceControl.BoundingRectangle.X + SourceControl.BoundingRectangle.Width / 2;
+            int y = SourceControl.BoundingRectangle.Y + SourceControl.BoundingRectangle.Height / 2;
             Mouse.Click(new Point(x, y));
         }
+        
+        protected T SourceControl { get; set; }
 
-        /// <summary>
-        /// Wraps WaitForControlReady and DoubleClick methods for a UITestControl.
-        /// </summary>
-        public void DoubleClick()
+        protected PropertyExpressionCollection SearchProperties
         {
-            _control.WaitForControlReady();
-            Mouse.DoubleClick(_control);
-        }
-
-        /// <summary>
-        /// Wraps WaitForControlReady method and Enabled property for a UITestControl.
-        /// </summary>
-        public bool Enabled
-        {
-            get
-            {
-                _control.WaitForControlReady();
-                return _control.Enabled;
-            }
-        }
-
-        /// <summary>
-        /// Wraps the Exists property for a UITestControl.
-        /// </summary>
-        public bool Exists
-        {
-            get
-            {
-                if (_control == null)
-                {
-                    return false;
-                }
-
-                return _control.Exists;
-            }
-        }
-
-        /// <summary>
-        /// Wraps WaitForControlReady and SetFocus methods for a UITestControl.
-        /// </summary>
-        public void SetFocus()
-        {
-            _control.WaitForControlReady();
-            _control.SetFocus();
-        }
-
-        /// <summary>
-        /// Wraps the adding of search properties for the UITestControl where
-        /// the property expression is 'EqualTo'.
-        /// </summary>
-        /// <param name="sPropertyName"></param>
-        /// <param name="sValue"></param>
-        public void SetSearchProperty(string sPropertyName, string sValue)
-        {
-            _control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.EqualTo);
-        }
-
-        /// <summary>
-        /// Wraps the adding of search properties for the UITestControl where
-        /// the property expression is 'Contains'.
-        /// </summary>
-        /// <param name="sPropertyName"></param>
-        /// <param name="sValue"></param>
-        public void SetSearchPropertyRegx(string sPropertyName, string sValue)
-        {
-            _control.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
+            get { return searchProperties; }
         }
 
         /// <summary>
@@ -286,37 +318,8 @@ namespace CUITe.Controls
         /// <param name="code">The JavaScript code.</param>
         protected void RunScript(string code)
         {
-            BrowserWindow browserWindow = (BrowserWindow)_control.TopParent;
+            BrowserWindow browserWindow = (BrowserWindow)SourceControl.TopParent;
             InternetExplorer.RunScript(browserWindow, code);
         }
-
-        #region Implementing parent, sibling etc methods as virtual
-
-        public virtual IControlBase Parent
-        {
-            get { return null; }
-        }
-
-        public virtual IControlBase PreviousSibling
-        {
-            get { return null; }
-        }
-
-        public virtual IControlBase NextSibling
-        {
-            get { return null; }
-        }
-
-        public virtual IControlBase FirstChild
-        {
-            get { return null; }
-        }
-
-        public virtual List<IControlBase> GetChildren()
-        {
-            return null;
-        }
-
-        #endregion
     }
 }

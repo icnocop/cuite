@@ -15,16 +15,16 @@ namespace CUITe.Controls.HtmlControls
 
         public void SetText(string sText)
         {
-            _control.WaitForControlReady();
-            _control.Text = sText;
+            SourceControl.WaitForControlReady();
+            SourceControl.Text = sText;
         }
 
         public string Text
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Text;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Text;
             }
         }
 
@@ -32,8 +32,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.ReadOnly;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ReadOnly;
             }
         }
     }

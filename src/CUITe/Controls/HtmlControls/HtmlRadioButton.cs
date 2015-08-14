@@ -15,15 +15,15 @@ namespace CUITe.Controls.HtmlControls
 
         public void Select()
         {
-            _control.WaitForControlReady();
-            _control.Selected = true;
+            SourceControl.WaitForControlReady();
+            SourceControl.Selected = true;
         }
 
         public void Select2()
         {
-            _control.WaitForControlReady();
-            string sOnClick = (string)_control.GetProperty("onclick");
-            string sId = _control.Id;
+            SourceControl.WaitForControlReady();
+            string sOnClick = (string)SourceControl.GetProperty("onclick");
+            string sId = SourceControl.Id;
             if (sId == null || sId == "")
             {
                 throw new GenericException("Select2(): No ID found for the RadioButton!");
@@ -35,8 +35,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Selected;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Selected;
             }
         }
     }

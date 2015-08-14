@@ -48,15 +48,15 @@ namespace CUITe
                 {
                     IControlBase field = (IControlBase)fieldinfo.GetValue(browserWindow);
 
-                    if (field.GetBaseType().IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
+                    if (field.SourceType.IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
-                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), browserWindow));
+                        field.Wrap(Activator.CreateInstance(field.SourceType, browserWindow));
                     }
 #if SILVERLIGHT_SUPPORT
-                    else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl)) ||
-                             (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
+                    else if ((field.SourceType == typeof(CUITSilverlightControls.SilverlightControl)) ||
+                             (field.SourceType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
-                        field.Wrap(Activator.CreateInstance(field.GetBaseType(), browserWindow.SlObjectContainer));
+                        field.Wrap(Activator.CreateInstance(field.SourceType, browserWindow.SlObjectContainer));
                     }
 #endif
                 }

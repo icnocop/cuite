@@ -15,7 +15,7 @@ namespace CUITe.Controls.HtmlControls
 
         public string DisplayText
         {
-            get { return _control.DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
     }
 }

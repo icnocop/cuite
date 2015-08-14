@@ -19,8 +19,8 @@ namespace CUITe.Controls.WinControls
 
         public bool Checked
         {
-            get { return _control.Checked; }
-            set { _control.Checked = value; }
+            get { return SourceControl.Checked; }
+            set { SourceControl.Checked = value; }
         }
 
         public bool HasChildNodes
@@ -30,8 +30,8 @@ namespace CUITe.Controls.WinControls
 
         public bool Indeterminate
         {
-            get { return _control.Indeterminate; }
-            set { _control.Indeterminate = value; }
+            get { return SourceControl.Indeterminate; }
+            set { SourceControl.Indeterminate = value; }
         }
 
         public UITestControlCollection Nodes
@@ -46,8 +46,8 @@ namespace CUITe.Controls.WinControls
 
         public bool Selected
         {
-            get { return _control.Selected; }
-            set { _control.Selected = value; }
+            get { return SourceControl.Selected; }
+            set { SourceControl.Selected = value; }
         }
     }
 }

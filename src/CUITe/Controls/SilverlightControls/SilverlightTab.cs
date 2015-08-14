@@ -24,13 +24,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedIndex;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedIndex;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedIndex = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedIndex = value;
             }
         }
 
@@ -41,13 +41,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedItem;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItem;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedItem = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedItem = value;
             }
         }
 
@@ -58,8 +58,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Items.Count;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Items.Count;
             }
         }
 

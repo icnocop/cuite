@@ -23,8 +23,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.LabelFor;
+                SourceControl.WaitForControlReady();
+                return SourceControl.LabelFor;
             }
         }
     }

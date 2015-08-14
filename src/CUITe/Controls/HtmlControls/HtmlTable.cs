@@ -22,8 +22,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.ColumnCount;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ColumnCount;
             }
         }
 
@@ -31,8 +31,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Rows.Count;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Rows.Count;
             }
         }
 
@@ -77,11 +77,11 @@ namespace CUITe.Controls.HtmlControls
 
         public int FindRow(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
-            _control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
 
-            foreach (CUITControls.HtmlControl control in _control.Rows)
+            foreach (CUITControls.HtmlControl control in SourceControl.Rows)
             {
                 //control could be of ControlType.RowHeader or ControlType.Row
 
@@ -157,7 +157,7 @@ namespace CUITe.Controls.HtmlControls
             IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
-            var chk = new CUITControls.HtmlCheckBox(_control.Container);
+            var chk = new CUITControls.HtmlCheckBox(SourceControl.Container);
             foreach (string sTemp in saTemp)
             {
                 if (sTemp.IndexOf('=') > 0)
@@ -198,7 +198,7 @@ namespace CUITe.Controls.HtmlControls
         public string[] GetColumnHeaders()
         {
             string[] retArray;
-            UITestControlCollection rows = _control.Rows;
+            UITestControlCollection rows = SourceControl.Rows;
             if ((rows != null) && (rows.Count > 0))
             {
                 if ((rows[0] != null) && (rows[0].ControlType == ControlType.RowHeader))
@@ -227,11 +227,11 @@ namespace CUITe.Controls.HtmlControls
 
         private T GetCell<T>(int iRow, int iCol) where T : IHtmlControl
         {
-            _control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             UITestControl htmlCell = null;
             int rowCount = -1;
 
-            foreach (UITestControl row in _control.Rows)
+            foreach (UITestControl row in SourceControl.Rows)
             {
                 //control could be of ControlType.RowHeader or ControlType.Row
 

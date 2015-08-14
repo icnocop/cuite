@@ -19,16 +19,16 @@ namespace CUITe.Controls.SilverlightControls
 
         public void Select()
         {
-            _control.WaitForControlReady();
-            _control.Selected = true;
+            SourceControl.WaitForControlReady();
+            SourceControl.Selected = true;
         }
 
         public bool IsSelected
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Selected;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Selected;
             }
         }
     }

@@ -16,8 +16,8 @@ namespace CUITe.Controls.HtmlControls
         public override void Wrap(object control)
         {
             base.Wrap(control);
-            _control = control as CUITControls.HtmlEdit;
-            _control.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
+            SourceControl = control as CUITControls.HtmlEdit;
+            SourceControl.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
         }
     }
 }

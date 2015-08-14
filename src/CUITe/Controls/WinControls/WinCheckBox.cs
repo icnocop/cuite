@@ -18,14 +18,14 @@ namespace CUITe.Controls.WinControls
 
         public bool Checked
         {
-            get { return _control.Checked; }
-            set { _control.Checked = value; }
+            get { return SourceControl.Checked; }
+            set { SourceControl.Checked = value; }
         }
 
         public bool Indeterminate
         {
-            get { return _control.Indeterminate; }
-            set { _control.Indeterminate = value; }
+            get { return SourceControl.Indeterminate; }
+            set { SourceControl.Indeterminate = value; }
         }
     }
 }

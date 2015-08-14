@@ -15,7 +15,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void SetFile(string sFilePath)
         {
-            _control.FileName = sFilePath;
+            SourceControl.FileName = sFilePath;
         }
     }
 }

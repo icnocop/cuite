@@ -19,19 +19,19 @@ namespace CUITe.Controls.SilverlightControls
 
         public void Check()
         {
-            _control.WaitForControlReady();
-            if (!_control.Checked)
+            SourceControl.WaitForControlReady();
+            if (!SourceControl.Checked)
             {
-                _control.Checked = true;
+                SourceControl.Checked = true;
             }
         }
 
         public void UnCheck()
         {
-            _control.WaitForControlReady();
-            if (_control.Checked)
+            SourceControl.WaitForControlReady();
+            if (SourceControl.Checked)
             {
-                _control.Checked = false;
+                SourceControl.Checked = false;
             }
         }
 
@@ -39,8 +39,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Checked;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Checked;
             }
         }
     }

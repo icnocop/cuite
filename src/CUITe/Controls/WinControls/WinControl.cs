@@ -25,17 +25,17 @@ namespace CUITe.Controls.WinControls
         {
             get
             {
-                _control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
 
                 IControlBase ret = null;
 
                 try
                 {
-                    ret = WinControlFactory.Create((CUITControls.WinControl)_control.GetParent());
+                    ret = WinControlFactory.Create((CUITControls.WinControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", _control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
                 return ret;
             }

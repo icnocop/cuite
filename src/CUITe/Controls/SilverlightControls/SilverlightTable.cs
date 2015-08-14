@@ -22,8 +22,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.RowCount;
+                SourceControl.WaitForControlReady();
+                return SourceControl.RowCount;
             }
         }
 
@@ -63,10 +63,10 @@ namespace CUITe.Controls.SilverlightControls
 
         public int FindRow(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
         {
-            _control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
-            foreach (CUITControls.SilverlightRow cont in _control.Rows)
+            foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)
             {
                 rowCount++;
                 int colCount = -1;
@@ -120,10 +120,10 @@ namespace CUITe.Controls.SilverlightControls
 
         private CUITControls.SilverlightCell GetCell(int iRow, int iCol)
         {
-            _control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             CUITControls.SilverlightCell _SlCell = null;
             int rowCount = -1;
-            foreach (CUITControls.SilverlightRow cont in _control.Rows)
+            foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)
             {
                 rowCount++;
                 if (rowCount == iRow)
@@ -149,7 +149,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public SilverlightCheckBox GetRowHeaderCheckBox(int iRow)
         {
-            var _checkbox = (CUITControls.SilverlightCheckBox)_control.Rows[iRow].GetChildren()[0].GetChildren()[0];
+            var _checkbox = (CUITControls.SilverlightCheckBox)SourceControl.Rows[iRow].GetChildren()[0].GetChildren()[0];
             SilverlightCheckBox retObj = new SilverlightCheckBox("*");
             retObj.WrapReady(_checkbox);
             return retObj;

@@ -21,13 +21,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Checked;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Checked;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.Checked = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.Checked = value;
             }
         }
 
@@ -35,8 +35,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.ColumnHeader;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ColumnHeader;
             }
         }
 
@@ -47,8 +47,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.ColumnIndex;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ColumnIndex;
             }
         }
 
@@ -59,8 +59,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.RowIndex;
+                SourceControl.WaitForControlReady();
+                return SourceControl.RowIndex;
             }
         }
 
@@ -68,8 +68,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Selected;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Selected;
             }
         }
 
@@ -77,13 +77,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.Value;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Value;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.Value = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.Value = value;
             }
         }
     }

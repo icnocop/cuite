@@ -47,13 +47,13 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedItems;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItems;
             }
             set
             {
-                _control.WaitForControlReady();
-                _control.SelectedItems = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedItems = value;
             }
         }
     }

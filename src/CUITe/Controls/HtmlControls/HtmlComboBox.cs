@@ -24,8 +24,8 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="sItem">Item as string</param>
         public void SelectItem(string sItem)
         {
-            _control.WaitForControlReady();
-            _control.SelectedItem = sItem;
+            SourceControl.WaitForControlReady();
+            SourceControl.SelectedItem = sItem;
         }
 
         /// <summary>
@@ -34,8 +34,8 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="index">index of item</param>
         public void SelectItem(int index)
         {
-            _control.WaitForControlReady();
-            _control.SelectedIndex = index;
+            SourceControl.WaitForControlReady();
+            SourceControl.SelectedIndex = index;
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedItem;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItem;
             }
         }
 
@@ -57,8 +57,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.SelectedIndex;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedIndex;
             }
         }
 
@@ -69,8 +69,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                _control.WaitForControlReady();
-                return _control.ItemCount;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ItemCount;
             }
         }
 
