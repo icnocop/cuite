@@ -15,7 +15,7 @@
         /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>(string title)
         {
-            return (T)ObjectRepositoryManager.GetInstance<T>(title);
+            return ObjectRepositoryManager.GetInstance<T>(title);
         }
     }
 }

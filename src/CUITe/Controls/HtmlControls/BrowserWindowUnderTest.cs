@@ -119,7 +119,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>()
         {
-            return (T)ObjectRepositoryManager.GetInstance<T>();
+            return ObjectRepositoryManager.GetInstance<T>();
         }
 
         /// <summary>
