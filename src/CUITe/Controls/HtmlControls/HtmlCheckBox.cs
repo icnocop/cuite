@@ -4,23 +4,29 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlCheckBox : HtmlControl<CUITControls.HtmlCheckBox>
     {
-        public HtmlCheckBox() : base() { }        
-        public HtmlCheckBox(string searchParameters) : base(searchParameters) { }
+        public HtmlCheckBox()
+        {
+        }
+
+        public HtmlCheckBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void Check()
         {
-            this._control.WaitForControlReady();
-            if (!this._control.Checked)
+            SourceControl.WaitForControlReady();
+            if (!SourceControl.Checked)
             {
-                this._control.Checked = true;
+                SourceControl.Checked = true;
             }
         }
 
         public void Check2()
         {
-            this._control.WaitForControlReady();
-            string sOnClick = (string)this._control.GetProperty("onclick");
-            string sId = this._control.Id;
+            SourceControl.WaitForControlReady();
+            string sOnClick = (string)SourceControl.GetProperty("onclick");
+            string sId = SourceControl.Id;
             if (sId == null || sId == "")
             {
                 throw new GenericException("Check2(): No ID found for the checkbox!");
@@ -30,19 +36,19 @@ namespace CUITe.Controls.HtmlControls
 
         public void UnCheck()
         {
-            this._control.WaitForControlReady();
-            if (this._control.Checked)
+            SourceControl.WaitForControlReady();
+            if (SourceControl.Checked)
             {
-                this._control.Checked = false;
+                SourceControl.Checked = false;
             }
         }
 
         public bool Checked
         {
-            get 
+            get
             {
-                this._control.WaitForControlReady();
-                return this._control.Checked; 
+                SourceControl.WaitForControlReady();
+                return SourceControl.Checked;
             }
         }
     }

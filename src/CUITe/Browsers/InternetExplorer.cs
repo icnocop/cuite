@@ -6,7 +6,7 @@ namespace CUITe.Browsers
     public class InternetExplorer : Browser, IBrowser
     {
         public static string Name = "ie";
-        
+
         public InternetExplorer()
             : base(Name, "iexplore", "IEFrame", "Internet Explorer_TridentDlgFrame")
         {

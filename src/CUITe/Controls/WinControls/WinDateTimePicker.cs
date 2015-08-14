@@ -10,12 +10,18 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinDateTimePicker : WinControl<CUITControls.WinDateTimePicker>
     {
-        public WinDateTimePicker() : base() { }
-        public WinDateTimePicker(string searchParameters) : base(searchParameters) { }
+        public WinDateTimePicker()
+        {
+        }
+
+        public WinDateTimePicker(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControl Calendar
         {
-            get { return this.UnWrap().Calendar; }
+            get { return UnWrap().Calendar; }
         }
 
         public WinCalendar CalendarAsCUITe
@@ -23,48 +29,47 @@ namespace CUITe.Controls.WinControls
             get
             {
                 WinCalendar calendar = new WinCalendar();
-                calendar.WrapReady(this.UnWrap().Calendar);
+                calendar.WrapReady(UnWrap().Calendar);
                 return calendar;
             }
         }
 
         public DateTime DateTime
         {
-            get { return this.UnWrap().DateTime; }
-            set { this.UnWrap().DateTime = value; }
+            get { return UnWrap().DateTime; }
+            set { UnWrap().DateTime = value; }
         }
 
         public string DateTimeAsString
         {
-            get { return this.UnWrap().DateTimeAsString; }
-            set { this.UnWrap().DateTimeAsString = value; }
+            get { return UnWrap().DateTimeAsString; }
+            set { UnWrap().DateTimeAsString = value; }
         }
 
         public DateTimePickerFormat Format
         {
-            get { return this.UnWrap().Format; }
+            get { return UnWrap().Format; }
         }
 
         public bool HasCheckBox
         {
-            get { return this.UnWrap().HasCheckBox; }
+            get { return UnWrap().HasCheckBox; }
         }
 
         public bool HasDropDownButton
         {
-            get { return this.UnWrap().HasDropDownButton; }
+            get { return UnWrap().HasDropDownButton; }
         }
 
         public bool HasSpinner
         {
-            get { return this.UnWrap().HasSpinner; }
+            get { return UnWrap().HasSpinner; }
         }
 
         public bool ShowCalendar
         {
-            get { return this.UnWrap().ShowCalendar; }
-            set { this.UnWrap().ShowCalendar = value; }
+            get { return UnWrap().ShowCalendar; }
+            set { UnWrap().ShowCalendar = value; }
         }
-
     }
 }

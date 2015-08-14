@@ -12,7 +12,6 @@ namespace CUITe.Controls.SilverlightControls
         /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
         /// </summary>
         public SilverlightPassword()
-            : base()
         {
         }
 
@@ -30,14 +29,11 @@ namespace CUITe.Controls.SilverlightControls
         /// </summary>
         public new string Text
         {
-            get
-            {
-                return base.Text;
-            }
+            get { return base.Text; }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.Password = Playback.EncryptText(value);
+                SourceControl.WaitForControlReady();
+                SourceControl.Password = Playback.EncryptText(value);
             }
         }
 

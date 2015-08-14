@@ -5,8 +5,18 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlCell : HtmlControl<CUITControls.HtmlCell>
     {
-        public HtmlCell() : base() { }
-        public HtmlCell(string sSearchProperties) : base(sSearchProperties) { }
-        public HtmlCell(UITestControl control) : base(control) { }
+        public HtmlCell()
+        {
+        }
+
+        public HtmlCell(string sSearchProperties)
+            : base(sSearchProperties)
+        {
+        }
+
+        public HtmlCell(UITestControl control)
+            : base(control)
+        {
+        }
     }
 }

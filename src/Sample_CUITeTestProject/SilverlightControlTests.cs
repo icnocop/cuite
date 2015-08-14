@@ -18,12 +18,12 @@ namespace Sample_CUITeTestProject
         //TODO: the silverlight control must be hosted on a page served through a web server (ex. iis, cassini \ web dev server) because IE 9 may
         //treat web pages differently between http://localhost and file:// (compatibility mode\view)
 
-        private static string CurrentDirectory = Directory.GetCurrentDirectory();
+        private static readonly string CurrentDirectory = Directory.GetCurrentDirectory();
+        private static readonly CassiniDevServer WebServer = new CassiniDevServer();
+        private readonly string testSilverlightApplicationHtmlPageUrl = string.Format("http://{0}:{1}/TestSilverlightApplication.html", HostName, Port);
         private const string HostName = "localhost";
         private const int Port = 8080;
-        private string TestSilverlightApplicationHtmlPageUrl = string.Format("http://{0}:{1}/TestSilverlightApplication.html", HostName, Port);
-        private static CassiniDevServer WebServer = new CassiniDevServer();
-
+        
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
@@ -39,7 +39,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(TestSilverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(testSilverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
             b.Get<SilverlightButton>("AutomationId=button1").Click();
             SilverlightEdit oEdit = b.Get<SilverlightEdit>("AutomationId=textBox1");
@@ -52,8 +52,8 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SlList_InObjectRepository_Succeeds()
         {
-            SlTestPage oSlTestPage = BrowserWindowUnderTest.Launch<SlTestPage>(TestSilverlightApplicationHtmlPageUrl);
-            oSlTestPage.oList.SelectedIndices = new int[] { 2 };
+            SlTestPage oSlTestPage = BrowserWindowUnderTest.Launch<SlTestPage>(testSilverlightApplicationHtmlPageUrl);
+            oSlTestPage.oList.SelectedIndices = new[] { 2 };
             Assert.IsTrue(oSlTestPage.oList.SelectedItemsAsString == "Coded UI Test");
             oSlTestPage.Close();
         }
@@ -61,10 +61,10 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SlList_DynamicObjectRecognition_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(TestSilverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(testSilverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
             SilverlightList oList = b.Get<SilverlightList>("AutomationId=listBox1");
-            oList.SelectedIndices = new int[] { 2 };
+            oList.SelectedIndices = new[] { 2 };
             Assert.IsTrue(oList.SelectedItemsAsString == "Coded UI Test");
             b.Close();
         }
@@ -72,7 +72,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SlComboBox_SelectItem_Succeeds()
         {
-            BrowserWindowUnderTest.Launch(TestSilverlightApplicationHtmlPageUrl);
+            BrowserWindowUnderTest.Launch(testSilverlightApplicationHtmlPageUrl);
             BrowserWindowUnderTest b = new BrowserWindowUnderTest("Home");
             b.SetFocus();
             SilverlightComboBox oCombo = b.Get<SilverlightComboBox>("AutomationId=comboBox1");
@@ -87,7 +87,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SlTab_SelectedIndex_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(TestSilverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(testSilverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
             SilverlightTab oTab = b.Get<SilverlightTab>("AutomationId=tabControl1");
             oTab.SelectedIndex= 1;
@@ -98,12 +98,11 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(TestSilverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(testSilverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
             SilverlightTab oTab = b.Get<SilverlightTab>("AutomationId=tabControl1");
             oTab.SelectedIndex = 0;
             var btnOK = b.Get<SilverlightButton>("AutomationId=OKButtonInTabItem1");
-            var tmp = btnOK.PreviousSibling;
             ((SilverlightEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
             foreach (IControlBase control in oTab.GetChildren())
             {

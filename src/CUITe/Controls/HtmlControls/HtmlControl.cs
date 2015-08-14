@@ -8,7 +8,6 @@ namespace CUITe.Controls.HtmlControls
     public class HtmlControl : ControlBase<CUITControls.HtmlControl>
     {
         public HtmlControl(string tagName)
-            : base()
         {
             Initialize(tagName);
         }
@@ -21,7 +20,7 @@ namespace CUITe.Controls.HtmlControls
 
         private void Initialize(string tagName)
         {
-            this.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
+            SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
         }
     }
 
@@ -33,7 +32,6 @@ namespace CUITe.Controls.HtmlControls
         where T : CUITControls.HtmlControl
     {
         public HtmlControl()
-            : base()
         {
         }
 
@@ -43,9 +41,8 @@ namespace CUITe.Controls.HtmlControls
         }
 
         public HtmlControl(UITestControl control)
-            : base()
         {
-            this._control = (T)control;
+            SourceControl = (T)control;
         }
 
         /// <summary>
@@ -55,8 +52,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.InnerText;
+                SourceControl.WaitForControlReady();
+                return SourceControl.InnerText;
             }
         }
 
@@ -67,8 +64,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.HelpText;
+                SourceControl.WaitForControlReady();
+                return SourceControl.HelpText;
             }
         }
 
@@ -79,8 +76,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Title;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Title;
             }
         }
 
@@ -91,8 +88,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ValueAttribute;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ValueAttribute;
             }
         }
 
@@ -103,8 +100,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.AccessKey;
+                SourceControl.WaitForControlReady();
+                return SourceControl.AccessKey;
             }
         }
 
@@ -115,15 +112,15 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)this._control.GetParent());
+                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).Parent", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -136,15 +133,15 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)this._control.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -157,11 +154,11 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    UITestControl parent = this._control.GetParent();
+                    UITestControl parent = SourceControl.GetParent();
 
                     UITestControlCollection children = parent.GetChildren();
 
@@ -171,9 +168,9 @@ namespace CUITe.Controls.HtmlControls
 
                     ret = WrapUtil((CUITControls.HtmlControl)child);
                 }
-                catch (System.ArgumentOutOfRangeException)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).NextSibling", SourceControl.GetType().Name));
                 }
                 return ret;
             }
@@ -186,29 +183,29 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
+                SourceControl.WaitForControlReady();
                 IControlBase ret = null;
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)this._control.GetChildren()[0]);
+                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", this._control.GetType().Name));
+                    throw new InvalidTraversalException(string.Format("({0}).FirstChild", SourceControl.GetType().Name));
                 }
                 return ret;
             }
         }
-        
+
         /// <summary>
         /// Returns a list of all first level children of the current CUITe control.
         /// </summary>
         /// <returns>list of all first level children</returns>
         public override List<IControlBase> GetChildren()
         {
-            this._control.WaitForControlReady();
+            SourceControl.WaitForControlReady();
             var uicol = new List<IControlBase>();
-            foreach (UITestControl uitestcontrol in this._control.GetChildren())
+            foreach (UITestControl uitestcontrol in SourceControl.GetChildren())
             {
                 uicol.Add(WrapUtil((CUITControls.HtmlControl)uitestcontrol));
             }
@@ -282,7 +279,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new HtmlEditableSpan();
             }
-            else if (control.GetType() == typeof(Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlTable))
+            else if (control.GetType() == typeof(CUITControls.HtmlTable))
             {
                 _con = new HtmlTable();
             }
@@ -290,7 +287,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 _con = new HtmlCell();
             }
-            else if (control.GetType() == typeof(Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlTextArea))
+            else if (control.GetType() == typeof(CUITControls.HtmlTextArea))
             {
                 _con = new HtmlTextArea();
             }
@@ -344,17 +341,17 @@ namespace CUITe.Controls.HtmlControls
             {
                 throw new Exception(string.Format("WrapUtil: '{0}' not supported", control.GetType().Name));
             }
-            ((IControlBase)_con).WrapReady(control);
+            _con.WrapReady(control);
             return _con;
         }
 
         private int GetMyIndexAmongSiblings()
         {
             int i = -1;
-            foreach (UITestControl uitestcontrol in this._control.GetParent().GetChildren())
+            foreach (UITestControl uitestcontrol in SourceControl.GetParent().GetChildren())
             {
                 i++;
-                if (uitestcontrol == this._control)
+                if (uitestcontrol == SourceControl)
                 {
                     break;
                 }

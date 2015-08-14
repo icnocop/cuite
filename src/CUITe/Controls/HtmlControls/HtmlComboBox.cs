@@ -9,8 +9,14 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class HtmlComboBox : HtmlControl<CUITControls.HtmlComboBox>
     {
-        public HtmlComboBox() : base() { }
-        public HtmlComboBox(string searchParameters) : base(searchParameters) { }
+        public HtmlComboBox()
+        {
+        }
+
+        public HtmlComboBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Selects the item in the combobox.
@@ -18,8 +24,8 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="sItem">Item as string</param>
         public void SelectItem(string sItem)
         {
-            this._control.WaitForControlReady();
-            this._control.SelectedItem = sItem;
+            SourceControl.WaitForControlReady();
+            SourceControl.SelectedItem = sItem;
         }
 
         /// <summary>
@@ -28,8 +34,8 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="index">index of item</param>
         public void SelectItem(int index)
         {
-            this._control.WaitForControlReady();
-            this._control.SelectedIndex = index;
+            SourceControl.WaitForControlReady();
+            SourceControl.SelectedIndex = index;
         }
 
         /// <summary>
@@ -37,10 +43,10 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public string SelectedItem
         {
-            get 
+            get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedItem; 
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItem;
             }
         }
 
@@ -51,8 +57,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedIndex;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedIndex;
             }
         }
 
@@ -63,8 +69,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.ItemCount;
+                SourceControl.WaitForControlReady();
+                return SourceControl.ItemCount;
             }
         }
 
@@ -76,7 +82,9 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 //trying to call InnerText of children will cause errors if child items are disabled
-                return InnerText.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries);
+                return InnerText.Split(
+                    new[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
             }
         }
 
@@ -85,7 +93,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public bool ItemExists(string sText)
         {
-            return this.Items.Contains<string>(sText);
+            return Items.Contains(sText);
         }
     }
 }

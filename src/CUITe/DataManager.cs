@@ -43,13 +43,12 @@ namespace CUITe
                         startParsing = true;
                     }
 
-                    if (startParsing == true && xmlTextReader.NodeType == XmlNodeType.EndElement && xmlTextReader.Name.ToLower() == "datarow")
+                    if (startParsing && xmlTextReader.NodeType == XmlNodeType.EndElement && xmlTextReader.Name.ToLower() == "datarow")
                     {
-                        startParsing = false;
                         break;
                     }
 
-                    if (startParsing == true && xmlTextReader.Name.ToLower() != "datarow")
+                    if (startParsing && xmlTextReader.Name.ToLower() != "datarow")
                     {
                         if (xmlTextReader.IsStartElement())
                         {
@@ -60,8 +59,8 @@ namespace CUITe
                                 ht.Add(key, null);
                             }
                         }
-                        
-                        if (keyAdded2Ht == true && xmlTextReader.NodeType == XmlNodeType.Text)
+
+                        if (keyAdded2Ht && xmlTextReader.NodeType == XmlNodeType.Text)
                         {
                             keyAdded2Ht = false;
                             ht[key] = xmlTextReader.Value;
@@ -76,7 +75,7 @@ namespace CUITe
             }
 
             xmlTextReader.Close();
-            
+
             if (inherits.Length > 0)
             {
                 ht = GetDataRow(assembly, type, fileName, inherits, ht);

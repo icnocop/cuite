@@ -7,12 +7,18 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTabPage : WinControl<CUITControls.WinTabPage>
     {
-        public WinTabPage() : base() { }
-        public WinTabPage(string searchParameters) : base(searchParameters) { }
+        public WinTabPage()
+        {
+        }
+
+        public WinTabPage(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {
-            get { return this.UnWrap().DisplayText; }
+            get { return UnWrap().DisplayText; }
         }
     }
 }

@@ -4,15 +4,18 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlInputButton : HtmlControl<CUITControls.HtmlInputButton>
     {
-        public HtmlInputButton() : base() { }
-        public HtmlInputButton(string searchParameters) : base(searchParameters) { }
+        public HtmlInputButton()
+        {
+        }
+
+        public HtmlInputButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {
-            get
-            {
-                return this._control.DisplayText;
-            }
+            get { return SourceControl.DisplayText; }
         }
     }
 }

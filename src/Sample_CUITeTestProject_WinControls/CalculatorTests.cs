@@ -13,9 +13,9 @@ namespace Sample_CUITeTestProject_WinControls
     {
         private TestContext testContextInstance;
 
-        private static string testProcess = "calc";
+        private static readonly string TestProcess = "calc";
+        private readonly WinCalculator mainWindow = new WinCalculator();
         private ApplicationUnderTest testApp;
-        private WinCalculator mainWindow = new WinCalculator();
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -40,7 +40,7 @@ namespace Sample_CUITeTestProject_WinControls
             Playback.Initialize();
             try
             {
-                Process[] processes = Process.GetProcessesByName(testProcess);
+                Process[] processes = Process.GetProcessesByName(TestProcess);
 
                 foreach (Process process in processes)
                 {
@@ -54,14 +54,14 @@ namespace Sample_CUITeTestProject_WinControls
             }
         }
 
-        [TestInitialize()]
+        [TestInitialize]
         public void TestInitialize()
         {
             // Launch Calculator if not already running
-            if (Process.GetProcessesByName(testProcess).Length == 0)
+            if (Process.GetProcessesByName(TestProcess).Length == 0)
             {
                 //TODO: do not hard code paths
-                testApp = ApplicationUnderTest.Launch(@"C:\Windows\system32\" + testProcess + ".exe");
+                testApp = ApplicationUnderTest.Launch(@"C:\Windows\system32\" + TestProcess + ".exe");
             }
 
             // Make sure the view is Standard
@@ -73,7 +73,7 @@ namespace Sample_CUITeTestProject_WinControls
             }
         }
 
-        [TestCleanup()]
+        [TestCleanup]
         public void TestCleanup()
         {
             // If test failed, then close the app. The next test will restart it

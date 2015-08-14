@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTab : SilverlightControl<CUITControls.SilverlightTab>
     {
-        public SilverlightTab() : base() { }
-        public SilverlightTab(string searchParameters) : base(searchParameters) { }
+        public SilverlightTab()
+        {
+        }
+
+        public SilverlightTab(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the index of the selected tab item.
@@ -18,13 +24,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedIndex;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedIndex;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedIndex = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedIndex = value;
             }
         }
 
@@ -35,13 +41,13 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.SelectedItem;
+                SourceControl.WaitForControlReady();
+                return SourceControl.SelectedItem;
             }
             set
             {
-                this._control.WaitForControlReady();
-                this._control.SelectedItem = value;
+                SourceControl.WaitForControlReady();
+                SourceControl.SelectedItem = value;
             }
         }
 
@@ -52,8 +58,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.Items.Count;
+                SourceControl.WaitForControlReady();
+                return SourceControl.Items.Count;
             }
         }
 

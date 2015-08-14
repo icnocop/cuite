@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlLabel : HtmlControl<CUITControls.HtmlLabel>
     {
-        public HtmlLabel() : base() { }
-        public HtmlLabel(string searchParameters) : base(searchParameters) { }
+        public HtmlLabel()
+        {
+        }
+
+        public HtmlLabel(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the name of the control that is associated with this label.
@@ -17,8 +23,8 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                this._control.WaitForControlReady();
-                return this._control.LabelFor;
+                SourceControl.WaitForControlReady();
+                return SourceControl.LabelFor;
             }
         }
     }

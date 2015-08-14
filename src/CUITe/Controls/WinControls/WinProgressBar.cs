@@ -7,22 +7,28 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinProgressBar : WinControl<CUITControls.WinProgressBar>
     {
-        public WinProgressBar() : base() { }
-        public WinProgressBar(string searchParameters) : base(searchParameters) { }
+        public WinProgressBar()
+        {
+        }
+
+        public WinProgressBar(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public double MaximumValue
         {
-            get { return this.UnWrap().MaximumValue; }
+            get { return UnWrap().MaximumValue; }
         }
 
         public double MinimumValue
         {
-            get { return this.UnWrap().MinimumValue; }
+            get { return UnWrap().MinimumValue; }
         }
 
         public double Value
         {
-            get { return this.UnWrap().Value; }
+            get { return UnWrap().Value; }
         }
     }
 }

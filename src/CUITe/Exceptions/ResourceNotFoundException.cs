@@ -15,6 +15,7 @@ namespace CUITe
         /// <param name="resourceName">Name of the resource.</param>
         public ResourceNotFoundException(string assemblyName, string type, string resourceName)
             : base(string.Format("Failed to get resource '{0}' from type '{1}' and assembly '{2}'.", resourceName, type, assemblyName))
-        { }
+        {
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<Div1>();
+                return Get<Div1>();
             }
         }
     }

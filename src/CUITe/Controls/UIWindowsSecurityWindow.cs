@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITest.Extension;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls
@@ -12,26 +13,26 @@ namespace CUITe.Controls
 
         internal UIWindowsSecurityWindow()
         {
-            this.SearchProperties[CUITControls.WinWindow.PropertyNames.Name] = "Windows Security";
-            this.SearchProperties[CUITControls.WinWindow.PropertyNames.ClassName] = "#32770";
-            this.TechnologyName = "MSAA";
-            this.WindowTitles.Add("Windows Security");
-            this.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+            SearchProperties[UITestControl.PropertyNames.Name] = "Windows Security";
+            SearchProperties[UITestControl.PropertyNames.ClassName] = "#32770";
+            TechnologyName = "MSAA";
+            WindowTitles.Add("Windows Security");
+            SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
         }
 
         internal CUITControls.WinText UIUseAnotherAccountText
         {
             get
             {
-                if ((this.mUIUseanotheraccountText == null))
+                if ((mUIUseanotheraccountText == null))
                 {
-                    this.mUIUseanotheraccountText = new CUITControls.WinText(this);
-                    this.mUIUseanotheraccountText.SearchProperties[CUITControls.WinText.PropertyNames.Name] = "Use another account";
-                    this.mUIUseanotheraccountText.TechnologyName = "MSAA";
-                    this.mUIUseanotheraccountText.WindowTitles.Add("Windows Security");
-                    this.mUIUseanotheraccountText.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+                    mUIUseanotheraccountText = new CUITControls.WinText(this);
+                    mUIUseanotheraccountText.SearchProperties[UITestControl.PropertyNames.Name] = "Use another account";
+                    mUIUseanotheraccountText.TechnologyName = "MSAA";
+                    mUIUseanotheraccountText.WindowTitles.Add("Windows Security");
+                    mUIUseanotheraccountText.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
                 }
-                return this.mUIUseanotheraccountText;
+                return mUIUseanotheraccountText;
             }
         }
 
@@ -39,15 +40,15 @@ namespace CUITe.Controls
         {
             get
             {
-                if ((this.mUIUsernameEdit == null))
+                if ((mUIUsernameEdit == null))
                 {
-                    this.mUIUsernameEdit = new CUITControls.WinEdit(this);
-                    this.mUIUsernameEdit.SearchProperties[CUITControls.WinEdit.PropertyNames.Name] = "User name";
-                    this.mUIUsernameEdit.TechnologyName = "MSAA";
-                    this.mUIUsernameEdit.WindowTitles.Add("Windows Security");
-                    this.mUIUsernameEdit.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+                    mUIUsernameEdit = new CUITControls.WinEdit(this);
+                    mUIUsernameEdit.SearchProperties[UITestControl.PropertyNames.Name] = "User name";
+                    mUIUsernameEdit.TechnologyName = "MSAA";
+                    mUIUsernameEdit.WindowTitles.Add("Windows Security");
+                    mUIUsernameEdit.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
                 }
-                return this.mUIUsernameEdit;
+                return mUIUsernameEdit;
             }
         }
 
@@ -55,15 +56,15 @@ namespace CUITe.Controls
         {
             get
             {
-                if ((this.mUIPasswordEdit == null))
+                if ((mUIPasswordEdit == null))
                 {
-                    this.mUIPasswordEdit = new CUITControls.WinEdit(this);
-                    this.mUIPasswordEdit.SearchProperties[CUITControls.WinEdit.PropertyNames.Name] = "Password";
-                    this.mUIPasswordEdit.TechnologyName = "MSAA";
-                    this.mUIPasswordEdit.WindowTitles.Add("Windows Security");
-                    this.mUIPasswordEdit.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+                    mUIPasswordEdit = new CUITControls.WinEdit(this);
+                    mUIPasswordEdit.SearchProperties[UITestControl.PropertyNames.Name] = "Password";
+                    mUIPasswordEdit.TechnologyName = "MSAA";
+                    mUIPasswordEdit.WindowTitles.Add("Windows Security");
+                    mUIPasswordEdit.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
                 }
-                return this.mUIPasswordEdit;
+                return mUIPasswordEdit;
             }
         }
 
@@ -71,15 +72,15 @@ namespace CUITe.Controls
         {
             get
             {
-                if ((this.mUIOKButton == null))
+                if ((mUIOKButton == null))
                 {
-                    this.mUIOKButton = new CUITControls.WinButton(this);
-                    this.mUIOKButton.SearchProperties[CUITControls.WinButton.PropertyNames.Name] = "OK";
-                    this.mUIOKButton.TechnologyName = "MSAA";
-                    this.mUIOKButton.WindowTitles.Add("Windows Security");
-                    this.mUIOKButton.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+                    mUIOKButton = new CUITControls.WinButton(this);
+                    mUIOKButton.SearchProperties[UITestControl.PropertyNames.Name] = "OK";
+                    mUIOKButton.TechnologyName = "MSAA";
+                    mUIOKButton.WindowTitles.Add("Windows Security");
+                    mUIOKButton.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
                 }
-                return this.mUIOKButton;
+                return mUIOKButton;
             }
         }
     }

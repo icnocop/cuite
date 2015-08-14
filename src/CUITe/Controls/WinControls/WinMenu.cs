@@ -10,12 +10,18 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenu : WinControl<CUITControls.WinMenu>
     {
-        public WinMenu() : base() { }
-        public WinMenu(string searchParameters) : base(searchParameters) { }
+        public WinMenu()
+        {
+        }
+
+        public WinMenu(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControlCollection Items
         {
-            get { return this.UnWrap().Items; }
+            get { return UnWrap().Items; }
         }
 
         public List<WinMenuItem> ItemsAsCUITe
@@ -23,7 +29,7 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinMenuItem> list = new List<WinMenuItem>();
-                foreach (CUITControls.WinMenuItem item in this.UnWrap().Items)
+                foreach (CUITControls.WinMenuItem item in UnWrap().Items)
                 {
                     WinMenuItem cuiteItem = new WinMenuItem();
                     cuiteItem.WrapReady(item);
@@ -35,7 +41,7 @@ namespace CUITe.Controls.WinControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in this.UnWrap().Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in UnWrap().Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
         }
     }
 }

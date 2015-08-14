@@ -13,7 +13,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlEdit>("id=edit");
+                return Get<HtmlEdit>("id=edit");
             }
         }
     }

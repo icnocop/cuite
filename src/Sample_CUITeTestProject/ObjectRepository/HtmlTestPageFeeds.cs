@@ -13,7 +13,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                HtmlCustom ul = this.divFeedTabs.Get<HtmlCustom>("ul");
+                HtmlCustom ul = divFeedTabs.Get<HtmlCustom>("ul");
                 ul.SetSearchProperties("Class=dataFeedTab ui-tabs-nav");
                 return ul;
             }
@@ -23,7 +23,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                return Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
             }
         }
 
@@ -31,7 +31,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.Get<HtmlDiv>("Id=feed_tabs");
+                return Get<HtmlDiv>("Id=feed_tabs");
             }
         }
 
@@ -39,7 +39,7 @@ namespace Sample_CUITeTestProject.ObjectRepository
         {
             get
             {
-                return this.divFeedTabs.Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                return divFeedTabs.Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
             }
         }
     }

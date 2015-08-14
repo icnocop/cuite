@@ -7,17 +7,23 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinButton : WinControl<CUITControls.WinButton>
     {
-        public WinButton() : base() { }
-        public WinButton(string searchParameters) : base(searchParameters) { }
-
-        public string DisplayText 
-        { 
-            get { return this.UnWrap().DisplayText; } 
+        public WinButton()
+        {
         }
 
-        public string Shortcut 
-        { 
-            get { return this.UnWrap().Shortcut; } 
+        public WinButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
+
+        public string DisplayText
+        {
+            get { return UnWrap().DisplayText; }
+        }
+
+        public string Shortcut
+        {
+            get { return UnWrap().Shortcut; }
         }
     }
 }

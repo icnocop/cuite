@@ -1,13 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-
-namespace CUITe.Controls.HtmlControls
+﻿namespace CUITe.Controls.HtmlControls
 {
     public class BrowserDialogUnderTest : BrowserWindowUnderTest
     {
         public BrowserDialogUnderTest()
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().DialogClassName;
-            this.WindowTitles.Add(this.sWindowTitle);
+            SearchProperties[PropertyNames.ClassName] = GetCurrentBrowser().DialogClassName;
+            WindowTitles.Add(sWindowTitle);
         }
 
         //public new void RunScript(string sCode)

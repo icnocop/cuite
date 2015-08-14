@@ -8,41 +8,46 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBoxTreeItem : WinControl<CUITControls.WinCheckBoxTreeItem>
     {
-        public WinCheckBoxTreeItem() : base() { }
-        public WinCheckBoxTreeItem(string searchParameters) : base(searchParameters) { }
+        public WinCheckBoxTreeItem()
+        {
+        }
+
+        public WinCheckBoxTreeItem(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Checked
         {
-            get { return this._control.Checked; }
-            set { this._control.Checked = value; }
+            get { return SourceControl.Checked; }
+            set { SourceControl.Checked = value; }
         }
 
         public bool HasChildNodes
         {
-            get { return this.UnWrap().HasChildNodes; }
+            get { return UnWrap().HasChildNodes; }
         }
 
         public bool Indeterminate
         {
-            get { return this._control.Indeterminate; }
-            set { this._control.Indeterminate = value; }
+            get { return SourceControl.Indeterminate; }
+            set { SourceControl.Indeterminate = value; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return this.UnWrap().Nodes; }
+            get { return UnWrap().Nodes; }
         }
 
         public UITestControl ParentNode
         {
-            get { return this.UnWrap().ParentNode; }
+            get { return UnWrap().ParentNode; }
         }
 
         public bool Selected
         {
-            get { return this._control.Selected; }
-            set { this._control.Selected = value; }
+            get { return SourceControl.Selected; }
+            set { SourceControl.Selected = value; }
         }
-
     }
 }

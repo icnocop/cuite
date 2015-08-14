@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
+using CUITe.Controls.TelerikControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -22,7 +23,6 @@ namespace CUITe.Controls.HtmlControls
         public BrowserWindowUnderTest()
             : this(null)
         {
-            
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="title">The title.</param>
         public BrowserWindowUnderTest(string title)
         {
-            this.SearchProperties[UITestControl.PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
+            SearchProperties[PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
 
             SetWindowTitle(title);
         }
@@ -44,7 +44,7 @@ namespace CUITe.Controls.HtmlControls
         {
             InternetExplorer ie = new InternetExplorer();
 
-            string currentBrowserName = BrowserWindow.CurrentBrowser;
+            string currentBrowserName = CurrentBrowser;
 
             if (currentBrowserName == null)
             {
@@ -52,7 +52,7 @@ namespace CUITe.Controls.HtmlControls
                 return ie;
             }
 
-            List<IBrowser> supportedBrowsers = new List<IBrowser>()
+            List<IBrowser> supportedBrowsers = new List<IBrowser>
             {
                 ie,
                 new Firefox(),
@@ -77,9 +77,9 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         /// <param name="url">The url.</param>
         /// <returns>The launched BrowserWindow</returns>
-        public static new BrowserWindow Launch(string url)
+        public new static BrowserWindow Launch(string url)
         {
-            return BrowserWindow.Launch(new Uri(url));
+            return Launch(new Uri(url));
         }
 
         /// <summary>
@@ -88,10 +88,10 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="url">The url.</param>
         /// <param name="title">The title.</param>
         /// <returns>The BrowserWindowUnderTest that matches the title</returns>
-        public static new BrowserWindowUnderTest Launch(string url, string title)
+        public new static BrowserWindowUnderTest Launch(string url, string title)
         {
             var browserWindowUnderTest = new BrowserWindowUnderTest();
-            browserWindowUnderTest.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+            browserWindowUnderTest.CopyFrom(Launch(new Uri(url)));
 
             return browserWindowUnderTest;
         }
@@ -106,7 +106,7 @@ namespace CUITe.Controls.HtmlControls
             where T : BrowserWindowUnderTest, new()
         {
             T browserWindow = new T();
-            browserWindow.CopyFrom(BrowserWindow.Launch(new Uri(url)));
+            browserWindow.CopyFrom(Launch(new Uri(url)));
 
             return browserWindow;
         }
@@ -118,7 +118,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>()
         {
-            return (T)(object)ObjectRepositoryManager.GetInstance<T>();
+            return ObjectRepositoryManager.GetInstance<T>();
         }
 
         /// <summary>
@@ -127,22 +127,22 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="title">The title.</param>
         public void SetWindowTitle(string title)
         {
-            this.WindowTitles.Clear();
-            this.WindowTitles.Add(title);
-            this.sWindowTitle = title;
+            WindowTitles.Clear();
+            WindowTitles.Add(title);
+            sWindowTitle = title;
         }
 
         public CUITControls.HtmlCustom SlObjectContainer
         {
             get
             {
-                if ((this.mSlObjectContainer == null))
+                if ((mSlObjectContainer == null))
                 {
-                    this.mSlObjectContainer = new CUITControls.HtmlCustom(this);
-                    this.mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
-                    this.mSlObjectContainer.WindowTitles.Add(this.sWindowTitle);
+                    mSlObjectContainer = new CUITControls.HtmlCustom(this);
+                    mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
+                    mSlObjectContainer.WindowTitles.Add(sWindowTitle);
                 }
-                return this.mSlObjectContainer;
+                return mSlObjectContainer;
             }
         }
 
@@ -152,7 +152,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="sUrl">The s URL.</param>
         public void NavigateToUrl(string sUrl)
         {
-            this.NavigateToUrl(new Uri(sUrl));
+            NavigateToUrl(new Uri(sUrl));
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="password">The password.</param>
         public static void Authenticate(string userName, string password)
         {
-            UIWindowsSecurityWindow winTemp2 = new CUITe.Controls.UIWindowsSecurityWindow();
+            UIWindowsSecurityWindow winTemp2 = new UIWindowsSecurityWindow();
             if (winTemp2.UIUseAnotherAccountText.Exists)
             {
                 Mouse.Click(winTemp2.UIUseAnotherAccountText);
@@ -210,18 +210,17 @@ namespace CUITe.Controls.HtmlControls
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
-                control.Wrap(baseControl);
+                var sourceControl = Activator.CreateInstance(control.SourceType, SlObjectContainer);
+                control.Wrap(sourceControl);
             }
             else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this.SlObjectContainer });
-                (control as TelerikControls.ComboBox).SetWindow(this);
+                (control as ComboBox).SetWindow(this);
             }
             else
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), new object[] { this });
-                control.Wrap(baseControl);
+                var sourceControl = Activator.CreateInstance(control.SourceType, this);
+                control.Wrap(sourceControl);
             }
 
             return control;
@@ -328,7 +327,7 @@ namespace CUITe.Controls.HtmlControls
         {
             var pwd = new HtmlPassword(searchParameters);
             var tmp = new CUITControls.HtmlEdit(this);
-            tmp.FilterProperties[CUITControls.HtmlEdit.PropertyNames.Type] = "PASSWORD";
+            tmp.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
             pwd.Wrap(tmp);
             return pwd;
         }

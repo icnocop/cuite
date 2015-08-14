@@ -7,17 +7,23 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSpinner : WinControl<CUITControls.WinSpinner>
     {
-        public WinSpinner() : base() { }
-        public WinSpinner(string searchParameters) : base(searchParameters) { }
+        public WinSpinner()
+        {
+        }
+
+        public WinSpinner(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int MaximumValue
         {
-            get { return this.UnWrap().MaximumValue; }
+            get { return UnWrap().MaximumValue; }
         }
 
         public int MinimumValue
         {
-            get { return this.UnWrap().MinimumValue; }
+            get { return UnWrap().MinimumValue; }
         }
     }
 }

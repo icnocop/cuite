@@ -7,73 +7,73 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinWindow : WinControl<CUITControls.WinWindow>
     {
-        public WinWindow() : base() { }
-        
-        public WinWindow(string searchParameters) : base(searchParameters) 
+        public WinWindow()
         {
-            var baseControl = new CUITControls.WinWindow();
-            this.Wrap(baseControl);
         }
 
-        #region Properties
+        public WinWindow(string searchParameters)
+            : base(searchParameters)
+        {
+            var sourceControl = new CUITControls.WinWindow();
+            Wrap(sourceControl);
+        }
 
         public bool AlwaysOnTop
         {
-            get { return this.UnWrap().AlwaysOnTop; }
+            get { return UnWrap().AlwaysOnTop; }
         }
 
         public bool HasTitleBar
         {
-            get { return this.UnWrap().HasTitleBar; }
+            get { return UnWrap().HasTitleBar; }
         }
 
         public bool Maximized
         {
-            get { return this.UnWrap().Maximized; }
-            set { this.UnWrap().Maximized = value; }
+            get { return UnWrap().Maximized; }
+            set { UnWrap().Maximized = value; }
         }
 
         public bool Minimized
         {
-            get { return this.UnWrap().Minimized; }
-            set { this.UnWrap().Minimized = value; }
+            get { return UnWrap().Minimized; }
+            set { UnWrap().Minimized = value; }
         }
 
         public int OrderOfInvocation
         {
-            get { return this.UnWrap().OrderOfInvocation; }
+            get { return UnWrap().OrderOfInvocation; }
         }
 
         public bool Popup
         {
-            get { return this.UnWrap().Popup; }
+            get { return UnWrap().Popup; }
         }
 
         public bool Resizable
         {
-            get { return this.UnWrap().Resizable; }
+            get { return UnWrap().Resizable; }
         }
 
         public bool Restored
         {
-            get { return this.UnWrap().Restored; }
-            set { this.UnWrap().Restored = value; }
+            get { return UnWrap().Restored; }
+            set { UnWrap().Restored = value; }
         }
 
         public bool ShowInTaskbar
         {
-            get { return this.UnWrap().ShowInTaskbar; }
+            get { return UnWrap().ShowInTaskbar; }
         }
 
         public bool TabStop
         {
-            get { return this.UnWrap().TabStop; }
-        }
-        public bool Transparent
-        {
-            get { return this.UnWrap().Transparent; }
+            get { return UnWrap().TabStop; }
         }
 
-        #endregion
+        public bool Transparent
+        {
+            get { return UnWrap().Transparent; }
+        }
     }
 }
