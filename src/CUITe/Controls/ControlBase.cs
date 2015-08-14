@@ -17,7 +17,7 @@ namespace CUITe.Controls
         where T : UITestControl
     {
         protected T _control;
-        protected PropertyExpressionCollection SearchProperties;
+        protected readonly PropertyExpressionCollection SearchProperties;
 
         public ControlBase()
         {

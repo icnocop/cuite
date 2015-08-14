@@ -45,7 +45,6 @@ namespace CUITe
 
                     if (startParsing && xmlTextReader.NodeType == XmlNodeType.EndElement && xmlTextReader.Name.ToLower() == "datarow")
                     {
-                        startParsing = false;
                         break;
                     }
 
