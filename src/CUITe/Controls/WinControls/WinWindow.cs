@@ -7,15 +7,16 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinWindow : WinControl<CUITControls.WinWindow>
     {
-        public WinWindow() { }
-        
-        public WinWindow(string searchParameters) : base(searchParameters) 
+        public WinWindow()
+        {
+        }
+
+        public WinWindow(string searchParameters)
+            : base(searchParameters)
         {
             var baseControl = new CUITControls.WinWindow();
             Wrap(baseControl);
         }
-
-        #region Properties
 
         public bool AlwaysOnTop
         {
@@ -69,11 +70,10 @@ namespace CUITe.Controls.WinControls
         {
             get { return UnWrap().TabStop; }
         }
+
         public bool Transparent
         {
             get { return UnWrap().Transparent; }
         }
-
-        #endregion
     }
 }

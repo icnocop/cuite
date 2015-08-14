@@ -9,8 +9,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTabList : WinControl<CUITControls.WinTabList>
     {
-        public WinTabList() { }
-        public WinTabList(string searchParameters) : base(searchParameters) { }
+        public WinTabList()
+        {
+        }
+
+        public WinTabList(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int SelectedIndex
         {
@@ -42,6 +48,5 @@ namespace CUITe.Controls.WinControls
         {
             get { return UnWrap().TabSpinner; }
         }
-
     }
 }

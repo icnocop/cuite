@@ -10,8 +10,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenuItem : WinControl<CUITControls.WinMenuItem>
     {
-        public WinMenuItem() { }
-        public WinMenuItem(string searchParameters) : base(searchParameters) { }
+        public WinMenuItem()
+        {
+        }
+
+        public WinMenuItem(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Checked
         {
@@ -63,6 +69,5 @@ namespace CUITe.Controls.WinControls
         {
             get { return UnWrap().Shortcut; }
         }
-
     }
 }

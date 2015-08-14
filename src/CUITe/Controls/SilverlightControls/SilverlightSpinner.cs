@@ -27,10 +27,7 @@ namespace CUITe.Controls.SilverlightControls
 
         private SilverlightEdit _TextBox
         {
-            get
-            {
-                return Get<SilverlightEdit>();
-            }
+            get { return Get<SilverlightEdit>(); }
         }
 
         /// <summary>
@@ -41,9 +38,6 @@ namespace CUITe.Controls.SilverlightControls
             get
             {
                 _control.WaitForControlReady();
-
-
-
                 return _TextBox.Text;
             }
             set

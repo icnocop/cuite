@@ -10,8 +10,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightList : SilverlightControl<CUITControls.SilverlightList>
     {
-        public SilverlightList() { }
-        public SilverlightList(string searchParameters) : base(searchParameters) { }
+        public SilverlightList()
+        {
+        }
+
+        public SilverlightList(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the collection of child list items of the list

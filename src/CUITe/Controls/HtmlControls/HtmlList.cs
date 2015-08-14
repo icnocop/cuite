@@ -6,8 +6,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlList : HtmlControl<CUITControls.HtmlList>
     {
-        public HtmlList() { }
-        public HtmlList(string searchParameters) : base(searchParameters) { }
+        public HtmlList()
+        {
+        }
+
+        public HtmlList(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the items in a string array of the html list.
@@ -17,7 +23,9 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 //trying to call InnerText of children will cause errors if child items are disabled
-                return InnerText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                return InnerText.Split(
+                    new[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
             }
         }
 

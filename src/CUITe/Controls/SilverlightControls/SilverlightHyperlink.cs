@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightHyperlink : SilverlightControl<CUITControls.SilverlightHyperlink>
     {
-        public SilverlightHyperlink() { }
-        public SilverlightHyperlink(string searchParameters) : base(searchParameters) { }
+        public SilverlightHyperlink()
+        {
+        }
+
+        public SilverlightHyperlink(string searchParameters)
+            : base(searchParameters)
+        {
+        }
     }
 }
 #endif

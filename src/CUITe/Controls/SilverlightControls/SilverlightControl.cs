@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
 {
     public class SilverlightControl<T> : ControlBase<T> where T : CUITControls.SilverlightControl
     {
-        public SilverlightControl() { }
-        public SilverlightControl(string searchParameters) : base(searchParameters) { }
+        public SilverlightControl()
+        {
+        }
+
+        public SilverlightControl(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the control's label text.

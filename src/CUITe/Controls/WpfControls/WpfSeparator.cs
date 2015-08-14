@@ -7,7 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfSeparator : WpfControl<CUITControls.WpfSeparator>
     {
-        public WpfSeparator() { }
-        public WpfSeparator(string searchParameters) : base(searchParameters) { }
+        public WpfSeparator()
+        {
+        }
+
+        public WpfSeparator(string searchParameters)
+            : base(searchParameters)
+        {
+        }
     }
 }

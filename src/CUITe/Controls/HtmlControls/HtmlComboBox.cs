@@ -9,8 +9,14 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class HtmlComboBox : HtmlControl<CUITControls.HtmlComboBox>
     {
-        public HtmlComboBox() { }
-        public HtmlComboBox(string searchParameters) : base(searchParameters) { }
+        public HtmlComboBox()
+        {
+        }
+
+        public HtmlComboBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Selects the item in the combobox.
@@ -37,10 +43,10 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public string SelectedItem
         {
-            get 
+            get
             {
                 _control.WaitForControlReady();
-                return _control.SelectedItem; 
+                return _control.SelectedItem;
             }
         }
 
@@ -76,7 +82,9 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 //trying to call InnerText of children will cause errors if child items are disabled
-                return InnerText.Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
+                return InnerText.Split(
+                    new[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
             }
         }
 

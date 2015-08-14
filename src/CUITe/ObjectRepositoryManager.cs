@@ -35,7 +35,7 @@ namespace CUITe
             browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
 
             FieldInfo[] finfo = browserWindow.GetType().GetFields();
-            foreach (FieldInfo fieldinfo in finfo) 
+            foreach (FieldInfo fieldinfo in finfo)
             {
                 Type fieldType = fieldinfo.FieldType;
 
@@ -53,8 +53,8 @@ namespace CUITe
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), browserWindow));
                     }
 #if SILVERLIGHT_SUPPORT
-                    else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl))
-                        || (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
+                    else if ((field.GetBaseType() == typeof(CUITSilverlightControls.SilverlightControl)) ||
+                             (field.GetBaseType().IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
                         field.Wrap(Activator.CreateInstance(field.GetBaseType(), browserWindow.SlObjectContainer));
                     }

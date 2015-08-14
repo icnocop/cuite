@@ -7,8 +7,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSplitButton : WinControl<CUITControls.WinSplitButton>
     {
-        public WinSplitButton() { }
-        public WinSplitButton(string searchParameters) : base(searchParameters) { }
+        public WinSplitButton()
+        {
+        }
+
+        public WinSplitButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {

@@ -8,8 +8,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRadioButton : WinControl<CUITControls.WinRadioButton>
     {
-        public WinRadioButton() { }
-        public WinRadioButton(string searchParameters) : base(searchParameters) { }
+        public WinRadioButton()
+        {
+        }
+
+        public WinRadioButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControl Group
         {

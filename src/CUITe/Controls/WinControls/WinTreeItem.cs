@@ -9,8 +9,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTreeItem : WinControl<CUITControls.WinTreeItem>
     {
-        public WinTreeItem() { }
-        public WinTreeItem(string searchParameters) : base(searchParameters) { }
+        public WinTreeItem()
+        {
+        }
+
+        public WinTreeItem(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Expanded
         {

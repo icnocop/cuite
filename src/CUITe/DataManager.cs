@@ -60,7 +60,7 @@ namespace CUITe
                                 ht.Add(key, null);
                             }
                         }
-                        
+
                         if (keyAdded2Ht && xmlTextReader.NodeType == XmlNodeType.Text)
                         {
                             keyAdded2Ht = false;
@@ -76,7 +76,7 @@ namespace CUITe
             }
 
             xmlTextReader.Close();
-            
+
             if (inherits.Length > 0)
             {
                 ht = GetDataRow(assembly, type, fileName, inherits, ht);

@@ -10,8 +10,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfComboBox : WpfControl<CUITControls.WpfComboBox>
     {
-        public WpfComboBox() { }
-        public WpfComboBox(string searchParameters) : base(searchParameters) { }
+        public WpfComboBox()
+        {
+        }
+
+        public WpfComboBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string EditableItem
         {

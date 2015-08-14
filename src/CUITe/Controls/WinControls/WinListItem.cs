@@ -7,8 +7,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinListItem : WinControl<CUITControls.WinListItem>
     {
-        public WinListItem() { }
-        public WinListItem(string searchParameters) : base(searchParameters) { }
+        public WinListItem()
+        {
+        }
+
+        public WinListItem(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {

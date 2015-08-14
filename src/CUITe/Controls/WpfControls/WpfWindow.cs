@@ -7,15 +7,16 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfWindow : WpfControl<CUITControls.WpfWindow>
     {
-        public WpfWindow() { }
+        public WpfWindow()
+        {
+        }
 
-        public WpfWindow(string searchParameters) : base(searchParameters) 
+        public WpfWindow(string searchParameters)
+            : base(searchParameters)
         {
             var baseControl = new CUITControls.WpfWindow();
             Wrap(baseControl);
         }
-
-        #region Properties
 
         public bool AlwaysOnTop
         {
@@ -69,8 +70,5 @@ namespace CUITe.Controls.WpfControls
         {
             get { return UnWrap().Transparent; }
         }
-
-        #endregion
-
     }
 }

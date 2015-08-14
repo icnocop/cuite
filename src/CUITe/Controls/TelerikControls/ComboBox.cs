@@ -8,8 +8,10 @@ namespace CUITe.Controls.TelerikControls
     {
         private string id;
         private BrowserWindowUnderTest _window;
-        
-        public ComboBox() { }
+
+        public ComboBox()
+        {
+        }
 
         public ComboBox(string searchParameters)
             : base(searchParameters)
@@ -17,7 +19,7 @@ namespace CUITe.Controls.TelerikControls
             id = searchParameters.Trim().Split('=', '~')[1];
         }
 
-        internal void SetWindow(BrowserWindowUnderTest window) 
+        internal void SetWindow(BrowserWindowUnderTest window)
         {
             _window = window;
         }

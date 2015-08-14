@@ -7,8 +7,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToggleButton : WpfControl<CUITControls.WpfToggleButton>
     {
-        public WpfToggleButton() { }
-        public WpfToggleButton(string searchParameters) : base(searchParameters) { }
+        public WpfToggleButton()
+        {
+        }
+
+        public WpfToggleButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {
@@ -26,6 +32,6 @@ namespace CUITe.Controls.WpfControls
             get { return UnWrap().Pressed; }
             set { UnWrap().Pressed = value; }
         }
-        
+
     }
 }

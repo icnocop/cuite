@@ -23,7 +23,6 @@ namespace CUITe.Controls.HtmlControls
         public BrowserWindowUnderTest()
             : this(null)
         {
-            
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         /// <param name="url">The url.</param>
         /// <returns>The launched BrowserWindow</returns>
-        public static new BrowserWindow Launch(string url)
+        public new static BrowserWindow Launch(string url)
         {
             return Launch(new Uri(url));
         }
@@ -89,7 +88,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="url">The url.</param>
         /// <param name="title">The title.</param>
         /// <returns>The BrowserWindowUnderTest that matches the title</returns>
-        public static new BrowserWindowUnderTest Launch(string url, string title)
+        public new static BrowserWindowUnderTest Launch(string url, string title)
         {
             var browserWindowUnderTest = new BrowserWindowUnderTest();
             browserWindowUnderTest.CopyFrom(Launch(new Uri(url)));

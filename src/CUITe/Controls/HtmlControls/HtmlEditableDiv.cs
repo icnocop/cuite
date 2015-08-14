@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableDiv : HtmlControl<CUITControls.HtmlEditableDiv>
     {
-        public HtmlEditableDiv() { }
-        public HtmlEditableDiv(string searchParameters) : base(searchParameters) { }
+        public HtmlEditableDiv()
+        {
+        }
+
+        public HtmlEditableDiv(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void SetText(string sText)
         {
@@ -16,7 +22,7 @@ namespace CUITe.Controls.HtmlControls
         public string GetText()
         {
             _control.WaitForControlReady();
-            return _control.Text; 
+            return _control.Text;
         }
 
         public bool ReadOnly

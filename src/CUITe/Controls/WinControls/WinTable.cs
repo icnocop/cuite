@@ -9,8 +9,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTable : WinControl<CUITControls.WinTable>
     {
-        public WinTable() { }
-        public WinTable(string searchParameters) : base(searchParameters) { }
+        public WinTable()
+        {
+        }
+
+        public WinTable(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControlCollection Cells
         {

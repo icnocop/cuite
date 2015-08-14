@@ -10,8 +10,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinDateTimePicker : WinControl<CUITControls.WinDateTimePicker>
     {
-        public WinDateTimePicker() { }
-        public WinDateTimePicker(string searchParameters) : base(searchParameters) { }
+        public WinDateTimePicker()
+        {
+        }
+
+        public WinDateTimePicker(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControl Calendar
         {
@@ -65,6 +71,5 @@ namespace CUITe.Controls.WinControls
             get { return UnWrap().ShowCalendar; }
             set { UnWrap().ShowCalendar = value; }
         }
-
     }
 }

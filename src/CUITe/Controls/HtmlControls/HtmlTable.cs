@@ -9,8 +9,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        public HtmlTable() { }
-        public HtmlTable(string searchParameters) : base(searchParameters) { }
+        public HtmlTable()
+        {
+        }
+
+        public HtmlTable(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int ColumnCount
         {
@@ -23,9 +29,10 @@ namespace CUITe.Controls.HtmlControls
 
         public int RowCount
         {
-            get {
+            get
+            {
                 _control.WaitForControlReady();
-                return _control.Rows.Count; 
+                return _control.Rows.Count;
             }
         }
 
@@ -76,7 +83,7 @@ namespace CUITe.Controls.HtmlControls
 
             foreach (CUITControls.HtmlControl control in _control.Rows)
             {
-                 //control could be of ControlType.RowHeader or ControlType.Row
+                //control could be of ControlType.RowHeader or ControlType.Row
 
                 rowCount++;
 
@@ -115,7 +122,8 @@ namespace CUITe.Controls.HtmlControls
                         }
                     }
                 }
-                if (iRow > -1) break;
+                if (iRow > -1)
+                    break;
             }
             return iRow;
         }
@@ -255,14 +263,18 @@ namespace CUITe.Controls.HtmlControls
 
             Type t = typeof(T);
             ConstructorInfo ctor = GetConstructor(t, typeof(UITestControl));
-            return (T)ctor.Invoke(new object[] { htmlCell }); // call constructor
+            return (T)ctor.Invoke(
+                new object[]
+                {
+                    htmlCell
+                }); // call constructor
         }
 
         public ConstructorInfo GetConstructor(Type type, Type baseParameterType)
         {
             return type.GetConstructors()
-                    .Where(ci => ci.GetParameters().Length == 1)
-                    .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
+                .Where(ci => ci.GetParameters().Length == 1)
+                .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
         }
 
         private IHTMLElement GetEmbeddedCheckBoxNativeElement(IHTMLElement parent)

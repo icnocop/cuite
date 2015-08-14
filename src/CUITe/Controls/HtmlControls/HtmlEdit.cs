@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEdit : HtmlControl<CUITControls.HtmlEdit>
     {
-        public HtmlEdit() { }
-        public HtmlEdit(string searchParameters) : base(searchParameters) { }
+        public HtmlEdit()
+        {
+        }
+
+        public HtmlEdit(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void SetText(string sText)
         {
@@ -16,7 +22,7 @@ namespace CUITe.Controls.HtmlControls
         public string GetText()
         {
             _control.WaitForControlReady();
-            return _control.Text; 
+            return _control.Text;
         }
 
         public bool ReadOnly

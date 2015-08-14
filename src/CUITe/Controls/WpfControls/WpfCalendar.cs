@@ -8,8 +8,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCalendar : WpfControl<CUITControls.WpfCalendar>
     {
-        public WpfCalendar() { }
-        public WpfCalendar(string searchParameters) : base(searchParameters) { }
+        public WpfCalendar()
+        {
+        }
+
+        public WpfCalendar(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public DateTime[] SelectedDates
         {

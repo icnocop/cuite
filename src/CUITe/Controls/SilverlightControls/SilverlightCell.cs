@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCell : SilverlightControl<CUITControls.SilverlightCell>
     {
-        public SilverlightCell() { }
-        public SilverlightCell(string searchParameters) : base(searchParameters) { }
+        public SilverlightCell()
+        {
+        }
+
+        public SilverlightCell(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Checked
         {

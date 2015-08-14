@@ -58,7 +58,9 @@ namespace CUITe.Controls
             }
 
             // Split on groups of key/value pairs
-            string[] saKeyValuePairs = searchProperties.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] saKeyValuePairs = searchProperties.Split(
+                new[] { ';' },
+                StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string sKeyValue in saKeyValuePairs)
             {
@@ -66,12 +68,16 @@ namespace CUITe.Controls
 
                 // If split on '=' does not work, then try '~'
                 // Split at the first instance of '='. Other instances are considered part of the value.
-                string[] saKeyVal = sKeyValue.Split(new[] { '=' }, 2);
+                string[] saKeyVal = sKeyValue.Split(
+                    new[] { '=' },
+                    2);
                 if (saKeyVal.Length != 2)
                 {
                     // Otherwise try to split on '~'. If it works then compare type is Contains
                     // Split at the first instance of '~'. Other instances are considered part of the value.
-                    saKeyVal = sKeyValue.Split(new[] { '~' }, 2);
+                    saKeyVal = sKeyValue.Split(
+                        new[] { '~' },
+                        2);
                     if (saKeyVal.Length == 2)
                     {
                         compareOperator = PropertyExpressionOperator.Contains;
@@ -220,10 +226,10 @@ namespace CUITe.Controls
         /// </summary>
         public bool Enabled
         {
-            get 
+            get
             {
                 _control.WaitForControlReady();
-                return _control.Enabled; 
+                return _control.Enabled;
             }
         }
 
@@ -232,14 +238,14 @@ namespace CUITe.Controls
         /// </summary>
         public bool Exists
         {
-            get 
+            get
             {
                 if (_control == null)
                 {
                     return false;
                 }
 
-                return _control.Exists; 
+                return _control.Exists;
             }
         }
 
@@ -284,17 +290,32 @@ namespace CUITe.Controls
             InternetExplorer.RunScript(browserWindow, code);
         }
 
-        #region implementing parent, sibling etc methods as virtual
+        #region Implementing parent, sibling etc methods as virtual
 
-        public virtual IControlBase Parent { get { return null; } }
+        public virtual IControlBase Parent
+        {
+            get { return null; }
+        }
 
-        public virtual IControlBase PreviousSibling { get { return null; } }
+        public virtual IControlBase PreviousSibling
+        {
+            get { return null; }
+        }
 
-        public virtual IControlBase NextSibling { get { return null; } }
+        public virtual IControlBase NextSibling
+        {
+            get { return null; }
+        }
 
-        public virtual IControlBase FirstChild { get { return null; } }
+        public virtual IControlBase FirstChild
+        {
+            get { return null; }
+        }
 
-        public virtual List<IControlBase> GetChildren() { return null; }
+        public virtual List<IControlBase> GetChildren()
+        {
+            return null;
+        }
 
         #endregion
     }

@@ -9,8 +9,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightComboBox : SilverlightControl<CUITControls.SilverlightComboBox>
     {
-        public SilverlightComboBox() { }
-        public SilverlightComboBox(string searchParameters) : base(searchParameters) { }
+        public SilverlightComboBox()
+        {
+        }
+
+        public SilverlightComboBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Selects the item in the combobox.
@@ -37,10 +43,10 @@ namespace CUITe.Controls.SilverlightControls
         /// </summary>
         public string SelectedItem
         {
-            get 
+            get
             {
                 _control.WaitForControlReady();
-                return _control.SelectedItem; 
+                return _control.SelectedItem;
             }
         }
 

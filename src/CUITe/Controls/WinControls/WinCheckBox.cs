@@ -7,11 +7,18 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBox : WinControl<CUITControls.WinCheckBox>
     {
-        public WinCheckBox() { }
-        public WinCheckBox(string searchParameters) : base(searchParameters) { }
+        public WinCheckBox()
+        {
+        }
 
-        public bool Checked { 
-            get { return _control.Checked; } 
+        public WinCheckBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
+
+        public bool Checked
+        {
+            get { return _control.Checked; }
             set { _control.Checked = value; }
         }
 
@@ -20,6 +27,5 @@ namespace CUITe.Controls.WinControls
             get { return _control.Indeterminate; }
             set { _control.Indeterminate = value; }
         }
-
     }
 }

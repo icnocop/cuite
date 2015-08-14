@@ -7,7 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCustom : WinControl<CUITControls.WinCustom>
     {
-        public WinCustom() { }
-        public WinCustom(string searchParameters) : base(searchParameters) { }
+        public WinCustom()
+        {
+        }
+
+        public WinCustom(string searchParameters)
+            : base(searchParameters)
+        {
+        }
     }
 }

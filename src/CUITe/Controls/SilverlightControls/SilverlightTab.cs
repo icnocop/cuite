@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTab : SilverlightControl<CUITControls.SilverlightTab>
     {
-        public SilverlightTab() { }
-        public SilverlightTab(string searchParameters) : base(searchParameters) { }
+        public SilverlightTab()
+        {
+        }
+
+        public SilverlightTab(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the index of the selected tab item.

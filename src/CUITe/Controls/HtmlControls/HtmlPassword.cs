@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlPassword : HtmlEdit
     {
-        public HtmlPassword() { }
-        public HtmlPassword(string searchParameters) : base(searchParameters) { }
+        public HtmlPassword()
+        {
+        }
+
+        public HtmlPassword(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public override void Wrap(object control)
         {

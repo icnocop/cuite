@@ -7,8 +7,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinEdit : ControlBase<CUITControls.WinEdit>
     {
-        public WinEdit() { }
-        public WinEdit(string searchParameters) : base(searchParameters) { }
+        public WinEdit()
+        {
+        }
+
+        public WinEdit(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string CopyPastedText
         {
@@ -31,7 +37,7 @@ namespace CUITe.Controls.WinControls
         {
             get { return UnWrap().InsertionIndexLineRelative; }
         }
-        
+
         public bool IsPassword
         {
             get { return UnWrap().IsPassword; }
@@ -51,7 +57,7 @@ namespace CUITe.Controls.WinControls
         {
             set { UnWrap().Password = value; }
         }
-        
+
         public bool ReadOnly
         {
             get { return UnWrap().ReadOnly; }

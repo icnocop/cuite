@@ -10,8 +10,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenu : WpfControl<CUITControls.WpfMenu>
     {
-        public WpfMenu() { }
-        public WpfMenu(string searchParameters) : base(searchParameters) { }
+        public WpfMenu()
+        {
+        }
+
+        public WpfMenu(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControlCollection Items
         {
@@ -37,6 +43,5 @@ namespace CUITe.Controls.WpfControls
         {
             get { return (from x in UnWrap().Items select ((CUITControls.WpfMenuItem)x).Header).ToList<string>(); }
         }
-
     }
 }

@@ -9,8 +9,14 @@ namespace CUITe.Controls.WpfControls
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
     public class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
-        public WpfControl() { }
-        public WpfControl(string searchParameters) : base(searchParameters) { }
+        public WpfControl()
+        {
+        }
+
+        public WpfControl(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.
@@ -34,7 +40,6 @@ namespace CUITe.Controls.WpfControls
                 return ret;
             }
         }
-
 
         /// <summary>
         /// Wrap AcceleratorKey property common to all WPF controls

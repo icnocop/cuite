@@ -7,8 +7,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCell : WpfControl<CUITControls.WpfCell>
     {
-        public WpfCell() { }
-        public WpfCell(string searchParameters) : base(searchParameters) { }
+        public WpfCell()
+        {
+        }
+
+        public WpfCell(string searchParameters)
+            : base(searchParameters)
+        {
+        }
         
         public bool Checked
         {
@@ -42,6 +48,5 @@ namespace CUITe.Controls.WpfControls
             get { return UnWrap().Value; }
             set { UnWrap().Value = value; }
         }
-
     }
 }

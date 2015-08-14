@@ -29,10 +29,7 @@ namespace CUITe.Controls.SilverlightControls
         /// </summary>
         public new string Text
         {
-            get
-            {
-                return base.Text;
-            }
+            get { return base.Text; }
             set
             {
                 _control.WaitForControlReady();

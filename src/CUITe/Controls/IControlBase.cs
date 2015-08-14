@@ -17,15 +17,9 @@ namespace CUITe.Controls
 
         void DoubleClick();
 
-        bool Enabled
-        {
-            get;
-        }
+        bool Enabled { get; }
 
-        bool Exists
-        {
-            get;
-        }
+        bool Exists { get; }
 
         void SetFocus();
 

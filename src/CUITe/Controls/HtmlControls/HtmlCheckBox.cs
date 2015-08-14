@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlCheckBox : HtmlControl<CUITControls.HtmlCheckBox>
     {
-        public HtmlCheckBox() { }        
-        public HtmlCheckBox(string searchParameters) : base(searchParameters) { }
+        public HtmlCheckBox()
+        {
+        }
+
+        public HtmlCheckBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void Check()
         {
@@ -39,10 +45,10 @@ namespace CUITe.Controls.HtmlControls
 
         public bool Checked
         {
-            get 
+            get
             {
                 _control.WaitForControlReady();
-                return _control.Checked; 
+                return _control.Checked;
             }
         }
     }

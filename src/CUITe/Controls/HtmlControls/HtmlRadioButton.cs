@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlRadioButton : HtmlControl<CUITControls.HtmlRadioButton>
     {
-        public HtmlRadioButton() { }
-        public HtmlRadioButton(string searchParameters) : base(searchParameters) { }
+        public HtmlRadioButton()
+        {
+        }
+
+        public HtmlRadioButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void Select()
         {
@@ -27,9 +33,10 @@ namespace CUITe.Controls.HtmlControls
 
         public bool IsSelected
         {
-            get {
+            get
+            {
                 _control.WaitForControlReady();
-                return _control.Selected; 
+                return _control.Selected;
             }
         }
     }

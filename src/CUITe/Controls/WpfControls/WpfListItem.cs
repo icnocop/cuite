@@ -7,8 +7,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfListItem : WpfControl<CUITControls.WpfListItem>
     {
-        public WpfListItem() { }
-        public WpfListItem(string searchParameters) : base(searchParameters) { }
+        public WpfListItem()
+        {
+        }
+
+        public WpfListItem(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string DisplayText
         {

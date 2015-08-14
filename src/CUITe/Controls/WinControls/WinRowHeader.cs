@@ -7,8 +7,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRowHeader : WinControl<CUITControls.WinRowHeader>
     {
-        public WinRowHeader() { }
-        public WinRowHeader(string searchParameters) : base(searchParameters) { }
+        public WinRowHeader()
+        {
+        }
+
+        public WinRowHeader(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Selected
         {

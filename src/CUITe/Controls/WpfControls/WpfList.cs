@@ -10,8 +10,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfList : WpfControl<CUITControls.WpfList>
     {
-        public WpfList() { }
-        public WpfList(string searchParameters) : base(searchParameters) { }
+        public WpfList()
+        {
+        }
+
+        public WpfList(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool IsMultipleSelection
         {
@@ -25,7 +31,7 @@ namespace CUITe.Controls.WpfControls
 
         public List<WpfListItem> ItemsAsCUITe
         {
-            get 
+            get
             {
                 List<WpfListItem> list = new List<WpfListItem>();
                 foreach (CUITControls.WpfListItem item in UnWrap().Items)
@@ -34,7 +40,7 @@ namespace CUITe.Controls.WpfControls
                     cuiteItem.WrapReady(item);
                     list.Add(cuiteItem);
                 }
-                return list; 
+                return list;
             }
         }
 
@@ -64,14 +70,19 @@ namespace CUITe.Controls.WpfControls
         public int SelectedIndex
         {
             get { return (UnWrap().SelectedIndices.Length > 0 ? UnWrap().SelectedIndices[0] : -1); }
-            set { UnWrap().SelectedIndices = new[] { value }; }
+            set
+            {
+                UnWrap().SelectedIndices = new[] { value };
+            }
         }
 
         public string SelectedItem
         {
             get { return (UnWrap().SelectedIndices.Length > 0 ? UnWrap().SelectedItems[0] : null); }
-            set { UnWrap().SelectedItems = new[] { value }; }
+            set
+            {
+                UnWrap().SelectedItems = new[] { value };
+            }
         }
-
     }
 }

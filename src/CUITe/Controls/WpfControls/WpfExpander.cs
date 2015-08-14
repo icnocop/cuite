@@ -7,8 +7,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfExpander : WpfControl<CUITControls.WpfExpander>
     {
-        public WpfExpander() { }
-        public WpfExpander(string searchParameters) : base(searchParameters) { }
+        public WpfExpander()
+        {
+        }
+
+        public WpfExpander(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Expanded
         {

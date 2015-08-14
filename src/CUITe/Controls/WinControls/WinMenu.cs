@@ -10,8 +10,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenu : WinControl<CUITControls.WinMenu>
     {
-        public WinMenu() { }
-        public WinMenu(string searchParameters) : base(searchParameters) { }
+        public WinMenu()
+        {
+        }
+
+        public WinMenu(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public UITestControlCollection Items
         {

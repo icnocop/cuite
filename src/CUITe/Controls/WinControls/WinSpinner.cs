@@ -7,8 +7,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSpinner : WinControl<CUITControls.WinSpinner>
     {
-        public WinSpinner() { }
-        public WinSpinner(string searchParameters) : base(searchParameters) { }
+        public WinSpinner()
+        {
+        }
+
+        public WinSpinner(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int MaximumValue
         {

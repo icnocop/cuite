@@ -10,8 +10,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinComboBox : WinControl<CUITControls.WinComboBox>
     {
-        public WinComboBox() { }
-        public WinComboBox(string searchParameters) : base(searchParameters) { }
+        public WinComboBox()
+        {
+        }
+
+        public WinComboBox(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public string EditableItem
         {
@@ -51,6 +57,5 @@ namespace CUITe.Controls.WinControls
             get { return UnWrap().SelectedItem; }
             set { UnWrap().SelectedItem = value; }
         }
-
     }
 }

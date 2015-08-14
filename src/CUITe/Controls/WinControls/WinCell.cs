@@ -7,15 +7,21 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCell : WinControl<CUITControls.WinCell>
     {
-        public WinCell() { }
-        public WinCell(string searchParameters) : base(searchParameters) { }
+        public WinCell()
+        {
+        }
+
+        public WinCell(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool Checked
         {
             get { return UnWrap().Checked; }
             set { UnWrap().Checked = value; }
         }
-        
+
         public int ColumnIndex
         {
             get { return UnWrap().ColumnIndex; }
@@ -42,6 +48,5 @@ namespace CUITe.Controls.WinControls
             get { return UnWrap().Value; }
             set { UnWrap().Value = value; }
         }
-
     }
 }

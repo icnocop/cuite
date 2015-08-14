@@ -9,8 +9,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
-        public SilverlightTable() { }
-        public SilverlightTable(string searchParameters) : base(searchParameters) { }
+        public SilverlightTable()
+        {
+        }
+
+        public SilverlightTable(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public int RowCount
         {
@@ -97,7 +103,8 @@ namespace CUITe.Controls.SilverlightControls
                         }
                     }
                 }
-                if (iRow > -1) break;
+                if (iRow > -1)
+                    break;
             }
             return iRow;
         }
@@ -106,7 +113,8 @@ namespace CUITe.Controls.SilverlightControls
         {
             string sResult = "";
             CUITControls.SilverlightCell _SlCell = GetCell(iRow, iCol);
-            if (_SlCell != null) sResult = _SlCell.Value;
+            if (_SlCell != null)
+                sResult = _SlCell.Value;
             return sResult;
         }
 

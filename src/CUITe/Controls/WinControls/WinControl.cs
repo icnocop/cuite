@@ -9,8 +9,14 @@ namespace CUITe.Controls.WinControls
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
     public class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
-        public WinControl() { }
-        public WinControl(string searchParameters) : base(searchParameters) { }
+        public WinControl()
+        {
+        }
+
+        public WinControl(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.
@@ -20,9 +26,9 @@ namespace CUITe.Controls.WinControls
             get
             {
                 _control.WaitForControlReady();
-                
+
                 IControlBase ret = null;
-                
+
                 try
                 {
                     ret = WinControlFactory.Create((CUITControls.WinControl)_control.GetParent());

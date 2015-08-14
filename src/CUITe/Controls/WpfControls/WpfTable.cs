@@ -9,8 +9,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTable : WpfControl<CUITControls.WpfTable>
     {
-        public WpfTable() { }
-        public WpfTable(string searchParameters) : base(searchParameters) { }
+        public WpfTable()
+        {
+        }
+
+        public WpfTable(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public bool CanSelectMultiple
         {
@@ -76,6 +82,5 @@ namespace CUITe.Controls.WpfControls
                 return list;
             }
         }
-
     }
 }

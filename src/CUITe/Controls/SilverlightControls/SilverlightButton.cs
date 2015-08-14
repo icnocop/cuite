@@ -8,8 +8,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightButton : SilverlightControl<CUITControls.SilverlightButton>
     {
-        public SilverlightButton() { }
-        public SilverlightButton(string searchParameters) : base(searchParameters) { }
+        public SilverlightButton()
+        {
+        }
+
+        public SilverlightButton(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         /// <summary>
         /// Gets the text displayed on the Silverlight Button.
@@ -24,4 +30,5 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
+
 #endif

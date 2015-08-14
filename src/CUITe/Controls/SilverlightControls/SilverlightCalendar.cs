@@ -10,8 +10,14 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
-        public SilverlightCalendar() { }
-        public SilverlightCalendar(string searchParameters) : base(searchParameters) { }
+        public SilverlightCalendar()
+        {
+        }
+
+        public SilverlightCalendar(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public SelectionRange SelectedDateRange
         {
@@ -42,7 +48,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public DateTime[] SelectedDates
         {
-            get 
+            get
             {
                 _control.WaitForControlReady();
                 return _control.SelectedDates;

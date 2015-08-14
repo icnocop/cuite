@@ -4,8 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTextArea : HtmlControl<CUITControls.HtmlTextArea>
     {
-        public HtmlTextArea() { }
-        public HtmlTextArea(string searchParameters) : base(searchParameters) { }
+        public HtmlTextArea()
+        {
+        }
+
+        public HtmlTextArea(string searchParameters)
+            : base(searchParameters)
+        {
+        }
 
         public void SetText(string sText)
         {
@@ -15,10 +21,10 @@ namespace CUITe.Controls.HtmlControls
 
         public string Text
         {
-            get 
+            get
             {
                 _control.WaitForControlReady();
-                return _control.Text; 
+                return _control.Text;
             }
         }
 
