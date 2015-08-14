@@ -24,7 +24,7 @@ namespace Sample_CUITeTestProject
     [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
     public class HtmlControlTests
     {
-        private string CurrentDirectory = Directory.GetCurrentDirectory();
+        private readonly string currentDirectory = Directory.GetCurrentDirectory();
 
         private TestContext testContextInstance;
 
@@ -136,7 +136,7 @@ namespace Sample_CUITeTestProject
             //TODO: use known html
             try
             {
-                GoogleHomePageWithInvalidControlSearchProperties pgGHome = BrowserWindowUnderTest.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
+                BrowserWindowUnderTest.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
 
                 Assert.Fail("InvalidSearchKeyException not thrown");
             }
@@ -209,7 +209,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_GetColumnHeaders_Succeeds()
         {
-            BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+            BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
             string[] saExpectedValues = { "Header1", "Header2", "Header3" };
@@ -303,7 +303,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_ColumnCount_Succeeds()
         {
-            BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+            BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
             Assert.AreEqual(3, tbl.ColumnCount);
@@ -313,7 +313,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_ClickOnColumnHeader_Succeeds()
         {
-            BrowserWindow.Launch(CurrentDirectory + "/TestHtmlPage.html");
+            BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
             var tbl = bWin.Get<HtmlTable>("id=tableWithAlertOnHeaderClick");
             tbl.FindHeaderAndClick(0, 0);
@@ -325,7 +325,7 @@ namespace Sample_CUITeTestProject
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithHeaders");
             tbl.FindRowAndClick(2, "9", HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(3, 2).Trim());
@@ -336,7 +336,7 @@ namespace Sample_CUITeTestProject
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithoutRowHeaders_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var tbl = bWin.Get<HtmlTable>("id=calcWithOutHeaders");
             tbl.FindRowAndClick(2, "9", HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(2, 2).Trim());
@@ -346,7 +346,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlTable_GetCellValueWithHeaderCell_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
 
             var termTable = bWin.Get<HtmlTable>("Id=calcWithHeaderCells");
 
@@ -526,7 +526,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlControl_GetChildren_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var div = bWin.Get<HtmlDiv>("id=calculatorContainer1");
             var col = div.GetChildren();
             Assert.IsTrue(col[0].GetBaseType().Name == "HtmlDiv");
@@ -540,7 +540,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlParagraph_InnertText_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             Assert.IsTrue(bWin.Get<HtmlParagraph>("Id=para1").InnerText.Contains("HtmlParagraph"));
             bWin.Close();
         }
@@ -613,7 +613,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlParagraph_InObjectRepository_Succeeds()
         {
-            var testpage = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            var testpage = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
             string content = testpage.p.InnerText;
             Assert.IsTrue(content.Contains("HtmlParagraph"));
             testpage.Close();
@@ -622,7 +622,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlParagraph_TraverseSiblingsParentAndChildren_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var p = bWin.Get<HtmlParagraph>("Id=para1");
             Assert.IsTrue(((HtmlEdit)p.PreviousSibling).UnWrap().Name == "text1_test");
             Assert.IsTrue(((HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
@@ -636,7 +636,7 @@ namespace Sample_CUITeTestProject
         [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
             bWin.Get<HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
         }
@@ -646,7 +646,7 @@ namespace Sample_CUITeTestProject
         [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
         public void HtmlInputButton_ClickInCUITeIFrame_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/iframe_test.html", "iframe Test Main");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
             HtmlIFrame iFrame = bWin.Get<HtmlIFrame>();
             iFrame.Get<HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
@@ -711,7 +711,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlUnorderedList_WithListItems_CanAssertOnListItems()
         {
-            var bWin = BrowserWindowUnderTest.Launch(CurrentDirectory + "/TestHtmlPage.html", "A Test");
+            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
 
             var list = bWin.Get<HtmlUnorderedList>("id=unorderedList");
 
@@ -729,7 +729,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
         {
-            TestHtmlPage bWin = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            TestHtmlPage bWin = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             List<HtmlListItem> children = (from i in bWin.list.GetChildren()
                                                  select i as HtmlListItem).ToList();

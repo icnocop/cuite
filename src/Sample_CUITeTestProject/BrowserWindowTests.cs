@@ -15,7 +15,7 @@ namespace Sample_CUITeTestProject
     [DeploymentItem(@"Sample_CUITeTestProject\DynamicBrowserWindowTitle.2.html")]
     public class BrowserWindowTests
     {
-        private string CurrentDirectory = Directory.GetCurrentDirectory();
+        private readonly string currentDirectory = Directory.GetCurrentDirectory();
 
         [TestMethod]
         public void FromProcess_GetWindowTitle_Succeeds()
@@ -45,7 +45,7 @@ namespace Sample_CUITeTestProject
         public void Launch_GetWindowTitle_Succeeds()
         {
             //Arrange
-            string url = CurrentDirectory + "/TestHtmlPage.html";
+            string url = currentDirectory + "/TestHtmlPage.html";
             string windowTitle = "A Test";
 
             //Act
@@ -78,7 +78,7 @@ namespace Sample_CUITeTestProject
             string page1GenericWindowTitle = "window title 1";
 
             //Arrange
-            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
+            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(currentDirectory + "/DynamicBrowserWindowTitle.html");
 
             home.btnGoToPage1.Click();
 
@@ -100,7 +100,7 @@ namespace Sample_CUITeTestProject
             string page2DynamicGenericWindowTitle = "the window title changed";
             string homePageGenericWindowTitle = "Clicking the buttons changes the window title";
 
-            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(CurrentDirectory + "/DynamicBrowserWindowTitle.html");
+            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(currentDirectory + "/DynamicBrowserWindowTitle.html");
 
             home.btnGoToPage2.Click();
 
@@ -128,7 +128,7 @@ namespace Sample_CUITeTestProject
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
             //Arrange
-            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             //Act
             var doc = window.Get<HtmlDocument>();
@@ -144,7 +144,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void CloseBrowserWindow_UsingLaunchedBrowserWindow_Succeeds()
         {
-            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(CurrentDirectory + "/TestHtmlPage.html");
+            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             window.Close();
         }

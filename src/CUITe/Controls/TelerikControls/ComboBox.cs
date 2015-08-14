@@ -6,7 +6,7 @@ namespace CUITe.Controls.TelerikControls
 {
     public class ComboBox : HtmlControl<CUITControls.HtmlDiv>
     {
-        private string id;
+        private readonly string id;
         private BrowserWindowUnderTest _window;
 
         public ComboBox()

@@ -215,7 +215,6 @@ namespace CUITe.Controls.HtmlControls
             }
             else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
             {
-                var baseControl = Activator.CreateInstance(control.GetBaseType(), SlObjectContainer);
                 (control as ComboBox).SetWindow(this);
             }
             else

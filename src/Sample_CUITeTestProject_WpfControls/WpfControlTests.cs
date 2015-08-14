@@ -20,10 +20,10 @@ namespace Sample_CUITeTestProject_WpfControls
 #endif
     public class WpfControlTests
     {
+        private static readonly string TestProcess = "ControlTemplateExamples";
+        private readonly WinWpfControls mainWindow = new WinWpfControls();
         private TestContext testContextInstance;
-        private static string testProcess = "ControlTemplateExamples";
         private ApplicationUnderTest testApp;
-        private WinWpfControls mainWindow = new WinWpfControls();
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -48,7 +48,7 @@ namespace Sample_CUITeTestProject_WpfControls
             Playback.Initialize();
             try
             {
-                Process[] processes = Process.GetProcessesByName(testProcess);
+                Process[] processes = Process.GetProcessesByName(TestProcess);
 
                 foreach (Process process in processes)
                 {
@@ -65,9 +65,9 @@ namespace Sample_CUITeTestProject_WpfControls
         [TestInitialize]
         public void TestInitialize()
         {
-            if (Process.GetProcessesByName(testProcess).Length == 0)
+            if (Process.GetProcessesByName(TestProcess).Length == 0)
             {
-                testApp = ApplicationUnderTest.Launch(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, testProcess + ".exe"));
+                testApp = ApplicationUnderTest.Launch(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestProcess + ".exe"));
             }
         }
 
