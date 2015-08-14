@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Reflection;
 using System.Windows.Xps.Packaging;
 
@@ -10,8 +11,12 @@ namespace CUITe.ApplicationUnderTest.Wpf.Controls
         {
             InitializeComponent();
 
-            var document = new XpsDocument(DocumentPath, FileAccess.Read);
-            documentViewer.Document = document.GetFixedDocumentSequence();
+            // Prevent Visual Studio from trying to load the document in designer mode
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                var document = new XpsDocument(DocumentPath, FileAccess.Read);
+                documentViewer.Document = document.GetFixedDocumentSequence();    
+            }
         }
 
         private static string DocumentPath
