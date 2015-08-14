@@ -15,7 +15,7 @@
     </UserControl.Resources>
     
     <DataGrid
-        x:Name="personDataGrid"
+        ItemsSource="{Binding Source={x:Static local:Mocked.Persons}}"
         AutoGenerateColumns="False"
         Style="{DynamicResource DefaultControlStyle}">
         <DataGrid.Columns>
@@ -23,8 +23,8 @@
                 Header="Name"
                 Binding="{Binding Name}" />
             <DataGridCheckBoxColumn
-                Header="Prospect"
-                Binding="{Binding IsProspect}" />
+                Header="Customer"
+                Binding="{Binding IsCustomer}" />
             <DataGridComboBoxColumn
                 Header="Gender"
                 SelectedItemBinding="{Binding Gender}"

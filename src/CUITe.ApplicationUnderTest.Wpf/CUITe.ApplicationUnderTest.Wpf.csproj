@@ -144,6 +144,7 @@
     <Compile Include="Controls\FrameControl.xaml.cs">
       <DependentUpon>FrameControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Gender.cs" />
     <Compile Include="Controls\GroupBoxControl.xaml.cs">
       <DependentUpon>GroupBoxControl.xaml</DependentUpon>
     </Compile>
@@ -156,6 +157,8 @@
     <Compile Include="Controls\ListBoxControl.xaml.cs">
       <DependentUpon>ListBoxControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Mocked.cs" />
+    <Compile Include="Controls\Person.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
