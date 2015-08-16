@@ -5,3 +5,5 @@
 - ToolTip
 - WpfWindow
 - ContextMenu
+- Passwordbox
+- RichTextBox
