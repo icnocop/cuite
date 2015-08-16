@@ -71,67 +71,94 @@
             Grid.Row="1"
             Grid.Column="3" />
 
-        <!-- Image -->
-        <controls:ImageControl
+        <!-- Hyperlink -->
+        <controls:HyperlinkControl
             Grid.Row="1"
             Grid.Column="4" />
 
-        <!-- Label -->
-        <controls:LabelControl
+        <!-- Image -->
+        <controls:ImageControl
             Grid.Row="1"
             Grid.Column="5" />
 
+        <!-- Label -->
+        <controls:LabelControl Grid.Row="2" />
+
         <!-- List box -->
-        <controls:ListBoxControl Grid.Row="2" />
+        <controls:ListBoxControl
+            Grid.Row="2"
+            Grid.Column="1" />
 
         <!-- List view -->
         <controls:ListViewControl
             Grid.Row="2"
-            Grid.Column="1" />
+            Grid.Column="2" />
 
         <!-- Menu -->
         <controls:MenuControl
             Grid.Row="2"
-            Grid.Column="2" />
+            Grid.Column="3" />
 
         <!-- Progress bar -->
         <controls:ProgressBarControl
             Grid.Row="2"
-            Grid.Column="3" />
+            Grid.Column="4" />
 
         <!-- Radio button -->
         <controls:RadioButtonControl
             Grid.Row="2"
-            Grid.Column="4" />
-
-        <!-- Scroll bar -->
-        <controls:ScrollBarControl
-            Grid.Row="2"
             Grid.Column="5" />
 
-        <ScrollViewer Grid.Row="3" />
+        <!-- Scroll bar -->
+        <controls:ScrollBarControl  Grid.Row="3" />
 
-        <Separator Grid.Row="3" Grid.Column="1" />
+        <!-- Scroll viewer -->
+        <controls:ScrollViewerControl
+            Grid.Row="3"
+            Grid.Column="1" />
+        
+        <!-- Separator -->
+        <controls:SeparatorControl
+            Grid.Row="3"
+            Grid.Column="2" />
 
-        <Slider Grid.Row="3" Grid.Column="2" />
+        <!-- Slider -->
+        <controls:SliderControl
+            Grid.Row="3"
+            Grid.Column="3" />
 
-        <StatusBar Grid.Row="3" Grid.Column="3" />
+        <!-- Status bar -->
+        <controls:StatusBarControl
+            Grid.Row="3"
+            Grid.Column="4" />
 
-        <TabControl Grid.Row="3" Grid.Column="4" />
+        <!-- Tab control -->
+        <controls:TabControlControl
+            Grid.Row="3"
+            Grid.Column="5" />
 
-        <TextBlock Grid.Row="3" Grid.Column="5" />
+        <!-- Text block -->
+        <controls:TextBlockControl Grid.Row="4" />
 
-        <TextBlock Grid.Row="4">           
-            <Hyperlink />
-        </TextBlock>
+        <!-- Text box -->
+        <controls:TextBoxControl
+            Grid.Row="4"
+            Grid.Column="1" />
 
-        <TextBox Grid.Row="4" Grid.Column="1" />
+        <!-- Toggle button -->
+        <controls:ToggleButtonControl
+            Grid.Row="4"
+            Grid.Column="2" />
 
-        <ToggleButton Grid.Row="4" Grid.Column="2" />
+        <!-- Tool bar -->
+        <controls:ToolBarControl
+            Grid.Row="4"
+            Grid.Column="3" />
 
-        <ToolBar Grid.Row="4" Grid.Column="3" />
-
-        <TreeView Grid.Row="4" Grid.Column="4" />
+        <!-- Tree view -->
+        <controls:TreeViewControl
+            Grid.Row="4"
+            Grid.Column="4" />
 
     </Grid>
 </Window>

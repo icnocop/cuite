@@ -6,7 +6,7 @@
     <GroupBox
         Header="Group box"
         Style="{DynamicResource DefaultControlStyle}">
-        <TextBlock Text="This is a text." />
+        <TextBlock Text="This is a text" />
     </GroupBox>
     
 </UserControl>

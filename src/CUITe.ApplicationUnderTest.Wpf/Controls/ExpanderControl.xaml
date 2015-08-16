@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Expander
-        Width="100"
+        IsExpanded="True"
         Style="{DynamicResource DefaultControlStyle}">
-        <TextBlock Text="This is a text." />
+        <TextBlock Text="This is a text" />
     </Expander>
     
 </UserControl>

@@ -1,0 +1,12 @@
+﻿<UserControl
+    x:Class="CUITe.ApplicationUnderTest.Wpf.Controls.HyperlinkControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <TextBlock Style="{DynamicResource DefaultControlStyle}">
+        <Hyperlink>
+            This is a hyperlink
+         </Hyperlink>
+    </TextBlock>
+    
+</UserControl>

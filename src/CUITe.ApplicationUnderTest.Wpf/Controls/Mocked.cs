@@ -6,7 +6,7 @@ namespace CUITe.ApplicationUnderTest.Wpf.Controls
     public static class Mocked
     {
         private static readonly Lazy<ObservableCollection<Person>> LazyPersons;
-
+        
         static Mocked()
         {
             LazyPersons = new Lazy<ObservableCollection<Person>>(
