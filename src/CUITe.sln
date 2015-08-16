@@ -46,7 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298
 		CUITe\CUITe.VS2013.nuspec = CUITe\CUITe.VS2013.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe.ApplicationUnderTest.Wpf", "CUITe.ApplicationUnderTest.Wpf\CUITe.ApplicationUnderTest.Wpf.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationUnderTest.Wpf.Controls", "ApplicationUnderTest.Wpf.Controls\ApplicationUnderTest.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
