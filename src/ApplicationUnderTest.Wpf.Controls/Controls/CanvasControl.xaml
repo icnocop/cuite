@@ -1,0 +1,12 @@
+﻿<UserControl
+    x:Class="ApplicationUnderTest.Wpf.Controls.Controls.CanvasControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Canvas
+        Width="50"
+        Height="50"
+        Background="LightGray"
+        Style="{DynamicResource DefaultControlStyle}" />
+    
+</UserControl>
