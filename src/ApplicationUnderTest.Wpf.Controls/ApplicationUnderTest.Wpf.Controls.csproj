@@ -118,11 +118,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\PasswordBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ProgressBarControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\RadioButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RichTextBoxControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,12 +239,18 @@
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Mocked.cs" />
+    <Compile Include="Controls\PasswordBoxControl.xaml.cs">
+      <DependentUpon>PasswordBoxControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Person.cs" />
     <Compile Include="Controls\ProgressBarControl.xaml.cs">
       <DependentUpon>ProgressBarControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RadioButtonControl.xaml.cs">
       <DependentUpon>RadioButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RichTextBoxControl.xaml.cs">
+      <DependentUpon>RichTextBoxControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ScrollBarControl.xaml.cs">
       <DependentUpon>ScrollBarControl.xaml</DependentUpon>
