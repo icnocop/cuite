@@ -228,6 +228,15 @@ namespace CUITe.Controls
         }
 
         /// <summary>
+        /// Wraps WaitForControlReady and Hover methods for a UITestControl.
+        /// </summary>
+        public void Hover()
+        {
+            this._control.WaitForControlReady();
+            Mouse.Hover(this._control);
+        }
+
+        /// <summary>
         /// Wraps WaitForControlReady method and Enabled property for a UITestControl.
         /// </summary>
         public bool Enabled

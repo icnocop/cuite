@@ -1,6 +1,7 @@
 ﻿#if SILVERLIGHT_SUPPORT
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
+using System;
 
 namespace CUITe.Controls.SilverlightControls
 {
@@ -155,6 +156,37 @@ namespace CUITe.Controls.SilverlightControls
             retObj.WrapReady(_checkbox);
             return retObj;
         }
+
+        public String GetTableCellContent_Text(int iRow, int iCol)
+        {
+            return this.GetCell(iRow, iCol).GetProperty("Value").ToString();
+        }
+
+
+        public string GetTableCellContent_Hyperlink(int iRow, int iCol)
+        {
+            return this.GetCell(iRow, iCol).GetPropertyAsString("Text");
+        }
+
+
+        public String GetCellValueRowColBased(int iRow, int iCol)
+        {
+            this._control.WaitForControlReady();
+            SilverlightRow row = this._control.Rows[iRow] as SilverlightRow;
+            if (row == null)
+                return null;
+            SilverlightCell cell = row.Cells[iCol] as SilverlightCell;
+            if (cell == null)
+                return null;
+            //foreach (SilverlightControl ctrl in cell.GetChildren())
+            //{
+            //    if (ctrl.ControlType == ControlType.Hyperlink)
+            //        return ctrl;
+            //}
+            return cell.Value.ToString();
+        }
+
+      
     }
 }
 #endif
