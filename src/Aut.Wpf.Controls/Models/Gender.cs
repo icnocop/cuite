@@ -1,4 +1,4 @@
-﻿namespace Aut.Wpf.Controls.Controls
+﻿namespace Aut.Wpf.Controls.Models
 {
     public enum Gender
     {

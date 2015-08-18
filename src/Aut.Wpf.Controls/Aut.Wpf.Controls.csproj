@@ -221,7 +221,7 @@
     <Compile Include="Controls\FrameControl.xaml.cs">
       <DependentUpon>FrameControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Gender.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Controls\GroupBoxControl.xaml.cs">
       <DependentUpon>GroupBoxControl.xaml</DependentUpon>
     </Compile>
@@ -243,11 +243,11 @@
     <Compile Include="Controls\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Mocked.cs" />
+    <Compile Include="Models\Mocked.cs" />
     <Compile Include="Controls\PasswordBoxControl.xaml.cs">
       <DependentUpon>PasswordBoxControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Person.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Controls\ProgressBarControl.xaml.cs">
       <DependentUpon>ProgressBarControl.xaml</DependentUpon>
     </Compile>
@@ -318,6 +318,7 @@
   <ItemGroup>
     <Resource Include="App.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Aut.Wpf.Controls.Controls
+namespace Aut.Wpf.Controls.Models
 {
     public class Person : INotifyPropertyChanged
     {

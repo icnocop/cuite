@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace Aut.Wpf.Controls.Controls
+namespace Aut.Wpf.Controls.Models
 {
     public static class Mocked
     {
