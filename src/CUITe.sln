@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.Wpf.Controls", "Aut.Wpf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.Wpf.ControlsTest", "Aut.Wpf.ControlsTest\Aut.Wpf.ControlsTest.csproj", "{AF645712-A7CA-4D8C-8684-FFF737CD0701}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.WinForms.Controls", "Aut.WinForms.Controls\Aut.WinForms.Controls.csproj", "{A987CABE-0533-4E26-9418-D5B4B8E15B16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,16 @@ Global
 		{AF645712-A7CA-4D8C-8684-FFF737CD0701}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AF645712-A7CA-4D8C-8684-FFF737CD0701}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AF645712-A7CA-4D8C-8684-FFF737CD0701}.Release|x86.ActiveCfg = Release|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
