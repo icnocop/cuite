@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
+using System.Windows.Input;
 using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -120,7 +122,7 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Wraps WaitForControlReady and Click methods for a UITestControl.
+        /// Waits for the control to be ready and then clicks the default mouse button.
         /// </summary>
         public void Click()
         {
@@ -129,12 +131,62 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Wraps WaitForControlReady and DoubleClick methods for a UITestControl.
+        /// Waits for the control to be ready and then clicks the specified mouse button.
+        /// </summary>
+        /// <param name="button">
+        /// The <see cref="MouseButtons"/> that will be used for clicking.
+        /// </param>
+        public void Click(MouseButtons button)
+        {
+            SourceControl.WaitForControlReady();
+            Mouse.Click(SourceControl, button);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then clicks the default mouse button while
+        /// holding the specified modifier keys.
+        /// </summary>
+        /// <param name="modifierKeys">
+        /// <see cref="ModifierKeys"/> to be pressed while clicking.
+        /// </param>
+        public void Click(ModifierKeys modifierKeys)
+        {
+            SourceControl.WaitForControlReady();
+            Mouse.Click(SourceControl, modifierKeys);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then double-clicks the default mouse button.
         /// </summary>
         public void DoubleClick()
         {
             SourceControl.WaitForControlReady();
             Mouse.DoubleClick(SourceControl);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then double-clicks the specified mouse button.
+        /// </summary>
+        /// <param name="button">
+        /// The <see cref="MouseButtons"/> that will be used for double-clicking.
+        /// </param>
+        public void DoubleClick(MouseButtons button)
+        {
+            SourceControl.WaitForControlReady();
+            Mouse.DoubleClick(SourceControl, button);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then double-clicks the default mouse button while
+        /// holding the specified modifier keys.
+        /// </summary>
+        /// <param name="modifierKeys">
+        /// <see cref="ModifierKeys"/> that will be used for double-clicking.
+        /// </param>
+        public void DoubleClick(ModifierKeys modifierKeys)
+        {
+            SourceControl.WaitForControlReady();
+            Mouse.Click(SourceControl, modifierKeys);
         }
 
         /// <summary>
