@@ -5,7 +5,9 @@ namespace Aut.Wpf.ControlsTest.ScreenObjects
     public class MainScreen : WpfWindow
     {
         public MainScreen()
-            : base("Name=Application Under Test (WPF)") { }
+            : base("Name=Application Under Test (WPF)")
+        {
+        }
 
         public WpfButton Button
         {
@@ -41,7 +43,7 @@ namespace Aut.Wpf.ControlsTest.ScreenObjects
         {
             get { return Get<WpfDatePicker>("AutomationID=_xTenYVlIUanYa3k9E_jFA"); }
         }
-        
+
         public WpfExpander Expander
         {
             get { return Get<WpfExpander>("AutomationID=RiELOT_TSE2kbTcomKC5fg"); }
