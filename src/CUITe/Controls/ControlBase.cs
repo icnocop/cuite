@@ -122,21 +122,12 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Waits for the control to be ready and then clicks the default mouse button.
-        /// </summary>
-        public void Click()
-        {
-            SourceControl.WaitForControlReady();
-            Mouse.Click(SourceControl);
-        }
-
-        /// <summary>
         /// Waits for the control to be ready and then clicks the specified mouse button.
         /// </summary>
         /// <param name="button">
         /// The <see cref="MouseButtons"/> that will be used for clicking.
         /// </param>
-        public void Click(MouseButtons button)
+        public void Click(MouseButtons button = MouseButtons.Left)
         {
             SourceControl.WaitForControlReady();
             Mouse.Click(SourceControl, button);
@@ -156,21 +147,12 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Waits for the control to be ready and then double-clicks the default mouse button.
-        /// </summary>
-        public void DoubleClick()
-        {
-            SourceControl.WaitForControlReady();
-            Mouse.DoubleClick(SourceControl);
-        }
-
-        /// <summary>
         /// Waits for the control to be ready and then double-clicks the specified mouse button.
         /// </summary>
         /// <param name="button">
         /// The <see cref="MouseButtons"/> that will be used for double-clicking.
         /// </param>
-        public void DoubleClick(MouseButtons button)
+        public void DoubleClick(MouseButtons button = MouseButtons.Left)
         {
             SourceControl.WaitForControlReady();
             Mouse.DoubleClick(SourceControl, button);
@@ -186,7 +168,74 @@ namespace CUITe.Controls
         public void DoubleClick(ModifierKeys modifierKeys)
         {
             SourceControl.WaitForControlReady();
-            Mouse.Click(SourceControl, modifierKeys);
+            Mouse.DoubleClick(SourceControl, modifierKeys);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then presses the specified modifier keys without
+        /// releasing them.
+        /// </summary>
+        /// <param name="keys">
+        /// The sum of one or more values of the <see cref="ModifierKeys"/> enumeration.
+        /// </param>
+        /// <remarks>
+        /// Modifier keys that have been pressed must be explicitly released by using the
+        /// <see cref="ReleaseModifierKeys"/>.
+        /// </remarks>
+        public void PressModifierKeys(ModifierKeys keys)
+        {
+            SourceControl.WaitForControlReady();
+            Keyboard.PressModifierKeys(SourceControl, keys);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then releases the specified keys that were
+        /// previously pressed by using the <see cref="PressModifierKeys"/> method.
+        /// </summary>
+        /// <param name="keys">
+        /// The sum of one or more values of the <see cref="ModifierKeys"/> enumeration.
+        /// </param>
+        public void ReleaseModifierKeys(ModifierKeys keys)
+        {
+            SourceControl.WaitForControlReady();
+            Keyboard.ReleaseModifierKeys(SourceControl, keys);
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready and then sends keystrokes to generate the specified
+        /// text string.
+        /// </summary>
+        /// <param name="text">The text for which to generate keystrokes.</param>
+        /// <param name="modifierKeys">
+        /// The sum of one or more values of the <see cref="ModifierKeys"/> enumeration.
+        /// </param>
+        /// <param name="isEncoded">true if the text is encoded; otherwise, false.</param>
+        /// <param name="isUnicode">true if the text is Unicode text; otherwise, false.</param>
+        /// <remarks>
+        /// The string may contain key modifiers.
+        /// 
+        /// Control     ^
+        /// Shift       +
+        /// Alt         %
+        /// Windows     #
+        /// 
+        /// To send a Control+A keyboard sequence, use <code>SendKeys("^a")</code>.
+        /// 
+        /// To send a character that represents a key modifier, enclose the character in a pair of
+        /// braces. For example, to send a plus sign, use <code>SendKeys("{+}")</code>.
+        /// 
+        /// To send a brace, enclose the brace in a pair of braces. For example, to send an opening
+        /// or closing brace, use <code>SendKeys("{{}")</code> or <code>SendKeys("{}}")</code>,
+        /// respectively.
+        /// </remarks>
+        public void SendKeys(
+            string text,
+            ModifierKeys modifierKeys = ModifierKeys.None,
+            bool isEncoded = false,
+            bool isUnicode = true)
+        {
+            SourceControl.WaitForControlReady();
+            Keyboard.SendKeys(SourceControl, text);
         }
 
         /// <summary>
