@@ -84,6 +84,22 @@ namespace CUITe.Controls
         void ReleaseModifierKeys(ModifierKeys keys);
 
         /// <summary>
+        /// Waits for the control to be ready and then holds the specified modifier keys until
+        /// the returned instance is disposed.
+        /// </summary>
+        /// <param name="keys">
+        /// The sum of one or more values of the <see cref="ModifierKeys"/> enumeration.
+        /// </param>
+        /// <returns>
+        /// An instance that releases the modifier keys when disposed.
+        /// </returns>
+        /// <remarks>
+        /// This method is an alternative to using <see cref="PressModifierKeys"/> and
+        /// <see cref="ReleaseModifierKeys"/>.
+        /// </remarks>
+        IDisposable HoldModifierKeys(ModifierKeys keys);
+
+        /// <summary>
         /// Waits for the control to be ready and then sends keystrokes to generate the specified
         /// text string.
         /// </summary>

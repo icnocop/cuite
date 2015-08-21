@@ -33,8 +33,6 @@ namespace Aut.PeripheralInputTest
             mainScreen = new MainScreen();
         }
 
-        #region Send keys
-
         [TestMethod]
         public void SendText()
         {
@@ -79,6 +77,40 @@ namespace Aut.PeripheralInputTest
             Assert.AreEqual(expected, mainScreen.KeyboardResult.Text);
         }
 
-        #endregion
+
+        [TestMethod]
+        public void HoldModifierKeys()
+        {
+            // Arrange
+            string input = "cuite keyboard test";
+            string expected = "CUITE KEYBOARD TEST";
+
+            // Act
+            using (mainScreen.KeyboardResult.HoldModifierKeys(ModifierKeys.Shift))
+            {
+                mainScreen.KeyboardResult.SendKeys(input);
+            }
+
+            // Assert
+            Assert.AreEqual(expected, mainScreen.KeyboardResult.Text);
+        }
+
+        [TestMethod]
+        public void SendTextAfterHoldingModifierKeys()
+        {
+            // Arrange
+            string input = "CUITe keyboard test";
+            string expected = input;
+
+            using (mainScreen.KeyboardResult.HoldModifierKeys(ModifierKeys.Shift))
+            {
+            }
+
+            // Act
+            mainScreen.KeyboardResult.SendKeys(input);
+
+            // Assert
+            Assert.AreEqual(expected, mainScreen.KeyboardResult.Text);
+        }
     }
 }
