@@ -171,6 +171,7 @@
     <Compile Include="Controls\HtmlControls\HtmlXml.cs" />
     <Compile Include="Controls\HtmlControls\IHtmlControl.cs" />
     <Compile Include="Controls\IControlBase.cs" />
+    <Compile Include="Controls\ModifierKeysLifetime.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightButton.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCalendar.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCell.cs" />
