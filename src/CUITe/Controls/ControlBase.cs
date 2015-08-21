@@ -235,7 +235,7 @@ namespace CUITe.Controls
             bool isUnicode = true)
         {
             SourceControl.WaitForControlReady();
-            Keyboard.SendKeys(SourceControl, text);
+            Keyboard.SendKeys(SourceControl, text, modifierKeys, isEncoded, isUnicode);
         }
 
         /// <summary>
