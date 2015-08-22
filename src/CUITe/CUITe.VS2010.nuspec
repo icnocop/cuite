@@ -3,7 +3,7 @@
   <metadata>
     <id>CUITe.VS2010</id>
     <version>$version$</version>
-    <authors>icnocop</authors>
+    <authors>$author$</authors>
     <title>CUITe for Visual Studio 2010</title>
     <language>en-US</language>
     <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/master/LICENSE</licenseUrl>
