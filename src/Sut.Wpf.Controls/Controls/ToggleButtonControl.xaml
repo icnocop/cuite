@@ -1,0 +1,11 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Controls.Controls.ToggleButtonControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ToggleButton
+        AutomationProperties.AutomationId="eZq62SNMQ0S6wq0XRcFVxQ"
+        Content="This is a toggle button"
+        Style="{DynamicResource DefaultControlStyle}" />
+    
+</UserControl>

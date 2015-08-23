@@ -41,17 +41,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298
 		CUITe\CUITe.VS2013.nuspec = CUITe\CUITe.VS2013.nuspec
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.Wpf.Controls", "Aut.Wpf.Controls\Aut.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Controls", "Sut.Wpf.Controls\Sut.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.Wpf.ControlsTest", "Aut.Wpf.ControlsTest\Aut.Wpf.ControlsTest.csproj", "{AF645712-A7CA-4D8C-8684-FFF737CD0701}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ControlsTest", "Sut.Wpf.ControlsTest\Sut.Wpf.ControlsTest.csproj", "{AF645712-A7CA-4D8C-8684-FFF737CD0701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.WinForms.Controls", "Aut.WinForms.Controls\Aut.WinForms.Controls.csproj", "{A987CABE-0533-4E26-9418-D5B4B8E15B16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Controls", "Sut.WinForms.Controls\Sut.WinForms.Controls.csproj", "{A987CABE-0533-4E26-9418-D5B4B8E15B16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.WinForms.ControlsTest", "Aut.WinForms.ControlsTest\Aut.WinForms.ControlsTest.csproj", "{7C86AD84-3EE2-4932-9C1C-F57BFFD0EFFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ControlsTest", "Sut.WinForms.ControlsTest\Sut.WinForms.ControlsTest.csproj", "{7C86AD84-3EE2-4932-9C1C-F57BFFD0EFFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.PeripheralInput", "Aut.PeripheralInput\Aut.PeripheralInput.csproj", "{74419630-9433-4DD4-99FB-80B7A0E8977A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInput", "Sut.PeripheralInput\Sut.PeripheralInput.csproj", "{74419630-9433-4DD4-99FB-80B7A0E8977A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aut.PeripheralInputTest", "Aut.PeripheralInputTest\Aut.PeripheralInputTest.csproj", "{52D01CC6-6C4A-4B39-8C9B-2C6390608B04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInputTest", "Sut.PeripheralInputTest\Sut.PeripheralInputTest.csproj", "{52D01CC6-6C4A-4B39-8C9B-2C6390608B04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

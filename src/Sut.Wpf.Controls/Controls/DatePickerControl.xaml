@@ -1,0 +1,12 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Controls.Controls.DatePickerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <DatePicker
+        AutomationProperties.AutomationId="_xTenYVlIUanYa3k9E_jFA"
+        SelectedDate="{x:Static system:DateTime.Now}"
+        Style="{DynamicResource DefaultControlStyle}" />
+
+</UserControl>
