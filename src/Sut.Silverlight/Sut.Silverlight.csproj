@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestSilverlightApplication</RootNamespace>
-    <AssemblyName>TestSilverlightApplication</AssemblyName>
+    <RootNamespace>Sut.Silverlight</RootNamespace>
+    <AssemblyName>Sut.Silverlight</AssemblyName>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -19,9 +19,9 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>TestSilverlightApplication.xap</XapFilename>
-    <SilverlightManifestTemplate>..\TestSilverlightApplication\Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>TestSilverlightApplication.App</SilverlightAppEntry>
+    <XapFilename>Sut.Silverlight.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Sut.Silverlight.App</SilverlightAppEntry>
     <TestPageFileName>TestSilverlightApplication.html</TestPageFileName>
     <CreateTestPage>true</CreateTestPage>
     <ValidateXaml>true</ValidateXaml>

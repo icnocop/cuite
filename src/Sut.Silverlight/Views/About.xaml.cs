@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace TestSilverlightApplication
+namespace Sut.Silverlight
 {
-    public partial class Home : Page
+    public partial class About : Page
     {
-        public Home()
+        public About()
         {
             InitializeComponent();
         }

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace TestSilverlightApplication
+namespace Sut.Silverlight
 {
     public partial class ErrorWindow : ChildWindow
     {

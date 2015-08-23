@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace TestSilverlightApplication
+namespace Sut.Silverlight
 {
     public partial class MainPage : UserControl
     {
