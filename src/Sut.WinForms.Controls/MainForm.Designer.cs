@@ -363,7 +363,7 @@
             this.Controls.Add(this.flowLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Application Under Test (WinForms)";
+            this.Text = "System Under Test (WinForms)";
             this.flowLayoutPanel.ResumeLayout(false);
             this.flowLayoutPanel.PerformLayout();
             this.groupBox.ResumeLayout(false);
