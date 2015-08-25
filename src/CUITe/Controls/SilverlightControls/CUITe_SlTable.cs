@@ -169,6 +169,24 @@ namespace CUITe.Controls.SilverlightControls
         }
 
 
+        public void FindLinkAndClick(int iCol, string sValueToSearch, CUITe_SlTableSearchOptions option)
+        {
+            string debug = string.Empty;
+            FindLinkAndClick(iCol, sValueToSearch, option, out debug);
+        }
+
+
+
+        public void FindLinkAndClick(int iCol, string sValueToSearch, CUITe_SlTableSearchOptions option, out string debug)
+        {
+            debug = string.Empty;
+            SilverlightHyperlink link = new SilverlightHyperlink(this._control);
+            link.SearchProperties.Add(SilverlightHyperlink.PropertyNames.AutomationId, sValueToSearch);
+            debug += link.Text;
+            Mouse.Click(link);
+        }
+
+
         public String GetCellValueRowColBased(int iRow, int iCol)
         {
             this._control.WaitForControlReady();
