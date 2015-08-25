@@ -57,6 +57,7 @@ namespace Sample_CUITeTestProject
             GoogleHomePage pgGHomePage = BrowserWindowUnderTest.Launch<GoogleHomePage>("http://www.google.com");
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
             GoogleSearch pgSearch = BrowserWindowUnderTest.GetBrowserWindow<GoogleSearch>();
+// ReSharper disable once UnusedVariable
             UITestControlCollection col = pgSearch.divSearchResults.UnWrap().GetChildren();
             //do something with collection
             pgSearch.Close();
