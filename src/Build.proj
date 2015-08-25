@@ -3,13 +3,13 @@
 
   <!-- Properties -->
   <PropertyGroup>
-    <CurrentDirectory>$(MSBuildProjectDirectory)</CurrentDirectory>
-    <CvsRootPath>$(CurrentDirectory)\..</CvsRootPath>
-    <SolutionPath>$(CurrentDirectory)\CUITe.sln</SolutionPath>
-    <ProjectDir>$(CurrentDirectory)\CUITe</ProjectDir>
+    <CurrentDirectory>$(MSBuildProjectDirectory)\</CurrentDirectory>
+    <CvsRootPath>$(CurrentDirectory)..</CvsRootPath>
+    <SolutionPath>$(CurrentDirectory)CUITe.sln</SolutionPath>
+    <ProjectDir>$(CurrentDirectory)CUITe</ProjectDir>
     <ProjectPath>$(ProjectDir)\CUITe.csproj</ProjectPath>
     <NuGetSpecPath>$(ProjectDir)\CUITe.nuspec</NuGetSpecPath>
-    <NuGetPath>$(CurrentDirectory)\.nuget\NuGet.exe</NuGetPath>
+    <NuGetPath>$(CurrentDirectory).nuget\NuGet.exe</NuGetPath>
     <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
   </PropertyGroup>
 
@@ -69,7 +69,11 @@
 
   <!-- Runs all tests -->
   <Target Name="Test">
-    <Exec Command="&quot;$(VSTestPath)&quot; Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll Sample_CUITeTestProject_WinControls\bin\Release\Sample_CUITeTestProject_WinControls.dll Sample_CUITeTestProject_WpfControls\bin\Release\Sample_CUITeTestProject_WpfControls.dll" />
+    <ItemGroup>
+      <TestAssemblies Include="$(CurrentDirectory)**\bin\Release\*Test.dll" />
+    </ItemGroup>
+      
+    <Exec Command="&quot;$(VSTestPath)&quot; @(TestAssemblies->'&quot;%(FullPath)&quot;', ' ') Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll" />
   </Target>
   
 </Project>
