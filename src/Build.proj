@@ -21,6 +21,7 @@
       Properties="Configuration=Release"
       Targets="Rebuild"
       BuildInParallel="true" />
+    
     <!-- VS2013 .NET40 (Silverlight not supported) -->
     <MSBuild
       Projects="$(ProjectPath)"
@@ -34,6 +35,7 @@
       Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
       Targets="Rebuild"
       BuildInParallel="true" />
+    
     <!-- VS2012 .NET40 -->
     <MSBuild
       Projects="$(ProjectPath)"
