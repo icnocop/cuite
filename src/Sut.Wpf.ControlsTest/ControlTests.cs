@@ -1,20 +1,17 @@
-﻿using System.IO;
-using Sut.Wpf.ControlsTest.ScreenObjects;
+﻿using Sut.Wpf.ControlsTest.ScreenObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Sut.Wpf.ControlsTest
 {
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.Wpf.Controls\bin\Debug")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.Wpf.Controls\bin\Release")]
-#endif
     public class ControlTests
     {
-        private const string ApplicationFileName = "Sut.Wpf.Controls.exe";
-
+#if DEBUG
+        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Controls\bin\Debug\Sut.Wpf.Controls.exe";
+#else
+        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Controls\bin\Release\Sut.Wpf.Controls.exe";
+#endif
         private MainScreen mainScreen;
 
         /// <summary>
@@ -26,9 +23,7 @@ namespace Sut.Wpf.ControlsTest
         [TestInitialize]
         public void TestInitialize()
         {
-            string applicationFilePath = Path.Combine(TestContext.DeploymentDirectory, ApplicationFileName);
-            ApplicationUnderTest.Launch(applicationFilePath);
-
+            ApplicationUnderTest.Launch(ApplicationFilePath);
             mainScreen = new MainScreen();
         }
 

@@ -75,14 +75,30 @@
     <Compile Include="TempFile.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DynamicBrowserWindowTitle.1.html" />
-    <Content Include="DynamicBrowserWindowTitle.2.html" />
-    <Content Include="DynamicBrowserWindowTitle.html" />
-    <Content Include="iframe.html" />
-    <Content Include="iframe_test.html" />
-    <Content Include="TestHtmlPage.html" />
-    <EmbeddedResource Include="XMLFile1.xml" />
-    <EmbeddedResource Include="XMLFile2.xml" />
+    <None Include="DynamicBrowserWindowTitle.1.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DynamicBrowserWindowTitle.2.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DynamicBrowserWindowTitle.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="iframe.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="iframe_test.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestHtmlPage.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="XMLFile1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMLFile2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

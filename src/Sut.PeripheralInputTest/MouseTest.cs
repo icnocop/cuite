@@ -1,22 +1,19 @@
-﻿using System.IO;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Windows.Input;
-using Sut.PeripheralInputTest.ScreenObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sut.PeripheralInputTest.ScreenObjects;
 
 namespace Sut.PeripheralInputTest
 {
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Debug")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Release")]
-#endif
     public class MouseTest
     {
-        private const string ApplicationFileName = "Sut.PeripheralInput.exe";
-
+#if DEBUG
+        private const string ApplicationFilePath = @"..\..\..\Sut.PeripheralInput\bin\Debug\Sut.PeripheralInput.exe";
+#else
+        private const string ApplicationFilePath = @"..\..\..\Sut.PeripheralInput\bin\Release\Sut.PeripheralInput.exe";
+#endif
         private MainScreen mainScreen;
 
         /// <summary>
@@ -28,9 +25,7 @@ namespace Sut.PeripheralInputTest
         [TestInitialize]
         public void TestInitialize()
         {
-            string applicationFilePath = Path.Combine(TestContext.DeploymentDirectory, ApplicationFileName);
-            ApplicationUnderTest.Launch(applicationFilePath);
-
+            ApplicationUnderTest.Launch(ApplicationFilePath);
             mainScreen = new MainScreen();
         }
 

@@ -19,9 +19,9 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace Sut.HtmlTest
 {
     [CodedUITest]
-    [DeploymentItem(@"Sut.HtmlTest\XMLFile1.xml")]
-    [DeploymentItem(@"Sut.HtmlTest\XMLFile2.xml")]
-    [DeploymentItem(@"Sut.HtmlTest\TestHtmlPage.html")]
+    [DeploymentItem("XMLFile1.xml")]
+    [DeploymentItem("XMLFile2.xml")]
+    [DeploymentItem("TestHtmlPage.html")]
     public class HtmlControlTests
     {
         private readonly string currentDirectory = Directory.GetCurrentDirectory();
@@ -633,8 +633,8 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        [DeploymentItem(@"Sut.HtmlTest\iframe_test.html")]
-        [DeploymentItem(@"Sut.HtmlTest\iframe.html")]
+        [DeploymentItem("iframe_test.html")]
+        [DeploymentItem("iframe.html")]
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
@@ -643,8 +643,8 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        [DeploymentItem(@"Sut.HtmlTest\iframe_test.html")]
-        [DeploymentItem(@"Sut.HtmlTest\iframe.html")]
+        [DeploymentItem("iframe_test.html")]
+        [DeploymentItem("iframe.html")]
         public void HtmlInputButton_ClickInCUITeIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");

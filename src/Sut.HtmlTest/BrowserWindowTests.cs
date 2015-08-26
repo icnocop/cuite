@@ -9,10 +9,10 @@ using Sut.HtmlTest.ObjectRepository;
 namespace Sut.HtmlTest
 {
     [CodedUITest]
-    [DeploymentItem(@"Sut.HtmlTest\TestHtmlPage.html")]
-    [DeploymentItem(@"Sut.HtmlTest\DynamicBrowserWindowTitle.html")]
-    [DeploymentItem(@"Sut.HtmlTest\DynamicBrowserWindowTitle.1.html")]
-    [DeploymentItem(@"Sut.HtmlTest\DynamicBrowserWindowTitle.2.html")]
+    [DeploymentItem("TestHtmlPage.html")]
+    [DeploymentItem("DynamicBrowserWindowTitle.html")]
+    [DeploymentItem("DynamicBrowserWindowTitle.1.html")]
+    [DeploymentItem("DynamicBrowserWindowTitle.2.html")]
     public class BrowserWindowTests
     {
         private readonly string currentDirectory = Directory.GetCurrentDirectory();
