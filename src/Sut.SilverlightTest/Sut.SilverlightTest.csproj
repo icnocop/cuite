@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}</ProjectGuid>
+    <ProjectGuid>{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sample_CUITeTestProject</RootNamespace>
-    <AssemblyName>Sample_CUITeTestProject</AssemblyName>
+    <RootNamespace>Sut.SilverlightTest</RootNamespace>
+    <AssemblyName>Sut.SilverlightTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -40,6 +40,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CassiniDev4-lib, Version=4.0.1.7, Culture=neutral, PublicKeyToken=f7f6e0b4240c7c27, processorArchitecture=x86">
+      <HintPath>..\packages\CassiniDev.4.0\lib\net40\CassiniDev4-lib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -54,35 +58,12 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrowserWindowTests.cs" />
-    <Compile Include="CrossBrowserHtmlControlTests.cs" />
-    <Compile Include="DataManagerTests.cs" />
-    <Compile Include="HtmlControlTests.cs" />
-    <Compile Include="ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs" />
-    <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
-    <Compile Include="ObjectRepository\GoogleHomePage.cs" />
-    <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
-    <Compile Include="ObjectRepository\GoogleSearch.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPage.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPage.Div1.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPage.Div2.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPageFeeds.cs" />
-    <Compile Include="ObjectRepository\TestHtmlPage.cs" />
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ObjectRepository\SlTestPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TempFile.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DynamicBrowserWindowTitle.1.html" />
-    <Content Include="DynamicBrowserWindowTitle.2.html" />
-    <Content Include="DynamicBrowserWindowTitle.html" />
-    <Content Include="iframe.html" />
-    <Content Include="iframe_test.html" />
-    <Content Include="TestHtmlPage.html" />
-    <EmbeddedResource Include="XMLFile1.xml" />
-    <EmbeddedResource Include="XMLFile2.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="SilverlightControlTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe\CUITe.csproj">
@@ -90,7 +71,14 @@
       <Name>CUITe</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sut.Silverlight.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
@@ -116,6 +104,7 @@
       </ItemGroup>
     </When>
   </Choose>
+  <Import Project="$(SolutionDir)\SilverlightExtension.targets" />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

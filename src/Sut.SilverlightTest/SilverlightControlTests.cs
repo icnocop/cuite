@@ -6,13 +6,17 @@ using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sample_CUITeTestProject.ObjectRepository;
+using Sut.SilverlightTest.ObjectRepository;
 
-namespace Sample_CUITeTestProject
+namespace Sut.SilverlightTest
 {
     [CodedUITest]
-    [DeploymentItem(@"Sample_CUITeTestProject\Sut.Silverlight.xap")]
-    [DeploymentItem(@"Sample_CUITeTestProject\Sut.Silverlight.html")]
+    [DeploymentItem("Sut.Silverlight.html")]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\Sut.Silverlight.xap")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\Sut.Silverlight.xap")]
+#endif
     public class SilverlightControlTests
     {
         //TODO: the silverlight control must be hosted on a page served through a web server (ex. iis, cassini \ web dev server) because IE 9 may
