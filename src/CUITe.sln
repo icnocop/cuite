@@ -14,7 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		CUITe.snk = CUITe.snk
 		..\LICENSE = ..\LICENSE
-		Local.testsettings = Local.testsettings
 		..\README.md = ..\README.md
 		readme.txt = readme.txt
 		SilverlightExtension.targets = SilverlightExtension.targets
