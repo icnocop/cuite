@@ -1,19 +1,26 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using System;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
-    /// Factory class for creating CUITe WPF controls. Inherits from ControlBaseFactory
+    /// Factory capable of creating WPF UI test controls inheriting from
+    /// <see cref="IControlBase"/>.
     /// </summary>
-    public class WpfControlFactory : ControlBaseFactory
+    internal class WpfControlFactory : ControlBaseFactory
     {
         /// <summary>
-        /// Create a CUITe WPF control based on the type of provided WpfControl.
+        /// Creates a UI test control based on specified <see cref="CUITControls.WpfControl"/>.
         /// </summary>
-        /// <param name="sourceControl"></param>
-        /// <returns></returns>
-        public static IControlBase Create(CUITControls.WpfControl sourceControl)
+        /// <param name="sourceControl">The source control to base the UI test control on.</param>
+        /// <returns>
+        /// A UI test control based on specified <see cref="CUITControls.WpfControl"/>.
+        /// </returns>
+        internal static IControlBase Create(CUITControls.WpfControl sourceControl)
         {
+            if (sourceControl == null)
+                throw new ArgumentNullException("sourceControl");
+
             string targetNamespace = typeof(WpfControlFactory).Namespace;
             return Create(sourceControl, targetNamespace);
         }

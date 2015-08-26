@@ -4,11 +4,29 @@ using Microsoft.VisualStudio.TestTools.UITesting;
 namespace CUITe.Controls
 {
     /// <summary>
-    /// Factory class for creating CUITe objects
+    /// Factory capable of creating UI test controls inheriting from <see cref="IControlBase"/>.
     /// </summary>
-    public class ControlBaseFactory
+    internal class ControlBaseFactory
     {
-        public static T Create<T>(string searchProperties) where T : IControlBase
+        /// <summary>
+        /// Creates a UI test control of type <see cref="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the UI test control to create.</typeparam>
+        /// <returns>A UI test control of type <see cref="T"/>.</returns>
+        internal static T Create<T>() where T : IControlBase
+        {
+            return (T)Activator.CreateInstance(typeof(T));
+        }
+
+        /// <summary>
+        /// Creates a UI test control of type <see cref="T"/> with specified search properties.
+        /// </summary>
+        /// <typeparam name="T">The type of the UI test control to create.</typeparam>
+        /// <param name="searchProperties">The search properties.</param>
+        /// <returns>
+        /// A UI test control of type <see cref="T"/> with specified search properties.
+        /// </returns>
+        internal static T Create<T>(string searchProperties) where T : IControlBase
         {
             return (T)Activator.CreateInstance(typeof(T), searchProperties);
         }
@@ -32,13 +50,13 @@ namespace CUITe.Controls
                     "sourceControl");
             }
 
-            // Create CUITe control
-            var cuiteControl = (IControlBase)Activator.CreateInstance(targetType);
+            // Create UI test control
+            var control = (IControlBase)Activator.CreateInstance(targetType);
 
             // Wrap WinControl
-            cuiteControl.WrapReady(sourceControl);
+            control.WrapReady(sourceControl);
 
-            return cuiteControl;
+            return control;
         }
     }
 }
