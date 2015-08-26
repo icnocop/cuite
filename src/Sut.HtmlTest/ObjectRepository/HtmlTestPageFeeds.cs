@@ -1,6 +1,6 @@
 ﻿using CUITe.Controls.HtmlControls;
 
-namespace Sample_CUITeTestProject.ObjectRepository
+namespace Sut.HtmlTest.ObjectRepository
 {
     public class HtmlTestPageFeeds : BrowserWindowUnderTest
     {

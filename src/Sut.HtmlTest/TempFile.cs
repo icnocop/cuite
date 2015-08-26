@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Sample_CUITeTestProject
+namespace Sut.HtmlTest
 {
     /// <summary>
     /// Wrapper for a temporary file

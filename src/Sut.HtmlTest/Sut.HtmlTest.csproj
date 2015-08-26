@@ -9,8 +9,8 @@
     <ProjectGuid>{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sample_CUITeTestProject</RootNamespace>
-    <AssemblyName>Sample_CUITeTestProject</AssemblyName>
+    <RootNamespace>Sut.HtmlTest</RootNamespace>
+    <AssemblyName>Sut.HtmlTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,6 +54,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="BrowserWindowTests.cs" />
     <Compile Include="CrossBrowserHtmlControlTests.cs" />
     <Compile Include="DataManagerTests.cs" />
@@ -82,7 +85,9 @@
     <EmbeddedResource Include="XMLFile2.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe\CUITe.csproj">

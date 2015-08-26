@@ -4,15 +4,15 @@ using System.Linq;
 using CUITe.Controls.HtmlControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sample_CUITeTestProject.ObjectRepository;
+using Sut.HtmlTest.ObjectRepository;
 
-namespace Sample_CUITeTestProject
+namespace Sut.HtmlTest
 {
     [CodedUITest]
-    [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
-    [DeploymentItem(@"Sample_CUITeTestProject\DynamicBrowserWindowTitle.html")]
-    [DeploymentItem(@"Sample_CUITeTestProject\DynamicBrowserWindowTitle.1.html")]
-    [DeploymentItem(@"Sample_CUITeTestProject\DynamicBrowserWindowTitle.2.html")]
+    [DeploymentItem(@"Sut.HtmlTest\TestHtmlPage.html")]
+    [DeploymentItem(@"Sut.HtmlTest\DynamicBrowserWindowTitle.html")]
+    [DeploymentItem(@"Sut.HtmlTest\DynamicBrowserWindowTitle.1.html")]
+    [DeploymentItem(@"Sut.HtmlTest\DynamicBrowserWindowTitle.2.html")]
     public class BrowserWindowTests
     {
         private readonly string currentDirectory = Directory.GetCurrentDirectory();

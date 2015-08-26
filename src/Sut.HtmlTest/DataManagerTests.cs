@@ -1,7 +1,7 @@
 ﻿using CUITe;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Sample_CUITeTestProject
+namespace Sut.HtmlTest
 {
     [TestClass]
     public class DataManagerTests

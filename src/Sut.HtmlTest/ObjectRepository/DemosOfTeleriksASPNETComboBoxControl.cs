@@ -1,7 +1,7 @@
 ﻿using CUITe.Controls.HtmlControls;
 using CUITe.Controls.TelerikControls;
 
-namespace Sample_CUITeTestProject.ObjectRepository
+namespace Sut.HtmlTest.ObjectRepository
 {
     public class DemosOfTeleriksASPNETComboBoxControl : BrowserWindowUnderTest
     {

@@ -4,7 +4,7 @@ using CUITe.Controls.HtmlControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Sample_CUITeTestProject
+namespace Sut.HtmlTest
 {
     [CodedUITest]
     public class CrossBrowserHtmlControlTests

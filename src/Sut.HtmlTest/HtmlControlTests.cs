@@ -13,15 +13,15 @@ using CUITe.Controls.WinControls;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sample_CUITeTestProject.ObjectRepository;
+using Sut.HtmlTest.ObjectRepository;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
-namespace Sample_CUITeTestProject
+namespace Sut.HtmlTest
 {
     [CodedUITest]
-    [DeploymentItem(@"Sample_CUITeTestProject\XMLFile1.xml")]
-    [DeploymentItem(@"Sample_CUITeTestProject\XMLFile2.xml")]
-    [DeploymentItem(@"Sample_CUITeTestProject\TestHtmlPage.html")]
+    [DeploymentItem(@"Sut.HtmlTest\XMLFile1.xml")]
+    [DeploymentItem(@"Sut.HtmlTest\XMLFile2.xml")]
+    [DeploymentItem(@"Sut.HtmlTest\TestHtmlPage.html")]
     public class HtmlControlTests
     {
         private readonly string currentDirectory = Directory.GetCurrentDirectory();
@@ -66,7 +66,7 @@ namespace Sample_CUITeTestProject
         [TestMethod]
         public void DataManager_GetDataRowUsingEmbeddedResourceFromTypeAsString_Succeeds()
         {
-            AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type.GetType("Sample_CUITeTestProject.HtmlControlTests"));
+            AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type.GetType("Sut.HtmlTest.HtmlControlTests"));
         }
 
         [TestMethod]
@@ -633,8 +633,8 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        [DeploymentItem(@"Sample_CUITeTestProject\iframe_test.html")]
-        [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
+        [DeploymentItem(@"Sut.HtmlTest\iframe_test.html")]
+        [DeploymentItem(@"Sut.HtmlTest\iframe.html")]
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
@@ -643,8 +643,8 @@ namespace Sample_CUITeTestProject
         }
 
         [TestMethod]
-        [DeploymentItem(@"Sample_CUITeTestProject\iframe_test.html")]
-        [DeploymentItem(@"Sample_CUITeTestProject\iframe.html")]
+        [DeploymentItem(@"Sut.HtmlTest\iframe_test.html")]
+        [DeploymentItem(@"Sut.HtmlTest\iframe.html")]
         public void HtmlInputButton_ClickInCUITeIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
