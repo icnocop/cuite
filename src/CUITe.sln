@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298
 		CUITe\CUITe.VS2010.nuspec = CUITe\CUITe.VS2010.nuspec
 		CUITe\CUITe.VS2012.nuspec = CUITe\CUITe.VS2012.nuspec
 		CUITe\CUITe.VS2013.nuspec = CUITe\CUITe.VS2013.nuspec
+		..\Test.bat = ..\Test.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Controls", "Sut.Wpf.Controls\Sut.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
