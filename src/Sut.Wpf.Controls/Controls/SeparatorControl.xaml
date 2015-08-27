@@ -1,0 +1,11 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Controls.Controls.SeparatorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Separator
+        AutomationProperties.AutomationId="QtjLisTcxkmoC7Td8r4SRg"
+        Width="50"
+        Style="{DynamicResource DefaultControlStyle}" />
+    
+</UserControl>

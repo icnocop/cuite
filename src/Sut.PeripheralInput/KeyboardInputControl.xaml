@@ -1,0 +1,21 @@
+﻿<UserControl
+    x:Class="Sut.PeripheralInput.KeyboardInputControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <GroupBox Header="Keyboard Input">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Please enter text:" />
+
+            <TextBox
+                AutomationProperties.AutomationId="U0xqM3rkzUmzBDmjTJa_aQ"
+                Grid.Row="1"
+                TextWrapping="Wrap" />
+        </Grid>
+    </GroupBox>
+</UserControl>

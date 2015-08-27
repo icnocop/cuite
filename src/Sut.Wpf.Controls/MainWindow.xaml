@@ -1,0 +1,170 @@
+﻿<Window
+    x:Class="Sut.Wpf.Controls.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Sut.Wpf.Controls.Controls"
+    Title="System Under Test (WPF)"
+    Icon="App.ico"
+    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen">
+    
+    <!-- Resources -->
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml" />
+    </Window.Resources>
+    
+    <!-- Root element -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Button -->
+        <controls:ButtonControl />
+
+        <!-- Calendar -->
+        <controls:CalendarControl Grid.Column="1" />
+
+        <!-- Check box -->
+        <controls:CheckBoxControl Grid.Column="2" />
+
+        <!-- Combo box -->
+        <controls:ComboBoxControl Grid.Column="3" />
+
+        <!-- Custom control -->
+        <controls:CustomControlControl Grid.Column="4" />
+
+        <!-- Data grid -->
+        <controls:DataGridControl Grid.Column="5" />
+
+        <!-- Date picker -->
+        <controls:DatePickerControl Grid.Column="6" />
+
+        <!-- Expander -->
+        <controls:ExpanderControl Grid.Row="1" />
+
+        <!-- Frame -->
+        <controls:FrameControl
+            Grid.Row="1"
+            Grid.Column="1" />
+
+        <!-- Group box -->
+        <controls:GroupBoxControl
+            Grid.Row="1"
+            Grid.Column="2" />
+
+        <!-- Hyperlink -->
+        <controls:HyperlinkControl
+            Grid.Row="1"
+            Grid.Column="3" />
+
+        <!-- Image -->
+        <controls:ImageControl
+            Grid.Row="1"
+            Grid.Column="4" />
+
+        <!-- Label -->
+        <controls:LabelControl
+            Grid.Row="1"
+            Grid.Column="5" />
+
+        <!-- List box -->
+        <controls:ListBoxControl
+            Grid.Row="1"
+            Grid.Column="6" />
+
+        <!-- List view -->
+        <controls:ListViewControl Grid.Row="2" />
+
+        <!-- Menu -->
+        <controls:MenuControl
+            Grid.Row="2"
+            Grid.Column="1" />
+        
+        <!-- Password box -->
+        <controls:PasswordBoxControl
+            Grid.Row="2"
+            Grid.Column="2" />
+
+        <!-- Progress bar -->
+        <controls:ProgressBarControl
+            Grid.Row="2"
+            Grid.Column="3" />
+            
+        <!-- Radio button -->
+        <controls:RadioButtonControl
+            Grid.Row="2"
+            Grid.Column="4" />
+        
+        <!-- Rich text box -->
+        <controls:RichTextBoxControl
+            Grid.Row="2"
+            Grid.Column="5" />
+
+        <!-- Scroll bar -->
+        <controls:ScrollBarControl
+            Grid.Row="2"
+            Grid.Column="6" />
+        
+        <!-- Scroll viewer -->
+        <controls:ScrollViewerControl Grid.Row="3" />
+        
+        <!-- Separator -->
+        <controls:SeparatorControl
+            Grid.Row="3"
+            Grid.Column="1" />
+
+        <!-- Slider -->
+        <controls:SliderControl
+            Grid.Row="3"
+            Grid.Column="2" />
+
+        <!-- Status bar -->
+        <controls:StatusBarControl
+            Grid.Row="3"
+            Grid.Column="3" />
+
+        <!-- Tab control -->
+        <controls:TabControlControl
+            Grid.Row="3"
+            Grid.Column="4" />
+
+        <!-- Text block -->
+        <controls:TextBlockControl
+            Grid.Row="3"
+            Grid.Column="5" />
+
+            <!-- Text box -->
+        <controls:TextBoxControl
+            Grid.Row="3"
+            Grid.Column="6" />
+
+        <!-- Toggle button -->
+        <controls:ToggleButtonControl Grid.Row="4" />
+        
+        <!-- Tool bar -->
+        <controls:ToolBarControl
+            Grid.Row="4"
+            Grid.Column="1" />
+        
+        <!-- Tree view -->
+        <controls:TreeViewControl
+            Grid.Row="4"
+            Grid.Column="2" />
+
+    </Grid>
+</Window>

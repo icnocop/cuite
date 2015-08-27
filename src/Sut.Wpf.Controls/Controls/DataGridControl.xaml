@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Controls.Controls.DataGridControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:models="clr-namespace:Sut.Wpf.Controls.Models">
+    
+    <!-- Resources -->
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="genders" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="models:Gender"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    
+    <DataGrid
+        AutomationProperties.AutomationId="D6p9vB7vZ0usMJfqrJSLIA"
+        ItemsSource="{Binding Source={x:Static models:Mocked.Persons}}"
+        AutoGenerateColumns="False"
+        Style="{DynamicResource DefaultControlStyle}">
+        <DataGrid.Columns>
+            <DataGridTextColumn
+                Header="Name"
+                Binding="{Binding Name}" />
+            <DataGridCheckBoxColumn
+                Header="Customer"
+                Binding="{Binding IsCustomer}" />
+            <DataGridComboBoxColumn
+                Header="Gender"
+                SelectedItemBinding="{Binding Gender}"
+                ItemsSource="{Binding Source={StaticResource genders}}" />
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

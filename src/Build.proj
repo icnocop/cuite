@@ -75,7 +75,7 @@
       <TestAssemblies Include="$(CurrentDirectory)**\bin\Release\*Test.dll" />
     </ItemGroup>
       
-    <Exec Command="&quot;$(VSTestPath)&quot; @(TestAssemblies->'&quot;%(FullPath)&quot;', ' ') Sample_CUITeTestProject\bin\Release\Sample_CUITeTestProject.dll" />
+    <Exec Command="&quot;$(VSTestPath)&quot; @(TestAssemblies->'&quot;%(FullPath)&quot;', ' ')" />
   </Target>
   
 </Project>
