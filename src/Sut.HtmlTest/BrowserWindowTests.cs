@@ -134,7 +134,9 @@ namespace Sut.HtmlTest
             var doc = window.Get<HtmlDocument>();
 
             //Assert
-            const string expected = "<body vsttFireTimer=\"false\">";
+            // if Visual Studio Team System for Testers is installed, the vsttFireTimer attribute is automatically injected within the body element for some unknown reason
+            // so just check for <body
+            const string expected = "<body";
 
             string outerHtml = doc.UnWrap().GetProperty("OuterHtml").ToString();
 
