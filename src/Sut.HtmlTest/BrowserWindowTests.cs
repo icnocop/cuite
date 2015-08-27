@@ -134,9 +134,11 @@ namespace Sut.HtmlTest
             var doc = window.Get<HtmlDocument>();
 
             //Assert
-            const string expected = "<body>";
+            const string expected = "<body vsttFireTimer=\"false\">";
 
-            Assert.AreEqual(expected, doc.UnWrap().GetProperty("OuterHtml").ToString().Substring(0, expected.Length), true);
+            string outerHtml = doc.UnWrap().GetProperty("OuterHtml").ToString();
+
+            Assert.AreEqual(expected, outerHtml.Substring(0, expected.Length), true, outerHtml);
 
             window.Close();
         }
