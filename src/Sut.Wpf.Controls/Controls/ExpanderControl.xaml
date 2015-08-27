@@ -1,0 +1,13 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Controls.Controls.ExpanderControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Expander
+        AutomationProperties.AutomationId="RiELOT_TSE2kbTcomKC5fg"
+        IsExpanded="True"
+        Style="{DynamicResource DefaultControlStyle}">
+        <TextBlock Text="This is a text" />
+    </Expander>
+    
+</UserControl>

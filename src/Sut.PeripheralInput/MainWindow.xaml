@@ -1,0 +1,30 @@
+﻿<Window
+    x:Class="Sut.PeripheralInput.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Sut.PeripheralInput"
+    Title="System Under Test (Peripheral Input)"
+    Icon="App.ico"
+    WindowStartupLocation="CenterScreen"
+    Width="400"
+    Height="200">
+    
+    <!-- Resources -->
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml" />
+    </Window.Resources>
+    
+    <!-- Root element -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!-- Mouse input -->
+        <local:MouseInputControl />
+
+        <!-- Keyboard input -->
+        <local:KeyboardInputControl Grid.Column="1" />
+    </Grid>
+</Window>
