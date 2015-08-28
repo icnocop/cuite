@@ -7,12 +7,8 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToolTip : WpfControl<CUITControls.WpfToolTip>
     {
-        public WpfToolTip()
-        {
-        }
-
-        public WpfToolTip(string searchParameters)
-            : base(searchParameters)
+        public WpfToolTip(CUITControls.WpfToolTip sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfToolTip(), searchProperties)
         {
         }
     }

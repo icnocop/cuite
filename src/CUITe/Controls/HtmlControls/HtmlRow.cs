@@ -4,17 +4,8 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlRow : HtmlControl<CUITControls.HtmlRow>
     {
-        public HtmlRow()
-        {
-        }
-
-        public HtmlRow(string searchParameters)
-            : base(searchParameters)
-        {
-        }
-
-        public HtmlRow(CUITControls.HtmlControl control)
-            : base(control)
+        public HtmlRow(CUITControls.HtmlRow sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlRow(), searchProperties)
         {
         }
     }

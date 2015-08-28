@@ -6,12 +6,8 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlList : HtmlControl<CUITControls.HtmlList>
     {
-        public HtmlList()
-        {
-        }
-
-        public HtmlList(string searchParameters)
-            : base(searchParameters)
+        public HtmlList(CUITControls.HtmlList sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlList(), searchProperties)
         {
         }
 
@@ -47,12 +43,12 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedItems;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedItems = value;
             }
         }

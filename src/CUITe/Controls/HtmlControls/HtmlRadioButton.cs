@@ -4,24 +4,20 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlRadioButton : HtmlControl<CUITControls.HtmlRadioButton>
     {
-        public HtmlRadioButton()
-        {
-        }
-
-        public HtmlRadioButton(string searchParameters)
-            : base(searchParameters)
+        public HtmlRadioButton(CUITControls.HtmlRadioButton sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlRadioButton(), searchProperties)
         {
         }
 
         public void Select()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             SourceControl.Selected = true;
         }
 
         public void Select2()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             string sOnClick = (string)SourceControl.GetProperty("onclick");
             string sId = SourceControl.Id;
             if (sId == null || sId == "")
@@ -35,7 +31,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Selected;
             }
         }

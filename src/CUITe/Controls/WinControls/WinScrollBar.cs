@@ -7,28 +7,24 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinScrollBar : WinControl<CUITControls.WinScrollBar>
     {
-        public WinScrollBar()
-        {
-        }
-
-        public WinScrollBar(string searchParameters)
-            : base(searchParameters)
+        public WinScrollBar(CUITControls.WinScrollBar sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinScrollBar(), searchProperties)
         {
         }
 
         public double MaximumPosition
         {
-            get { return UnWrap().MaximumPosition; }
+            get { return SourceControl.MaximumPosition; }
         }
 
         public double MinimumPosition
         {
-            get { return UnWrap().MinimumPosition; }
+            get { return SourceControl.MinimumPosition; }
         }
 
         public double Position
         {
-            get { return UnWrap().Position; }
+            get { return SourceControl.Position; }
         }
     }
 }

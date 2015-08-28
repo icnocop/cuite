@@ -8,12 +8,8 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfDatePicker : WpfControl<CUITControls.WpfDatePicker>
     {
-        public WpfDatePicker()
-        {
-        }
-
-        public WpfDatePicker(string searchParameters)
-            : base(searchParameters)
+        public WpfDatePicker(CUITControls.WpfDatePicker sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfDatePicker(), searchProperties)
         {
         }
 
@@ -21,28 +17,27 @@ namespace CUITe.Controls.WpfControls
         {
             get
             {
-                WpfCalendar calendar = new WpfCalendar();
-                calendar.WrapReady(UnWrap().Calendar);
+                WpfCalendar calendar = new WpfCalendar((CUITControls.WpfCalendar)SourceControl.Calendar);
                 return calendar;
             }
         }
 
         public DateTime Date
         {
-            get { return UnWrap().Date; }
-            set { UnWrap().Date = value; }
+            get { return SourceControl.Date; }
+            set { SourceControl.Date = value; }
         }
 
         public string DateAsString
         {
-            get { return UnWrap().DateAsString; }
-            set { UnWrap().DateAsString = value; }
+            get { return SourceControl.DateAsString; }
+            set { SourceControl.DateAsString = value; }
         }
 
         public bool ShowCalendar
         {
-            get { return UnWrap().ShowCalendar; }
-            set { UnWrap().ShowCalendar = value; }
+            get { return SourceControl.ShowCalendar; }
+            set { SourceControl.ShowCalendar = value; }
         }
     }
 }

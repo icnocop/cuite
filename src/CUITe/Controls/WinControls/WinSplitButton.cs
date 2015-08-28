@@ -7,23 +7,19 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSplitButton : WinControl<CUITControls.WinSplitButton>
     {
-        public WinSplitButton()
-        {
-        }
-
-        public WinSplitButton(string searchParameters)
-            : base(searchParameters)
+        public WinSplitButton(CUITControls.WinSplitButton sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinSplitButton(), searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
 
         public string Shortcut
         {
-            get { return UnWrap().Shortcut; }
+            get { return SourceControl.Shortcut; }
         }
     }
 }

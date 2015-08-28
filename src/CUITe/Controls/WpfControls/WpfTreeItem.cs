@@ -9,34 +9,30 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTreeItem : WpfControl<CUITControls.WpfTreeItem>
     {
-        public WpfTreeItem()
-        {
-        }
-
-        public WpfTreeItem(string searchParameters)
-            : base(searchParameters)
+        public WpfTreeItem(CUITControls.WpfTreeItem sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfTreeItem(), searchProperties)
         {
         }
 
         public bool Expanded
         {
-            get { return UnWrap().Expanded; }
-            set { UnWrap().Expanded = value; }
+            get { return SourceControl.Expanded; }
+            set { SourceControl.Expanded = value; }
         }
 
         public bool HasChildNodes
         {
-            get { return UnWrap().HasChildNodes; }
+            get { return SourceControl.HasChildNodes; }
         }
 
         public string Header
         {
-            get { return UnWrap().Header; }
+            get { return SourceControl.Header; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return UnWrap().Nodes; }
+            get { return SourceControl.Nodes; }
         }
 
         public List<WpfTreeItem> NodesAsCUITe
@@ -44,10 +40,9 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfTreeItem> list = new List<WpfTreeItem>();
-                foreach (CUITControls.WpfTreeItem node in UnWrap().Nodes)
+                foreach (CUITControls.WpfTreeItem node in SourceControl.Nodes)
                 {
-                    WpfTreeItem cuiteItem = new WpfTreeItem();
-                    cuiteItem.WrapReady(node);
+                    WpfTreeItem cuiteItem = new WpfTreeItem(node);
                     list.Add(cuiteItem);
                 }
                 return list;
@@ -56,13 +51,13 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControl ParentNode
         {
-            get { return UnWrap().ParentNode; }
+            get { return SourceControl.ParentNode; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
-            set { UnWrap().Selected = value; }
+            get { return SourceControl.Selected; }
+            set { SourceControl.Selected = value; }
         }
     }
 }

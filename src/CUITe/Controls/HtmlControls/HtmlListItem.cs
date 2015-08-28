@@ -6,8 +6,8 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "li";
 
-        public HtmlListItem(string searchParameters = null)
-            : base(_tagName, searchParameters)
+        public HtmlListItem(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+            : base(_tagName, sourceControl, searchProperties)
         {
         }
     }

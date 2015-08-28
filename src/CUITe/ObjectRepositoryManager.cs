@@ -44,19 +44,19 @@ namespace CUITe
                     ComboBox field = (ComboBox)fieldinfo.GetValue(browserWindow);
                     field.SetWindow(browserWindow);
                 }
-                else if (fieldType.GetInterfaces().Contains(typeof(IControlBase)))
+                else if (fieldType.GetInterfaces().Contains(typeof(ControlBase)))
                 {
-                    IControlBase field = (IControlBase)fieldinfo.GetValue(browserWindow);
+                    var field = (ControlBase)fieldinfo.GetValue(browserWindow);
 
                     if (field.SourceType.IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
-                        field.Wrap(Activator.CreateInstance(field.SourceType, browserWindow));
+                        field.SourceControl.Container = browserWindow;
                     }
 #if SILVERLIGHT_SUPPORT
                     else if ((field.SourceType == typeof(CUITSilverlightControls.SilverlightControl)) ||
                              (field.SourceType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
-                        field.Wrap(Activator.CreateInstance(field.SourceType, browserWindow.SlObjectContainer));
+                        field.SourceControl.Container = browserWindow.SlObjectContainer;
                     }
 #endif
                 }

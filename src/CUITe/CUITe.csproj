@@ -127,6 +127,7 @@
     <Compile Include="Browsers\IBrowser.cs" />
     <Compile Include="Browsers\InternetExplorer.cs" />
     <Compile Include="Controls\ControlBase.cs" />
+    <Compile Include="Controls\ControlBaseOfT.cs" />
     <Compile Include="Controls\ControlBaseFactory.cs" />
     <Compile Include="Controls\HtmlControls\BrowserDialogUnderTest.cs" />
     <Compile Include="Controls\HtmlControls\BrowserWindowUnderTest.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Controls\HtmlControls\HtmlCheckBox.cs" />
     <Compile Include="Controls\HtmlControls\HtmlComboBox.cs" />
     <Compile Include="Controls\HtmlControls\HtmlControl.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlControlOfT.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCustom.cs" />
     <Compile Include="Controls\HtmlControls\HtmlDiv.cs" />
     <Compile Include="Controls\HtmlControls\HtmlDocument.cs" />
@@ -170,7 +172,6 @@
     <Compile Include="Controls\HtmlControls\HtmlUnorderedList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlXml.cs" />
     <Compile Include="Controls\HtmlControls\IHtmlControl.cs" />
-    <Compile Include="Controls\IControlBase.cs" />
     <Compile Include="Controls\ModifierKeysLifetime.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightButton.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCalendar.cs" />

@@ -7,27 +7,23 @@ namespace CUITe.Controls.WpfControls
     /// Base wrapper class for all CUITe WPF controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
-    public class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
+    public abstract class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
-        public WpfControl()
-        {
-        }
-
-        public WpfControl(string searchParameters)
-            : base(searchParameters)
+        protected WpfControl(T sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.
         /// </summary>
-        public override IControlBase Parent
+        public override ControlBase Parent
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 
-                IControlBase ret = null;
+                ControlBase ret = null;
                 
                 try
                 {
@@ -46,7 +42,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AcceleratorKey
         {
-            get { return UnWrap().AcceleratorKey; }
+            get { return SourceControl.AcceleratorKey; }
         }
 
         /// <summary>
@@ -54,7 +50,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AccessKey
         {
-            get { return UnWrap().AccessKey; }
+            get { return SourceControl.AccessKey; }
         }
 
         /// <summary>
@@ -62,7 +58,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AutomationId
         {
-            get { return UnWrap().AutomationId; }
+            get { return SourceControl.AutomationId; }
         }
 
         /// <summary>
@@ -70,7 +66,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string Font
         {
-            get { return UnWrap().Font; }
+            get { return SourceControl.Font; }
         }
 
         /// <summary>
@@ -78,7 +74,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string HelpText
         {
-            get { return UnWrap().HelpText; }
+            get { return SourceControl.HelpText; }
         }
 
         /// <summary>
@@ -86,7 +82,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string LabeledBy
         {
-            get { return UnWrap().LabeledBy; }
+            get { return SourceControl.LabeledBy; }
         }
     }
 }

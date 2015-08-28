@@ -7,18 +7,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinText : WinControl<CUITControls.WinText>
     {
-        public WinText()
-        {
-        }
-
-        public WinText(string searchParameters)
-            : base(searchParameters)
+        public WinText(CUITControls.WinText sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinText(), searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
     }
 }

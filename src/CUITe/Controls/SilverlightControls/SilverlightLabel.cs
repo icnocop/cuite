@@ -8,12 +8,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightLabel : SilverlightControl<CUITControls.SilverlightLabel>
     {
-        public SilverlightLabel()
-        {
-        }
-
-        public SilverlightLabel(string searchParameters)
-            : base(searchParameters)
+        public SilverlightLabel(CUITControls.SilverlightLabel sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightLabel(), searchProperties)
         {
         }
 
@@ -24,7 +20,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Text;
             }
         }

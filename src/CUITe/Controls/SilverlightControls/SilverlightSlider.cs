@@ -8,12 +8,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightSlider : SilverlightControl<CUITControls.SilverlightSlider>
     {
-        public SilverlightSlider()
-        {
-        }
-
-        public SilverlightSlider(string searchParameters)
-            : base(searchParameters)
+        public SilverlightSlider(CUITControls.SilverlightSlider sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightSlider(), searchProperties)
         {
         }
     }

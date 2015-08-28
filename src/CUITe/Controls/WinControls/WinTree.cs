@@ -9,23 +9,19 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTree : WinControl<CUITControls.WinTree>
     {
-        public WinTree()
-        {
-        }
-
-        public WinTree(string searchParameters)
-            : base(searchParameters)
+        public WinTree(CUITControls.WinTree sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinTree(), searchProperties)
         {
         }
 
         public UITestControl HorizontalScrollBar
         {
-            get { return UnWrap().HorizontalScrollBar; }
+            get { return SourceControl.HorizontalScrollBar; }
         }
 
         public UITestControlCollection Nodes
         {
-            get { return UnWrap().Nodes; }
+            get { return SourceControl.Nodes; }
         }
 
         public List<WinTreeItem> NodesAsCUITe
@@ -33,10 +29,9 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinTreeItem> list = new List<WinTreeItem>();
-                foreach (CUITControls.WinTreeItem node in UnWrap().Nodes)
+                foreach (CUITControls.WinTreeItem node in SourceControl.Nodes)
                 {
-                    WinTreeItem cuiteItem = new WinTreeItem();
-                    cuiteItem.WrapReady(node);
+                    WinTreeItem cuiteItem = new WinTreeItem(node);
                     list.Add(cuiteItem);
                 }
                 return list;
@@ -45,7 +40,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl VerticalScrollBar
         {
-            get { return UnWrap().VerticalScrollBar; }
+            get { return SourceControl.VerticalScrollBar; }
         }
     }
 }

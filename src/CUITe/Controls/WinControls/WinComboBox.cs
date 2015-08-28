@@ -10,52 +10,48 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinComboBox : WinControl<CUITControls.WinComboBox>
     {
-        public WinComboBox()
-        {
-        }
-
-        public WinComboBox(string searchParameters)
-            : base(searchParameters)
+        public WinComboBox(CUITControls.WinComboBox sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinComboBox(), searchProperties)
         {
         }
 
         public string EditableItem
         {
-            get { return UnWrap().EditableItem; }
-            set { UnWrap().EditableItem = value; }
+            get { return SourceControl.EditableItem; }
+            set { SourceControl.EditableItem = value; }
         }
 
         public bool Expanded
         {
-            get { return UnWrap().Expanded; }
-            set { UnWrap().Expanded = value; }
+            get { return SourceControl.Expanded; }
+            set { SourceControl.Expanded = value; }
         }
 
         public bool IsEditable
         {
-            get { return UnWrap().IsEditable; }
+            get { return SourceControl.IsEditable; }
         }
 
         public UITestControlCollection Items
         {
-            get { return UnWrap().Items; }
+            get { return SourceControl.Items; }
         }
 
         public List<string> ItemsAsList
         {
-            get { return (from x in UnWrap().Items select ((CUITControls.WinListItem)x).DisplayText).ToList<string>(); }
+            get { return (from x in SourceControl.Items select ((CUITControls.WinListItem)x).DisplayText).ToList<string>(); }
         }
 
         public int SelectedIndex
         {
-            get { return UnWrap().SelectedIndex; }
-            set { UnWrap().SelectedIndex = value; }
+            get { return SourceControl.SelectedIndex; }
+            set { SourceControl.SelectedIndex = value; }
         }
 
         public string SelectedItem
         {
-            get { return UnWrap().SelectedItem; }
-            set { UnWrap().SelectedItem = value; }
+            get { return SourceControl.SelectedItem; }
+            set { SourceControl.SelectedItem = value; }
         }
     }
 }

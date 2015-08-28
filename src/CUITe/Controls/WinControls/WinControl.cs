@@ -7,27 +7,23 @@ namespace CUITe.Controls.WinControls
     /// Base wrapper class for all CUITe WinForms controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
-    public class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
+    public abstract class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
-        public WinControl()
-        {
-        }
-
-        public WinControl(string searchParameters)
-            : base(searchParameters)
+        protected WinControl(T sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         /// <summary>
         /// Gets the parent of the current CUITe control.
         /// </summary>
-        public override IControlBase Parent
+        public override ControlBase Parent
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
 
-                IControlBase ret = null;
+                ControlBase ret;
 
                 try
                 {

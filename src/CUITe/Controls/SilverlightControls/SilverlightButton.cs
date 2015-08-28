@@ -8,12 +8,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightButton : SilverlightControl<CUITControls.SilverlightButton>
     {
-        public SilverlightButton()
-        {
-        }
-
-        public SilverlightButton(string searchParameters)
-            : base(searchParameters)
+        public SilverlightButton(CUITControls.SilverlightButton sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightButton(), searchProperties)
         {
         }
 
@@ -24,7 +20,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.DisplayText;
             }
         }

@@ -7,40 +7,36 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenuItem : WpfControl<CUITControls.WpfMenuItem>
     {
-        public WpfMenuItem()
-        {
-        }
-
-        public WpfMenuItem(string searchParameters)
-            : base(searchParameters)
+        public WpfMenuItem(CUITControls.WpfMenuItem sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfMenuItem(), searchProperties)
         {
         }
 
         public bool Checked
         {
-            get { return UnWrap().Checked; }
-            set { UnWrap().Checked = value; }
+            get { return SourceControl.Checked; }
+            set { SourceControl.Checked = value; }
         }
 
         public bool Expanded
         {
-            get { return UnWrap().Expanded; }
-            set { UnWrap().Expanded = value; }
+            get { return SourceControl.Expanded; }
+            set { SourceControl.Expanded = value; }
         }
 
         public bool HasChildNodes
         {
-            get { return UnWrap().HasChildNodes; }
+            get { return SourceControl.HasChildNodes; }
         }
 
         public string Header
         {
-            get { return UnWrap().Header; }
+            get { return SourceControl.Header; }
         }
 
         public bool IsTopLevelMenu
         {
-            get { return UnWrap().IsTopLevelMenu; }
+            get { return SourceControl.IsTopLevelMenu; }
         }
     }
 }

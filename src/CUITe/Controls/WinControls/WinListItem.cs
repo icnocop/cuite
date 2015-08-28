@@ -7,23 +7,19 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinListItem : WinControl<CUITControls.WinListItem>
     {
-        public WinListItem()
-        {
-        }
-
-        public WinListItem(string searchParameters)
-            : base(searchParameters)
+        public WinListItem(CUITControls.WinListItem sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinListItem(), searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
+            get { return SourceControl.Selected; }
         }
     }
 }

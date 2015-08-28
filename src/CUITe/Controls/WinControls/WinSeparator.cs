@@ -7,12 +7,8 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSeparator : WinControl<CUITControls.WinSeparator>
     {
-        public WinSeparator()
-        {
-        }
-
-        public WinSeparator(string searchParameters)
-            : base(searchParameters)
+        public WinSeparator(CUITControls.WinSeparator sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinSeparator(), searchProperties)
         {
         }
     }

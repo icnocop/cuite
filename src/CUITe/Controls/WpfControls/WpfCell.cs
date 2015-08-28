@@ -7,46 +7,42 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCell : WpfControl<CUITControls.WpfCell>
     {
-        public WpfCell()
-        {
-        }
-
-        public WpfCell(string searchParameters)
-            : base(searchParameters)
+        public WpfCell(CUITControls.WpfCell sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfCell(), searchProperties)
         {
         }
         
         public bool Checked
         {
-            get { return UnWrap().Checked; }
-            set { UnWrap().Checked = value; }
+            get { return SourceControl.Checked; }
+            set { SourceControl.Checked = value; }
         }
 
         public int ColumnIndex
         {
-            get { return UnWrap().ColumnIndex; }
+            get { return SourceControl.ColumnIndex; }
         }
 
         public bool Indeterminate
         {
-            get { return UnWrap().Indeterminate; }
-            set { UnWrap().Indeterminate = value; }
+            get { return SourceControl.Indeterminate; }
+            set { SourceControl.Indeterminate = value; }
         }
 
         public int RowIndex
         {
-            get { return UnWrap().RowIndex; }
+            get { return SourceControl.RowIndex; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
+            get { return SourceControl.Selected; }
         }
 
         public string Value
         {
-            get { return UnWrap().Value; }
-            set { UnWrap().Value = value; }
+            get { return SourceControl.Value; }
+            set { SourceControl.Value = value; }
         }
     }
 }

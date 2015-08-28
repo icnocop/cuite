@@ -10,12 +10,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
-        public SilverlightCalendar()
-        {
-        }
-
-        public SilverlightCalendar(string searchParameters)
-            : base(searchParameters)
+        public SilverlightCalendar(CUITControls.SilverlightCalendar sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightCalendar(), searchProperties)
         {
         }
 
@@ -23,7 +19,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedDateRange = value;
             }
         }
@@ -32,7 +28,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedDateRangeAsString = value;
             }
         }
@@ -41,7 +37,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectionMode;
             }
         }
@@ -50,12 +46,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedDates;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedDates = value;
             }
         }
@@ -64,12 +60,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedDatesAsString;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedDatesAsString = value;
             }
         }

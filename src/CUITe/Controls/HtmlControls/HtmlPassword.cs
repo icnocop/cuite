@@ -4,19 +4,9 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlPassword : HtmlEdit
     {
-        public HtmlPassword()
+        public HtmlPassword(CUITControls.HtmlEdit sourceControl = null, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
-        }
-
-        public HtmlPassword(string searchParameters)
-            : base(searchParameters)
-        {
-        }
-
-        public override void Wrap(object control)
-        {
-            base.Wrap(control);
-            SourceControl = control as CUITControls.HtmlEdit;
             SourceControl.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
         }
     }

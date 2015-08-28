@@ -7,18 +7,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfText : WpfControl<CUITControls.WpfText>
     {
-        public WpfText()
-        {
-        }
-
-        public WpfText(string searchParameters)
-            : base(searchParameters)
+        public WpfText(CUITControls.WpfText sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfText(), searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
     }
 }

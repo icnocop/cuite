@@ -7,31 +7,26 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToggleButton : WpfControl<CUITControls.WpfToggleButton>
     {
-        public WpfToggleButton()
-        {
-        }
-
-        public WpfToggleButton(string searchParameters)
-            : base(searchParameters)
+        public WpfToggleButton(CUITControls.WpfToggleButton sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfToggleButton(), searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
 
         public bool Indeterminate
         {
-            get { return UnWrap().Indeterminate; }
-            set { UnWrap().Indeterminate = value; }
+            get { return SourceControl.Indeterminate; }
+            set { SourceControl.Indeterminate = value; }
         }
 
         public bool Pressed
         {
-            get { return UnWrap().Pressed; }
-            set { UnWrap().Pressed = value; }
+            get { return SourceControl.Pressed; }
+            set { SourceControl.Pressed = value; }
         }
-
     }
 }

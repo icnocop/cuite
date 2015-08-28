@@ -58,7 +58,7 @@ namespace Sut.HtmlTest
             pgGHomePage.txtSearch.SetText("Coded UI Test Framework");
             GoogleSearch pgSearch = BrowserWindowUnderTest.GetBrowserWindow<GoogleSearch>();
 // ReSharper disable once UnusedVariable
-            UITestControlCollection col = pgSearch.divSearchResults.UnWrap().GetChildren();
+            UITestControlCollection col = pgSearch.divSearchResults.SourceControl.GetChildren();
             //do something with collection
             pgSearch.Close();
         }
@@ -188,23 +188,6 @@ namespace Sut.HtmlTest
                 //reset default setting
                 Playback.PlaybackSettings.SmartMatchOptions = smartMatchOptions;
             }
-        }
-
-        [Ignore] //TODO: use known html
-        [TestMethod]
-        [WorkItem(589)]
-        public void HtmlEdit_Wrap_Succeeds()
-        {
-            GoogleHomePage pgGHomePage = BrowserWindowUnderTest.Launch<GoogleHomePage>("http://www.google.com");
-            
-            CUITControls.HtmlEdit tmp = new CUITControls.HtmlEdit(pgGHomePage);
-            tmp.SearchProperties.Add("Id", "lst-ib");
-
-            HtmlEdit txtEdit = new HtmlEdit();
-            txtEdit.WrapReady(tmp);
-            txtEdit.SetText("Coded UI Test enhanced Framework");
-            GoogleSearch pgSearch = BrowserWindowUnderTest.GetBrowserWindow<GoogleSearch>();
-            pgSearch.Close();
         }
 
         [TestMethod]
@@ -441,7 +424,7 @@ namespace Sut.HtmlTest
                 if (BrowserWindowUnderTest.GetCurrentBrowser() is InternetExplorer)
                 {
                     //read JavaScript alert text
-                    WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
+                    WinWindow popup = new WinWindow(searchProperties: "ClassName=#32770;Name=Message from webpage");
                     WinText text = popup.Get<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }
@@ -520,7 +503,7 @@ namespace Sut.HtmlTest
             bWin.Get<HtmlHyperlink>("Id=idHomePageNewDocument").Click();
             var closeLink = bWin.Get<HtmlHyperlink>("Title=Close;class=ms-dlgCloseBtn");
             //clicking closeLink directly doesn't work as the maximizeLink is clicked due to the controls being placed too close to each other
-            Mouse.Click(closeLink.UnWrap().GetChildren()[0].GetChildren()[0]); 
+            Mouse.Click(closeLink.SourceControl.GetChildren()[0].GetChildren()[0]); 
             bWin.RunScript(@"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
         }
 
@@ -625,10 +608,10 @@ namespace Sut.HtmlTest
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var p = bWin.Get<HtmlParagraph>("Id=para1");
-            Assert.IsTrue(((HtmlEdit)p.PreviousSibling).UnWrap().Name == "text1_test");
+            Assert.IsTrue(((HtmlEdit)p.PreviousSibling).SourceControl.Name == "text1_test");
             Assert.IsTrue(((HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
-            Assert.IsTrue(((HtmlDiv)p.Parent).UnWrap().Id == "parentdiv");
-            Assert.IsTrue(((HtmlPassword)p.Parent.FirstChild).UnWrap().Name == "pass");
+            Assert.IsTrue(((HtmlDiv)p.Parent).SourceControl.Id == "parentdiv");
+            Assert.IsTrue(((HtmlPassword)p.Parent.FirstChild).SourceControl.Name == "pass");
             bWin.Close();
         }
 
@@ -703,7 +686,7 @@ namespace Sut.HtmlTest
                 //Assert
                 Assert.IsTrue(button.Exists);
 
-                Assert.IsTrue(button.UnWrap().ControlDefinition.Contains("style=\"display: none;\""));
+                Assert.IsTrue(button.SourceControl.ControlDefinition.Contains("style=\"display: none;\""));
 
                 window.Close();
             }
@@ -797,7 +780,7 @@ namespace Sut.HtmlTest
 
                 //Act
                 // select item "Banana"
-                Keyboard.SendKeys(comboBox.UnWrap(), "{DOWN}");
+                Keyboard.SendKeys(comboBox.SourceControl, "{DOWN}");
 
                 window.PerformDialogAction(BrowserDialogAction.Ok);
 
@@ -867,7 +850,7 @@ namespace Sut.HtmlTest
                 // Assert
                 Assert.IsTrue(txtUserName.Exists);
 
-                Keyboard.SendKeys(txtUserName.UnWrap(), "hello");
+                Keyboard.SendKeys(txtUserName.SourceControl, "hello");
 
                 //Assert
                 Assert.AreEqual("hello", txtUserName.ValueAttribute);
@@ -1026,7 +1009,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                IControlBase a = window.Get<HtmlHyperlink>("InnerText=test");
+                ControlBase a = window.Get<HtmlHyperlink>("InnerText=test");
                 a.Click();
 
                 List<Type> list = new List<Type>();
@@ -1040,16 +1023,16 @@ namespace Sut.HtmlTest
                 {
                     MethodInfo test = getMethodInfo.MakeGenericMethod(t);
                     
-                    IControlBase control;
+                    ControlBase control;
 
                     if ((t == typeof(HtmlEdit)) || (t == typeof(HtmlTextArea)))
                     {
-                        control = (IControlBase)test.Invoke(window, new object[] { "Value=test" });
+                        control = (ControlBase)test.Invoke(window, new object[] { "Value=test" });
                     }
                     else
                     {
                         //window.Get<t>("InnerText=test");
-                        control = (IControlBase)test.Invoke(window, new object[] { "InnerText=test" });
+                        control = (ControlBase)test.Invoke(window, new object[] { "InnerText=test" });
                     }
 
                     //Act
@@ -1131,8 +1114,8 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                List<IControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
-                foreach (IControlBase control in collection)
+                List<ControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
+                foreach (ControlBase control in collection)
                 {
                     if (control is HtmlHyperlink)
                     {
@@ -1214,7 +1197,7 @@ namespace Sut.HtmlTest
                 // Act
                 HtmlTestPageFeeds window = BrowserWindowUnderTest.Launch<HtmlTestPageFeeds>(tempFile.FilePath);
 
-                CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(window.divFeedTabs.UnWrap());
+                CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(window.divFeedTabs.SourceControl);
                 cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
                 cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Class, "dataFeedTab ui-tabs-nav", PropertyExpressionOperator.EqualTo);
 
@@ -1290,7 +1273,7 @@ namespace Sut.HtmlTest
                 // Act
                 string inputText = "12345678901";
                 string outputText = "1234567890";
-                Keyboard.SendKeys(input.UnWrap(), inputText);
+                Keyboard.SendKeys(input.SourceControl, inputText);
 
                 // Assert
                 Assert.AreEqual(input.GetText(), outputText);
@@ -1328,12 +1311,12 @@ namespace Sut.HtmlTest
 
                 // Assert
                 Assert.IsTrue(div.Exists);
-                Assert.AreEqual("main text", div.UnWrap().InnerText);
+                Assert.AreEqual("main text", div.SourceControl.InnerText);
 
                 Assert.IsTrue(about.Exists);
 
                 Assert.IsTrue(div2.Exists);
-                Assert.AreEqual("about text", div2.UnWrap().InnerText);
+                Assert.AreEqual("about text", div2.SourceControl.InnerText);
 
                 window.Close();
             }
@@ -1425,7 +1408,7 @@ namespace Sut.HtmlTest
                 HtmlSpan span3 = window.Get<HtmlSpan>("Class~class1;Class~class2");
 
                 // Act and Assert
-                Assert.AreEqual("span3", span3.UnWrap().Name);
+                Assert.AreEqual("span3", span3.SourceControl.Name);
 
                 window.Close();
             }

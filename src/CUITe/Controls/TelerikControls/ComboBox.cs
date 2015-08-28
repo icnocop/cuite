@@ -9,14 +9,10 @@ namespace CUITe.Controls.TelerikControls
         private readonly string id;
         private BrowserWindowUnderTest _window;
 
-        public ComboBox()
+        public ComboBox(CUITControls.HtmlDiv sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlDiv(), searchProperties)
         {
-        }
-
-        public ComboBox(string searchParameters)
-            : base(searchParameters)
-        {
-            id = searchParameters.Trim().Split('=', '~')[1];
+            id = searchProperties.Trim().Split('=', '~')[1];
         }
 
         internal void SetWindow(BrowserWindowUnderTest window)

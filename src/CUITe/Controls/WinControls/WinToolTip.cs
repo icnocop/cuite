@@ -7,12 +7,8 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinToolTip : WinControl<CUITControls.WinToolTip>
     {
-        public WinToolTip()
-        {
-        }
-
-        public WinToolTip(string searchParameters)
-            : base(searchParameters)
+        public WinToolTip(CUITControls.WinToolTip sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinToolTip(), searchProperties)
         {
         }
     }

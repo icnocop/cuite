@@ -5,7 +5,7 @@ namespace CUITe.Controls.WinControls
 {
     /// <summary>
     /// Factory capable of creating WinForms UI test controls inheriting from
-    /// <see cref="IControlBase"/>.
+    /// <see cref="ControlBase"/>.
     /// </summary>
     internal class WinControlFactory : ControlBaseFactory
     {
@@ -16,7 +16,7 @@ namespace CUITe.Controls.WinControls
         /// <returns>
         /// A UI test control based on specified <see cref="CUITControls.WinControl"/>.
         /// </returns>
-        internal static IControlBase Create(CUITControls.WinControl sourceControl)
+        internal static ControlBase Create(CUITControls.WinControl sourceControl)
         {
             if (sourceControl == null)
                 throw new ArgumentNullException("sourceControl");

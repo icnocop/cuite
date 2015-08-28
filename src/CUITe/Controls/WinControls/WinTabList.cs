@@ -9,24 +9,20 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTabList : WinControl<CUITControls.WinTabList>
     {
-        public WinTabList()
-        {
-        }
-
-        public WinTabList(string searchParameters)
-            : base(searchParameters)
+        public WinTabList(CUITControls.WinTabList sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinTabList(), searchProperties)
         {
         }
 
         public int SelectedIndex
         {
-            get { return UnWrap().SelectedIndex; }
-            set { UnWrap().SelectedIndex = value; }
+            get { return SourceControl.SelectedIndex; }
+            set { SourceControl.SelectedIndex = value; }
         }
 
         public UITestControlCollection Tabs
         {
-            get { return UnWrap().Tabs; }
+            get { return SourceControl.Tabs; }
         }
 
         public List<WinTabPage> TabsAsCUITe
@@ -34,10 +30,9 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinTabPage> list = new List<WinTabPage>();
-                foreach (CUITControls.WinTabPage control in UnWrap().Tabs)
+                foreach (CUITControls.WinTabPage control in SourceControl.Tabs)
                 {
-                    WinTabPage tab = new WinTabPage();
-                    tab.WrapReady(control);
+                    WinTabPage tab = new WinTabPage(control);
                     list.Add(tab);
                 }
                 return list;
@@ -46,7 +41,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl TabSpinner
         {
-            get { return UnWrap().TabSpinner; }
+            get { return SourceControl.TabSpinner; }
         }
     }
 }

@@ -7,12 +7,8 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBox : WinControl<CUITControls.WinCheckBox>
     {
-        public WinCheckBox()
-        {
-        }
-
-        public WinCheckBox(string searchParameters)
-            : base(searchParameters)
+        public WinCheckBox(CUITControls.WinCheckBox sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinCheckBox(), searchProperties)
         {
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Input;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.Controls
 {
@@ -8,23 +7,19 @@ namespace CUITe.Controls
     /// Class simplifying the concept of pressing and releasing modifier keys when it comes to
     /// keyboard input.
     /// </summary>
-    /// <typeparam name="T">
-    /// Type of the <see cref="UITestControl"/> acting as source control for
-    /// <see cref="ControlBase{T}"/>.
-    /// </typeparam>
-    internal class ModifierKeysLifetime<T> : IDisposable where T : UITestControl
+    internal class ModifierKeysLifetime : IDisposable
     {
-        private readonly ControlBase<T> controlBase;
+        private readonly ControlBase controlBase;
         private readonly ModifierKeys keys;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModifierKeysLifetime{T}"/> class.
+        /// Initializes a new instance of the <see cref="ModifierKeysLifetime"/> class.
         /// </summary>
         /// <param name="controlBase">The control in which to hold modifier keys.</param>
         /// <param name="keys">
         /// The sum of one or more values of the <see cref="ModifierKeys"/> enumeration.
         /// </param>
-        public ModifierKeysLifetime(ControlBase<T> controlBase, ModifierKeys keys)
+        public ModifierKeysLifetime(ControlBase controlBase, ModifierKeys keys)
         {
             if (controlBase == null)
                 throw new ArgumentNullException("controlBase");

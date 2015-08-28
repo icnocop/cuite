@@ -8,18 +8,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinToolBar : WinControl<CUITControls.WinToolBar>
     {
-        public WinToolBar()
-        {
-        }
-
-        public WinToolBar(string searchParameters)
-            : base(searchParameters)
+        public WinToolBar(CUITControls.WinToolBar sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinToolBar(), searchProperties)
         {
         }
 
         public UITestControlCollection Items
         {
-            get { return UnWrap().Items; }
+            get { return SourceControl.Items; }
         }
     }
 }

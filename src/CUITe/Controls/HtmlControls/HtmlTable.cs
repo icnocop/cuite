@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using mshtml;
+﻿using mshtml;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -9,12 +6,8 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        public HtmlTable()
-        {
-        }
-
-        public HtmlTable(string searchParameters)
-            : base(searchParameters)
+        public HtmlTable(CUITControls.HtmlTable sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlTable(), searchProperties)
         {
         }
 
@@ -22,7 +15,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.ColumnCount;
             }
         }
@@ -31,7 +24,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Rows.Count;
             }
         }
@@ -77,7 +70,7 @@ namespace CUITe.Controls.HtmlControls
 
         public int FindRow(int iCol, string sValueToSearch, HtmlTableSearchOptions option)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
 
@@ -138,7 +131,7 @@ namespace CUITe.Controls.HtmlControls
             return GetCellValue<HtmlHeaderCell>(iRow, iCol);
         }
 
-        private string GetCellValue<T>(int iRow, int iCol) where T : IHtmlControl
+        private string GetCellValue<T>(int iRow, int iCol) where T : ControlBase, IHtmlControl
         {
             string innerText = "";
             T htmlCell = GetCell<T>(iRow, iCol);
@@ -153,7 +146,7 @@ namespace CUITe.Controls.HtmlControls
         public HtmlCheckBox GetEmbeddedCheckBox(int iRow, int iCol)
         {
             string sSearchProperties = "";
-            IHTMLElement td = (IHTMLElement)GetCell(iRow, iCol).UnWrap().NativeElement;
+            IHTMLElement td = (IHTMLElement)GetCell(iRow, iCol).SourceControl.NativeElement;
             IHTMLElement check = GetEmbeddedCheckBoxNativeElement(td);
             string sOuterHTML = check.outerHTML.Replace("<", "").Replace(">", "").Trim();
             string[] saTemp = sOuterHTML.Split(' ');
@@ -186,8 +179,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 sSearchProperties = sSearchProperties.Substring(1);
             }
-            HtmlCheckBox retChk = new HtmlCheckBox(sSearchProperties);
-            retChk.Wrap(chk);
+            HtmlCheckBox retChk = new HtmlCheckBox(chk, sSearchProperties);
             return retChk;
         }
 
@@ -225,9 +217,9 @@ namespace CUITe.Controls.HtmlControls
             return GetCell<HtmlCell>(iRow, iCol);
         }
 
-        private T GetCell<T>(int iRow, int iCol) where T : IHtmlControl
+        private T GetCell<T>(int iRow, int iCol) where T : ControlBase, IHtmlControl
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             UITestControl htmlCell = null;
             int rowCount = -1;
 
@@ -261,20 +253,7 @@ namespace CUITe.Controls.HtmlControls
                 }
             }
 
-            Type t = typeof(T);
-            ConstructorInfo ctor = GetConstructor(t, typeof(UITestControl));
-            return (T)ctor.Invoke(
-                new object[]
-                {
-                    htmlCell
-                }); // call constructor
-        }
-
-        public ConstructorInfo GetConstructor(Type type, Type baseParameterType)
-        {
-            return type.GetConstructors()
-                .Where(ci => ci.GetParameters().Length == 1)
-                .Where(ci => baseParameterType.IsAssignableFrom(ci.GetParameters().First().ParameterType)).First();
+            return ControlBaseFactory.Create<T>(htmlCell, null);
         }
 
         private IHTMLElement GetEmbeddedCheckBoxNativeElement(IHTMLElement parent)

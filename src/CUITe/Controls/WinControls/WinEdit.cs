@@ -7,84 +7,80 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinEdit : ControlBase<CUITControls.WinEdit>
     {
-        public WinEdit()
-        {
-        }
-
-        public WinEdit(string searchParameters)
-            : base(searchParameters)
+        public WinEdit(CUITControls.WinEdit sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinEdit(), searchProperties)
         {
         }
 
         public string CopyPastedText
         {
-            get { return UnWrap().CopyPastedText; }
-            set { UnWrap().CopyPastedText = value; }
+            get { return SourceControl.CopyPastedText; }
+            set { SourceControl.CopyPastedText = value; }
         }
 
         public int CurrentLine
         {
-            get { return UnWrap().CurrentLine; }
+            get { return SourceControl.CurrentLine; }
         }
 
         public int InsertionIndexAbsolute
         {
-            get { return UnWrap().InsertionIndexAbsolute; }
-            set { UnWrap().InsertionIndexAbsolute = value; }
+            get { return SourceControl.InsertionIndexAbsolute; }
+            set { SourceControl.InsertionIndexAbsolute = value; }
         }
 
         public int InsertionIndexLineRelative
         {
-            get { return UnWrap().InsertionIndexLineRelative; }
+            get { return SourceControl.InsertionIndexLineRelative; }
         }
 
         public bool IsPassword
         {
-            get { return UnWrap().IsPassword; }
+            get { return SourceControl.IsPassword; }
         }
 
         public int LineCount
         {
-            get { return UnWrap().LineCount; }
+            get { return SourceControl.LineCount; }
         }
 
         public int MaxLength
         {
-            get { return UnWrap().MaxLength; }
+            get { return SourceControl.MaxLength; }
         }
 
         public string Password
         {
-            set { UnWrap().Password = value; }
+            set { SourceControl.Password = value; }
         }
 
         public bool ReadOnly
         {
-            get { return UnWrap().ReadOnly; }
+            get { return SourceControl.ReadOnly; }
         }
 
         public int SelectionEnd
         {
-            get { return UnWrap().SelectionEnd; }
-            set { UnWrap().SelectionEnd = value; }
+            get { return SourceControl.SelectionEnd; }
+            set { SourceControl.SelectionEnd = value; }
         }
 
         public int SelectionStart
         {
-            get { return UnWrap().SelectionStart; }
-            set { UnWrap().SelectionStart = value; }
+            get { return SourceControl.SelectionStart; }
+            set { SourceControl.SelectionStart = value; }
         }
 
         public string SelectionText
         {
-            get { return UnWrap().SelectionText; }
-            set { UnWrap().SelectionText = value; }
+            get { return SourceControl.SelectionText; }
+            set { SourceControl.SelectionText = value; }
         }
 
         public string Text
         {
-            get { return UnWrap().Text; }
-            set { UnWrap().Text = value; }
+            get { return SourceControl.Text; }
+            set { SourceControl.Text = value; }
         }
     }
 }

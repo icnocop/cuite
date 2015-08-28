@@ -4,12 +4,8 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlLabel : HtmlControl<CUITControls.HtmlLabel>
     {
-        public HtmlLabel()
-        {
-        }
-
-        public HtmlLabel(string searchParameters)
-            : base(searchParameters)
+        public HtmlLabel(CUITControls.HtmlLabel sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlLabel(), searchProperties)
         {
         }
 
@@ -23,7 +19,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.LabelFor;
             }
         }

@@ -10,18 +10,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenu : WpfControl<CUITControls.WpfMenu>
     {
-        public WpfMenu()
-        {
-        }
-
-        public WpfMenu(string searchParameters)
-            : base(searchParameters)
+        public WpfMenu(CUITControls.WpfMenu sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfMenu(), searchProperties)
         {
         }
 
         public UITestControlCollection Items
         {
-            get { return UnWrap().Items; }
+            get { return SourceControl.Items; }
         }
 
         public List<WpfMenuItem> ItemsAsCUITe
@@ -29,10 +25,9 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfMenuItem> list = new List<WpfMenuItem>();
-                foreach (CUITControls.WpfMenuItem item in UnWrap().Items)
+                foreach (CUITControls.WpfMenuItem item in SourceControl.Items)
                 {
-                    WpfMenuItem cuiteItem = new WpfMenuItem();
-                    cuiteItem.WrapReady(item);
+                    WpfMenuItem cuiteItem = new WpfMenuItem(item);
                     list.Add(cuiteItem);
                 }
                 return list;
@@ -41,7 +36,7 @@ namespace CUITe.Controls.WpfControls
 
         public List<string> ItemsAsList
         {
-            get { return (from x in UnWrap().Items select ((CUITControls.WpfMenuItem)x).Header).ToList<string>(); }
+            get { return (from x in SourceControl.Items select ((CUITControls.WpfMenuItem)x).Header).ToList<string>(); }
         }
     }
 }

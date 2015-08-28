@@ -6,8 +6,8 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "ol";
 
-        public HtmlOrderedList(string searchParameters = null)
-            : base(_tagName, searchParameters)
+        public HtmlOrderedList(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+            : base(_tagName, sourceControl, searchProperties)
         {
         }
     }

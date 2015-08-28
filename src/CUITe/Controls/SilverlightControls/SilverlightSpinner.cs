@@ -9,18 +9,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
-        public SilverlightSpinner()
-        {
-            Initialize();
-        }
-
-        public SilverlightSpinner(string searchParameters)
-            : base(searchParameters)
-        {
-            Initialize();
-        }
-
-        private void Initialize()
+        public SilverlightSpinner(CUITControls.SilverlightControl sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightControl(), searchProperties)
         {
             SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
         }
@@ -37,25 +27,25 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return _TextBox.Text;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 _TextBox.Text = value;
             }
         }
 
         public void SetText(string sText)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             _TextBox.Text = sText;
         }
 
         public string GetText()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             return _TextBox.Text;
         }
 
@@ -63,7 +53,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return _TextBox.ReadOnly;
             }
         }

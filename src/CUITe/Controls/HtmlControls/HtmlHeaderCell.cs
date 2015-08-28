@@ -4,17 +4,8 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlHeaderCell : HtmlControl<CUITControls.HtmlHeaderCell>
     {
-        public HtmlHeaderCell()
-        {
-        }
-
-        public HtmlHeaderCell(string sSearchProperties)
-            : base(sSearchProperties)
-        {
-        }
-
-        public HtmlHeaderCell(CUITControls.HtmlControl control)
-            : base(control)
+        public HtmlHeaderCell(CUITControls.HtmlHeaderCell sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlHeaderCell(), searchProperties)
         {
         }
     }

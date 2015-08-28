@@ -7,18 +7,14 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabPage : WpfControl<CUITControls.WpfTabPage>
     {
-        public WpfTabPage()
-        {
-        }
-
-        public WpfTabPage(string searchParameters)
-            : base(searchParameters)
+        public WpfTabPage(CUITControls.WpfTabPage sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WpfTabPage(), searchProperties)
         {
         }
 
         public string Header
         {
-            get { return UnWrap().Header; }
+            get { return SourceControl.Header; }
         }
     }
 }

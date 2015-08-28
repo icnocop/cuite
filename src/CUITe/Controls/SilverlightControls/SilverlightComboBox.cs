@@ -9,12 +9,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightComboBox : SilverlightControl<CUITControls.SilverlightComboBox>
     {
-        public SilverlightComboBox()
-        {
-        }
-
-        public SilverlightComboBox(string searchParameters)
-            : base(searchParameters)
+        public SilverlightComboBox(CUITControls.SilverlightComboBox sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightComboBox(), searchProperties)
         {
         }
 
@@ -24,7 +20,7 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="sItem">Item as string</param>
         public void SelectItem(string sItem)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             SourceControl.SelectedItem = sItem;
         }
 
@@ -34,7 +30,7 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="index">index of item</param>
         public void SelectItem(int index)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             SourceControl.SelectedIndex = index;
         }
 
@@ -45,7 +41,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedItem;
             }
         }
@@ -57,7 +53,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedIndex;
             }
         }
@@ -69,7 +65,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Items.Count;
             }
         }

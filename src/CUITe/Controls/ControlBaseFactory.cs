@@ -4,20 +4,10 @@ using Microsoft.VisualStudio.TestTools.UITesting;
 namespace CUITe.Controls
 {
     /// <summary>
-    /// Factory capable of creating UI test controls inheriting from <see cref="IControlBase"/>.
+    /// Factory capable of creating UI test controls inheriting from <see cref="ControlBase"/>.
     /// </summary>
     internal class ControlBaseFactory
     {
-        /// <summary>
-        /// Creates a UI test control of type <see cref="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the UI test control to create.</typeparam>
-        /// <returns>A UI test control of type <see cref="T"/>.</returns>
-        internal static T Create<T>() where T : IControlBase
-        {
-            return (T)Activator.CreateInstance(typeof(T));
-        }
-
         /// <summary>
         /// Creates a UI test control of type <see cref="T"/> with specified search properties.
         /// </summary>
@@ -26,12 +16,12 @@ namespace CUITe.Controls
         /// <returns>
         /// A UI test control of type <see cref="T"/> with specified search properties.
         /// </returns>
-        internal static T Create<T>(string searchProperties) where T : IControlBase
+        internal static T Create<T>(UITestControl sourceControl, string searchProperties) where T : ControlBase
         {
-            return (T)Activator.CreateInstance(typeof(T), searchProperties);
+            return (T)Activator.CreateInstance(typeof(T), sourceControl, searchProperties);
         }
 
-        protected static IControlBase Create(UITestControl sourceControl, string targetNamespace)
+        protected static ControlBase Create(UITestControl sourceControl, string targetNamespace)
         {
             if (sourceControl == null)
                 throw new ArgumentNullException("sourceControl");
@@ -51,12 +41,7 @@ namespace CUITe.Controls
             }
 
             // Create UI test control
-            var control = (IControlBase)Activator.CreateInstance(targetType);
-
-            // Wrap WinControl
-            control.WrapReady(sourceControl);
-
-            return control;
+            return (ControlBase)Activator.CreateInstance(targetType, sourceControl);
         }
     }
 }

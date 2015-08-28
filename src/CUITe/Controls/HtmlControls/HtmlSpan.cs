@@ -4,12 +4,8 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlSpan : HtmlControl<CUITControls.HtmlSpan>
     {
-        public HtmlSpan()
-        {
-        }
-
-        public HtmlSpan(string searchParameters)
-            : base(searchParameters)
+        public HtmlSpan(CUITControls.HtmlSpan sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.HtmlSpan(), searchProperties)
         {
         }
     }

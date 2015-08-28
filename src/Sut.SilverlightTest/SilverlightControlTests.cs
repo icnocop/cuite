@@ -49,7 +49,7 @@ namespace Sut.SilverlightTest
             SilverlightEdit oEdit = b.Get<SilverlightEdit>("AutomationId=textBox1");
             oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
             SilverlightDatePicker dp = b.Get<SilverlightDatePicker>("AutomationId=datePicker1");
-            dp.UnWrap().SelectedDate = new DateTime(2011, 5, 11);
+            dp.SourceControl.SelectedDate = new DateTime(2011, 5, 11);
             b.Close();
         }
 
@@ -95,7 +95,7 @@ namespace Sut.SilverlightTest
             b.SetFocus();
             SilverlightTab oTab = b.Get<SilverlightTab>("AutomationId=tabControl1");
             oTab.SelectedIndex= 1;
-            Assert.IsTrue(oTab.UnWrap().Items[0].Name == "tabItem1");
+            Assert.IsTrue(oTab.SourceControl.Items[0].Name == "tabItem1");
             b.Close();
         }
 
@@ -108,7 +108,7 @@ namespace Sut.SilverlightTest
             oTab.SelectedIndex = 0;
             var btnOK = b.Get<SilverlightButton>("AutomationId=OKButtonInTabItem1");
             ((SilverlightEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
-            foreach (IControlBase control in oTab.GetChildren())
+            foreach (ControlBase control in oTab.GetChildren())
             {
                 if (control.GetType() == typeof(SilverlightEdit))
                 {

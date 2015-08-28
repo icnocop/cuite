@@ -8,12 +8,8 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTab : SilverlightControl<CUITControls.SilverlightTab>
     {
-        public SilverlightTab()
-        {
-        }
-
-        public SilverlightTab(string searchParameters)
-            : base(searchParameters)
+        public SilverlightTab(CUITControls.SilverlightTab sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.SilverlightTab(), searchProperties)
         {
         }
 
@@ -24,12 +20,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedIndex;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedIndex = value;
             }
         }
@@ -41,12 +37,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.SelectedItem;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.SelectedItem = value;
             }
         }
@@ -58,7 +54,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Items.Count;
             }
         }

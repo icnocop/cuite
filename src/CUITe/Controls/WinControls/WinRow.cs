@@ -9,18 +9,14 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRow : WinControl<CUITControls.WinRow>
     {
-        public WinRow()
-        {
-        }
-
-        public WinRow(string searchParameters)
-            : base(searchParameters)
+        public WinRow(CUITControls.WinRow sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinRow(), searchProperties)
         {
         }
 
         public UITestControlCollection Cells
         {
-            get { return UnWrap().Cells; }
+            get { return SourceControl.Cells; }
         }
 
         public List<WinCell> CellsAsCUITe
@@ -28,10 +24,9 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinCell> list = new List<WinCell>();
-                foreach (CUITControls.WinCell control in UnWrap().Cells)
+                foreach (CUITControls.WinCell control in SourceControl.Cells)
                 {
-                    WinCell cell = new WinCell();
-                    cell.WrapReady(control);
+                    WinCell cell = new WinCell(control);
                     list.Add(cell);
                 }
                 return list;
@@ -40,17 +35,17 @@ namespace CUITe.Controls.WinControls
 
         public int RowIndex
         {
-            get { return UnWrap().RowIndex; }
+            get { return SourceControl.RowIndex; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
+            get { return SourceControl.Selected; }
         }
 
         public string Value
         {
-            get { return UnWrap().Value; }
+            get { return SourceControl.Value; }
         }
     }
 }

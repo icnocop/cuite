@@ -7,60 +7,56 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSlider : WinControl<CUITControls.WinSlider>
     {
-        public WinSlider()
-        {
-        }
-
-        public WinSlider(string searchParameters)
-            : base(searchParameters)
+        public WinSlider(CUITControls.WinSlider sourceControl = null, string searchProperties = null)
+            : base(sourceControl ?? new CUITControls.WinSlider(), searchProperties)
         {
         }
 
         public double LineSize
         {
-            get { return UnWrap().LineSize; }
+            get { return SourceControl.LineSize; }
         }
 
         public double MaximumPosition
         {
-            get { return UnWrap().MaximumPosition; }
+            get { return SourceControl.MaximumPosition; }
         }
 
         public double MinimumPosition
         {
-            get { return UnWrap().MinimumPosition; }
+            get { return SourceControl.MinimumPosition; }
         }
 
         public double PageSize
         {
-            get { return UnWrap().PageSize; }
+            get { return SourceControl.PageSize; }
         }
 
         public double Position
         {
-            get { return UnWrap().Position; }
-            set { UnWrap().Position = value; }
+            get { return SourceControl.Position; }
+            set { SourceControl.Position = value; }
         }
 
         public string PositionAsString
         {
-            get { return UnWrap().PositionAsString; }
-            set { UnWrap().PositionAsString = value; }
+            get { return SourceControl.PositionAsString; }
+            set { SourceControl.PositionAsString = value; }
         }
 
         public double TickCount
         {
-            get { return UnWrap().TickCount; }
+            get { return SourceControl.TickCount; }
         }
 
         public double TickPosition
         {
-            get { return UnWrap().TickPosition; }
+            get { return SourceControl.TickPosition; }
         }
 
         public double TickValue
         {
-            get { return UnWrap().TickValue; }
+            get { return SourceControl.TickValue; }
         }
     }
 }

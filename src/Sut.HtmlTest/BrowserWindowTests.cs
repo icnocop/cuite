@@ -136,7 +136,7 @@ namespace Sut.HtmlTest
             //Assert
             const string expected = "<body vsttFireTimer=\"false\">";
 
-            string outerHtml = doc.UnWrap().GetProperty("OuterHtml").ToString();
+            string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString();
 
             Assert.AreEqual(expected, outerHtml.Substring(0, expected.Length), true, outerHtml);
 
