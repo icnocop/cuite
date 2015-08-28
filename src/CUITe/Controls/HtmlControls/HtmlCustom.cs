@@ -7,7 +7,7 @@ namespace CUITe.Controls.HtmlControls
         public HtmlCustom(string tagName, CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
             : base(sourceControl ?? new CUITControls.HtmlCustom(), searchProperties)
         {
-            SetSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, tagName);
+            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, tagName);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace CUITe.Controls.SilverlightControls
         public SilverlightSpinner(CUITControls.SilverlightControl sourceControl, string searchProperties = null)
             : base(sourceControl, searchProperties)
         {
-            SetSearchProperty(UITestControl.PropertyNames.ControlType, "Spinner");
+            AddSearchProperty(UITestControl.PropertyNames.ControlType, "Spinner");
         }
 
         private SilverlightEdit _TextBox

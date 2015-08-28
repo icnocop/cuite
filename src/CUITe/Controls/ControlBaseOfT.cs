@@ -25,7 +25,7 @@ namespace CUITe.Controls
 
             this.sourceControl = sourceControl;
             
-            SetSearchProperties(ParseSearchProperties(searchProperties));
+            AddSearchProperties(ParseSearchProperties(searchProperties));
         }
 
         public T SourceControl
@@ -37,7 +37,7 @@ namespace CUITe.Controls
         /// Wraps the adding of search properties for the UITestControl where
         /// the property expression is 'EqualTo'.
         /// </summary>
-        public void SetSearchProperty(string propertyName, string propertyValue)
+        public void AddSearchProperty(string propertyName, string propertyValue)
         {
             SourceControl.SearchProperties.Add(propertyName, propertyValue);
         }
@@ -48,12 +48,12 @@ namespace CUITe.Controls
         /// </summary>
         /// <param name="sPropertyName"></param>
         /// <param name="sValue"></param>
-        public void SetSearchPropertyRegx(string propertyName, string propertyValue)
+        public void AddSearchPropertyRegx(string propertyName, string propertyValue)
         {
             SourceControl.SearchProperties.Add(propertyName, propertyValue, PropertyExpressionOperator.Contains);
         }
 
-        public void SetSearchProperties(PropertyExpressionCollection searchProperties)
+        public void AddSearchProperties(PropertyExpressionCollection searchProperties)
         {
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
@@ -65,7 +65,7 @@ namespace CUITe.Controls
         /// Gets the CUITe UI control object from the descendants of this control using the search parameters are passed. 
         /// You don't have to create the object repository entry for this.
         /// </summary>
-        /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
+        /// <typeparam name="TControl">Pass the CUITe control you are looking for.</typeparam>
         /// <param name="searchProperties">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
         /// or use '~' for Contains such as 'Id~first'</param>
         /// <returns>CUITe control object</returns>

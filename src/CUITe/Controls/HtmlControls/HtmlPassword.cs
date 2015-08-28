@@ -12,7 +12,7 @@ namespace CUITe.Controls.HtmlControls
         public HtmlPassword(CUITControls.HtmlEdit sourceControl, string searchProperties = null)
             : base(sourceControl, searchProperties)
         {
-            SetSearchProperty(CUITControls.HtmlControl.PropertyNames.Type, "PASSWORD");
+            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.Type, "PASSWORD");
         }
     }
 }

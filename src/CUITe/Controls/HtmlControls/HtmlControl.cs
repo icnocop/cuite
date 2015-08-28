@@ -7,7 +7,7 @@ namespace CUITe.Controls.HtmlControls
         protected HtmlControl(string tagName, CUITControls.HtmlControl sourceControl = null, string searchProperties = null)
             : base(sourceControl ?? new CUITControls.HtmlControl(), searchProperties)
         {
-            SetSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, tagName);
+            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, tagName);
         }
     }
 }

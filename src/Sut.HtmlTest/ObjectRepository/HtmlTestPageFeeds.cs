@@ -14,7 +14,7 @@ namespace Sut.HtmlTest.ObjectRepository
             get
             {
                 HtmlCustom ul = divFeedTabs.Get<HtmlCustom>("ul");
-                ul.SetSearchProperty("Class", "dataFeedTab ui-tabs-nav");
+                ul.AddSearchProperty("Class", "dataFeedTab ui-tabs-nav");
                 return ul;
             }
         }
