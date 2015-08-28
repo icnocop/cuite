@@ -8,8 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTabItem : SilverlightControl<CUITControls.SilverlightTabItem>
     {
-        public SilverlightTabItem(CUITControls.SilverlightTabItem sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightTabItem(), searchProperties)
+        public SilverlightTabItem(string searchProperties = null)
+            : this(new CUITControls.SilverlightTabItem(), searchProperties)
+        {
+        }
+
+        public SilverlightTabItem(CUITControls.SilverlightTabItem sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

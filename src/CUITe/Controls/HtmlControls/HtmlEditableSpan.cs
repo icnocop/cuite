@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableSpan : HtmlControl<CUITControls.HtmlEditableSpan>
     {
-        public HtmlEditableSpan(CUITControls.HtmlEditableSpan sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlEditableSpan(), searchProperties)
+        public HtmlEditableSpan(string searchProperties = null)
+            : this(new CUITControls.HtmlEditableSpan(), searchProperties)
+        {
+        }
+
+        public HtmlEditableSpan(CUITControls.HtmlEditableSpan sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

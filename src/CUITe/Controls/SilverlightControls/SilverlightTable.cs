@@ -9,8 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
-        public SilverlightTable(CUITControls.SilverlightTable sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightTable(), searchProperties)
+        public SilverlightTable(string searchProperties = null)
+            : this(new CUITControls.SilverlightTable(), searchProperties)
+        {
+        }
+
+        public SilverlightTable(CUITControls.SilverlightTable sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

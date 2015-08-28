@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlLabel : HtmlControl<CUITControls.HtmlLabel>
     {
-        public HtmlLabel(CUITControls.HtmlLabel sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlLabel(), searchProperties)
+        public HtmlLabel(string searchProperties = null)
+            : this(new CUITControls.HtmlLabel(), searchProperties)
+        {
+        }
+
+        public HtmlLabel(CUITControls.HtmlLabel sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

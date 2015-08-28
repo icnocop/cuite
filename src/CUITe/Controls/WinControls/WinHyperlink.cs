@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinHyperlink : WinControl<CUITControls.WinHyperlink>
     {
-        public WinHyperlink(CUITControls.WinHyperlink sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinHyperlink(), searchProperties)
+        public WinHyperlink(string searchProperties = null)
+            : this(new CUITControls.WinHyperlink(), searchProperties)
+        {
+        }
+
+        public WinHyperlink(CUITControls.WinHyperlink sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -8,8 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinStatusBar : WinControl<CUITControls.WinStatusBar>
     {
-        public WinStatusBar(CUITControls.WinStatusBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinStatusBar(), searchProperties)
+        public WinStatusBar(string searchProperties = null)
+            : this(new CUITControls.WinStatusBar(), searchProperties)
+        {
+        }
+
+        public WinStatusBar(CUITControls.WinStatusBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

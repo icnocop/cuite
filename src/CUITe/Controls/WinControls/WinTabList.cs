@@ -9,8 +9,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTabList : WinControl<CUITControls.WinTabList>
     {
-        public WinTabList(CUITControls.WinTabList sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinTabList(), searchProperties)
+        public WinTabList(string searchProperties = null)
+            : this(new CUITControls.WinTabList(), searchProperties)
+        {
+        }
+
+        public WinTabList(CUITControls.WinTabList sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

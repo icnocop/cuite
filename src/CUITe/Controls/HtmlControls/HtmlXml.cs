@@ -6,7 +6,12 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "xml";
 
-        public HtmlXml(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+        public HtmlXml(string searchProperties = null)
+            : this(new CUITControls.HtmlCustom(), searchProperties)
+        {
+        }
+
+        public HtmlXml(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
             : base(_tagName, sourceControl, searchProperties)
         {
         }

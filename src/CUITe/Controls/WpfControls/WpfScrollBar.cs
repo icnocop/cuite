@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfScrollBar : WpfControl<CUITControls.WpfScrollBar>
     {
-        public WpfScrollBar(CUITControls.WpfScrollBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfScrollBar(), searchProperties)
+        public WpfScrollBar(string searchProperties = null)
+            : this(new CUITControls.WpfScrollBar(), searchProperties)
+        {
+        }
+
+        public WpfScrollBar(CUITControls.WpfScrollBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

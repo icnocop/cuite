@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTitleBar : WinControl<CUITControls.WinTitleBar>
     {
-        public WinTitleBar(CUITControls.WinTitleBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinTitleBar(), searchProperties)
+        public WinTitleBar(string searchProperties = null)
+            : this(new CUITControls.WinTitleBar(), searchProperties)
+        {
+        }
+
+        public WinTitleBar(CUITControls.WinTitleBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

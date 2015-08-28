@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlRadioButton : HtmlControl<CUITControls.HtmlRadioButton>
     {
-        public HtmlRadioButton(CUITControls.HtmlRadioButton sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlRadioButton(), searchProperties)
+        public HtmlRadioButton(string searchProperties = null)
+            : this(new CUITControls.HtmlRadioButton(), searchProperties)
+        {
+        }
+
+        public HtmlRadioButton(CUITControls.HtmlRadioButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

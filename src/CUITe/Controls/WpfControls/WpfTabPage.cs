@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabPage : WpfControl<CUITControls.WpfTabPage>
     {
-        public WpfTabPage(CUITControls.WpfTabPage sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfTabPage(), searchProperties)
+        public WpfTabPage(string searchProperties = null)
+            : this(new CUITControls.WpfTabPage(), searchProperties)
+        {
+        }
+
+        public WpfTabPage(CUITControls.WpfTabPage sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

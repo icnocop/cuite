@@ -6,7 +6,7 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
     public class MainScreen : WinWindow
     {
         public MainScreen()
-            : base(searchProperties: "Name=System Under Test (WinForms)")
+            : base("Name=System Under Test (WinForms)")
         {
         }
 

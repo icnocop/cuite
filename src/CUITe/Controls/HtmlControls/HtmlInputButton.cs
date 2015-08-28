@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlInputButton : HtmlControl<CUITControls.HtmlInputButton>
     {
-        public HtmlInputButton(CUITControls.HtmlInputButton sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlInputButton(), searchProperties)
+        public HtmlInputButton(string searchProperties = null)
+            : this(new CUITControls.HtmlInputButton(), searchProperties)
+        {
+        }
+
+        public HtmlInputButton(CUITControls.HtmlInputButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

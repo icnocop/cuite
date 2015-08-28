@@ -8,8 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinToolBar : WinControl<CUITControls.WinToolBar>
     {
-        public WinToolBar(CUITControls.WinToolBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinToolBar(), searchProperties)
+        public WinToolBar(string searchProperties = null)
+            : this(new CUITControls.WinToolBar(), searchProperties)
+        {
+        }
+
+        public WinToolBar(CUITControls.WinToolBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

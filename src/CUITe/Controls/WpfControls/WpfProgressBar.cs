@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfProgressBar : WpfControl<CUITControls.WpfProgressBar>
     {
-        public WpfProgressBar(CUITControls.WpfProgressBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfProgressBar(), searchProperties)
+        public WpfProgressBar(string searchProperties = null)
+            : this(new CUITControls.WpfProgressBar(), searchProperties)
+        {
+        }
+
+        public WpfProgressBar(CUITControls.WpfProgressBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

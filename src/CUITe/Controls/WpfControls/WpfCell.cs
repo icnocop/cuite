@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCell : WpfControl<CUITControls.WpfCell>
     {
-        public WpfCell(CUITControls.WpfCell sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfCell(), searchProperties)
+        public WpfCell(string searchProperties = null)
+            : this(new CUITControls.WpfCell(), searchProperties)
+        {
+        }
+
+        public WpfCell(CUITControls.WpfCell sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
         

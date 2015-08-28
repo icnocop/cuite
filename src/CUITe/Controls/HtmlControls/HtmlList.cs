@@ -6,11 +6,16 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlList : HtmlControl<CUITControls.HtmlList>
     {
-        public HtmlList(CUITControls.HtmlList sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlList(), searchProperties)
+        public HtmlList(string searchProperties = null)
+            : this(new CUITControls.HtmlList(), searchProperties)
         {
         }
 
+        public HtmlList(CUITControls.HtmlList sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
+        {
+        }
+        
         /// <summary>
         /// Gets the items in a string array of the html list.
         /// </summary>

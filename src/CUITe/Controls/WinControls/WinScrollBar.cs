@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinScrollBar : WinControl<CUITControls.WinScrollBar>
     {
-        public WinScrollBar(CUITControls.WinScrollBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinScrollBar(), searchProperties)
+        public WinScrollBar(string searchProperties = null)
+            : this(new CUITControls.WinScrollBar(), searchProperties)
+        {
+        }
+
+        public WinScrollBar(CUITControls.WinScrollBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

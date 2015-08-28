@@ -10,8 +10,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
-        public SilverlightCalendar(CUITControls.SilverlightCalendar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightCalendar(), searchProperties)
+        public SilverlightCalendar(string searchProperties = null)
+            : this(new CUITControls.SilverlightCalendar(), searchProperties)
+        {
+        }
+
+        public SilverlightCalendar(CUITControls.SilverlightCalendar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

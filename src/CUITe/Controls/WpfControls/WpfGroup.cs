@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfGroup : WpfControl<CUITControls.WpfGroup>
     {
-        public WpfGroup(CUITControls.WpfGroup sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfGroup(), searchProperties)
+        public WpfGroup(string searchProperties = null)
+            : this(new CUITControls.WpfGroup(), searchProperties)
+        {
+        }
+
+        public WpfGroup(CUITControls.WpfGroup sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

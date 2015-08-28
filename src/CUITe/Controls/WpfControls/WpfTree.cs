@@ -9,8 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTree : WpfControl<CUITControls.WpfTree>
     {
-        public WpfTree(CUITControls.WpfTree sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfTree(), searchProperties)
+        public WpfTree(string searchProperties = null)
+            : this(new CUITControls.WpfTree(), searchProperties)
+        {
+        }
+
+        public WpfTree(CUITControls.WpfTree sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

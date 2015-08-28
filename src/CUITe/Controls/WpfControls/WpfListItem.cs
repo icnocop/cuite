@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfListItem : WpfControl<CUITControls.WpfListItem>
     {
-        public WpfListItem(CUITControls.WpfListItem sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfListItem(), searchProperties)
+        public WpfListItem(string searchProperties = null)
+            : this(new CUITControls.WpfListItem(), searchProperties)
+        {
+        }
+
+        public WpfListItem(CUITControls.WpfListItem sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

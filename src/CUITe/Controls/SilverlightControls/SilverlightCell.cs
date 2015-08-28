@@ -8,8 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCell : SilverlightControl<CUITControls.SilverlightCell>
     {
-        public SilverlightCell(CUITControls.SilverlightCell sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightCell(), searchProperties)
+        public SilverlightCell(string searchProperties = null)
+            : this(new CUITControls.SilverlightCell(), searchProperties)
+        {
+        }
+
+        public SilverlightCell(CUITControls.SilverlightCell sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

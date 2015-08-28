@@ -10,8 +10,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinComboBox : WinControl<CUITControls.WinComboBox>
     {
-        public WinComboBox(CUITControls.WinComboBox sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinComboBox(), searchProperties)
+        public WinComboBox(string searchProperties = null)
+            : this(new CUITControls.WinComboBox(), searchProperties)
+        {
+        }
+
+        public WinComboBox(CUITControls.WinComboBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

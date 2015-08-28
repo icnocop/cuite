@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToggleButton : WpfControl<CUITControls.WpfToggleButton>
     {
-        public WpfToggleButton(CUITControls.WpfToggleButton sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfToggleButton(), searchProperties)
+        public WpfToggleButton(string searchProperties = null)
+            : this(new CUITControls.WpfToggleButton(), searchProperties)
+        {
+        }
+
+        public WpfToggleButton(CUITControls.WpfToggleButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

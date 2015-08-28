@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSpinner : WinControl<CUITControls.WinSpinner>
     {
-        public WinSpinner(CUITControls.WinSpinner sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinSpinner(), searchProperties)
+        public WinSpinner(string searchProperties = null)
+            : this(new CUITControls.WinSpinner(), searchProperties)
+        {
+        }
+
+        public WinSpinner(CUITControls.WinSpinner sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

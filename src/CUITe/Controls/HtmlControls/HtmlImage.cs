@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlImage : HtmlControl<CUITControls.HtmlImage>
     {
-        public HtmlImage(CUITControls.HtmlImage sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlImage(), searchProperties)
+        public HtmlImage(string searchProperties = null)
+            : this(new CUITControls.HtmlImage(), searchProperties)
+        {
+        }
+
+        public HtmlImage(CUITControls.HtmlImage sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

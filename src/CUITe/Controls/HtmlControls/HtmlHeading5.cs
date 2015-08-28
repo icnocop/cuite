@@ -6,7 +6,12 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "h5";
 
-        public HtmlHeading5(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+        public HtmlHeading5(string searchProperties = null)
+            : this(new CUITControls.HtmlCustom(), searchProperties)
+        {
+        }
+
+        public HtmlHeading5(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
             : base(_tagName, sourceControl, searchProperties)
         {
         }

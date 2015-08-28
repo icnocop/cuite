@@ -9,8 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfRow : WpfControl<CUITControls.WpfRow>
     {
-        public WpfRow(CUITControls.WpfRow sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfRow(), searchProperties)
+        public WpfRow(string searchProperties = null)
+            : this(new CUITControls.WpfRow(), searchProperties)
+        {
+        }
+
+        public WpfRow(CUITControls.WpfRow sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

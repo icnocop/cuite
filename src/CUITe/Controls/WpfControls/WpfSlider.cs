@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfSlider : WpfControl<CUITControls.WpfSlider>
     {
-        public WpfSlider(CUITControls.WpfSlider sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfSlider(), searchProperties)
+        public WpfSlider(string searchProperties = null)
+            : this(new CUITControls.WpfSlider(), searchProperties)
+        {
+        }
+
+        public WpfSlider(CUITControls.WpfSlider sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

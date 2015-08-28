@@ -9,8 +9,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRow : WinControl<CUITControls.WinRow>
     {
-        public WinRow(CUITControls.WinRow sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinRow(), searchProperties)
+        public WinRow(string searchProperties = null)
+            : this(new CUITControls.WinRow(), searchProperties)
+        {
+        }
+
+        public WinRow(CUITControls.WinRow sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

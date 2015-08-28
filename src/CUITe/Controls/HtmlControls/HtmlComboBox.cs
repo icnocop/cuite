@@ -9,8 +9,13 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class HtmlComboBox : HtmlControl<CUITControls.HtmlComboBox>
     {
-        public HtmlComboBox(CUITControls.HtmlComboBox sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlComboBox(), searchProperties)
+        public HtmlComboBox(string searchProperties = null)
+            : this(new CUITControls.HtmlComboBox(), searchProperties)
+        {
+        }
+
+        public HtmlComboBox(CUITControls.HtmlComboBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

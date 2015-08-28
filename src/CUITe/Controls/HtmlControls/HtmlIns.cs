@@ -6,7 +6,12 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "ins";
 
-        public HtmlIns(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+        public HtmlIns(string searchProperties = null)
+            : this(new CUITControls.HtmlCustom(), searchProperties)
+        {
+        }
+
+        public HtmlIns(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
             : base(_tagName, sourceControl, searchProperties)
         {
         }

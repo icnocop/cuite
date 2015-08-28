@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfEdit : WpfControl<CUITControls.WpfEdit>
     {
-        public WpfEdit(CUITControls.WpfEdit sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfEdit(), searchProperties)
+        public WpfEdit(string searchProperties = null)
+            : this(new CUITControls.WpfEdit(), searchProperties)
+        {
+        }
+
+        public WpfEdit(CUITControls.WpfEdit sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

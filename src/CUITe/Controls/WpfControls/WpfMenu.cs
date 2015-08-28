@@ -10,8 +10,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenu : WpfControl<CUITControls.WpfMenu>
     {
-        public WpfMenu(CUITControls.WpfMenu sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfMenu(), searchProperties)
+        public WpfMenu(string searchProperties = null)
+            : this(new CUITControls.WpfMenu(), searchProperties)
+        {
+        }
+
+        public WpfMenu(CUITControls.WpfMenu sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

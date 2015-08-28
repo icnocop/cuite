@@ -10,8 +10,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfComboBox : WpfControl<CUITControls.WpfComboBox>
     {
-        public WpfComboBox(CUITControls.WpfComboBox sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfComboBox(), searchProperties)
+        public WpfComboBox(string searchProperties = null)
+            : this(new CUITControls.WpfComboBox(), searchProperties)
+        {
+        }
+
+        public WpfComboBox(CUITControls.WpfComboBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

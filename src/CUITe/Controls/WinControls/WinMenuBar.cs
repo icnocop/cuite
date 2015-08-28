@@ -10,8 +10,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenuBar : WinControl<CUITControls.WinMenuBar>
     {
-        public WinMenuBar(CUITControls.WinMenuBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinMenuBar(), searchProperties)
+        public WinMenuBar(string searchProperties = null)
+            : this(new CUITControls.WinMenuBar(), searchProperties)
+        {
+        }
+
+        public WinMenuBar(CUITControls.WinMenuBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfExpander : WpfControl<CUITControls.WpfExpander>
     {
-        public WpfExpander(CUITControls.WpfExpander sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfExpander(), searchProperties)
+        public WpfExpander(string searchProperties = null)
+            : this(new CUITControls.WpfExpander(), searchProperties)
+        {
+        }
+
+        public WpfExpander(CUITControls.WpfExpander sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

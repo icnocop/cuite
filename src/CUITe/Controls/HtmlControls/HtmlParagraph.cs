@@ -6,7 +6,12 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "p";
 
-        public HtmlParagraph(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+        public HtmlParagraph(string searchProperties = null)
+            : this(new CUITControls.HtmlCustom(), searchProperties)
+        {
+        }
+
+        public HtmlParagraph(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
             : base(_tagName, sourceControl, searchProperties)
         {
         }

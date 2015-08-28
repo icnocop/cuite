@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlDocument : HtmlControl<CUITControls.HtmlDocument>
     {
-        public HtmlDocument(CUITControls.HtmlDocument sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlDocument(), searchProperties)
+        public HtmlDocument(string searchProperties = null)
+            : this(new CUITControls.HtmlDocument(), searchProperties)
+        {
+        }
+
+        public HtmlDocument(CUITControls.HtmlDocument sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

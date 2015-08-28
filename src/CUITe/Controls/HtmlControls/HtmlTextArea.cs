@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTextArea : HtmlControl<CUITControls.HtmlTextArea>
     {
-        public HtmlTextArea(CUITControls.HtmlTextArea sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlTextArea(), searchProperties)
+        public HtmlTextArea(string searchProperties = null)
+            : this(new CUITControls.HtmlTextArea(), searchProperties)
+        {
+        }
+
+        public HtmlTextArea(CUITControls.HtmlTextArea sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlHeaderCell : HtmlControl<CUITControls.HtmlHeaderCell>
     {
-        public HtmlHeaderCell(CUITControls.HtmlHeaderCell sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlHeaderCell(), searchProperties)
+        public HtmlHeaderCell(string searchProperties = null)
+            : this(new CUITControls.HtmlHeaderCell(), searchProperties)
+        {
+        }
+
+        public HtmlHeaderCell(CUITControls.HtmlHeaderCell sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

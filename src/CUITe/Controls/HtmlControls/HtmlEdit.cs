@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEdit : HtmlControl<CUITControls.HtmlEdit>
     {
-        public HtmlEdit(CUITControls.HtmlEdit sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlEdit(), searchProperties)
+        public HtmlEdit(string searchProperties = null)
+            : this(new CUITControls.HtmlEdit(), searchProperties)
+        {
+        }
+
+        public HtmlEdit(CUITControls.HtmlEdit sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

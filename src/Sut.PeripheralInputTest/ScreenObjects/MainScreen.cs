@@ -5,7 +5,7 @@ namespace Sut.PeripheralInputTest.ScreenObjects
     public class MainScreen : WpfWindow
     {
         public MainScreen()
-            : base(searchProperties: "Name=System Under Test (Peripheral Input)")
+            : base("Name=System Under Test (Peripheral Input)")
         {
         }
 

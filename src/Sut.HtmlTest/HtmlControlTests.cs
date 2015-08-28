@@ -422,7 +422,7 @@ namespace Sut.HtmlTest
                 if (BrowserWindowUnderTest.GetCurrentBrowser() is InternetExplorer)
                 {
                     //read JavaScript alert text
-                    WinWindow popup = new WinWindow(searchProperties: "ClassName=#32770;Name=Message from webpage");
+                    WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
                     WinText text = popup.Get<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }

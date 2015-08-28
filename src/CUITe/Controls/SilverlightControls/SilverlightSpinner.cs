@@ -9,8 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
-        public SilverlightSpinner(CUITControls.SilverlightControl sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightControl(), searchProperties)
+        public SilverlightSpinner(string searchProperties = null)
+            : this(new CUITControls.SilverlightControl(), searchProperties)
+        {
+        }
+
+        public SilverlightSpinner(CUITControls.SilverlightControl sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
             SetSearchProperty(UITestControl.PropertyNames.ControlType, "Spinner");
         }

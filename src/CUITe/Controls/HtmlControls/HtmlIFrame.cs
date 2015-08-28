@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlIFrame : HtmlControl<CUITControls.HtmlIFrame>
     {
-        public HtmlIFrame(CUITControls.HtmlIFrame sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlIFrame(), searchProperties)
+        public HtmlIFrame(string searchProperties = null)
+            : this(new CUITControls.HtmlIFrame(), searchProperties)
+        {
+        }
+
+        public HtmlIFrame(CUITControls.HtmlIFrame sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

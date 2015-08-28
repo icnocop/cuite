@@ -8,8 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBoxTreeItem : WinControl<CUITControls.WinCheckBoxTreeItem>
     {
-        public WinCheckBoxTreeItem(CUITControls.WinCheckBoxTreeItem sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinCheckBoxTreeItem(), searchProperties)
+        public WinCheckBoxTreeItem(string searchProperties = null)
+            : this(new CUITControls.WinCheckBoxTreeItem(), searchProperties)
+        {
+        }
+
+        public WinCheckBoxTreeItem(CUITControls.WinCheckBoxTreeItem sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

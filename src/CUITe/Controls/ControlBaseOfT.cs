@@ -71,7 +71,7 @@ namespace CUITe.Controls
         /// <returns>CUITe control object</returns>
         public TControl Get<TControl>(string searchProperties = null) where TControl : ControlBase
         {
-            var control = ControlBaseFactory.Create<TControl>(null, searchProperties);
+            var control = ControlBaseFactory.Create<TControl>(searchProperties);
             control.SourceControl.Container = SourceControl;
             return control;
         }

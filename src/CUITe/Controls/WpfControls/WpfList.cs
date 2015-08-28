@@ -10,8 +10,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfList : WpfControl<CUITControls.WpfList>
     {
-        public WpfList(CUITControls.WpfList sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfList(), searchProperties)
+        public WpfList(string searchProperties = null)
+            : this(new CUITControls.WpfList(), searchProperties)
+        {
+        }
+
+        public WpfList(CUITControls.WpfList sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -205,7 +205,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>CUITe control object</returns>
         public T Get<T>(string searchProperties = null) where T : ControlBase
         {
-            T control = ControlBaseFactory.Create<T>(null, searchProperties);
+            T control = ControlBaseFactory.Create<T>(searchProperties);
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {

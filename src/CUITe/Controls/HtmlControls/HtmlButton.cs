@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlButton : HtmlControl<CUITControls.HtmlButton>
     {
-        public HtmlButton(CUITControls.HtmlButton sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlButton(), searchProperties)
+        public HtmlButton(string searchProperties = null)
+            : this(new CUITControls.HtmlButton(), searchProperties)
+        {
+        }
+
+        public HtmlButton(CUITControls.HtmlButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

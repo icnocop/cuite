@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCell : WinControl<CUITControls.WinCell>
     {
-        public WinCell(CUITControls.WinCell sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinCell(), searchProperties)
+        public WinCell(string searchProperties = null)
+            : this(new CUITControls.WinCell(), searchProperties)
+        {
+        }
+
+        public WinCell(CUITControls.WinCell sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

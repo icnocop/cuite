@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableDiv : HtmlControl<CUITControls.HtmlEditableDiv>
     {
-        public HtmlEditableDiv(CUITControls.HtmlEditableDiv sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlEditableDiv(), searchProperties)
+        public HtmlEditableDiv(string searchProperties = null)
+            : this(new CUITControls.HtmlEditableDiv(), searchProperties)
+        {
+        }
+
+        public HtmlEditableDiv(CUITControls.HtmlEditableDiv sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

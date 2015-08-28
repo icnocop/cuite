@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlFileInput : HtmlControl<CUITControls.HtmlFileInput>
     {
-        public HtmlFileInput(CUITControls.HtmlFileInput sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlFileInput(), searchProperties)
+        public HtmlFileInput(string searchProperties = null)
+            : this(new CUITControls.HtmlFileInput(), searchProperties)
+        {
+        }
+
+        public HtmlFileInput(CUITControls.HtmlFileInput sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

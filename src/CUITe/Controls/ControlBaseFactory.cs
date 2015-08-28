@@ -16,8 +16,27 @@ namespace CUITe.Controls
         /// <returns>
         /// A UI test control of type <see cref="T"/> with specified search properties.
         /// </returns>
+        internal static T Create<T>(string searchProperties) where T : ControlBase
+        {
+            return (T)Activator.CreateInstance(typeof(T), searchProperties);
+        }
+
+        /// <summary>
+        /// Creates a UI test control of type <see cref="T"/> with specified source control and
+        /// search properties.
+        /// </summary>
+        /// <typeparam name="T">The type of the UI test control to create.</typeparam>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchProperties">The search properties.</param>
+        /// <returns>
+        /// A UI test control of type <see cref="T"/> with specified source control and search
+        /// properties.
+        /// </returns>
         internal static T Create<T>(UITestControl sourceControl, string searchProperties) where T : ControlBase
         {
+            if (sourceControl == null)
+                throw new ArgumentNullException("sourceControl");
+
             return (T)Activator.CreateInstance(typeof(T), sourceControl, searchProperties);
         }
 

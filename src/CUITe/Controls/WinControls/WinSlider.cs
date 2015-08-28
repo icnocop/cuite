@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSlider : WinControl<CUITControls.WinSlider>
     {
-        public WinSlider(CUITControls.WinSlider sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinSlider(), searchProperties)
+        public WinSlider(string searchProperties = null)
+            : this(new CUITControls.WinSlider(), searchProperties)
+        {
+        }
+
+        public WinSlider(CUITControls.WinSlider sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

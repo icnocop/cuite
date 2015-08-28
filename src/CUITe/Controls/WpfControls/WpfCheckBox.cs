@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCheckBox : WpfControl<CUITControls.WpfCheckBox>
     {
-        public WpfCheckBox(CUITControls.WpfCheckBox sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfCheckBox(), searchProperties)
+        public WpfCheckBox(string searchProperties = null)
+            : this(new CUITControls.WpfCheckBox(), searchProperties)
+        {
+        }
+
+        public WpfCheckBox(CUITControls.WpfCheckBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

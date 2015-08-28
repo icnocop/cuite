@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinListItem : WinControl<CUITControls.WinListItem>
     {
-        public WinListItem(CUITControls.WinListItem sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinListItem(), searchProperties)
+        public WinListItem(string searchProperties = null)
+            : this(new CUITControls.WinListItem(), searchProperties)
+        {
+        }
+
+        public WinListItem(CUITControls.WinListItem sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -6,7 +6,12 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string _tagName = "ul";
 
-        public HtmlUnorderedList(CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
+        public HtmlUnorderedList(string searchProperties = null)
+            : this(new CUITControls.HtmlCustom(), searchProperties)
+        {
+        }
+
+        public HtmlUnorderedList(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
             : base(_tagName, sourceControl, searchProperties)
         {
         }

@@ -4,8 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlCheckBox : HtmlControl<CUITControls.HtmlCheckBox>
     {
-        public HtmlCheckBox(CUITControls.HtmlCheckBox sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlCheckBox(), searchProperties)
+        public HtmlCheckBox(string searchProperties = null)
+            : this(new CUITControls.HtmlCheckBox(), searchProperties)
+        {
+        }
+
+        public HtmlCheckBox(CUITControls.HtmlCheckBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

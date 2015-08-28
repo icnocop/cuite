@@ -8,8 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCalendar : WpfControl<CUITControls.WpfCalendar>
     {
-        public WpfCalendar(CUITControls.WpfCalendar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfCalendar(), searchProperties)
+        public WpfCalendar(string searchProperties = null)
+            : this(new CUITControls.WpfCalendar(), searchProperties)
+        {
+        }
+
+        public WpfCalendar(CUITControls.WpfCalendar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

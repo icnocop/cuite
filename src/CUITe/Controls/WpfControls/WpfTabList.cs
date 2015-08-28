@@ -9,8 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabList : WpfControl<CUITControls.WpfTabList>
     {
-        public WpfTabList(CUITControls.WpfTabList sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfTabList(), searchProperties)
+        public WpfTabList(string searchProperties = null)
+            : this(new CUITControls.WpfTabList(), searchProperties)
+        {
+        }
+
+        public WpfTabList(CUITControls.WpfTabList sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfImage : WpfControl<CUITControls.WpfImage>
     {
-        public WpfImage(CUITControls.WpfImage sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfImage(), searchProperties)
+        public WpfImage(string searchProperties = null)
+            : this(new CUITControls.WpfImage(), searchProperties)
+        {
+        }
+
+        public WpfImage(CUITControls.WpfImage sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

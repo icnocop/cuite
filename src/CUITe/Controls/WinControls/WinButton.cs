@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinButton : WinControl<CUITControls.WinButton>
     {
-        public WinButton(CUITControls.WinButton sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinButton(), searchProperties)
+        public WinButton(string searchProperties = null)
+            : this(new CUITControls.WinButton(), searchProperties)
+        {
+        }
+
+        public WinButton(CUITControls.WinButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

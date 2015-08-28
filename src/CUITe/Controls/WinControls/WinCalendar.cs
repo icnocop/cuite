@@ -8,8 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCalendar : WinControl<CUITControls.WinCalendar>
     {
-        public WinCalendar(CUITControls.WinCalendar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinCalendar(), searchProperties)
+        public WinCalendar(string searchProperties = null)
+            : this(new CUITControls.WinCalendar(), searchProperties)
+        {
+        }
+
+        public WinCalendar(CUITControls.WinCalendar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

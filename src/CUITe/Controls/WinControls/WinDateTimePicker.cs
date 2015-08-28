@@ -10,8 +10,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinDateTimePicker : WinControl<CUITControls.WinDateTimePicker>
     {
-        public WinDateTimePicker(CUITControls.WinDateTimePicker sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinDateTimePicker(), searchProperties)
+        public WinDateTimePicker(string searchProperties = null)
+            : this(new CUITControls.WinDateTimePicker(), searchProperties)
+        {
+        }
+
+        public WinDateTimePicker(CUITControls.WinDateTimePicker sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

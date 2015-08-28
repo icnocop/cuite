@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCustom : WpfControl<CUITControls.WpfCustom>
     {
-        public WpfCustom(CUITControls.WpfCustom sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfCustom(), searchProperties)
+        public WpfCustom(string searchProperties = null)
+            : this(new CUITControls.WpfCustom(), searchProperties)
+        {
+        }
+
+        public WpfCustom(CUITControls.WpfCustom sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

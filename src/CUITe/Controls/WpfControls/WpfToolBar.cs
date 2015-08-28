@@ -8,8 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToolBar : WpfControl<CUITControls.WpfToolBar>
     {
-        public WpfToolBar(CUITControls.WpfToolBar sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfToolBar(), searchProperties)
+        public WpfToolBar(string searchProperties = null)
+            : this(new CUITControls.WpfToolBar(), searchProperties)
+        {
+        }
+
+        public WpfToolBar(CUITControls.WpfToolBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

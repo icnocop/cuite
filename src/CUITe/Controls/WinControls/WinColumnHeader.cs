@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinColumnHeader : WinControl<CUITControls.WinColumnHeader>
     {
-        public WinColumnHeader(CUITControls.WinColumnHeader sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinColumnHeader(), searchProperties)
+        public WinColumnHeader(string searchProperties = null)
+            : this(new CUITControls.WinColumnHeader(), searchProperties)
+        {
+        }
+
+        public WinColumnHeader(CUITControls.WinColumnHeader sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

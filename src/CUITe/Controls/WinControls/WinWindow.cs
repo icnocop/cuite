@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinWindow : WinControl<CUITControls.WinWindow>
     {
-        public WinWindow(CUITControls.WinWindow sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinWindow(), searchProperties)
+        public WinWindow(string searchProperties = null)
+            : this(new CUITControls.WinWindow(), searchProperties)
+        {
+        }
+
+        public WinWindow(CUITControls.WinWindow sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -7,8 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfHyperlink : WpfControl<CUITControls.WpfHyperlink>
     {
-        public WpfHyperlink(CUITControls.WpfHyperlink sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WpfHyperlink(), searchProperties)
+        public WpfHyperlink(string searchProperties = null)
+            : this(new CUITControls.WpfHyperlink(), searchProperties)
+        {
+        }
+
+        public WpfHyperlink(CUITControls.WpfHyperlink sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

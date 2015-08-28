@@ -9,11 +9,12 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightPassword : SilverlightEdit
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
-        /// </summary>
-        /// <param name="searchProperties">The search parameters.</param>
-        public SilverlightPassword(CUITControls.SilverlightEdit sourceControl = null, string searchProperties = null)
+        public SilverlightPassword(string searchProperties = null)
+            : this(new CUITControls.SilverlightEdit(), searchProperties)
+        {
+        }
+
+        public SilverlightPassword(CUITControls.SilverlightEdit sourceControl, string searchProperties = null)
             : base(sourceControl, searchProperties)
         {
         }

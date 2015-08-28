@@ -9,8 +9,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTree : WinControl<CUITControls.WinTree>
     {
-        public WinTree(CUITControls.WinTree sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinTree(), searchProperties)
+        public WinTree(string searchProperties = null)
+            : this(new CUITControls.WinTree(), searchProperties)
+        {
+        }
+
+        public WinTree(CUITControls.WinTree sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

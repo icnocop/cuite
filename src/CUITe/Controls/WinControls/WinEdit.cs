@@ -7,8 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinEdit : ControlBase<CUITControls.WinEdit>
     {
-        public WinEdit(CUITControls.WinEdit sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.WinEdit(), searchProperties)
+        public WinEdit(string searchProperties = null)
+            : this(new CUITControls.WinEdit(), searchProperties)
+        {
+        }
+
+        public WinEdit(CUITControls.WinEdit sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

@@ -8,8 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightDatePicker : SilverlightControl<CUITControls.SilverlightDatePicker>
     {
-        public SilverlightDatePicker(CUITControls.SilverlightDatePicker sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightDatePicker(), searchProperties)
+        public SilverlightDatePicker(string searchProperties = null)
+            : this(new CUITControls.SilverlightDatePicker(), searchProperties)
+        {
+        }
+
+        public SilverlightDatePicker(CUITControls.SilverlightDatePicker sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

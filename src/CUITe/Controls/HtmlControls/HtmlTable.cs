@@ -6,8 +6,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        public HtmlTable(CUITControls.HtmlTable sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlTable(), searchProperties)
+        public HtmlTable(string searchProperties = null)
+            : this(new CUITControls.HtmlTable(), searchProperties)
+        {
+        }
+
+        public HtmlTable(CUITControls.HtmlTable sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 

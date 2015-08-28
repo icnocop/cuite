@@ -9,8 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightComboBox : SilverlightControl<CUITControls.SilverlightComboBox>
     {
-        public SilverlightComboBox(CUITControls.SilverlightComboBox sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.SilverlightComboBox(), searchProperties)
+        public SilverlightComboBox(string searchProperties = null)
+            : this(new CUITControls.SilverlightComboBox(), searchProperties)
+        {
+        }
+
+        public SilverlightComboBox(CUITControls.SilverlightComboBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
