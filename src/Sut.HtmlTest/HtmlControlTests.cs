@@ -26,28 +26,26 @@ namespace Sut.HtmlTest
     {
         private readonly string currentDirectory = Directory.GetCurrentDirectory();
 
-        private TestContext testContextInstance;
-
         /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        /// Gets or sets the test context which provides information about and functionality for the current test run.
+        /// </summary>
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global; MsTest requirements
+        // ReSharper disable once MemberCanBePrivate.Global; MsTest requirements
+        public TestContext TestContext { get; set; }
 
         [TestInitialize]
         public void TestInitialize()
         {
             //BrowserWindow.CloseAllBrowsers();
+        }
+
+        /// <summary>
+        /// Runs after each test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            Trace.WriteLine(string.Format("Test Results Directory: {0}", TestContext.TestResultsDirectory));
         }
 
         [Ignore] //TODO: use known html

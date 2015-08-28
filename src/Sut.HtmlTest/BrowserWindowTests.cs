@@ -1,13 +1,16 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using CUITe.Controls.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.HtmlTest.ObjectRepository;
-
-namespace Sut.HtmlTest
+﻿namespace Sut.HtmlTest
 {
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using CUITe.Controls.HtmlControls;
+    using Microsoft.VisualStudio.TestTools.UITesting;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Sut.HtmlTest.ObjectRepository;
+
+    /// <summary>
+    /// Browser window tests
+    /// </summary>
     [CodedUITest]
     [DeploymentItem("TestHtmlPage.html")]
     [DeploymentItem("DynamicBrowserWindowTitle.html")]
@@ -15,12 +18,31 @@ namespace Sut.HtmlTest
     [DeploymentItem("DynamicBrowserWindowTitle.2.html")]
     public class BrowserWindowTests
     {
+        /// <summary>
+        /// The current directory
+        /// </summary>
         private readonly string currentDirectory = Directory.GetCurrentDirectory();
+
+        /// <summary>
+        /// Gets or sets the test context which provides information about and functionality for the current test run.
+        /// </summary>
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global; MsTest requirements
+        // ReSharper disable once MemberCanBePrivate.Global; MsTest requirements
+        public TestContext TestContext { get; set; }
+
+        /// <summary>
+        /// Runs after each test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            Trace.WriteLine(string.Format("Test Results Directory: {0}", TestContext.TestResultsDirectory));
+        }
 
         [TestMethod]
         public void FromProcess_GetWindowTitle_Succeeds()
         {
-            //Arrange
+            // Arrange
             using (TempFile tempFile = new TempFile(
 @"<html>
     <head>
@@ -31,27 +53,27 @@ namespace Sut.HtmlTest
             {
                 BrowserWindowUnderTest.Launch(tempFile.FilePath);
 
-                //Act
-                BrowserWindow bWin = BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
+                // Act
+                BrowserWindow browserWindow = BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
 
-                //Assert
-                Assert.IsTrue(bWin.Title.Contains("A Test"), bWin.Title);
+                // Assert
+                Assert.IsTrue(browserWindow.Title.Contains("A Test"), browserWindow.Title);
 
-                bWin.Close();
+                browserWindow.Close();
             }
         }
 
         [TestMethod]
         public void Launch_GetWindowTitle_Succeeds()
         {
-            //Arrange
-            string url = currentDirectory + "/TestHtmlPage.html";
+            // Arrange
+            string url = this.currentDirectory + "/TestHtmlPage.html";
             string windowTitle = "A Test";
 
-            //Act
+            // Act
             TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(url);
 
-            //Assert
+            // Assert
             Assert.IsTrue(window.Title.Contains(windowTitle), window.Title);
 
             window.Close();
@@ -62,14 +84,14 @@ namespace Sut.HtmlTest
         [WorkItem(608)]
         public void GenericGet_WithHtmlControls_GetsControlsDynamically()
         {
-            //Arrange
-            BrowserWindowUnderTest bWin = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
+            // Arrange
+            BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
 
-            //Act
-            bWin.Get<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
-            bWin.Get<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
-            bWin.Get<HtmlInputButton>("Id=signIn").Click();
-            bWin.Close();
+            // Act
+            browserWindow.Get<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
+            browserWindow.Get<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
+            browserWindow.Get<HtmlInputButton>("Id=signIn").Click();
+            browserWindow.Close();
         }
 
         [TestMethod]
@@ -77,15 +99,15 @@ namespace Sut.HtmlTest
         {
             string page1GenericWindowTitle = "window title 1";
 
-            //Arrange
+            // Arrange
             DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(currentDirectory + "/DynamicBrowserWindowTitle.html");
 
             home.btnGoToPage1.Click();
 
-            //Act
+            // Act
             DynamicBrowserWindowTitleRepository page1 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page1GenericWindowTitle);
 
-            //Assert
+            // Assert
             Assert.IsTrue(page1.Title.Contains(page1GenericWindowTitle), page1.Title);
 
             page1.Close();
@@ -95,7 +117,7 @@ namespace Sut.HtmlTest
         [WorkItem(607)]
         public void GetBrowserWindow_WithDynamicWindowTitle_CanInteractWithWindow()
         {
-            //Arrange
+            // Arrange
             string page2GenericWindowTitle = "window title 2";
             string page2DynamicGenericWindowTitle = "the window title changed";
             string homePageGenericWindowTitle = "Clicking the buttons changes the window title";
@@ -108,17 +130,17 @@ namespace Sut.HtmlTest
 
             page2.btnChangeWindowTitle.Click();
 
-            //Checkpoint
+            // Checkpoint
             Assert.IsTrue(page2.Title.Contains(page2DynamicGenericWindowTitle), page2.Title);
 
-            //Act
+            // Act
             page2 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2DynamicGenericWindowTitle);
 
             page2.btnGoToHomePage.Click();
 
             page2.SetWindowTitle(homePageGenericWindowTitle);
 
-            //Assert
+            // Assert
             Assert.IsTrue(page2.Title.Contains(homePageGenericWindowTitle), page2.Title);
 
             page2.Close();
@@ -127,14 +149,16 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
-            //Arrange
+            // Arrange
             TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
-            //Act
+            // Act
             var doc = window.Get<HtmlDocument>();
 
-            //Assert
-            const string expected = "<body vsttFireTimer=\"false\">";
+            // Assert
+            // if Visual Studio Team System for Testers is installed, the vsttFireTimer attribute is automatically injected within the body element for some unknown reason
+            // so just check for <body
+            const string expected = "<body";
 
             string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString();
 
@@ -162,9 +186,9 @@ namespace Sut.HtmlTest
                     continue;
                 }
 
-                BrowserWindow bWin = BrowserWindow.FromProcess(process);
+                BrowserWindow browserWindow = BrowserWindow.FromProcess(process);
 
-                Trace.WriteLine(string.Format("Found browser window: {0} {1}", bWin.Uri, bWin.Title));
+                Trace.WriteLine(string.Format("Found browser window: {0} {1}", browserWindow.Uri, browserWindow.Title));
             }
         }
     }
