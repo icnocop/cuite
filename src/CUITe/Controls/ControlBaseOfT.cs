@@ -13,11 +13,9 @@ namespace CUITe.Controls
     /// Base wrapper class for all CUITe controls
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class ControlBase<T> : ControlBase
-        where T : UITestControl
+    public abstract class ControlBase<T> : ControlBase where T : UITestControl
     {
         private readonly T sourceControl;
-        private readonly PropertyExpressionCollection searchProperties;
 
         protected ControlBase(T sourceControl, string searchProperties = null)
             : base(sourceControl)
@@ -26,10 +24,8 @@ namespace CUITe.Controls
                 throw new ArgumentNullException("sourceControl");
 
             this.sourceControl = sourceControl;
-            this.searchProperties = new PropertyExpressionCollection();
-
-            SetSearchProperties(searchProperties);
-            SourceControl.SearchProperties.AddRange(this.searchProperties);
+            
+            SetSearchProperties(ParseSearchProperties(searchProperties));
         }
 
         public T SourceControl
@@ -41,11 +37,9 @@ namespace CUITe.Controls
         /// Wraps the adding of search properties for the UITestControl where
         /// the property expression is 'EqualTo'.
         /// </summary>
-        /// <param name="sPropertyName"></param>
-        /// <param name="sValue"></param>
-        public void SetSearchProperty(string sPropertyName, string sValue)
+        public void SetSearchProperty(string propertyName, string propertyValue)
         {
-            SourceControl.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.EqualTo);
+            SourceControl.SearchProperties.Add(propertyName, propertyValue);
         }
 
         /// <summary>
@@ -54,9 +48,17 @@ namespace CUITe.Controls
         /// </summary>
         /// <param name="sPropertyName"></param>
         /// <param name="sValue"></param>
-        public void SetSearchPropertyRegx(string sPropertyName, string sValue)
+        public void SetSearchPropertyRegx(string propertyName, string propertyValue)
         {
-            SourceControl.SearchProperties.Add(sPropertyName, sValue, PropertyExpressionOperator.Contains);
+            SourceControl.SearchProperties.Add(propertyName, propertyValue, PropertyExpressionOperator.Contains);
+        }
+
+        public void SetSearchProperties(PropertyExpressionCollection searchProperties)
+        {
+            if (searchProperties == null)
+                throw new ArgumentNullException("searchProperties");
+
+            SourceControl.SearchProperties.AddRange(searchProperties);
         }
         
         /// <summary>
@@ -74,8 +76,36 @@ namespace CUITe.Controls
             return control;
         }
 
-        public void SetSearchProperties(string searchProperties)
+        /// <summary>
+        /// Clicks on the center of the UITestControl based on its point on the screen.
+        /// This may "work-around" Coded UI tests (on third-party controls) that throw the following exception:
+        /// Microsoft.VisualStudio.TestTools.UITest.Extension.FailedToPerformActionOnBlockedControlException: Another control is blocking the control. Please make the blocked control visible and retry the action.
+        /// </summary>
+        public void PointAndClick()
         {
+            WaitForControlReady();
+            int x = SourceControl.BoundingRectangle.X + SourceControl.BoundingRectangle.Width / 2;
+            int y = SourceControl.BoundingRectangle.Y + SourceControl.BoundingRectangle.Height / 2;
+            Mouse.Click(new Point(x, y));
+        }
+
+        /// <summary>
+        /// Run/evaluate JavaScript code in the DOM context.
+        /// </summary>
+        /// <param name="code">The JavaScript code.</param>
+        protected void RunScript(string code)
+        {
+            BrowserWindow browserWindow = (BrowserWindow)SourceControl.TopParent;
+            InternetExplorer.RunScript(browserWindow, code);
+        }
+
+        private static PropertyExpressionCollection ParseSearchProperties(string searchProperties)
+        {
+            var parsedSearchProperties = new PropertyExpressionCollection();
+
+            if (searchProperties == null)
+                return parsedSearchProperties;
+
             // fill the UITestControl's search properties based on the search string provided
 
             // iterate through the class inheritance hierarchy to get a list of property names for the specific control
@@ -94,11 +124,6 @@ namespace CUITe.Controls
 
                 nestedType = nestedType.BaseType;
                 nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
-            }
-
-            if (searchProperties == null)
-            {
-                return;
             }
 
             // Split on groups of key/value pairs
@@ -150,36 +175,10 @@ namespace CUITe.Controls
                 }
 
                 // Add the search property, value and type
-                this.searchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
+                parsedSearchProperties.Add(foundField.GetValue(null).ToString(), saKeyVal[1], compareOperator);
             }
-        }
 
-        /// <summary>
-        /// Clicks on the center of the UITestControl based on its point on the screen.
-        /// This may "work-around" Coded UI tests (on third-party controls) that throw the following exception:
-        /// Microsoft.VisualStudio.TestTools.UITest.Extension.FailedToPerformActionOnBlockedControlException: Another control is blocking the control. Please make the blocked control visible and retry the action.
-        /// </summary>
-        public void PointAndClick()
-        {
-            WaitForControlReady();
-            int x = SourceControl.BoundingRectangle.X + SourceControl.BoundingRectangle.Width / 2;
-            int y = SourceControl.BoundingRectangle.Y + SourceControl.BoundingRectangle.Height / 2;
-            Mouse.Click(new Point(x, y));
-        }
-
-        protected PropertyExpressionCollection SearchProperties
-        {
-            get { return searchProperties; }
-        }
-
-        /// <summary>
-        /// Run/evaluate JavaScript code in the DOM context.
-        /// </summary>
-        /// <param name="code">The JavaScript code.</param>
-        protected void RunScript(string code)
-        {
-            BrowserWindow browserWindow = (BrowserWindow)SourceControl.TopParent;
-            InternetExplorer.RunScript(browserWindow, code);
+            return parsedSearchProperties;
         }
     }
 }

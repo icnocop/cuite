@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
@@ -8,7 +7,7 @@ namespace CUITe.Controls.HtmlControls
         public HtmlCustom(string tagName, CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
             : base(sourceControl ?? new CUITControls.HtmlCustom(), searchProperties)
         {
-            SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, tagName, PropertyExpressionOperator.EqualTo);
+            SetSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, tagName);
         }
     }
 }

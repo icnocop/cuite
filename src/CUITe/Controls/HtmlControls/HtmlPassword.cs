@@ -7,7 +7,7 @@ namespace CUITe.Controls.HtmlControls
         public HtmlPassword(CUITControls.HtmlEdit sourceControl = null, string searchProperties = null)
             : base(sourceControl, searchProperties)
         {
-            SourceControl.FilterProperties[CUITControls.HtmlControl.PropertyNames.Type] = "PASSWORD";
+            SetSearchProperty(CUITControls.HtmlControl.PropertyNames.Type, "PASSWORD");
         }
     }
 }

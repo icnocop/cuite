@@ -845,7 +845,7 @@ namespace Sut.HtmlTest
 
                 // Act
                 HtmlCustom txtUserName = bWin.Get<HtmlCustom>("input");
-                txtUserName.SetSearchProperties("id=i0116");
+                txtUserName.SetSearchProperty("id", "i0116");
 
                 // Assert
                 Assert.IsTrue(txtUserName.Exists);
@@ -1204,7 +1204,7 @@ namespace Sut.HtmlTest
                 Assert.IsTrue(cus.Exists);
 
                 HtmlCustom cusDataFeedTabsNav = window.Get<HtmlCustom>("ul");
-                cusDataFeedTabsNav.SetSearchProperties("Class=dataFeedTab ui-tabs-nav");
+                cusDataFeedTabsNav.SetSearchProperty("Class", "dataFeedTab ui-tabs-nav");
                 Assert.IsTrue(cusDataFeedTabsNav.Exists);
 
                 // Assert

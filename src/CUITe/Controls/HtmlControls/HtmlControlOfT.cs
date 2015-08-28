@@ -9,10 +9,9 @@ namespace CUITe.Controls.HtmlControls
     /// Base class for all Html controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
-    public abstract class HtmlControl<T> : ControlBase<T>, IHtmlControl
-        where T : CUITControls.HtmlControl
+    public class HtmlControl<T> : ControlBase<T>, IHtmlControl where T : CUITControls.HtmlControl
     {
-        protected HtmlControl(T sourceControl, string searchProperties = null)
+        public HtmlControl(T sourceControl, string searchProperties = null)
             : base(sourceControl, searchProperties)
         {
         }
