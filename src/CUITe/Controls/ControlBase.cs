@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Input;
 using Microsoft.VisualStudio.TestTools.UITesting;
@@ -150,6 +151,19 @@ namespace CUITe.Controls
         {
             WaitForControlReady();
             Mouse.DoubleClick(sourceControl, modifierKeys);
+        }
+
+        /// <summary>
+        /// Clicks on the center of the UITestControl based on its point on the screen.
+        /// This may "work-around" Coded UI tests (on third-party controls) that throw the following exception:
+        /// Microsoft.VisualStudio.TestTools.UITest.Extension.FailedToPerformActionOnBlockedControlException: Another control is blocking the control. Please make the blocked control visible and retry the action.
+        /// </summary>
+        public void PointAndClick()
+        {
+            WaitForControlReady();
+            int x = SourceControl.BoundingRectangle.X + SourceControl.BoundingRectangle.Width / 2;
+            int y = SourceControl.BoundingRectangle.Y + SourceControl.BoundingRectangle.Height / 2;
+            Mouse.Click(new Point(x, y));
         }
 
         /// <summary>
