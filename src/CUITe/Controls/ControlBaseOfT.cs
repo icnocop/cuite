@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -73,16 +72,6 @@ namespace CUITe.Controls
             var control = ControlBaseFactory.Create<TControl>(searchProperties);
             control.SourceControl.Container = SourceControl;
             return control;
-        }
-
-        /// <summary>
-        /// Run/evaluate JavaScript code in the DOM context.
-        /// </summary>
-        /// <param name="code">The JavaScript code.</param>
-        protected void RunScript(string code)
-        {
-            BrowserWindow browserWindow = (BrowserWindow)SourceControl.TopParent;
-            InternetExplorer.RunScript(browserWindow, code);
         }
 
         private static PropertyExpressionCollection ParseSearchProperties(string searchProperties)

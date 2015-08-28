@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -181,6 +182,16 @@ namespace CUITe.Controls.HtmlControls
                 uicol.Add(WrapUtil((CUITControls.HtmlControl)uitestcontrol));
             }
             return uicol;
+        }
+
+        /// <summary>
+        /// Run/evaluate JavaScript code in the DOM context.
+        /// </summary>
+        /// <param name="code">The JavaScript code.</param>
+        protected void RunScript(string code)
+        {
+            BrowserWindow browserWindow = (BrowserWindow)SourceControl.TopParent;
+            InternetExplorer.RunScript(browserWindow, code);
         }
 
         private ControlBase WrapUtil(CUITControls.HtmlControl control)
