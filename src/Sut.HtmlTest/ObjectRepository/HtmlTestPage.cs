@@ -7,15 +7,11 @@ namespace Sut.HtmlTest.ObjectRepository
         public HtmlTestPage()
             : base("test")
         {
-
         }
 
         public Div1 div1
         {
-            get
-            {
-                return Get<Div1>();
-            }
+            get { return Get<Div1>(); }
         }
     }
 }
