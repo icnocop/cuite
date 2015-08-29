@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlParagraph : HtmlCustom
     {
-        private const string _tagName = "p";
+        private const string TagName = "p";
 
         public HtmlParagraph(string searchProperties = null)
             : this(new CUITControls.HtmlCustom(), searchProperties)
@@ -12,8 +12,9 @@ namespace CUITe.Controls.HtmlControls
         }
 
         public HtmlParagraph(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
-            : base(_tagName, sourceControl, searchProperties)
+            : base(sourceControl, searchProperties)
         {
+            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, TagName);
         }
     }
 }

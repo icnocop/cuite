@@ -4,11 +4,14 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlCustom : HtmlControl<CUITControls.HtmlCustom>
     {
-        // TODO: How do we handle tag name when it comes to the factories where they are mistaken for search properties
-        public HtmlCustom(string tagName, CUITControls.HtmlCustom sourceControl = null, string searchProperties = null)
-            : base(sourceControl ?? new CUITControls.HtmlCustom(), searchProperties)
+        public HtmlCustom(string searchProperties = null)
+            : this(new CUITControls.HtmlCustom(), searchProperties)
         {
-            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, tagName);
+        }
+
+        public HtmlCustom(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
+        {
         }
     }
 }

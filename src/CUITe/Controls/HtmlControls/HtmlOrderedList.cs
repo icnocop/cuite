@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlOrderedList : HtmlCustom
     {
-        private const string _tagName = "ol";
+        private const string TagName = "ol";
 
         public HtmlOrderedList(string searchProperties = null)
             : this(new CUITControls.HtmlCustom(), searchProperties)
@@ -12,8 +12,9 @@ namespace CUITe.Controls.HtmlControls
         }
 
         public HtmlOrderedList(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
-            : base(_tagName, sourceControl, searchProperties)
+            : base(sourceControl, searchProperties)
         {
+            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, TagName);
         }
     }
 }

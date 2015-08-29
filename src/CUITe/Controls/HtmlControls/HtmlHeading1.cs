@@ -4,7 +4,7 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlHeading1 : HtmlCustom
     {
-        private const string _tagName = "h1";
+        private const string TagName = "h1";
 
         public HtmlHeading1(string searchProperties = null)
             : this(new CUITControls.HtmlCustom(), searchProperties)
@@ -12,8 +12,9 @@ namespace CUITe.Controls.HtmlControls
         }
 
         public HtmlHeading1(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
-            : base(_tagName, sourceControl, searchProperties)
+            : base(sourceControl, searchProperties)
         {
+            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, TagName);
         }
     }
 }

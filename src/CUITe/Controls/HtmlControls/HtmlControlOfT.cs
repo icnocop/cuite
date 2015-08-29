@@ -315,7 +315,7 @@ namespace CUITe.Controls.HtmlControls
                         _con = new HtmlIns((CUITControls.HtmlCustom)control);
                         break;
                     default:
-                        _con = new HtmlCustom(control.TagName, (CUITControls.HtmlCustom)control);
+                        _con = new HtmlCustom((CUITControls.HtmlCustom)control, "TagName=" + control.TagName);
                         break;
                 }
             }
