@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -15,8 +17,11 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Gets the parent of the current CUITe control.
+        /// Gets the parent of the control.
         /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
         public override ControlBase Parent
         {
             get
@@ -35,6 +40,39 @@ namespace CUITe.Controls.WpfControls
                 }
                 return ret;
             }
+        }
+
+        /// <summary>
+        /// Gets the previous sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase PreviousSibling
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Gets the next sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase NextSibling
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Gets the first child of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase FirstChild
+        {
+            get { return null; }
         }
 
         /// <summary>
@@ -83,6 +121,14 @@ namespace CUITe.Controls.WpfControls
         public string LabeledBy
         {
             get { return SourceControl.LabeledBy; }
+        }
+
+        /// <summary>
+        /// Returns a sequence of all first level children of the control.
+        /// </summary>
+        public override IEnumerable<ControlBase> GetChildren()
+        {
+            return Enumerable.Empty<ControlBase>();
         }
     }
 }

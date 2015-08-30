@@ -423,7 +423,7 @@ namespace Sut.HtmlTest
                 {
                     //read JavaScript alert text
                     WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
-                    WinText text = popup.Get<WinText>();
+                    WinText text = popup.Find<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }
 
@@ -511,10 +511,10 @@ namespace Sut.HtmlTest
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
             var div = bWin.Get<HtmlDiv>("id=calculatorContainer1");
             var col = div.GetChildren();
-            Assert.IsTrue(col[0].SourceType.Name == "HtmlDiv");
-            Assert.IsTrue(col[1].SourceType.Name == "HtmlTable");
-            Assert.IsTrue(((HtmlDiv)col[0]).InnerText == "calcWithHeaders");
-            var tbl = (HtmlTable)col[1];
+            Assert.IsTrue(col.ElementAt(0).SourceControlType.Name == "HtmlDiv");
+            Assert.IsTrue(col.ElementAt(1).SourceControlType.Name == "HtmlTable");
+            Assert.IsTrue(((HtmlDiv)col.ElementAt(0)).InnerText == "calcWithHeaders");
+            var tbl = (HtmlTable)col.ElementAt(1);
             Assert.AreEqual("6", tbl.GetCellValue(2, 2).Trim());
             bWin.Close();
         }
@@ -630,7 +630,7 @@ namespace Sut.HtmlTest
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
             HtmlIFrame iFrame = bWin.Get<HtmlIFrame>();
-            iFrame.Get<HtmlInputButton>("Value=Log In").Click();
+            iFrame.Find<HtmlInputButton>("Value=Log In").Click();
             bWin.Close();
         }
 
@@ -805,7 +805,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
                 HtmlDiv div = window.Get<HtmlDiv>("id=div1");
-                HtmlEdit inputTextBox = div.Get<HtmlEdit>();
+                HtmlEdit inputTextBox = div.Find<HtmlEdit>();
 
                 //Act
                 inputTextBox.SetText("text");
@@ -1014,7 +1014,7 @@ namespace Sut.HtmlTest
                 list.Add(typeof(HtmlButton));
                 list.Add(typeof(HtmlEdit));
 
-                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Get");
+                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Find");
 
                 foreach(Type t in list)
                 {
@@ -1028,7 +1028,7 @@ namespace Sut.HtmlTest
                     }
                     else
                     {
-                        //window.Get<t>("InnerText=test");
+                        //window.Find<t>("InnerText=test");
                         control = (ControlBase)test.Invoke(window, new object[] { "InnerText=test" });
                     }
 
@@ -1111,7 +1111,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                List<ControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
+                IEnumerable<ControlBase> collection = window.Get<HtmlDiv>("id=div1").GetChildren();
                 foreach (ControlBase control in collection)
                 {
                     if (control is HtmlHyperlink)
@@ -1501,7 +1501,7 @@ namespace Sut.HtmlTest
                 var table = window.Get<HtmlTable>("Id=tableId");
 
                 HtmlCell cell = table.GetCell(0, 1);
-                HtmlHyperlink hyperlink = cell.Get<HtmlHyperlink>();
+                HtmlHyperlink hyperlink = cell.Find<HtmlHyperlink>();
 
                 // Act
                 hyperlink.Click();

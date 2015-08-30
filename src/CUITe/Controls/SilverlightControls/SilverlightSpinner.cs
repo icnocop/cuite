@@ -22,7 +22,7 @@ namespace CUITe.Controls.SilverlightControls
 
         private SilverlightEdit _TextBox
         {
-            get { return Get<SilverlightEdit>(); }
+            get { return Find<SilverlightEdit>(); }
         }
 
         /// <summary>

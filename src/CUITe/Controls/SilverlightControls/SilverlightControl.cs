@@ -26,8 +26,11 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets the parent of the current CUITe control.
+        /// Gets the parent of the control.
         /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
         public override ControlBase Parent
         {
             get
@@ -47,8 +50,11 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets the previous sibling of the current CUITe control.
+        /// Gets the previous sibling of the control.
         /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
         public override ControlBase PreviousSibling
         {
             get
@@ -68,8 +74,11 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets the next sibling of the current CUITe control.
+        /// Gets the next sibling of the control.
         /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
         public override ControlBase NextSibling
         {
             get
@@ -89,8 +98,11 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets the first child of the current CUITe control.
+        /// Gets the first child of the control.
         /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
         public override ControlBase FirstChild
         {
             get
@@ -110,10 +122,9 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Returns a list of all first level children of the current CUITe control.
+        /// Returns a sequence of all first level children of the control.
         /// </summary>
-        /// <returns>list of all first level children</returns>
-        public override List<ControlBase> GetChildren()
+        public override IEnumerable<ControlBase> GetChildren()
         {
             WaitForControlReady();
             var uicol = new List<ControlBase>();

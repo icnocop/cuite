@@ -13,7 +13,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return divFeedTabs.Get<HtmlCustom>("TagName=ul;Class=dataFeedTab ui-tabs-nav");
+                return divFeedTabs.Find<HtmlCustom>("TagName=ul;Class=dataFeedTab ui-tabs-nav");
             }
         }
 
@@ -37,7 +37,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return divFeedTabs.Get<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
+                return divFeedTabs.Find<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul");
             }
         }
     }

@@ -16,7 +16,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return Get<HtmlEdit>("id=edit");
+                return Find<HtmlEdit>("id=edit");
             }
         }
     }

@@ -5,7 +5,7 @@ namespace CUITe.Controls.WinControls
     /// <summary>
     /// Wrapper class for WinEdit
     /// </summary>
-    public class WinEdit : ControlBase<CUITControls.WinEdit>
+    public class WinEdit : WinControl<CUITControls.WinEdit>
     {
         public WinEdit(string searchProperties = null)
             : this(new CUITControls.WinEdit(), searchProperties)

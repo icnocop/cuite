@@ -48,13 +48,13 @@ namespace CUITe
                 {
                     var field = (ControlBase)fieldinfo.GetValue(browserWindow);
 
-                    if (field.SourceType.IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
+                    if (field.SourceControlType.IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
                     {
                         field.SourceControl.Container = browserWindow;
                     }
 #if SILVERLIGHT_SUPPORT
-                    else if ((field.SourceType == typeof(CUITSilverlightControls.SilverlightControl)) ||
-                             (field.SourceType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
+                    else if ((field.SourceControlType == typeof(CUITSilverlightControls.SilverlightControl)) ||
+                             (field.SourceControlType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
                         field.SourceControl.Container = browserWindow.SlObjectContainer;
                     }

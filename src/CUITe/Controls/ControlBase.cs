@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Input;
+using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.Controls
 {
+    /// <summary>
+    /// Base class for all UI test controls. It provides properties and methods which are generic
+    /// to controls across technologies.
+    /// </summary>
     public abstract class ControlBase
     {
         private readonly UITestControl sourceControl;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControlBase"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
         protected ControlBase(UITestControl sourceControl)
         {
             if (sourceControl == null)
@@ -20,7 +29,8 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Wraps WaitForControlReady method and Enabled property for a UITestControl.
+        /// Waits for the control to be ready and gets a value indicating whether this element is
+        /// enabled in the user interface.
         /// </summary>
         public bool Enabled
         {
@@ -32,62 +42,70 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Wraps the Exists property for a UITestControl.
+        /// Waits for the control to be ready and gets a value indicating whether this element
+        /// exists in the user interface.
         /// </summary>
         public bool Exists
         {
-            get
-            {
-                if (sourceControl == null)
-                {
-                    return false;
-                }
-
-                return sourceControl.Exists;
-            }
+            get { return sourceControl.Exists; }
         }
 
         /// <summary>
-        /// Get the Coded UI base type that is being wrapped by CUITe
+        /// Gets the source control.
         /// </summary>
-        /// <returns></returns>
-        public Type SourceType
-        {
-            get { return sourceControl.GetType(); }
-        }
-
-        public virtual ControlBase Parent
-        {
-            get { return null; }
-        }
-
-        public virtual ControlBase PreviousSibling
-        {
-            get { return null; }
-        }
-
-        public virtual ControlBase NextSibling
-        {
-            get { return null; }
-        }
-
-        public virtual ControlBase FirstChild
-        {
-            get { return null; }
-        }
-
-        public UITestControl SourceControl
+        internal UITestControl SourceControl
         {
             get { return sourceControl; }
         }
 
-        public virtual List<ControlBase> GetChildren()
+        /// <summary>
+        /// Gets the <see cref="Type"/> of the source control.
+        /// </summary>
+        /// <returns>The exact runtime type of the source control.</returns>
+        public Type SourceControlType
         {
-            return null;
+            get { return sourceControl.GetType(); }
         }
+        
+        /// <summary>
+        /// Gets the parent of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public abstract ControlBase Parent { get; }
 
         /// <summary>
-        /// Wraps the WaitForControlReady method for a UITestControl.
+        /// Gets the previous sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public abstract ControlBase PreviousSibling { get; }
+
+        /// <summary>
+        /// Gets the next sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public abstract ControlBase NextSibling { get; }
+
+        /// <summary>
+        /// Gets the first child of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public abstract ControlBase FirstChild { get; }
+
+        /// <summary>
+        /// Returns a sequence of all first level children of the control.
+        /// </summary>
+        public abstract IEnumerable<ControlBase> GetChildren();
+
+        /// <summary>
+        /// Waits for the control to be ready.
         /// </summary>
         public void WaitForControlReady()
         {
@@ -95,7 +113,7 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Wraps WaitForControlReady and SetFocus methods for a UITestControl.
+        /// Waits for the control to be ready and attempts to set focus.
         /// </summary>
         public void SetFocus()
         {
@@ -154,16 +172,21 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Clicks on the center of the UITestControl based on its point on the screen.
-        /// This may "work-around" Coded UI tests (on third-party controls) that throw the following exception:
-        /// Microsoft.VisualStudio.TestTools.UITest.Extension.FailedToPerformActionOnBlockedControlException: Another control is blocking the control. Please make the blocked control visible and retry the action.
+        /// Waits for the control to be ready and then clicks at the center of the control based on
+        /// its point on the screen.
         /// </summary>
+        /// <remarks>
+        /// This may be a "work-around" for Coded UI tests on third-party controls that throw the
+        /// <see cref="FailedToPerformActionOnBlockedControlException"/> with the message:
+        /// Another control is blocking the control. Please make the blocked control visible and
+        /// retry the action.
+        /// </remarks>
         public void PointAndClick()
         {
             WaitForControlReady();
-            int x = SourceControl.BoundingRectangle.X + SourceControl.BoundingRectangle.Width / 2;
-            int y = SourceControl.BoundingRectangle.Y + SourceControl.BoundingRectangle.Height / 2;
-            Mouse.Click(new Point(x, y));
+            int centerX = sourceControl.BoundingRectangle.X + sourceControl.BoundingRectangle.Width / 2;
+            int centerY = sourceControl.BoundingRectangle.Y + sourceControl.BoundingRectangle.Height / 2;
+            Mouse.Click(new Point(centerX, centerY));
         }
 
         /// <summary>

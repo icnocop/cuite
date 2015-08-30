@@ -8,13 +8,25 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace CUITe.Controls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe controls
+    /// Base class for all UI test controls. It provides properties and methods which are generic
+    /// to controls across technologies.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the <see cref="SourceControl"/>.</typeparam>
     public abstract class ControlBase<T> : ControlBase where T : UITestControl
     {
         private readonly T sourceControl;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ControlBase{T}"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchProperties">The search properties.</param>
+        /// <exception cref="InvalidSearchPropertiesFormatException">
+        /// Search properties are not correctly formatted.
+        /// </exception>
+        /// <exception cref="InvalidSearchKeyException">
+        /// Search properties contains key that isn't applicable on the control.
+        /// </exception>
         protected ControlBase(T sourceControl, string searchProperties = null)
             : base(sourceControl)
         {
@@ -26,31 +38,45 @@ namespace CUITe.Controls
             AddSearchProperties(ParseSearchProperties(searchProperties));
         }
 
-        public T SourceControl
+        /// <summary>
+        /// Gets the source control.
+        /// </summary>
+        public new T SourceControl
         {
             get { return sourceControl; }
         }
 
         /// <summary>
-        /// Wraps the adding of search properties for the UITestControl where
-        /// the property expression is 'EqualTo'.
+        /// Adds a search property by using the provided property name and property value.
         /// </summary>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <param name="propertyValue">The property value to search for.</param>
         public void AddSearchProperty(string propertyName, string propertyValue)
         {
             SourceControl.SearchProperties.Add(propertyName, propertyValue);
         }
 
         /// <summary>
-        /// Wraps the adding of search properties for the UITestControl where
-        /// the property expression is 'Contains'.
+        /// Adds a search property by using the provided property name, value, and operator.
         /// </summary>
-        /// <param name="sPropertyName"></param>
-        /// <param name="sValue"></param>
-        public void AddSearchPropertyRegx(string propertyName, string propertyValue)
+        /// <param name="propertyName">The name of the property.</param>
+        /// <param name="propertyValue">The property value to search for.</param>
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        public void AddSearchProperty(
+            string propertyName,
+            string propertyValue,
+            PropertyExpressionOperator conditionOperator)
         {
-            SourceControl.SearchProperties.Add(propertyName, propertyValue, PropertyExpressionOperator.Contains);
+            SourceControl.SearchProperties.Add(propertyName, propertyValue, conditionOperator);
         }
 
+        /// <summary>
+        /// Adds all search property in the provided collection.
+        /// </summary>
+        /// <param name="searchProperties">The search properties.</param>
         public void AddSearchProperties(PropertyExpressionCollection searchProperties)
         {
             if (searchProperties == null)
@@ -60,17 +86,25 @@ namespace CUITe.Controls
         }
         
         /// <summary>
-        /// Gets the CUITe UI control object from the descendants of this control using the search parameters are passed. 
-        /// You don't have to create the object repository entry for this.
+        /// Finds the control object from the descendants of this control using the specified
+        /// search properties.
         /// </summary>
-        /// <typeparam name="TControl">Pass the CUITe control you are looking for.</typeparam>
-        /// <param name="searchProperties">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname' 
-        /// or use '~' for Contains such as 'Id~first'</param>
-        /// <returns>CUITe control object</returns>
-        public TControl Get<TControl>(string searchProperties = null) where TControl : ControlBase
+        /// <typeparam name="TControl">The type of control to find.</typeparam>
+        /// <param name="searchProperties">
+        /// The search properties in the 'Key1=Value1;Key2=Value2' format.
+        /// For example use 'Id=firstname' for a control that has an Id of 'firstname' or
+        /// 'Id~firstname' for a control that has an Id that contains the text 'firstname'.
+        /// </param>
+        /// <exception cref="InvalidSearchPropertiesFormatException">
+        /// Search properties are not correctly formatted.
+        /// </exception>
+        /// <exception cref="InvalidSearchKeyException">
+        /// Search properties contains key that isn't applicable on the control.
+        /// </exception>
+        public TControl Find<TControl>(string searchProperties = null) where TControl : ControlBase
         {
             var control = ControlBaseFactory.Create<TControl>(searchProperties);
-            control.SourceControl.Container = SourceControl;
+            control.SourceControl.Container = sourceControl;
             return control;
         }
 
@@ -81,11 +115,12 @@ namespace CUITe.Controls
             if (searchProperties == null)
                 return parsedSearchProperties;
 
-            // fill the UITestControl's search properties based on the search string provided
-
-            // iterate through the class inheritance hierarchy to get a list of property names for the specific control
-            // Note: Some properties may not be valid to use for search (ex. filter property names). MS does not provide and exact list
-            List<FieldInfo> controlProperties = new List<FieldInfo>();
+            // Fill the UITestControl's search properties based on the search string provided.
+            // Iterate through the class inheritance hierarchy to get a list of property names for
+            // the specific control.
+            // Note: Some properties may not be valid to use for search (ex. filter property names).
+            // Microsoft does not provide and exact list.
+            var controlProperties = new List<FieldInfo>();
 
             Type nestedType = typeof(T);
             Type nestedPropertyNamesType = nestedType.GetNestedType("PropertyNames");
@@ -108,13 +143,14 @@ namespace CUITe.Controls
 
             foreach (string sKeyValue in saKeyValuePairs)
             {
-                PropertyExpressionOperator compareOperator = PropertyExpressionOperator.EqualTo;
+                var compareOperator = PropertyExpressionOperator.EqualTo;
 
                 // If split on '=' does not work, then try '~'
                 // Split at the first instance of '='. Other instances are considered part of the value.
                 string[] saKeyVal = sKeyValue.Split(
                     new[] { '=' },
                     2);
+
                 if (saKeyVal.Length != 2)
                 {
                     // Otherwise try to split on '~'. If it works then compare type is Contains
@@ -122,13 +158,14 @@ namespace CUITe.Controls
                     saKeyVal = sKeyValue.Split(
                         new[] { '~' },
                         2);
+
                     if (saKeyVal.Length == 2)
                     {
                         compareOperator = PropertyExpressionOperator.Contains;
                     }
                     else
                     {
-                        throw new InvalidSearchParameterFormatException(searchProperties);
+                        throw new InvalidSearchPropertiesFormatException(searchProperties);
                     }
                 }
 
@@ -137,12 +174,12 @@ namespace CUITe.Controls
 
                 if ((typeof(T).IsSubclassOf(typeof(CUITControls.HtmlControl))) && (valueName.Equals("Value", StringComparison.OrdinalIgnoreCase)))
                 {
-                    //support for backward compatibility where search properties like "Value=Log In" are used
+                    // Support for backward compatibility where search properties like "Value=Log In" are used
                     valueName += "Attribute";
                 }
 
-                FieldInfo foundField = controlProperties.Find(
-                    searchProperty => searchProperty.Name.Equals(valueName, StringComparison.OrdinalIgnoreCase));
+                FieldInfo foundField = controlProperties.Find(searchProperty =>
+                    searchProperty.Name.Equals(valueName, StringComparison.OrdinalIgnoreCase));
 
                 if (foundField == null)
                 {
