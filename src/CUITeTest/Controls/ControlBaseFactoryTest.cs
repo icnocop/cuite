@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CUITe.Controls;
+using CUITe.Controls.TelerikControls;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,13 +14,12 @@ namespace CUITeTest.Controls
         [TestMethod]
         public void CreateUsingSearchProperties()
         {
-            // Arrange
-            string searchProperties = "Name=SomeName";
-
-            // Act
             foreach (Type controlType in ControlTypes)
             {
-                // This code throws exception if the control cannot be created
+                // Arrange
+                string searchProperties = GetSearchPropertiesFor(controlType);
+
+                // Act (this code throws exception if the control cannot be created)
                 ControlBaseFactory.Create(controlType, searchProperties);
             }
         }
@@ -27,17 +27,18 @@ namespace CUITeTest.Controls
         [TestMethod]
         public void CreateUsingSourceControlAndSearchProperties()
         {
-            // Arrange
-            UITestControl sourceControl = new UITestControl();
-            string searchProperties = "Name=SomeName";
-
-            // Act
             foreach (Type controlType in ControlTypes)
             {
-                // This code throws exception if the control cannot be created
+                // Arrange
+                var sourceControl = GetSourceControlFor(controlType);
+                string searchProperties = GetSearchPropertiesFor(controlType);
+                
+                // Act (this code throws exception if the control cannot be created)
                 ControlBaseFactory.Create(controlType, sourceControl, searchProperties);
             }
         }
+
+        #region Helper properties and methods
 
         private static IEnumerable<Type> ControlTypes
         {
@@ -50,5 +51,32 @@ namespace CUITeTest.Controls
                     .Where(type => !type.IsGenericType);
             }
         }
+
+        private static UITestControl GetSourceControlFor(Type controlType)
+        {
+            while (!controlType.IsGenericType)
+            {
+                controlType = controlType.BaseType;
+            }
+
+            Type sourceControlType = controlType.GetGenericArguments().First();
+            return (UITestControl)Activator.CreateInstance(sourceControlType);
+        }
+
+        /// <summary>
+        /// Gets the search properties for specified UI test control. Some controls needs special
+        /// search properties formatting, and this method provides for that.
+        /// </summary>
+        private static string GetSearchPropertiesFor(Type controlType)
+        {
+            if (controlType == typeof(ComboBox))
+            {
+                return "id=SomeId";
+            }
+
+            return null;
+        }
+
+        #endregion
     }
 }
