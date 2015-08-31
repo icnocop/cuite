@@ -1014,7 +1014,7 @@ namespace Sut.HtmlTest
                 list.Add(typeof(HtmlButton));
                 list.Add(typeof(HtmlEdit));
 
-                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Find");
+                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Find", new[] { typeof(string) });
 
                 foreach(Type t in list)
                 {
