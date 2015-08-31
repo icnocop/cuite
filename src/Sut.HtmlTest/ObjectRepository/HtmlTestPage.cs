@@ -11,7 +11,7 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public Div1 div1
         {
-            get { return Get<Div1>(); }
+            get { return Find<Div1>(); }
         }
     }
 }

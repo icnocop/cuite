@@ -88,9 +88,9 @@
             BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
 
             // Act
-            browserWindow.Get<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
-            browserWindow.Get<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
-            browserWindow.Get<HtmlInputButton>("Id=signIn").Click();
+            browserWindow.Find<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
+            browserWindow.Find<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
+            browserWindow.Find<HtmlInputButton>("Id=signIn").Click();
             browserWindow.Close();
         }
 
@@ -153,7 +153,7 @@
             TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             // Act
-            var doc = window.Get<HtmlDocument>();
+            var doc = window.Find<HtmlDocument>();
 
             // Assert
             // if Visual Studio Team System for Testers is installed, the vsttFireTimer attribute is automatically injected within the body element for some unknown reason

@@ -18,7 +18,19 @@ namespace CUITe.Controls
         /// </returns>
         internal static T Create<T>(string searchProperties) where T : ControlBase
         {
-            return (T)Activator.CreateInstance(typeof(T), searchProperties);
+            try
+            {
+                return (T)Activator.CreateInstance(typeof(T), searchProperties);
+            }
+            catch (MissingMethodException)
+            {
+                string message = string.Format(
+                    "No constructor for type '{0}' contains arguments in the following order:" + Environment.NewLine +
+                    "  1. String - Search properties",
+                    typeof(T));
+
+                throw new ArgumentException(message);
+            }
         }
 
         /// <summary>
@@ -37,7 +49,20 @@ namespace CUITe.Controls
             if (sourceControl == null)
                 throw new ArgumentNullException("sourceControl");
 
-            return (T)Activator.CreateInstance(typeof(T), sourceControl, searchProperties);
+            try
+            {
+                return (T)Activator.CreateInstance(typeof(T), sourceControl, searchProperties);
+            }
+            catch (MissingMethodException)
+            {
+                string message = string.Format(
+                    "No constructor for the type '{0}' contains arguments in the following order:" + Environment.NewLine +
+                    "  1. Class that inherits from UITestControl - Source control" + Environment.NewLine +
+                    "  2. String - Search properties",
+                    typeof(T));
+
+                throw new ArgumentException(message);
+            }
         }
 
         protected static ControlBase Create(UITestControl sourceControl, string targetNamespace)

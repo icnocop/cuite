@@ -197,13 +197,22 @@ namespace CUITe.Controls.HtmlControls
         #region Objects initialized at runtime without ObjectRepository entries
 
         /// <summary>
-        /// Gets the CUITe control object when search parameters are passed. 
-        /// You don't have to create the object repository entry for this.
+        /// Finds the control object from the descendants of this control using the specified
+        /// search properties.
         /// </summary>
-        /// <typeparam name="T">Pass the CUITe control you are looking for.</typeparam>
-        /// <param name="searchProperties">In 'Key1=Value1;Key2=Value2' format. For example 'Id=firstname'</param>
-        /// <returns>CUITe control object</returns>
-        public T Get<T>(string searchProperties = null) where T : ControlBase
+        /// <typeparam name="T">The type of control to find.</typeparam>
+        /// <param name="searchProperties">
+        /// The search properties in the 'Key1=Value1;Key2=Value2' format.
+        /// For example use 'Id=firstname' for a control that has an Id of 'firstname' or
+        /// 'Id~firstname' for a control that has an Id that contains the text 'firstname'.
+        /// </param>
+        /// <exception cref="InvalidSearchPropertiesFormatException">
+        /// Search properties are not correctly formatted.
+        /// </exception>
+        /// <exception cref="InvalidSearchKeyException">
+        /// Search properties contains key that isn't applicable on the control.
+        /// </exception>
+        public T Find<T>(string searchProperties = null) where T : ControlBase
         {
             T control = ControlBaseFactory.Create<T>(searchProperties);
 

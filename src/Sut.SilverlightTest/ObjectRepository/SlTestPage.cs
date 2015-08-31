@@ -12,7 +12,7 @@ namespace Sut.SilverlightTest.ObjectRepository
 
         public SilverlightList oList
         {
-            get { return Get<SilverlightList>("AutomationId=listBox1"); }
+            get { return Find<SilverlightList>("AutomationId=listBox1"); }
         }
     }
 }
