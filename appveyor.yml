@@ -1,0 +1,221 @@
+version: 2.0.{build}
+os: Windows Server 2012 R2
+init:
+- ps: >-
+    # Allow Remote Desktop
+
+    # $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+
+    # Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight
+
+    $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2013.msi"
+
+    $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2013.txt"
+
+    (New-Object Net.WebClient).DownloadFile('https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da/file/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)
+
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)
+
+    $exitCode = $process.ExitCode
+
+    if ($exitCode -ne 0)
+
+    {
+      Get-Content $logFilePath
+      throw "Command failed with exit code $exitCode."
+    }
+
+    del $msiFilePath
+
+    del $logFilePath
+
+    Write-Host "Visual Studio 2013 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green
+
+
+    # Google Chrome
+
+    $msiFilePath = "$($env:USERPROFILE)\GoogleChromeStandaloneEnterprise.msi"
+
+    $logFilePath = "$($env:TEMP)\GoogleChromeStandaloneEnterprise.txt"
+
+    (New-Object Net.WebClient).DownloadFile('https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B7ACD904C-E309-ADA4-8671-783B10D723FD%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi', $msiFilePath)
+
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)
+
+    $exitCode = $process.ExitCode
+
+    if ($exitCode -ne 0)
+
+    {
+      Get-Content $logFilePath
+      throw "Command failed with exit code $exitCode."
+    }
+
+    del $msiFilePath
+
+    del $logFilePath
+
+    Write-Host "Google Chrome successfully installed" -ForegroundColor Green
+
+
+    # Mozilla Firefox 27.0.1
+
+    $exeFilePath = "$($env:USERPROFILE)\Firefox Setup 27.0.1.exe"
+
+    (New-Object Net.WebClient).DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/27.0.1/win32/es-ES/Firefox%20Setup%2027.0.1.exe', $exeFilePath)
+
+    $process = (Start-Process -FilePath $exeFilePath -ArgumentList "-ms" -Wait -Passthru)
+
+    $exitCode = $process.ExitCode
+
+    if ($exitCode -ne 0)
+
+    {
+      throw "Command failed with exit code $exitCode."
+    }
+
+    del $exeFilePath
+
+    Write-Host "Mozilla Firefox 27.0.1 successfully installed" -ForegroundColor Green
+
+
+    # Disable Firefox First Run Import Settings and Data Wizard
+
+    $ProgramFiles = ${Env:ProgramFiles(x86)}
+
+    $FilePath = $ProgramFiles + "\Mozilla Firefox\override.ini"
+
+    if (!(test-path ($FilePath)))
+
+    {
+      # create the override.ini per https://developer.mozilla.org/en/Command_Line_Options
+      $err=@()
+      New-Item -type file -force $FilePath -ErrorVariable err | Out-Null
+      if (!($err.count -eq 0))
+      {
+        throw "Failed to create override.ini."
+      }
+    }
+
+
+    # read in the override.ini file
+
+    $iniData = Get-IniContent $FilePath
+
+
+    if (!($iniData.XRE))
+
+    {
+      $iniData.XRE = @{}
+    }
+
+
+    if (!($iniData.XRE.EnableProfileMigrator -eq 0))
+
+    {
+      $iniData.XRE.EnableProfileMigrator = 0
+      Out-IniFile $iniData $FilePath
+    }
+
+    Write-Host "Mozilla Firefox Profile Migrator disabled" -ForegroundColor Green
+
+
+    # Selenium components for Coded UI Cross Browser Testing
+
+    $msiFilePath = "$($env:USERPROFILE)\CodedUITestCrossBrowserSetup.msi"
+
+    $logFilePath = "$($env:TEMP)\CodedUITestCrossBrowserSetup.txt"
+
+    (New-Object Net.WebClient).DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/12/CodedUITestCrossBrowserSetup.msi', $msiFilePath)
+
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)
+
+    $exitCode = $process.ExitCode
+
+    if ($exitCode -ne 0)
+
+    {
+      Get-Content $logFilePath
+      throw "Command failed with exit code $exitCode."
+    }
+
+    del $msiFilePath
+
+    del $logFilePath
+
+    Write-Host "Selenium components for Coded UI Cross Browser Testing successfully installed" -ForegroundColor Green
+
+
+    # Disable Internet Explorer Enhanced Security Configuration
+
+    # $AdminKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}"
+
+    # $UserKey = "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A8-37EF-4b3f-8CFC-4F3A74704073}"
+
+    # Set-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
+
+    # Set-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
+
+    # Stop-Process -Name Explorer
+
+    # Write-Host "IE Enhanced Security Configuration (ESC) has been disabled." -ForegroundColor Green
+
+
+    # Load remote sources with full trust
+
+    $ConfigFilePath = ${Env:ProgramFiles(x86)} + "\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe.config"
+
+    [xml]$Configuration = Get-Content -Path $ConfigFilePath
+
+    $element = $Configuration.CreateElement('loadFromRemoteSources')
+
+    $element.Attributes.Append($Configuration.CreateAttribute("enabled"))
+
+    $element.enabled = "true"
+
+    $Configuration.configuration.runtime.AppendChild($element)
+
+    $Configuration.Save($ConfigFilePath)
+assembly_info:
+  patch: true
+  file: src\CommonAssemblyInfo.cs
+  assembly_version: '{version}.0'
+  assembly_file_version: '{version}.0'
+  assembly_informational_version: '{version}-beta'
+install:
+- REM Apply low integrity label on html files to mark them as accessible from an Enhanced Protected Mode process
+- REM http://blogs.msdn.com/b/ieinternals/archive/2012/06/20/loading-local-files-in-enhanced-protected-mode-in-internet-explorer-10.aspx
+- mkdir .\src\TestResults
+- icacls .\src\TestResults /setintegritylevel (CI)(OI)Low
+build_script:
+- call "%VS120COMNTOOLS%VsDevCmd.bat"
+- msbuild.exe src\build.proj /t:Build;Pack
+test_script:
+- call "%VS120COMNTOOLS%VsDevCmd.bat"
+- msbuild.exe src\build.proj /t:Test
+artifacts:
+- path: '*.nupkg'
+  name: NuGet
+deploy:
+- provider: NuGet
+  api_key:
+    secure: 
+  artifact: NuGet
+on_finish:
+- ps: >-
+    # Collect test results
+
+    $TestResultsRelativePath = ".\src\TestResults";
+
+    If (Test-Path $TestResultsRelativePath)
+
+    {
+      $TestResultsPath = Resolve-Path $TestResultsRelativePath;
+      [IO.Directory]::GetFiles($TestResultsPath.Path, 'UITestActionLog.html', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($TestResultsPath.Path.Length + 1) -DeploymentName to-publish }
+    }
+
+
+    # Allow Remote Desktop
+
+    # $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
