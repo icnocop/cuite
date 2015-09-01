@@ -706,7 +706,6 @@ namespace Sut.HtmlTest
 
             // Assert
             Assert.AreEqual(3, children.Count());
-
             Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
             Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText);
             Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText);
@@ -717,17 +716,21 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
         {
-            TestHtmlPage bWin = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
+            // Arrange
+            var window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
-            List<HtmlListItem> children = (from i in bWin.list.GetChildren()
-                                                 select i as HtmlListItem).ToList();
+            // Act
+            List<HtmlListItem> children = window.list.GetChildren()
+                .Cast<HtmlListItem>()
+                .ToList();
+            
+            // Assert
             Assert.AreEqual(3, children.Count());
+            Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
+            Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText);
+            Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText);
 
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1"));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2"));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3"));
-
-            bWin.Close();
+            window.Close();
         }
 
         [TestMethod]
