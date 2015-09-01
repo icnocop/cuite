@@ -8,12 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightEdit : SilverlightControl<CUITControls.SilverlightEdit>
     {
-        public SilverlightEdit()
+        public SilverlightEdit(string searchProperties = null)
+            : this(new CUITControls.SilverlightEdit(), searchProperties)
         {
         }
 
-        public SilverlightEdit(string searchParameters)
-            : base(searchParameters)
+        public SilverlightEdit(CUITControls.SilverlightEdit sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
@@ -24,25 +25,25 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Text;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.Text = value;
             }
         }
 
         public void SetText(string sText)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             SourceControl.Text = sText;
         }
 
         public string GetText()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             return SourceControl.Text;
         }
 
@@ -50,7 +51,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.ReadOnly;
             }
         }

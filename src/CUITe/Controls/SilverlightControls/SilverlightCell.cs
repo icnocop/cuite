@@ -8,12 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCell : SilverlightControl<CUITControls.SilverlightCell>
     {
-        public SilverlightCell()
+        public SilverlightCell(string searchProperties = null)
+            : this(new CUITControls.SilverlightCell(), searchProperties)
         {
         }
 
-        public SilverlightCell(string searchParameters)
-            : base(searchParameters)
+        public SilverlightCell(CUITControls.SilverlightCell sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
@@ -21,12 +22,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Checked;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.Checked = value;
             }
         }
@@ -35,7 +36,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.ColumnHeader;
             }
         }
@@ -47,7 +48,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.ColumnIndex;
             }
         }
@@ -59,7 +60,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.RowIndex;
             }
         }
@@ -68,7 +69,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Selected;
             }
         }
@@ -77,12 +78,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Value;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.Value = value;
             }
         }

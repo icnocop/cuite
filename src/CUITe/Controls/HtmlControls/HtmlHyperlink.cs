@@ -4,12 +4,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlHyperlink : HtmlControl<CUITControls.HtmlHyperlink>
     {
-        public HtmlHyperlink()
+        public HtmlHyperlink(string searchProperties = null)
+            : this(new CUITControls.HtmlHyperlink(), searchProperties)
         {
         }
 
-        public HtmlHyperlink(string searchParameters)
-            : base(searchParameters)
+        public HtmlHyperlink(CUITControls.HtmlHyperlink sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

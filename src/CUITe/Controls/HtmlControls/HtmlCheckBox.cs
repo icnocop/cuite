@@ -4,18 +4,19 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlCheckBox : HtmlControl<CUITControls.HtmlCheckBox>
     {
-        public HtmlCheckBox()
+        public HtmlCheckBox(string searchProperties = null)
+            : this(new CUITControls.HtmlCheckBox(), searchProperties)
         {
         }
 
-        public HtmlCheckBox(string searchParameters)
-            : base(searchParameters)
+        public HtmlCheckBox(CUITControls.HtmlCheckBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public void Check()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             if (!SourceControl.Checked)
             {
                 SourceControl.Checked = true;
@@ -24,7 +25,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void Check2()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             string sOnClick = (string)SourceControl.GetProperty("onclick");
             string sId = SourceControl.Id;
             if (sId == null || sId == "")
@@ -36,7 +37,7 @@ namespace CUITe.Controls.HtmlControls
 
         public void UnCheck()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             if (SourceControl.Checked)
             {
                 SourceControl.Checked = false;
@@ -47,7 +48,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Checked;
             }
         }

@@ -9,23 +9,24 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfRow : WpfControl<CUITControls.WpfRow>
     {
-        public WpfRow()
+        public WpfRow(string searchProperties = null)
+            : this(new CUITControls.WpfRow(), searchProperties)
         {
         }
 
-        public WpfRow(string searchParameters)
-            : base(searchParameters)
+        public WpfRow(CUITControls.WpfRow sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public bool CanSelectMultiple
         {
-            get { return UnWrap().CanSelectMultiple; }
+            get { return SourceControl.CanSelectMultiple; }
         }
 
         public UITestControlCollection Cells
         {
-            get { return UnWrap().Cells; }
+            get { return SourceControl.Cells; }
         }
 
         public List<WpfCell> CellsAsCUITe
@@ -33,10 +34,9 @@ namespace CUITe.Controls.WpfControls
             get
             {
                 List<WpfCell> list = new List<WpfCell>();
-                foreach (CUITControls.WpfCell control in UnWrap().Cells)
+                foreach (CUITControls.WpfCell control in SourceControl.Cells)
                 {
-                    WpfCell cell = new WpfCell();
-                    cell.WrapReady(control);
+                    WpfCell cell = new WpfCell(control);
                     list.Add(cell);
                 }
                 return list;
@@ -45,17 +45,17 @@ namespace CUITe.Controls.WpfControls
 
         public UITestControl Header
         {
-            get { return UnWrap().Header; }
+            get { return SourceControl.Header; }
         }
 
         public int RowIndex
         {
-            get { return UnWrap().RowIndex; }
+            get { return SourceControl.RowIndex; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
+            get { return SourceControl.Selected; }
         }
     }
 }

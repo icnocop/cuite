@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInputTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.SilverlightTest", "Sut.SilverlightTest\Sut.SilverlightTest.csproj", "{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITeTest", "CUITeTest\CUITeTest.csproj", "{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -173,6 +175,16 @@ Global
 		{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}.Release|x86.ActiveCfg = Release|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

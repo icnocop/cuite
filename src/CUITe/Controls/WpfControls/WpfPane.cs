@@ -7,12 +7,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfPane : WpfControl<CUITControls.WpfPane>
     {
-        public WpfPane()
+        public WpfPane(string searchProperties = null)
+            : this(new CUITControls.WpfPane(), searchProperties)
         {
         }
 
-        public WpfPane(string searchParameters)
-            : base(searchParameters)
+        public WpfPane(CUITControls.WpfPane sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

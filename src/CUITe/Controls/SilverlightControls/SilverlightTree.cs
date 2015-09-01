@@ -8,12 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTree : SilverlightControl<CUITControls.SilverlightTree>
     {
-        public SilverlightTree()
+        public SilverlightTree(string searchProperties = null)
+            : this(new CUITControls.SilverlightTree(), searchProperties)
         {
         }
 
-        public SilverlightTree(string searchParameters)
-            : base(searchParameters)
+        public SilverlightTree(CUITControls.SilverlightTree sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

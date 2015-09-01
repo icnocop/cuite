@@ -45,11 +45,11 @@ namespace Sut.SilverlightTest
         {
             BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
-            b.Get<SilverlightButton>("AutomationId=button1").Click();
-            SilverlightEdit oEdit = b.Get<SilverlightEdit>("AutomationId=textBox1");
+            b.Find<SilverlightButton>("AutomationId=button1").Click();
+            SilverlightEdit oEdit = b.Find<SilverlightEdit>("AutomationId=textBox1");
             oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
-            SilverlightDatePicker dp = b.Get<SilverlightDatePicker>("AutomationId=datePicker1");
-            dp.UnWrap().SelectedDate = new DateTime(2011, 5, 11);
+            SilverlightDatePicker dp = b.Find<SilverlightDatePicker>("AutomationId=datePicker1");
+            dp.SourceControl.SelectedDate = new DateTime(2011, 5, 11);
             b.Close();
         }
 
@@ -67,7 +67,7 @@ namespace Sut.SilverlightTest
         {
             BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
-            SilverlightList oList = b.Get<SilverlightList>("AutomationId=listBox1");
+            SilverlightList oList = b.Find<SilverlightList>("AutomationId=listBox1");
             oList.SelectedIndices = new[] { 2 };
             Assert.IsTrue(oList.SelectedItemsAsString == "Coded UI Test");
             b.Close();
@@ -79,7 +79,7 @@ namespace Sut.SilverlightTest
             BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             BrowserWindowUnderTest b = new BrowserWindowUnderTest("Home");
             b.SetFocus();
-            SilverlightComboBox oCombo = b.Get<SilverlightComboBox>("AutomationId=comboBox1");
+            SilverlightComboBox oCombo = b.Find<SilverlightComboBox>("AutomationId=comboBox1");
             oCombo.SelectItem(3);
             foreach (string temp in oCombo.Items)
             {
@@ -93,9 +93,9 @@ namespace Sut.SilverlightTest
         {
             BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
-            SilverlightTab oTab = b.Get<SilverlightTab>("AutomationId=tabControl1");
+            SilverlightTab oTab = b.Find<SilverlightTab>("AutomationId=tabControl1");
             oTab.SelectedIndex= 1;
-            Assert.IsTrue(oTab.UnWrap().Items[0].Name == "tabItem1");
+            Assert.IsTrue(oTab.SourceControl.Items[0].Name == "tabItem1");
             b.Close();
         }
 
@@ -104,11 +104,11 @@ namespace Sut.SilverlightTest
         {
             BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
             b.SetFocus();
-            SilverlightTab oTab = b.Get<SilverlightTab>("AutomationId=tabControl1");
+            SilverlightTab oTab = b.Find<SilverlightTab>("AutomationId=tabControl1");
             oTab.SelectedIndex = 0;
-            var btnOK = b.Get<SilverlightButton>("AutomationId=OKButtonInTabItem1");
+            var btnOK = b.Find<SilverlightButton>("AutomationId=OKButtonInTabItem1");
             ((SilverlightEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
-            foreach (IControlBase control in oTab.GetChildren())
+            foreach (ControlBase control in oTab.GetChildren())
             {
                 if (control.GetType() == typeof(SilverlightEdit))
                 {

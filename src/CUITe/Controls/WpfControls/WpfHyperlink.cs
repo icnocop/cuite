@@ -7,18 +7,19 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfHyperlink : WpfControl<CUITControls.WpfHyperlink>
     {
-        public WpfHyperlink()
+        public WpfHyperlink(string searchProperties = null)
+            : this(new CUITControls.WpfHyperlink(), searchProperties)
         {
         }
 
-        public WpfHyperlink(string searchParameters)
-            : base(searchParameters)
+        public WpfHyperlink(CUITControls.WpfHyperlink sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public string Alt
         {
-            get { return UnWrap().Alt; }
+            get { return SourceControl.Alt; }
         }
     }
 }

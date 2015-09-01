@@ -8,25 +8,26 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCalendar : WinControl<CUITControls.WinCalendar>
     {
-        public WinCalendar()
+        public WinCalendar(string searchProperties = null)
+            : this(new CUITControls.WinCalendar(), searchProperties)
         {
         }
 
-        public WinCalendar(string searchParameters)
-            : base(searchParameters)
+        public WinCalendar(CUITControls.WinCalendar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public SelectionRange SelectionRange
         {
-            get { return UnWrap().SelectionRange; }
-            set { UnWrap().SelectionRange = value; }
+            get { return SourceControl.SelectionRange; }
+            set { SourceControl.SelectionRange = value; }
         }
 
         public string SelectionRangeAsString
         {
-            get { return UnWrap().SelectionRangeAsString; }
-            set { UnWrap().SelectionRangeAsString = value; }
+            get { return SourceControl.SelectionRangeAsString; }
+            set { SourceControl.SelectionRangeAsString = value; }
         }
     }
 }

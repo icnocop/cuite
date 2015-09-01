@@ -8,12 +8,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightDataPager : SilverlightControl<CUITControls.SilverlightDataPager>
     {
-        public SilverlightDataPager()
+        public SilverlightDataPager(string searchProperties = null)
+            : this(new CUITControls.SilverlightDataPager(), searchProperties)
         {
         }
 
-        public SilverlightDataPager(string searchParameters)
-            : base(searchParameters)
+        public SilverlightDataPager(CUITControls.SilverlightDataPager sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

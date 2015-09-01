@@ -1,5 +1,6 @@
-﻿#if SILVERLIGHT_SUPPORT
-using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
+#if SILVERLIGHT_SUPPORT
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
 {
@@ -8,19 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightPassword : SilverlightEdit
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
-        /// </summary>
-        public SilverlightPassword()
+        public SilverlightPassword(string searchProperties = null)
+            : this(new CUITControls.SilverlightEdit(), searchProperties)
         {
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
-        /// </summary>
-        /// <param name="searchParameters">The search parameters.</param>
-        public SilverlightPassword(string searchParameters)
-            : base(searchParameters)
+        public SilverlightPassword(CUITControls.SilverlightEdit sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
@@ -32,7 +27,7 @@ namespace CUITe.Controls.SilverlightControls
             get { return base.Text; }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 SourceControl.Password = Playback.EncryptText(value);
             }
         }

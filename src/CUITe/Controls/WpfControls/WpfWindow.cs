@@ -7,68 +7,67 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfWindow : WpfControl<CUITControls.WpfWindow>
     {
-        public WpfWindow()
+        public WpfWindow(string searchProperties = null)
+            : this(new CUITControls.WpfWindow(), searchProperties)
         {
         }
 
-        public WpfWindow(string searchParameters)
-            : base(searchParameters)
+        public WpfWindow(CUITControls.WpfWindow sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
-            var sourceControl = new CUITControls.WpfWindow();
-            Wrap(sourceControl);
         }
 
         public bool AlwaysOnTop
         {
-            get { return UnWrap().AlwaysOnTop; }
+            get { return SourceControl.AlwaysOnTop; }
         }
 
         public bool HasTitleBar
         {
-            get { return UnWrap().HasTitleBar; }
+            get { return SourceControl.HasTitleBar; }
         }
 
         public bool Maximized
         {
-            get { return UnWrap().Maximized; }
-            set { UnWrap().Maximized = value; }
+            get { return SourceControl.Maximized; }
+            set { SourceControl.Maximized = value; }
         }
 
         public bool Minimized
         {
-            get { return UnWrap().Minimized; }
-            set { UnWrap().Minimized = value; }
+            get { return SourceControl.Minimized; }
+            set { SourceControl.Minimized = value; }
         }
 
         public bool Popup
         {
-            get { return UnWrap().Popup; }
+            get { return SourceControl.Popup; }
         }
 
         public bool Resizable
         {
-            get { return UnWrap().Resizable; }
+            get { return SourceControl.Resizable; }
         }
 
         public bool Restored
         {
-            get { return UnWrap().Restored; }
-            set { UnWrap().Restored = value; }
+            get { return SourceControl.Restored; }
+            set { SourceControl.Restored = value; }
         }
 
         public bool ShowInTaskbar
         {
-            get { return UnWrap().ShowInTaskbar; }
+            get { return SourceControl.ShowInTaskbar; }
         }
 
         public bool TabStop
         {
-            get { return UnWrap().TabStop; }
+            get { return SourceControl.TabStop; }
         }
 
         public bool Transparent
         {
-            get { return UnWrap().Transparent; }
+            get { return SourceControl.Transparent; }
         }
     }
 }

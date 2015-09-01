@@ -8,12 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBoxTreeItem : WinControl<CUITControls.WinCheckBoxTreeItem>
     {
-        public WinCheckBoxTreeItem()
+        public WinCheckBoxTreeItem(string searchProperties = null)
+            : this(new CUITControls.WinCheckBoxTreeItem(), searchProperties)
         {
         }
 
-        public WinCheckBoxTreeItem(string searchParameters)
-            : base(searchParameters)
+        public WinCheckBoxTreeItem(CUITControls.WinCheckBoxTreeItem sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
@@ -25,7 +26,7 @@ namespace CUITe.Controls.WinControls
 
         public bool HasChildNodes
         {
-            get { return UnWrap().HasChildNodes; }
+            get { return SourceControl.HasChildNodes; }
         }
 
         public bool Indeterminate
@@ -36,12 +37,12 @@ namespace CUITe.Controls.WinControls
 
         public UITestControlCollection Nodes
         {
-            get { return UnWrap().Nodes; }
+            get { return SourceControl.Nodes; }
         }
 
         public UITestControl ParentNode
         {
-            get { return UnWrap().ParentNode; }
+            get { return SourceControl.ParentNode; }
         }
 
         public bool Selected

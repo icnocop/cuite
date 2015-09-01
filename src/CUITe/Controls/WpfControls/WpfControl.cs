@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -7,27 +9,26 @@ namespace CUITe.Controls.WpfControls
     /// Base wrapper class for all CUITe WPF controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
-    public class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
+    public abstract class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
-        public WpfControl()
-        {
-        }
-
-        public WpfControl(string searchParameters)
-            : base(searchParameters)
+        protected WpfControl(T sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         /// <summary>
-        /// Gets the parent of the current CUITe control.
+        /// Gets the parent of the control.
         /// </summary>
-        public override IControlBase Parent
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase Parent
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 
-                IControlBase ret = null;
+                ControlBase ret = null;
                 
                 try
                 {
@@ -42,11 +43,44 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
+        /// Gets the previous sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase PreviousSibling
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Gets the next sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase NextSibling
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Gets the first child of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase FirstChild
+        {
+            get { return null; }
+        }
+
+        /// <summary>
         /// Wrap AcceleratorKey property common to all WPF controls
         /// </summary>
         public string AcceleratorKey
         {
-            get { return UnWrap().AcceleratorKey; }
+            get { return SourceControl.AcceleratorKey; }
         }
 
         /// <summary>
@@ -54,7 +88,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AccessKey
         {
-            get { return UnWrap().AccessKey; }
+            get { return SourceControl.AccessKey; }
         }
 
         /// <summary>
@@ -62,7 +96,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string AutomationId
         {
-            get { return UnWrap().AutomationId; }
+            get { return SourceControl.AutomationId; }
         }
 
         /// <summary>
@@ -70,7 +104,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string Font
         {
-            get { return UnWrap().Font; }
+            get { return SourceControl.Font; }
         }
 
         /// <summary>
@@ -78,7 +112,7 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string HelpText
         {
-            get { return UnWrap().HelpText; }
+            get { return SourceControl.HelpText; }
         }
 
         /// <summary>
@@ -86,7 +120,15 @@ namespace CUITe.Controls.WpfControls
         /// </summary>
         public string LabeledBy
         {
-            get { return UnWrap().LabeledBy; }
+            get { return SourceControl.LabeledBy; }
+        }
+
+        /// <summary>
+        /// Returns a sequence of all first level children of the control.
+        /// </summary>
+        public override IEnumerable<ControlBase> GetChildren()
+        {
+            return Enumerable.Empty<ControlBase>();
         }
     }
 }

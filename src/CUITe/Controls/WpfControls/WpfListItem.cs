@@ -7,23 +7,24 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfListItem : WpfControl<CUITControls.WpfListItem>
     {
-        public WpfListItem()
+        public WpfListItem(string searchProperties = null)
+            : this(new CUITControls.WpfListItem(), searchProperties)
         {
         }
 
-        public WpfListItem(string searchParameters)
-            : base(searchParameters)
+        public WpfListItem(CUITControls.WpfListItem sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
+            get { return SourceControl.Selected; }
         }
     }
 }

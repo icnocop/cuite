@@ -4,24 +4,25 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEdit : HtmlControl<CUITControls.HtmlEdit>
     {
-        public HtmlEdit()
+        public HtmlEdit(string searchProperties = null)
+            : this(new CUITControls.HtmlEdit(), searchProperties)
         {
         }
 
-        public HtmlEdit(string searchParameters)
-            : base(searchParameters)
+        public HtmlEdit(CUITControls.HtmlEdit sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public void SetText(string sText)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             SourceControl.Text = sText;
         }
 
         public string GetText()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             return SourceControl.Text;
         }
 
@@ -29,7 +30,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.ReadOnly;
             }
         }

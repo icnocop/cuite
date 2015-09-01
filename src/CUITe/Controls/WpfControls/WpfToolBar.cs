@@ -8,23 +8,24 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToolBar : WpfControl<CUITControls.WpfToolBar>
     {
-        public WpfToolBar()
+        public WpfToolBar(string searchProperties = null)
+            : this(new CUITControls.WpfToolBar(), searchProperties)
         {
         }
 
-        public WpfToolBar(string searchParameters)
-            : base(searchParameters)
+        public WpfToolBar(CUITControls.WpfToolBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public string Header
         {
-            get { return UnWrap().Header; }
+            get { return SourceControl.Header; }
         }
 
         public UITestControlCollection Items
         {
-            get { return UnWrap().Items; }
+            get { return SourceControl.Items; }
         }
     }
 }
