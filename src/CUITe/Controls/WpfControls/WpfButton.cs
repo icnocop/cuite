@@ -7,18 +7,19 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfButton : WpfControl<CUITControls.WpfButton>
     {
-        public WpfButton()
+        public WpfButton(string searchProperties = null)
+            : this(new CUITControls.WpfButton(), searchProperties)
         {
         }
 
-        public WpfButton(string searchParameters)
-            : base(searchParameters)
+        public WpfButton(CUITControls.WpfButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public string DisplayText
         {
-            get { return UnWrap().DisplayText; }
+            get { return SourceControl.DisplayText; }
         }
     }
 }

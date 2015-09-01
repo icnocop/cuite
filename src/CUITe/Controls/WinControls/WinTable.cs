@@ -9,18 +9,19 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTable : WinControl<CUITControls.WinTable>
     {
-        public WinTable()
+        public WinTable(string searchProperties = null)
+            : this(new CUITControls.WinTable(), searchProperties)
         {
         }
 
-        public WinTable(string searchParameters)
-            : base(searchParameters)
+        public WinTable(CUITControls.WinTable sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public UITestControlCollection Cells
         {
-            get { return UnWrap().Cells; }
+            get { return SourceControl.Cells; }
         }
 
         public List<WinCell> CellsAsCUITe
@@ -28,10 +29,9 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinCell> list = new List<WinCell>();
-                foreach (CUITControls.WinCell control in UnWrap().Cells)
+                foreach (CUITControls.WinCell control in SourceControl.Cells)
                 {
-                    WinCell cell = new WinCell();
-                    cell.WrapReady(control);
+                    WinCell cell = new WinCell(control);
                     list.Add(cell);
                 }
                 return list;
@@ -40,22 +40,22 @@ namespace CUITe.Controls.WinControls
 
         public UITestControlCollection ColumnHeaders
         {
-            get { return UnWrap().ColumnHeaders; }
+            get { return SourceControl.ColumnHeaders; }
         }
 
         public UITestControl HorizontalScrollBar
         {
-            get { return UnWrap().HorizontalScrollBar; }
+            get { return SourceControl.HorizontalScrollBar; }
         }
 
         public UITestControlCollection RowHeaders
         {
-            get { return UnWrap().RowHeaders; }
+            get { return SourceControl.RowHeaders; }
         }
 
         public UITestControlCollection Rows
         {
-            get { return UnWrap().Rows; }
+            get { return SourceControl.Rows; }
         }
 
         public List<WinRow> RowsAsCUITe
@@ -63,10 +63,9 @@ namespace CUITe.Controls.WinControls
             get
             {
                 List<WinRow> list = new List<WinRow>();
-                foreach (CUITControls.WinRow control in UnWrap().Rows)
+                foreach (CUITControls.WinRow control in SourceControl.Rows)
                 {
-                    WinRow row = new WinRow();
-                    row.WrapReady(control);
+                    WinRow row = new WinRow(control);
                     list.Add(row);
                 }
                 return list;
@@ -75,7 +74,7 @@ namespace CUITe.Controls.WinControls
 
         public UITestControl VerticalScrollBar
         {
-            get { return UnWrap().VerticalScrollBar; }
+            get { return SourceControl.VerticalScrollBar; }
         }
     }
 }

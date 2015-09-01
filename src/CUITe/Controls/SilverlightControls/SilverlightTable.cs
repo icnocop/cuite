@@ -9,12 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
-        public SilverlightTable()
+        public SilverlightTable(string searchProperties = null)
+            : this(new CUITControls.SilverlightTable(), searchProperties)
         {
         }
 
-        public SilverlightTable(string searchParameters)
-            : base(searchParameters)
+        public SilverlightTable(CUITControls.SilverlightTable sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
@@ -22,7 +23,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.RowCount;
             }
         }
@@ -63,7 +64,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public int FindRow(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             int iRow = -1;
             int rowCount = -1;
             foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)
@@ -120,7 +121,7 @@ namespace CUITe.Controls.SilverlightControls
 
         private CUITControls.SilverlightCell GetCell(int iRow, int iCol)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             CUITControls.SilverlightCell _SlCell = null;
             int rowCount = -1;
             foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)
@@ -150,8 +151,7 @@ namespace CUITe.Controls.SilverlightControls
         public SilverlightCheckBox GetRowHeaderCheckBox(int iRow)
         {
             var _checkbox = (CUITControls.SilverlightCheckBox)SourceControl.Rows[iRow].GetChildren()[0].GetChildren()[0];
-            SilverlightCheckBox retObj = new SilverlightCheckBox("*");
-            retObj.WrapReady(_checkbox);
+            SilverlightCheckBox retObj = new SilverlightCheckBox(_checkbox, "*");
             return retObj;
         }
     }

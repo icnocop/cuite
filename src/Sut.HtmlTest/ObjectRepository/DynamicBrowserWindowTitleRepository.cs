@@ -20,7 +20,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return Get<HtmlButton>("id=Home");
+                return Find<HtmlButton>("id=Home");
             }
         }
 
@@ -28,7 +28,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return Get<HtmlButton>("id=1");
+                return Find<HtmlButton>("id=1");
             }
         }
 
@@ -36,7 +36,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return Get<HtmlButton>("id=2");
+                return Find<HtmlButton>("id=2");
             }
         }
 
@@ -44,7 +44,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return Get<HtmlButton>("id=Change Window Title");
+                return Find<HtmlButton>("id=Change Window Title");
             }
         }
     }

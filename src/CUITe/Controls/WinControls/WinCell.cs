@@ -7,46 +7,47 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCell : WinControl<CUITControls.WinCell>
     {
-        public WinCell()
+        public WinCell(string searchProperties = null)
+            : this(new CUITControls.WinCell(), searchProperties)
         {
         }
 
-        public WinCell(string searchParameters)
-            : base(searchParameters)
+        public WinCell(CUITControls.WinCell sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public bool Checked
         {
-            get { return UnWrap().Checked; }
-            set { UnWrap().Checked = value; }
+            get { return SourceControl.Checked; }
+            set { SourceControl.Checked = value; }
         }
 
         public int ColumnIndex
         {
-            get { return UnWrap().ColumnIndex; }
+            get { return SourceControl.ColumnIndex; }
         }
 
         public bool Indeterminate
         {
-            get { return UnWrap().Indeterminate; }
-            set { UnWrap().Indeterminate = value; }
+            get { return SourceControl.Indeterminate; }
+            set { SourceControl.Indeterminate = value; }
         }
 
         public int RowIndex
         {
-            get { return UnWrap().RowIndex; }
+            get { return SourceControl.RowIndex; }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
+            get { return SourceControl.Selected; }
         }
 
         public string Value
         {
-            get { return UnWrap().Value; }
-            set { UnWrap().Value = value; }
+            get { return SourceControl.Value; }
+            set { SourceControl.Value = value; }
         }
     }
 }

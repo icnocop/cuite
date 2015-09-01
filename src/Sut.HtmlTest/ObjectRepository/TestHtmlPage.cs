@@ -8,18 +8,12 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public HtmlParagraph p
         {
-            get
-            {
-                return Get<HtmlParagraph>("id=para1");
-            }
+            get { return Find<HtmlParagraph>("id=para1"); }
         }
 
         public HtmlUnorderedList list
         {
-            get
-            {
-                return Get<HtmlUnorderedList>("id=unorderedList");
-            }
+            get { return Find<HtmlUnorderedList>("id=unorderedList"); }
         }
     }
 }

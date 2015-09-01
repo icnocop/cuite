@@ -4,24 +4,25 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableSpan : HtmlControl<CUITControls.HtmlEditableSpan>
     {
-        public HtmlEditableSpan()
+        public HtmlEditableSpan(string searchProperties = null)
+            : this(new CUITControls.HtmlEditableSpan(), searchProperties)
         {
         }
 
-        public HtmlEditableSpan(string searchParameters)
-            : base(searchParameters)
+        public HtmlEditableSpan(CUITControls.HtmlEditableSpan sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public void SetText(string sText)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             SourceControl.CopyPastedText = sText;
         }
 
         public string GetText()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             return SourceControl.Text;
         }
 
@@ -29,7 +30,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.ReadOnly;
             }
         }

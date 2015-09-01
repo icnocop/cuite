@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
@@ -7,27 +9,26 @@ namespace CUITe.Controls.WinControls
     /// Base wrapper class for all CUITe WinForms controls, inherits from ControlBase
     /// </summary>
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
-    public class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
+    public abstract class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
-        public WinControl()
-        {
-        }
-
-        public WinControl(string searchParameters)
-            : base(searchParameters)
+        protected WinControl(T sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         /// <summary>
-        /// Gets the parent of the current CUITe control.
+        /// Gets the parent of the control.
         /// </summary>
-        public override IControlBase Parent
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase Parent
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
 
-                IControlBase ret = null;
+                ControlBase ret;
 
                 try
                 {
@@ -39,6 +40,47 @@ namespace CUITe.Controls.WinControls
                 }
                 return ret;
             }
+        }
+
+        /// <summary>
+        /// Gets the previous sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase PreviousSibling
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Gets the next sibling of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase NextSibling
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Gets the first child of the control.
+        /// </summary>
+        /// <exception cref="InvalidTraversalException">
+        /// Error occurred when traversing the control tree.
+        /// </exception>
+        public override ControlBase FirstChild
+        {
+            get { return null; }
+        }
+
+        /// <summary>
+        /// Returns a sequence of all first level children of the control.
+        /// </summary>
+        public override IEnumerable<ControlBase> GetChildren()
+        {
+            return Enumerable.Empty<ControlBase>();
         }
     }
 }

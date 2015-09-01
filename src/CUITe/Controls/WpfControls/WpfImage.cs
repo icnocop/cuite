@@ -7,18 +7,19 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfImage : WpfControl<CUITControls.WpfImage>
     {
-        public WpfImage()
+        public WpfImage(string searchProperties = null)
+            : this(new CUITControls.WpfImage(), searchProperties)
         {
         }
 
-        public WpfImage(string searchParameters)
-            : base(searchParameters)
+        public WpfImage(CUITControls.WpfImage sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public string Alt
         {
-            get { return UnWrap().Alt; }
+            get { return SourceControl.Alt; }
         }
     }
 }

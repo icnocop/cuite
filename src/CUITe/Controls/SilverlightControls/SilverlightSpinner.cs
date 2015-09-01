@@ -9,25 +9,20 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
-        public SilverlightSpinner()
+        public SilverlightSpinner(string searchProperties = null)
+            : this(new CUITControls.SilverlightControl(), searchProperties)
         {
-            Initialize();
         }
 
-        public SilverlightSpinner(string searchParameters)
-            : base(searchParameters)
+        public SilverlightSpinner(CUITControls.SilverlightControl sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            SearchProperties.Add(UITestControl.PropertyNames.ControlType, "Spinner", PropertyExpressionOperator.EqualTo);
+            AddSearchProperty(UITestControl.PropertyNames.ControlType, "Spinner");
         }
 
         private SilverlightEdit _TextBox
         {
-            get { return Get<SilverlightEdit>(); }
+            get { return Find<SilverlightEdit>(); }
         }
 
         /// <summary>
@@ -37,25 +32,25 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return _TextBox.Text;
             }
             set
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 _TextBox.Text = value;
             }
         }
 
         public void SetText(string sText)
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             _TextBox.Text = sText;
         }
 
         public string GetText()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             return _TextBox.Text;
         }
 
@@ -63,7 +58,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return _TextBox.ReadOnly;
             }
         }

@@ -8,34 +8,34 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfRadioButton : WpfControl<CUITControls.WpfRadioButton>
     {
-        public WpfRadioButton()
+        public WpfRadioButton(string searchProperties = null)
+            : this(new CUITControls.WpfRadioButton(), searchProperties)
         {
         }
 
-        public WpfRadioButton(string searchParameters)
-            : base(searchParameters)
+        public WpfRadioButton(CUITControls.WpfRadioButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public UITestControl Group
         {
-            get { return UnWrap().Group; }
+            get { return SourceControl.Group; }
         }
 
         public WpfGroup GroupAsCUITe
         {
             get
             {
-                WpfGroup group = new WpfGroup();
-                group.WrapReady(UnWrap().Group);
+                WpfGroup group = new WpfGroup((CUITControls.WpfGroup)Group);
                 return group;
             }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
-            set { UnWrap().Selected = value; }
+            get { return SourceControl.Selected; }
+            set { SourceControl.Selected = value; }
         }
     }
 }

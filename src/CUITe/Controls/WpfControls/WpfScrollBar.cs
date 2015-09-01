@@ -7,28 +7,29 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfScrollBar : WpfControl<CUITControls.WpfScrollBar>
     {
-        public WpfScrollBar()
+        public WpfScrollBar(string searchProperties = null)
+            : this(new CUITControls.WpfScrollBar(), searchProperties)
         {
         }
 
-        public WpfScrollBar(string searchParameters)
-            : base(searchParameters)
+        public WpfScrollBar(CUITControls.WpfScrollBar sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public double MaximumPosition
         {
-            get { return UnWrap().MaximumPosition; }
+            get { return SourceControl.MaximumPosition; }
         }
 
         public double MinimumPosition
         {
-            get { return UnWrap().MinimumPosition; }
+            get { return SourceControl.MinimumPosition; }
         }
 
         public double Position
         {
-            get { return UnWrap().Position; }
+            get { return SourceControl.Position; }
         }
     }
 }

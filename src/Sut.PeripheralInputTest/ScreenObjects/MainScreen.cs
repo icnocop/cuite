@@ -11,17 +11,17 @@ namespace Sut.PeripheralInputTest.ScreenObjects
 
         public WpfText MouseClickText
         {
-            get { return Get<WpfText>("AutomationID=i5BpTf7kjkyn51Hp-91V1Q"); }
+            get { return Find<WpfText>("AutomationID=i5BpTf7kjkyn51Hp-91V1Q"); }
         }
 
         public WpfEdit MouseClickResult
         {
-            get { return Get<WpfEdit>("AutomationID=PpktgwLnNkqUl51Gfnc0jQ"); }
+            get { return Find<WpfEdit>("AutomationID=PpktgwLnNkqUl51Gfnc0jQ"); }
         }
 
         public WpfEdit KeyboardResult
         {
-            get { return Get<WpfEdit>("AutomationID=U0xqM3rkzUmzBDmjTJa_aQ"); }
+            get { return Find<WpfEdit>("AutomationID=U0xqM3rkzUmzBDmjTJa_aQ"); }
         }
     }
 }

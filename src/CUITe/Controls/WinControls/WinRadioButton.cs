@@ -8,34 +8,34 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRadioButton : WinControl<CUITControls.WinRadioButton>
     {
-        public WinRadioButton()
+        public WinRadioButton(string searchProperties = null)
+            : this(new CUITControls.WinRadioButton(), searchProperties)
         {
         }
 
-        public WinRadioButton(string searchParameters)
-            : base(searchParameters)
+        public WinRadioButton(CUITControls.WinRadioButton sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public UITestControl Group
         {
-            get { return UnWrap().Group; }
+            get { return SourceControl.Group; }
         }
 
         public WinGroup GroupAsCUITe
         {
             get
             {
-                WinGroup group = new WinGroup();
-                group.WrapReady(UnWrap().Group);
+                WinGroup group = new WinGroup((CUITControls.WinGroup)Group);
                 return group;
             }
         }
 
         public bool Selected
         {
-            get { return UnWrap().Selected; }
-            set { UnWrap().Selected = value; }
+            get { return SourceControl.Selected; }
+            set { SourceControl.Selected = value; }
         }
     }
 }

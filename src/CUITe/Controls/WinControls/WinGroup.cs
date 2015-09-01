@@ -7,12 +7,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinGroup : WinControl<CUITControls.WinGroup>
     {
-        public WinGroup()
+        public WinGroup(string searchProperties = null)
+            : this(new CUITControls.WinGroup(), searchProperties)
         {
         }
 
-        public WinGroup(string searchParameters)
-            : base(searchParameters)
+        public WinGroup(CUITControls.WinGroup sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
     }

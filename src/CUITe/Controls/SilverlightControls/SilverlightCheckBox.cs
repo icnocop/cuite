@@ -8,18 +8,19 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCheckBox : SilverlightControl<CUITControls.SilverlightCheckBox>
     {
-        public SilverlightCheckBox()
+        public SilverlightCheckBox(string searchProperties = null)
+            : this(new CUITControls.SilverlightCheckBox(), searchProperties)
         {
         }
 
-        public SilverlightCheckBox(string searchParameters)
-            : base(searchParameters)
+        public SilverlightCheckBox(CUITControls.SilverlightCheckBox sourceControl, string searchProperties = null)
+            : base(sourceControl, searchProperties)
         {
         }
 
         public void Check()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             if (!SourceControl.Checked)
             {
                 SourceControl.Checked = true;
@@ -28,7 +29,7 @@ namespace CUITe.Controls.SilverlightControls
 
         public void UnCheck()
         {
-            SourceControl.WaitForControlReady();
+            WaitForControlReady();
             if (SourceControl.Checked)
             {
                 SourceControl.Checked = false;
@@ -39,7 +40,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                SourceControl.WaitForControlReady();
+                WaitForControlReady();
                 return SourceControl.Checked;
             }
         }
