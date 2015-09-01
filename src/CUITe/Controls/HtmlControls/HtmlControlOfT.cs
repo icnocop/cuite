@@ -187,12 +187,14 @@ namespace CUITe.Controls.HtmlControls
         public override IEnumerable<ControlBase> GetChildren()
         {
             WaitForControlReady();
-            var uicol = new List<ControlBase>();
-            foreach (UITestControl uitestcontrol in SourceControl.GetChildren())
+            var children = new List<ControlBase>();
+            
+            foreach (UITestControl child in SourceControl.GetChildren())
             {
-                uicol.Add(WrapUtil((CUITControls.HtmlControl)uitestcontrol));
+                children.Add(WrapUtil((CUITControls.HtmlControl)child));
             }
-            return uicol;
+
+            return children;
         }
 
         /// <summary>
@@ -205,137 +207,138 @@ namespace CUITe.Controls.HtmlControls
             InternetExplorer.RunScript(browserWindow, code);
         }
 
-        private ControlBase WrapUtil(CUITControls.HtmlControl control)
+        private ControlBase WrapUtil(CUITControls.HtmlControl sourceControl)
         {
-            ControlBase _con = null;
-            if (control.GetType() == typeof(CUITControls.HtmlButton))
+            ControlBase control;
+
+            if (sourceControl.GetType() == typeof(CUITControls.HtmlButton))
             {
-                _con = new HtmlButton((CUITControls.HtmlButton)control);
+                control = new HtmlButton((CUITControls.HtmlButton)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlCheckBox))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlCheckBox))
             {
-                _con = new HtmlCheckBox((CUITControls.HtmlCheckBox)control);
+                control = new HtmlCheckBox((CUITControls.HtmlCheckBox)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlComboBox))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlComboBox))
             {
-                _con = new HtmlComboBox((CUITControls.HtmlComboBox)control);
+                control = new HtmlComboBox((CUITControls.HtmlComboBox)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlDiv))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlDiv))
             {
-                _con = new HtmlDiv((CUITControls.HtmlDiv)control);
+                control = new HtmlDiv((CUITControls.HtmlDiv)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlEdit) && (string.Compare(control.Type, "password", true) == 0))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlEdit) && (string.Compare(sourceControl.Type, "password", true) == 0))
             {
-                _con = new HtmlPassword((CUITControls.HtmlEdit)control);
+                control = new HtmlPassword((CUITControls.HtmlEdit)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlEdit))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlEdit))
             {
-                _con = new HtmlEdit((CUITControls.HtmlEdit)control);
+                control = new HtmlEdit((CUITControls.HtmlEdit)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlEditableDiv))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlEditableDiv))
             {
-                _con = new HtmlEditableDiv((CUITControls.HtmlEditableDiv)control);
+                control = new HtmlEditableDiv((CUITControls.HtmlEditableDiv)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlFileInput))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlFileInput))
             {
-                _con = new HtmlFileInput((CUITControls.HtmlFileInput)control);
+                control = new HtmlFileInput((CUITControls.HtmlFileInput)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlHyperlink))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlHyperlink))
             {
-                _con = new HtmlHyperlink((CUITControls.HtmlHyperlink)control);
+                control = new HtmlHyperlink((CUITControls.HtmlHyperlink)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlImage))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlImage))
             {
-                _con = new HtmlImage((CUITControls.HtmlImage)control);
+                control = new HtmlImage((CUITControls.HtmlImage)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlInputButton))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlInputButton))
             {
-                _con = new HtmlInputButton((CUITControls.HtmlInputButton)control);
+                control = new HtmlInputButton((CUITControls.HtmlInputButton)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlLabel))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlLabel))
             {
-                _con = new HtmlLabel((CUITControls.HtmlLabel)control);
+                control = new HtmlLabel((CUITControls.HtmlLabel)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlList))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlList))
             {
-                _con = new HtmlList((CUITControls.HtmlList)control);
+                control = new HtmlList((CUITControls.HtmlList)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlRadioButton))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlRadioButton))
             {
-                _con = new HtmlRadioButton((CUITControls.HtmlRadioButton)control);
+                control = new HtmlRadioButton((CUITControls.HtmlRadioButton)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlSpan))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlSpan))
             {
-                _con = new HtmlSpan((CUITControls.HtmlSpan)control);
+                control = new HtmlSpan((CUITControls.HtmlSpan)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlEditableSpan))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlEditableSpan))
             {
-                _con = new HtmlEditableSpan((CUITControls.HtmlEditableSpan)control);
+                control = new HtmlEditableSpan((CUITControls.HtmlEditableSpan)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlTable))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlTable))
             {
-                _con = new HtmlTable((CUITControls.HtmlTable)control);
+                control = new HtmlTable((CUITControls.HtmlTable)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlCell))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlCell))
             {
-                _con = new HtmlCell((CUITControls.HtmlCell)control);
+                control = new HtmlCell((CUITControls.HtmlCell)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlTextArea))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlTextArea))
             {
-                _con = new HtmlTextArea((CUITControls.HtmlTextArea)control);
+                control = new HtmlTextArea((CUITControls.HtmlTextArea)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlIFrame))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlIFrame))
             {
-                _con = new HtmlIFrame((CUITControls.HtmlIFrame)control);
+                control = new HtmlIFrame((CUITControls.HtmlIFrame)sourceControl);
             }
-            else if (control.GetType() == typeof(CUITControls.HtmlCustom))
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlCustom))
             {
-                switch (control.TagName.ToLower())
+                switch (sourceControl.TagName.ToLower())
                 {
                     case "p":
-                        _con = new HtmlParagraph((CUITControls.HtmlCustom)control);
+                        control = new HtmlParagraph((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "h1":
-                        _con = new HtmlHeading1((CUITControls.HtmlCustom)control);
+                        control = new HtmlHeading1((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "h2":
-                        _con = new HtmlHeading2((CUITControls.HtmlCustom)control);
+                        control = new HtmlHeading2((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "h3":
-                        _con = new HtmlHeading3((CUITControls.HtmlCustom)control);
+                        control = new HtmlHeading3((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "h4":
-                        _con = new HtmlHeading4((CUITControls.HtmlCustom)control);
+                        control = new HtmlHeading4((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "h5":
-                        _con = new HtmlHeading5((CUITControls.HtmlCustom)control);
+                        control = new HtmlHeading5((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "h6":
-                        _con = new HtmlHeading6((CUITControls.HtmlCustom)control);
+                        control = new HtmlHeading6((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "ul":
-                        _con = new HtmlUnorderedList((CUITControls.HtmlCustom)control);
+                        control = new HtmlUnorderedList((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "ol":
-                        _con = new HtmlOrderedList((CUITControls.HtmlCustom)control);
+                        control = new HtmlOrderedList((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "li":
-                        _con = new HtmlListItem((CUITControls.HtmlCustom)control);
+                        control = new HtmlListItem((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "ins":
-                        _con = new HtmlIns((CUITControls.HtmlCustom)control);
+                        control = new HtmlIns((CUITControls.HtmlCustom)sourceControl);
                         break;
                     default:
-                        _con = new HtmlCustom((CUITControls.HtmlCustom)control, "TagName=" + control.TagName);
+                        control = new HtmlCustom((CUITControls.HtmlCustom)sourceControl, "TagName=" + sourceControl.TagName);
                         break;
                 }
             }
             else
             {
-                throw new Exception(string.Format("WrapUtil: '{0}' not supported", control.GetType().Name));
+                throw new Exception(string.Format("WrapUtil: '{0}' not supported", sourceControl.GetType().Name));
             }
             
-            return _con;
+            return control;
         }
 
         private int GetMyIndexAmongSiblings()

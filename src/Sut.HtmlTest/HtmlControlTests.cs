@@ -695,19 +695,23 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlUnorderedList_WithListItems_CanAssertOnListItems()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
+            // Arrange
+            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
+            var list = window.Find<HtmlUnorderedList>("id=unorderedList");
 
-            var list = bWin.Find<HtmlUnorderedList>("id=unorderedList");
+            // Act
+            List<HtmlListItem> children = list.GetChildren()
+                .Cast<HtmlListItem>()
+                .ToList();
 
-            List<HtmlListItem> children = (from i in list.GetChildren()
-                                                       select i as HtmlListItem).ToList();
+            // Assert
             Assert.AreEqual(3, children.Count());
 
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 1"));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 2"));
-            Assert.AreEqual(1, children.Count(x => x.InnerText == "List Item 3"));
-
-            bWin.Close();
+            Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
+            Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText);
+            Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText);
+            
+            window.Close();
         }
 
         [TestMethod]
