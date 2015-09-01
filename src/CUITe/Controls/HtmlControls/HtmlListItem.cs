@@ -4,8 +4,6 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlListItem : HtmlCustom
     {
-        private const string TagName = "li";
-
         public HtmlListItem(string searchProperties = null)
             : this(new CUITControls.HtmlCustom(), searchProperties)
         {
@@ -14,7 +12,6 @@ namespace CUITe.Controls.HtmlControls
         public HtmlListItem(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
             : base(sourceControl, searchProperties)
         {
-            AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, TagName);
         }
     }
 }

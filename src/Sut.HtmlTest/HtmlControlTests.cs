@@ -704,10 +704,6 @@ namespace Sut.HtmlTest
                 .Cast<HtmlListItem>()
                 .ToList();
 
-            Debug.WriteLine(children.ElementAt(0).InnerText);
-            Debug.WriteLine(children.ElementAt(1).InnerText);
-            Debug.WriteLine(children.ElementAt(2).InnerText);
-
             // Assert
             Assert.AreEqual(3, children.Count());
             Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
@@ -727,10 +723,6 @@ namespace Sut.HtmlTest
             List<HtmlListItem> children = window.list.GetChildren()
                 .Cast<HtmlListItem>()
                 .ToList();
-
-            Debug.WriteLine(children.ElementAt(0).InnerText);
-            Debug.WriteLine(children.ElementAt(1).InnerText);
-            Debug.WriteLine(children.ElementAt(2).InnerText);
 
             // Assert
             Assert.AreEqual(3, children.Count());
