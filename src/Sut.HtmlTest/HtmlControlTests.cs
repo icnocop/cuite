@@ -395,7 +395,7 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        public void HtmlInputButton_UsingSearchParameterWithValueAsKey_Succeeds()
+        public void HtmlInputButton_UsingSearchPropertyWithValueAsKey_Succeeds()
         {
             //Internet Explorer may display the message: Internet Explorer restricted this webpage from running scripts or ActiveX controls.
             //This security restriction prevents the alert message to appear.
@@ -901,7 +901,7 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        public void Click_OnHtmlInputButtonWithEqualsSignInSearchParameterValue_Succeeds()
+        public void Click_OnHtmlInputButtonWithEqualsSignInSearchPropertyValue_Succeeds()
         {
             //Arrange
             using (TempFile tempFile = new TempFile(
