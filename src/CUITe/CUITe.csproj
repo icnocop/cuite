@@ -126,6 +126,7 @@
     <Compile Include="Browsers\Firefox.cs" />
     <Compile Include="Browsers\IBrowser.cs" />
     <Compile Include="Browsers\InternetExplorer.cs" />
+    <Compile Include="Caches\PropertyNamesCache.cs" />
     <Compile Include="Controls\ControlBase.cs" />
     <Compile Include="Controls\ControlBaseOfT.cs" />
     <Compile Include="Controls\ControlBaseFactory.cs" />
