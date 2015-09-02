@@ -1,4 +1,6 @@
-﻿namespace Sut.HtmlTest
+﻿using CUITe.SearchConfigurations;
+
+namespace Sut.HtmlTest
 {
     using System.Diagnostics;
     using System.IO;
@@ -88,9 +90,9 @@
             BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
 
             // Act
-            browserWindow.Find<HtmlEdit>("Id=Email").SetText("xyz@gmail.com");
-            browserWindow.Find<HtmlPassword>("Id=Password").SetText("MyPa$$Word");
-            browserWindow.Find<HtmlInputButton>("Id=signIn").Click();
+            browserWindow.Find<HtmlEdit>(By.SearchProperties("Id=Email")).SetText("xyz@gmail.com");
+            browserWindow.Find<HtmlPassword>(By.SearchProperties("Id=Password")).SetText("MyPa$$Word");
+            browserWindow.Find<HtmlInputButton>(By.SearchProperties("Id=signIn")).Click();
             browserWindow.Close();
         }
 

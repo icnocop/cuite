@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfProgressBar : WpfControl<CUITControls.WpfProgressBar>
     {
-        public WpfProgressBar(string searchProperties = null)
-            : this(new CUITControls.WpfProgressBar(), searchProperties)
+        public WpfProgressBar(By searchConfiguration = null)
+            : this(new CUITControls.WpfProgressBar(), searchConfiguration)
         {
         }
 
-        public WpfProgressBar(CUITControls.WpfProgressBar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfProgressBar(CUITControls.WpfProgressBar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

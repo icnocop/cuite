@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTitleBar : WpfControl<CUITControls.WpfTitleBar>
     {
-        public WpfTitleBar(string searchProperties = null)
-            : this(new CUITControls.WpfTitleBar(), searchProperties)
+        public WpfTitleBar(By searchConfiguration = null)
+            : this(new CUITControls.WpfTitleBar(), searchConfiguration)
         {
         }
 
-        public WpfTitleBar(CUITControls.WpfTitleBar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfTitleBar(CUITControls.WpfTitleBar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

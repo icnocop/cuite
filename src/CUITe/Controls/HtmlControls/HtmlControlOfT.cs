@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CUITe.Browsers;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -12,8 +13,8 @@ namespace CUITe.Controls.HtmlControls
     /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
     public class HtmlControl<T> : ControlBase<T>, IHtmlControl where T : CUITControls.HtmlControl
     {
-        public HtmlControl(T sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlControl(T sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 
@@ -329,7 +330,7 @@ namespace CUITe.Controls.HtmlControls
                         control = new HtmlIns((CUITControls.HtmlCustom)sourceControl);
                         break;
                     default:
-                        control = new HtmlCustom((CUITControls.HtmlCustom)sourceControl, "TagName=" + sourceControl.TagName);
+                        control = new HtmlCustom((CUITControls.HtmlCustom)sourceControl, By.SearchProperties("TagName=" + sourceControl.TagName));
                         break;
                 }
             }

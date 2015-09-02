@@ -1,4 +1,5 @@
 ﻿using System;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.Controls
@@ -12,13 +13,13 @@ namespace CUITe.Controls
         /// Creates a UI test control of type <see cref="T"/> with specified search properties.
         /// </summary>
         /// <typeparam name="T">The type of the UI test control to create.</typeparam>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
         /// A UI test control of type <see cref="T"/> with specified search properties.
         /// </returns>
-        internal static T Create<T>(string searchProperties) where T : ControlBase
+        internal static T Create<T>(By searchConfiguration) where T : ControlBase
         {
-            return (T)Create(typeof(T), searchProperties);
+            return (T)Create(typeof(T), searchConfiguration);
         }
 
         /// <summary>
@@ -26,18 +27,18 @@ namespace CUITe.Controls
         /// properties.
         /// </summary>
         /// <param name="controlType">The type of the UI test control to create.</param>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
         /// A UI test control of type <paramref name="controlType"/> with specified search properties.
         /// </returns>
-        internal static ControlBase Create(Type controlType, string searchProperties)
+        internal static ControlBase Create(Type controlType, By searchConfiguration)
         {
             if (controlType == null)
                 throw new ArgumentNullException("controlType");
 
             try
             {
-                return (ControlBase)Activator.CreateInstance(controlType, searchProperties);
+                return (ControlBase)Activator.CreateInstance(controlType, searchConfiguration);
             }
             catch (MissingMethodException)
             {
@@ -56,14 +57,14 @@ namespace CUITe.Controls
         /// </summary>
         /// <typeparam name="T">The type of the UI test control to create.</typeparam>
         /// <param name="sourceControl">The source control.</param>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
         /// A UI test control of type <see cref="T"/> with specified source control and search
         /// properties.
         /// </returns>
-        internal static T Create<T>(UITestControl sourceControl, string searchProperties) where T : ControlBase
+        internal static T Create<T>(UITestControl sourceControl, By searchConfiguration) where T : ControlBase
         {
-            return (T)Create(typeof(T), sourceControl, searchProperties);
+            return (T)Create(typeof(T), sourceControl, searchConfiguration);
         }
 
         /// <summary>
@@ -72,12 +73,12 @@ namespace CUITe.Controls
         /// </summary>
         /// <param name="controlType">The type of the UI test control to create.</param>
         /// <param name="sourceControl">The source control.</param>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
         /// A UI test control of type <see cref="controlType"/> with specified source control and
         /// search properties.
         /// </returns>
-        internal static ControlBase Create(Type controlType, UITestControl sourceControl, string searchProperties)
+        internal static ControlBase Create(Type controlType, UITestControl sourceControl, By searchConfiguration)
         {
             if (controlType == null)
                 throw new ArgumentNullException("controlType");
@@ -86,7 +87,7 @@ namespace CUITe.Controls
 
             try
             {
-                return (ControlBase)Activator.CreateInstance(controlType, sourceControl, searchProperties);
+                return (ControlBase)Activator.CreateInstance(controlType, sourceControl, searchConfiguration);
             }
             catch (MissingMethodException)
             {

@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSlider : WinControl<CUITControls.WinSlider>
     {
-        public WinSlider(string searchProperties = null)
-            : this(new CUITControls.WinSlider(), searchProperties)
+        public WinSlider(By searchConfiguration = null)
+            : this(new CUITControls.WinSlider(), searchConfiguration)
         {
         }
 
-        public WinSlider(CUITControls.WinSlider sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinSlider(CUITControls.WinSlider sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
@@ -9,13 +10,13 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class HtmlComboBox : HtmlControl<CUITControls.HtmlComboBox>
     {
-        public HtmlComboBox(string searchProperties = null)
-            : this(new CUITControls.HtmlComboBox(), searchProperties)
+        public HtmlComboBox(By searchConfiguration = null)
+            : this(new CUITControls.HtmlComboBox(), searchConfiguration)
         {
         }
 
-        public HtmlComboBox(CUITControls.HtmlComboBox sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlComboBox(CUITControls.HtmlComboBox sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

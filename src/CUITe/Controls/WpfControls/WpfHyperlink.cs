@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfHyperlink : WpfControl<CUITControls.WpfHyperlink>
     {
-        public WpfHyperlink(string searchProperties = null)
-            : this(new CUITControls.WpfHyperlink(), searchProperties)
+        public WpfHyperlink(By searchConfiguration = null)
+            : this(new CUITControls.WpfHyperlink(), searchConfiguration)
         {
         }
 
-        public WpfHyperlink(CUITControls.WpfHyperlink sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfHyperlink(CUITControls.WpfHyperlink sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

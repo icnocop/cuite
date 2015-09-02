@@ -1,4 +1,5 @@
 ﻿using CUITe.Controls.HtmlControls;
+using CUITe.SearchConfigurations;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
@@ -7,8 +8,8 @@ namespace Sut.HtmlTest.ObjectRepository
         // TODO: The factory should be able to create instances with default constructor
         // ReSharper disable once UnusedParameter.Local
         // the constructor requires a parameter in order for it to be dynamically created by CUITe
-        public Div2(string searchProperties)
-            : base("id=div2")
+        public Div2(By searchConfiguration)
+            : base(By.SearchProperties("id=div2"))
         {
         }
 
@@ -16,7 +17,7 @@ namespace Sut.HtmlTest.ObjectRepository
         {
             get
             {
-                return Find<HtmlEdit>("id=edit");
+                return Find<HtmlEdit>(By.SearchProperties("id=edit"));
             }
         }
     }

@@ -1,7 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-#if SILVERLIGHT_SUPPORT
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
+#if SILVERLIGHT_SUPPORT
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
@@ -9,13 +10,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightPassword : SilverlightEdit
     {
-        public SilverlightPassword(string searchProperties = null)
-            : this(new CUITControls.SilverlightEdit(), searchProperties)
+        public SilverlightPassword(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightEdit(), searchConfiguration)
         {
         }
 
-        public SilverlightPassword(CUITControls.SilverlightEdit sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightPassword(CUITControls.SilverlightEdit sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

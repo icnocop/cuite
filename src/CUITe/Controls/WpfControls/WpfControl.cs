@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -11,8 +12,8 @@ namespace CUITe.Controls.WpfControls
     /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
     public abstract class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
-        protected WpfControl(T sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        protected WpfControl(T sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

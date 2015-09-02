@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
@@ -6,13 +7,13 @@ namespace CUITe.Controls.HtmlControls
     {
         private const string TagName = "ol";
 
-        public HtmlOrderedList(string searchProperties = null)
-            : this(new CUITControls.HtmlCustom(), searchProperties)
+        public HtmlOrderedList(By searchConfiguration = null)
+            : this(new CUITControls.HtmlCustom(), searchConfiguration)
         {
         }
 
-        public HtmlOrderedList(CUITControls.HtmlCustom sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlOrderedList(CUITControls.HtmlCustom sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
             AddSearchProperty(CUITControls.HtmlControl.PropertyNames.TagName, TagName);
         }

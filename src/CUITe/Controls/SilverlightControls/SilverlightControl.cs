@@ -1,15 +1,16 @@
-﻿#if SILVERLIGHT_SUPPORT
+﻿using CUITe.SearchConfigurations;
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
+#if SILVERLIGHT_SUPPORT
 namespace CUITe.Controls.SilverlightControls
 {
     public abstract class SilverlightControl<T> : ControlBase<T> where T : CUITControls.SilverlightControl
     {
-        protected SilverlightControl(T sourceControl, string searchProperties)
-            : base(sourceControl, searchProperties)
+        protected SilverlightControl(T sourceControl, By searchConfiguration)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

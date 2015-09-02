@@ -1,23 +1,24 @@
 ﻿using System;
 using CUITe.Controls.WinControls;
+using CUITe.SearchConfigurations;
 
 namespace Sut.WinForms.ControlsTest.ScreenObjects
 {
     public class MainScreen : WinWindow
     {
         public MainScreen()
-            : base("Name=System Under Test (WinForms)")
+            : base(By.SearchProperties("Name=System Under Test (WinForms)"))
         {
         }
 
         public WinButton Button
         {
-            get { return Find<WinButton>("Name=This is a button"); }
+            get { return Find<WinButton>(By.SearchProperties("Name=This is a button")); }
         }
 
         public WinCheckBox CheckBox
         {
-            get { return Find<WinCheckBox>("Name=This is a check box"); }
+            get { return Find<WinCheckBox>(By.SearchProperties("Name=This is a check box")); }
         }
 
         public WinComboBox ComboBox
@@ -27,22 +28,22 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
 
         public WinDateTimePicker DateTimePicker
         {
-            get { return Find<WinDateTimePicker>("Name=" + DateTime.Now.ToLongDateString()); }
+            get { return Find<WinDateTimePicker>(By.SearchProperties("Name=" + DateTime.Now.ToLongDateString())); }
         }
 
         public WinGroup GroupBox
         {
-            get { return Find<WinGroup>("Name=Group box"); }
+            get { return Find<WinGroup>(By.SearchProperties("Name=Group box")); }
         }
 
         public WinText Label
         {
-            get { return Find<WinText>("Name=This is a label"); }
+            get { return Find<WinText>(By.SearchProperties("Name=This is a label")); }
         }
 
         public WinHyperlink LinkLabel
         {
-            get { return Find<WinHyperlink>("Name=This is a link label"); }
+            get { return Find<WinHyperlink>(By.SearchProperties("Name=This is a link label")); }
         }
 
         public WinList ListBox
@@ -82,7 +83,7 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
 
         public WinRadioButton RadioButton
         {
-            get { return Find<WinRadioButton>("Name=This is a radio button"); }
+            get { return Find<WinRadioButton>(By.SearchProperties("Name=This is a radio button")); }
         }
 
         public WinEdit RichTextBox

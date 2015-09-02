@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTextArea : HtmlControl<CUITControls.HtmlTextArea>
     {
-        public HtmlTextArea(string searchProperties = null)
-            : this(new CUITControls.HtmlTextArea(), searchProperties)
+        public HtmlTextArea(By searchConfiguration = null)
+            : this(new CUITControls.HtmlTextArea(), searchConfiguration)
         {
         }
 
-        public HtmlTextArea(CUITControls.HtmlTextArea sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlTextArea(CUITControls.HtmlTextArea sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

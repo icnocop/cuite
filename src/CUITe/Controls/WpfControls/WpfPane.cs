@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfPane : WpfControl<CUITControls.WpfPane>
     {
-        public WpfPane(string searchProperties = null)
-            : this(new CUITControls.WpfPane(), searchProperties)
+        public WpfPane(By searchConfiguration = null)
+            : this(new CUITControls.WpfPane(), searchConfiguration)
         {
         }
 
-        public WpfPane(CUITControls.WpfPane sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfPane(CUITControls.WpfPane sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
     }

@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToolTip : WpfControl<CUITControls.WpfToolTip>
     {
-        public WpfToolTip(string searchProperties = null)
-            : this(new CUITControls.WpfToolTip(), searchProperties)
+        public WpfToolTip(By searchConfiguration = null)
+            : this(new CUITControls.WpfToolTip(), searchConfiguration)
         {
         }
 
-        public WpfToolTip(CUITControls.WpfToolTip sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfToolTip(CUITControls.WpfToolTip sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
     }

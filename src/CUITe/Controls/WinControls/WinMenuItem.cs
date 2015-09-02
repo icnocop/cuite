@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
@@ -10,13 +11,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinMenuItem : WinControl<CUITControls.WinMenuItem>
     {
-        public WinMenuItem(string searchProperties = null)
-            : this(new CUITControls.WinMenuItem(), searchProperties)
+        public WinMenuItem(By searchConfiguration = null)
+            : this(new CUITControls.WinMenuItem(), searchConfiguration)
         {
         }
 
-        public WinMenuItem(CUITControls.WinMenuItem sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinMenuItem(CUITControls.WinMenuItem sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

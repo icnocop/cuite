@@ -1,5 +1,6 @@
 ﻿using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
+using CUITe.SearchConfigurations;
 
 namespace Sut.SilverlightTest.ObjectRepository
 {
@@ -12,7 +13,7 @@ namespace Sut.SilverlightTest.ObjectRepository
 
         public SilverlightList oList
         {
-            get { return Find<SilverlightList>("AutomationId=listBox1"); }
+            get { return Find<SilverlightList>(By.SearchProperties("AutomationId=listBox1")); }
         }
     }
 }

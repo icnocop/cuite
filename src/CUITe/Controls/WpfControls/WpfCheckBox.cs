@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCheckBox : WpfControl<CUITControls.WpfCheckBox>
     {
-        public WpfCheckBox(string searchProperties = null)
-            : this(new CUITControls.WpfCheckBox(), searchProperties)
+        public WpfCheckBox(By searchConfiguration = null)
+            : this(new CUITControls.WpfCheckBox(), searchConfiguration)
         {
         }
 
-        public WpfCheckBox(CUITControls.WpfCheckBox sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfCheckBox(CUITControls.WpfCheckBox sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

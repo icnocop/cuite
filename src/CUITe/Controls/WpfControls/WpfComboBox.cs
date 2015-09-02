@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
@@ -10,13 +11,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfComboBox : WpfControl<CUITControls.WpfComboBox>
     {
-        public WpfComboBox(string searchProperties = null)
-            : this(new CUITControls.WpfComboBox(), searchProperties)
+        public WpfComboBox(By searchConfiguration = null)
+            : this(new CUITControls.WpfComboBox(), searchConfiguration)
         {
         }
 
-        public WpfComboBox(CUITControls.WpfComboBox sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfComboBox(CUITControls.WpfComboBox sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

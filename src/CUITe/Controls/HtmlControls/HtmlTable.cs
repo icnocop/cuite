@@ -1,4 +1,5 @@
-﻿using mshtml;
+﻿using CUITe.SearchConfigurations;
+using mshtml;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -6,13 +7,13 @@ namespace CUITe.Controls.HtmlControls
 {
     public class HtmlTable : HtmlControl<CUITControls.HtmlTable>
     {
-        public HtmlTable(string searchProperties = null)
-            : this(new CUITControls.HtmlTable(), searchProperties)
+        public HtmlTable(By searchConfiguration = null)
+            : this(new CUITControls.HtmlTable(), searchConfiguration)
         {
         }
 
-        public HtmlTable(CUITControls.HtmlTable sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlTable(CUITControls.HtmlTable sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 
@@ -184,7 +185,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 sSearchProperties = sSearchProperties.Substring(1);
             }
-            HtmlCheckBox retChk = new HtmlCheckBox(chk, sSearchProperties);
+            HtmlCheckBox retChk = new HtmlCheckBox(chk, By.SearchProperties(sSearchProperties));
             return retChk;
         }
 

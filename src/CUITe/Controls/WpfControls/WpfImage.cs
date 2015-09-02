@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfImage : WpfControl<CUITControls.WpfImage>
     {
-        public WpfImage(string searchProperties = null)
-            : this(new CUITControls.WpfImage(), searchProperties)
+        public WpfImage(By searchConfiguration = null)
+            : this(new CUITControls.WpfImage(), searchConfiguration)
         {
         }
 
-        public WpfImage(CUITControls.WpfImage sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfImage(CUITControls.WpfImage sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

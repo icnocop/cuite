@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableDiv : HtmlControl<CUITControls.HtmlEditableDiv>
     {
-        public HtmlEditableDiv(string searchProperties = null)
-            : this(new CUITControls.HtmlEditableDiv(), searchProperties)
+        public HtmlEditableDiv(By searchConfiguration = null)
+            : this(new CUITControls.HtmlEditableDiv(), searchConfiguration)
         {
         }
 
-        public HtmlEditableDiv(CUITControls.HtmlEditableDiv sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlEditableDiv(CUITControls.HtmlEditableDiv sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

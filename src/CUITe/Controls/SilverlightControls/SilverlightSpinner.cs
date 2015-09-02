@@ -1,7 +1,8 @@
-﻿#if SILVERLIGHT_SUPPORT
+﻿using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
+#if SILVERLIGHT_SUPPORT
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
@@ -9,13 +10,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightSpinner : SilverlightControl<CUITControls.SilverlightControl>
     {
-        public SilverlightSpinner(string searchProperties = null)
-            : this(new CUITControls.SilverlightControl(), searchProperties)
+        public SilverlightSpinner(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightControl(), searchConfiguration)
         {
         }
 
-        public SilverlightSpinner(CUITControls.SilverlightControl sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightSpinner(CUITControls.SilverlightControl sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
             AddSearchProperty(UITestControl.PropertyNames.ControlType, "Spinner");
         }

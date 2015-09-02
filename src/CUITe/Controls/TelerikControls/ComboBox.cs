@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using CUITe.Controls.HtmlControls;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -11,13 +12,13 @@ namespace CUITe.Controls.TelerikControls
         private readonly string id;
         private BrowserWindowUnderTest window;
 
-        public ComboBox(string searchProperties = null)
-            : this(new CUITControls.HtmlDiv(), searchProperties)
+        public ComboBox(By searchConfiguration = null)
+            : this(new CUITControls.HtmlDiv(), searchConfiguration)
         {
         }
 
-        public ComboBox(CUITControls.HtmlDiv sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public ComboBox(CUITControls.HtmlDiv sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
             PropertyExpression idSearchProperty = GetSearchProperty("id");
             if (idSearchProperty == null)

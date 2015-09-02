@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
@@ -11,8 +12,8 @@ namespace CUITe.Controls.WinControls
     /// <typeparam name="T">The Coded UI WinControl type</typeparam>
     public abstract class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
-        protected WinControl(T sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        protected WinControl(T sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

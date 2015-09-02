@@ -10,6 +10,7 @@ using CUITe.Browsers;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.WinControls;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -174,7 +175,7 @@ namespace Sut.HtmlTest
                     var window = new BrowserWindowUnderTest("test");
 
                     //Act
-                    HtmlDiv div = window.Find<HtmlDiv>("Id=invalid");
+                    HtmlDiv div = window.Find<HtmlDiv>(By.SearchProperties("Id=invalid"));
 
                     //Assert
                     Assert.IsFalse(div.Exists);
@@ -194,7 +195,7 @@ namespace Sut.HtmlTest
         {
             BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
-            var tbl = bWin.Find<HtmlTable>("id=calcWithHeaders");
+            var tbl = bWin.Find<HtmlTable>(By.SearchProperties("id=calcWithHeaders"));
             string[] saExpectedValues = { "Header1", "Header2", "Header3" };
             string[] saHeaders = tbl.GetColumnHeaders();
             Assert.AreEqual(saExpectedValues[0], saHeaders[0]);
@@ -274,7 +275,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                var table = window.Find<HtmlTable>("id=tableId");
+                var table = window.Find<HtmlTable>(By.SearchProperties("id=tableId"));
 
                 //Act
                 table.FindHeaderAndClick(0, 2);
@@ -288,7 +289,7 @@ namespace Sut.HtmlTest
         {
             BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
-            var tbl = bWin.Find<HtmlTable>("id=calcWithHeaders");
+            var tbl = bWin.Find<HtmlTable>(By.SearchProperties("id=calcWithHeaders"));
             Assert.AreEqual(3, tbl.ColumnCount);
             bWin.Close();
         }
@@ -298,7 +299,7 @@ namespace Sut.HtmlTest
         {
             BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var bWin = new BrowserWindowUnderTest("A Test");
-            var tbl = bWin.Find<HtmlTable>("id=tableWithAlertOnHeaderClick");
+            var tbl = bWin.Find<HtmlTable>(By.SearchProperties("id=tableWithAlertOnHeaderClick"));
             tbl.FindHeaderAndClick(0, 0);
             bWin.PerformDialogAction(BrowserDialogAction.Ok);
             bWin.Close();
@@ -309,7 +310,7 @@ namespace Sut.HtmlTest
         public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
-            var tbl = bWin.Find<HtmlTable>("id=calcWithHeaders");
+            var tbl = bWin.Find<HtmlTable>(By.SearchProperties("id=calcWithHeaders"));
             tbl.FindRowAndClick(2, "9", HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(3, 2).Trim());
             bWin.Close();
@@ -320,7 +321,7 @@ namespace Sut.HtmlTest
         public void HtmlTable_FindRowUsingTableWithoutRowHeaders_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
-            var tbl = bWin.Find<HtmlTable>("id=calcWithOutHeaders");
+            var tbl = bWin.Find<HtmlTable>(By.SearchProperties("id=calcWithOutHeaders"));
             tbl.FindRowAndClick(2, "9", HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(2, 2).Trim());
             bWin.Close();
@@ -331,7 +332,7 @@ namespace Sut.HtmlTest
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
 
-            var termTable = bWin.Find<HtmlTable>("Id=calcWithHeaderCells");
+            var termTable = bWin.Find<HtmlTable>(By.SearchProperties("Id=calcWithHeaderCells"));
 
             Assert.AreEqual("3", termTable.GetCellValue(1, 1));
 
@@ -382,7 +383,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                var table = window.Find<HtmlTable>("id=tableId");
+                var table = window.Find<HtmlTable>(By.SearchProperties("id=tableId"));
 
                 //Act
                 table.FindRowAndClick(0, "LUN_04", HtmlTableSearchOptions.NormalTight);
@@ -415,7 +416,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>("Value=Log In");
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=Log In"));
 
                 //Act
                 button.Click();
@@ -423,7 +424,7 @@ namespace Sut.HtmlTest
                 if (BrowserWindowUnderTest.GetCurrentBrowser() is InternetExplorer)
                 {
                     //read JavaScript alert text
-                    WinWindow popup = new WinWindow("ClassName=#32770;Name=Message from webpage");
+                    WinWindow popup = new WinWindow(By.SearchProperties("ClassName=#32770;Name=Message from webpage"));
                     WinText text = popup.Find<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }
@@ -451,7 +452,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>("Value=Log In");
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=Log In"));
 
                 //Act
                 button.PointAndClick();
@@ -479,7 +480,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlFileInput fileInput = window.Find<HtmlFileInput>("Id=inputId");
+                HtmlFileInput fileInput = window.Find<HtmlFileInput>(By.SearchProperties("Id=inputId"));
 
                 string tempInputFilePath = Path.GetTempFileName();
 
@@ -499,8 +500,8 @@ namespace Sut.HtmlTest
             BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
             BrowserWindowUnderTest.Authenticate("username", "passwd");
             var bWin = new BrowserWindowUnderTest("Suresh Balasubramanian");
-            bWin.Find<HtmlHyperlink>("Id=idHomePageNewDocument").Click();
-            var closeLink = bWin.Find<HtmlHyperlink>("Title=Close;class=ms-dlgCloseBtn");
+            bWin.Find<HtmlHyperlink>(By.SearchProperties("Id=idHomePageNewDocument")).Click();
+            var closeLink = bWin.Find<HtmlHyperlink>(By.SearchProperties("Title=Close;class=ms-dlgCloseBtn"));
             //clicking closeLink directly doesn't work as the maximizeLink is clicked due to the controls being placed too close to each other
             Mouse.Click(closeLink.SourceControl.GetChildren()[0].GetChildren()[0]); 
             bWin.RunScript(@"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
@@ -510,7 +511,7 @@ namespace Sut.HtmlTest
         public void HtmlControl_GetChildren_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
-            var div = bWin.Find<HtmlDiv>("id=calculatorContainer1");
+            var div = bWin.Find<HtmlDiv>(By.SearchProperties("id=calculatorContainer1"));
             var col = div.GetChildren();
             Assert.IsTrue(col.ElementAt(0).SourceControlType.Name == "HtmlDiv");
             Assert.IsTrue(col.ElementAt(1).SourceControlType.Name == "HtmlTable");
@@ -524,7 +525,7 @@ namespace Sut.HtmlTest
         public void HtmlParagraph_InnertText_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
-            Assert.IsTrue(bWin.Find<HtmlParagraph>("Id=para1").InnerText.Contains("HtmlParagraph"));
+            Assert.IsTrue(bWin.Find<HtmlParagraph>(By.SearchProperties("Id=para1")).InnerText.Contains("HtmlParagraph"));
             bWin.Close();
         }
 
@@ -550,7 +551,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                HtmlComboBox comboBox = window.Find<HtmlComboBox>("Id=selectId");
+                HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.SearchProperties("Id=selectId"));
 
                 //Assert
                 Assert.AreEqual("Football", comboBox.Items[1]);
@@ -582,7 +583,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                HtmlComboBox comboBox = window.Find<HtmlComboBox>("Id=selectId");
+                HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.SearchProperties("Id=selectId"));
 
                 comboBox.SelectItem(1);
 
@@ -606,7 +607,7 @@ namespace Sut.HtmlTest
         public void HtmlParagraph_TraverseSiblingsParentAndChildren_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
-            var p = bWin.Find<HtmlParagraph>("Id=para1");
+            var p = bWin.Find<HtmlParagraph>(By.SearchProperties("Id=para1"));
             Assert.IsTrue(((HtmlEdit)p.PreviousSibling).SourceControl.Name == "text1_test");
             Assert.IsTrue(((HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
             Assert.IsTrue(((HtmlDiv)p.Parent).SourceControl.Id == "parentdiv");
@@ -620,7 +621,7 @@ namespace Sut.HtmlTest
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
-            bWin.Find<HtmlInputButton>("Value=Log In").Click();
+            bWin.Find<HtmlInputButton>(By.SearchProperties("Value=Log In")).Click();
             bWin.Close();
         }
 
@@ -631,7 +632,7 @@ namespace Sut.HtmlTest
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
             HtmlIFrame iFrame = bWin.Find<HtmlIFrame>();
-            iFrame.Find<HtmlInputButton>("Value=Log In").Click();
+            iFrame.Find<HtmlInputButton>(By.SearchProperties("Value=Log In")).Click();
             bWin.Close();
         }
 
@@ -653,7 +654,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>("Value=   Search   ");
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=   Search   "));
 
                 //Act
                 button.Click();
@@ -681,7 +682,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                HtmlButton button = window.Find<HtmlButton>("id=buttonId");
+                HtmlButton button = window.Find<HtmlButton>(By.SearchProperties("id=buttonId"));
 
                 //Assert
                 Assert.IsTrue(button.Exists);
@@ -697,7 +698,7 @@ namespace Sut.HtmlTest
         {
             // Arrange
             var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html", "A Test");
-            var list = window.Find<HtmlUnorderedList>("id=unorderedList");
+            var list = window.Find<HtmlUnorderedList>(By.SearchProperties("id=unorderedList"));
 
             // Act
             List<HtmlListItem> children = list.GetChildren()
@@ -751,7 +752,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                HtmlCheckBox checkBox = window.Find<HtmlCheckBox>("id=checkBoxId");
+                HtmlCheckBox checkBox = window.Find<HtmlCheckBox>(By.SearchProperties("id=checkBoxId"));
 
                 //Assert
                 Assert.IsTrue(checkBox.Exists);
@@ -781,7 +782,7 @@ namespace Sut.HtmlTest
             {
                 var window = BrowserWindowUnderTest.Launch(tempFile.FilePath, "test");
 
-                HtmlComboBox comboBox = window.Find<HtmlComboBox>("Id=selectId");
+                HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.SearchProperties("Id=selectId"));
 
                 comboBox.SetFocus();
 
@@ -813,7 +814,7 @@ namespace Sut.HtmlTest
             {
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
-                HtmlDiv div = window.Find<HtmlDiv>("id=div1");
+                HtmlDiv div = window.Find<HtmlDiv>(By.SearchProperties("id=div1"));
                 HtmlEdit inputTextBox = div.Find<HtmlEdit>();
 
                 //Act
@@ -852,7 +853,7 @@ namespace Sut.HtmlTest
                 var bWin = BrowserWindowUnderTest.Launch(tempFile.FilePath, "test");
 
                 // Act
-                HtmlCustom txtUserName = bWin.Find<HtmlCustom>("TagName=input;id=i0116");
+                HtmlCustom txtUserName = bWin.Find<HtmlCustom>(By.SearchProperties("TagName=input;id=i0116"));
                 
                 // Assert
                 Assert.IsTrue(txtUserName.Exists);
@@ -886,7 +887,7 @@ namespace Sut.HtmlTest
             {
                 BrowserWindow.Launch(tempFile.FilePath);
                 var bWin = new BrowserWindowUnderTest("test");
-                HtmlList list = bWin.Find<HtmlList>("id=selectId");
+                HtmlList list = bWin.Find<HtmlList>(By.SearchProperties("id=selectId"));
 
                 string[] itemsToSelect = { "1", "2" };
 
@@ -917,7 +918,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>("Value==");
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=="));
 
                 //Act
                 button.Click();
@@ -949,7 +950,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlComboBox comboBox = window.Find<HtmlComboBox>("Id=selectId");
+                HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.SearchProperties("Id=selectId"));
                 
                 //Assert
                 Assert.AreEqual(3, comboBox.ItemCount);
@@ -985,7 +986,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlLabel label = window.Find<HtmlLabel>("id=other");
+                HtmlLabel label = window.Find<HtmlLabel>(By.SearchProperties("id=other"));
 
                 //Assert
                 Assert.AreEqual("other", label.LabelFor);
@@ -1016,7 +1017,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                ControlBase a = window.Find<HtmlHyperlink>("InnerText=test");
+                ControlBase a = window.Find<HtmlHyperlink>(By.SearchProperties("InnerText=test"));
                 a.Click();
 
                 List<Type> list = new List<Type>();
@@ -1121,7 +1122,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                IEnumerable<ControlBase> collection = window.Find<HtmlDiv>("id=div1").GetChildren();
+                IEnumerable<ControlBase> collection = window.Find<HtmlDiv>(By.SearchProperties("id=div1")).GetChildren();
                 foreach (ControlBase control in collection)
                 {
                     if (control is HtmlHyperlink)
@@ -1159,7 +1160,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
-                HtmlButton button = window.Find<HtmlButton>("id=buttonId");
+                HtmlButton button = window.Find<HtmlButton>(By.SearchProperties("id=buttonId"));
 
                 //Assert
                 Assert.AreEqual(button.InnerText, "Button");
@@ -1210,7 +1211,7 @@ namespace Sut.HtmlTest
 
                 Assert.IsTrue(cus.Exists);
 
-                HtmlCustom cusDataFeedTabsNav = window.Find<HtmlCustom>("TagName=ul;Class=dataFeedTab ui-tabs-nav");
+                HtmlCustom cusDataFeedTabsNav = window.Find<HtmlCustom>(By.SearchProperties("TagName=ul;Class=dataFeedTab ui-tabs-nav"));
                 Assert.IsTrue(cusDataFeedTabsNav.Exists);
 
                 // Assert
@@ -1247,7 +1248,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 // Assert
-                HtmlHyperlink SignUpHyperLink = window.Find<HtmlHyperlink>("href~registration");
+                HtmlHyperlink SignUpHyperLink = window.Find<HtmlHyperlink>(By.SearchProperties("href~registration"));
                 Assert.IsTrue(SignUpHyperLink.Exists, "SignUp not found");
                 
                 window.Close();
@@ -1274,7 +1275,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlEdit input = window.Find<HtmlEdit>("id=input");
+                HtmlEdit input = window.Find<HtmlEdit>(By.SearchProperties("id=input"));
 
                 // Act
                 string inputText = "12345678901";
@@ -1310,9 +1311,9 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
-                HtmlDiv div = window.Find<HtmlDiv>("class=button");
+                HtmlDiv div = window.Find<HtmlDiv>(By.SearchProperties("class=button"));
 
-                HtmlHyperlink about = window.Find<HtmlHyperlink>("InnerText=about text;href~about");
+                HtmlHyperlink about = window.Find<HtmlHyperlink>(By.SearchProperties("InnerText=about text;href~about"));
                 HtmlDiv div2 = about.Parent as HtmlDiv;
 
                 // Assert
@@ -1357,7 +1358,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
-                HtmlRow row = window.Find<HtmlRow>("id=555002_gp2");
+                HtmlRow row = window.Find<HtmlRow>(By.SearchProperties("id=555002_gp2"));
 
                 // Assert
                 Assert.IsTrue(row.Exists);
@@ -1383,7 +1384,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>("Value=Click here");
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=Click here"));
 
                 // Act and Assert
                 Assert.IsFalse(button.Enabled);
@@ -1411,7 +1412,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlSpan span3 = window.Find<HtmlSpan>("Class~class1;Class~class2");
+                HtmlSpan span3 = window.Find<HtmlSpan>(By.SearchProperties("Class~class1;Class~class2"));
 
                 // Act and Assert
                 Assert.AreEqual("span3", span3.SourceControl.Name);
@@ -1440,7 +1441,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
-                HtmlRadioButton genderTypeMale = window.Find<HtmlRadioButton>("Name=radio:tab1:gender.type.male");
+                HtmlRadioButton genderTypeMale = window.Find<HtmlRadioButton>(By.SearchProperties("Name=radio:tab1:gender.type.male"));
 
                 // Assert
                 Assert.IsTrue(genderTypeMale.IsSelected);
@@ -1474,7 +1475,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlPassword txtPwd = window.Find<HtmlPassword>("id=i0118");
+                HtmlPassword txtPwd = window.Find<HtmlPassword>(By.SearchProperties("id=i0118"));
 
                 // Act
                 txtPwd.SetText("hello");
@@ -1508,7 +1509,7 @@ namespace Sut.HtmlTest
             {
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
-                var table = window.Find<HtmlTable>("Id=tableId");
+                var table = window.Find<HtmlTable>(By.SearchProperties("Id=tableId"));
 
                 HtmlCell cell = table.GetCell(0, 1);
                 HtmlHyperlink hyperlink = cell.Find<HtmlHyperlink>();

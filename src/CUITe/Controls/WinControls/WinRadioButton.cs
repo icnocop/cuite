@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRadioButton : WinControl<CUITControls.WinRadioButton>
     {
-        public WinRadioButton(string searchProperties = null)
-            : this(new CUITControls.WinRadioButton(), searchProperties)
+        public WinRadioButton(By searchConfiguration = null)
+            : this(new CUITControls.WinRadioButton(), searchConfiguration)
         {
         }
 
-        public WinRadioButton(CUITControls.WinRadioButton sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinRadioButton(CUITControls.WinRadioButton sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

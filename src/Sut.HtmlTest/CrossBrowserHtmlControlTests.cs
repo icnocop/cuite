@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using CUITe.Browsers;
 using CUITe.Controls.HtmlControls;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -45,7 +46,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.CurrentBrowser = browser;
 
                 BrowserWindowUnderTest window = BrowserWindowUnderTest.Launch(tempFilePath, "test");
-                var div = window.Find<HtmlDiv>("id=div1");
+                var div = window.Find<HtmlDiv>(By.SearchProperties("id=div1"));
                 var inputTextBox = div.Find<HtmlEdit>();
 
                 //Act

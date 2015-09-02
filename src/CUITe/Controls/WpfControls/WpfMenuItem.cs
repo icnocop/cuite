@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfMenuItem : WpfControl<CUITControls.WpfMenuItem>
     {
-        public WpfMenuItem(string searchProperties = null)
-            : this(new CUITControls.WpfMenuItem(), searchProperties)
+        public WpfMenuItem(By searchConfiguration = null)
+            : this(new CUITControls.WpfMenuItem(), searchConfiguration)
         {
         }
 
-        public WpfMenuItem(CUITControls.WpfMenuItem sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfMenuItem(CUITControls.WpfMenuItem sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

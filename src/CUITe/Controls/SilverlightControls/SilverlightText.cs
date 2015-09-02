@@ -1,6 +1,7 @@
-﻿#if SILVERLIGHT_SUPPORT
+﻿using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
+#if SILVERLIGHT_SUPPORT
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
@@ -8,13 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightText : SilverlightControl<CUITControls.SilverlightText>
     {
-        public SilverlightText(string searchProperties = null)
-            : this(new CUITControls.SilverlightText(), searchProperties)
+        public SilverlightText(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightText(), searchConfiguration)
         {
         }
 
-        public SilverlightText(CUITControls.SilverlightText sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightText(CUITControls.SilverlightText sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

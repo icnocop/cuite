@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlIFrame : HtmlControl<CUITControls.HtmlIFrame>
     {
-        public HtmlIFrame(string searchProperties = null)
-            : this(new CUITControls.HtmlIFrame(), searchProperties)
+        public HtmlIFrame(By searchConfiguration = null)
+            : this(new CUITControls.HtmlIFrame(), searchConfiguration)
         {
         }
 
-        public HtmlIFrame(CUITControls.HtmlIFrame sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlIFrame(CUITControls.HtmlIFrame sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
     }
