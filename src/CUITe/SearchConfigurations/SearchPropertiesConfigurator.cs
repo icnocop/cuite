@@ -38,30 +38,30 @@ namespace CUITe.SearchConfigurations
         /// </exception>
         public void Configure(PropertyExpressionCollection searchProperties)
         {
-            // Split on groups of key/value pairs
-            string[] saKeyValuePairs = this.searchProperties.Split(
+            // Split on groups of name/value pairs
+            string[] nameValuePairs = this.searchProperties.Split(
                 new[] { ';' },
                 StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (string sKeyValue in saKeyValuePairs)
+            foreach (string nameValuePair in nameValuePairs)
             {
                 var compareOperator = PropertyExpressionOperator.EqualTo;
 
                 // If split on '=' does not work, then try '~'
                 // Split at the first instance of '='. Other instances are considered part of the value.
-                string[] saKeyVal = sKeyValue.Split(
+                string[] splittedNameValuePair = nameValuePair.Split(
                     new[] { '=' },
                     2);
 
-                if (saKeyVal.Length != 2)
+                if (splittedNameValuePair.Length != 2)
                 {
                     // Otherwise try to split on '~'. If it works then compare type is Contains
                     // Split at the first instance of '~'. Other instances are considered part of the value.
-                    saKeyVal = sKeyValue.Split(
+                    splittedNameValuePair = nameValuePair.Split(
                         new[] { '~' },
                         2);
 
-                    if (saKeyVal.Length == 2)
+                    if (splittedNameValuePair.Length == 2)
                     {
                         compareOperator = PropertyExpressionOperator.Contains;
                     }
@@ -72,7 +72,7 @@ namespace CUITe.SearchConfigurations
                 }
 
                 // Add the search property, value and type
-                searchProperties.Add(saKeyVal[0], saKeyVal[1], compareOperator);
+                searchProperties.Add(splittedNameValuePair[0], splittedNameValuePair[1], compareOperator);
             }
         }
     }
