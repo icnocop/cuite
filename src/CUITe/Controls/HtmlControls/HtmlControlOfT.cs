@@ -330,7 +330,7 @@ namespace CUITe.Controls.HtmlControls
                         control = new HtmlIns((CUITControls.HtmlCustom)sourceControl);
                         break;
                     default:
-                        control = new HtmlCustom((CUITControls.HtmlCustom)sourceControl, By.SearchProperties("TagName=" + sourceControl.TagName));
+                        control = new HtmlCustom((CUITControls.HtmlCustom)sourceControl, By.TagName(sourceControl.TagName));
                         break;
                 }
             }

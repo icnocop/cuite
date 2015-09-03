@@ -424,7 +424,7 @@ namespace Sut.HtmlTest
                 if (BrowserWindowUnderTest.GetCurrentBrowser() is InternetExplorer)
                 {
                     //read JavaScript alert text
-                    WinWindow popup = new WinWindow(By.SearchProperties("ClassName=#32770;Name=Message from webpage"));
+                    WinWindow popup = new WinWindow(By.Name("Message from webpage").AndSearchProperties("ClassName=#32770"));
                     WinText text = popup.Find<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }
@@ -853,7 +853,7 @@ namespace Sut.HtmlTest
                 var bWin = BrowserWindowUnderTest.Launch(tempFile.FilePath, "test");
 
                 // Act
-                HtmlCustom txtUserName = bWin.Find<HtmlCustom>(By.SearchProperties("TagName=input;id=i0116"));
+                HtmlCustom txtUserName = bWin.Find<HtmlCustom>(By.Id("i0116").AndTagName("input"));
                 
                 // Assert
                 Assert.IsTrue(txtUserName.Exists);
@@ -1211,7 +1211,7 @@ namespace Sut.HtmlTest
 
                 Assert.IsTrue(cus.Exists);
 
-                HtmlCustom cusDataFeedTabsNav = window.Find<HtmlCustom>(By.SearchProperties("TagName=ul;Class=dataFeedTab ui-tabs-nav"));
+                HtmlCustom cusDataFeedTabsNav = window.Find<HtmlCustom>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav"));
                 Assert.IsTrue(cusDataFeedTabsNav.Exists);
 
                 // Assert

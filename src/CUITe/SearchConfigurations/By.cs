@@ -141,6 +141,37 @@ namespace CUITe.SearchConfigurations
 
         #endregion
 
+        #region Tag name
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified tag name.
+        /// </summary>
+        /// <param name="tagName">The tag name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By TagName(string tagName)
+        {
+            return new By().AndTagName(tagName);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified name.
+        /// </summary>
+        /// <param name="tagName">The tag name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndTagName(string tagName)
+        {
+            configurators.Add(new TagNameConfigurator(tagName));
+            return this;
+        }
+
+        #endregion
+
         #region Value attribute
 
         /// <summary>

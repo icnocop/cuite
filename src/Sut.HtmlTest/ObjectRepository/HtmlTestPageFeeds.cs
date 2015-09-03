@@ -12,12 +12,12 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public HtmlCustom cusDataFeedTabsNav2
         {
-            get { return divFeedTabs.Find<HtmlCustom>(By.SearchProperties("TagName=ul;Class=dataFeedTab ui-tabs-nav")); }
+            get { return divFeedTabs.Find<HtmlCustom>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
 
         public HtmlUnorderedList cusDataFeedTabsNav
         {
-            get { return Find<HtmlUnorderedList>(By.SearchProperties("Class=dataFeedTab ui-tabs-nav;TagName=ul")); }
+            get { return Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
 
         public HtmlDiv divFeedTabs
@@ -27,7 +27,7 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public HtmlUnorderedList cusdatafeedtabsnav1
         {
-            get { return divFeedTabs.Find<HtmlUnorderedList>(By.SearchProperties("Class=dataFeedTab ui-tabs-nav;TagName=ul")); }
+            get { return divFeedTabs.Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
     }
 }

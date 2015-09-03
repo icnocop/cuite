@@ -291,6 +291,7 @@
     <Compile Include="SearchConfigurations\NameConfigurator.cs" />
     <Compile Include="SearchConfigurations\SearchPropertiesConfigurator.cs" />
     <Compile Include="SearchConfigurations\ISearchPropertiesConfigurator.cs" />
+    <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
   </ItemGroup>
   <ItemGroup />
