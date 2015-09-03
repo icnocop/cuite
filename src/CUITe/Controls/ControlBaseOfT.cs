@@ -36,7 +36,7 @@ namespace CUITe.Controls
 
             if (searchConfiguration != null)
             {
-                AddSearchProperties(searchConfiguration.InternalSearchProperties);
+                AddSearchProperties(searchConfiguration.Configuration);
             }
         }
 
