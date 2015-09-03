@@ -14,8 +14,6 @@ namespace CUITe.SearchConfigurations
                 throw new ArgumentNullException("searchProperties");
 
             this.searchProperties = searchProperties;
-
-            throw new NotImplementedException("Please clean up.");
         }
 
         public void Configure(PropertyExpressionCollection searchProperties)
