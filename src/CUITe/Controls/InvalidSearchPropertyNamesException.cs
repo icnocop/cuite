@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CUITe
+namespace CUITe.Controls
 {
     /// <summary>
     /// Exception thrown when search properties contains a key that isn't applicable on the control

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CUITe
+namespace CUITe.SearchConfigurations
 {
     /// <summary>
     /// Exception thrown when search properties aren't correctly formatted.
