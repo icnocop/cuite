@@ -199,15 +199,12 @@ namespace CUITe.Controls.HtmlControls
 
         /// <summary>
         /// Finds the control object from the descendants of this control using the specified
-        /// search properties.
+        /// search configuration.
         /// </summary>
         /// <typeparam name="T">The type of control to find.</typeparam>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertiesFormatException">
-        /// Search properties are not correctly formatted.
-        /// </exception>
         /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namey that isn't applicable on the control.
+        /// Search configuration contains a property namely that isn't applicable on the control.
         /// </exception>
         public T Find<T>(By searchConfiguration = null) where T : ControlBase
         {

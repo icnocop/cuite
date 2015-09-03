@@ -22,7 +22,7 @@ namespace CUITe.Controls.TelerikControls
         {
             PropertyExpression idSearchProperty = GetSearchProperty("id");
             if (idSearchProperty == null)
-                throw new ArgumentException("Search properties must contain the property name 'id'.", "searchProperties");
+                throw new ArgumentException("Search configuration must contain the property name 'id'.", "searchConfiguration");
 
             id = idSearchProperty.PropertyValue;
         }

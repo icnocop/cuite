@@ -65,8 +65,8 @@ namespace CUITeTest.Controls
         }
 
         /// <summary>
-        /// Gets the search properties for specified UI test control. Some controls needs special
-        /// search properties formatting, and this method provides for that.
+        /// Gets the search configuration for specified UI test control. Some controls needs special
+        /// search configuration, and this method provides for that.
         /// </summary>
         private static By GetSearchPropertiesFor(Type controlType)
         {

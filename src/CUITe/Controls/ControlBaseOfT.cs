@@ -20,11 +20,8 @@ namespace CUITe.Controls
         /// </summary>
         /// <param name="sourceControl">The source control.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertiesFormatException">
-        /// Search properties are not correctly formatted.
-        /// </exception>
         /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namey that isn't applicable on the control.
+        /// Search configuration contains a property namely that isn't applicable on the control.
         /// </exception>
         protected ControlBase(T sourceControl, By searchConfiguration = null)
             : base(sourceControl)
@@ -100,15 +97,12 @@ namespace CUITe.Controls
 
         /// <summary>
         /// Finds the control object from the descendants of this control using the specified
-        /// search properties.
+        /// search configuration.
         /// </summary>
         /// <typeparam name="TControl">The type of control to find.</typeparam>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertiesFormatException">
-        /// Search properties are not correctly formatted.
-        /// </exception>
         /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namey that isn't applicable on the control.
+        /// Search configuration contains a property namely that isn't applicable on the control.
         /// </exception>
         public TControl Find<TControl>(By searchConfiguration = null) where TControl : ControlBase
         {
