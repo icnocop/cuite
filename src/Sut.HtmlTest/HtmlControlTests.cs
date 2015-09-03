@@ -1441,7 +1441,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
-                HtmlRadioButton genderTypeMale = window.Find<HtmlRadioButton>(By.SearchProperties("Name=radio:tab1:gender.type.male"));
+                HtmlRadioButton genderTypeMale = window.Find<HtmlRadioButton>(By.Name("radio:tab1:gender.type.male"));
 
                 // Assert
                 Assert.IsTrue(genderTypeMale.IsSelected);

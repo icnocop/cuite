@@ -6,7 +6,7 @@ namespace Sut.Wpf.ControlsTest.ScreenObjects
     public class MainScreen : WpfWindow
     {
         public MainScreen()
-            : base(By.SearchProperties("Name=System Under Test (WPF)"))
+            : base(By.Name("System Under Test (WPF)"))
         {
         }
 

@@ -287,6 +287,7 @@
     <Compile Include="ObjectRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchConfigurations\By.cs" />
+    <Compile Include="SearchConfigurations\NameConfigurator.cs" />
     <Compile Include="SearchConfigurations\SearchPropertiesConfigurator.cs" />
     <Compile Include="SearchConfigurations\ISearchPropertiesConfigurator.cs" />
   </ItemGroup>

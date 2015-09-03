@@ -35,6 +35,21 @@ namespace CUITe.SearchConfigurations
         }
 
         /// <summary>
+        /// Adds a mechanism to find controls by specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By Name(string name)
+        {
+            var by = new By();
+            by.configurators.Add(new NameConfigurator(name));
+            return by;
+        }
+
+        /// <summary>
         /// Adds a mechanism to find controls by specified search properties.
         /// </summary>
         /// <param name="searchProperties">
