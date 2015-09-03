@@ -10,14 +10,14 @@ namespace CUITe.Caches
     /// Class that acts as a cache for property names of types implementing
     /// <see cref="UITestControl"/>.
     /// </summary>
-    internal class PropertyNamesCache
+    public class PropertyNamesCache
     {
         private readonly Dictionary<Type, IReadOnlyCollection<string>> cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertyNamesCache"/> class.
         /// </summary>
-        internal PropertyNamesCache()
+        public PropertyNamesCache()
         {
             cache = new Dictionary<Type, IReadOnlyCollection<string>>();
         }
@@ -27,7 +27,7 @@ namespace CUITe.Caches
         /// </summary>
         /// <typeparam name="T">The UI test control type to get property names for.</typeparam>
         /// <returns>The property names for specified UI test control type.</returns>
-        internal IReadOnlyCollection<string> GetPropertyNamesFor<T>() where T : UITestControl
+        public IReadOnlyCollection<string> GetPropertyNamesFor<T>() where T : UITestControl
         {
             IReadOnlyCollection<string> propertyNames;
             

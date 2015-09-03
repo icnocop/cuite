@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Input;
+using CUITe.Caches;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
@@ -15,6 +16,16 @@ namespace CUITe.Controls
     public abstract class ControlBase
     {
         private readonly UITestControl sourceControl;
+
+        protected static readonly PropertyNamesCache PropertyNamesCache;
+
+        /// <summary>
+        /// Initializes the <see cref="ControlBase"/> class.
+        /// </summary>
+        static ControlBase()
+        {
+            PropertyNamesCache = new PropertyNamesCache();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ControlBase"/> class.
@@ -103,60 +114,6 @@ namespace CUITe.Controls
         /// Returns a sequence of all first level children of the control.
         /// </summary>
         public abstract IEnumerable<ControlBase> GetChildren();
-
-        /// <summary>
-        /// Adds a search property by using the provided property name and property value.
-        /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
-        /// <param name="propertyValue">The property value to search for.</param>
-        public void AddSearchProperty(string propertyName, string propertyValue)
-        {
-            SourceControl.SearchProperties.Add(propertyName, propertyValue);
-        }
-
-        /// <summary>
-        /// Adds a search property by using the provided property name, value, and operator.
-        /// </summary>
-        /// <param name="propertyName">The name of the property.</param>
-        /// <param name="propertyValue">The property value to search for.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
-        public void AddSearchProperty(
-            string propertyName,
-            string propertyValue,
-            PropertyExpressionOperator conditionOperator)
-        {
-            SourceControl.SearchProperties.Add(propertyName, propertyValue, conditionOperator);
-        }
-
-        /// <summary>
-        /// Adds all search property in the provided collection.
-        /// </summary>
-        /// <param name="searchProperties">The search properties.</param>
-        public void AddSearchProperties(PropertyExpressionCollection searchProperties)
-        {
-            if (searchProperties == null)
-                throw new ArgumentNullException("searchProperties");
-
-            SourceControl.SearchProperties.AddRange(searchProperties);
-        }
-
-        /// <summary>
-        /// Returns a search property that has a property name that matches the provided property
-        /// name.
-        /// </summary>
-        /// <param name="propertyName">
-        /// The property name for a <see cref="PropertyExpression"/> to find.
-        /// </param>
-        /// <returns>
-        /// A <see cref="PropertyExpression"/> object, if one is found; otherwise, null.
-        /// </returns>
-        public PropertyExpression GetSearchProperty(string propertyName)
-        {
-            return SourceControl.SearchProperties.Find(propertyName);
-        }
 
         /// <summary>
         /// Waits for the control to be ready.

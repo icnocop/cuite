@@ -206,8 +206,8 @@ namespace CUITe.Controls.HtmlControls
         /// <exception cref="InvalidSearchPropertiesFormatException">
         /// Search properties are not correctly formatted.
         /// </exception>
-        /// <exception cref="InvalidSearchKeyException">
-        /// Search properties contains key that isn't applicable on the control.
+        /// <exception cref="InvalidSearchPropertyNamesException">
+        /// Search configuration contains a property namey that isn't applicable on the control.
         /// </exception>
         public T Find<T>(By searchConfiguration = null) where T : ControlBase
         {

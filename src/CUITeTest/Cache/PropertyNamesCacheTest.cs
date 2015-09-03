@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using CUITe.Caches;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -28,7 +28,7 @@ namespace CUITeTest.Cache
             };
 
             // Act
-            var actual = new List<string>(propertyNamesCache.GetPropertyNamesFor<A>());
+            string[] actual = propertyNamesCache.GetPropertyNamesFor<A>().ToArray();
 
             // Assert
             CollectionAssert.IsSubsetOf(expected, actual);
@@ -45,7 +45,7 @@ namespace CUITeTest.Cache
             };
 
             // Act
-            var actual = new List<string>(propertyNamesCache.GetPropertyNamesFor<B>());
+            string[] actual = propertyNamesCache.GetPropertyNamesFor<B>().ToArray();
 
             // Assert
             CollectionAssert.IsSubsetOf(expected, actual);
@@ -61,7 +61,7 @@ namespace CUITeTest.Cache
             };
 
             // Act
-            var actual = new List<string>(propertyNamesCache.GetPropertyNamesFor<C>());
+            string[] actual = propertyNamesCache.GetPropertyNamesFor<C>().ToArray();
 
             // Assert
             CollectionAssert.IsSubsetOf(expected, actual);

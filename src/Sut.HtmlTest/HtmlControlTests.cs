@@ -132,20 +132,20 @@ namespace Sut.HtmlTest
 
         [TestMethod]
         [WorkItem(588)]
-        public void HtmlControl_WithInvalidSearchProperties_ThrowsInvalidSearchKeyException()
+        public void HtmlControl_WithInvalidSearchProperties_ThrowsInvalidSearchPropertyNamesException()
         {
             //TODO: use known html
             try
             {
                 BrowserWindowUnderTest.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
 
-                Assert.Fail("InvalidSearchKeyException not thrown");
+                Assert.Fail("InvalidSearchPropertyNamesException not thrown");
             }
             catch (TargetInvocationException ex)
             {
                 Console.WriteLine(ex.ToString());
 
-                Assert.AreEqual(typeof(InvalidSearchKeyException), ex.InnerException.GetType());
+                Assert.AreEqual(typeof(InvalidSearchPropertyNamesException), ex.InnerException.GetType());
             }
         }
 
@@ -416,7 +416,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=Log In"));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In"));
 
                 //Act
                 button.Click();
@@ -452,7 +452,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=Log In"));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In"));
 
                 //Act
                 button.PointAndClick();
@@ -621,7 +621,7 @@ namespace Sut.HtmlTest
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
-            bWin.Find<HtmlInputButton>(By.SearchProperties("Value=Log In")).Click();
+            bWin.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In")).Click();
             bWin.Close();
         }
 
@@ -632,7 +632,7 @@ namespace Sut.HtmlTest
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
             HtmlIFrame iFrame = bWin.Find<HtmlIFrame>();
-            iFrame.Find<HtmlInputButton>(By.SearchProperties("Value=Log In")).Click();
+            iFrame.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In")).Click();
             bWin.Close();
         }
 
@@ -654,7 +654,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=   Search   "));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=   Search   "));
 
                 //Act
                 button.Click();
@@ -918,7 +918,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=="));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=="));
 
                 //Act
                 button.Click();
@@ -1025,7 +1025,7 @@ namespace Sut.HtmlTest
                 list.Add(typeof(HtmlButton));
                 list.Add(typeof(HtmlEdit));
 
-                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Find", new[] { typeof(string) });
+                MethodInfo getMethodInfo = typeof(BrowserWindowUnderTest).GetMethod("Find", new[] { typeof(By) });
 
                 foreach(Type t in list)
                 {
@@ -1035,12 +1035,12 @@ namespace Sut.HtmlTest
 
                     if ((t == typeof(HtmlEdit)) || (t == typeof(HtmlTextArea)))
                     {
-                        control = (ControlBase)test.Invoke(window, new object[] { "Value=test" });
+                        control = (ControlBase)test.Invoke(window, new object[] { By.SearchProperties("ValueAttribute=test") });
                     }
                     else
                     {
                         //window.Find<t>("InnerText=test");
-                        control = (ControlBase)test.Invoke(window, new object[] { "InnerText=test" });
+                        control = (ControlBase)test.Invoke(window, new object[] { By.SearchProperties("InnerText=test") });
                     }
 
                     //Act
@@ -1384,7 +1384,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("Value=Click here"));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Click here"));
 
                 // Act and Assert
                 Assert.IsFalse(button.Enabled);

@@ -280,7 +280,7 @@
     <Compile Include="DataManager.cs" />
     <Compile Include="Exceptions\GenericException.cs" />
     <Compile Include="Exceptions\InvalidTraversalException.cs" />
-    <Compile Include="Exceptions\InvalidSearchKeyException.cs" />
+    <Compile Include="Exceptions\InvalidSearchPropertyNamesException.cs" />
     <Compile Include="Exceptions\InvalidSearchPropertiesFormatException.cs" />
     <Compile Include="Exceptions\ResourceNotFoundException.cs" />
     <Compile Include="ObjectRepositoryManager.cs" />
