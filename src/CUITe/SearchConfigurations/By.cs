@@ -85,6 +85,21 @@ namespace CUITe.SearchConfigurations
         }
 
         /// <summary>
+        /// Adds a mechanism to find controls by specified value attribute.
+        /// </summary>
+        /// <param name="valueAttribute">The value attribute.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By ValueAttribute(string valueAttribute)
+        {
+            var by = new By();
+            by.configurators.Add(new ValueAttributeConfigurator(valueAttribute));
+            return by;
+        }
+
+        /// <summary>
         /// Gets the search properties configuration of this instance.
         /// </summary>
         internal PropertyExpressionCollection Configuration

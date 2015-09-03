@@ -67,6 +67,7 @@
     <Compile Include="SearchConfigurations\IdConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\NameConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\SearchPropertiesConfiguratorTest.cs" />
+    <Compile Include="SearchConfigurations\ValueAttributeConfiguratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe\CUITe.csproj">

@@ -416,7 +416,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In"));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("Log In"));
 
                 //Act
                 button.Click();
@@ -452,7 +452,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In"));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("Log In"));
 
                 //Act
                 button.PointAndClick();
@@ -621,7 +621,7 @@ namespace Sut.HtmlTest
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
-            bWin.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In")).Click();
+            bWin.Find<HtmlInputButton>(By.ValueAttribute("Log In")).Click();
             bWin.Close();
         }
 
@@ -632,7 +632,7 @@ namespace Sut.HtmlTest
         {
             var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html", "iframe Test Main");
             HtmlIFrame iFrame = bWin.Find<HtmlIFrame>();
-            iFrame.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Log In")).Click();
+            iFrame.Find<HtmlInputButton>(By.ValueAttribute("Log In")).Click();
             bWin.Close();
         }
 
@@ -654,7 +654,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=   Search   "));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("   Search   "));
 
                 //Act
                 button.Click();
@@ -918,7 +918,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=="));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("="));
 
                 //Act
                 button.Click();
@@ -1035,7 +1035,7 @@ namespace Sut.HtmlTest
 
                     if ((t == typeof(HtmlEdit)) || (t == typeof(HtmlTextArea)))
                     {
-                        control = (ControlBase)test.Invoke(window, new object[] { By.SearchProperties("ValueAttribute=test") });
+                        control = (ControlBase)test.Invoke(window, new object[] { By.ValueAttribute("test") });
                     }
                     else
                     {
@@ -1384,7 +1384,7 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlInputButton button = window.Find<HtmlInputButton>(By.SearchProperties("ValueAttribute=Click here"));
+                HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("Click here"));
 
                 // Act and Assert
                 Assert.IsFalse(button.Enabled);
