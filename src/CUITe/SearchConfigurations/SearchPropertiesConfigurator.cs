@@ -38,6 +38,9 @@ namespace CUITe.SearchConfigurations
         /// </exception>
         public void Configure(PropertyExpressionCollection searchProperties)
         {
+            if (searchProperties == null)
+                throw new ArgumentNullException("searchProperties");
+
             // Split on groups of name/value pairs
             string[] nameValuePairs = this.searchProperties.Split(
                 new[] { ';' },

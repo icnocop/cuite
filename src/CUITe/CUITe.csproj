@@ -281,6 +281,7 @@
     <Compile Include="Controls\GenericException.cs" />
     <Compile Include="Controls\InvalidTraversalException.cs" />
     <Compile Include="Controls\InvalidSearchPropertyNamesException.cs" />
+    <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
     <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
     <Compile Include="ResourceNotFoundException.cs" />
     <Compile Include="ObjectRepositoryManager.cs" />

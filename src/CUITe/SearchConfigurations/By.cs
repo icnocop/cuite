@@ -20,6 +20,21 @@ namespace CUITe.SearchConfigurations
         }
 
         /// <summary>
+        /// Adds a mechanism to find controls by specified automation id.
+        /// </summary>
+        /// <param name="automationId">The automation id.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By AutomationId(string automationId)
+        {
+            var by = new By();
+            by.configurators.Add(new AutomationIdConfigurator(automationId));
+            return by;
+        }
+
+        /// <summary>
         /// Adds a mechanism to find controls by specified search properties.
         /// </summary>
         /// <param name="searchProperties">
