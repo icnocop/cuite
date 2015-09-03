@@ -72,7 +72,7 @@ namespace CUITeTest.Controls
         {
             if (controlType == typeof(ComboBox))
             {
-                return By.SearchProperties("id=SomeId");
+                return By.Id("SomeId");
             }
 
             return null;

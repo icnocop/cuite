@@ -22,7 +22,7 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public HtmlDiv divFeedTabs
         {
-            get { return Find<HtmlDiv>(By.SearchProperties("Id=feed_tabs")); }
+            get { return Find<HtmlDiv>(By.Id("feed_tabs")); }
         }
 
         public HtmlUnorderedList cusdatafeedtabsnav1

@@ -90,9 +90,9 @@ namespace Sut.HtmlTest
             BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
 
             // Act
-            browserWindow.Find<HtmlEdit>(By.SearchProperties("Id=Email")).SetText("xyz@gmail.com");
-            browserWindow.Find<HtmlPassword>(By.SearchProperties("Id=Password")).SetText("MyPa$$Word");
-            browserWindow.Find<HtmlInputButton>(By.SearchProperties("Id=signIn")).Click();
+            browserWindow.Find<HtmlEdit>(By.Id("Email")).SetText("xyz@gmail.com");
+            browserWindow.Find<HtmlPassword>(By.Id("Password")).SetText("MyPa$$Word");
+            browserWindow.Find<HtmlInputButton>(By.Id("signIn")).Click();
             browserWindow.Close();
         }
 

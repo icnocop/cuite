@@ -9,16 +9,13 @@ namespace Sut.HtmlTest.ObjectRepository
         // ReSharper disable once UnusedParameter.Local
         // the constructor requires a parameter in order for it to be dynamically created by CUITe
         public Div2(By searchConfiguration)
-            : base(By.SearchProperties("id=div2"))
+            : base(By.Id("div2"))
         {
         }
 
         public HtmlEdit edit
         {
-            get
-            {
-                return Find<HtmlEdit>(By.SearchProperties("id=edit"));
-            }
+            get { return Find<HtmlEdit>(By.Id("edit")); }
         }
     }
 }

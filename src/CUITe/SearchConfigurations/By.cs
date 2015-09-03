@@ -35,6 +35,21 @@ namespace CUITe.SearchConfigurations
         }
 
         /// <summary>
+        /// Adds a mechanism to find controls by specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By Id(string id)
+        {
+            var by = new By();
+            by.configurators.Add(new IdConfigurator(id));
+            return by;
+        }
+
+        /// <summary>
         /// Adds a mechanism to find controls by specified name.
         /// </summary>
         /// <param name="name">The name.</param>

@@ -9,12 +9,12 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public HtmlParagraph p
         {
-            get { return Find<HtmlParagraph>(By.SearchProperties("id=para1")); }
+            get { return Find<HtmlParagraph>(By.Id("para1")); }
         }
 
         public HtmlUnorderedList list
         {
-            get { return Find<HtmlUnorderedList>(By.SearchProperties("id=unorderedList")); }
+            get { return Find<HtmlUnorderedList>(By.Id("unorderedList")); }
         }
     }
 }
