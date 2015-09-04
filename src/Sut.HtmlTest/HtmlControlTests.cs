@@ -1311,7 +1311,7 @@ namespace Sut.HtmlTest
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
-                HtmlDiv div = window.Find<HtmlDiv>(By.SearchProperties("class=button"));
+                HtmlDiv div = window.Find<HtmlDiv>(By.Class("button"));
 
                 HtmlHyperlink about = window.Find<HtmlHyperlink>(By.SearchProperties("InnerText=about text;href~about"));
                 HtmlDiv div2 = about.Parent as HtmlDiv;
@@ -1412,7 +1412,9 @@ namespace Sut.HtmlTest
                 BrowserWindow.Launch(tempFile.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
-                HtmlSpan span3 = window.Find<HtmlSpan>(By.SearchProperties("Class~class1;Class~class2"));
+                HtmlSpan span3 = window.Find<HtmlSpan>(By
+                    .Class("class1", PropertyExpressionOperator.Contains)
+                    .AndClass("class2", PropertyExpressionOperator.Contains));
 
                 // Act and Assert
                 Assert.AreEqual("span3", span3.SourceControl.Name);
