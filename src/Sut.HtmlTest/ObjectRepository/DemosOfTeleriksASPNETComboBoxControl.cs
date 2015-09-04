@@ -1,6 +1,7 @@
 ﻿using CUITe.Controls.HtmlControls;
 using CUITe.Controls.TelerikControls;
 using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
@@ -14,9 +15,9 @@ namespace Sut.HtmlTest.ObjectRepository
         public HtmlEdit PaymentMethod { get { return Find<HtmlEdit>(By.Id("ctl00_ContentPlaceHolder1_RadComboBoxPaymentMethod_Input")); } }
 
         public ComboBox cbProduct { get { return Find<ComboBox>(By.Id("ctl00_ContentPlaceHolder1_RadComboBoxProduct")); } }
-        public ComboBox cbRegion { get { return Find<ComboBox>(By.SearchProperties("id~ctl00_ContentPlaceHolder1_RadComboBoxRegion")); } }
-        public ComboBox cbDealer { get { return Find<ComboBox>(By.SearchProperties("id~ctl00_ContentPlaceHolder1_RadComboBoxDealer")); } }
-        public ComboBox cbPaymentMethod { get { return Find<ComboBox>(By.SearchProperties("id~ctl00_ContentPlaceHolder1_RadComboBoxPaymentMethod")); } }
+        public ComboBox cbRegion { get { return Find<ComboBox>(By.Id("ctl00_ContentPlaceHolder1_RadComboBoxRegion", PropertyExpressionOperator.Contains)); } }
+        public ComboBox cbDealer { get { return Find<ComboBox>(By.Id("ctl00_ContentPlaceHolder1_RadComboBoxDealer", PropertyExpressionOperator.Contains)); } }
+        public ComboBox cbPaymentMethod { get { return Find<ComboBox>(By.Id("ctl00_ContentPlaceHolder1_RadComboBoxPaymentMethod", PropertyExpressionOperator.Contains)); } }
     }
 }
 
