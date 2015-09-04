@@ -71,7 +71,7 @@ namespace CUITeTest.Cache
 
         class A : B
         {
-            public class PropertyNames
+            public new class PropertyNames
             {
                 public static readonly string PropertyOnA = "PropertyOnA";
             }
@@ -79,7 +79,7 @@ namespace CUITeTest.Cache
 
         class B : C
         {
-            public class PropertyNames
+            public new class PropertyNames
             {
                 public static readonly string PropertyOnB = "PropertyOnB";
             }
@@ -87,7 +87,7 @@ namespace CUITeTest.Cache
 
         class C : UITestControl
         {
-            public class PropertyNames
+            public new class PropertyNames
             {
                 public static readonly string PropertyOnC = "PropertyOnC";
             }
