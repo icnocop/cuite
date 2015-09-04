@@ -12,9 +12,9 @@ namespace CUITe.SearchConfigurations
         private readonly List<ISearchPropertiesConfigurator> configurators;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="By"/> class from being created.
+        /// Initializes a new instance of the <see cref="By"/> class.
         /// </summary>
-        private By()
+        internal By()
         {
             configurators = new List<ISearchPropertiesConfigurator>();
         }

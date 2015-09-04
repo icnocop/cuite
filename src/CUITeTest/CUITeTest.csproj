@@ -64,6 +64,7 @@
     <Compile Include="Controls\ControlBaseFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfiguratorTest.cs" />
+    <Compile Include="SearchConfigurations\ByTest.cs" />
     <Compile Include="SearchConfigurations\ClassConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\IdConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\NameConfiguratorTest.cs" />
