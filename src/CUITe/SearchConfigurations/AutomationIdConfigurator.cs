@@ -11,17 +11,23 @@ namespace CUITe.SearchConfigurations
     internal class AutomationIdConfigurator : ISearchPropertiesConfigurator
     {
         private readonly string automationId;
+        private readonly PropertyExpressionOperator conditionOperator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomationIdConfigurator"/> class.
         /// </summary>
         /// <param name="automationId">The automation id.</param>
-        internal AutomationIdConfigurator(string automationId)
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        internal AutomationIdConfigurator(string automationId, PropertyExpressionOperator conditionOperator)
         {
             if (automationId == null)
                 throw new ArgumentNullException("automationId");
 
             this.automationId = automationId;
+            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
@@ -33,7 +39,7 @@ namespace CUITe.SearchConfigurations
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(WpfControl.PropertyNames.AutomationId, automationId);
+            searchProperties.Add(WpfControl.PropertyNames.AutomationId, automationId, conditionOperator);
         }
     }
 }

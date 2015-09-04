@@ -10,17 +10,23 @@ namespace CUITe.SearchConfigurations
     internal class IdConfigurator : ISearchPropertiesConfigurator
     {
         private readonly string id;
+        private readonly PropertyExpressionOperator conditionOperator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IdConfigurator"/> class.
         /// </summary>
         /// <param name="id">The id.</param>
-        internal IdConfigurator(string id)
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        internal IdConfigurator(string id, PropertyExpressionOperator conditionOperator)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
 
             this.id = id;
+            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
@@ -32,7 +38,7 @@ namespace CUITe.SearchConfigurations
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(HtmlControl.PropertyNames.Id, id);
+            searchProperties.Add(HtmlControl.PropertyNames.Id, id, conditionOperator);
         }
     }
 }

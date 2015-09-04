@@ -9,17 +9,23 @@ namespace CUITe.SearchConfigurations
     internal class NameConfigurator : ISearchPropertiesConfigurator
     {
         private readonly string name;
+        private readonly PropertyExpressionOperator conditionOperator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NameConfigurator"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        internal NameConfigurator(string name)
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        internal NameConfigurator(string name, PropertyExpressionOperator conditionOperator)
         {
             if (name == null)
                 throw new ArgumentNullException("name");
 
             this.name = name;
+            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
@@ -31,7 +37,7 @@ namespace CUITe.SearchConfigurations
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(UITestControl.PropertyNames.Name, name);
+            searchProperties.Add(UITestControl.PropertyNames.Name, name, conditionOperator);
         }
     }
 }

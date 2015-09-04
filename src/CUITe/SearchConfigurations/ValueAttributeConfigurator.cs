@@ -11,17 +11,23 @@ namespace CUITe.SearchConfigurations
     internal class ValueAttributeConfigurator : ISearchPropertiesConfigurator
     {
         private readonly string valueAttribute;
+        private readonly PropertyExpressionOperator conditionOperator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueAttributeConfigurator"/> class.
         /// </summary>
         /// <param name="valueAttribute">The value attribute.</param>
-        internal ValueAttributeConfigurator(string valueAttribute)
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        internal ValueAttributeConfigurator(string valueAttribute, PropertyExpressionOperator conditionOperator)
         {
             if (valueAttribute == null)
                 throw new ArgumentNullException("valueAttribute");
 
             this.valueAttribute = valueAttribute;
+            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
@@ -33,7 +39,7 @@ namespace CUITe.SearchConfigurations
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, valueAttribute);
+            searchProperties.Add(HtmlControl.PropertyNames.ValueAttribute, valueAttribute, conditionOperator);
         }
     }
 }

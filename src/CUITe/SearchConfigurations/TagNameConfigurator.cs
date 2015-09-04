@@ -10,17 +10,23 @@ namespace CUITe.SearchConfigurations
     internal class TagNameConfigurator : ISearchPropertiesConfigurator
     {
         private readonly string tagName;
+        private readonly PropertyExpressionOperator conditionOperator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TagNameConfigurator"/> class.
         /// </summary>
         /// <param name="tagName">The tag name.</param>
-        internal TagNameConfigurator(string tagName)
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        internal TagNameConfigurator(string tagName, PropertyExpressionOperator conditionOperator)
         {
             if (tagName == null)
                 throw new ArgumentNullException("tagName");
 
             this.tagName = tagName;
+            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
@@ -32,7 +38,7 @@ namespace CUITe.SearchConfigurations
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(HtmlControl.PropertyNames.TagName, tagName);
+            searchProperties.Add(HtmlControl.PropertyNames.TagName, tagName, conditionOperator);
         }
     }
 }
