@@ -19,7 +19,7 @@ namespace CUITe.SearchConfigurations
             configurators = new List<ISearchPropertiesConfigurator>();
         }
 
-        #region Automation id
+        #region Automation Id
 
         /// <summary>
         /// Adds a mechanism to find controls by specified automation id.
@@ -40,6 +40,49 @@ namespace CUITe.SearchConfigurations
             var by = new By();
             by.configurators.Add(new AutomationIdConfigurator(automationId, conditionOperator));
             return by;
+        }
+
+        #endregion
+
+        #region Class
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified class.
+        /// </summary>
+        /// <param name="class">The class.</param>
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By Class(
+            string @class,
+            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        {
+            return new By().AndClass(@class, conditionOperator);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified class.
+        /// </summary>
+        /// <param name="class">The class.</param>
+        /// <param name="conditionOperator">
+        /// The operator to use to compare the values (either the values are equal or the property
+        /// value contains the provided property value).
+        /// </param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndClass(
+            string @class,
+            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        {
+            configurators.Add(new ClassConfigurator(@class, conditionOperator));
+            return this;
         }
 
         #endregion
@@ -130,7 +173,7 @@ namespace CUITe.SearchConfigurations
 
         #endregion
 
-        #region Search properties
+        #region Search Properties
 
         /// <summary>
         /// Adds a mechanism to find controls by specified search properties.
@@ -171,7 +214,7 @@ namespace CUITe.SearchConfigurations
 
         #endregion
 
-        #region Tag name
+        #region Tag Name
 
         /// <summary>
         /// Adds a mechanism to find controls by specified tag name.
@@ -214,7 +257,7 @@ namespace CUITe.SearchConfigurations
 
         #endregion
 
-        #region Value attribute
+        #region Value Attribute
 
         /// <summary>
         /// Adds a mechanism to find controls by specified value attribute.
