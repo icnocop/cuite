@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
@@ -12,14 +11,14 @@ namespace CUITe.Caches
     /// </summary>
     public class PropertyNamesCache
     {
-        private readonly Dictionary<Type, IReadOnlyCollection<string>> cache;
+        private readonly Dictionary<Type, IEnumerable<string>> cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertyNamesCache"/> class.
         /// </summary>
         public PropertyNamesCache()
         {
-            cache = new Dictionary<Type, IReadOnlyCollection<string>>();
+            cache = new Dictionary<Type, IEnumerable<string>>();
         }
 
         /// <summary>
@@ -27,21 +26,21 @@ namespace CUITe.Caches
         /// </summary>
         /// <typeparam name="T">The UI test control type to get property names for.</typeparam>
         /// <returns>The property names for specified UI test control type.</returns>
-        public IReadOnlyCollection<string> GetPropertyNamesFor<T>() where T : UITestControl
+        public IEnumerable<string> GetPropertyNamesFor<T>() where T : UITestControl
         {
-            IReadOnlyCollection<string> propertyNames;
+            IEnumerable<string> propertyNames;
             
             if (!cache.TryGetValue(typeof(T), out propertyNames))
             {
                 // Cache miss
-                propertyNames = new ReadOnlyCollection<string>(TraversePropertyNamesFor<T>());
+                propertyNames = TraversePropertyNamesFor<T>();
                 cache[typeof(T)] = propertyNames;
             }
 
             return propertyNames;
         }
 
-        private static List<string> TraversePropertyNamesFor<T>()
+        private static IEnumerable<string> TraversePropertyNamesFor<T>()
         {
             var propertyNames = new List<string>();
 
