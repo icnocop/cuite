@@ -1,9 +1,9 @@
-﻿using CUITe.SearchConfigurations;
+﻿#if SILVERLIGHT_SUPPORT
+using CUITe.SearchConfigurations;
 using System;
 using System.Windows.Forms;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
-#if SILVERLIGHT_SUPPORT
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
