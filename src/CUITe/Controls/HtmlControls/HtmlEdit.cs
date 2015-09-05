@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEdit : HtmlControl<CUITControls.HtmlEdit>
     {
-        public HtmlEdit(string searchProperties = null)
-            : this(new CUITControls.HtmlEdit(), searchProperties)
+        public HtmlEdit(By searchConfiguration = null)
+            : this(new CUITControls.HtmlEdit(), searchConfiguration)
         {
         }
 
-        public HtmlEdit(CUITControls.HtmlEdit sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlEdit(CUITControls.HtmlEdit sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

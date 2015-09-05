@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
@@ -10,13 +11,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinDateTimePicker : WinControl<CUITControls.WinDateTimePicker>
     {
-        public WinDateTimePicker(string searchProperties = null)
-            : this(new CUITControls.WinDateTimePicker(), searchProperties)
+        public WinDateTimePicker(By searchConfiguration = null)
+            : this(new CUITControls.WinDateTimePicker(), searchConfiguration)
         {
         }
 
-        public WinDateTimePicker(CUITControls.WinDateTimePicker sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinDateTimePicker(CUITControls.WinDateTimePicker sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

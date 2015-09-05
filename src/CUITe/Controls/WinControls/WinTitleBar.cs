@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTitleBar : WinControl<CUITControls.WinTitleBar>
     {
-        public WinTitleBar(string searchProperties = null)
-            : this(new CUITControls.WinTitleBar(), searchProperties)
+        public WinTitleBar(By searchConfiguration = null)
+            : this(new CUITControls.WinTitleBar(), searchConfiguration)
         {
         }
 
-        public WinTitleBar(CUITControls.WinTitleBar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinTitleBar(CUITControls.WinTitleBar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

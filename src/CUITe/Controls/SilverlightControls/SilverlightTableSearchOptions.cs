@@ -1,4 +1,5 @@
-﻿namespace CUITe.Controls.SilverlightControls
+﻿#if SILVERLIGHT_SUPPORT
+namespace CUITe.Controls.SilverlightControls
 {
     public enum SilverlightTableSearchOptions
     {
@@ -9,3 +10,4 @@
         EndsWith
     }
 }
+#endif

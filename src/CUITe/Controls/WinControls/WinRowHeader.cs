@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinRowHeader : WinControl<CUITControls.WinRowHeader>
     {
-        public WinRowHeader(string searchProperties = null)
-            : this(new CUITControls.WinRowHeader(), searchProperties)
+        public WinRowHeader(By searchConfiguration = null)
+            : this(new CUITControls.WinRowHeader(), searchConfiguration)
         {
         }
 
-        public WinRowHeader(CUITControls.WinRowHeader sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinRowHeader(CUITControls.WinRowHeader sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

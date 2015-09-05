@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
@@ -9,13 +10,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTree : WinControl<CUITControls.WinTree>
     {
-        public WinTree(string searchProperties = null)
-            : this(new CUITControls.WinTree(), searchProperties)
+        public WinTree(By searchConfiguration = null)
+            : this(new CUITControls.WinTree(), searchConfiguration)
         {
         }
 
-        public WinTree(CUITControls.WinTree sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinTree(CUITControls.WinTree sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

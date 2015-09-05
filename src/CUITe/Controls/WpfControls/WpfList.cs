@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
@@ -10,13 +11,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfList : WpfControl<CUITControls.WpfList>
     {
-        public WpfList(string searchProperties = null)
-            : this(new CUITControls.WpfList(), searchProperties)
+        public WpfList(By searchConfiguration = null)
+            : this(new CUITControls.WpfList(), searchConfiguration)
         {
         }
 
-        public WpfList(CUITControls.WpfList sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfList(CUITControls.WpfList sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

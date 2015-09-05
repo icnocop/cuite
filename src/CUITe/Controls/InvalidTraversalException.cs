@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CUITe
+namespace CUITe.Controls
 {
     public class InvalidTraversalException : Exception
     {

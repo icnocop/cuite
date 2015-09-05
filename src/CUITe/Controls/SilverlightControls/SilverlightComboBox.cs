@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
@@ -9,13 +10,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightComboBox : SilverlightControl<CUITControls.SilverlightComboBox>
     {
-        public SilverlightComboBox(string searchProperties = null)
-            : this(new CUITControls.SilverlightComboBox(), searchProperties)
+        public SilverlightComboBox(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightComboBox(), searchConfiguration)
         {
         }
 
-        public SilverlightComboBox(CUITControls.SilverlightComboBox sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightComboBox(CUITControls.SilverlightComboBox sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

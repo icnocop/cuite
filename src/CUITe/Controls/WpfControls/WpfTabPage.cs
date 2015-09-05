@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabPage : WpfControl<CUITControls.WpfTabPage>
     {
-        public WpfTabPage(string searchProperties = null)
-            : this(new CUITControls.WpfTabPage(), searchProperties)
+        public WpfTabPage(By searchConfiguration = null)
+            : this(new CUITControls.WpfTabPage(), searchConfiguration)
         {
         }
 
-        public WpfTabPage(CUITControls.WpfTabPage sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfTabPage(CUITControls.WpfTabPage sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

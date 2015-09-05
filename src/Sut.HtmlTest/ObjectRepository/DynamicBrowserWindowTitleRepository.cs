@@ -1,4 +1,5 @@
 ﻿using CUITe.Controls.HtmlControls;
+using CUITe.SearchConfigurations;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
@@ -7,45 +8,31 @@ namespace Sut.HtmlTest.ObjectRepository
         public DynamicBrowserWindowTitleRepository(string title)
             : base(title)
         {
-
         }
 
         public DynamicBrowserWindowTitleRepository()
             : this("Clicking the buttons changes the window title")
         {
-
         }
 
         public HtmlButton btnGoToHomePage
         {
-            get
-            {
-                return Find<HtmlButton>("id=Home");
-            }
+            get { return Find<HtmlButton>(By.Id("Home")); }
         }
 
         public HtmlButton btnGoToPage1
         {
-            get
-            {
-                return Find<HtmlButton>("id=1");
-            }
+            get { return Find<HtmlButton>(By.Id("1")); }
         }
 
         public HtmlButton btnGoToPage2
         {
-            get
-            {
-                return Find<HtmlButton>("id=2");
-            }
+            get { return Find<HtmlButton>(By.Id("2")); }
         }
 
         public HtmlButton btnChangeWindowTitle
         {
-            get
-            {
-                return Find<HtmlButton>("id=Change Window Title");
-            }
+            get { return Find<HtmlButton>(By.Id("Change Window Title")); }
         }
     }
 }

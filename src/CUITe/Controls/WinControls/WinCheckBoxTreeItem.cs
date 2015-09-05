@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinCheckBoxTreeItem : WinControl<CUITControls.WinCheckBoxTreeItem>
     {
-        public WinCheckBoxTreeItem(string searchProperties = null)
-            : this(new CUITControls.WinCheckBoxTreeItem(), searchProperties)
+        public WinCheckBoxTreeItem(By searchConfiguration = null)
+            : this(new CUITControls.WinCheckBoxTreeItem(), searchConfiguration)
         {
         }
 
-        public WinCheckBoxTreeItem(CUITControls.WinCheckBoxTreeItem sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinCheckBoxTreeItem(CUITControls.WinCheckBoxTreeItem sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

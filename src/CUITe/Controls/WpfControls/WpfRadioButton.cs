@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfRadioButton : WpfControl<CUITControls.WpfRadioButton>
     {
-        public WpfRadioButton(string searchProperties = null)
-            : this(new CUITControls.WpfRadioButton(), searchProperties)
+        public WpfRadioButton(By searchConfiguration = null)
+            : this(new CUITControls.WpfRadioButton(), searchConfiguration)
         {
         }
 
-        public WpfRadioButton(CUITControls.WpfRadioButton sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfRadioButton(CUITControls.WpfRadioButton sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

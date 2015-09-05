@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSeparator : WinControl<CUITControls.WinSeparator>
     {
-        public WinSeparator(string searchProperties = null)
-            : this(new CUITControls.WinSeparator(), searchProperties)
+        public WinSeparator(By searchConfiguration = null)
+            : this(new CUITControls.WinSeparator(), searchConfiguration)
         {
         }
 
-        public WinSeparator(CUITControls.WinSeparator sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinSeparator(CUITControls.WinSeparator sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
     }

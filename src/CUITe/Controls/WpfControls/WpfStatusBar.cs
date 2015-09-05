@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfStatusBar : WpfControl<CUITControls.WpfStatusBar>
     {
-        public WpfStatusBar(string searchProperties = null)
-            : this(new CUITControls.WpfStatusBar(), searchProperties)
+        public WpfStatusBar(By searchConfiguration = null)
+            : this(new CUITControls.WpfStatusBar(), searchConfiguration)
         {
         }
 
-        public WpfStatusBar(CUITControls.WpfStatusBar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfStatusBar(CUITControls.WpfStatusBar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

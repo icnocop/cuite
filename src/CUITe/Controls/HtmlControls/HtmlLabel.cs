@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlLabel : HtmlControl<CUITControls.HtmlLabel>
     {
-        public HtmlLabel(string searchProperties = null)
-            : this(new CUITControls.HtmlLabel(), searchProperties)
+        public HtmlLabel(By searchConfiguration = null)
+            : this(new CUITControls.HtmlLabel(), searchConfiguration)
         {
         }
 
-        public HtmlLabel(CUITControls.HtmlLabel sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlLabel(CUITControls.HtmlLabel sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

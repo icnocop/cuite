@@ -1,4 +1,5 @@
 ﻿using System;
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfCalendar : WpfControl<CUITControls.WpfCalendar>
     {
-        public WpfCalendar(string searchProperties = null)
-            : this(new CUITControls.WpfCalendar(), searchProperties)
+        public WpfCalendar(By searchConfiguration = null)
+            : this(new CUITControls.WpfCalendar(), searchConfiguration)
         {
         }
 
-        public WpfCalendar(CUITControls.WpfCalendar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfCalendar(CUITControls.WpfCalendar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

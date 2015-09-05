@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
@@ -9,13 +10,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
-        public SilverlightTable(string searchProperties = null)
-            : this(new CUITControls.SilverlightTable(), searchProperties)
+        public SilverlightTable(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightTable(), searchConfiguration)
         {
         }
 
-        public SilverlightTable(CUITControls.SilverlightTable sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightTable(CUITControls.SilverlightTable sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 
@@ -151,7 +152,7 @@ namespace CUITe.Controls.SilverlightControls
         public SilverlightCheckBox GetRowHeaderCheckBox(int iRow)
         {
             var _checkbox = (CUITControls.SilverlightCheckBox)SourceControl.Rows[iRow].GetChildren()[0].GetChildren()[0];
-            SilverlightCheckBox retObj = new SilverlightCheckBox(_checkbox, "*");
+            SilverlightCheckBox retObj = new SilverlightCheckBox(_checkbox, By.SearchProperties("*"));
             return retObj;
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CUITe.Controls;
 using CUITe.Controls.TelerikControls;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,10 +18,10 @@ namespace CUITeTest.Controls
             foreach (Type controlType in ControlTypes)
             {
                 // Arrange
-                string searchProperties = GetSearchPropertiesFor(controlType);
+                By searchConfiguration = GetSearchPropertiesFor(controlType);
 
                 // Act (this code throws exception if the control cannot be created)
-                ControlBaseFactory.Create(controlType, searchProperties);
+                ControlBaseFactory.Create(controlType, searchConfiguration);
             }
         }
 
@@ -31,10 +32,10 @@ namespace CUITeTest.Controls
             {
                 // Arrange
                 var sourceControl = GetSourceControlFor(controlType);
-                string searchProperties = GetSearchPropertiesFor(controlType);
+                By searchConfiguration = GetSearchPropertiesFor(controlType);
                 
                 // Act (this code throws exception if the control cannot be created)
-                ControlBaseFactory.Create(controlType, sourceControl, searchProperties);
+                ControlBaseFactory.Create(controlType, sourceControl, searchConfiguration);
             }
         }
 
@@ -64,14 +65,14 @@ namespace CUITeTest.Controls
         }
 
         /// <summary>
-        /// Gets the search properties for specified UI test control. Some controls needs special
-        /// search properties formatting, and this method provides for that.
+        /// Gets the search configuration for specified UI test control. Some controls needs special
+        /// search configuration, and this method provides for that.
         /// </summary>
-        private static string GetSearchPropertiesFor(Type controlType)
+        private static By GetSearchPropertiesFor(Type controlType)
         {
             if (controlType == typeof(ComboBox))
             {
-                return "id=SomeId";
+                return By.Id("SomeId");
             }
 
             return null;

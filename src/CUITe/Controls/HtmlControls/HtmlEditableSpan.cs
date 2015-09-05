@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlEditableSpan : HtmlControl<CUITControls.HtmlEditableSpan>
     {
-        public HtmlEditableSpan(string searchProperties = null)
-            : this(new CUITControls.HtmlEditableSpan(), searchProperties)
+        public HtmlEditableSpan(By searchConfiguration = null)
+            : this(new CUITControls.HtmlEditableSpan(), searchConfiguration)
         {
         }
 
-        public HtmlEditableSpan(CUITControls.HtmlEditableSpan sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlEditableSpan(CUITControls.HtmlEditableSpan sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

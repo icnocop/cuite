@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightDatePicker : SilverlightControl<CUITControls.SilverlightDatePicker>
     {
-        public SilverlightDatePicker(string searchProperties = null)
-            : this(new CUITControls.SilverlightDatePicker(), searchProperties)
+        public SilverlightDatePicker(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightDatePicker(), searchConfiguration)
         {
         }
 
-        public SilverlightDatePicker(CUITControls.SilverlightDatePicker sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightDatePicker(CUITControls.SilverlightDatePicker sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
     }

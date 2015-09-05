@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using CUITe.SearchConfigurations;
 using System;
 using System.Windows.Forms;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
@@ -10,13 +11,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
-        public SilverlightCalendar(string searchProperties = null)
-            : this(new CUITControls.SilverlightCalendar(), searchProperties)
+        public SilverlightCalendar(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightCalendar(), searchConfiguration)
         {
         }
 
-        public SilverlightCalendar(CUITControls.SilverlightCalendar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightCalendar(CUITControls.SilverlightCalendar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

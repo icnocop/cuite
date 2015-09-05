@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfScrollBar : WpfControl<CUITControls.WpfScrollBar>
     {
-        public WpfScrollBar(string searchProperties = null)
-            : this(new CUITControls.WpfScrollBar(), searchProperties)
+        public WpfScrollBar(By searchConfiguration = null)
+            : this(new CUITControls.WpfScrollBar(), searchConfiguration)
         {
         }
 
-        public WpfScrollBar(CUITControls.WpfScrollBar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfScrollBar(CUITControls.WpfScrollBar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

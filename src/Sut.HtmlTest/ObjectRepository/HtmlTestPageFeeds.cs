@@ -1,4 +1,5 @@
 ﻿using CUITe.Controls.HtmlControls;
+using CUITe.SearchConfigurations;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
@@ -11,22 +12,22 @@ namespace Sut.HtmlTest.ObjectRepository
 
         public HtmlCustom cusDataFeedTabsNav2
         {
-            get { return divFeedTabs.Find<HtmlCustom>("TagName=ul;Class=dataFeedTab ui-tabs-nav"); }
+            get { return divFeedTabs.Find<HtmlCustom>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
 
         public HtmlUnorderedList cusDataFeedTabsNav
         {
-            get { return Find<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul"); }
+            get { return Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
 
         public HtmlDiv divFeedTabs
         {
-            get { return Find<HtmlDiv>("Id=feed_tabs"); }
+            get { return Find<HtmlDiv>(By.Id("feed_tabs")); }
         }
 
         public HtmlUnorderedList cusdatafeedtabsnav1
         {
-            get { return divFeedTabs.Find<HtmlUnorderedList>("Class=dataFeedTab ui-tabs-nav;TagName=ul"); }
+            get { return divFeedTabs.Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
     }
 }

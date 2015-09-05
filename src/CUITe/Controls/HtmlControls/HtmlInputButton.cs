@@ -1,16 +1,17 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlInputButton : HtmlControl<CUITControls.HtmlInputButton>
     {
-        public HtmlInputButton(string searchProperties = null)
-            : this(new CUITControls.HtmlInputButton(), searchProperties)
+        public HtmlInputButton(By searchConfiguration = null)
+            : this(new CUITControls.HtmlInputButton(), searchConfiguration)
         {
         }
 
-        public HtmlInputButton(CUITControls.HtmlInputButton sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlInputButton(CUITControls.HtmlInputButton sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

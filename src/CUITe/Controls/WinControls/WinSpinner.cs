@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSpinner : WinControl<CUITControls.WinSpinner>
     {
-        public WinSpinner(string searchProperties = null)
-            : this(new CUITControls.WinSpinner(), searchProperties)
+        public WinSpinner(By searchConfiguration = null)
+            : this(new CUITControls.WinSpinner(), searchConfiguration)
         {
         }
 
-        public WinSpinner(CUITControls.WinSpinner sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinSpinner(CUITControls.WinSpinner sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

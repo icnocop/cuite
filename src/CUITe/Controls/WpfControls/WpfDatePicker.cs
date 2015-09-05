@@ -1,4 +1,5 @@
 ﻿using System;
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfDatePicker : WpfControl<CUITControls.WpfDatePicker>
     {
-        public WpfDatePicker(string searchProperties = null)
-            : this(new CUITControls.WpfDatePicker(), searchProperties)
+        public WpfDatePicker(By searchConfiguration = null)
+            : this(new CUITControls.WpfDatePicker(), searchConfiguration)
         {
         }
 
-        public WpfDatePicker(CUITControls.WpfDatePicker sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfDatePicker(CUITControls.WpfDatePicker sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

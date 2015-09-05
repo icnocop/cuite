@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinSplitButton : WinControl<CUITControls.WinSplitButton>
     {
-        public WinSplitButton(string searchProperties = null)
-            : this(new CUITControls.WinSplitButton(), searchProperties)
+        public WinSplitButton(By searchConfiguration = null)
+            : this(new CUITControls.WinSplitButton(), searchConfiguration)
         {
         }
 
-        public WinSplitButton(CUITControls.WinSplitButton sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinSplitButton(CUITControls.WinSplitButton sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

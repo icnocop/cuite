@@ -1,4 +1,5 @@
 ﻿using System;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.Controls
@@ -9,16 +10,16 @@ namespace CUITe.Controls
     internal class ControlBaseFactory
     {
         /// <summary>
-        /// Creates a UI test control of type <see cref="T"/> with specified search properties.
+        /// Creates a UI test control of type <see cref="T"/> with specified search configuration.
         /// </summary>
         /// <typeparam name="T">The type of the UI test control to create.</typeparam>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
-        /// A UI test control of type <see cref="T"/> with specified search properties.
+        /// A UI test control of type <see cref="T"/> with specified search configuration.
         /// </returns>
-        internal static T Create<T>(string searchProperties) where T : ControlBase
+        internal static T Create<T>(By searchConfiguration) where T : ControlBase
         {
-            return (T)Create(typeof(T), searchProperties);
+            return (T)Create(typeof(T), searchConfiguration);
         }
 
         /// <summary>
@@ -26,24 +27,24 @@ namespace CUITe.Controls
         /// properties.
         /// </summary>
         /// <param name="controlType">The type of the UI test control to create.</param>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
-        /// A UI test control of type <paramref name="controlType"/> with specified search properties.
+        /// A UI test control of type <paramref name="controlType"/> with specified search configuration.
         /// </returns>
-        internal static ControlBase Create(Type controlType, string searchProperties)
+        internal static ControlBase Create(Type controlType, By searchConfiguration)
         {
             if (controlType == null)
                 throw new ArgumentNullException("controlType");
 
             try
             {
-                return (ControlBase)Activator.CreateInstance(controlType, searchProperties);
+                return (ControlBase)Activator.CreateInstance(controlType, searchConfiguration);
             }
             catch (MissingMethodException)
             {
                 string message = string.Format(
                     "No constructor for type '{0}' contains arguments in the following order:" + Environment.NewLine +
-                    "  1. String - Search properties",
+                    "  1. By - Search configuration",
                     controlType);
 
                 throw new ArgumentException(message);
@@ -52,32 +53,32 @@ namespace CUITe.Controls
 
         /// <summary>
         /// Creates a UI test control of type <see cref="T"/> with specified source control and
-        /// search properties.
+        /// search configuration.
         /// </summary>
         /// <typeparam name="T">The type of the UI test control to create.</typeparam>
         /// <param name="sourceControl">The source control.</param>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
         /// A UI test control of type <see cref="T"/> with specified source control and search
         /// properties.
         /// </returns>
-        internal static T Create<T>(UITestControl sourceControl, string searchProperties) where T : ControlBase
+        internal static T Create<T>(UITestControl sourceControl, By searchConfiguration) where T : ControlBase
         {
-            return (T)Create(typeof(T), sourceControl, searchProperties);
+            return (T)Create(typeof(T), sourceControl, searchConfiguration);
         }
 
         /// <summary>
         /// Creates a UI test control of type <paramref name="controlType"/> with specified source
-        /// control and search properties.
+        /// control and search configuration.
         /// </summary>
         /// <param name="controlType">The type of the UI test control to create.</param>
         /// <param name="sourceControl">The source control.</param>
-        /// <param name="searchProperties">The search properties.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
         /// A UI test control of type <see cref="controlType"/> with specified source control and
-        /// search properties.
+        /// search configuration.
         /// </returns>
-        internal static ControlBase Create(Type controlType, UITestControl sourceControl, string searchProperties)
+        internal static ControlBase Create(Type controlType, UITestControl sourceControl, By searchConfiguration)
         {
             if (controlType == null)
                 throw new ArgumentNullException("controlType");
@@ -86,14 +87,14 @@ namespace CUITe.Controls
 
             try
             {
-                return (ControlBase)Activator.CreateInstance(controlType, sourceControl, searchProperties);
+                return (ControlBase)Activator.CreateInstance(controlType, sourceControl, searchConfiguration);
             }
             catch (MissingMethodException)
             {
                 string message = string.Format(
                     "No constructor for the type '{0}' contains arguments in the following order:" + Environment.NewLine +
                     "  1. Class that inherits from UITestControl - Source control" + Environment.NewLine +
-                    "  2. String - Search properties",
+                    "  2. By - Search configuration",
                     controlType);
 
                 throw new ArgumentException(message);

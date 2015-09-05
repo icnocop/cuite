@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
 namespace CUITe.Controls.WpfControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfToolBar : WpfControl<CUITControls.WpfToolBar>
     {
-        public WpfToolBar(string searchProperties = null)
-            : this(new CUITControls.WpfToolBar(), searchProperties)
+        public WpfToolBar(By searchConfiguration = null)
+            : this(new CUITControls.WpfToolBar(), searchConfiguration)
         {
         }
 
-        public WpfToolBar(CUITControls.WpfToolBar sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfToolBar(CUITControls.WpfToolBar sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

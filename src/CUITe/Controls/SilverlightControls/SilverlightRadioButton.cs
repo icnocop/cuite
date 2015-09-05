@@ -1,4 +1,5 @@
 ﻿#if SILVERLIGHT_SUPPORT
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -8,13 +9,13 @@ namespace CUITe.Controls.SilverlightControls
     /// </summary>
     public class SilverlightRadioButton : SilverlightControl<CUITControls.SilverlightRadioButton>
     {
-        public SilverlightRadioButton(string searchProperties = null)
-            : this(new CUITControls.SilverlightRadioButton(), searchProperties)
+        public SilverlightRadioButton(By searchConfiguration = null)
+            : this(new CUITControls.SilverlightRadioButton(), searchConfiguration)
         {
         }
 
-        public SilverlightRadioButton(CUITControls.SilverlightRadioButton sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public SilverlightRadioButton(CUITControls.SilverlightRadioButton sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
 using CUITe.Controls.TelerikControls;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -198,23 +199,16 @@ namespace CUITe.Controls.HtmlControls
 
         /// <summary>
         /// Finds the control object from the descendants of this control using the specified
-        /// search properties.
+        /// search configuration.
         /// </summary>
         /// <typeparam name="T">The type of control to find.</typeparam>
-        /// <param name="searchProperties">
-        /// The search properties in the 'Key1=Value1;Key2=Value2' format.
-        /// For example use 'Id=firstname' for a control that has an Id of 'firstname' or
-        /// 'Id~firstname' for a control that has an Id that contains the text 'firstname'.
-        /// </param>
-        /// <exception cref="InvalidSearchPropertiesFormatException">
-        /// Search properties are not correctly formatted.
+        /// <param name="searchConfiguration">The search configuration.</param>
+        /// <exception cref="InvalidSearchPropertyNamesException">
+        /// Search configuration contains a property namely that isn't applicable on the control.
         /// </exception>
-        /// <exception cref="InvalidSearchKeyException">
-        /// Search properties contains key that isn't applicable on the control.
-        /// </exception>
-        public T Find<T>(string searchProperties = null) where T : ControlBase
+        public T Find<T>(By searchConfiguration = null) where T : ControlBase
         {
-            T control = ControlBaseFactory.Create<T>(searchProperties);
+            T control = ControlBaseFactory.Create<T>(searchConfiguration);
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {

@@ -1,4 +1,5 @@
-﻿using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+﻿using CUITe.SearchConfigurations;
+using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
@@ -7,13 +8,13 @@ namespace CUITe.Controls.WinControls
     /// </summary>
     public class WinTabPage : WinControl<CUITControls.WinTabPage>
     {
-        public WinTabPage(string searchProperties = null)
-            : this(new CUITControls.WinTabPage(), searchProperties)
+        public WinTabPage(By searchConfiguration = null)
+            : this(new CUITControls.WinTabPage(), searchConfiguration)
         {
         }
 
-        public WinTabPage(CUITControls.WinTabPage sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WinTabPage(CUITControls.WinTabPage sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 

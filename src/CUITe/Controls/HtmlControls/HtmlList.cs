@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Linq;
+using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
     public class HtmlList : HtmlControl<CUITControls.HtmlList>
     {
-        public HtmlList(string searchProperties = null)
-            : this(new CUITControls.HtmlList(), searchProperties)
+        public HtmlList(By searchConfiguration = null)
+            : this(new CUITControls.HtmlList(), searchConfiguration)
         {
         }
 
-        public HtmlList(CUITControls.HtmlList sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public HtmlList(CUITControls.HtmlList sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
         

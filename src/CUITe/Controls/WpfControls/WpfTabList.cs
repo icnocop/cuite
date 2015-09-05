@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 
@@ -9,13 +10,13 @@ namespace CUITe.Controls.WpfControls
     /// </summary>
     public class WpfTabList : WpfControl<CUITControls.WpfTabList>
     {
-        public WpfTabList(string searchProperties = null)
-            : this(new CUITControls.WpfTabList(), searchProperties)
+        public WpfTabList(By searchConfiguration = null)
+            : this(new CUITControls.WpfTabList(), searchConfiguration)
         {
         }
 
-        public WpfTabList(CUITControls.WpfTabList sourceControl, string searchProperties = null)
-            : base(sourceControl, searchProperties)
+        public WpfTabList(CUITControls.WpfTabList sourceControl, By searchConfiguration = null)
+            : base(sourceControl, searchConfiguration)
         {
         }
 
