@@ -26,6 +26,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +36,8 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\CUITe.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +47,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,6 +57,8 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\CUITe.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -63,6 +71,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight">
+      <HintPath>..\ThirdParty\CUIT\v12\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -101,6 +112,16 @@
           <Private>False</Private>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(VisualStudioVersion)' == '14'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
         </Reference>
       </ItemGroup>
