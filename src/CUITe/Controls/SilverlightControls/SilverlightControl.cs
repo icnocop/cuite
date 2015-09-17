@@ -7,8 +7,17 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 
 namespace CUITe.Controls.SilverlightControls
 {
+    /// <summary>
+    /// Base class for all test controls in the user interface (UI) of a Silverlight application.
+    /// </summary>
+    /// <typeparam name="T">The source control type.</typeparam>
     public abstract class SilverlightControl<T> : ControlBase<T> where T : CUITControls.SilverlightControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightControl{T}"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         protected SilverlightControl(T sourceControl, By searchConfiguration)
             : base(sourceControl, searchConfiguration)
         {
@@ -37,16 +46,15 @@ namespace CUITe.Controls.SilverlightControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+                
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent());
+                    return WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -61,16 +69,15 @@ namespace CUITe.Controls.SilverlightControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    return WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -85,16 +92,15 @@ namespace CUITe.Controls.SilverlightControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
+                    return WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() + 1]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).NextSibling", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -109,16 +115,15 @@ namespace CUITe.Controls.SilverlightControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
-                    ret = WrapUtil((CUITControls.SilverlightControl)SourceControl.GetChildren()[0]);
+                    return WrapUtil((CUITControls.SilverlightControl)SourceControl.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).FirstChild", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 

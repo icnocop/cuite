@@ -7,20 +7,32 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightCalendar.
+    /// Represents a calendar control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightCalendar"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightCalendar(By searchConfiguration = null)
             : this(new CUITControls.SilverlightCalendar(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightCalendar"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightCalendar(CUITControls.SilverlightCalendar sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Sets the currently selected date range on the calendar.
+        /// </summary>
         public SelectionRange SelectedDateRange
         {
             set
@@ -30,6 +42,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Sets the currently selected date range on the calendar by using a string.
+        /// </summary>
         public string SelectedDateRangeAsString
         {
             set
@@ -39,6 +54,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets a value that indicates the selection mode of the calendar.
+        /// </summary>
         public int SelectionMode
         {
             get
@@ -48,6 +66,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected dates on the calendar.
+        /// </summary>
         public DateTime[] SelectedDates
         {
             get
@@ -62,6 +83,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the selected dates on the calendar as a string.
+        /// </summary>
         public string SelectedDatesAsString
         {
             get

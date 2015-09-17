@@ -6,20 +6,32 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightTable.
+    /// Represents a table control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightTable : SilverlightControl<CUITControls.SilverlightTable>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightTable"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightTable(By searchConfiguration = null)
             : this(new CUITControls.SilverlightTable(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightTable"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightTable(CUITControls.SilverlightTable sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Gets the number of rows in the table.
+        /// </summary>
         public int RowCount
         {
             get
@@ -29,98 +41,142 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
-        public void FindRowAndClick(int iCol, string sValueToSearch)
+        /// <summary>
+        /// Finds a row by using specified <paramref name="valueToSearch"/> and clicks its column
+        /// specified by <paramref name="columnIndex"/>.
+        /// </summary>
+        /// <param name="valueToSearch">The value to search.</param>
+        /// <param name="columnIndex">Index of the column.</param>
+        /// <param name="searchOptions">The search options.</param>
+        public void FindRowAndClick(
+            string valueToSearch,
+            int columnIndex,
+            SilverlightTableSearchOptions searchOptions = SilverlightTableSearchOptions.Normal)
         {
-            int iRow = FindRow(iCol, sValueToSearch, SilverlightTableSearchOptions.Normal);
-            Mouse.Click(GetCell(iRow, iCol));
+            int rowIndex = FindRowIndex(valueToSearch, columnIndex, searchOptions);
+            Click(rowIndex, columnIndex);
         }
 
-        public void FindRowAndClick(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
+        /// <summary>
+        /// Finds a row by using specified <paramref name="valueToSearch"/> and double-clicks its
+        /// column specified by <paramref name="columnIndex"/>.
+        /// </summary>
+        /// <param name="valueToSearch">The value to search.</param>
+        /// <param name="columnIndex">Index of the column.</param>
+        /// <param name="searchOptions">The search options.</param>
+        public void FindRowAndDoubleClick(
+            string valueToSearch,
+            int columnIndex,
+            SilverlightTableSearchOptions searchOptions)
         {
-            int iRow = FindRow(iCol, sValueToSearch, option);
-            Mouse.Click(GetCell(iRow, iCol));
+            int rowIndex = FindRowIndex(valueToSearch, columnIndex, searchOptions);
+            DoubleClick(rowIndex, columnIndex);
         }
 
-        public void FindRowAndDoubleClick(int iCol, string sValueToSearch)
+        /// <summary>
+        /// Clicks on cell with specified row and column index.
+        /// </summary>
+        /// <param name="rowIndex">Index of the row.</param>
+        /// <param name="columnIndex">Index of the column.</param>
+        public void Click(int rowIndex, int columnIndex)
         {
-            int iRow = FindRow(iCol, sValueToSearch, SilverlightTableSearchOptions.Normal);
-            Mouse.DoubleClick(GetCell(iRow, iCol));
+            Mouse.Click(GetCell(rowIndex, columnIndex));
         }
 
-        public void FindRowAndDoubleClick(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
+        /// <summary>
+        /// Double-clicks on cell with specified row and column index.
+        /// </summary>
+        /// <param name="rowIndex">Index of the row.</param>
+        /// <param name="columnIndex">Index of the column.</param>
+        public void DoubleClick(int rowIndex, int columnIndex)
         {
-            int iRow = FindRow(iCol, sValueToSearch, option);
-            Mouse.DoubleClick(GetCell(iRow, iCol));
+            Mouse.DoubleClick(GetCell(rowIndex, columnIndex));
         }
 
-        public void FindCellAndClick(int iRow, int iCol)
-        {
-            Mouse.Click(GetCell(iRow, iCol));
-        }
-
-        public void FindCellAndDoubleClick(int iRow, int iCol)
-        {
-            Mouse.DoubleClick(GetCell(iRow, iCol));
-        }
-
-        public int FindRow(int iCol, string sValueToSearch, SilverlightTableSearchOptions option)
+        /// <summary>
+        /// Finds a row index by using specified <paramref name="valueToSearch"/> and
+        /// <paramref name="columnIndex"/>.
+        /// </summary>
+        /// <param name="valueToSearch">The value to search.</param>
+        /// <param name="columnIndex">Index of the column.</param>
+        /// <param name="searchOptions">The search options.</param>
+        /// <returns></returns>
+        public int FindRowIndex(
+            string valueToSearch,
+            int columnIndex,
+            SilverlightTableSearchOptions searchOptions)
         {
             WaitForControlReady();
-            int iRow = -1;
+
+            int rowIndex = -1;
             int rowCount = -1;
             foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)
             {
                 rowCount++;
-                int colCount = -1;
+                int columnCount = -1;
                 foreach (CUITControls.SilverlightCell cell in cont.Cells)
                 {
-                    colCount++;
-                    bool bSearchOptionResult = false;
-                    if (colCount == iCol)
+                    columnCount++;
+                    bool searchOptionResult = false;
+                    if (columnCount == columnIndex)
                     {
-                        if (option == SilverlightTableSearchOptions.Normal)
+                        if (searchOptions == SilverlightTableSearchOptions.Normal)
                         {
-                            bSearchOptionResult = (sValueToSearch == cell.Value);
+                            searchOptionResult = (valueToSearch == cell.Value);
                         }
-                        else if (option == SilverlightTableSearchOptions.NormalTight)
+                        else if (searchOptions == SilverlightTableSearchOptions.NormalTight)
                         {
-                            bSearchOptionResult = (sValueToSearch == cell.Value.Trim());
+                            searchOptionResult = (valueToSearch == cell.Value.Trim());
                         }
-                        else if (option == SilverlightTableSearchOptions.StartsWith)
+                        else if (searchOptions == SilverlightTableSearchOptions.StartsWith)
                         {
-                            bSearchOptionResult = cell.Value.StartsWith(sValueToSearch);
+                            searchOptionResult = cell.Value.StartsWith(valueToSearch);
                         }
-                        else if (option == SilverlightTableSearchOptions.EndsWith)
+                        else if (searchOptions == SilverlightTableSearchOptions.EndsWith)
                         {
-                            bSearchOptionResult = cell.Value.EndsWith(sValueToSearch);
+                            searchOptionResult = cell.Value.EndsWith(valueToSearch);
                         }
-                        else if (option == SilverlightTableSearchOptions.Greedy)
+                        else if (searchOptions == SilverlightTableSearchOptions.Greedy)
                         {
-                            bSearchOptionResult = (cell.Value.IndexOf(sValueToSearch) > -1);
+                            searchOptionResult = (cell.Value.IndexOf(valueToSearch) > -1);
                         }
-                        if (bSearchOptionResult)
+                        if (searchOptionResult)
                         {
-                            iRow = rowCount;
+                            rowIndex = rowCount;
                             break;
                         }
                     }
                 }
-                if (iRow > -1)
+                if (rowIndex > -1)
                     break;
             }
-            return iRow;
+            return rowIndex;
         }
 
-        public string GetCellValue(int iRow, int iCol)
+        /// <summary>
+        /// Gets the value of the cell with specified row and column index.
+        /// </summary>
+        /// <param name="rowIndex">Index of the row.</param>
+        /// <param name="columnIndex">Index of the column.</param>
+        /// <returns>The value of the cell with specified row and column index.</returns>
+        public string GetCellValue(int rowIndex, int columnIndex)
         {
-            string sResult = "";
-            CUITControls.SilverlightCell _SlCell = GetCell(iRow, iCol);
-            if (_SlCell != null)
-                sResult = _SlCell.Value;
-            return sResult;
+            CUITControls.SilverlightCell cell = GetCell(rowIndex, columnIndex);
+            return cell != null ? cell.Value : string.Empty;
         }
 
-        private CUITControls.SilverlightCell GetCell(int iRow, int iCol)
+        /// <summary>
+        /// Gets the checkbox in the row header of specified row index.
+        /// </summary>
+        /// <param name="rowIndex">Index of the row.</param>
+        /// <returns>The checkbox in the row header of specified row index.</returns>
+        public SilverlightCheckBox GetRowHeaderCheckBox(int rowIndex)
+        {
+            var checkbox = (CUITControls.SilverlightCheckBox)SourceControl.Rows[rowIndex].GetChildren()[0].GetChildren()[0];
+            return new SilverlightCheckBox(checkbox, By.SearchProperties("*"));
+        }
+
+        private CUITControls.SilverlightCell GetCell(int rowIndex, int columnIndex)
         {
             WaitForControlReady();
             CUITControls.SilverlightCell _SlCell = null;
@@ -128,13 +184,13 @@ namespace CUITe.Controls.SilverlightControls
             foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)
             {
                 rowCount++;
-                if (rowCount == iRow)
+                if (rowCount == rowIndex)
                 {
                     int colCount = -1;
                     foreach (CUITControls.SilverlightCell cell in cont.Cells)
                     {
                         colCount++;
-                        if (colCount == iCol)
+                        if (colCount == columnIndex)
                         {
                             _SlCell = cell;
                             break;
@@ -147,13 +203,6 @@ namespace CUITe.Controls.SilverlightControls
                 }
             }
             return _SlCell;
-        }
-
-        public SilverlightCheckBox GetRowHeaderCheckBox(int iRow)
-        {
-            var _checkbox = (CUITControls.SilverlightCheckBox)SourceControl.Rows[iRow].GetChildren()[0].GetChildren()[0];
-            SilverlightCheckBox retObj = new SilverlightCheckBox(_checkbox, By.SearchProperties("*"));
-            return retObj;
         }
     }
 }
