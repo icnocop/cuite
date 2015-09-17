@@ -137,7 +137,7 @@ namespace CUITe.Controls.HtmlControls
             return GetCellValue<HtmlHeaderCell>(iRow, iCol);
         }
 
-        private string GetCellValue<T>(int iRow, int iCol) where T : ControlBase, IHtmlControl
+        private string GetCellValue<T>(int iRow, int iCol) where T : ControlBase, IHasInnerText
         {
             string innerText = "";
             T htmlCell = GetCell<T>(iRow, iCol);
@@ -223,7 +223,7 @@ namespace CUITe.Controls.HtmlControls
             return GetCell<HtmlCell>(iRow, iCol);
         }
 
-        private T GetCell<T>(int iRow, int iCol) where T : ControlBase, IHtmlControl
+        private T GetCell<T>(int iRow, int iCol) where T : ControlBase, IHasInnerText
         {
             WaitForControlReady();
             UITestControl htmlCell = null;

@@ -1,6 +1,6 @@
 ﻿namespace CUITe.Controls.HtmlControls
 {
-    public interface IHtmlControl
+    public interface IHasInnerText
     {
         string InnerText { get; }
     }
