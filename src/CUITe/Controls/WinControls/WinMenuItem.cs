@@ -1,71 +1,84 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CUITe.SearchConfigurations;
-using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Wrapper class for WinMenuItem
+    /// Represents a menu item control to test the user interface (UI) of Windows Forms.
     /// </summary>
     public class WinMenuItem : WinControl<CUITControls.WinMenuItem>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinMenuItem"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public WinMenuItem(By searchConfiguration = null)
             : this(new CUITControls.WinMenuItem(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinMenuItem"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public WinMenuItem(CUITControls.WinMenuItem sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Gets or sets a value that indicates whether this menu item is checked.
+        /// </summary>
         public bool Checked
         {
             get { return SourceControl.Checked; }
             set { SourceControl.Checked = value; }
         }
 
+        /// <summary>
+        /// Gets the text of this menu item.
+        /// </summary>
         public string DisplayText
         {
             get { return SourceControl.DisplayText; }
         }
 
+        /// <summary>
+        /// Gets or sets a value that indicates whether this menu item has child nodes.
+        /// </summary>
         public bool HasChildNodes
         {
             get { return SourceControl.HasChildNodes; }
         }
 
+        /// <summary>
+        /// Gets or sets a value that indicates whether this menu item is the top-level menu.
+        /// </summary>
         public bool IsTopLevelMenu
         {
             get { return SourceControl.IsTopLevelMenu; }
         }
 
-        public UITestControlCollection Items
-        {
-            get { return SourceControl.Items; }
-        }
-
-        public List<WinMenuItem> ItemsAsCUITe
+        /// <summary>
+        /// Gets the collection of all child items in this menu item.
+        /// </summary>
+        public IEnumerable<WinMenuItem> Items
         {
             get
             {
-                List<WinMenuItem> list = new List<WinMenuItem>();
-                foreach (CUITControls.WinMenuItem item in SourceControl.Items)
-                {
-                    WinMenuItem cuiteItem = new WinMenuItem(item);
-                    list.Add(cuiteItem);
-                }
-                return list;
+                return SourceControl.Items
+                    .Cast<CUITControls.WinMenuItem>()
+                    .Select(item => new WinMenuItem(item))
+                    .ToArray();
             }
         }
 
-        public List<string> ItemsAsList
-        {
-            get { return (from x in SourceControl.Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
-        }
-
+        /// <summary>
+        /// Gets the uniform resource identifier (URI) for this menu item.
+        /// </summary>
         public string Shortcut
         {
             get { return SourceControl.Shortcut; }
