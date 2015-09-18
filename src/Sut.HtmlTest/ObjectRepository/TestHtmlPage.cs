@@ -5,6 +5,8 @@ namespace Sut.HtmlTest.ObjectRepository
 {
     public class TestHtmlPage : BrowserWindowUnderTest
     {
+        public new string WindowTitle { get { return "A Test"; } }
+
         public HtmlParagraph p
         {
             get { return Find<HtmlParagraph>(By.Id("para1")); }
