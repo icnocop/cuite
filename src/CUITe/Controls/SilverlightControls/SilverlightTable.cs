@@ -100,7 +100,6 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="valueToSearch">The value to search.</param>
         /// <param name="columnIndex">Index of the column.</param>
         /// <param name="searchOptions">The search options.</param>
-        /// <returns></returns>
         public int FindRowIndex(
             string valueToSearch,
             int columnIndex,

@@ -44,7 +44,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             b.Find<SilverlightButton>(By.AutomationId("button1")).Click();
             SilverlightEdit oEdit = b.Find<SilverlightEdit>(By.AutomationId("textBox1"));
@@ -66,7 +66,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_DynamicObjectRecognition_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             SilverlightList oList = b.Find<SilverlightList>(By.AutomationId("listBox1"));
             oList.SelectedIndices = new[] { 2 };
@@ -92,7 +92,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_SelectedIndex_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex= 1;
@@ -103,7 +103,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex = 0;

@@ -34,8 +34,6 @@ namespace CUITe.Controls.SilverlightControls
         /// </summary>
         public void Check()
         {
-            WaitForControlReady();
-
             if (!Checked)
             {
                 Checked = true;
@@ -47,8 +45,6 @@ namespace CUITe.Controls.SilverlightControls
         /// </summary>
         public void UnCheck()
         {
-            WaitForControlReady();
-
             if (Checked)
             {
                 Checked = false;

@@ -56,7 +56,7 @@ namespace CUITe
                     else if ((field.SourceControlType == typeof(CUITSilverlightControls.SilverlightControl)) ||
                              (field.SourceControlType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
-                        field.SourceControl.Container = browserWindow.SlObjectContainer;
+                        field.SourceControl.Container = browserWindow.SilverlightObjectContainer;
                     }
 #endif
                 }

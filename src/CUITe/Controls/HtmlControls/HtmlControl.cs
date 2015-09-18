@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CUITe.Browsers;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
@@ -8,11 +9,16 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace CUITe.Controls.HtmlControls
 {
     /// <summary>
-    /// Base class for all Html controls, inherits from ControlBase
+    /// Base class for all test controls in the user interface (UI) of a Web page.
     /// </summary>
-    /// <typeparam name="T">The Coded UI Test Html control type</typeparam>
+    /// <typeparam name="T">The source control type.</typeparam>
     public class HtmlControl<T> : ControlBase<T>, IHasInnerText where T : CUITControls.HtmlControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HtmlControl{T}"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public HtmlControl(T sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
@@ -31,7 +37,7 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Gets the value of the Help Text attribute of this control.
+        /// Gets the value of the HelpText attribute of this control.
         /// </summary>
         public string HelpText
         {
@@ -89,16 +95,15 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent());
+                    return WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -113,16 +118,15 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
+                    return WrapUtil((CUITControls.HtmlControl)SourceControl.GetParent().GetChildren()[GetMyIndexAmongSiblings() - 1]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).PreviousSibling", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -137,7 +141,7 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
                     UITestControl parent = SourceControl.GetParent();
@@ -148,13 +152,12 @@ namespace CUITe.Controls.HtmlControls
 
                     UITestControl child = children[thisIndex + 1];
 
-                    ret = WrapUtil((CUITControls.HtmlControl)child);
+                    return WrapUtil((CUITControls.HtmlControl)child);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).NextSibling", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -169,16 +172,15 @@ namespace CUITe.Controls.HtmlControls
             get
             {
                 WaitForControlReady();
-                ControlBase ret = null;
+
                 try
                 {
-                    ret = WrapUtil((CUITControls.HtmlControl)SourceControl.GetChildren()[0]);
+                    return WrapUtil((CUITControls.HtmlControl)SourceControl.GetChildren()[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).FirstChild", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -188,14 +190,10 @@ namespace CUITe.Controls.HtmlControls
         public override IEnumerable<ControlBase> GetChildren()
         {
             WaitForControlReady();
-            var children = new List<ControlBase>();
-            
-            foreach (UITestControl child in SourceControl.GetChildren())
-            {
-                children.Add(WrapUtil((CUITControls.HtmlControl)child));
-            }
 
-            return children;
+            return SourceControl.GetChildren()
+                .Select(child => WrapUtil((CUITControls.HtmlControl)child))
+                .ToArray();
         }
 
         /// <summary>
@@ -204,11 +202,11 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="code">The JavaScript code.</param>
         protected void RunScript(string code)
         {
-            BrowserWindow browserWindow = (BrowserWindow)SourceControl.TopParent;
+            var browserWindow = (BrowserWindow)SourceControl.TopParent;
             InternetExplorer.RunScript(browserWindow, code);
         }
 
-        private ControlBase WrapUtil(CUITControls.HtmlControl sourceControl)
+        private static ControlBase WrapUtil(CUITControls.HtmlControl sourceControl)
         {
             ControlBase control;
 

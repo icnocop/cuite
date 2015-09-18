@@ -87,11 +87,11 @@ namespace Sut.HtmlTest
         public void GenericGet_WithHtmlControls_GetsControlsDynamically()
         {
             // Arrange
-            BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com", "Gmail: Email from Google");
+            BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com");
 
             // Act
-            browserWindow.Find<HtmlEdit>(By.Id("Email")).SetText("xyz@gmail.com");
-            browserWindow.Find<HtmlPassword>(By.Id("Password")).SetText("MyPa$$Word");
+            browserWindow.Find<HtmlEdit>(By.Id("Email")).Text = "xyz@gmail.com";
+            browserWindow.Find<HtmlPassword>(By.Id("Password")).Text ="MyPa$$Word";
             browserWindow.Find<HtmlInputButton>(By.Id("signIn")).Click();
             browserWindow.Close();
         }
