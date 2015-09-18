@@ -10,12 +10,13 @@ namespace CUITe.Controls
     internal class ControlBaseFactory
     {
         /// <summary>
-        /// Creates a UI test control of type <see cref="T"/> with specified search configuration.
+        /// Creates a UI test control of type <see typeparamref="T"/> with specified search
+        /// configuration.
         /// </summary>
         /// <typeparam name="T">The type of the UI test control to create.</typeparam>
         /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
-        /// A UI test control of type <see cref="T"/> with specified search configuration.
+        /// A UI test control of type <see typeparamref="T"/> with specified search configuration.
         /// </returns>
         internal static T Create<T>(By searchConfiguration) where T : ControlBase
         {
@@ -52,15 +53,15 @@ namespace CUITe.Controls
         }
 
         /// <summary>
-        /// Creates a UI test control of type <see cref="T"/> with specified source control and
-        /// search configuration.
+        /// Creates a UI test control of type <see typeparamref="T"/> with specified source control
+        /// and search configuration.
         /// </summary>
         /// <typeparam name="T">The type of the UI test control to create.</typeparam>
         /// <param name="sourceControl">The source control.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
-        /// A UI test control of type <see cref="T"/> with specified source control and search
-        /// properties.
+        /// A UI test control of type <see typeparamref="T"/> with specified source control and
+        /// search properties.
         /// </returns>
         internal static T Create<T>(UITestControl sourceControl, By searchConfiguration) where T : ControlBase
         {
@@ -75,8 +76,8 @@ namespace CUITe.Controls
         /// <param name="sourceControl">The source control.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
         /// <returns>
-        /// A UI test control of type <see cref="controlType"/> with specified source control and
-        /// search configuration.
+        /// A UI test control of type <see paramref="controlType"/> with specified source control
+        /// and search configuration.
         /// </returns>
         internal static ControlBase Create(Type controlType, UITestControl sourceControl, By searchConfiguration)
         {
