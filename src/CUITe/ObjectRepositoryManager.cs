@@ -32,7 +32,7 @@ namespace CUITe
         {
             var browserWindow = (BrowserWindowUnderTest)Activator.CreateInstance(typePageDefinition, args);
 
-            browserWindow.SetWindowTitle(typePageDefinition.GetProperty("WindowTitle").GetValue(browserWindow).ToString());
+            browserWindow.SetWindowTitle(typePageDefinition.GetProperty("WindowTitle").GetValue(browserWindow, null).ToString());
 
             FieldInfo[] finfo = browserWindow.GetType().GetFields();
             foreach (FieldInfo fieldinfo in finfo)
