@@ -5,7 +5,7 @@ namespace Sut.HtmlTest.ObjectRepository
 {
     public class GoogleSearch : BrowserWindowUnderTest
     {
-        public new string sWindowTitle = "coded ui test framework - Google Search";
+        public new string WindowTitle { get { return "coded ui test framework - Google Search"; } }
         public HtmlDiv divSearchResults = new HtmlDiv(By.Id("ires"));
     }
 }

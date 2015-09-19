@@ -5,22 +5,31 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightEdit.
+    /// Represents an edit control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightEdit : SilverlightControl<CUITControls.SilverlightEdit>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightEdit"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightEdit(By searchConfiguration = null)
             : this(new CUITControls.SilverlightEdit(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightEdit"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightEdit(CUITControls.SilverlightEdit sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
         /// <summary>
-        /// Gets or sets the text displayed on the Silverlight Edit.
+        /// Gets or sets the text displayed in the edit control.
         /// </summary>
         public string Text
         {
@@ -36,18 +45,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
-        public void SetText(string sText)
-        {
-            WaitForControlReady();
-            SourceControl.Text = sText;
-        }
-
-        public string GetText()
-        {
-            WaitForControlReady();
-            return SourceControl.Text;
-        }
-
+        /// <summary>
+        /// Gets a value that indicates whether the edit control is read-only.
+        /// </summary>
         public bool ReadOnly
         {
             get

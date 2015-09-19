@@ -11,12 +11,11 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace CUITe.Controls.HtmlControls
 {
     /// <summary>
-    /// The browser window
+    /// Represents a Web browser window for Web page user interface (UI) testing.
     /// </summary>
     public class BrowserWindowUnderTest : BrowserWindow
     {
-        public string sWindowTitle;
-        private CUITControls.HtmlCustom mSlObjectContainer;
+        private CUITControls.HtmlCustom silverlightObjectContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserWindowUnderTest"/> class.
@@ -29,7 +28,7 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserWindowUnderTest"/> class.
         /// </summary>
-        /// <param name="title">The title.</param>
+        /// <param name="title">The window title.</param>
         public BrowserWindowUnderTest(string title)
         {
             SearchProperties[PropertyNames.ClassName] = GetCurrentBrowser().WindowClassName;
@@ -38,22 +37,26 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
+        /// Gets the window title.
+        /// </summary>
+        public string WindowTitle { get; private set; }
+
+        /// <summary>
         /// Gets the current browser.
         /// </summary>
         /// <returns></returns>
         public static IBrowser GetCurrentBrowser()
         {
-            InternetExplorer ie = new InternetExplorer();
-
+            var ie = new InternetExplorer();
             string currentBrowserName = CurrentBrowser;
 
             if (currentBrowserName == null)
             {
-                //default browser
+                // Default browser
                 return ie;
             }
 
-            List<IBrowser> supportedBrowsers = new List<IBrowser>
+            var supportedBrowsers = new List<IBrowser>
             {
                 ie,
                 new Firefox(),
@@ -64,7 +67,7 @@ namespace CUITe.Controls.HtmlControls
 
             if (currentBrowser == null)
             {
-                //default browser
+                // Default browser
                 return ie;
             }
 
@@ -74,22 +77,10 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Launches the specified url.
+        /// Launches the specified URL.
         /// </summary>
-        /// <param name="url">The url.</param>
-        /// <returns>The launched BrowserWindow</returns>
-        public new static BrowserWindow Launch(string url)
-        {
-            return Launch(new Uri(url));
-        }
-
-        /// <summary>
-        /// Launches the specified url.
-        /// </summary>
-        /// <param name="url">The url.</param>
-        /// <param name="title">The title.</param>
-        /// <returns>The BrowserWindowUnderTest that matches the title</returns>
-        public new static BrowserWindowUnderTest Launch(string url, string title)
+        /// <param name="url">The URL.</param>
+        public new static BrowserWindowUnderTest Launch(string url)
         {
             var browserWindowUnderTest = new BrowserWindowUnderTest();
             browserWindowUnderTest.CopyFrom(Launch(new Uri(url)));
@@ -98,15 +89,13 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Launches the specified url.
+        /// Launches the specified URL.
         /// </summary>
-        /// <typeparam name="T">Object repository class</typeparam>
-        /// <param name="url">The url.</param>
-        /// <returns>An instance of the object repository class that matches the title</returns>
-        public static T Launch<T>(string url)
-            where T : BrowserWindowUnderTest, new()
+        /// <typeparam name="T">The page object type.</typeparam>
+        /// <param name="url">The URL.</param>
+        public static T Launch<T>(string url) where T : BrowserWindowUnderTest, new()
         {
-            T browserWindow = new T();
+            var browserWindow = new T();
             browserWindow.CopyFrom(Launch(new Uri(url)));
 
             return browserWindow;
@@ -130,30 +119,33 @@ namespace CUITe.Controls.HtmlControls
         {
             WindowTitles.Clear();
             WindowTitles.Add(title);
-            sWindowTitle = title;
+            WindowTitle = title;
         }
 
-        public CUITControls.HtmlCustom SlObjectContainer
+        /// <summary>
+        /// Gets the Silverlight object container.
+        /// </summary>
+        public CUITControls.HtmlCustom SilverlightObjectContainer
         {
             get
             {
-                if ((mSlObjectContainer == null))
+                if ((silverlightObjectContainer == null))
                 {
-                    mSlObjectContainer = new CUITControls.HtmlCustom(this);
-                    mSlObjectContainer.SearchProperties["TagName"] = "OBJECT";
-                    mSlObjectContainer.WindowTitles.Add(sWindowTitle);
+                    silverlightObjectContainer = new CUITControls.HtmlCustom(this);
+                    silverlightObjectContainer.SearchProperties["TagName"] = "OBJECT";
+                    silverlightObjectContainer.WindowTitles.Add(WindowTitle);
                 }
-                return mSlObjectContainer;
+                return silverlightObjectContainer;
             }
         }
 
         /// <summary>
         /// Navigates to the specified URL.
         /// </summary>
-        /// <param name="sUrl">The s URL.</param>
-        public void NavigateToUrl(string sUrl)
+        /// <param name="url">The URL.</param>
+        public void NavigateToUrl(string url)
         {
-            NavigateToUrl(new Uri(sUrl));
+            NavigateToUrl(new Uri(url));
         }
 
         /// <summary>
@@ -161,11 +153,10 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public static void CloseAllBrowsers()
         {
-            Process[] pro_list = Process.GetProcessesByName(GetCurrentBrowser().ProcessName);
-            foreach (Process pro in pro_list)
+            // Kill all open browsers
+            foreach (Process process in Process.GetProcessesByName(GetCurrentBrowser().ProcessName))
             {
-                //kill all open browsers
-                pro.Kill();
+                process.Kill();
             }
         }
 
@@ -185,7 +176,7 @@ namespace CUITe.Controls.HtmlControls
         /// <param name="password">The password.</param>
         public static void Authenticate(string userName, string password)
         {
-            UIWindowsSecurityWindow winTemp2 = new UIWindowsSecurityWindow();
+            var winTemp2 = new UIWindowsSecurityWindow();
             if (winTemp2.UIUseAnotherAccountText.Exists)
             {
                 Mouse.Click(winTemp2.UIUseAnotherAccountText);
@@ -212,7 +203,7 @@ namespace CUITe.Controls.HtmlControls
 
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                control.SourceControl.Container = SlObjectContainer;
+                control.SourceControl.Container = SilverlightObjectContainer;
             }
             else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
             {

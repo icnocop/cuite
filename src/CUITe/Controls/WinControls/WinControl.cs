@@ -7,11 +7,16 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe WinForms controls, inherits from ControlBase
+    /// Base class for all test controls in the user interface (UI) of Windows Forms.
     /// </summary>
-    /// <typeparam name="T">The Coded UI WinControl type</typeparam>
+    /// <typeparam name="T">The source control type.</typeparam>
     public abstract class WinControl<T> : ControlBase<T> where T : CUITControls.WinControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinControl{T}"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         protected WinControl(T sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
@@ -29,17 +34,14 @@ namespace CUITe.Controls.WinControls
             {
                 WaitForControlReady();
 
-                ControlBase ret;
-
                 try
                 {
-                    ret = WinControlFactory.Create((CUITControls.WinControl)SourceControl.GetParent());
+                    return WinControlFactory.Create((CUITControls.WinControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 

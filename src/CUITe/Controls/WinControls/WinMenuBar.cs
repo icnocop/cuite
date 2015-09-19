@@ -1,48 +1,46 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CUITe.SearchConfigurations;
-using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Wrapper class for WinMenuBar
+    /// Represents a menu bar control to test the user interface (UI) of Windows Forms.
     /// </summary>
     public class WinMenuBar : WinControl<CUITControls.WinMenuBar>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinMenuBar"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public WinMenuBar(By searchConfiguration = null)
             : this(new CUITControls.WinMenuBar(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinMenuBar"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public WinMenuBar(CUITControls.WinMenuBar sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
-        public UITestControlCollection Items
-        {
-            get { return SourceControl.Items; }
-        }
-
-        public List<WinMenuItem> ItemsAsCUITe
+        /// <summary>
+        /// Gets the collection of all items on the menu bar.
+        /// </summary>
+        public IEnumerable<WinMenuItem> Items
         {
             get
             {
-                List<WinMenuItem> list = new List<WinMenuItem>();
-                foreach (CUITControls.WinMenuItem item in SourceControl.Items)
-                {
-                    WinMenuItem cuiteItem = new WinMenuItem(item);
-                    list.Add(cuiteItem);
-                }
-                return list;
+                return SourceControl.Items
+                    .Cast<CUITControls.WinMenuItem>()
+                    .Select(item => new WinMenuItem(item))
+                    .ToArray();
             }
-        }
-
-        public List<string> ItemsAsList
-        {
-            get { return (from x in SourceControl.Items select ((CUITControls.WinMenuItem)x).DisplayText).ToList<string>(); }
         }
     }
 }

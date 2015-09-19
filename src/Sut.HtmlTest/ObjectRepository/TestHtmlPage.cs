@@ -5,7 +5,7 @@ namespace Sut.HtmlTest.ObjectRepository
 {
     public class TestHtmlPage : BrowserWindowUnderTest
     {
-        public new string sWindowTitle = "A Test";
+        public new string WindowTitle { get { return "A Test"; } }
 
         public HtmlParagraph p
         {

@@ -6,22 +6,31 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightEdit where IsPassword=true.
+    /// Represents a password control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightPassword : SilverlightEdit
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightPassword(By searchConfiguration = null)
             : this(new CUITControls.SilverlightEdit(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightPassword(CUITControls.SilverlightEdit sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
         /// <summary>
-        /// Gets or sets the password text
+        /// Gets or sets the password text displayed in the edit control.
         /// </summary>
         public new string Text
         {
@@ -31,15 +40,6 @@ namespace CUITe.Controls.SilverlightControls
                 WaitForControlReady();
                 SourceControl.Password = Playback.EncryptText(value);
             }
-        }
-
-        /// <summary>
-        /// Sets the password text.
-        /// </summary>
-        /// <param name="password">The password.</param>
-        public new void SetText(string password)
-        {
-            Text = password;
         }
     }
 }

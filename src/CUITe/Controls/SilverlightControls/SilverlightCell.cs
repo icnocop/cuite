@@ -5,20 +5,32 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightCell.
+    /// Represents a cell control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightCell : SilverlightControl<CUITControls.SilverlightCell>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightCell"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightCell(By searchConfiguration = null)
             : this(new CUITControls.SilverlightCell(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightCell"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightCell(CUITControls.SilverlightCell sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Gets or sets a value that indicates whether the cell is checked.
+        /// </summary>
         public bool Checked
         {
             get
@@ -33,6 +45,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets the column header for the cell.
+        /// </summary>
         public string ColumnHeader
         {
             get
@@ -43,7 +58,7 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets the 0-based index of the cell.
+        /// Gets the column index of the cell.
         /// </summary>
         public int ColumnIndex
         {
@@ -55,7 +70,7 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets the 0-based index of the row.
+        /// Gets the row index of the cell.
         /// </summary>
         public int RowIndex
         {
@@ -66,6 +81,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets a value that indicates whether the cell is selected.
+        /// </summary>
         public bool Selected
         {
             get
@@ -75,6 +93,9 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value of the cell.
+        /// </summary>
         public string Value
         {
             get

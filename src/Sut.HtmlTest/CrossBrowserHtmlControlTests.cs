@@ -45,15 +45,15 @@ namespace Sut.HtmlTest
 
                 BrowserWindow.CurrentBrowser = browser;
 
-                BrowserWindowUnderTest window = BrowserWindowUnderTest.Launch(tempFilePath, "test");
+                BrowserWindowUnderTest window = BrowserWindowUnderTest.Launch(tempFilePath);
                 var div = window.Find<HtmlDiv>(By.Id("div1"));
                 var inputTextBox = div.Find<HtmlEdit>();
 
                 //Act
-                inputTextBox.SetText("text");
+                inputTextBox.Text = "text";
 
                 //Assert
-                Assert.AreEqual("text", inputTextBox.GetText());
+                Assert.AreEqual("text", inputTextBox.Text);
 
                 window.Close();
 

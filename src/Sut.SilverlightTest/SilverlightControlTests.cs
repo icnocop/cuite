@@ -44,11 +44,11 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             b.Find<SilverlightButton>(By.AutomationId("button1")).Click();
             SilverlightEdit oEdit = b.Find<SilverlightEdit>(By.AutomationId("textBox1"));
-            oEdit.SetText("asddasdasdasdadasdadasdadadadasd");
+            oEdit.Text = "asddasdasdasdadasdadasdadadadasd";
             SilverlightDatePicker dp = b.Find<SilverlightDatePicker>(By.AutomationId("datePicker1"));
             dp.SourceControl.SelectedDate = new DateTime(2011, 5, 11);
             b.Close();
@@ -66,7 +66,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_DynamicObjectRecognition_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             SilverlightList oList = b.Find<SilverlightList>(By.AutomationId("listBox1"));
             oList.SelectedIndices = new[] { 2 };
@@ -81,10 +81,10 @@ namespace Sut.SilverlightTest
             BrowserWindowUnderTest b = new BrowserWindowUnderTest("Home");
             b.SetFocus();
             SilverlightComboBox oCombo = b.Find<SilverlightComboBox>(By.AutomationId("comboBox1"));
-            oCombo.SelectItem(3);
-            foreach (string temp in oCombo.Items)
+            oCombo.SelectIndex(3);
+            foreach (UITestControl temp in oCombo.Items)
             {
-                Console.WriteLine(temp);
+                Console.WriteLine(temp.Name);
             }
             b.Close();
         }
@@ -92,7 +92,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_SelectedIndex_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex= 1;
@@ -103,12 +103,12 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
-            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl, "Home");
+            BrowserWindowUnderTest b = BrowserWindowUnderTest.Launch(silverlightApplicationHtmlPageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex = 0;
             var btnOK = b.Find<SilverlightButton>(By.AutomationId("OKButtonInTabItem1"));
-            ((SilverlightEdit)(btnOK.PreviousSibling)).SetText("blah blah hurray");
+            ((SilverlightEdit)(btnOK.PreviousSibling)).Text = "blah blah hurray";
             foreach (ControlBase control in oTab.GetChildren())
             {
                 if (control.GetType() == typeof(SilverlightEdit))

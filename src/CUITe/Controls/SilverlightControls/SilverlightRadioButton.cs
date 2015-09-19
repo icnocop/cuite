@@ -5,32 +5,44 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightRadioButton.
+    /// Represents a radio button control to test the user interface (UI) of a Silverlight
+    /// application.
     /// </summary>
     public class SilverlightRadioButton : SilverlightControl<CUITControls.SilverlightRadioButton>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightRadioButton"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightRadioButton(By searchConfiguration = null)
             : this(new CUITControls.SilverlightRadioButton(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightRadioButton"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightRadioButton(CUITControls.SilverlightRadioButton sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
-        public void Select()
-        {
-            WaitForControlReady();
-            SourceControl.Selected = true;
-        }
-
-        public bool IsSelected
+        /// <summary>
+        /// Gets or sets the selected state of the <see cref="SilverlightRadioButton"/> control.
+        /// </summary>
+        public bool Selected
         {
             get
             {
                 WaitForControlReady();
                 return SourceControl.Selected;
+            }
+            set
+            {
+                WaitForControlReady();
+                SourceControl.Selected = value;
             }
         }
     }
