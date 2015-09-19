@@ -7,11 +7,17 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 namespace CUITe.Controls.WpfControls
 {
     /// <summary>
-    /// Base wrapper class for all CUITe WPF controls, inherits from ControlBase
+    /// Base class for all test controls in the user interface (UI) of Windows Presentation
+    /// Foundation (WPF) applications.
     /// </summary>
-    /// <typeparam name="T">The Coded UI WpfControl type</typeparam>
+    /// <typeparam name="T">The source control type.</typeparam>
     public abstract class WpfControl<T> : ControlBase<T> where T : CUITControls.WpfControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WpfControl{T}"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         protected WpfControl(T sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
@@ -29,17 +35,14 @@ namespace CUITe.Controls.WpfControls
             {
                 WaitForControlReady();
                 
-                ControlBase ret = null;
-                
                 try
                 {
-                    ret = WpfControlFactory.Create((CUITControls.WpfControl)SourceControl.GetParent());
+                    return WpfControlFactory.Create((CUITControls.WpfControl)SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     throw new InvalidTraversalException(string.Format("({0}).Parent", SourceControl.GetType().Name));
                 }
-                return ret;
             }
         }
 
@@ -77,7 +80,7 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Wrap AcceleratorKey property common to all WPF controls
+        /// Gets the shortcut key that is assigned to this control.
         /// </summary>
         public string AcceleratorKey
         {
@@ -85,7 +88,7 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Wrap AccessKey property common to all WPF controls
+        /// Gets the keyboard shortcut that is assigned to this control.
         /// </summary>
         public string AccessKey
         {
@@ -93,7 +96,7 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Wrap AutomationId property common to all WPF controls
+        /// Gets the automation ID that is assigned to this control.
         /// </summary>
         public string AutomationId
         {
@@ -101,7 +104,7 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Wrap Font property common to all WPF controls
+        /// Gets the name of the font for textual parts of this control.
         /// </summary>
         public string Font
         {
@@ -109,7 +112,7 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Wrap HelpText property common to all WPF controls
+        /// Gets the help text that is assigned to this control.
         /// </summary>
         public string HelpText
         {
@@ -117,7 +120,7 @@ namespace CUITe.Controls.WpfControls
         }
 
         /// <summary>
-        /// Wrap LabeledBy property common to all WPF controls
+        /// Gets the label text of this control.
         /// </summary>
         public string LabeledBy
         {

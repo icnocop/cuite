@@ -5,22 +5,31 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightButton.
+    /// Represents a button control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightButton : SilverlightControl<CUITControls.SilverlightButton>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightButton"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightButton(By searchConfiguration = null)
             : this(new CUITControls.SilverlightButton(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightButton"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightButton(CUITControls.SilverlightButton sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
         /// <summary>
-        /// Gets the text displayed on the Silverlight Button.
+        /// Gets the text that is displayed on the button.
         /// </summary>
         public string DisplayText
         {

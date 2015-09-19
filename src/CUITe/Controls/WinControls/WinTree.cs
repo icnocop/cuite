@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
@@ -6,44 +7,56 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 namespace CUITe.Controls.WinControls
 {
     /// <summary>
-    /// Wrapper class for WinTree
+    /// Represents a tree control to test the user interface (UI) of Windows Forms.
     /// </summary>
     public class WinTree : WinControl<CUITControls.WinTree>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinTree"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public WinTree(By searchConfiguration = null)
             : this(new CUITControls.WinTree(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WinTree"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public WinTree(CUITControls.WinTree sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
-
+        
+        /// <summary>
+        /// Gets the horizontal scroll bar in this tree control.
+        /// </summary>
+        // TODO: Wrap these into CUITe controls
         public UITestControl HorizontalScrollBar
         {
             get { return SourceControl.HorizontalScrollBar; }
         }
 
-        public UITestControlCollection Nodes
-        {
-            get { return SourceControl.Nodes; }
-        }
-
-        public List<WinTreeItem> NodesAsCUITe
+        /// <summary>
+        /// Gets a collection of the nodes in this tree control.
+        /// </summary>
+        public IEnumerable<WinTreeItem> Nodes
         {
             get
             {
-                List<WinTreeItem> list = new List<WinTreeItem>();
-                foreach (CUITControls.WinTreeItem node in SourceControl.Nodes)
-                {
-                    WinTreeItem cuiteItem = new WinTreeItem(node);
-                    list.Add(cuiteItem);
-                }
-                return list;
+                return SourceControl.Nodes
+                    .Cast<CUITControls.WinTreeItem>()
+                    .Select(node => new WinTreeItem(node))
+                    .ToArray();
             }
         }
 
+        /// <summary>
+        /// Gets the vertical scroll bar in this tree control.
+        /// </summary>
+        // TODO: Wrap these into CUITe controls
         public UITestControl VerticalScrollBar
         {
             get { return SourceControl.VerticalScrollBar; }

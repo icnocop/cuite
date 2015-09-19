@@ -1,30 +1,42 @@
 ﻿using System;
-using System.Linq;
 using CUITe.SearchConfigurations;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace CUITe.Controls.HtmlControls
 {
+    /// <summary>
+    /// Represents a list control for web page user interface (UI) testing.
+    /// </summary>
     public class HtmlList : HtmlControl<CUITControls.HtmlList>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HtmlList"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public HtmlList(By searchConfiguration = null)
             : this(new CUITControls.HtmlList(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HtmlList"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public HtmlList(CUITControls.HtmlList sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
         
         /// <summary>
-        /// Gets the items in a string array of the html list.
+        /// Gets a collection of items in this list.
         /// </summary>
         public string[] Items
         {
             get
             {
-                //trying to call InnerText of children will cause errors if child items are disabled
+                // Trying to call InnerText of children will cause errors if child items are
+                // disabled
                 return InnerText.Split(
                     new[] { ' ' },
                     StringSplitOptions.RemoveEmptyEntries);
@@ -32,19 +44,8 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Tells whether the specified item is present in the html list or not.
+        /// Gets or sets an array of the selected items.
         /// </summary>
-        public bool ItemExists(string sText)
-        {
-            return Items.Contains(sText);
-        }
-
-        /// <summary>
-        /// Gets or sets the selected items.
-        /// </summary>
-        /// <value>
-        /// The selected items.
-        /// </value>
         public string[] SelectedItems
         {
             get

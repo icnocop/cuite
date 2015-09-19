@@ -5,22 +5,31 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightTab.
+    /// Represents a tab control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightTab : SilverlightControl<CUITControls.SilverlightTab>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightTab"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightTab(By searchConfiguration = null)
             : this(new CUITControls.SilverlightTab(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightTab"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightTab(CUITControls.SilverlightTab sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
         /// <summary>
-        /// Gets or sets the index of the selected tab item.
+        /// Gets the index of the selected tab item.
         /// </summary>
         public int SelectedIndex
         {
@@ -37,7 +46,7 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets or sets the text of the selected tab item.
+        /// Gets the selected tab item.
         /// </summary>
         public string SelectedItem
         {
@@ -65,13 +74,10 @@ namespace CUITe.Controls.SilverlightControls
             }
         }
 
-        // get currently selected index
-
-        // get currently selected text
-
-        // get number of tab items
-
-        // tab item enabled or disabled
+        // TODO: Get currently selected index
+        // TODO: Get currently selected text
+        // TODO: Get number of tab items
+        // TODO: Tab item enabled or disabled
     }
 }
 #endif

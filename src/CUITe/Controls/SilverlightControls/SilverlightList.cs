@@ -7,23 +7,33 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightContr
 namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
-    /// CUITe wrapper for SilverlightList.
+    /// Represents a list control to test the user interface (UI) of a Silverlight application.
     /// </summary>
     public class SilverlightList : SilverlightControl<CUITControls.SilverlightList>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightList"/> class.
+        /// </summary>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightList(By searchConfiguration = null)
             : this(new CUITControls.SilverlightList(), searchConfiguration)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SilverlightList"/> class.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <param name="searchConfiguration">The search configuration.</param>
         public SilverlightList(CUITControls.SilverlightList sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }
 
         /// <summary>
-        /// Gets the collection of child list items of the list
+        /// Gets the collection of items in the list.
         /// </summary>
+        // TODO: Wrap these into CUITe controls
         public UITestControlCollection Items
         {
             get
@@ -34,7 +44,8 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets or sets the indices of the selected items of the list.
+        /// Gets the indices of the selected items in the list or sets the selected items in the
+        /// list with the provided indices.
         /// </summary>
         public int[] SelectedIndices
         {
@@ -51,7 +62,7 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets or sets the selected items in the listbox.
+        /// Gets or sets the selected items.
         /// </summary>
         public string[] SelectedItems
         {
@@ -68,7 +79,7 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets or sets the selected items of the list in a comma separated format.
+        /// Gets or sets the selected items in the list by using a comma-separated string.
         /// </summary>
         public string SelectedItemsAsString
         {
@@ -85,7 +96,7 @@ namespace CUITe.Controls.SilverlightControls
         }
 
         /// <summary>
-        /// Gets a value indicating the selection mode of the list
+        /// Gets a value that indicates the selection mode of the list.
         /// </summary>
         public SelectionMode SelectionMode
         {

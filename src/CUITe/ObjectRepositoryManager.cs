@@ -32,7 +32,7 @@ namespace CUITe
         {
             var browserWindow = (BrowserWindowUnderTest)Activator.CreateInstance(typePageDefinition, args);
 
-            browserWindow.SetWindowTitle(typePageDefinition.GetField("sWindowTitle").GetValue(browserWindow).ToString());
+            browserWindow.SetWindowTitle(typePageDefinition.GetProperty("WindowTitle").GetValue(browserWindow, null).ToString());
 
             FieldInfo[] finfo = browserWindow.GetType().GetFields();
             foreach (FieldInfo fieldinfo in finfo)
@@ -56,7 +56,7 @@ namespace CUITe
                     else if ((field.SourceControlType == typeof(CUITSilverlightControls.SilverlightControl)) ||
                              (field.SourceControlType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
                     {
-                        field.SourceControl.Container = browserWindow.SlObjectContainer;
+                        field.SourceControl.Container = browserWindow.SilverlightObjectContainer;
                     }
 #endif
                 }
