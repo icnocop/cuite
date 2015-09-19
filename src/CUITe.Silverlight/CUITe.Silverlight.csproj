@@ -26,7 +26,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.xml</DocumentationFile>
@@ -43,7 +43,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.xml</DocumentationFile>
@@ -107,6 +107,29 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Controls\SilverlightControls\SilverlightButton.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightCalendar.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightCell.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightCheckBox.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightComboBox.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightControl.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightDataPager.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightDatePicker.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightEdit.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightHyperlink.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightImage.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightLabel.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightList.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightPassword.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightRadioButton.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightSlider.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightSpinner.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightTab.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightTabItem.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightTable.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightTableSearchOptions.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightText.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
