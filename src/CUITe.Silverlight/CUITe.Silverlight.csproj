@@ -29,11 +29,11 @@
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.Silverlight.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,11 +46,11 @@
     <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.Silverlight.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
