@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection;
-using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
-using CUITe.Controls.TelerikControls;
 using CUITHtmlControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
-#if SILVERLIGHT_SUPPORT
-using CUITSilverlightControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
-#endif
 
 namespace CUITe
 {
@@ -15,43 +8,7 @@ namespace CUITe
     {
         internal static T GetInstance<T>(params object[] args) where T : BrowserWindowUnderTest
         {
-            return (T)GetInstance(typeof(T), args);
-        }
-
-        private static BrowserWindowUnderTest GetInstance(Type typePageDefinition, params object[] args)
-        {
-            var browserWindow = (BrowserWindowUnderTest)Activator.CreateInstance(typePageDefinition, args);
-
-            browserWindow.SetWindowTitle(typePageDefinition.GetProperty("WindowTitle").GetValue(browserWindow, null).ToString());
-
-            FieldInfo[] finfo = browserWindow.GetType().GetFields();
-            foreach (FieldInfo fieldinfo in finfo)
-            {
-                Type fieldType = fieldinfo.FieldType;
-
-                if (fieldType.IsAssignableFrom(typeof(ComboBox)))
-                {
-                    ComboBox field = (ComboBox)fieldinfo.GetValue(browserWindow);
-                    field.SetWindow(browserWindow);
-                }
-                else if (fieldType.GetInterfaces().Contains(typeof(ControlBase)))
-                {
-                    var field = (ControlBase)fieldinfo.GetValue(browserWindow);
-
-                    if (field.SourceControlType.IsSubclassOf(typeof(CUITHtmlControls.HtmlControl)))
-                    {
-                        field.SourceControl.Container = browserWindow;
-                    }
-#if SILVERLIGHT_SUPPORT
-                    else if ((field.SourceControlType == typeof(CUITSilverlightControls.SilverlightControl)) ||
-                             (field.SourceControlType.IsSubclassOf(typeof(CUITSilverlightControls.SilverlightControl))))
-                    {
-                        field.SourceControl.Container = browserWindow.SilverlightObjectContainer;
-                    }
-#endif
-                }
-            }
-            return browserWindow;
+            return (T)Activator.CreateInstance(typeof(T), args);
         }
     }
 }
