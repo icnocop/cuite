@@ -15,58 +15,24 @@
 
   <!-- Builds the solution in all supported configurations -->
   <Target Name="Build">
-    <!-- VS2013 .NET45 (build solution) -->
+    <!-- .NET45 -->
     <MSBuild
       Projects="$(SolutionPath)"
       Properties="Configuration=Release"
       Targets="Rebuild"
       BuildInParallel="true" />
     
-    <!-- VS2013 .NET40 (Silverlight not supported) -->
+    <!-- .NET40 -->
     <MSBuild
       Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0;DefineConstants=TRACE"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2012 .NET45 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-    
-    <!-- VS2012 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2010 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=10;TargetFrameworkVersion=v4.0"
+      Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0"
       Targets="Rebuild"
       BuildInParallel="true" />
   </Target>
   
-  <!-- Creates zip archives of CUITe deliverables -->
+  <!-- Creates NuGet packages CUITe deliverables -->
   <Target Name="Pack">
-    <!-- VS2013 -->
-    <Copy SourceFiles="$(ProjectDir)\CUITe.VS2013.nuspec" DestinationFiles="$(NuGetSpecPath)" />
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12;Configuration=Release" />
-
-    <!-- VS2012 -->
-    <Copy SourceFiles="$(ProjectDir)\CUITe.VS2012.nuspec" DestinationFiles="$(NuGetSpecPath)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=11;Configuration=Release" />
-
-    <!-- VS2010 -->
-    <Copy SourceFiles="$(ProjectDir)\CUITe.VS2010.nuspec" DestinationFiles="$(NuGetSpecPath)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=10;TargetFrameworkVersion=v4.0;Configuration=Release" />
-      
-    <!-- Cleanup -->
-    <Delete Files="$(NuGetSpecPath)" />
   </Target>
 
   <!-- Runs all tests -->
