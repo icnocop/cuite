@@ -26,7 +26,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;SILVERLIGHT_SUPPORT</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.xml</DocumentationFile>
@@ -43,7 +43,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.xml</DocumentationFile>
