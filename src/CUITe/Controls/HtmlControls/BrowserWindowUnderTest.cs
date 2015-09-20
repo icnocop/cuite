@@ -106,9 +106,9 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         /// <typeparam name="T">Object repository class</typeparam>
         /// <returns>instance of T</returns>
-        public static T GetBrowserWindow<T>()
+        public static T GetBrowserWindow<T>(string title = null) where T : BrowserWindowUnderTest
         {
-            return ObjectRepositoryManager.GetInstance<T>();
+            return ObjectRepositoryManager.GetInstance<T>(title);
         }
 
         /// <summary>

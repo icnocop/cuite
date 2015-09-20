@@ -11,21 +11,11 @@ using CUITSilverlightControls = Microsoft.VisualStudio.TestTools.UITesting.Silve
 
 namespace CUITe
 {
-    public class ObjectRepositoryManager
+    internal class ObjectRepositoryManager
     {
-        public static T GetInstance<T>()
+        internal static T GetInstance<T>(params object[] args) where T : BrowserWindowUnderTest
         {
-            return (T)(object)GetInstance(typeof(T));
-        }
-
-        public static T GetInstance<T>(params object[] args)
-        {
-            return (T)(object)GetInstance(typeof(T), args);
-        }
-
-        private static BrowserWindowUnderTest GetInstance(Type typePageDefinition)
-        {
-            return GetInstance(typePageDefinition, null);
+            return (T)GetInstance(typeof(T), args);
         }
 
         private static BrowserWindowUnderTest GetInstance(Type typePageDefinition, params object[] args)
