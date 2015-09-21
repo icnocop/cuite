@@ -39,7 +39,7 @@ Visual Studio 2013: `Install-Package CUITe.VS2013 -Pre`
 
 As best practice, we recommend writing object repositories for a more object-oriented approach to testing.
 Object repositories can more easily be created using the object recorder instead of manually creating them for HTML web pages.
-For more information see [How can I record objects using the CUITe Object Recorder?](#recording-objects-using-the-cuite-object-recorder) or more code examples [here](https://github.com/icnocop/cuite/tree/master/src).
+For more information see [Recording objects using the CUITe Object Recorder](#recording-objects-using-the-cuite-object-recorder) or more code examples [here](https://github.com/icnocop/cuite/tree/master/src).
 
 Here are simple examples of testing filling out a form:
 
