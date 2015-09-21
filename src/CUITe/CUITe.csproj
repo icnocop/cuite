@@ -231,6 +231,13 @@
     <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CUITe.nuspec" />
+    <None Include="NuGet\app.config.transform" />
+    <None Include="NuGet\app.config.uninstall.xdt" />
+    <None Include="NuGet\app.config.install.xdt" />
+    <None Include="NuGet\install.ps1" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
