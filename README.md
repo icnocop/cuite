@@ -2,22 +2,30 @@
 
 CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
 
-#### Which UI frameworks does CUITe support?
+#### UI frameworks
 
 HTML  
 WPF  
 WinForms  
 Silverlight  
 
-#### Which versions of Visual Studio does CUITe support?
+#### Requirements
 
 Visual Studio 2010 Ultimate or Premium and Feature Pack 2  
 Visual Studio 2012 Ultimate or Premium  
 Visual Studio 2013 Ultimate or Premium  
 
-#### How do I install CUITe?
+#### Optional
 
-Install it using NuGet.  
+[Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4)
+
+[Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da)
+
+[Selenium components for Coded UI Cross Browser Testing](https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d)
+
+#### Installation
+
+Install CUITe using NuGet.  
 
 Make sure you include prerelease packages.
 
@@ -27,11 +35,11 @@ Visual Studio 2010: `Install-Package CUITe.VS2010 -Pre`
 Visual Studio 2012: `Install-Package CUITe.VS2012 -Pre`  
 Visual Studio 2013: `Install-Package CUITe.VS2013 -Pre`  
 
-#### How can I use CUITe?
+#### Using CUITe
 
 As best practice, we recommend writing object repositories for a more object-oriented approach to testing.
 Object repositories can more easily be created using the object recorder instead of manually creating them for HTML web pages.
-For more information see [How can I record objects using the CUITe Object Recorder?](#how-can-i-record-objects-using-the-cuite-object-recorder) or more code examples [here](https://github.com/icnocop/cuite/tree/master/src).
+For more information see [How can I record objects using the CUITe Object Recorder?](#recording-objects-using-the-cuite-object-recorder) or more code examples [here](https://github.com/icnocop/cuite/tree/master/src).
 
 Here are simple examples of testing filling out a form:
 
@@ -102,7 +110,7 @@ browser.Find<SilverlightEdit>(By.AutomationId("LastName")).Text = "Doe";
 browser.Find<SilverlightButton>(By.AutomationId("Save")).Click();
 ```
 
-#### How can I record objects using the CUITe Object Recorder?
+#### Recording objects using the CUITe Object Recorder
 
 The CUITe Object Recorder supports recording objects from an HTML web page only.
 
@@ -130,3 +138,9 @@ browserWindow.LastName.Text ="Doe";
 // Click on the Save button
 browserWindow.Save.Click();
 ```
+
+#### Building
+
+Run Build.bat from a command prompt to build all projects using the Release configuration.  
+
+Run Test.bat from a command prompt to execute all UI tests.
