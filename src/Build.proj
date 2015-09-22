@@ -6,14 +6,19 @@
     <CurrentDirectory>$(MSBuildProjectDirectory)\</CurrentDirectory>
     <CvsRootPath>$(CurrentDirectory)..</CvsRootPath>
     <SolutionPath>$(CurrentDirectory)CUITe.sln</SolutionPath>
-    <ProjectDir>$(CurrentDirectory)CUITe</ProjectDir>
-    <ProjectPath>$(ProjectDir)\CUITe.csproj</ProjectPath>
-    <NuGetSpecPath>$(ProjectDir)\CUITe.nuspec</NuGetSpecPath>
+    <!-- CUITe -->
+    <ProjectPath>$(CurrentDirectory)CUITe\CUITe.csproj</ProjectPath>
+    <!-- CUITe Silverlight -->
+    <SilverlightProjectDir>$(CurrentDirectory)CUITe.Silverlight</SilverlightProjectDir>
+    <SilverlightProjectPath>$(SilverlightProjectDir)\CUITe.Silverlight.csproj</SilverlightProjectPath>
+    <SilverlightNuGetSpecPath>$(SilverlightProjectDir)\CUITe.Silverlight.nuspec</SilverlightNuGetSpecPath>
+    <!-- NuGet -->
     <NuGetPath>$(CurrentDirectory).nuget\NuGet.exe</NuGetPath>
+    <!-- VSTest -->
     <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
   </PropertyGroup>
 
-  <!-- Builds the solution in all supported configurations -->
+  <!-- Builds CUITe in all supported configurations -->
   <Target Name="Build">
     <!-- .NET45 -->
     <MSBuild
@@ -29,10 +34,66 @@
       Targets="Rebuild"
       BuildInParallel="true" />
   </Target>
+
+  <!-- Builds CUITe Silverlight in all supported configurations -->
+  <Target Name="BuildSilverlight">
+    <!-- VS2013 .NET45 -->
+    <MSBuild
+      Projects="$(SilverlightProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=12"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2013 .NET40 -->
+    <MSBuild
+      Projects="$(SilverlightProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0;DefineConstants=TRACE"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2012 .NET45 -->
+    <MSBuild
+      Projects="$(SilverlightProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2012 .NET40 -->
+    <MSBuild
+      Projects="$(SilverlightProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2010 .NET40 -->
+    <MSBuild
+      Projects="$(SilverlightProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=10;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+  </Target>
   
-  <!-- Creates NuGet packages CUITe deliverables -->
+  <!-- Creates CUITe NuGet package -->
   <Target Name="Pack">
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12;Configuration=Release" />
+  </Target>
+
+  <!-- Creates CUITe Silverlight NuGet packages -->
+  <Target Name="PackSilverlight">
+    <!-- VS2013 -->
+    <Copy SourceFiles="$(SilverlightProjectDir)\CUITe.Silverlight.VS2013.nuspec" DestinationFiles="$(SilverlightNuGetSpecPath)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12;Configuration=Release" />
+
+    <!-- VS2012 -->
+    <Copy SourceFiles="$(SilverlightProjectDir)\CUITe.Silverlight.VS2012.nuspec" DestinationFiles="$(SilverlightNuGetSpecPath)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=11;Configuration=Release" />
+
+    <!-- VS2010 -->
+    <Copy SourceFiles="$(SilverlightProjectDir)\CUITe.Silverlight.VS2010.nuspec" DestinationFiles="$(SilverlightNuGetSpecPath)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=10;Configuration=Release;TargetFrameworkVersion=v4.0" />
+
+    <!-- Cleanup -->
+    <Delete Files="$(SilverlightNuGetSpecPath)" />
   </Target>
 
   <!-- Runs all tests -->
