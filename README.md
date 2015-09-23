@@ -2,38 +2,42 @@
 
 CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
 
-#### UI frameworks
+#### Supported technologies
 
-HTML  
-WPF  
-WinForms  
-Silverlight  
+- HTML
+- WPF
+- WinForms
+- Silverlight
+
+#### Supported Visual Studio versions
+
+- Visual Studio 2010 Ultimate or Premium and Feature Pack 2
+- Visual Studio 2012 Ultimate or Premium
+- Visual Studio 2013 Ultimate or Premium
+- Visual Studio 2015 Enterprise
 
 #### Requirements
 
-Visual Studio 2010 Ultimate or Premium and Feature Pack 2  
-Visual Studio 2012 Ultimate or Premium  
-Visual Studio 2013 Ultimate or Premium  
-
-#### Optional
-
-[Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4)
-
-[Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da)
+###### Testing HTML
 
 [Selenium components for Coded UI Cross Browser Testing](https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d)
 
+###### Testing Silverlight
+
+[Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4)
+[Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da)
+
 #### Installation
 
-Install CUITe using NuGet.  
+Install CUITe using NuGet.
 
 Make sure you include prerelease packages.
 
 For example, to install CUITe using the NuGet Package Manager:
 
-Visual Studio 2010: `Install-Package CUITe.VS2010 -Pre`  
-Visual Studio 2012: `Install-Package CUITe.VS2012 -Pre`  
-Visual Studio 2013: `Install-Package CUITe.VS2013 -Pre`  
+CUITe for HTML/WPF/WinForms: `Install-Package CUITe -Pre`
+CUITe Silverlight for Visual Studio 2012: `Install-Package CUITe.Silverlight.VS2012 -Pre`
+CUITe Silverlight for Visual Studio 2013: `Install-Package CUITe.Silverlight.VS2013 -Pre`
 
 #### Using CUITe
 
