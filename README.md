@@ -1,45 +1,60 @@
-#### What is CUITe?
+## What is CUITe?
 
 CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
 
-#### Supported technologies
+## Supported technologies
 
 - HTML
 - WPF
 - WinForms
 - Silverlight
 
-#### Supported Visual Studio versions
+## Supported Visual Studio versions
 
-- Visual Studio 2010 Ultimate or Premium and Feature Pack 2
+- Visual Studio 2010 Ultimate or Premium with Feature Pack 2
 - Visual Studio 2012 Ultimate or Premium
 - Visual Studio 2013 Ultimate or Premium
 - Visual Studio 2015 Enterprise
 
-#### Requirements
+## Installation
 
-###### Testing HTML
+Install CUITe using NuGet and make sure you include prerelease packages.
 
-[Selenium components for Coded UI Cross Browser Testing](https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d)
+### Installing CUITe for HTML, WPF and WinForms
 
-###### Testing Silverlight
+Install CUITe using the NuGet Package Manager:
 
-[Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4)
-[Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da)
+```Install-Package CUITe -Pre```
 
-#### Installation
+If your intent is to test HTML you might also want to install [Selenium components for Coded UI Cross Browser Testing](https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d).
 
-Install CUITe using NuGet.
+### Installing CUITe for Silverlight
 
-Make sure you include prerelease packages.
+The NuGet package to install depends on the Visual Studio version you are using.
 
-For example, to install CUITe using the NuGet Package Manager:
+#### CUITe for Silverlight in Visual Studio 2010
 
-CUITe for HTML/WPF/WinForms: `Install-Package CUITe -Pre`
-CUITe Silverlight for Visual Studio 2012: `Install-Package CUITe.Silverlight.VS2012 -Pre`
-CUITe Silverlight for Visual Studio 2013: `Install-Package CUITe.Silverlight.VS2013 -Pre`
+Install CUITe for Silverlight using the NuGet Package Manager:
 
-#### Using CUITe
+```Install-Package CUITe.Silverlight.VS2010 -Pre```
+
+#### CUITe for Silverlight in Visual Studio 2012
+
+Install CUITe for Silverlight using the NuGet Package Manager:
+
+```Install-Package CUITe.Silverlight.VS2012 -Pre```
+
+You should also install the extension [Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4).
+
+#### CUITe for Silverlight in Visual Studio 2013
+
+Install CUITe for Silverlight using the NuGet Package Manager:
+
+```Install-Package CUITe.Silverlight.VS2013 -Pre```
+
+You should also install the extension [Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da).
+
+## Using CUITe
 
 As best practice, we recommend writing object repositories for a more object-oriented approach to testing.
 Object repositories can more easily be created using the object recorder instead of manually creating them for HTML web pages.
@@ -47,7 +62,7 @@ For more information see [Recording objects using the CUITe Object Recorder](#re
 
 Here are simple examples of testing filling out a form:
 
-##### HTML
+### HTML
 ```
 // Launch the web browser and navigate to the homepage
 BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("https://website.com");
@@ -62,7 +77,7 @@ browserWindow.Find<HtmlPassword>(By.Id("LastName")).Text ="Doe";
 browserWindow.Find<HtmlInputButton>(By.Id("Save")).Click();
 ```
 
-##### WPF
+### WPF
 ```
 // Launch the application
 ApplicationUnderTest.Launch(@"C:\path to your application.exe");
@@ -80,7 +95,7 @@ window.Find<WpfEdit>(By.Name("LastName")).Text = "Doe";
 window.Find<WinButton>(By.Name("Save")).Click();
 ```
 
-##### WinForms
+### WinForms
 ```
 // Launch the application
 ApplicationUnderTest.Launch(@"C:\path to your application.exe");
@@ -98,7 +113,7 @@ window.Find<WinEdit>(By.Name("LastName")).Text = "Doe";
 window.Find<WinButton>(By.Name("Save")).Click();
 ```
 
-##### Silverlight
+### Silverlight
 
 ```
 // Launch the browser where the silverlight application is hosted
@@ -114,11 +129,11 @@ browser.Find<SilverlightEdit>(By.AutomationId("LastName")).Text = "Doe";
 browser.Find<SilverlightButton>(By.AutomationId("Save")).Click();
 ```
 
-#### Recording objects using the CUITe Object Recorder
+## Recording objects using the CUITe Object Recorder
 
 The CUITe Object Recorder supports recording objects from an HTML web page only.
 
-1. Launch the CUITe Object Recorder from the location where the nuget package was installed.
+1. Launch the CUITe Object Recorder from the location where the NuGet package was installed.
 
    For example, launch /packages/CUITe.VS2013.x.x.x/tools/CUITe_ObjectRecorder.exe, relative to your solution.
 
@@ -143,7 +158,7 @@ browserWindow.LastName.Text ="Doe";
 browserWindow.Save.Click();
 ```
 
-#### Building
+## Building
 
 Run Build.bat from a command prompt to build all projects using the Release configuration.  
 
