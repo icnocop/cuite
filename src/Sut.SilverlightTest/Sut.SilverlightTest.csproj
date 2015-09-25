@@ -66,6 +66,10 @@
     <Compile Include="SilverlightControlTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CUITe.Silverlight\CUITe.Silverlight.csproj">
+      <Project>{48cb8820-8baa-4588-bfb6-69d731c89bde}</Project>
+      <Name>CUITe.Silverlight</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CUITe\CUITe.csproj">
       <Project>{fe093159-2b72-438e-9c73-e3fbaeac5243}</Project>
       <Name>CUITe</Name>

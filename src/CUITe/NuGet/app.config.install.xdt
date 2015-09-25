@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <!-- If runtime tag is absent -->
+  <runtime xdt:Transform="InsertIfMissing">
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+    </assemblyBinding>
+  </runtime>
+
+  <!-- If runtime tag is present, but assembly binding tag is absent -->
+  <runtime>
+    <assemblyBinding xdt:Transform="InsertIfMissing" xmlns="urn:schemas-microsoft-com:asm.v1">
+    </assemblyBinding>
+  </runtime>
+
+  <!-- Remove existing and insert new 'Microsoft.VisualStudio.TestTools.UITest.Extension' entry -->
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(./_defaultNamespace:assemblyIdentity/@name='Microsoft.VisualStudio.TestTools.UITest.Extension')" >
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.VisualStudio.TestTools.UITest.Extension" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="10.0.0.0-14.0.0.0" newVersion="[Placeholder]"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+
+  <!-- Remove existing and insert new 'Microsoft.VisualStudio.TestTools.UITesting' entry -->
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Transform="Remove" xdt:Locator="Condition(./_defaultNamespace:assemblyIdentity/@name='Microsoft.VisualStudio.TestTools.UITesting')" >
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Transform="Insert">
+        <assemblyIdentity name="Microsoft.VisualStudio.TestTools.UITesting" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="10.0.0.0-14.0.0.0" newVersion="[Placeholder]"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>

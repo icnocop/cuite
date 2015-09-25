@@ -26,7 +26,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;SILVERLIGHT_SUPPORT</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.xml</DocumentationFile>
@@ -43,7 +43,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '10' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.xml</DocumentationFile>
@@ -99,9 +99,11 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v12\Microsoft.VisualStudio.TestTools.UITest.Extension.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
+          <HintPath>..\ThirdParty\CUIT\v12\Microsoft.VisualStudio.TestTools.UITesting.dll</HintPath>
         </Reference>
       </ItemGroup>
     </When>
@@ -173,29 +175,6 @@
     <Compile Include="Controls\HtmlControls\HtmlXml.cs" />
     <Compile Include="Controls\HtmlControls\IHasInnerText.cs" />
     <Compile Include="Controls\ModifierKeysLifetime.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightButton.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightCalendar.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightCell.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightCheckBox.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightComboBox.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightControl.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightDataPager.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightDatePicker.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightEdit.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightHyperlink.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightImage.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightLabel.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightList.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightPassword.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightRadioButton.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightSlider.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightSpinner.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightTab.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightTabItem.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightTable.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightTableSearchOptions.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightText.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightTree.cs" />
     <Compile Include="Controls\TelerikControls\ComboBox.cs" />
     <Compile Include="Controls\UIWindowsSecurityWindow.cs" />
     <Compile Include="Controls\WinControls\WinButton.cs" />
@@ -294,8 +273,13 @@
     <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(SolutionDir)\SilverlightExtension.targets" />
+  <ItemGroup>
+    <EmbeddedResource Include="CUITe.nuspec" />
+    <None Include="NuGet\app.config.transform" />
+    <None Include="NuGet\app.config.uninstall.xdt" />
+    <None Include="NuGet\app.config.install.xdt" />
+    <None Include="NuGet\install.ps1" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
