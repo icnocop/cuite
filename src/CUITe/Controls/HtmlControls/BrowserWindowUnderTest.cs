@@ -205,7 +205,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 control.SourceControl.Container = SilverlightObjectContainer;
             }
-            else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
+            else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
             {
                 (control as ComboBox).SetWindow(this);
             }
