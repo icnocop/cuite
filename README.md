@@ -157,9 +157,3 @@ browserWindow.LastName.Text ="Doe";
 // Click on the Save button
 browserWindow.Save.Click();
 ```
-
-## Building
-
-Run Build.bat from a command prompt to build all projects using the Release configuration.  
-
-Run Test.bat from a command prompt to execute all UI tests.
