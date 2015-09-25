@@ -1,5 +1,5 @@
 ﻿using CUITe.Controls.HtmlControls;
-using CUITe.Controls.TelerikControls;
+using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
