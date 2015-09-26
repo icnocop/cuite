@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CUITe.Controls;
-using CUITe.Controls.TelerikControls;
+using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

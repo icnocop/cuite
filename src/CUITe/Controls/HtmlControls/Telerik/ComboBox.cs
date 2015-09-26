@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading;
-using CUITe.Controls.HtmlControls;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
-namespace CUITe.Controls.TelerikControls
+namespace CUITe.Controls.HtmlControls.Telerik
 {
     /// <summary>
     /// Represents a Telerik combo box for Web page user interface (UI) testing.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
-using CUITe.Controls.TelerikControls;
+using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -205,7 +205,7 @@ namespace CUITe.Controls.HtmlControls
             {
                 control.SourceControl.Container = SilverlightObjectContainer;
             }
-            else if (typeof(T).Namespace.Equals("CUITe.Controls.TelerikControls"))
+            else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
             {
                 (control as ComboBox).SetWindow(this);
             }
