@@ -35,8 +35,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLanguage = new System.Windows.Forms.ToolStripSplitButton();
-            this.menuItemVB = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCSharp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemVB = new System.Windows.Forms.ToolStripMenuItem();
             this.btnShowCode = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClear = new System.Windows.Forms.ToolStripButton();
@@ -81,7 +81,7 @@
             this.btnRecord.Image = ((System.Drawing.Image)(resources.GetObject("btnRecord.Image")));
             this.btnRecord.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRecord.Name = "btnRecord";
-            this.btnRecord.Size = new System.Drawing.Size(61, 22);
+            this.btnRecord.Size = new System.Drawing.Size(64, 22);
             this.btnRecord.Text = "Record";
             this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click);
             // 
@@ -109,7 +109,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(42, 22);
+            this.toolStripButton1.Size = new System.Drawing.Size(44, 22);
             this.toolStripButton1.Text = "Del";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -126,18 +126,10 @@
             this.menuItemVB});
             this.btnLanguage.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLanguage.Name = "btnLanguage";
-            this.btnLanguage.Size = new System.Drawing.Size(35, 22);
+            this.btnLanguage.Size = new System.Drawing.Size(38, 22);
             this.btnLanguage.Text = "C#";
             this.btnLanguage.ToolTipText = "Select Language";
             this.btnLanguage.ButtonClick += new System.EventHandler(this.btnLanguage_ButtonClick);
-            // 
-            // menuItemVB
-            // 
-            this.menuItemVB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuItemVB.Name = "menuItemVB";
-            this.menuItemVB.Size = new System.Drawing.Size(152, 22);
-            this.menuItemVB.Text = "VB";
-            this.menuItemVB.Click += new System.EventHandler(this.menuItemVB_Click);
             // 
             // menuItemCSharp
             // 
@@ -145,16 +137,24 @@
             this.menuItemCSharp.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuItemCSharp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.menuItemCSharp.Name = "menuItemCSharp";
-            this.menuItemCSharp.Size = new System.Drawing.Size(152, 22);
+            this.menuItemCSharp.Size = new System.Drawing.Size(89, 22);
             this.menuItemCSharp.Text = "C#";
             this.menuItemCSharp.Click += new System.EventHandler(this.menuItemCSharp_Click);
+            // 
+            // menuItemVB
+            // 
+            this.menuItemVB.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuItemVB.Name = "menuItemVB";
+            this.menuItemVB.Size = new System.Drawing.Size(89, 22);
+            this.menuItemVB.Text = "VB";
+            this.menuItemVB.Click += new System.EventHandler(this.menuItemVB_Click);
             // 
             // btnShowCode
             // 
             this.btnShowCode.Image = ((System.Drawing.Image)(resources.GetObject("btnShowCode.Image")));
             this.btnShowCode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnShowCode.Name = "btnShowCode";
-            this.btnShowCode.Size = new System.Drawing.Size(52, 22);
+            this.btnShowCode.Size = new System.Drawing.Size(55, 22);
             this.btnShowCode.Text = "Code";
             this.btnShowCode.Click += new System.EventHandler(this.btnShowCode_Click);
             // 
@@ -168,7 +168,7 @@
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(52, 22);
+            this.btnClear.Size = new System.Drawing.Size(54, 22);
             this.btnClear.Text = "Clear";
             this.btnClear.ToolTipText = "Clear Code";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -178,7 +178,7 @@
             this.btnCopy.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.Image")));
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(70, 22);
+            this.btnCopy.Size = new System.Drawing.Size(79, 22);
             this.btnCopy.Text = "&Add Html";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
@@ -190,7 +190,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(50, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(52, 22);
             this.toolStripLabel1.Text = "Address:";
             // 
             // toolStripTextBox1
@@ -259,6 +259,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "CUITe_ObjectRecorder";
             this.toolStrip1.ResumeLayout(false);

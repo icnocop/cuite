@@ -9,24 +9,25 @@ namespace CUITe_ObjectRecorder
 {
     public partial class Form1 : Form
     {
-        HtmlDocument doc;
+        private HtmlDocument document;
+        private bool isCodeLanguageVB;
+
         public Form1()
         {
             InitializeComponent();
-            languageIsVB = false;
+
+            isCodeLanguageVB = false;
         }
 
-        private bool languageIsVB { get; set; }
-
-        public void webBrowser1_ClickHandler(object sender, HtmlElementEventArgs ev)
+        private void webBrowser1_ClickHandler(object sender, HtmlElementEventArgs e)
         {
-            string sValues = (string)doc.InvokeScript("getValues");
-            if (sValues != null && !listBox1.Items.Contains(sValues))
+            var values = (string)document.InvokeScript("getValues");
+            if (values != null && !listBox1.Items.Contains(values))
             {
-                bool objectIdentified = languageIsVB ? !sValues.Contains(" As New type(") : !sValues.StartsWith("public type ");
+                bool objectIdentified = isCodeLanguageVB ? !values.Contains(" As New type(") : !values.StartsWith("public type ");
                 if (objectIdentified)
                 {
-                    listBox1.Items.Add(sValues);
+                    listBox1.Items.Add(values);
                     toolStripStatusLabel1.Text = "Object added!";
                 }
                 else
@@ -40,33 +41,14 @@ namespace CUITe_ObjectRecorder
             }
         }
 
-        // code for subwindow
-        public void webBrowser1_CancelEventHandler(object sender, CancelEventArgs canargs)
-        {
-            //string x = ((WebBrowser)sender).Document.ActiveElement.OuterHtml;
-            //x = x.Substring(x.IndexOf("onclick"));
-            //x = x.Substring(0, x.IndexOf(" "));
-            //x = x.Replace("onclick=", "");
-            //x = x.Replace("javascript:", "");
-            ////string x = (string)objURL.GetType().InvokeMember("ToString", System.Reflection.BindingFlags.InvokeMethod, null, objURL, null);
-            ////MessageBox.Show(((WebBrowser)sender).Url.ToString());
-            //canargs.Cancel = true;
-            //this.webBrowser1.ScriptErrorsSuppressed = true;
-            //Form1 form = new Form1();
-            //form.Show();
-            //form.webBrowser1.Document.InvokeScript(x);
-            ////this.webBrowser1.Navigate(x);
-        }
-
         private void webBrowser1_NewWindow(object sender, CancelEventArgs e)
         {
-            Form1 frmWB;
-            frmWB = new Form1();
-            WebBrowser webBrowser = (WebBrowser)sender;
+            var frmWB = new Form1();
+            var webBrowser = (WebBrowser)sender;
             HtmlElement link = webBrowser.Document.ActiveElement;
             if (link.GetAttribute("href") != null)
             {
-                Uri urlNavigated = new Uri(link.GetAttribute("href"));
+                var urlNavigated = new Uri(link.GetAttribute("href"));
                 frmWB.webBrowser1.Navigate(urlNavigated);
             }
             else if (link.GetAttribute("onclick") != null)
@@ -78,9 +60,9 @@ namespace CUITe_ObjectRecorder
             frmWB.Show(this);
         }
 
-        public void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs args)
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            doc = webBrowser1.Document;
+            document = webBrowser1.Document;
             btnRecord.Checked = false;
         }
 
@@ -92,16 +74,16 @@ namespace CUITe_ObjectRecorder
                 {
                     webBrowser1.Url = new Uri(toolStripTextBox1.Text.Trim());
                 }
-                catch (Exception excep)
+                catch (Exception exception)
                 {
-                    toolStripStatusLabel1.Text = excep.Message;
+                    toolStripStatusLabel1.Text = exception.Message;
                 }
             }
         }
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
-            if (doc == null)
+            if (document == null)
             {
                 toolStripStatusLabel1.Text = "Error: Document not loaded yet, please try again!";
                 return;
@@ -109,12 +91,12 @@ namespace CUITe_ObjectRecorder
             if (btnRecord.Checked)
             {
                 toolStripDropDownButton1.Enabled = true;
-                doc.Click += webBrowser1_ClickHandler;
-                doc.GetElementsByTagName("head")[0].AppendChild(getScript(doc));
-                string getwindowtitleFunction = languageIsVB ? "getWindowTitleVB" : "getWindowTitle";
-                string sWindowTitle = (string)doc.InvokeScript(getwindowtitleFunction);
+                document.Click += webBrowser1_ClickHandler;
+                document.GetElementsByTagName("head")[0].AppendChild(GetScript(document));
+                string getwindowtitleFunction = isCodeLanguageVB ? "getWindowTitleVB" : "getWindowTitle";
+                var sWindowTitle = (string)document.InvokeScript(getwindowtitleFunction);
                 if (!listBox1.Items.Contains(sWindowTitle)) listBox1.Items.Add(sWindowTitle);
-                foreach (HtmlWindow frame in doc.Window.Frames)
+                foreach (HtmlWindow frame in document.Window.Frames)
                 {
                     HtmlDocument frameDoc;
                     try
@@ -125,7 +107,7 @@ namespace CUITe_ObjectRecorder
                     {
                         continue;
                     }
-                    frameDoc.GetElementsByTagName("head")[0].AppendChild(getScript(frameDoc));
+                    frameDoc.GetElementsByTagName("head")[0].AppendChild(GetScript(frameDoc));
                     frameDoc.Click += webBrowser1_ClickHandler;
                 }
             }
@@ -133,9 +115,9 @@ namespace CUITe_ObjectRecorder
             {
                 toolStripDropDownButton1.SelectedIndex = 0;
                 toolStripDropDownButton1.Enabled = false;
-                doc.Click -= webBrowser1_ClickHandler;
-                doc.InvokeScript("removeScript");
-                foreach (HtmlWindow frame in doc.Window.Frames)
+                document.Click -= webBrowser1_ClickHandler;
+                document.InvokeScript("removeScript");
+                foreach (HtmlWindow frame in document.Window.Frames)
                 {
                     HtmlDocument frameDoc;
                     try
@@ -152,14 +134,14 @@ namespace CUITe_ObjectRecorder
             }
         }
 
-        private HtmlElement getScript(HtmlDocument pDoc)
+        private HtmlElement GetScript(HtmlDocument pDoc)
         {
             HtmlElement script;
             script = pDoc.CreateElement("script");
             script.SetAttribute("id", "CUITe_Script");
             script.SetAttribute("type", "text/javascript");
             script.SetAttribute("text", @"
-                var languageIsVB = " + languageIsVB.ToString().ToLowerInvariant() + @";
+                var isCodeLanguageVB = " + isCodeLanguageVB.ToString().ToLowerInvariant() + @";
                 var oStyle;
                 var sCode;
                 var wintit;
@@ -368,7 +350,7 @@ namespace CUITe_ObjectRecorder
                     if (evt.stopPropagation) evt.stopPropagation();
                     if (event.preventDefault) event.preventDefault();
 
-                    sCode = languageIsVB ? 'Public var As New type(searchparams)' : 'public type var = new type(searchparams)';
+                    sCode = isCodeLanguageVB ? 'Public var As New type(By.SearchProperties(searchparams))' : 'public type var = new type(By.SearchProperties(searchparams))';
                     var sProperties = '';
                     var sNodeName, sNodeType, sId, sName, sClass, sInnerText, sTitle, sValue;
                     if (objInQuestion != null && objInQuestion.id != 'CUITe_div2') {
@@ -476,8 +458,8 @@ namespace CUITe_ObjectRecorder
                     }
 
                     sCode = sCode.replace('searchparams', String.fromCharCode(34) + sProperties + String.fromCharCode(34));
-                    sCode = languageIsVB ? sCode : sCode + ';';
-                    sCode = languageIsVB ? sCode.replace(' var As New ', ' ' + sVarNameEval + ' As New ') : sCode.replace(' var = ', ' ' + sVarNameEval + ' = ');
+                    sCode = isCodeLanguageVB ? sCode : sCode + ';';
+                    sCode = isCodeLanguageVB ? sCode.replace(' var As New ', ' ' + sVarNameEval + ' As New ') : sCode.replace(' var = ', ' ' + sVarNameEval + ' = ');
                     top.sCode = sCode;
                 }
                 function isElementIframe(elementName) {
@@ -629,30 +611,31 @@ namespace CUITe_ObjectRecorder
             if (listBox1.Items.Count > 0)
             {
                 string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
 
-                sb.AppendLine(languageIsVB ? "Imports System" : "using System;");
-                sb.AppendLine(languageIsVB ? "Imports System.Collections.Generic" : "using System.Collections.Generic;");
-                sb.AppendLine(languageIsVB ? "Imports System.Linq" : "using System.Linq;");
-                sb.AppendLine(languageIsVB ? "Imports System.Text" : "using System.Text;");
-                sb.AppendLine(languageIsVB ? "Imports Microsoft.VisualStudio.TestTools.UITesting" : "using Microsoft.VisualStudio.TestTools.UITesting;");
-                sb.AppendLine(languageIsVB ? "Imports CUITe.Controls.HtmlControls" : "using CUITe.Controls.HtmlControls;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports System" : "using System;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports System.Collections.Generic" : "using System.Collections.Generic;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports System.Linq" : "using System.Linq;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports System.Text" : "using System.Text;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.SearchConfigurations" : "using CUITe.SearchConfigurations;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports Microsoft.VisualStudio.TestTools.UITesting" : "using Microsoft.VisualStudio.TestTools.UITesting;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.Controls.HtmlControls" : "using CUITe.Controls.HtmlControls;");
                 sb.AppendLine();
-                sb.AppendLine(languageIsVB ? "Namespace ObjectRepository" : "namespace $ProjectNameSpace$.ObjectRepository");
-                if (!languageIsVB) sb.AppendLine("{");
-                string sWinTitle = (string)doc.InvokeScript("getWinTitForClassName");
-                sb.AppendLine(languageIsVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : BrowserWindowUnderTest");
-                if (languageIsVB) sb.AppendLine("\t\tInherits BrowserWindowUnderTest");
-                if (!languageIsVB) sb.AppendLine("\t{");
+                sb.AppendLine(isCodeLanguageVB ? "Namespace ObjectRepository" : "namespace $ProjectNameSpace$.ObjectRepository");
+                if (!isCodeLanguageVB) sb.AppendLine("{");
+                string sWinTitle = (string)document.InvokeScript("getWinTitForClassName");
+                sb.AppendLine(isCodeLanguageVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : BrowserWindowUnderTest");
+                if (isCodeLanguageVB) sb.AppendLine("\t\tInherits BrowserWindowUnderTest");
+                if (!isCodeLanguageVB) sb.AppendLine("\t{");
 
                 foreach (string sLine in listBox1.Items)
                 {
                     sb.AppendLine("\t\t" + sLine.Replace("\n", ""));
                 }
-                sb.AppendLine(languageIsVB ? "\tEnd Class" : "\t}");
-                sb.AppendLine(languageIsVB ? "End Namespace" : "}");
+                sb.AppendLine(isCodeLanguageVB ? "\tEnd Class" : "\t}");
+                sb.AppendLine(isCodeLanguageVB ? "End Namespace" : "}");
 
-                using (StreamWriter outfile = new StreamWriter(mydocpath + @"\CUITe_ObjectRecorder_temp.txt"))
+                using (var outfile = new StreamWriter(mydocpath + @"\CUITe_ObjectRecorder_temp.txt"))
                 {
                     outfile.Write(sb.ToString());
                 }
@@ -668,17 +651,17 @@ namespace CUITe_ObjectRecorder
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            string sHtml = (string)doc.InvokeScript("getHtmlCode");
+            var sHtml = (string)document.InvokeScript("getHtmlCode");
             Clipboard.SetText(sHtml);
-            string commentMarker = languageIsVB ? "' " : "// ";
+            string commentMarker = isCodeLanguageVB ? "' " : "// ";
             listBox1.Items.Add(commentMarker + sHtml);
         }
 
         private void toolStripDropDownButton1_TextChanged(object sender, EventArgs e)
         {
-            if (doc != null)
+            if (document != null)
             {
-                doc.InvokeScript("setFilter", new object[] { toolStripDropDownButton1.Text.Trim() });
+                document.InvokeScript("setFilter", new object[] { toolStripDropDownButton1.Text.Trim() });
             }
             else
             {
@@ -693,43 +676,36 @@ namespace CUITe_ObjectRecorder
 
         private void menuItemVB_Click(object sender, EventArgs e)
         {
-            checkLanguage(codeLanguage.vb);
+            checkLanguage(CodeLanguage.VB);
         }
 
         private void menuItemCSharp_Click(object sender, EventArgs e)
         {
-            checkLanguage(codeLanguage.csharp);
+            checkLanguage(CodeLanguage.CSharp);
         }
 
-        private void checkLanguage(codeLanguage lang)
+        private void checkLanguage(CodeLanguage lang)
         {
             menuItemVB.Checked = false;
             menuItemCSharp.Checked = false;
             string btnLanguageText = string.Empty;
-            if (lang == codeLanguage.vb)
+            if (lang == CodeLanguage.VB)
             {
                 menuItemVB.Checked = true;
                 btnLanguageText = menuItemVB.Text;
             }
-            if (lang == codeLanguage.csharp)
+            if (lang == CodeLanguage.CSharp)
             {
                 menuItemCSharp.Checked = true;
                 btnLanguageText = menuItemCSharp.Text;
             }
             btnLanguage.Text = btnLanguageText;
-            languageIsVB = lang == codeLanguage.vb;
+            isCodeLanguageVB = lang == CodeLanguage.VB;
 
             //clear
             listBox1.Items.Clear();
             btnRecord.Checked = false;
             btnRecord.PerformClick();
-
         }
     }
-
-    enum codeLanguage
-    {
-        csharp, vb
-    }
-
 }
