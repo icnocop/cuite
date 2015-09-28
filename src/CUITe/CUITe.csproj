@@ -255,7 +255,8 @@
     <Compile Include="Controls\WpfControls\WpfTree.cs" />
     <Compile Include="Controls\WpfControls\WpfTreeItem.cs" />
     <Compile Include="Controls\WpfControls\WpfWindow.cs" />
-    <Compile Include="DataManager.cs" />
+    <Compile Include="DataSources\DataBlockIdNotFoundException.cs" />
+    <Compile Include="DataSources\XmlDataSource.cs" />
     <Compile Include="Controls\GenericException.cs" />
     <Compile Include="Controls\InvalidTraversalException.cs" />
     <Compile Include="Controls\InvalidSearchPropertyNamesException.cs" />
@@ -263,7 +264,7 @@
     <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
     <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
-    <Compile Include="ResourceNotFoundException.cs" />
+    <Compile Include="DataSources\XmlDataSourceNotFoundException.cs" />
     <Compile Include="ObjectRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchConfigurations\By.cs" />

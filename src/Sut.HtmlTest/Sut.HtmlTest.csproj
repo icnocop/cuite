@@ -59,7 +59,6 @@
     </Compile>
     <Compile Include="BrowserWindowTests.cs" />
     <Compile Include="CrossBrowserHtmlControlTests.cs" />
-    <Compile Include="DataManagerTests.cs" />
     <Compile Include="HtmlControlTests.cs" />
     <Compile Include="ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs" />
     <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
@@ -93,12 +92,6 @@
     <None Include="TestHtmlPage.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <EmbeddedResource Include="XMLFile1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XMLFile2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
