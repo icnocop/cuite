@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  
+  <!-- Generation of data -->
+  <datablock id="name">
+    <firstname>Suresh</firstname>
+    <lastname>Balasubramanian</lastname>
+  </datablock>
+  <datablock id="dateofbirth" inherits="name">
+    <date>04/19/1973</date>
+    <age>38</age>
+  </datablock>
+  <datablock id="currentaddress" inherits="dateofbirth">
+    <address>Kondapur, Hyderabad</address>
+    <nationality>Indian</nationality>
+  </datablock>
+  
+  <!-- Overridden data -->
+  <datablock id="motorcycle">
+    <numberofwheels>2</numberofwheels>
+  </datablock>
+  <datablock id="motorcyclewithsidecar">
+    <numberofwheels>3</numberofwheels>
+  </datablock>
+</data>

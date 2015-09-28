@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using CUITe;
 using CUITe.Browsers;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
@@ -20,8 +18,6 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace Sut.HtmlTest
 {
     [CodedUITest]
-    [DeploymentItem("XMLFile1.xml")]
-    [DeploymentItem("XMLFile2.xml")]
     [DeploymentItem("TestHtmlPage.html")]
     public class HtmlControlTests
     {
@@ -61,43 +57,6 @@ namespace Sut.HtmlTest
             //do something with collection
             pgSearch.Close();
         }
-
-        [TestMethod]
-        public void DataManager_GetDataRowUsingEmbeddedResourceFromTypeAsString_Succeeds()
-        {
-            AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type.GetType("Sut.HtmlTest.HtmlControlTests"));
-        }
-
-        [TestMethod]
-        public void DataManager_GetDataRowUsingEmbeddedResource_Succeeds()
-        {
-            AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(typeof(HtmlControlTests));
-        }
-
-        private void AssertGetDataRowHashtableFromEmbeddedResourceExpectedValues(Type type)
-        {
-            Hashtable ht = DataManager.GetDataRow(type, "XMLFile1.xml", "tc2");
-            Assert.AreEqual("test", ht["test"]);
-            Assert.AreEqual("Kondapur, Hyderabad", ht["address"]);
-            Assert.AreEqual("Suresh", ht["firstname"]);
-            Assert.AreEqual("Balasubramanian", ht["lastname"]);
-            Assert.AreEqual("04/19/1973", ht["dob"]);
-            Assert.AreEqual("37", ht["age"]);
-            Assert.AreEqual("Indian", ht["nationality"]);
-        }
-
-        //[TestMethod]
-        //public void DataManager_GetDataRowUsingFile_Succeeds()
-        //{
-        //    Hashtable ht = CUITe.DataManager.GetDataRow("XMLFile2.xml", "content2");
-        //    Assert.AreEqual("SomeTest", ht["test"]);
-        //    Assert.AreEqual("Somewhere, Somewhere", ht["address"]);
-        //    Assert.AreEqual("SomeFirstName", ht["firstname"]);
-        //    Assert.AreEqual("SomeLastNameBigger", ht["lastname"]);
-        //    Assert.AreEqual("01/01/1900", ht["dob"]);
-        //    Assert.AreEqual("101", ht["age"]);
-        //    Assert.AreEqual("USA", ht["nationality"]);
-        //}
 
         [TestMethod]
         [Ignore] // this test currently fails
