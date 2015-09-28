@@ -93,9 +93,6 @@ namespace CUITe_ObjectRecorder
                 toolStripDropDownButton1.Enabled = true;
                 document.Click += webBrowser1_ClickHandler;
                 document.GetElementsByTagName("head")[0].AppendChild(GetScript(document));
-                string getwindowtitleFunction = isCodeLanguageVB ? "getWindowTitleVB" : "getWindowTitle";
-                var sWindowTitle = (string)document.InvokeScript(getwindowtitleFunction);
-                if (!listBox1.Items.Contains(sWindowTitle)) listBox1.Items.Add(sWindowTitle);
                 foreach (HtmlWindow frame in document.Window.Frames)
                 {
                     HtmlDocument frameDoc;
@@ -144,7 +141,6 @@ namespace CUITe_ObjectRecorder
                 var isCodeLanguageVB = " + isCodeLanguageVB.ToString().ToLowerInvariant() + @";
                 var oStyle;
                 var sCode;
-                var wintit;
                 var sOutHtml;
                 var sFilter;
                 var objInQuestion;
@@ -550,17 +546,10 @@ namespace CUITe_ObjectRecorder
                     return sVarName;
                 }
                 function getWindowTitle() {
-                    var retVal = 'public new string sWindowTitle = ';
-                    wintit = document.title;
-                    return retVal + String.fromCharCode(34) + wintit + String.fromCharCode(34) + ';';
-                }
-                function getWindowTitleVB() {
-                    var retVal = 'Public Shadows sWindowTitle As String = ';
-                    wintit = document.title;
-                    return retVal + String.fromCharCode(34) + wintit + String.fromCharCode(34);
+                    return String.fromCharCode(34) + document.title + String.fromCharCode(34);
                 }
                 function getWinTitForClassName() {
-                    return wintit.camelCase().replace(/ /g, '').replace(/[^a-zA-Z 0-9]+/g, '');
+                    return document.title.camelCase().replace(/ /g, '').replace(/[^a-zA-Z 0-9]+/g, '');
                 }
                 function setFilter(sFil) {
                     sFilter = sFil;
@@ -598,10 +587,7 @@ namespace CUITe_ObjectRecorder
             {
                 if (listBox1.SelectedItems.Count > 0)
                 {
-                    if (!listBox1.SelectedItem.ToString().StartsWith("public new string sWindowTitle = "))
-                    {
-                        listBox1.Items.Remove(listBox1.SelectedItem);
-                    }
+                    listBox1.Items.Remove(listBox1.SelectedItem);
                 }
             }
         }
@@ -622,16 +608,35 @@ namespace CUITe_ObjectRecorder
                 sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.Controls.HtmlControls" : "using CUITe.Controls.HtmlControls;");
                 sb.AppendLine();
                 sb.AppendLine(isCodeLanguageVB ? "Namespace ObjectRepository" : "namespace $ProjectNameSpace$.ObjectRepository");
+                
                 if (!isCodeLanguageVB) sb.AppendLine("{");
+                
                 string sWinTitle = (string)document.InvokeScript("getWinTitForClassName");
                 sb.AppendLine(isCodeLanguageVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : BrowserWindowUnderTest");
                 if (isCodeLanguageVB) sb.AppendLine("\t\tInherits BrowserWindowUnderTest");
                 if (!isCodeLanguageVB) sb.AppendLine("\t{");
 
+                var windowTitle = (string)document.InvokeScript("getWindowTitle");
+                if (isCodeLanguageVB)
+                {
+                    sb.AppendLine("\t\tPublic Sub New()");
+                    sb.AppendLine("\t\t\tMyBase.New(" + windowTitle + ")");
+                    sb.AppendLine("\t\tEnd Sub");
+                }
+                else
+                {
+                    sb.AppendLine("\t\tpublic " + sWinTitle + "() : base(" + windowTitle + ")");
+                    sb.AppendLine("\t\t{");
+                    sb.AppendLine("\t\t}");
+                }
+
+                sb.AppendLine();  
+
                 foreach (string sLine in listBox1.Items)
                 {
                     sb.AppendLine("\t\t" + sLine.Replace("\n", ""));
                 }
+
                 sb.AppendLine(isCodeLanguageVB ? "\tEnd Class" : "\t}");
                 sb.AppendLine(isCodeLanguageVB ? "End Namespace" : "}");
 
