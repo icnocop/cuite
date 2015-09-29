@@ -1,8 +1,6 @@
 ﻿using System;
-using CUITe.Controls.HtmlControls;
-using CUITHtmlControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
-namespace CUITe
+namespace CUITe.Controls.HtmlControls
 {
     internal class ObjectRepositoryManager
     {
