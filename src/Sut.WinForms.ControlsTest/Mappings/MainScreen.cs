@@ -1,13 +1,15 @@
 ﻿using System;
 using CUITe.Controls.WinControls;
+using CUITe.Mappings;
 using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 
-namespace Sut.WinForms.ControlsTest.ScreenObjects
+namespace Sut.WinForms.ControlsTest.Mappings
 {
-    public class MainScreen : WinWindow
+    public class MainScreen : Screen
     {
-        public MainScreen()
-            : base(By.Name("System Under Test (WinForms)"))
+        public MainScreen(UITestControl parent)
+            : base(parent)
         {
         }
 

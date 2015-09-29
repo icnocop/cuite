@@ -1,12 +1,14 @@
 ﻿using CUITe.Controls.WpfControls;
+using CUITe.Mappings;
 using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 
-namespace Sut.Wpf.ControlsTest.ScreenObjects
+namespace Sut.Wpf.ControlsTest.Mappings
 {
-    public class MainScreen : WpfWindow
+    public class MainScreen : Screen
     {
-        public MainScreen()
-            : base(By.Name("System Under Test (WPF)"))
+        public MainScreen(UITestControl parent)
+            : base(parent)
         {
         }
 

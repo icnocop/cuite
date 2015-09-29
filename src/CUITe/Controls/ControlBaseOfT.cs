@@ -106,9 +106,7 @@ namespace CUITe.Controls
         /// </exception>
         public TControl Find<TControl>(By searchConfiguration = null) where TControl : ControlBase
         {
-            var control = ControlBaseFactory.Create<TControl>(searchConfiguration);
-            control.SourceControl.Container = sourceControl;
-            return control;
+            return sourceControl.Find<TControl>(searchConfiguration);
         }
 
         private static void ValidateSearchPropertyNames(IEnumerable<PropertyExpression> searchProperties)
