@@ -14,8 +14,6 @@
     <tags>cuit cuite coded ui test enhanced silverlight visual studio 2010 vs2010</tags>
   </metadata>
   <files>
-    <file src="bin\Release\VS2010\net40\CUITe.Silverlight.dll" target="lib\net40\CUITe.Silverlight.dll" />
-    <file src="bin\Release\VS2010\net40\CUITe.Silverlight.xml" target="lib\net40\CUITe.Silverlight.xml" />
     <file src="bin\Release\VS2010\net40\CUITe.dll" target="lib\net40\CUITe.dll" />
     <file src="bin\Release\VS2010\net40\CUITe.xml" target="lib\net40\CUITe.xml" />
   </files>
