@@ -57,7 +57,7 @@
     <Compile Include="KeyboardTest.cs" />
     <Compile Include="MouseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenObjects\MainScreen.cs" />
+    <Compile Include="Mappings\MainScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe\CUITe.csproj">

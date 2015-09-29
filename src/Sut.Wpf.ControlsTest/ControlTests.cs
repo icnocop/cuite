@@ -1,6 +1,6 @@
-﻿using Sut.Wpf.ControlsTest.ScreenObjects;
-using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sut.Wpf.ControlsTest.Mappings;
 
 namespace Sut.Wpf.ControlsTest
 {
@@ -23,8 +23,8 @@ namespace Sut.Wpf.ControlsTest
         [TestInitialize]
         public void TestInitialize()
         {
-            ApplicationUnderTest.Launch(ApplicationFilePath);
-            mainScreen = new MainScreen();
+            ApplicationUnderTest application = ApplicationUnderTest.Launch(ApplicationFilePath);
+            mainScreen = new MainScreen(application);
         }
 
         [TestMethod]

@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.PeripheralInputTest.ScreenObjects;
+using Sut.PeripheralInputTest.Mappings;
 
 namespace Sut.PeripheralInputTest
 {
@@ -25,8 +25,8 @@ namespace Sut.PeripheralInputTest
         [TestInitialize]
         public void TestInitialize()
         {
-            ApplicationUnderTest.Launch(ApplicationFilePath);
-            mainScreen = new MainScreen();
+            ApplicationUnderTest application = ApplicationUnderTest.Launch(ApplicationFilePath);
+            mainScreen = new MainScreen(application);
         }
 
         #region Click

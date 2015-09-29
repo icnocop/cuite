@@ -260,6 +260,8 @@
     <Compile Include="Controls\GenericException.cs" />
     <Compile Include="Controls\InvalidTraversalException.cs" />
     <Compile Include="Controls\InvalidSearchPropertyNamesException.cs" />
+    <Compile Include="Extensions\Microsoft\VisualStudio\TestTools\UITesting\UITestControlExtensions.cs" />
+    <Compile Include="Mappings\Screen.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
     <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
