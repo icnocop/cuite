@@ -33,22 +33,27 @@
         </Grid.ColumnDefinitions>
         
         <!-- Upper left control -->
-        <CheckBox Content="Upper left" />
+        <CheckBox
+            AutomationProperties.AutomationId="Ax9iHEo2gk-ayRFljKt2sA"
+            Content="Upper left" />
 
         <!-- Upper right control -->
         <CheckBox
             Grid.Column="1"
+            AutomationProperties.AutomationId="C_-kLEiiN0Odz20KncjQJQ"
             Content="Upper right" />
 
         <!-- Lower left control -->
         <RadioButton
             Grid.Row="1"
+            AutomationProperties.AutomationId="U-nw96CGFUuMrbKg3h0tCQ"
             Content="Lower left" />
 
         <!-- Lower right -->
         <RadioButton
             Grid.Row="1"
             Grid.Column="1"
+            AutomationProperties.AutomationId="oEOhLBF5ske3yGfbHhThuA"
             Content="Lower right" />
     </Grid>
 </Window>

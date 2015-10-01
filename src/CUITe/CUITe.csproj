@@ -263,6 +263,7 @@
     <Compile Include="Extensions\Microsoft\VisualStudio\TestTools\UITesting\UITestControlExtensions.cs" />
     <Compile Include="Mappings\Page.cs" />
     <Compile Include="Mappings\Screen.cs" />
+    <Compile Include="Mappings\ScreenComponent.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
     <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
