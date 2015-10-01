@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Sut.Wpf.Components
+namespace Sut.Wpf.ScreenComponents
 {
     public partial class App : Application
     {
