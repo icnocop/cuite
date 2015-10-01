@@ -1,0 +1,54 @@
+﻿<Window
+    x:Class="Sut.Wpf.Components.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="System Under Test (WPF)"
+    Icon="App.ico"
+    Width="200"
+    Height="200"
+    WindowStartupLocation="CenterScreen">
+
+    <!-- Resources -->
+    <Window.Resources>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    
+    <!-- Root element -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Upper left control -->
+        <CheckBox Content="Upper left" />
+
+        <!-- Upper right control -->
+        <CheckBox
+            Grid.Column="1"
+            Content="Upper right" />
+
+        <!-- Lower left control -->
+        <RadioButton
+            Grid.Row="1"
+            Content="Lower left" />
+
+        <!-- Lower right -->
+        <RadioButton
+            Grid.Row="1"
+            Grid.Column="1"
+            Content="Lower right" />
+    </Grid>
+</Window>
