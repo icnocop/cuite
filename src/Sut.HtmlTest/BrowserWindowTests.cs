@@ -1,4 +1,5 @@
 ﻿using CUITe.SearchConfigurations;
+using Sut.HtmlTest.Mappings;
 
 namespace Sut.HtmlTest
 {
@@ -8,7 +9,6 @@ namespace Sut.HtmlTest
     using CUITe.Controls.HtmlControls;
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Sut.HtmlTest.ObjectRepository;
 
     /// <summary>
     /// Browser window tests
@@ -69,14 +69,14 @@ namespace Sut.HtmlTest
         public void Launch_GetWindowTitle_Succeeds()
         {
             // Arrange
-            string url = this.currentDirectory + "/TestHtmlPage.html";
+            string url = currentDirectory + "/TestHtmlPage.html";
             string windowTitle = "A Test";
 
             // Act
-            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(url);
-
+            var window = BrowserWindowUnderTest.Launch(url);
+            
             // Assert
-            Assert.IsTrue(window.Title.Contains(windowTitle), window.Title);
+            Assert.IsTrue(window.Title.Contains(windowTitle));
 
             window.Close();
         }
@@ -152,10 +152,11 @@ namespace Sut.HtmlTest
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
             // Arrange
-            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
+            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var page = new TestHtmlPage(window);
 
             // Act
-            var doc = window.Find<HtmlDocument>();
+            var doc = page.Document;
 
             // Assert
             // if Visual Studio Team System for Testers is installed, the vsttFireTimer attribute is automatically injected within the body element for some unknown reason
@@ -165,14 +166,6 @@ namespace Sut.HtmlTest
             string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString();
 
             Assert.AreEqual(expected, outerHtml.Substring(0, expected.Length), true, outerHtml);
-
-            window.Close();
-        }
-
-        [TestMethod]
-        public void CloseBrowserWindow_UsingLaunchedBrowserWindow_Succeeds()
-        {
-            TestHtmlPage window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             window.Close();
         }

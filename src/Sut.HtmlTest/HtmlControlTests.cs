@@ -12,7 +12,7 @@ using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.HtmlTest.ObjectRepository;
+using Sut.HtmlTest.Mappings;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace Sut.HtmlTest
@@ -43,32 +43,6 @@ namespace Sut.HtmlTest
         public void TestCleanup()
         {
             Trace.WriteLine(string.Format("Test Results Directory: {0}", TestContext.TestResultsDirectory));
-        }
-
-        [Ignore] //TODO: use known html
-        [TestMethod]
-        public void HtmlEdit_SetText_Succeeds()
-        {
-            GoogleHomePage pgGHomePage = BrowserWindowUnderTest.Launch<GoogleHomePage>("http://www.google.com");
-            pgGHomePage.txtSearch.Text = "Coded UI Test Framework";
-            GoogleSearch pgSearch = BrowserWindowUnderTest.GetBrowserWindow<GoogleSearch>();
-// ReSharper disable once UnusedVariable
-            UITestControlCollection col = pgSearch.divSearchResults.SourceControl.GetChildren();
-            //do something with collection
-            pgSearch.Close();
-        }
-
-        [TestMethod]
-        [Ignore] // this test currently fails
-        public void SelectItemByText_OnTelerikASPNETComboBox_Succeeds()
-        {
-            DemosOfTeleriksASPNETComboBoxControl pgPage = BrowserWindowUnderTest.Launch<DemosOfTeleriksASPNETComboBoxControl>(
-                "http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
-            pgPage.cbProduct.SelectItemByText("Tofu", 5000);
-            pgPage.cbRegion.SelectItemByText("Bloomfield Hills", 5000);
-            pgPage.cbDealer.SelectItemByText("Exotic Liquids", 5000);
-            pgPage.cbPaymentMethod.SelectItemByText("American Express", 5000);
-            pgPage.Close();
         }
 
         [TestMethod]
@@ -556,10 +530,11 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlParagraph_InObjectRepository_Succeeds()
         {
-            var testpage = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
-            string content = testpage.p.InnerText;
+            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var page = new TestHtmlPage(window);
+            string content = page.Paragraph.InnerText;
             Assert.IsTrue(content.Contains("HtmlParagraph"));
-            testpage.Close();
+            window.Close();
         }
 
         [TestMethod]
@@ -677,10 +652,11 @@ namespace Sut.HtmlTest
         public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
         {
             // Arrange
-            var window = BrowserWindowUnderTest.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
+            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var page = new TestHtmlPage(window);
 
             // Act
-            List<HtmlListItem> children = window.list.GetChildren()
+            List<HtmlListItem> children = page.List.GetChildren()
                 .Cast<HtmlListItem>()
                 .ToList();
 
@@ -1040,15 +1016,16 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var window = BrowserWindowUnderTest.Launch<HtmlTestPage>(tempFile.FilePath);
+                var window = BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                var testPage = new HtmlTestPage(window);
 
                 //Act
-                window.div1.div2.edit.Text = "test";
+                testPage.Div1.Div2.Edit.Text = "test";
 
                 //Assert
-                Assert.IsTrue(window.div1.div2.edit.Exists);
-                Assert.IsTrue(window.div1.div2.Exists);
-                Assert.IsTrue(window.div1.Exists);
+                Assert.IsTrue(testPage.Div1.Div2.Edit.Exists);
+                Assert.IsTrue(testPage.Div1.Div2.Exists);
+                Assert.IsTrue(testPage.Div1.Exists);
 
                 window.Close();
             }
@@ -1162,9 +1139,10 @@ namespace Sut.HtmlTest
 </html>"))
             {
                 // Act
-                HtmlTestPageFeeds window = BrowserWindowUnderTest.Launch<HtmlTestPageFeeds>(tempFile.FilePath);
+                var window = BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                var testPageFeeds = new HtmlTestPageFeeds(window);
 
-                CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(window.divFeedTabs.SourceControl);
+                CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(testPageFeeds.DivFeedTabs.SourceControl);
                 cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
                 cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Class, "dataFeedTab ui-tabs-nav", PropertyExpressionOperator.EqualTo);
 
@@ -1174,9 +1152,9 @@ namespace Sut.HtmlTest
                 Assert.IsTrue(cusDataFeedTabsNav.Exists);
 
                 // Assert
-                Assert.IsTrue(window.cusDataFeedTabsNav.Exists);
-                Assert.IsTrue(window.cusdatafeedtabsnav1.Exists);
-                Assert.IsTrue(window.cusDataFeedTabsNav2.Exists);
+                Assert.IsTrue(testPageFeeds.CustomDataFeedTabsNav.Exists);
+                Assert.IsTrue(testPageFeeds.CustomDataFeedTabsNav1.Exists);
+                Assert.IsTrue(testPageFeeds.CustomDataFeedTabsNav2.Exists);
                 
                 window.Close();
             }

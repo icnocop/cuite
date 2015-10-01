@@ -3,7 +3,7 @@ using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
-namespace Sut.HtmlTest.ObjectRepository
+namespace Sut.HtmlTest.Mappings
 {
     public class DemosOfTeleriksASPNETComboBoxControl : BrowserWindowUnderTest
     {
