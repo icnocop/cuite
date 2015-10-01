@@ -1,7 +1,7 @@
 ﻿using CUITe.Controls.HtmlControls;
 using CUITe.SearchConfigurations;
 
-namespace Sut.HtmlTest.ObjectRepository
+namespace Sut.HtmlTest.Mappings
 {
     public class DynamicBrowserWindowTitleRepository : DynamicBrowserWindowUnderTest
     {

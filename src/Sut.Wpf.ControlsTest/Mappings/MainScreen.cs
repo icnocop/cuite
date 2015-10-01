@@ -7,8 +7,8 @@ namespace Sut.Wpf.ControlsTest.Mappings
 {
     public class MainScreen : Screen
     {
-        public MainScreen(UITestControl parent)
-            : base(parent)
+        public MainScreen(UITestControl searchLimitContainer)
+            : base(searchLimitContainer)
         {
         }
 
