@@ -243,7 +243,7 @@ namespace Sut.HtmlTest
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var tbl = bWin.Find<HtmlTable>(By.Id("calcWithHeaders"));
             tbl.FindRowAndClick("9", 2, HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(3, 2).Trim());
@@ -254,7 +254,7 @@ namespace Sut.HtmlTest
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithoutRowHeaders_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var tbl = bWin.Find<HtmlTable>(By.Id("calcWithOutHeaders"));
             tbl.FindRowAndClick("9", 2, HtmlTableSearchOptions.NormalTight);
             Assert.AreEqual("9", tbl.GetCellValue(2, 2).Trim());
@@ -264,7 +264,7 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlTable_GetCellValueWithHeaderCell_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
 
             var termTable = bWin.Find<HtmlTable>(By.Id("calcWithHeaderCells"));
 
@@ -444,7 +444,7 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlControl_GetChildren_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var div = bWin.Find<HtmlDiv>(By.Id("calculatorContainer1"));
             var col = div.GetChildren();
             Assert.IsTrue(col.ElementAt(0).SourceControlType.Name == "HtmlDiv");
@@ -458,7 +458,7 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlParagraph_InnertText_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             Assert.IsTrue(bWin.Find<HtmlParagraph>(By.Id("para1")).InnerText.Contains("HtmlParagraph"));
             bWin.Close();
         }
@@ -531,7 +531,7 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlParagraph_InObjectRepository_Succeeds()
         {
-            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var page = new TestHtmlPage(window);
             string content = page.Paragraph.InnerText;
             Assert.IsTrue(content.Contains("HtmlParagraph"));
@@ -541,7 +541,7 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlParagraph_TraverseSiblingsParentAndChildren_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var p = bWin.Find<HtmlParagraph>(By.Id("para1"));
             Assert.IsTrue(((HtmlEdit)p.PreviousSibling).SourceControl.Name == "text1_test");
             Assert.IsTrue(((HtmlInputButton)p.NextSibling).ValueAttribute == "sample button");
@@ -555,7 +555,7 @@ namespace Sut.HtmlTest
         [DeploymentItem("iframe.html")]
         public void HtmlInputButton_ClickInIFrame_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/iframe_test.html");
             bWin.Find<HtmlInputButton>(By.ValueAttribute("Log In")).Click();
             bWin.Close();
         }
@@ -565,7 +565,7 @@ namespace Sut.HtmlTest
         [DeploymentItem("iframe.html")]
         public void HtmlInputButton_ClickInCUITeIFrame_Succeeds()
         {
-            var bWin = BrowserWindowUnderTest.Launch(currentDirectory + "/iframe_test.html");
+            var bWin = BrowserWindow.Launch(currentDirectory + "/iframe_test.html");
             HtmlIFrame iFrame = bWin.Find<HtmlIFrame>();
             iFrame.Find<HtmlInputButton>(By.ValueAttribute("Log In")).Click();
             bWin.Close();
@@ -632,7 +632,7 @@ namespace Sut.HtmlTest
         public void HtmlUnorderedList_WithListItems_CanAssertOnListItems()
         {
             // Arrange
-            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var list = window.Find<HtmlUnorderedList>(By.Id("unorderedList"));
 
             // Act
@@ -653,7 +653,7 @@ namespace Sut.HtmlTest
         public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
         {
             // Arrange
-            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            var window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var page = new TestHtmlPage(window);
 
             // Act
@@ -716,7 +716,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var window = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                var window = BrowserWindow.Launch(webPage.FilePath);
 
                 HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.Id("selectId"));
 
@@ -786,7 +786,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var bWin = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                var bWin = BrowserWindow.Launch(webPage.FilePath);
 
                 // Act
                 HtmlCustom txtUserName = bWin.Find<HtmlCustom>(By.Id("i0116").AndTagName("input"));
@@ -1017,7 +1017,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var window = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                var window = BrowserWindow.Launch(webPage.FilePath);
                 var testPage = new HtmlTestPage(window);
 
                 //Act
@@ -1140,7 +1140,7 @@ namespace Sut.HtmlTest
 </html>"))
             {
                 // Act
-                var window = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                var window = BrowserWindow.Launch(webPage.FilePath);
                 var testPageFeeds = new HtmlTestPageFeeds(window);
 
                 CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(testPageFeeds.DivFeedTabs.SourceControl);

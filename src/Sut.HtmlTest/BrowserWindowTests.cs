@@ -54,7 +54,7 @@ namespace Sut.HtmlTest
     <body/>
 </html>"))
             {
-                BrowserWindowUnderTest.Launch(webPage.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
 
                 // Act
                 BrowserWindow browserWindow = BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
@@ -74,27 +74,12 @@ namespace Sut.HtmlTest
             string windowTitle = "A Test";
 
             // Act
-            var window = BrowserWindowUnderTest.Launch(url);
+            BrowserWindow window = BrowserWindow.Launch(url);
             
             // Assert
             Assert.IsTrue(window.Title.Contains(windowTitle));
 
             window.Close();
-        }
-
-        [Ignore] // TODO: use known html
-        [TestMethod]
-        [WorkItem(608)]
-        public void GenericGet_WithHtmlControls_GetsControlsDynamically()
-        {
-            // Arrange
-            BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("http://mail.google.com");
-
-            // Act
-            browserWindow.Find<HtmlEdit>(By.Id("Email")).Text = "xyz@gmail.com";
-            browserWindow.Find<HtmlPassword>(By.Id("Password")).Text ="MyPa$$Word";
-            browserWindow.Find<HtmlInputButton>(By.Id("signIn")).Click();
-            browserWindow.Close();
         }
 
         [TestMethod]
@@ -153,7 +138,7 @@ namespace Sut.HtmlTest
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
             // Arrange
-            var window = BrowserWindowUnderTest.Launch(currentDirectory + "/TestHtmlPage.html");
+            BrowserWindow window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var page = new TestHtmlPage(window);
 
             // Act
