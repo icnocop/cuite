@@ -29,7 +29,7 @@ To successfully build and run tests, the following prerequisites are required:
 ReSharper is configured to our code guidelines. Use ReSharper and act on its error and warnings. Other than that the following guidelines are of importance:
 
 - Indent with 4 spaces, not tabs
-- Use the `var` only when type is obvious
+- Use `var` only when type is obvious
 - Use the C# type aliases for types that have them, e.g. `int` instead of `Int32`, `string` instead of `String` etc
 - Use meaningful names
 
