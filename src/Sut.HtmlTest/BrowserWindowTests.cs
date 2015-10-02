@@ -1,5 +1,6 @@
 ﻿using CUITe.SearchConfigurations;
 using Sut.HtmlTest.Mappings;
+using Test;
 
 namespace Sut.HtmlTest
 {
@@ -45,7 +46,7 @@ namespace Sut.HtmlTest
         public void FromProcess_GetWindowTitle_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>A Test</title>
@@ -53,7 +54,7 @@ namespace Sut.HtmlTest
     <body/>
 </html>"))
             {
-                BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                BrowserWindowUnderTest.Launch(webPage.FilePath);
 
                 // Act
                 BrowserWindow browserWindow = BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));

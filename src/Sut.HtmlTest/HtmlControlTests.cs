@@ -13,6 +13,7 @@ using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.HtmlTest.Mappings;
+using Test;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace Sut.HtmlTest
@@ -95,7 +96,7 @@ namespace Sut.HtmlTest
                 smartMatchOptions = Playback.PlaybackSettings.SmartMatchOptions;
                 Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None;
 
-                using (TempFile tempFile = new TempFile(
+                using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -104,7 +105,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
                 {
-                    BrowserWindow.Launch(tempFile.FilePath);
+                    BrowserWindow.Launch(webPage.FilePath);
                     var window = new BrowserWindowUnderTest("test");
 
                     //Act
@@ -141,7 +142,7 @@ namespace Sut.HtmlTest
         public void HtmlTable_FindHeaderAndClick_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -205,7 +206,7 @@ namespace Sut.HtmlTest
 </html>"))
             {
 
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 var table = window.Find<HtmlTable>(By.Id("tableId"));
@@ -276,7 +277,7 @@ namespace Sut.HtmlTest
         public void HtmlTable_GetCellValueUsingTableWithTHInTBODY_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -313,7 +314,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 var table = window.Find<HtmlTable>(By.Id("tableId"));
@@ -336,7 +337,7 @@ namespace Sut.HtmlTest
             //To enable running scripts on the local computer, go to Tools > Internet options > Advanced > Security > [checkmark] Allow active content to run in files on My Computer
 
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -346,7 +347,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("Log In"));
@@ -372,7 +373,7 @@ namespace Sut.HtmlTest
         public void PointAndClick_OnHtmlInputButton_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -382,7 +383,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("Log In"));
@@ -400,7 +401,7 @@ namespace Sut.HtmlTest
         public void HtmlFileInput_SetFile_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -410,7 +411,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlFileInput fileInput = window.Find<HtmlFileInput>(By.Id("inputId"));
@@ -466,7 +467,7 @@ namespace Sut.HtmlTest
         public void HtmlComboBox_Items_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -480,7 +481,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
@@ -498,7 +499,7 @@ namespace Sut.HtmlTest
         public void SelectItem_ByIndexOnHtmlComboBox_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -512,7 +513,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
@@ -575,7 +576,7 @@ namespace Sut.HtmlTest
         public void HtmlInputButton_GetWithValueContainingWhitespace_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -585,7 +586,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("   Search   "));
@@ -602,7 +603,7 @@ namespace Sut.HtmlTest
         public void HtmlButton_HiddenByStyle_ControlExistsAndCanAssertOnStyle()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -612,7 +613,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
@@ -673,7 +674,7 @@ namespace Sut.HtmlTest
         public void HtmlCheckBox_DisabledByStyle_ControlExistsAndCanGetCheckedState()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -683,7 +684,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
@@ -701,7 +702,7 @@ namespace Sut.HtmlTest
         public void SelectItem_UsingHtmlComboBoxThatAlertsOnChange_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -715,7 +716,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var window = BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                var window = BrowserWindowUnderTest.Launch(webPage.FilePath);
 
                 HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.Id("selectId"));
 
@@ -735,7 +736,7 @@ namespace Sut.HtmlTest
         public void SetText_OnHtmlEdit_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -747,7 +748,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
                 HtmlDiv div = window.Find<HtmlDiv>(By.Id("div1"));
                 HtmlEdit inputTextBox = div.Find<HtmlEdit>();
@@ -767,7 +768,7 @@ namespace Sut.HtmlTest
         public void GetHtmlControl_OnHtml5Control_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -785,7 +786,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var bWin = BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                var bWin = BrowserWindowUnderTest.Launch(webPage.FilePath);
 
                 // Act
                 HtmlCustom txtUserName = bWin.Find<HtmlCustom>(By.Id("i0116").AndTagName("input"));
@@ -806,7 +807,7 @@ namespace Sut.HtmlTest
         public void SelectedItems_OnHtmlList_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -820,7 +821,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var bWin = new BrowserWindowUnderTest("test");
                 HtmlList list = bWin.Find<HtmlList>(By.Id("selectId"));
 
@@ -840,7 +841,7 @@ namespace Sut.HtmlTest
         public void Click_OnHtmlInputButtonWithEqualsSignInSearchPropertyValue_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -850,7 +851,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("="));
@@ -868,7 +869,7 @@ namespace Sut.HtmlTest
         public void InnerText_OnHtmlComboBoxWithDisabledItems_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -882,7 +883,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlComboBox comboBox = window.Find<HtmlComboBox>(By.Id("selectId"));
@@ -900,7 +901,7 @@ namespace Sut.HtmlTest
         public void LabelFor_OnHtmlLabel_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -918,7 +919,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlLabel label = window.Find<HtmlLabel>(By.Id("other"));
@@ -937,7 +938,7 @@ namespace Sut.HtmlTest
         public void ClickAllControlsOnPage_UsingReflection_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -949,7 +950,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 ControlBase a = window.Find<HtmlHyperlink>(By.SearchProperties("InnerText=test"));
@@ -1002,7 +1003,7 @@ namespace Sut.HtmlTest
         public void SetText_UsingControlsDefinedInObjectRepositoryHierarchy_Succeeds()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1016,7 +1017,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var window = BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                var window = BrowserWindowUnderTest.Launch(webPage.FilePath);
                 var testPage = new HtmlTestPage(window);
 
                 //Act
@@ -1038,7 +1039,7 @@ namespace Sut.HtmlTest
         public void GetChildren_UsingHyperlinks_CanFindHyperlinkByInnerText()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1054,7 +1055,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
@@ -1082,7 +1083,7 @@ namespace Sut.HtmlTest
         public void Launch_UsingNewInstanceOfABrowserWindow_CanUsePartialWindowTitle()
         {
             //Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test 1 2 3</title>
@@ -1092,7 +1093,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 //Act
@@ -1114,7 +1115,7 @@ namespace Sut.HtmlTest
         public void Launch_ObjectRepositoryTempHtmlFile_CanFindUnorderedListsByTagAndClassName()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1139,7 +1140,7 @@ namespace Sut.HtmlTest
 </html>"))
             {
                 // Act
-                var window = BrowserWindowUnderTest.Launch(tempFile.FilePath);
+                var window = BrowserWindowUnderTest.Launch(webPage.FilePath);
                 var testPageFeeds = new HtmlTestPageFeeds(window);
 
                 CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(testPageFeeds.DivFeedTabs.SourceControl);
@@ -1167,7 +1168,7 @@ namespace Sut.HtmlTest
         public void Launch_TempHtmlFile_CanFindHyperlinkByHref()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1181,7 +1182,7 @@ namespace Sut.HtmlTest
 </html>"))
             {
                 // Act
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 // Assert
@@ -1199,7 +1200,7 @@ namespace Sut.HtmlTest
         public void Launch_TempHtmlFileWithInputWithMaxLength_CanSetTextWhichExceedsMaxLength()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1209,7 +1210,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlEdit input = window.Find<HtmlEdit>(By.Id("input"));
@@ -1233,7 +1234,7 @@ namespace Sut.HtmlTest
         public void GetHtmlDiv_ByClass_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1244,7 +1245,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
@@ -1273,7 +1274,7 @@ namespace Sut.HtmlTest
         public void GetHtmlRow_ById_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1291,7 +1292,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
@@ -1308,7 +1309,7 @@ namespace Sut.HtmlTest
         public void Enabled_OnDisabledHtmlInputButton_ReturnsFalse()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1318,7 +1319,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlInputButton button = window.Find<HtmlInputButton>(By.ValueAttribute("Click here"));
@@ -1334,7 +1335,7 @@ namespace Sut.HtmlTest
         public void Get_UsingMultipleValuesOfClassAttributeWithContainsOperatorOfHtmlSpan_ReturnsTheSpecificElementWithAllSpecifiedClassValues()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1346,7 +1347,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlSpan span3 = window.Find<HtmlSpan>(By
@@ -1364,7 +1365,7 @@ namespace Sut.HtmlTest
         public void GetSelectedValue_OfRadioButton_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1376,7 +1377,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 // Act
@@ -1394,7 +1395,7 @@ namespace Sut.HtmlTest
         public void SetText_OnHtmlPassword_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1411,7 +1412,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
 
                 HtmlPassword txtPwd = window.Find<HtmlPassword>(By.Id("i0118"));
@@ -1431,7 +1432,7 @@ namespace Sut.HtmlTest
         public void Click_OnHtmlHyperlink_InTableWithEmptyCell_Succeeds()
         {
             // Arrange
-            using (TempFile tempFile = new TempFile(
+            using (var webPage = new TempWebPage(
 @"<html>
     <head>
         <title>test</title>
@@ -1446,7 +1447,7 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                BrowserWindow.Launch(tempFile.FilePath);
+                BrowserWindow.Launch(webPage.FilePath);
                 var window = new BrowserWindowUnderTest("test");
                 var table = window.Find<HtmlTable>(By.Id("tableId"));
 
@@ -1462,4 +1463,3 @@ namespace Sut.HtmlTest
         }
     }
 }
-

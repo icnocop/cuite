@@ -262,6 +262,7 @@
     <Compile Include="Controls\InvalidSearchPropertyNamesException.cs" />
     <Compile Include="Extensions\Microsoft\VisualStudio\TestTools\UITesting\UITestControlExtensions.cs" />
     <Compile Include="Mappings\Page.cs" />
+    <Compile Include="Mappings\PageComponent.cs" />
     <Compile Include="Mappings\Screen.cs" />
     <Compile Include="Mappings\ScreenComponent.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
