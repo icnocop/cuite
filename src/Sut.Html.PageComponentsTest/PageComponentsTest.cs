@@ -1,5 +1,4 @@
-﻿using CUITe.Controls.HtmlControls;
-using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.Html.PageComponentsTest.Mappings;
 using Test;
@@ -21,7 +20,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
                 var mainPage = new MainPage(browserWindow);
                 
                 // Assert
@@ -35,7 +34,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
                 var mainPage = new MainPage(browserWindow);
 
                 // Assert
@@ -49,7 +48,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
                 var mainPage = new MainPage(browserWindow);
 
                 // Assert
@@ -63,7 +62,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch(webPage.FilePath);
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
                 var mainPage = new MainPage(browserWindow);
 
                 // Assert

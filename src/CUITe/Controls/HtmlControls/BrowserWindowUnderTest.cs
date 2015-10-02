@@ -79,18 +79,6 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Launches the specified URL.
         /// </summary>
-        /// <param name="url">The URL.</param>
-        public new static BrowserWindowUnderTest Launch(string url)
-        {
-            var browserWindowUnderTest = new BrowserWindowUnderTest();
-            browserWindowUnderTest.CopyFrom(Launch(new Uri(url)));
-
-            return browserWindowUnderTest;
-        }
-
-        /// <summary>
-        /// Launches the specified URL.
-        /// </summary>
         /// <typeparam name="T">The page object type.</typeparam>
         /// <param name="url">The URL.</param>
         public static T Launch<T>(string url) where T : BrowserWindowUnderTest, new()
