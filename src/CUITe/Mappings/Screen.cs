@@ -12,25 +12,8 @@ namespace CUITe.Mappings
         /// </summary>
         /// <param name="searchLimitContainer">Container for locating controls.</param>
         protected Screen(UITestControl searchLimitContainer)
+            : base(searchLimitContainer)
         {
-            SearchLimitContainer = searchLimitContainer;
-        }
-
-        /// <summary>
-        /// Gets the screen component of specified type.
-        /// </summary>
-        /// <remarks>
-        /// A <see cref="Screen"/> with a overwhelming number of controls can be split into logical
-        /// components, thus providing better test code maintainability.
-        /// </remarks>
-        /// <typeparam name="T">The type of the screen component.</typeparam>
-        /// <returns>The screen component of specified type.</returns>
-        protected T GetComponent<T>() where T : ScreenComponent, new()
-        {
-            return new T
-            {
-                SearchLimitContainer = SearchLimitContainer
-            };
         }
     }
 }

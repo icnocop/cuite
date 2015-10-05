@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UITesting;
 namespace CUITe.Mappings
 {
     /// <summary>
-    /// Abstract class representing a screen or a window component in a WPF or WinForms
+    /// Abstract class representing a screen or window component in a WPF or WinForms
     /// application.
     /// </summary>
     /// <remarks>
@@ -18,9 +18,28 @@ namespace CUITe.Mappings
         private UITestControl searchLimitContainer;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ScreenComponent"/> class.
+        /// </summary>
+        protected ScreenComponent()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScreenComponent"/> class.
+        /// </summary>
+        /// <param name="searchLimitContainer">Container for locating controls.</param>
+        protected internal ScreenComponent(UITestControl searchLimitContainer)
+        {
+            if (searchLimitContainer == null)
+                throw new ArgumentNullException("searchLimitContainer");
+
+            this.searchLimitContainer = searchLimitContainer;
+        }
+
+        /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>
-        internal UITestControl SearchLimitContainer
+        internal virtual UITestControl SearchLimitContainer
         {
             get { return searchLimitContainer; }
             set
@@ -30,6 +49,23 @@ namespace CUITe.Mappings
 
                 searchLimitContainer = value;
             }
+        }
+
+        /// <summary>
+        /// Gets the screen component of specified type.
+        /// </summary>
+        /// <remarks>
+        /// A <see cref="Screen"/> with a overwhelming number of controls can be split into logical
+        /// components, thus providing better test code maintainability.
+        /// </remarks>
+        /// <typeparam name="T">The type of the screen component.</typeparam>
+        /// <returns>The screen component of specified type.</returns>
+        protected T GetComponent<T>() where T : ScreenComponent, new()
+        {
+            return new T
+            {
+                SearchLimitContainer = SearchLimitContainer
+            };
         }
 
         /// <summary>

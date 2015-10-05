@@ -1,5 +1,4 @@
-﻿using CUITe.SearchConfigurations;
-using Sut.HtmlTest.Mappings;
+﻿using Sut.HtmlTest.Mappings;
 using Test;
 
 namespace Sut.HtmlTest

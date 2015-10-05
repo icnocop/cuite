@@ -29,5 +29,25 @@ namespace Sut.Wpf.ScreenComponentsTest.Mappings
         {
             get { return GetComponent<LowerRightComponent>(); }
         }
+
+        public RebasedUpperLeftComponent RebasedUpperLeft
+        {
+            get { return GetComponent<RebasedUpperLeftComponent>(); }
+        }
+
+        public RebasedUpperRightComponent RebasedUpperRight
+        {
+            get { return GetComponent<RebasedUpperRightComponent>(); }
+        }
+
+        public RebasedLowerLeftComponent RebasedLowerLeft
+        {
+            get { return GetComponent<RebasedLowerLeftComponent>(); }
+        }
+
+        public RebasedLowerRightComponent RebasedLowerRight
+        {
+            get { return GetComponent<RebasedLowerRightComponent>(); }
+        }
     }
 }

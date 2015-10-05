@@ -12,7 +12,7 @@ namespace Sut.HtmlTest.Mappings
 
         public Div1 Div1
         {
-            get { return Find<Div1>(); }
+            get { return GetComponent<Div1>(); }
         }
     }
 }

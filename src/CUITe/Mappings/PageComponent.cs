@@ -17,9 +17,28 @@ namespace CUITe.Mappings
         private UITestControl searchLimitContainer;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PageComponent"/> class.
+        /// </summary>
+        protected PageComponent()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PageComponent"/> class.
+        /// </summary>
+        /// <param name="searchLimitContainer">Container for locating controls.</param>
+        protected internal PageComponent(UITestControl searchLimitContainer)
+        {
+            if (searchLimitContainer == null)
+                throw new ArgumentNullException("searchLimitContainer");
+
+            this.searchLimitContainer = searchLimitContainer;
+        }
+
+        /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>
-        internal UITestControl SearchLimitContainer
+        internal virtual UITestControl SearchLimitContainer
         {
             get { return searchLimitContainer; }
             set
@@ -29,6 +48,23 @@ namespace CUITe.Mappings
 
                 searchLimitContainer = value;
             }
+        }
+
+        /// <summary>
+        /// Gets the page component of specified type.
+        /// </summary>
+        /// <remarks>
+        /// A <see cref="Page"/> with a overwhelming number of controls can be split into logical
+        /// components, thus providing better test code maintainability.
+        /// </remarks>
+        /// <typeparam name="T">The type of the page component.</typeparam>
+        /// <returns>The page component of specified type.</returns>
+        protected T GetComponent<T>() where T : PageComponent, new()
+        {
+            return new T
+            {
+                SearchLimitContainer = SearchLimitContainer
+            };
         }
 
         /// <summary>

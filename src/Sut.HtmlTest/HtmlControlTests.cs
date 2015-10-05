@@ -1000,7 +1000,7 @@ namespace Sut.HtmlTest
         /// https://cuite.codeplex.com/discussions/440720
         /// </summary>
         [TestMethod]
-        public void SetText_UsingControlsDefinedInObjectRepositoryHierarchy_Succeeds()
+        public void SetText_UsingScreenComponents_Succeeds()
         {
             //Arrange
             using (var webPage = new TempWebPage(
@@ -1025,9 +1025,7 @@ namespace Sut.HtmlTest
 
                 //Assert
                 Assert.IsTrue(testPage.Div1.Div2.Edit.Exists);
-                Assert.IsTrue(testPage.Div1.Div2.Exists);
-                Assert.IsTrue(testPage.Div1.Exists);
-
+                
                 window.Close();
             }
         }
