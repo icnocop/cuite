@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
@@ -102,27 +103,39 @@ namespace CUITe.Controls
             }
         }
 
-        protected static ControlBase Create(UITestControl sourceControl, string targetNamespace)
+        /// <summary>
+        /// Creates a UI test control of type determined by <paramref name="sourceControl"/>.
+        /// </summary>
+        /// <param name="sourceControl">The source control.</param>
+        /// <returns>
+        /// A UI test control of type determined by <paramref name="sourceControl"/>.
+        /// </returns>
+        internal static ControlBase Create(UITestControl sourceControl)
         {
             if (sourceControl == null)
                 throw new ArgumentNullException("sourceControl");
-            if (targetNamespace == null)
-                throw new ArgumentNullException("targetNamespace");
 
-            string targetName = sourceControl.GetType().Name;
-            string typeFullName = string.Format("{0}.{1}", targetNamespace, targetName);
+            Type sourceControlType = sourceControl.GetType();
+            if (sourceControlType.Namespace == null)
+                throw new ArgumentException(
+                    string.Format("Control of type '{0}' has no namespace.", sourceControlType),
+                    "sourceControl");
+
+            string technologyName = sourceControlType.Namespace.Split('.').Last();
+            string targetName = sourceControlType.Name;
+            string typeFullName = string.Format("CUITe.Controls.{0}.{1}", technologyName, targetName);
             Type targetType = Type.GetType(typeFullName);
 
             // The type will be null if it does not exist
             if (targetType == null)
             {
                 throw new ArgumentException(
-                    string.Format("Control of type '{0}' is not supported.", sourceControl.GetType().Name),
+                    string.Format("Control of type '{0}' is not supported.", sourceControlType),
                     "sourceControl");
             }
 
             // Create UI test control
-            return (ControlBase)Activator.CreateInstance(targetType, sourceControl);
+            return Create(targetType, sourceControl, null);
         }
     }
 }
