@@ -322,7 +322,7 @@ namespace CUITe.Controls.HtmlControls
                         control = new HtmlOrderedList((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "li":
-                        control = new HtmlListItem((CUITControls.HtmlCustom)sourceControl);
+                        control = new HtmlListItem((CUITControls.HtmlListItem)sourceControl);
                         break;
                     case "ins":
                         control = new HtmlIns((CUITControls.HtmlCustom)sourceControl);

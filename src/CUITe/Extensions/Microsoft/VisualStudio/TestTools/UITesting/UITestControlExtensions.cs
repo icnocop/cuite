@@ -1,6 +1,8 @@
 ﻿using System;
 using CUITe.Controls;
+using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.VisualStudio.TestTools.UITesting
@@ -24,10 +26,45 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
         {
             if (source == null)
                 throw new ArgumentNullException("source");
-
+            
             var control = ControlBaseFactory.Create<T>(searchConfiguration);
-            control.SourceControl.Container = source;
+
+            // TODO: This assembly should have no knowledge of the Silverlight assembly
+            if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
+            {
+                control.SourceControl.Container = FindSilverlightContainer(source);
+            }
+            else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
+            {
+                (control as ComboBox).SetWindow(FindBrowserWindow(source));
+            }
+            else
+            {
+                control.SourceControl.Container = source;
+            }
+
             return control;
+        }
+
+        private static UITestControl FindSilverlightContainer(UITestControl control)
+        {
+            BrowserWindow browserWindow = FindBrowserWindow(control);
+            
+            var custom = new HtmlCustom(browserWindow);
+            custom.SearchProperties["TagName"] = "OBJECT";
+            return custom;
+        }
+
+        private static BrowserWindow FindBrowserWindow(UITestControl control)
+        {
+            if (control == null)
+                throw new InvalidTraversalException(typeof(BrowserWindow).Name);
+
+            var browserWindow = control as BrowserWindow;
+            if (browserWindow != null)
+                return browserWindow;
+
+            return FindBrowserWindow(control.GetParent());
         }
     }
 }

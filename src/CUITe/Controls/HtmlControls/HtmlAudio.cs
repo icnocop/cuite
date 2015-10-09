@@ -4,25 +4,25 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 namespace CUITe.Controls.HtmlControls
 {
     /// <summary>
-    /// Represents a list item control for web page user interface (UI) testing.
+    /// Represents a audio control for web page user interface (UI) testing.
     /// </summary>
-    public class HtmlListItem : HtmlControl<CUITControls.HtmlListItem>
+    public class HtmlAudio : HtmlMedia
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HtmlListItem"/> class.
+        /// Initializes a new instance of the <see cref="HtmlAudio"/> class.
         /// </summary>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public HtmlListItem(By searchConfiguration = null)
-            : this(new CUITControls.HtmlListItem(), searchConfiguration)
+        public HtmlAudio(By searchConfiguration = null)
+            : this(new CUITControls.HtmlAudio(), searchConfiguration)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HtmlListItem"/> class.
+        /// Initializes a new instance of the <see cref="HtmlAudio"/> class.
         /// </summary>
         /// <param name="sourceControl">The source control.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public HtmlListItem(CUITControls.HtmlListItem sourceControl, By searchConfiguration = null)
+        public HtmlAudio(CUITControls.HtmlAudio sourceControl, By searchConfiguration = null)
             : base(sourceControl, searchConfiguration)
         {
         }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
-using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -187,22 +186,7 @@ namespace CUITe.Controls.HtmlControls
         /// </exception>
         public T Find<T>(By searchConfiguration = null) where T : ControlBase
         {
-            T control = ControlBaseFactory.Create<T>(searchConfiguration);
-
-            if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
-            {
-                control.SourceControl.Container = SilverlightObjectContainer;
-            }
-            else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
-            {
-                (control as ComboBox).SetWindow(this);
-            }
-            else
-            {
-                control.SourceControl.Container = this;
-            }
-
-            return control;
+            return UITestControlExtensions.Find<T>(this, searchConfiguration);
         }
 
         #endregion

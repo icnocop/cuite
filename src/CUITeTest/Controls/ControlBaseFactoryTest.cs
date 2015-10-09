@@ -5,6 +5,9 @@ using CUITe.Controls;
 using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.Controls
@@ -75,7 +78,8 @@ namespace CUITeTest.Controls
                     .Where(type => type.IsPublic)
                     .Where(type => !type.IsAbstract)
                     .Where(type => !type.IsGenericType)
-                    .Where(type => !typeof(ApplicationUnderTest).IsAssignableFrom(type));
+                    .Where(type => !typeof(ApplicationUnderTest).IsAssignableFrom(type))
+                    .Except(new[] { typeof(UITestControl), typeof(HtmlControl), typeof(WinControl), typeof(WpfControl) });
             }
         }
 
