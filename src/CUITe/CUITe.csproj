@@ -278,7 +278,6 @@
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
     <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
     <Compile Include="DataSources\XmlDataSourceNotFoundException.cs" />
-    <Compile Include="Controls\HtmlControls\ObjectRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchConfigurations\By.cs" />
     <Compile Include="SearchConfigurations\NameConfigurator.cs" />

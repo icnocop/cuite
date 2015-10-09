@@ -95,7 +95,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>(string title = null) where T : BrowserWindowUnderTest
         {
-            return ObjectRepositoryManager.GetInstance<T>(title);
+            return (T)Activator.CreateInstance(typeof(T), title);
         }
 
         /// <summary>
