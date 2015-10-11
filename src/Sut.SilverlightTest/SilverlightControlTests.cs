@@ -23,16 +23,15 @@ namespace Sut.SilverlightTest
         //TODO: the silverlight control must be hosted on a page served through a web server (ex. iis, cassini \ web dev server) because IE 9 may
         //treat web pages differently between http://localhost and file:// (compatibility mode\view)
 
-        private static readonly string CurrentDirectory = Directory.GetCurrentDirectory();
         private static readonly CassiniDevServer WebServer = new CassiniDevServer();
-        private readonly string silverlightApplicationHtmlPageUrl = string.Format("http://{0}:{1}/Sut.Silverlight.html", HostName, Port);
-        private const string HostName = "localhost";
-        private const int Port = 8080;
+        private static readonly string HostName = "localhost";
+        private static readonly int Port = 8080;
+        private static readonly string PageUrl = string.Format("http://{0}:{1}/Sut.Silverlight.html", HostName, Port);
         
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-            WebServer.StartServer(CurrentDirectory, Port, "/", HostName);
+            WebServer.StartServer(Directory.GetCurrentDirectory(), Port, "/", HostName);
         }
 
         [ClassCleanup]
@@ -44,7 +43,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(silverlightApplicationHtmlPageUrl);
+            BrowserWindow b = BrowserWindow.Launch(PageUrl);
             b.SetFocus();
             b.Find<SilverlightButton>(By.AutomationId("button1")).Click();
             SilverlightEdit oEdit = b.Find<SilverlightEdit>(By.AutomationId("textBox1"));
@@ -57,7 +56,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_InObjectRepository_Succeeds()
         {
-            SlTestPage oSlTestPage = BrowserWindowUnderTest.Launch<SlTestPage>(silverlightApplicationHtmlPageUrl);
+            SlTestPage oSlTestPage = BrowserWindowUnderTest.Launch<SlTestPage>(PageUrl);
             oSlTestPage.oList.SelectedIndices = new[] { 2 };
             Assert.IsTrue(oSlTestPage.oList.SelectedItemsAsString == "Coded UI Test");
             oSlTestPage.Close();
@@ -66,7 +65,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_DynamicObjectRecognition_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(silverlightApplicationHtmlPageUrl);
+            BrowserWindow b = BrowserWindow.Launch(PageUrl);
             b.SetFocus();
             SilverlightList oList = b.Find<SilverlightList>(By.AutomationId("listBox1"));
             oList.SelectedIndices = new[] { 2 };
@@ -77,7 +76,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlComboBox_SelectItem_Succeeds()
         {
-            BrowserWindow.Launch(silverlightApplicationHtmlPageUrl);
+            BrowserWindow.Launch(PageUrl);
             BrowserWindowUnderTest b = new BrowserWindowUnderTest("Home");
             b.SetFocus();
             SilverlightComboBox oCombo = b.Find<SilverlightComboBox>(By.AutomationId("comboBox1"));
@@ -92,7 +91,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_SelectedIndex_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(silverlightApplicationHtmlPageUrl);
+            BrowserWindow b = BrowserWindow.Launch(PageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex= 1;
@@ -103,7 +102,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(silverlightApplicationHtmlPageUrl);
+            BrowserWindow b = BrowserWindow.Launch(PageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex = 0;
