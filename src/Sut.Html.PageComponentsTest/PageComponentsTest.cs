@@ -29,6 +29,20 @@ namespace Sut.Html.PageComponentsTest
         }
 
         [TestMethod]
+        public void RebasedUpperLeft()
+        {
+            using (var webPage = new TempWebPage(Content))
+            {
+                // Arrange
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var mainPage = new MainPage(browserWindow);
+
+                // Assert
+                Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
+            }
+        }
+
+        [TestMethod]
         public void UpperRight()
         {
             using (var webPage = new TempWebPage(Content))
@@ -39,6 +53,20 @@ namespace Sut.Html.PageComponentsTest
 
                 // Assert
                 Assert.IsTrue(mainPage.UpperRight.CheckBoxExists);
+            }
+        }
+
+        [TestMethod]
+        public void RebasedUpperRight()
+        {
+            using (var webPage = new TempWebPage(Content))
+            {
+                // Arrange
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var mainPage = new MainPage(browserWindow);
+
+                // Assert
+                Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
             }
         }
 
@@ -57,6 +85,20 @@ namespace Sut.Html.PageComponentsTest
         }
 
         [TestMethod]
+        public void RebasedLowerLeft()
+        {
+            using (var webPage = new TempWebPage(Content))
+            {
+                // Arrange
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var mainPage = new MainPage(browserWindow);
+
+                // Assert
+                Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
+            }
+        }
+
+        [TestMethod]
         public void LowerRight()
         {
             using (var webPage = new TempWebPage(Content))
@@ -70,6 +112,22 @@ namespace Sut.Html.PageComponentsTest
             }
         }
 
+        [TestMethod]
+        public void RebasedLowerRight()
+        {
+            using (var webPage = new TempWebPage(Content))
+            {
+                // Arrange
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var mainPage = new MainPage(browserWindow);
+
+                // Assert
+                Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
+            }
+        }
+
+        #region Helper properties
+
         private static string Content
         {
             get
@@ -77,11 +135,11 @@ namespace Sut.Html.PageComponentsTest
                 return
                     @"<html>
                         <body>
-                          <div>
+                          <div id=""upperdiv"">
                             <input type=""checkbox"" id=""upperleft"">Upper left</input>
                             <input type=""checkbox"" id=""upperright"">Upper right</input>
                           </div>
-                          <div>
+                          <div id=""lowerdiv"">
                             <input type=""radio"" id=""lowerleft"">Lower left</input>
                             <input type=""radio"" id=""lowerright"">Lower right</input>
                           </div>
@@ -89,5 +147,7 @@ namespace Sut.Html.PageComponentsTest
                       </html>";
             }
         }
+
+        #endregion
     }
 }
