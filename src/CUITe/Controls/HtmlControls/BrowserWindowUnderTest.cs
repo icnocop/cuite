@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
-using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -163,23 +162,5 @@ namespace CUITe.Controls.HtmlControls
             winTemp2.UIPasswordEdit.Text = password;
             Mouse.Click(winTemp2.UIOKButton);
         }
-
-        #region Objects initialized at runtime without ObjectRepository entries
-
-        /// <summary>
-        /// Finds the control object from the descendants of this control using the specified
-        /// search configuration.
-        /// </summary>
-        /// <typeparam name="T">The type of control to find.</typeparam>
-        /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
-        public T Find<T>(By searchConfiguration = null) where T : ControlBase
-        {
-            return UITestControlExtensions.Find<T>(this, searchConfiguration);
-        }
-
-        #endregion
     }
 }
