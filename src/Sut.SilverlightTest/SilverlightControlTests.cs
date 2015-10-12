@@ -2,7 +2,6 @@
 using System.IO;
 using CassiniDev;
 using CUITe.Controls;
-using CUITe.Controls.HtmlControls;
 using CUITe.Controls.SilverlightControls;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
@@ -56,10 +55,11 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_InObjectRepository_Succeeds()
         {
-            SlTestPage oSlTestPage = BrowserWindowUnderTest.Launch<SlTestPage>(PageUrl);
-            oSlTestPage.oList.SelectedIndices = new[] { 2 };
-            Assert.IsTrue(oSlTestPage.oList.SelectedItemsAsString == "Coded UI Test");
-            oSlTestPage.Close();
+            var browserWindow = BrowserWindow.Launch(PageUrl);
+            var testPage = new TestPage(browserWindow);
+            testPage.List.SelectedIndices = new[] { 2 };
+            Assert.IsTrue(testPage.List.SelectedItemsAsString == "Coded UI Test");
+            browserWindow.Close();
         }
 
         [TestMethod]
@@ -76,16 +76,15 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlComboBox_SelectItem_Succeeds()
         {
-            BrowserWindow.Launch(PageUrl);
-            BrowserWindowUnderTest b = new BrowserWindowUnderTest("Home");
-            b.SetFocus();
-            SilverlightComboBox oCombo = b.Find<SilverlightComboBox>(By.AutomationId("comboBox1"));
+            var browserWindow = BrowserWindow.Launch(PageUrl);
+            browserWindow.SetFocus();
+            var oCombo = browserWindow.Find<SilverlightComboBox>(By.AutomationId("comboBox1"));
             oCombo.SelectIndex(3);
             foreach (UITestControl temp in oCombo.Items)
             {
                 Console.WriteLine(temp.Name);
             }
-            b.Close();
+            browserWindow.Close();
         }
 
         [TestMethod]

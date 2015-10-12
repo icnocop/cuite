@@ -148,15 +148,6 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Run/evaluate JavaScript code in the DOM context.
-        /// </summary>
-        /// <param name="code">The JavaScript code</param>
-        public void RunScript(string code)
-        {
-            InternetExplorer.RunScript(this, code);
-        }
-
-        /// <summary>
         /// Authenticates the user with the specified user name and password.
         /// </summary>
         /// <param name="userName">The user name.</param>

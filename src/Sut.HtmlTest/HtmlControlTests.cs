@@ -424,14 +424,13 @@ namespace Sut.HtmlTest
         [Ignore]
         public void HtmlHyperlink_OnSharePoint2010_Succeeds()
         {
-            BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
+            var browserWindow = BrowserWindow.Launch("http://myasia/sites/sureba/Default.aspx");
             BrowserWindowUnderTest.Authenticate("username", "passwd");
-            var bWin = new BrowserWindowUnderTest("Suresh Balasubramanian");
-            bWin.Find<HtmlHyperlink>(By.Id("idHomePageNewDocument")).Click();
-            var closeLink = bWin.Find<HtmlHyperlink>(By.SearchProperties("Title=Close;class=ms-dlgCloseBtn"));
+            browserWindow.Find<HtmlHyperlink>(By.Id("idHomePageNewDocument")).Click();
+            var closeLink = browserWindow.Find<HtmlHyperlink>(By.SearchProperties("Title=Close;class=ms-dlgCloseBtn"));
             //clicking closeLink directly doesn't work as the maximizeLink is clicked due to the controls being placed too close to each other
             Mouse.Click(closeLink.SourceControl.GetChildren()[0].GetChildren()[0]); 
-            bWin.RunScript(@"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
+            InternetExplorer.RunScript(browserWindow, @"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
         }
 
         [TestMethod]
