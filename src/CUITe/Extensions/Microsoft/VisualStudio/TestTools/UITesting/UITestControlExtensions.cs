@@ -49,22 +49,28 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
         private static UITestControl FindSilverlightContainer(UITestControl control)
         {
             BrowserWindow browserWindow = FindBrowserWindow(control);
+            if (browserWindow != null)
+            {
+                var custom = new HtmlCustom(browserWindow);
+                custom.SearchProperties["TagName"] = "OBJECT";
+                return custom;
+            }
             
-            var custom = new HtmlCustom(browserWindow);
-            custom.SearchProperties["TagName"] = "OBJECT";
-            return custom;
+            return control.GetParent();
         }
 
         private static BrowserWindow FindBrowserWindow(UITestControl control)
         {
-            if (control == null)
-                throw new InvalidTraversalException(typeof(BrowserWindow).Name);
+            while (control != null)
+            {
+                var browserWindow = control as BrowserWindow;
+                if (browserWindow != null)
+                    return browserWindow;
 
-            var browserWindow = control as BrowserWindow;
-            if (browserWindow != null)
-                return browserWindow;
+                control = control.GetParent();
+            }
 
-            return FindBrowserWindow(control.GetParent());
+            return null;
         }
     }
 }

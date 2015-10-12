@@ -61,6 +61,10 @@
     <Compile Include="Mappings\LowerLeftComponent.cs" />
     <Compile Include="Mappings\LowerRightComponent.cs" />
     <Compile Include="Mappings\MainScreen.cs" />
+    <Compile Include="Mappings\RebasedLowerLeftComponent.cs" />
+    <Compile Include="Mappings\RebasedLowerRightComponent.cs" />
+    <Compile Include="Mappings\RebasedUpperLeftComponent.cs" />
+    <Compile Include="Mappings\RebasedUpperRightComponent.cs" />
     <Compile Include="Mappings\UpperLeftComponent.cs" />
     <Compile Include="Mappings\UpperRightComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

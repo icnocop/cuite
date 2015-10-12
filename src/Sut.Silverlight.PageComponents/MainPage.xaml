@@ -1,4 +1,5 @@
 ﻿<UserControl
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
     x:Class="Sut.Silverlight.PageComponents.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -30,31 +31,53 @@
         </Grid.ColumnDefinitions>
 
         <!-- Upper left control -->
-        <CheckBox
-            AutomationProperties.AutomationId="Pb67nqNzdkKZPTz-cUXtTQ"
-            Content="Upper left control"
-            Style="{StaticResource CheckBoxStyle}" />
+        <sdk:TabControl>
+            <sdk:TabItem
+                AutomationProperties.AutomationId="YATJVQnvMk6SNHFQAHb9CQ"
+                Header="Upper Left Tab">
+                <CheckBox
+                    AutomationProperties.AutomationId="Pb67nqNzdkKZPTz-cUXtTQ"
+                    Content="Upper left control"
+                    Style="{StaticResource CheckBoxStyle}" />
+            </sdk:TabItem>
+        </sdk:TabControl>
 
         <!-- Upper right control -->
-        <CheckBox
-            Grid.Column="1"
-            AutomationProperties.AutomationId="pxr987yTh0u0k72WGfOimw"
-            Content="Upper right control"
-            Style="{StaticResource CheckBoxStyle}" />
+        <sdk:TabControl Grid.Column="1">
+            <sdk:TabItem
+                AutomationProperties.AutomationId="sk0ELlIxRkSChVuWnKrEMw"
+                Header="Upper Right Tab">
+                <CheckBox
+                    AutomationProperties.AutomationId="pxr987yTh0u0k72WGfOimw"
+                    Content="Upper right control"
+                    Style="{StaticResource CheckBoxStyle}" />
+            </sdk:TabItem>
+        </sdk:TabControl>
 
         <!-- Lower left control -->
-        <RadioButton
-            Grid.Row="1"
-            AutomationProperties.AutomationId="R96eNzWZrUeCOUOiCb5qEQ"
-            Content="Lower left control"
-            Style="{StaticResource RadioButtonStyle}" />
+        <sdk:TabControl Grid.Row="1">
+            <sdk:TabItem
+                AutomationProperties.AutomationId="6B4YMUMZz0CAxPbskr1MgQ"
+                Header="Lower Left Tab">
+                <RadioButton
+                    AutomationProperties.AutomationId="R96eNzWZrUeCOUOiCb5qEQ"
+                    Content="Lower left control"
+                    Style="{StaticResource RadioButtonStyle}" />
+                </sdk:TabItem>
+        </sdk:TabControl>
 
         <!-- Lower right -->
-        <RadioButton
+        <sdk:TabControl
             Grid.Row="1"
-            Grid.Column="1"
-            AutomationProperties.AutomationId="0IZpFrh750Kps3zMlrFFcA"
-            Content="Lower right control"
-            Style="{StaticResource RadioButtonStyle}" />
+            Grid.Column="1">
+            <sdk:TabItem
+                AutomationProperties.AutomationId="vzoWE0pag0S7yk0Wmb9iug"
+                Header="Lower Right Tab">
+                <RadioButton
+                    AutomationProperties.AutomationId="0IZpFrh750Kps3zMlrFFcA"
+                    Content="Lower right control"
+                    Style="{StaticResource RadioButtonStyle}" />
+            </sdk:TabItem>
+        </sdk:TabControl>
     </Grid>
 </UserControl>
