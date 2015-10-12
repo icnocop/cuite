@@ -73,7 +73,8 @@ namespace Sut.HtmlTest
             //TODO: use known html
             try
             {
-                BrowserWindowUnderTest.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
+                var browserWindow = BrowserWindow.Launch("http://www.google.com");
+                new GoogleHomePageWithInvalidControlSearchProperties(browserWindow);
 
                 Assert.Fail("InvalidSearchPropertyNamesException not thrown");
             }

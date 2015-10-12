@@ -13,8 +13,6 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class BrowserWindowUnderTest : BrowserWindow
     {
-        private CUITControls.HtmlCustom silverlightObjectContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserWindowUnderTest"/> class.
         /// </summary>
@@ -106,23 +104,6 @@ namespace CUITe.Controls.HtmlControls
             WindowTitles.Clear();
             WindowTitles.Add(title);
             WindowTitle = title;
-        }
-
-        /// <summary>
-        /// Gets the Silverlight object container.
-        /// </summary>
-        public CUITControls.HtmlCustom SilverlightObjectContainer
-        {
-            get
-            {
-                if ((silverlightObjectContainer == null))
-                {
-                    silverlightObjectContainer = new CUITControls.HtmlCustom(this);
-                    silverlightObjectContainer.SearchProperties["TagName"] = "OBJECT";
-                    silverlightObjectContainer.WindowTitles.Add(WindowTitle);
-                }
-                return silverlightObjectContainer;
-            }
         }
 
         /// <summary>
