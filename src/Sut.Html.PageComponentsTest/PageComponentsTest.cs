@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.Html.PageComponentsTest.Mappings;
+using Sut.Html.PageComponentsTest.ObjectRepository;
 using Test;
 
 namespace Sut.Html.PageComponentsTest

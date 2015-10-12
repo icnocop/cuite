@@ -2,7 +2,7 @@
 using CassiniDev;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.Silverlight.PageComponentsTest.Mappings;
+using Sut.Silverlight.PageComponentsTest.ObjectRepository;
 
 namespace Sut.Silverlight.PageComponentsTest
 {

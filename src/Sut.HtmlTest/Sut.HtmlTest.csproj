@@ -60,14 +60,14 @@
     <Compile Include="BrowserWindowTests.cs" />
     <Compile Include="CrossBrowserHtmlControlTests.cs" />
     <Compile Include="HtmlControlTests.cs" />
-    <Compile Include="Mappings\DemosOfTeleriksASPNETComboBoxControl.cs" />
-    <Compile Include="Mappings\DynamicBrowserWindowTitleRepository.cs" />
-    <Compile Include="Mappings\HtmlTestPage.cs" />
-    <Compile Include="Mappings\HtmlTestPage.Div1.cs" />
-    <Compile Include="Mappings\HtmlTestPage.Div2.cs" />
-    <Compile Include="Mappings\HtmlTestPageFeeds.cs" />
-    <Compile Include="Mappings\GoogleHomePageWithInvalidControlSearchProperties.cs" />
-    <Compile Include="Mappings\TestHtmlPage.cs" />
+    <Compile Include="ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs" />
+    <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPage.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPage.Div1.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPage.Div2.cs" />
+    <Compile Include="ObjectRepository\HtmlTestPageFeeds.cs" />
+    <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
+    <Compile Include="ObjectRepository\TestHtmlPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

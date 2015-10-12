@@ -1,4 +1,4 @@
-﻿using Sut.HtmlTest.Mappings;
+﻿using Sut.HtmlTest.ObjectRepository;
 using Test;
 
 namespace Sut.HtmlTest

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.WinForms.ScreenComponentsTest.Mappings;
+using Sut.WinForms.ScreenComponentsTest.ObjectRepository;
 
 namespace Sut.WinForms.ScreenComponentsTest
 {

@@ -56,7 +56,7 @@
     </Compile>
     <Compile Include="ControlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mappings\MainScreen.cs" />
+    <Compile Include="ObjectRepository\MainScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CUITe\CUITe.csproj">

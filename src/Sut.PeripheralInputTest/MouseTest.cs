@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.PeripheralInputTest.Mappings;
+using Sut.PeripheralInputTest.ObjectRepository;
 
 namespace Sut.PeripheralInputTest
 {

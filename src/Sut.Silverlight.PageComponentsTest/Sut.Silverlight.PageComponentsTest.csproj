@@ -58,15 +58,15 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Mappings\LowerLeftComponent.cs" />
-    <Compile Include="Mappings\LowerRightComponent.cs" />
-    <Compile Include="Mappings\MainScreen.cs" />
-    <Compile Include="Mappings\RebasedLowerLeftComponent.cs" />
-    <Compile Include="Mappings\RebasedLowerRightComponent.cs" />
-    <Compile Include="Mappings\RebasedUpperLeftComponent.cs" />
-    <Compile Include="Mappings\RebasedUpperRightComponent.cs" />
-    <Compile Include="Mappings\UpperLeftComponent.cs" />
-    <Compile Include="Mappings\UpperRightComponent.cs" />
+    <Compile Include="ObjectRepository\LowerLeftComponent.cs" />
+    <Compile Include="ObjectRepository\LowerRightComponent.cs" />
+    <Compile Include="ObjectRepository\MainScreen.cs" />
+    <Compile Include="ObjectRepository\RebasedLowerLeftComponent.cs" />
+    <Compile Include="ObjectRepository\RebasedLowerRightComponent.cs" />
+    <Compile Include="ObjectRepository\RebasedUpperLeftComponent.cs" />
+    <Compile Include="ObjectRepository\RebasedUpperRightComponent.cs" />
+    <Compile Include="ObjectRepository\UpperLeftComponent.cs" />
+    <Compile Include="ObjectRepository\UpperRightComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageComponentsTest.cs" />
   </ItemGroup>

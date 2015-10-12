@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.Wpf.ControlsTest.Mappings;
+using Sut.Wpf.ControlsTest.ObjectRepository;
 
 namespace Sut.Wpf.ControlsTest
 {
