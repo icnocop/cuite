@@ -60,8 +60,7 @@
     <Compile Include="BrowserWindowTests.cs" />
     <Compile Include="CrossBrowserHtmlControlTests.cs" />
     <Compile Include="HtmlControlTests.cs" />
-    <Compile Include="ObjectRepository\DemosOfTeleriksASPNETComboBoxControl.cs" />
-    <Compile Include="ObjectRepository\DynamicBrowserWindowTitleRepository.cs" />
+    <Compile Include="ObjectRepository\TeleriksASPNETComboBoxPage.cs" />
     <Compile Include="ObjectRepository\HtmlTestPage.cs" />
     <Compile Include="ObjectRepository\HtmlTestPage.Div1.cs" />
     <Compile Include="ObjectRepository\HtmlTestPage.Div2.cs" />

@@ -82,58 +82,6 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        public void GetBrowserWindow_WithDynamicWindowTitle_CanGetNewWindowTitle()
-        {
-            string page1GenericWindowTitle = "window title 1";
-
-            // Arrange
-            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(currentDirectory + "/DynamicBrowserWindowTitle.html");
-
-            home.btnGoToPage1.Click();
-
-            // Act
-            DynamicBrowserWindowTitleRepository page1 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page1GenericWindowTitle);
-
-            // Assert
-            Assert.IsTrue(page1.Title.Contains(page1GenericWindowTitle), page1.Title);
-
-            page1.Close();
-        }
-
-        [TestMethod]
-        [WorkItem(607)]
-        public void GetBrowserWindow_WithDynamicWindowTitle_CanInteractWithWindow()
-        {
-            // Arrange
-            string page2GenericWindowTitle = "window title 2";
-            string page2DynamicGenericWindowTitle = "the window title changed";
-            string homePageGenericWindowTitle = "Clicking the buttons changes the window title";
-
-            DynamicBrowserWindowTitleRepository home = BrowserWindowUnderTest.Launch<DynamicBrowserWindowTitleRepository>(currentDirectory + "/DynamicBrowserWindowTitle.html");
-
-            home.btnGoToPage2.Click();
-
-            DynamicBrowserWindowTitleRepository page2 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2GenericWindowTitle);
-
-            page2.btnChangeWindowTitle.Click();
-
-            // Checkpoint
-            Assert.IsTrue(page2.Title.Contains(page2DynamicGenericWindowTitle), page2.Title);
-
-            // Act
-            page2 = DynamicBrowserWindowUnderTest.GetBrowserWindow<DynamicBrowserWindowTitleRepository>(page2DynamicGenericWindowTitle);
-
-            page2.btnGoToHomePage.Click();
-
-            page2.SetWindowTitle(homePageGenericWindowTitle);
-
-            // Assert
-            Assert.IsTrue(page2.Title.Contains(homePageGenericWindowTitle), page2.Title);
-
-            page2.Close();
-        }
-
-        [TestMethod]
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
             // Arrange
