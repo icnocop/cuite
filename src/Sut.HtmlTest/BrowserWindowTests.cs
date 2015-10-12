@@ -6,7 +6,6 @@ namespace Sut.HtmlTest
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
-    using CUITe.Controls.HtmlControls;
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
