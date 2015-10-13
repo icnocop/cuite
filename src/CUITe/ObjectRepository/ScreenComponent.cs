@@ -16,26 +16,7 @@ namespace CUITe.ObjectRepository
     public abstract class ScreenComponent
     {
         private UITestControl searchLimitContainer;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ScreenComponent"/> class.
-        /// </summary>
-        protected ScreenComponent()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ScreenComponent"/> class.
-        /// </summary>
-        /// <param name="searchLimitContainer">Container for locating controls.</param>
-        protected internal ScreenComponent(UITestControl searchLimitContainer)
-        {
-            if (searchLimitContainer == null)
-                throw new ArgumentNullException("searchLimitContainer");
-
-            this.searchLimitContainer = searchLimitContainer;
-        }
-
+        
         /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>

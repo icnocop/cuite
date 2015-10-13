@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using CassiniDev;
+using CUITe.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.Silverlight.PageComponentsTest.ObjectRepository;
@@ -17,7 +18,7 @@ namespace Sut.Silverlight.PageComponentsTest
     {
         private static readonly CassiniDevServer WebServer = new CassiniDevServer();
         
-        private MainScreen mainScreen;
+        private MainPage mainPage;
 
         /// <summary>
         /// Gets or sets the test context which provides information about and functionality for
@@ -40,64 +41,63 @@ namespace Sut.Silverlight.PageComponentsTest
         [TestInitialize]
         public void TestInitialize()
         {
-            BrowserWindow browserWindow = BrowserWindow.Launch(WebServer.RootUrl + "Sut.Silverlight.PageComponents.html");
-            mainScreen = new MainScreen(browserWindow);
+            mainPage = Page.Launch<MainPage>(WebServer.RootUrl + "Sut.Silverlight.PageComponents.html");
         }
 
         [TestMethod]
         public void UpperLeft()
         {
             // Assert
-            Assert.IsTrue(mainScreen.UpperLeft.CheckBoxExists);
+            Assert.IsTrue(mainPage.UpperLeft.CheckBoxExists);
         }
 
         [TestMethod]
         public void RebasedUpperLeft()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RebasedUpperLeft.CheckBoxExists);
+            Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
         }
 
         [TestMethod]
         public void UpperRight()
         {
             // Assert
-            Assert.IsTrue(mainScreen.UpperRight.CheckBoxExists);
+            Assert.IsTrue(mainPage.UpperRight.CheckBoxExists);
         }
 
         [TestMethod]
         public void RebasedUpperRight()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RebasedUpperRight.CheckBoxExists);
+            Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
         }
 
         [TestMethod]
         public void LowerLeft()
         {
             // Assert
-            Assert.IsTrue(mainScreen.LowerLeft.RadioButtonExists);
+            Assert.IsTrue(mainPage.LowerLeft.RadioButtonExists);
         }
 
         [TestMethod]
         public void RebasedLowerLeft()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RebasedLowerLeft.RadioButtonExists);
+            Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
         }
 
         [TestMethod]
         public void LowerRight()
         {
             // Assert
-            Assert.IsTrue(mainScreen.LowerRight.RadioButtonExists);
+            Assert.IsTrue(mainPage.LowerRight.RadioButtonExists);
         }
 
         [TestMethod]
         public void RebasedLowerRight()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RebasedLowerRight.RadioButtonExists);
+            Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
         }
     }
 }

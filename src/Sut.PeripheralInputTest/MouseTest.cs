@@ -3,6 +3,7 @@ using System.Windows.Input;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.PeripheralInputTest.ObjectRepository;
+using Screen = CUITe.ObjectRepository.Screen;
 
 namespace Sut.PeripheralInputTest
 {
@@ -25,8 +26,7 @@ namespace Sut.PeripheralInputTest
         [TestInitialize]
         public void TestInitialize()
         {
-            ApplicationUnderTest application = ApplicationUnderTest.Launch(ApplicationFilePath);
-            mainScreen = new MainScreen(application);
+            mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
         #region Click

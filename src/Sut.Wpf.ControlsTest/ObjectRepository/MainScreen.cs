@@ -1,17 +1,11 @@
 ﻿using CUITe.Controls.WpfControls;
 using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.Wpf.ControlsTest.ObjectRepository
 {
     public class MainScreen : Screen
     {
-        public MainScreen(UITestControl searchLimitContainer)
-            : base(searchLimitContainer)
-        {
-        }
-
         public WpfButton Button
         {
             get { return Find<WpfButton>(By.AutomationId("dy9cW2km1UuBP09fWHnKbw")); }

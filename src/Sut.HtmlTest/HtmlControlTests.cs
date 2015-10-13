@@ -8,6 +8,7 @@ using CUITe.Browsers;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.WinControls;
+using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
@@ -50,8 +51,7 @@ namespace Sut.HtmlTest
         public void SetText_OnTelerikASPNETComboBox_SelectsItemByText()
         {
             // Arrange
-            BrowserWindow browserWindow = BrowserWindow.Launch("http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
-            var page = new TeleriksASPNETComboBoxPage(browserWindow);
+            var page = Page.Launch<TeleriksASPNETComboBoxPage>("http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
 
             // Act
             page.Product.Text = "Tofu";
@@ -73,9 +73,8 @@ namespace Sut.HtmlTest
             //TODO: use known html
             try
             {
-                var browserWindow = BrowserWindow.Launch("http://www.google.com");
-                new GoogleHomePageWithInvalidControlSearchProperties(browserWindow);
-
+                var page = Page.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
+                Assert.IsFalse(page.ControlWithInvalidSearchProperties.Exists);
                 Assert.Fail("InvalidSearchPropertyNamesException not thrown");
             }
             catch (TargetInvocationException ex)
@@ -522,11 +521,9 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlParagraph_InObjectRepository_Succeeds()
         {
-            var window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
-            var page = new TestHtmlPage(window);
+            var page = Page.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
             string content = page.Paragraph.InnerText;
             Assert.IsTrue(content.Contains("HtmlParagraph"));
-            window.Close();
         }
 
         [TestMethod]
@@ -642,8 +639,7 @@ namespace Sut.HtmlTest
         public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
         {
             // Arrange
-            var window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
-            var page = new TestHtmlPage(window);
+            var page = Page.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             // Act
             List<HtmlListItem> children = page.List.GetChildren()
@@ -655,8 +651,6 @@ namespace Sut.HtmlTest
             Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
             Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText);
             Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText);
-
-            window.Close();
         }
 
         [TestMethod]
@@ -999,16 +993,13 @@ namespace Sut.HtmlTest
     </body>
 </html>"))
             {
-                var window = BrowserWindow.Launch(webPage.FilePath);
-                var testPage = new HtmlTestPage(window);
+                var page = Page.Launch<HtmlTestPage>(webPage.FilePath);
 
                 //Act
-                testPage.Div1.Div2.Edit.Text = "test";
+                page.Div1.Div2.Edit.Text = "test";
 
                 //Assert
-                Assert.IsTrue(testPage.Div1.Div2.Edit.Exists);
-                
-                window.Close();
+                Assert.IsTrue(page.Div1.Div2.Edit.Exists);
             }
         }
 
@@ -1118,24 +1109,19 @@ namespace Sut.HtmlTest
 </html>"))
             {
                 // Act
-                var window = BrowserWindow.Launch(webPage.FilePath);
-                var testPageFeeds = new HtmlTestPageFeeds(window);
+                var page = Page.Launch<HtmlTestPageFeeds>(webPage.FilePath);
 
-                CUITControls.HtmlCustom cus = new CUITControls.HtmlCustom(testPageFeeds.DivFeedTabs.SourceControl);
+                var cus = new CUITControls.HtmlCustom(page.DivFeedTabs.SourceControl);
                 cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.TagName, "ul", PropertyExpressionOperator.EqualTo);
                 cus.SearchProperties.Add(CUITControls.HtmlControl.PropertyNames.Class, "dataFeedTab ui-tabs-nav", PropertyExpressionOperator.EqualTo);
 
                 Assert.IsTrue(cus.Exists);
-
-                HtmlCustom cusDataFeedTabsNav = window.Find<HtmlCustom>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav"));
-                Assert.IsTrue(cusDataFeedTabsNav.Exists);
+                Assert.IsTrue(page.CustomDataFeedTabsNav.Exists);
 
                 // Assert
-                Assert.IsTrue(testPageFeeds.CustomDataFeedTabsNav.Exists);
-                Assert.IsTrue(testPageFeeds.CustomDataFeedTabsNav1.Exists);
-                Assert.IsTrue(testPageFeeds.CustomDataFeedTabsNav2.Exists);
-                
-                window.Close();
+                Assert.IsTrue(page.CustomDataFeedTabsNav.Exists);
+                Assert.IsTrue(page.CustomDataFeedTabsNav1.Exists);
+                Assert.IsTrue(page.CustomDataFeedTabsNav2.Exists);
             }
         }
 

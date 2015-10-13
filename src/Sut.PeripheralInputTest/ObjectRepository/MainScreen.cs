@@ -1,17 +1,11 @@
 ﻿using CUITe.Controls.WpfControls;
 using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.PeripheralInputTest.ObjectRepository
 {
     public class MainScreen : Screen
     {
-        public MainScreen(UITestControl searchLimitContainer)
-            : base(searchLimitContainer)
-        {
-        }
-
         public WpfText MouseClickText
         {
             get { return Find<WpfText>(By.AutomationId("i5BpTf7kjkyn51Hp-91V1Q")); }

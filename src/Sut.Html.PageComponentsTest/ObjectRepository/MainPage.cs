@@ -1,15 +1,9 @@
 ﻿using CUITe.ObjectRepository;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.Html.PageComponentsTest.ObjectRepository
 {
     public class MainPage : Page
     {
-        public MainPage(UITestControl searchLimitContainer)
-            : base(searchLimitContainer)
-        {
-        }
-
         public UpperLeftComponent UpperLeft
         {
             get { return GetComponent<UpperLeftComponent>(); }

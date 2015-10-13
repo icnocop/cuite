@@ -1,4 +1,5 @@
-﻿using Sut.HtmlTest.ObjectRepository;
+﻿using CUITe.ObjectRepository;
+using Sut.HtmlTest.ObjectRepository;
 using Test;
 
 namespace Sut.HtmlTest
@@ -84,8 +85,7 @@ namespace Sut.HtmlTest
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
             // Arrange
-            BrowserWindow window = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
-            var page = new TestHtmlPage(window);
+            var page = Page.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             // Act
             var doc = page.Document;
@@ -98,8 +98,6 @@ namespace Sut.HtmlTest
             string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString();
 
             Assert.AreEqual(expected, outerHtml.Substring(0, expected.Length), true, outerHtml);
-
-            window.Close();
         }
 
         [TestMethod]

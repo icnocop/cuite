@@ -1,15 +1,9 @@
 ﻿using CUITe.ObjectRepository;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
 {
     public class MainScreen : Screen
     {
-        public MainScreen(UITestControl searchLimitContainer)
-            : base(searchLimitContainer)
-        {
-        }
-
         public UpperLeftComponent UpperLeft
         {
             get { return GetComponent<UpperLeftComponent>(); }

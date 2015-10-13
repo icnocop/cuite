@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.ObjectRepository;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.Html.PageComponentsTest.ObjectRepository;
 using Test;
@@ -20,8 +21,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
                 
                 // Assert
                 Assert.IsTrue(mainPage.UpperLeft.CheckBoxExists);
@@ -34,8 +34,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
@@ -48,8 +47,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.UpperRight.CheckBoxExists);
@@ -62,8 +60,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
@@ -76,8 +73,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.LowerLeft.RadioButtonExists);
@@ -90,8 +86,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
@@ -104,8 +99,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.LowerRight.RadioButtonExists);
@@ -118,8 +112,7 @@ namespace Sut.Html.PageComponentsTest
             using (var webPage = new TempWebPage(Content))
             {
                 // Arrange
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
-                var mainPage = new MainPage(browserWindow);
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);

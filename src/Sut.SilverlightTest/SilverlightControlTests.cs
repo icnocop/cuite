@@ -3,6 +3,7 @@ using System.IO;
 using CassiniDev;
 using CUITe.Controls;
 using CUITe.Controls.SilverlightControls;
+using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -55,11 +56,9 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_InObjectRepository_Succeeds()
         {
-            var browserWindow = BrowserWindow.Launch(PageUrl);
-            var testPage = new TestPage(browserWindow);
-            testPage.List.SelectedIndices = new[] { 2 };
-            Assert.IsTrue(testPage.List.SelectedItemsAsString == "Coded UI Test");
-            browserWindow.Close();
+            var page = Page.Launch<TestPage>(PageUrl);
+            page.List.SelectedIndices = new[] { 2 };
+            Assert.IsTrue(page.List.SelectedItemsAsString == "Coded UI Test");
         }
 
         [TestMethod]

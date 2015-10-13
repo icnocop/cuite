@@ -1,17 +1,11 @@
 ﻿using CUITe.Controls.HtmlControls;
 using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
     public class HtmlTestPageFeeds : Page
     {
-        public HtmlTestPageFeeds(UITestControl searchLimitContainer)
-            : base(searchLimitContainer)
-        {
-        }
-
         public HtmlUnorderedList CustomDataFeedTabsNav
         {
             get { return Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }

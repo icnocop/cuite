@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using CUITe.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.PeripheralInputTest.ObjectRepository;
@@ -24,8 +25,7 @@ namespace Sut.PeripheralInputTest
         [TestInitialize]
         public void TestInitialize()
         {
-            ApplicationUnderTest application = ApplicationUnderTest.Launch(ApplicationFilePath);
-            mainScreen = new MainScreen(application);
+            mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
         [TestMethod]

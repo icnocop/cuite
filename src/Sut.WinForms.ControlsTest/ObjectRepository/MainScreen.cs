@@ -2,17 +2,11 @@
 using CUITe.Controls.WinControls;
 using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
-using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace Sut.WinForms.ControlsTest.ObjectRepository
 {
     public class MainScreen : Screen
     {
-        public MainScreen(UITestControl searchLimitContainer)
-            : base(searchLimitContainer)
-        {
-        }
-
         public WinButton Button
         {
             get { return Find<WinButton>(By.Name("This is a button")); }

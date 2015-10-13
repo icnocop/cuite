@@ -17,25 +17,6 @@ namespace CUITe.ObjectRepository
         private UITestControl searchLimitContainer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PageComponent"/> class.
-        /// </summary>
-        protected PageComponent()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PageComponent"/> class.
-        /// </summary>
-        /// <param name="searchLimitContainer">Container for locating controls.</param>
-        protected internal PageComponent(UITestControl searchLimitContainer)
-        {
-            if (searchLimitContainer == null)
-                throw new ArgumentNullException("searchLimitContainer");
-
-            this.searchLimitContainer = searchLimitContainer;
-        }
-
-        /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>
         internal virtual UITestControl SearchLimitContainer

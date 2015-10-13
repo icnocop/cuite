@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="ObjectRepository\LowerLeftComponent.cs" />
     <Compile Include="ObjectRepository\LowerRightComponent.cs" />
-    <Compile Include="ObjectRepository\MainScreen.cs" />
+    <Compile Include="ObjectRepository\MainPage.cs" />
     <Compile Include="ObjectRepository\RebasedLowerLeftComponent.cs" />
     <Compile Include="ObjectRepository\RebasedLowerRightComponent.cs" />
     <Compile Include="ObjectRepository\RebasedUpperLeftComponent.cs" />

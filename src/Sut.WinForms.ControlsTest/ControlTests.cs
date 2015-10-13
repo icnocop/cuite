@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using CUITe.ObjectRepository;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.WinForms.ControlsTest.ObjectRepository;
 
@@ -23,8 +24,7 @@ namespace Sut.WinForms.ControlsTest
         [TestInitialize]
         public void TestInitialize()
         {
-            ApplicationUnderTest application = ApplicationUnderTest.Launch(ApplicationFilePath);
-            mainScreen = new MainScreen(application);
+            mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
         [TestMethod]
