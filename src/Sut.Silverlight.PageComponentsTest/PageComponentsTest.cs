@@ -99,5 +99,22 @@ namespace Sut.Silverlight.PageComponentsTest
             // Assert
             Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
         }
+
+        [TestMethod]
+        public void Browser()
+        {
+            // Act
+            BrowserWindow actual = mainPage.Browser;
+
+            // Assert
+            Assert.AreEqual(mainPage.UpperLeft.Browser, actual);
+            Assert.AreEqual(mainPage.RebasedUpperLeft.Browser, actual);
+            Assert.AreEqual(mainPage.UpperRight.Browser, actual);
+            Assert.AreEqual(mainPage.RebasedUpperRight.Browser, actual);
+            Assert.AreEqual(mainPage.LowerLeft.Browser, actual);
+            Assert.AreEqual(mainPage.RebasedLowerLeft.Browser, actual);
+            Assert.AreEqual(mainPage.LowerRight.Browser, actual);
+            Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
+        }
     }
 }

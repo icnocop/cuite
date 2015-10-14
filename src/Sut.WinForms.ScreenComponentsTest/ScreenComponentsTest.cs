@@ -85,5 +85,22 @@ namespace Sut.WinForms.ScreenComponentsTest
             // Assert
             Assert.IsTrue(mainScreen.RebasedLowerRight.RadioButtonExists);
         }
+
+        [TestMethod]
+        public void Application()
+        {
+            // Act
+            ApplicationUnderTest actual = mainScreen.Application;
+
+            // Assert
+            Assert.AreEqual(mainScreen.UpperLeft.Application, actual);
+            Assert.AreEqual(mainScreen.RebasedUpperLeft.Application, actual);
+            Assert.AreEqual(mainScreen.UpperRight.Application, actual);
+            Assert.AreEqual(mainScreen.RebasedUpperRight.Application, actual);
+            Assert.AreEqual(mainScreen.LowerLeft.Application, actual);
+            Assert.AreEqual(mainScreen.RebasedLowerLeft.Application, actual);
+            Assert.AreEqual(mainScreen.LowerRight.Application, actual);
+            Assert.AreEqual(mainScreen.RebasedLowerRight.Application, actual);
+        }
     }
 }

@@ -36,11 +36,12 @@ namespace CUITe.ObjectRepository
             if (applicationStartInfo == null)
                 throw new ArgumentNullException("applicationStartInfo");
 
-            var applicationUnderTest = ApplicationUnderTest.Launch(applicationStartInfo);
+            var application = ApplicationUnderTest.Launch(applicationStartInfo);
 
             return new T
             {
-                SearchLimitContainer = applicationUnderTest
+                Application = application,
+                SearchLimitContainer = application
             };
         }
     }

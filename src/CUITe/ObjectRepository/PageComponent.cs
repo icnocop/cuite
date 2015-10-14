@@ -14,7 +14,23 @@ namespace CUITe.ObjectRepository
     /// </remarks>
     public abstract class PageComponent
     {
+        private BrowserWindow browser;
         private UITestControl searchLimitContainer;
+
+        /// <summary>
+        /// Gets the browser.
+        /// </summary>
+        public BrowserWindow Browser
+        {
+            get { return browser; }
+            internal set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+
+                browser = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the search limit container.
@@ -44,6 +60,7 @@ namespace CUITe.ObjectRepository
         {
             return new T
             {
+                Browser = Browser,
                 SearchLimitContainer = SearchLimitContainer
             };
         }

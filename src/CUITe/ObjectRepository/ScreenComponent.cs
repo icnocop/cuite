@@ -15,8 +15,24 @@ namespace CUITe.ObjectRepository
     /// </remarks>
     public abstract class ScreenComponent
     {
+        private ApplicationUnderTest application;
         private UITestControl searchLimitContainer;
-        
+
+        /// <summary>
+        /// Gets the application.
+        /// </summary>
+        public ApplicationUnderTest Application
+        {
+            get { return application; }
+            internal set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+
+                application = value;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>
@@ -45,6 +61,7 @@ namespace CUITe.ObjectRepository
         {
             return new T
             {
+                Application = Application,
                 SearchLimitContainer = SearchLimitContainer
             };
         }

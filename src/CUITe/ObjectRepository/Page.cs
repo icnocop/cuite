@@ -35,11 +35,12 @@ namespace CUITe.ObjectRepository
             if (uri == null)
                 throw new ArgumentNullException("uri");
 
-            var applicationUnderTest = BrowserWindow.Launch(uri);
+            var browser = BrowserWindow.Launch(uri);
 
             return new T
             {
-                SearchLimitContainer = applicationUnderTest
+                Browser = browser,
+                SearchLimitContainer = browser
             };
         }
     }

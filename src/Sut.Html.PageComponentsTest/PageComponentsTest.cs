@@ -119,6 +119,29 @@ namespace Sut.Html.PageComponentsTest
             }
         }
 
+        [TestMethod]
+        public void Browser()
+        {
+            using (var webPage = new TempWebPage(Content))
+            {
+                // Arrange
+                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+
+                // Act
+                BrowserWindow actual = mainPage.Browser;
+
+                // Assert
+                Assert.AreEqual(mainPage.UpperLeft.Browser, actual);
+                Assert.AreEqual(mainPage.RebasedUpperLeft.Browser, actual);
+                Assert.AreEqual(mainPage.UpperRight.Browser, actual);
+                Assert.AreEqual(mainPage.RebasedUpperRight.Browser, actual);
+                Assert.AreEqual(mainPage.LowerLeft.Browser, actual);
+                Assert.AreEqual(mainPage.RebasedLowerLeft.Browser, actual);
+                Assert.AreEqual(mainPage.LowerRight.Browser, actual);
+                Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
+            }
+        }
+
         #region Helper properties
 
         private static string Content
