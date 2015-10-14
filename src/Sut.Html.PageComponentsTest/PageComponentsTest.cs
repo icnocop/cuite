@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.Html.PageComponentsTest.ObjectRepository;
-using Test;
+using TestHelpers;
 
 namespace Sut.Html.PageComponentsTest
 {

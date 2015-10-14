@@ -68,7 +68,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenComponen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.PageComponentsTest", "Sut.Html.PageComponentsTest\Sut.Html.PageComponentsTest.csproj", "{42937C6D-41D3-423D-BC71-05E1C21401A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{813FC5B1-D329-4CE3-903A-10BA647535AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelpers", "TestHelpers\TestHelpers.csproj", "{813FC5B1-D329-4CE3-903A-10BA647535AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageComponents", "Sut.Silverlight.PageComponents\Sut.Silverlight.PageComponents.csproj", "{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}"
 EndProject

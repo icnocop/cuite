@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Test
+namespace TestHelpers
 {
     /// <summary>
     /// Class acting as a wrapper for a temporary HTML file.

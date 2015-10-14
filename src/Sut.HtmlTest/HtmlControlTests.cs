@@ -14,7 +14,7 @@ using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.HtmlTest.ObjectRepository;
-using Test;
+using TestHelpers;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace Sut.HtmlTest

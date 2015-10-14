@@ -1,6 +1,6 @@
 ﻿using CUITe.ObjectRepository;
 using Sut.HtmlTest.ObjectRepository;
-using Test;
+using TestHelpers;
 
 namespace Sut.HtmlTest
 {
