@@ -17,30 +17,30 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
         /// search configuration.
         /// </summary>
         /// <typeparam name="T">The type of control to find.</typeparam>
-        /// <param name="source">The control whose descendants to search.</param>
+        /// <param name="self">The control whose descendants to search.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
         /// <exception cref="InvalidSearchPropertyNamesException">
         /// Search configuration contains a property namely that isn't applicable on the control.
         /// </exception>
-        public static T Find<T>(this UITestControl source, By searchConfiguration = null) where T : ControlBase
+        public static T Find<T>(this UITestControl self, By searchConfiguration = null) where T : ControlBase
         {
-            if (source == null)
-                throw new ArgumentNullException("source");
+            if (self == null)
+                throw new ArgumentNullException("self");
             
             var control = ControlBaseFactory.Create<T>(searchConfiguration);
 
             // TODO: This assembly should have no knowledge of the Silverlight assembly
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                control.SourceControl.Container = FindSilverlightContainer(source);
+                control.SourceControl.Container = FindSilverlightContainer(self);
             }
             else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
             {
-                (control as ComboBox).SetWindow(FindBrowserWindow(source));
+                (control as ComboBox).SetWindow(FindBrowserWindow(self));
             }
             else
             {
-                control.SourceControl.Container = source;
+                control.SourceControl.Container = self;
             }
 
             return control;
