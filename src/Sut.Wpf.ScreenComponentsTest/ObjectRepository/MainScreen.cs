@@ -43,5 +43,10 @@ namespace Sut.Wpf.ScreenComponentsTest.ObjectRepository
         {
             get { return GetComponent<RebasedLowerRightComponent>(); }
         }
+
+        public MiddleComponent MiddleComponent
+        {
+            get { return GetComponent<MiddleComponent>(); }
+        }
     }
 }

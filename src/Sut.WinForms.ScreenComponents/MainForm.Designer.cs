@@ -37,6 +37,8 @@
             this.groupBoxUpperRight = new System.Windows.Forms.GroupBox();
             this.groupBoxLowerLeft = new System.Windows.Forms.GroupBox();
             this.groupBoxLowerRight = new System.Windows.Forms.GroupBox();
+            this.buttonOpenModalDialog = new System.Windows.Forms.Button();
+            this.buttonOpenNonModalDialog = new System.Windows.Forms.Button();
             this.groupBoxUpperLeft.SuspendLayout();
             this.groupBoxUpperRight.SuspendLayout();
             this.groupBoxLowerLeft.SuspendLayout();
@@ -108,7 +110,7 @@
             // groupBoxLowerLeft
             // 
             this.groupBoxLowerLeft.Controls.Add(this.radioButtonLowerLeft);
-            this.groupBoxLowerLeft.Location = new System.Drawing.Point(12, 68);
+            this.groupBoxLowerLeft.Location = new System.Drawing.Point(12, 97);
             this.groupBoxLowerLeft.Name = "groupBoxLowerLeft";
             this.groupBoxLowerLeft.Size = new System.Drawing.Size(134, 50);
             this.groupBoxLowerLeft.TabIndex = 3;
@@ -118,18 +120,40 @@
             // groupBoxLowerRight
             // 
             this.groupBoxLowerRight.Controls.Add(this.radioButtonLowerRight);
-            this.groupBoxLowerRight.Location = new System.Drawing.Point(152, 68);
+            this.groupBoxLowerRight.Location = new System.Drawing.Point(152, 97);
             this.groupBoxLowerRight.Name = "groupBoxLowerRight";
             this.groupBoxLowerRight.Size = new System.Drawing.Size(134, 50);
             this.groupBoxLowerRight.TabIndex = 4;
             this.groupBoxLowerRight.TabStop = false;
             this.groupBoxLowerRight.Text = "Lower Left Group";
             // 
+            // buttonOpenModalDialog
+            // 
+            this.buttonOpenModalDialog.Location = new System.Drawing.Point(12, 68);
+            this.buttonOpenModalDialog.Name = "buttonOpenModalDialog";
+            this.buttonOpenModalDialog.Size = new System.Drawing.Size(134, 23);
+            this.buttonOpenModalDialog.TabIndex = 5;
+            this.buttonOpenModalDialog.Text = "Open Modal Dialog";
+            this.buttonOpenModalDialog.UseVisualStyleBackColor = true;
+            this.buttonOpenModalDialog.Click += new System.EventHandler(this.buttonOpenModalDialog_Click);
+            // 
+            // buttonOpenNonModalDialog
+            // 
+            this.buttonOpenNonModalDialog.Location = new System.Drawing.Point(152, 68);
+            this.buttonOpenNonModalDialog.Name = "buttonOpenNonModalDialog";
+            this.buttonOpenNonModalDialog.Size = new System.Drawing.Size(134, 23);
+            this.buttonOpenNonModalDialog.TabIndex = 5;
+            this.buttonOpenNonModalDialog.Text = "Open Non-Modal Dialog";
+            this.buttonOpenNonModalDialog.UseVisualStyleBackColor = true;
+            this.buttonOpenNonModalDialog.Click += new System.EventHandler(this.buttonOpenNonModalDialog_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 130);
+            this.ClientSize = new System.Drawing.Size(298, 159);
+            this.Controls.Add(this.buttonOpenNonModalDialog);
+            this.Controls.Add(this.buttonOpenModalDialog);
             this.Controls.Add(this.groupBoxLowerRight);
             this.Controls.Add(this.groupBoxLowerLeft);
             this.Controls.Add(this.groupBoxUpperRight);
@@ -159,6 +183,8 @@
         private System.Windows.Forms.GroupBox groupBoxUpperRight;
         private System.Windows.Forms.GroupBox groupBoxLowerLeft;
         private System.Windows.Forms.GroupBox groupBoxLowerRight;
+        private System.Windows.Forms.Button buttonOpenModalDialog;
+        private System.Windows.Forms.Button buttonOpenNonModalDialog;
     }
 }
 

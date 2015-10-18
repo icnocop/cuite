@@ -67,6 +67,20 @@ namespace CUITe.ObjectRepository
         }
 
         /// <summary>
+        /// Navigates to a new screen.
+        /// </summary>
+        /// <typeparam name="T">The type of screen to navigate to.</typeparam>
+        /// <returns>The new screen.</returns>
+        protected T NavigateTo<T>() where T : Screen, new()
+        {
+            return new T
+            {
+                Application = Application,
+                SearchLimitContainer = Application
+            };
+        }
+
+        /// <summary>
         /// Finds the control object from the descendants of this control using the specified
         /// search configuration.
         /// </summary>

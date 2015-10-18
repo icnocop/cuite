@@ -99,5 +99,25 @@ namespace Sut.Wpf.ScreenComponentsTest
             Assert.AreEqual(mainScreen.LowerRight.Application, actual);
             Assert.AreEqual(mainScreen.RebasedLowerRight.Application, actual);
         }
+
+        [TestMethod]
+        public void NavigateToModalDialog()
+        {
+            // Act
+            var dialogScreen = mainScreen.MiddleComponent.NavigateToModalDialogScreen();
+
+            // Assert
+            Assert.IsTrue(dialogScreen.CloseButtonExists);
+        }
+
+        [TestMethod]
+        public void NavigateToNonModalDialog()
+        {
+            // Act
+            var dialogScreen = mainScreen.MiddleComponent.NavigateToNonModalDialogScreen();
+
+            // Assert
+            Assert.IsTrue(dialogScreen.CloseButtonExists);
+        }
     }
 }
