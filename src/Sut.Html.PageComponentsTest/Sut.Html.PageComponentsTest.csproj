@@ -55,9 +55,11 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ObjectRepository\AboutPage.cs" />
     <Compile Include="ObjectRepository\LowerLeftComponent.cs" />
     <Compile Include="ObjectRepository\LowerRightComponent.cs" />
     <Compile Include="ObjectRepository\MainPage.cs" />
+    <Compile Include="ObjectRepository\MiddleComponent.cs" />
     <Compile Include="ObjectRepository\RebasedLowerLeftComponent.cs" />
     <Compile Include="ObjectRepository\RebasedLowerRightComponent.cs" />
     <Compile Include="ObjectRepository\RebasedUpperLeftComponent.cs" />

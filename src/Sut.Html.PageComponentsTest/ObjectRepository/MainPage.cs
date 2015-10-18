@@ -43,5 +43,10 @@ namespace Sut.Html.PageComponentsTest.ObjectRepository
         {
             get { return GetComponent<RebasedLowerRightComponent>(); }
         }
+
+        public MiddleComponent MiddleComponent
+        {
+            get { return GetComponent<MiddleComponent>(); }
+        }
     }
 }

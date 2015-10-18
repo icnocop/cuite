@@ -1,4 +1,5 @@
-﻿using CUITe.ObjectRepository;
+﻿using System.IO;
+using CUITe.ObjectRepository;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.Html.PageComponentsTest.ObjectRepository;
@@ -18,10 +19,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void UpperLeft()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
                 
                 // Assert
                 Assert.IsTrue(mainPage.UpperLeft.CheckBoxExists);
@@ -31,10 +32,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void RebasedUpperLeft()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
@@ -44,10 +45,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void UpperRight()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.UpperRight.CheckBoxExists);
@@ -57,10 +58,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void RebasedUpperRight()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
@@ -70,10 +71,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void LowerLeft()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.LowerLeft.RadioButtonExists);
@@ -83,10 +84,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void RebasedLowerLeft()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
@@ -96,10 +97,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void LowerRight()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.LowerRight.RadioButtonExists);
@@ -109,10 +110,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void RebasedLowerRight()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
                 Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
@@ -122,10 +123,10 @@ namespace Sut.Html.PageComponentsTest
         [TestMethod]
         public void Browser()
         {
-            using (var webPage = new TempWebPage(Content))
+            using (var homePage = new TempWebPage(Home))
             {
                 // Arrange
-                var mainPage = Page.Launch<MainPage>(webPage.FilePath);
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Act
                 BrowserWindow actual = mainPage.Browser;
@@ -142,9 +143,26 @@ namespace Sut.Html.PageComponentsTest
             }
         }
 
+        [TestMethod]
+        public void NavigateToNonModalDialog()
+        {
+            using (var aboutPage = new TempWebPage(About))
+            using (var homePage = new TempWebPage(string.Format(Home, Path.GetFileName(aboutPage.FilePath))))
+            {
+                // Arrange
+                var mainPage = Page.Launch<MainPage>(homePage.FilePath);
+
+                // Act
+                var dialogScreen = mainPage.MiddleComponent.NavigateToAboutPage();
+
+                // Assert
+                Assert.IsTrue(dialogScreen.FrameworkMessageExists);
+            }
+        }
+
         #region Helper properties
 
-        private static string Content
+        private static string Home
         {
             get
             {
@@ -155,10 +173,24 @@ namespace Sut.Html.PageComponentsTest
                             <input type=""checkbox"" id=""upperleft"">Upper left</input>
                             <input type=""checkbox"" id=""upperright"">Upper right</input>
                           </div>
+                          <button id=""navigatetoabout"" onclick=""location.href='{0}';"">About</button>
                           <div id=""lowerdiv"">
                             <input type=""radio"" id=""lowerleft"">Lower left</input>
                             <input type=""radio"" id=""lowerright"">Lower right</input>
                           </div>
+                        </body>
+                      </html>";
+            }
+        }
+
+        private static string About
+        {
+            get
+            {
+                return
+                    @"<html>
+                        <body>
+                          <p id=""framework"">This test is executed by CUITe.</p>
                         </body>
                       </html>";
             }
