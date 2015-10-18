@@ -7,6 +7,8 @@ namespace CUITe.ObjectRepository
     /// <summary>
     /// Abstract class representing a screen or a window in a WPF or WinForms application.
     /// </summary>
+    /// <seealso cref="ScreenComponent"/>
+    /// <seealso cref="ScreenComponent{T}"/>
     public abstract class Screen : ScreenComponent
     {
         /// <summary>

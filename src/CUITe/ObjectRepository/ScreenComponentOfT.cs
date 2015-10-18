@@ -17,6 +17,8 @@ namespace CUITe.ObjectRepository
     /// A <see cref="Screen"/> with a overwhelming number of controls can be split into logical
     /// components, thus providing better test code maintainability.
     /// </remarks>
+    /// <seealso cref="Screen"/>
+    /// <seealso cref="ScreenComponent"/>
     public abstract class ScreenComponent<T> : ScreenComponent where T : ControlBase
     {
         private readonly By searchConfiguration;

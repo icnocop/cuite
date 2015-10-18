@@ -6,6 +6,8 @@ namespace CUITe.ObjectRepository
     /// <summary>
     /// Abstract class representing a page in a HTML application.
     /// </summary>
+    /// <seealso cref="PageComponent"/>
+    /// <seealso cref="PageComponent{T}"/>
     public abstract class Page : PageComponent
     {
         /// <summary>

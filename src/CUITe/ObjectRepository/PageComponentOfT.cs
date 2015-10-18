@@ -16,6 +16,8 @@ namespace CUITe.ObjectRepository
     /// A <see cref="Page"/> with a overwhelming number of controls can be split into logical
     /// components, thus providing better test code maintainability.
     /// </remarks>
+    /// <seealso cref="Page"/>
+    /// <seealso cref="PageComponent"/>
     public class PageComponent<T> : PageComponent where T : ControlBase
     {
         private readonly By searchConfiguration;
