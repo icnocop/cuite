@@ -116,5 +116,15 @@ namespace Sut.Silverlight.PageComponentsTest
             Assert.AreEqual(mainPage.LowerRight.Browser, actual);
             Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
         }
+
+        [TestMethod]
+        public void NavigateToNonModalDialog()
+        {
+            // Act
+            var dialogScreen = mainPage.MiddleComponent.NavigateToNonModalDialogPage();
+
+            // Assert
+            Assert.IsTrue(dialogScreen.CloseButtonExists);
+        }
     }
 }

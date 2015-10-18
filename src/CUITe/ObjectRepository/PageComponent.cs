@@ -66,6 +66,20 @@ namespace CUITe.ObjectRepository
         }
 
         /// <summary>
+        /// Navigates to a new page.
+        /// </summary>
+        /// <typeparam name="T">The type of page to navigate to.</typeparam>
+        /// <returns>The new page.</returns>
+        protected T NavigateTo<T>() where T : Page, new()
+        {
+            return new T
+            {
+                Browser = Browser,
+                SearchLimitContainer = Browser
+            };
+        }
+
+        /// <summary>
         /// Finds the control object from the descendants of this control using the specified
         /// search configuration.
         /// </summary>

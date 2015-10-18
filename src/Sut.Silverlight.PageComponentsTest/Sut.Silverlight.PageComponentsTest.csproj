@@ -47,6 +47,7 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +59,11 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ObjectRepository\DialogPage.cs" />
     <Compile Include="ObjectRepository\LowerLeftComponent.cs" />
     <Compile Include="ObjectRepository\LowerRightComponent.cs" />
     <Compile Include="ObjectRepository\MainPage.cs" />
+    <Compile Include="ObjectRepository\MiddleComponent.cs" />
     <Compile Include="ObjectRepository\RebasedLowerLeftComponent.cs" />
     <Compile Include="ObjectRepository\RebasedLowerRightComponent.cs" />
     <Compile Include="ObjectRepository\RebasedUpperLeftComponent.cs" />
