@@ -6,7 +6,7 @@ namespace Sut.Silverlight.PageComponentsTest.ObjectRepository
 {
     public class MiddleComponent : PageComponent
     {
-        public DialogPage NavigateToNonModalDialogPage()
+        public DialogPage NavigateToDialogPage()
         {
             Find<SilverlightButton>(By.AutomationId("MjovOFqiTEaV1jfhwkLrhA")).Click();
             return NavigateTo<DialogPage>();

@@ -118,10 +118,10 @@ namespace Sut.Silverlight.PageComponentsTest
         }
 
         [TestMethod]
-        public void NavigateToNonModalDialog()
+        public void NavigateToDialog()
         {
             // Act
-            var dialogScreen = mainPage.MiddleComponent.NavigateToNonModalDialogPage();
+            var dialogScreen = mainPage.MiddleComponent.NavigateToDialogPage();
 
             // Assert
             Assert.IsTrue(dialogScreen.CloseButtonExists);
