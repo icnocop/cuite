@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UITesting;
 namespace CUITe.ObjectRepository
 {
     /// <summary>
-    /// Abstract class representing a page component in a HTML application.
+    /// Abstract class representing a page component in a HTML or Silverlight application.
     /// <para />
     /// In contrast to <see cref="PageComponent"/> this class lets you drill down into the UI
     /// control tree, thus rebasing the search for other controls to originate from the control

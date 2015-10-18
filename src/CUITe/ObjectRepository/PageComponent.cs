@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UITesting;
 namespace CUITe.ObjectRepository
 {
     /// <summary>
-    /// Abstract class representing a page component in a HTML application.
+    /// Abstract class representing a page component in a HTML or Silverlight application.
     /// </summary>
     /// <remarks>
     /// A <see cref="Page"/> with a overwhelming number of controls can be split into logical

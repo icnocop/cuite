@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UITesting;
 namespace CUITe.ObjectRepository
 {
     /// <summary>
-    /// Abstract class representing a page in a HTML application.
+    /// Abstract class representing a page in a HTML or Silverlight application.
     /// </summary>
     /// <seealso cref="PageComponent"/>
     /// <seealso cref="PageComponent{T}"/>
