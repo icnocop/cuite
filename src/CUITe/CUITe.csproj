@@ -136,7 +136,6 @@
     <Compile Include="Controls\HtmlControls\BrowserWindowUnderTest.cs" />
     <Compile Include="Controls\HtmlControls\DynamicBrowserWindowUnderTest.cs" />
     <Compile Include="Controls\HtmlControls\HtmlAreaHyperlink.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlAudio.cs" />
     <Compile Include="Controls\HtmlControls\HtmlButton.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCell.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCheckBox.cs" />
@@ -165,21 +164,17 @@
     <Compile Include="Controls\HtmlControls\HtmlLabel.cs" />
     <Compile Include="Controls\HtmlControls\HtmlList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlListItem.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlMedia.cs" />
     <Compile Include="Controls\HtmlControls\HtmlOrderedList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlParagraph.cs" />
     <Compile Include="Controls\HtmlControls\HtmlPassword.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlProgressBar.cs" />
     <Compile Include="Controls\HtmlControls\HtmlRadioButton.cs" />
     <Compile Include="Controls\HtmlControls\HtmlRow.cs" />
     <Compile Include="Controls\HtmlControls\HtmlScrollBar.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlSlider.cs" />
     <Compile Include="Controls\HtmlControls\HtmlSpan.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTable.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTableSearchOptions.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTextArea.cs" />
     <Compile Include="Controls\HtmlControls\HtmlUnorderedList.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlVideo.cs" />
     <Compile Include="Controls\HtmlControls\HtmlXml.cs" />
     <Compile Include="Controls\HtmlControls\IHasInnerText.cs" />
     <Compile Include="Controls\ModifierKeysLifetime.cs" />
@@ -286,6 +281,17 @@
     <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
   </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' != '10'">
+      <ItemGroup>
+        <Compile Include="Controls\HtmlControls\HtmlAudio.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlMedia.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlProgressBar.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlSlider.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlVideo.cs" />
+      </ItemGroup>
+    </When>
+  </Choose>
   <ItemGroup>
     <EmbeddedResource Include="CUITe.nuspec" />
     <None Include="NuGet\app.config.transform" />
