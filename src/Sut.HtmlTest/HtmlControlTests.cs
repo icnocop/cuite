@@ -622,8 +622,8 @@ namespace Sut.HtmlTest
             var list = window.Find<HtmlUnorderedList>(By.Id("unorderedList"));
 
             // Act
-            List<HtmlListItem> children = list.GetChildren()
-                .Cast<HtmlListItem>()
+            List<HtmlCustomListItem> children = list.GetChildren()
+                .Cast<HtmlCustomListItem>()
                 .ToList();
 
             // Assert
@@ -642,8 +642,8 @@ namespace Sut.HtmlTest
             var page = Page.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
 
             // Act
-            List<HtmlListItem> children = page.List.GetChildren()
-                .Cast<HtmlListItem>()
+            List<HtmlCustomListItem> children = page.List.GetChildren()
+                .Cast<HtmlCustomListItem>()
                 .ToList();
 
             // Assert

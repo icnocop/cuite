@@ -94,10 +94,12 @@ namespace CUITe.Controls
             catch (MissingMethodException)
             {
                 string message = string.Format(
-                    "No constructor for the type '{0}' contains arguments in the following order:" + Environment.NewLine +
-                    "  1. Class that inherits from UITestControl - Source control" + Environment.NewLine +
-                    "  2. By - Search configuration",
-                    controlType);
+                    "The type '{0}' contains no public constructor with the following arguments:" + Environment.NewLine +
+                    "  1. {1}" + Environment.NewLine +
+                    "  2. {2}",
+                    controlType,
+                    sourceControl.GetType(),
+                    typeof(By));
 
                 throw new ArgumentException(message);
             }

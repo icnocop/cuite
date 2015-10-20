@@ -163,6 +163,7 @@
     <Compile Include="Controls\HtmlControls\HtmlIns.cs" />
     <Compile Include="Controls\HtmlControls\HtmlLabel.cs" />
     <Compile Include="Controls\HtmlControls\HtmlList.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlCustomListItem.cs" />
     <Compile Include="Controls\HtmlControls\HtmlListItem.cs" />
     <Compile Include="Controls\HtmlControls\HtmlOrderedList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlParagraph.cs" />

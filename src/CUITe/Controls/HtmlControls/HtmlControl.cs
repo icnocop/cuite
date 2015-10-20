@@ -290,6 +290,10 @@ namespace CUITe.Controls.HtmlControls
             {
                 control = new HtmlIFrame((CUITControls.HtmlIFrame)sourceControl);
             }
+            else if (sourceControl.GetType() == typeof(CUITControls.HtmlListItem))
+            {
+                control = new HtmlListItem((CUITControls.HtmlListItem)sourceControl);
+            }
             else if (sourceControl.GetType() == typeof(CUITControls.HtmlCustom))
             {
                 switch (sourceControl.TagName.ToLower())
@@ -322,7 +326,7 @@ namespace CUITe.Controls.HtmlControls
                         control = new HtmlOrderedList((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "li":
-                        control = new HtmlListItem((CUITControls.HtmlListItem)sourceControl);
+                        control = new HtmlCustomListItem((CUITControls.HtmlCustom)sourceControl);
                         break;
                     case "ins":
                         control = new HtmlIns((CUITControls.HtmlCustom)sourceControl);
