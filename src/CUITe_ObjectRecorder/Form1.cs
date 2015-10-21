@@ -24,7 +24,7 @@ namespace CUITe_ObjectRecorder
             var values = (string)document.InvokeScript("getValues");
             if (values != null && !listBox1.Items.Contains(values))
             {
-                bool objectIdentified = isCodeLanguageVB ? !values.Contains(" As New type(") : !values.StartsWith("public type ");
+                bool objectIdentified = isCodeLanguageVB ? !values.Contains("Property var()") : !values.StartsWith("public type ");
                 if (objectIdentified)
                 {
                     listBox1.Items.Add(values);
@@ -346,7 +346,7 @@ namespace CUITe_ObjectRecorder
                     if (evt.stopPropagation) evt.stopPropagation();
                     if (event.preventDefault) event.preventDefault();
 
-                    sCode = isCodeLanguageVB ? 'Public var As New type(By.SearchProperties(searchparams))' : 'public type var = new type(By.SearchProperties(searchparams))';
+                    sCode = isCodeLanguageVB ? 'Public ReadOnly Property var() As type Get Return Find(Of type)(By.SearchProperties(searchparams)) End Get End Property' : 'public type var { get { return Find<type>(By.SearchProperties(searchparams)); } }';
                     var sProperties = '';
                     var sNodeName, sNodeType, sId, sName, sClass, sInnerText, sTitle, sValue;
                     if (objInQuestion != null && objInQuestion.id != 'CUITe_div2') {
@@ -454,8 +454,7 @@ namespace CUITe_ObjectRecorder
                     }
 
                     sCode = sCode.replace('searchparams', String.fromCharCode(34) + sProperties + String.fromCharCode(34));
-                    sCode = isCodeLanguageVB ? sCode : sCode + ';';
-                    sCode = isCodeLanguageVB ? sCode.replace(' var As New ', ' ' + sVarNameEval + ' As New ') : sCode.replace(' var = ', ' ' + sVarNameEval + ' = ');
+                    sCode = isCodeLanguageVB ? sCode.replace(' var() ', ' ' + sVarNameEval + '() ') : sCode.replace(' var ', ' ' + sVarNameEval + ' ');
                     top.sCode = sCode;
                 }
                 function isElementIframe(elementName) {
