@@ -1,33 +1,29 @@
 ﻿using CUITe.Controls.HtmlControls;
+using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
-    public class HtmlTestPageFeeds : BrowserWindowUnderTest
+    public class HtmlTestPageFeeds : Page
     {
-        public HtmlTestPageFeeds()
-            : base("test")
-        {
-        }
-
-        public HtmlCustom cusDataFeedTabsNav2
-        {
-            get { return divFeedTabs.Find<HtmlCustom>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
-        }
-
-        public HtmlUnorderedList cusDataFeedTabsNav
+        public HtmlUnorderedList CustomDataFeedTabsNav
         {
             get { return Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
 
-        public HtmlDiv divFeedTabs
+        public HtmlUnorderedList CustomDataFeedTabsNav1
         {
-            get { return Find<HtmlDiv>(By.Id("feed_tabs")); }
+            get { return DivFeedTabs.Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
         }
 
-        public HtmlUnorderedList cusdatafeedtabsnav1
+        public HtmlCustom CustomDataFeedTabsNav2
         {
-            get { return divFeedTabs.Find<HtmlUnorderedList>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
+            get { return DivFeedTabs.Find<HtmlCustom>(By.TagName("ul").AndSearchProperties("Class=dataFeedTab ui-tabs-nav")); }
+        }
+
+        public HtmlDiv DivFeedTabs
+        {
+            get { return Find<HtmlDiv>(By.Id("feed_tabs")); }
         }
     }
 }

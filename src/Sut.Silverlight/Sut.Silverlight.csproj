@@ -31,11 +31,6 @@
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <LinkedServerProject>
     </LinkedServerProject>
-    <Production Condition="'$(Production)'==''">False</Production>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <!-- This property group is only here to support building this project using the 
@@ -65,17 +60,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <Choose>
-    <When Condition=" '$(Production)'=='False' ">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper, Version=11.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>C:\Program Files (x86)\Common Files\microsoft shared\VSTT\12.0\UITestExtensionPackages\SilverlightUIAutomationHelper\v5.0\Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper.dll</HintPath>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper, Version=11.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Common Files\microsoft shared\VSTT\12.0\UITestExtensionPackages\SilverlightUIAutomationHelper\v5.0\Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
@@ -83,7 +72,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Controls.Data.Input, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
     <Reference Include="System.Windows.Controls" />
     <Reference Include="System.Windows.Controls.Navigation" />
@@ -115,6 +103,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

@@ -1,19 +1,17 @@
 ﻿using CUITe.Controls.HtmlControls;
+using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
-    public class Div2 : HtmlDiv
+    public class Div2 : PageComponent<HtmlDiv>
     {
-        // TODO: The factory should be able to create instances with default constructor
-        // ReSharper disable once UnusedParameter.Local
-        // the constructor requires a parameter in order for it to be dynamically created by CUITe
-        public Div2(By searchConfiguration)
+        public Div2()
             : base(By.Id("div2"))
         {
         }
 
-        public HtmlEdit edit
+        public HtmlEdit Edit
         {
             get { return Find<HtmlEdit>(By.Id("edit")); }
         }

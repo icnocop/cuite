@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CUITe.Browsers;
-using CUITe.Controls.HtmlControls.Telerik;
-using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -15,8 +13,6 @@ namespace CUITe.Controls.HtmlControls
     /// </summary>
     public class BrowserWindowUnderTest : BrowserWindow
     {
-        private CUITControls.HtmlCustom silverlightObjectContainer;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserWindowUnderTest"/> class.
         /// </summary>
@@ -79,18 +75,6 @@ namespace CUITe.Controls.HtmlControls
         /// <summary>
         /// Launches the specified URL.
         /// </summary>
-        /// <param name="url">The URL.</param>
-        public new static BrowserWindowUnderTest Launch(string url)
-        {
-            var browserWindowUnderTest = new BrowserWindowUnderTest();
-            browserWindowUnderTest.CopyFrom(Launch(new Uri(url)));
-
-            return browserWindowUnderTest;
-        }
-
-        /// <summary>
-        /// Launches the specified URL.
-        /// </summary>
         /// <typeparam name="T">The page object type.</typeparam>
         /// <param name="url">The URL.</param>
         public static T Launch<T>(string url) where T : BrowserWindowUnderTest, new()
@@ -108,7 +92,7 @@ namespace CUITe.Controls.HtmlControls
         /// <returns>instance of T</returns>
         public static T GetBrowserWindow<T>(string title = null) where T : BrowserWindowUnderTest
         {
-            return ObjectRepositoryManager.GetInstance<T>(title);
+            return (T)Activator.CreateInstance(typeof(T), title);
         }
 
         /// <summary>
@@ -120,23 +104,6 @@ namespace CUITe.Controls.HtmlControls
             WindowTitles.Clear();
             WindowTitles.Add(title);
             WindowTitle = title;
-        }
-
-        /// <summary>
-        /// Gets the Silverlight object container.
-        /// </summary>
-        public CUITControls.HtmlCustom SilverlightObjectContainer
-        {
-            get
-            {
-                if ((silverlightObjectContainer == null))
-                {
-                    silverlightObjectContainer = new CUITControls.HtmlCustom(this);
-                    silverlightObjectContainer.SearchProperties["TagName"] = "OBJECT";
-                    silverlightObjectContainer.WindowTitles.Add(WindowTitle);
-                }
-                return silverlightObjectContainer;
-            }
         }
 
         /// <summary>
@@ -161,15 +128,6 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Run/evaluate JavaScript code in the DOM context.
-        /// </summary>
-        /// <param name="code">The JavaScript code</param>
-        public void RunScript(string code)
-        {
-            InternetExplorer.RunScript(this, code);
-        }
-
-        /// <summary>
         /// Authenticates the user with the specified user name and password.
         /// </summary>
         /// <param name="userName">The user name.</param>
@@ -185,38 +143,5 @@ namespace CUITe.Controls.HtmlControls
             winTemp2.UIPasswordEdit.Text = password;
             Mouse.Click(winTemp2.UIOKButton);
         }
-
-        #region Objects initialized at runtime without ObjectRepository entries
-
-        /// <summary>
-        /// Finds the control object from the descendants of this control using the specified
-        /// search configuration.
-        /// </summary>
-        /// <typeparam name="T">The type of control to find.</typeparam>
-        /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
-        public T Find<T>(By searchConfiguration = null) where T : ControlBase
-        {
-            T control = ControlBaseFactory.Create<T>(searchConfiguration);
-
-            if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
-            {
-                control.SourceControl.Container = SilverlightObjectContainer;
-            }
-            else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
-            {
-                (control as ComboBox).SetWindow(this);
-            }
-            else
-            {
-                control.SourceControl.Container = this;
-            }
-
-            return control;
-        }
-
-        #endregion
     }
 }

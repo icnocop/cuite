@@ -1,17 +1,12 @@
-﻿using CUITe.Controls.HtmlControls;
+﻿using CUITe.ObjectRepository;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
-    public class HtmlTestPage : BrowserWindowUnderTest
+    public class HtmlTestPage : Page
     {
-        public HtmlTestPage()
-            : base("test")
+        public Div1 Div1
         {
-        }
-
-        public Div1 div1
-        {
-            get { return Find<Div1>(); }
+            get { return GetComponent<Div1>(); }
         }
     }
 }

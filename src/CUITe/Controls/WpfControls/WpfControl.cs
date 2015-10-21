@@ -37,7 +37,7 @@ namespace CUITe.Controls.WpfControls
                 
                 try
                 {
-                    return WpfControlFactory.Create((CUITControls.WpfControl)SourceControl.GetParent());
+                    return ControlBaseFactory.Create(SourceControl.GetParent());
                 }
                 catch (ArgumentOutOfRangeException)
                 {

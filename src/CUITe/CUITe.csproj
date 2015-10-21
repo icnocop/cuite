@@ -135,6 +135,7 @@
     <Compile Include="Controls\HtmlControls\BrowserDialogUnderTest.cs" />
     <Compile Include="Controls\HtmlControls\BrowserWindowUnderTest.cs" />
     <Compile Include="Controls\HtmlControls\DynamicBrowserWindowUnderTest.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlAreaHyperlink.cs" />
     <Compile Include="Controls\HtmlControls\HtmlButton.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCell.cs" />
     <Compile Include="Controls\HtmlControls\HtmlCheckBox.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Controls\HtmlControls\HtmlEditableDiv.cs" />
     <Compile Include="Controls\HtmlControls\HtmlEditableSpan.cs" />
     <Compile Include="Controls\HtmlControls\HtmlFileInput.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlFrame.cs" />
     <Compile Include="Controls\HtmlControls\HtmlHeaderCell.cs" />
     <Compile Include="Controls\HtmlControls\HtmlHeading1.cs" />
     <Compile Include="Controls\HtmlControls\HtmlHeading2.cs" />
@@ -161,12 +163,14 @@
     <Compile Include="Controls\HtmlControls\HtmlIns.cs" />
     <Compile Include="Controls\HtmlControls\HtmlLabel.cs" />
     <Compile Include="Controls\HtmlControls\HtmlList.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlCustomListItem.cs" />
     <Compile Include="Controls\HtmlControls\HtmlListItem.cs" />
     <Compile Include="Controls\HtmlControls\HtmlOrderedList.cs" />
     <Compile Include="Controls\HtmlControls\HtmlParagraph.cs" />
     <Compile Include="Controls\HtmlControls\HtmlPassword.cs" />
     <Compile Include="Controls\HtmlControls\HtmlRadioButton.cs" />
     <Compile Include="Controls\HtmlControls\HtmlRow.cs" />
+    <Compile Include="Controls\HtmlControls\HtmlScrollBar.cs" />
     <Compile Include="Controls\HtmlControls\HtmlSpan.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTable.cs" />
     <Compile Include="Controls\HtmlControls\HtmlTableSearchOptions.cs" />
@@ -186,7 +190,6 @@
     <Compile Include="Controls\WinControls\WinColumnHeader.cs" />
     <Compile Include="Controls\WinControls\WinComboBox.cs" />
     <Compile Include="Controls\WinControls\WinControl.cs" />
-    <Compile Include="Controls\WinControls\WinControlFactory.cs" />
     <Compile Include="Controls\WinControls\WinCustom.cs" />
     <Compile Include="Controls\WinControls\WinDateTimePicker.cs" />
     <Compile Include="Controls\WinControls\WinEdit.cs" />
@@ -224,7 +227,6 @@
     <Compile Include="Controls\WpfControls\WpfCheckBox.cs" />
     <Compile Include="Controls\WpfControls\WpfComboBox.cs" />
     <Compile Include="Controls\WpfControls\WpfControl.cs" />
-    <Compile Include="Controls\WpfControls\WpfControlFactory.cs" />
     <Compile Include="Controls\WpfControls\WpfCustom.cs" />
     <Compile Include="Controls\WpfControls\WpfDatePicker.cs" />
     <Compile Include="Controls\WpfControls\WpfEdit.cs" />
@@ -260,12 +262,18 @@
     <Compile Include="Controls\GenericException.cs" />
     <Compile Include="Controls\InvalidTraversalException.cs" />
     <Compile Include="Controls\InvalidSearchPropertyNamesException.cs" />
+    <Compile Include="Extensions\Microsoft\VisualStudio\TestTools\UITesting\UITestControlExtensions.cs" />
+    <Compile Include="ObjectRepository\Page.cs" />
+    <Compile Include="ObjectRepository\PageComponent.cs" />
+    <Compile Include="ObjectRepository\PageComponentOfT.cs" />
+    <Compile Include="ObjectRepository\Screen.cs" />
+    <Compile Include="ObjectRepository\ScreenComponent.cs" />
+    <Compile Include="ObjectRepository\ScreenComponentOfT.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
     <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
     <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
     <Compile Include="DataSources\XmlDataSourceNotFoundException.cs" />
-    <Compile Include="ObjectRepositoryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchConfigurations\By.cs" />
     <Compile Include="SearchConfigurations\NameConfigurator.cs" />
@@ -274,6 +282,17 @@
     <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
   </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' != '10'">
+      <ItemGroup>
+        <Compile Include="Controls\HtmlControls\HtmlAudio.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlMedia.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlProgressBar.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlSlider.cs" />
+        <Compile Include="Controls\HtmlControls\HtmlVideo.cs" />
+      </ItemGroup>
+    </When>
+  </Choose>
   <ItemGroup>
     <EmbeddedResource Include="CUITe.nuspec" />
     <None Include="NuGet\app.config.transform" />

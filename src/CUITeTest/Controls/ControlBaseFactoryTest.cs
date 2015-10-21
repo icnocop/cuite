@@ -5,6 +5,9 @@ using CUITe.Controls;
 using CUITe.Controls.HtmlControls.Telerik;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
+using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.Controls
@@ -39,6 +42,19 @@ namespace CUITeTest.Controls
             }
         }
 
+        [TestMethod]
+        public void CreateFromSourceControl()
+        {
+            foreach (Type sourceControlType in SourceControlTypes)
+            {
+                // Arrange
+                var sourceControl = (UITestControl)Activator.CreateInstance(sourceControlType);
+                
+                // Act (this code throws exception if the control cannot be created)
+                ControlBaseFactory.Create(sourceControl);
+            }
+        }
+
         #region Helper properties and methods
 
         private static IEnumerable<Type> ControlTypes
@@ -50,6 +66,20 @@ namespace CUITeTest.Controls
                     .Where(type => type.IsPublic)
                     .Where(type => !type.IsAbstract)
                     .Where(type => !type.IsGenericType);
+            }
+        }
+
+        private static IEnumerable<Type> SourceControlTypes
+        {
+            get
+            {
+                return typeof(UITestControl).Assembly.GetTypes()
+                    .Where(type => typeof(UITestControl).IsAssignableFrom(type))
+                    .Where(type => type.IsPublic)
+                    .Where(type => !type.IsAbstract)
+                    .Where(type => !type.IsGenericType)
+                    .Where(type => !typeof(ApplicationUnderTest).IsAssignableFrom(type))
+                    .Except(new[] { typeof(UITestControl), typeof(HtmlControl), typeof(WinControl), typeof(WpfControl) });
             }
         }
 

@@ -1,11 +1,14 @@
 ﻿using CUITe.Controls.HtmlControls;
+using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
 
 namespace Sut.HtmlTest.ObjectRepository
 {
-    public class GoogleHomePageWithInvalidControlSearchProperties : BrowserWindowUnderTest
+    public class GoogleHomePageWithInvalidControlSearchProperties : Page
     {
-        public new string WindowTitle { get { return "Google"; } }
-        public HtmlDiv controlWithInvalidSearchProperties = new HtmlDiv(By.SearchProperties("blanblah=res"));
+        public HtmlDiv ControlWithInvalidSearchProperties
+        {
+            get { return Find<HtmlDiv>(By.SearchProperties("blanblah=res")); }
+        }
     }
 }

@@ -1,0 +1,89 @@
+﻿<Window
+    x:Class="Sut.Wpf.ScreenComponents.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="System Under Test (WPF)"
+    Icon="App.ico"
+    Width="300"
+    Height="200"
+    WindowStartupLocation="CenterScreen">
+
+    <!-- Resources -->
+    <Window.Resources>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    
+    <!-- Root element -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Upper left control -->
+        <GroupBox
+            AutomationProperties.AutomationId="VHdOp0Tn4UyfmV6U91ZCIw"
+            Header="Upper Left Group">
+            <CheckBox
+                AutomationProperties.AutomationId="Ax9iHEo2gk-ayRFljKt2sA"
+                Content="Upper left control" />
+        </GroupBox>
+        
+        <!-- Upper right control -->
+        <GroupBox
+            Grid.Column="1"
+            AutomationProperties.AutomationId="L9Z3HQOziUWAllix8yzsEg"
+            Header="Upper Right Group">
+            <CheckBox
+                AutomationProperties.AutomationId="C_-kLEiiN0Odz20KncjQJQ"
+                Content="Upper right control" />
+        </GroupBox>
+
+        <!-- Open dialog buttons -->
+        <Button
+            Grid.Row="1"
+            AutomationProperties.AutomationId="wimAM1xvJkqKO5jO9uUrSg"
+            Content="Open Modal Dialog"
+            Click="OnOpenModalDialog_Click"/>
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            AutomationProperties.AutomationId="i_mSaEucbU-ohslSj7y9aA"
+            Content="Open Non-Modal Dialog"
+            Click="OnOpenNonModalDialog"/>
+
+        <!-- Lower left control -->
+        <GroupBox
+            Grid.Row="2"
+            AutomationProperties.AutomationId="fP30sIPPlUSqyjyzfMHKfQ"
+            Header="Lower Left Group">
+            <RadioButton
+                AutomationProperties.AutomationId="U-nw96CGFUuMrbKg3h0tCQ"
+                Content="Lower left control" />
+        </GroupBox>
+        
+        <!-- Lower right -->
+        <GroupBox
+            Grid.Row="2"
+            Grid.Column="1"
+            AutomationProperties.AutomationId="4zQL8W23A0ODIzgYYhP4tA"
+            Header="Lower Right Group">
+            <RadioButton
+                AutomationProperties.AutomationId="oEOhLBF5ske3yGfbHhThuA"
+                Content="Lower right control" />
+        </GroupBox>
+    </Grid>
+</Window>

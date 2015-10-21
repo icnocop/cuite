@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using CUITe.Browsers;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
@@ -12,7 +13,7 @@ namespace CUITe.Controls.HtmlControls.Telerik
     public class ComboBox : HtmlControl<CUITControls.HtmlDiv>
     {
         private readonly string id;
-        private BrowserWindowUnderTest window;
+        private BrowserWindow browserWindow;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ComboBox"/> class.
@@ -45,22 +46,25 @@ namespace CUITe.Controls.HtmlControls.Telerik
         /// <param name="milliseconds">
         /// The timeout in milliseconds before setting the selected item.
         /// </param>
-        /// <exception cref="System.InvalidOperationException">
+        /// <exception cref="InvalidOperationException">
         /// Window where combo box is located is null.
         /// </exception>
         public void SelectItemByText(string text, int milliseconds)
         {
-            if (window == null)
+            if (browserWindow == null)
                 throw new InvalidOperationException("Window must be set before calling this method.");
 
-            window.RunScript("var obj = window.$find('" + id + "');obj.toggleDropDown();");
+            InternetExplorer.RunScript(browserWindow, "var obj = window.$find('" + id + "');obj.toggleDropDown();");
             Thread.Sleep(milliseconds);
-            window.RunScript("var obj = window.$find('" + id + "');obj.findItemByText('" + text + "').select();obj.hideDropDown();");
+            InternetExplorer.RunScript(browserWindow, "var obj = window.$find('" + id + "');obj.findItemByText('" + text + "').select();obj.hideDropDown();");
         }
 
-        internal void SetWindow(BrowserWindowUnderTest window)
+        internal void SetWindow(BrowserWindow browserWindow)
         {
-            this.window = window;
+            if (browserWindow == null)
+                throw new ArgumentNullException("browserWindow");
+
+            this.browserWindow = browserWindow;
         }
     }
 }
