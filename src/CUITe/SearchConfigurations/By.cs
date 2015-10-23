@@ -9,14 +9,14 @@ namespace CUITe.SearchConfigurations
     /// </summary>
     public sealed class By
     {
-        private readonly List<ISearchPropertiesConfigurator> configurators;
+        private readonly List<ISearchConfigurator> configurators;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="By"/> class.
         /// </summary>
         internal By()
         {
-            configurators = new List<ISearchPropertiesConfigurator>();
+            configurators = new List<ISearchConfigurator>();
         }
 
         #region Automation Id
@@ -25,20 +25,29 @@ namespace CUITe.SearchConfigurations
         /// Adds a mechanism to find controls by specified automation id.
         /// </summary>
         /// <param name="automationId">The automation id.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public static By AutomationId(
-            string automationId,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public static By AutomationId(string automationId)
         {
             var by = new By();
-            by.configurators.Add(new AutomationIdConfigurator(automationId, conditionOperator));
+            by.configurators.Add(new AutomationIdConfigurator(automationId, PropertyExpressionOperator.EqualTo));
+            return by;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the automation id.
+        /// </summary>
+        /// <param name="automationIdPart">The part of the automation id.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By AutomationIdContains(string automationIdPart)
+        {
+            var by = new By();
+            by.configurators.Add(new AutomationIdConfigurator(automationIdPart, PropertyExpressionOperator.Contains));
             return by;
         }
 
@@ -50,38 +59,53 @@ namespace CUITe.SearchConfigurations
         /// Adds a mechanism to find controls by specified class.
         /// </summary>
         /// <param name="class">The class.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public static By Class(
-            string @class,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public static By Class(string @class)
         {
-            return new By().AndClass(@class, conditionOperator);
+            return new By().AndClass(@class);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the class.
+        /// </summary>
+        /// <param name="classPart">The part of the class.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By ClassContains(string classPart)
+        {
+            return new By().AndClassContains(classPart);
         }
 
         /// <summary>
         /// Adds a mechanism to find controls by specified class.
         /// </summary>
         /// <param name="class">The class.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public By AndClass(
-            string @class,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public By AndClass(string @class)
         {
-            configurators.Add(new ClassConfigurator(@class, conditionOperator));
+            configurators.Add(new ClassConfigurator(@class, PropertyExpressionOperator.EqualTo));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the class.
+        /// </summary>
+        /// <param name="classPart">The part of the class.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndClassContains(string classPart)
+        {
+            configurators.Add(new ClassConfigurator(classPart, PropertyExpressionOperator.Contains));
             return this;
         }
 
@@ -93,38 +117,53 @@ namespace CUITe.SearchConfigurations
         /// Adds a mechanism to find controls by specified id.
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public static By Id(
-            string id,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public static By Id(string id)
         {
-            return new By().AndId(id, conditionOperator);
+            return new By().AndId(id);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the id.
+        /// </summary>
+        /// <param name="idPart">The part of the id.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By IdContains(string idPart)
+        {
+            return new By().AndIdContains(idPart);
         }
 
         /// <summary>
         /// Adds a mechanism to find controls by specified id.
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public By AndId(
-            string id,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public By AndId(string id)
         {
-            configurators.Add(new IdConfigurator(id, conditionOperator));
+            configurators.Add(new IdConfigurator(id, PropertyExpressionOperator.EqualTo));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the id.
+        /// </summary>
+        /// <param name="idPart">The part of the id.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndIdContains(string idPart)
+        {
+            configurators.Add(new IdConfigurator(idPart, PropertyExpressionOperator.Contains));
             return this;
         }
 
@@ -136,38 +175,53 @@ namespace CUITe.SearchConfigurations
         /// Adds a mechanism to find controls by specified name.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public static By Name(
-            string name,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public static By Name(string name)
         {
-            return new By().AndName(name, conditionOperator);
+            return new By().AndName(name);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the name.
+        /// </summary>
+        /// <param name="namePart">The part of the name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By NameContains(string namePart)
+        {
+            return new By().AndNameContains(namePart);
         }
 
         /// <summary>
         /// Adds a mechanism to find controls by specified name.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public By AndName(
-            string name,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public By AndName(string name)
         {
-            configurators.Add(new NameConfigurator(name, conditionOperator));
+            configurators.Add(new NameConfigurator(name, PropertyExpressionOperator.EqualTo));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the name.
+        /// </summary>
+        /// <param name="namePart">The part of the name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndNameContains(string namePart)
+        {
+            configurators.Add(new NameConfigurator(namePart, PropertyExpressionOperator.Contains));
             return this;
         }
 
@@ -220,38 +274,53 @@ namespace CUITe.SearchConfigurations
         /// Adds a mechanism to find controls by specified tag name.
         /// </summary>
         /// <param name="tagName">The tag name.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public static By TagName(
-            string tagName,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public static By TagName(string tagName)
         {
-            return new By().AndTagName(tagName, conditionOperator);
+            return new By().AndTagName(tagName);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the tag name.
+        /// </summary>
+        /// <param name="tagNamePart">The part of the tag name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By TagNameContains(string tagNamePart)
+        {
+            return new By().AndTagNameContains(tagNamePart);
         }
 
         /// <summary>
         /// Adds a mechanism to find controls by specified name.
         /// </summary>
         /// <param name="tagName">The tag name.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public By AndTagName(
-            string tagName,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public By AndTagName(string tagName)
         {
-            configurators.Add(new TagNameConfigurator(tagName, conditionOperator));
+            configurators.Add(new TagNameConfigurator(tagName, PropertyExpressionOperator.EqualTo));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the name.
+        /// </summary>
+        /// <param name="tagNamePart">The part of the tag name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndTagNameContains(string tagNamePart)
+        {
+            configurators.Add(new TagNameConfigurator(tagNamePart, PropertyExpressionOperator.Contains));
             return this;
         }
 
@@ -263,38 +332,53 @@ namespace CUITe.SearchConfigurations
         /// Adds a mechanism to find controls by specified value attribute.
         /// </summary>
         /// <param name="valueAttribute">The value attribute.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public static By ValueAttribute(
-            string valueAttribute,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public static By ValueAttribute(string valueAttribute)
         {
-            return new By().AndValueAttribute(valueAttribute, conditionOperator);
+            return new By().AndValueAttribute(valueAttribute);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the value attribute.
+        /// </summary>
+        /// <param name="valueAttributePart">The part of the value attribute.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By ValueAttributeContains(string valueAttributePart)
+        {
+            return new By().AndValueAttributeContains(valueAttributePart);
         }
 
         /// <summary>
         /// Adds a mechanism to find controls by specified value attribute.
         /// </summary>
         /// <param name="valueAttribute">The value attribute.</param>
-        /// <param name="conditionOperator">
-        /// The operator to use to compare the values (either the values are equal or the property
-        /// value contains the provided property value).
-        /// </param>
         /// <returns>
         /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
         /// the UI.
         /// </returns>
-        public By AndValueAttribute(
-            string valueAttribute,
-            PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
+        public By AndValueAttribute(string valueAttribute)
         {
-            configurators.Add(new ValueAttributeConfigurator(valueAttribute, conditionOperator));
+            configurators.Add(new ValueAttributeConfigurator(valueAttribute, PropertyExpressionOperator.EqualTo));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the value attribute.
+        /// </summary>
+        /// <param name="valueAttributePart">The part of the value attribute.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndValueAttributeContains(string valueAttributePart)
+        {
+            configurators.Add(new ValueAttributeConfigurator(valueAttributePart, PropertyExpressionOperator.Contains));
             return this;
         }
 
@@ -309,7 +393,7 @@ namespace CUITe.SearchConfigurations
             {
                 var searchProperties = new PropertyExpressionCollection();
 
-                foreach (ISearchPropertiesConfigurator configurator in configurators)
+                foreach (ISearchConfigurator configurator in configurators)
                 {
                     configurator.Configure(searchProperties);
                 }

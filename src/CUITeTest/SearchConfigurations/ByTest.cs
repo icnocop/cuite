@@ -1,4 +1,5 @@
-﻿using CUITe.SearchConfigurations;
+﻿using System.Linq;
+using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,6 +16,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AutomationIdContains()
+        {
+            // Act
+            By configuration = By.AutomationIdContains("SomeAutomationId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -25,6 +38,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void ClassContains()
+        {
+            // Act
+            By configuration = By.ClassContains("SomeClass");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -35,6 +60,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndClassContains()
+        {
+            // Act
+            By configuration = new By().AndClassContains("SomeClass");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -45,6 +82,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void IdContains()
+        {
+            // Act
+            By configuration = By.IdContains("SomeId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -55,6 +104,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndIdContains()
+        {
+            // Act
+            By configuration = new By().AndIdContains("SomeId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -65,6 +126,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void NameContains()
+        {
+            // Act
+            By configuration = By.NameContains("SomeName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -75,6 +148,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndNameContains()
+        {
+            // Act
+            By configuration = new By().AndNameContains("SomeName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -105,6 +190,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void TagNameContains()
+        {
+            // Act
+            By configuration = By.TagNameContains("SomeTagName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -115,6 +212,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndTagNameContains()
+        {
+            // Act
+            By configuration = new By().AndTagNameContains("SomeTagName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -125,6 +234,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void ValueAttributeContains()
+        {
+            // Act
+            By configuration = By.ValueAttributeContains("SomeValueAttribute");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
         [TestMethod]
@@ -135,6 +256,18 @@ namespace CUITeTest.SearchConfigurations
 
             // Assert
             Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndValueAttributeContains()
+        {
+            // Act
+            By configuration = new By().AndValueAttributeContains("SomeValueAttribute");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
     }
 }

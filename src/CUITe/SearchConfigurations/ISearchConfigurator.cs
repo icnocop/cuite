@@ -6,7 +6,7 @@ namespace CUITe.SearchConfigurations
     /// Interface capable of configuring a set of search properties according to the rules on the
     /// implemented class.
     /// </summary>
-    internal interface ISearchPropertiesConfigurator
+    internal interface ISearchConfigurator
     {
         /// <summary>
         /// Configures the specified search properties.

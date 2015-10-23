@@ -1309,8 +1309,8 @@ namespace Sut.HtmlTest
                 var browserWindow = BrowserWindow.Launch(webPage.FilePath);
                 
                 HtmlSpan span3 = browserWindow.Find<HtmlSpan>(By
-                    .Class("class1", PropertyExpressionOperator.Contains)
-                    .AndClass("class2", PropertyExpressionOperator.Contains));
+                    .ClassContains("class1")
+                    .AndClassContains("class2"));
 
                 // Act and Assert
                 Assert.AreEqual("span3", span3.SourceControl.Name);

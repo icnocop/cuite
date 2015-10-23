@@ -8,11 +8,10 @@ namespace CUITe.SearchConfigurations
     /// Class capable of configuring a set of search properties with information about automation
     /// ids.
     /// </summary>
-    internal class AutomationIdConfigurator : ISearchPropertiesConfigurator
+    internal class AutomationIdConfigurator : SearchConfigurator
     {
         private readonly string automationId;
-        private readonly PropertyExpressionOperator conditionOperator;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomationIdConfigurator"/> class.
         /// </summary>
@@ -22,24 +21,24 @@ namespace CUITe.SearchConfigurations
         /// value contains the provided property value).
         /// </param>
         internal AutomationIdConfigurator(string automationId, PropertyExpressionOperator conditionOperator)
+            : base(conditionOperator)
         {
             if (automationId == null)
                 throw new ArgumentNullException("automationId");
 
             this.automationId = automationId;
-            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
         /// Configures the specified search properties.
         /// </summary>
         /// <param name="searchProperties">The search properties.</param>
-        public void Configure(PropertyExpressionCollection searchProperties)
+        public override void Configure(PropertyExpressionCollection searchProperties)
         {
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(WpfControl.PropertyNames.AutomationId, automationId, conditionOperator);
+            searchProperties.Add(WpfControl.PropertyNames.AutomationId, automationId, ConditionOperator);
         }
     }
 }
