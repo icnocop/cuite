@@ -7,10 +7,9 @@ namespace CUITe.SearchConfigurations
     /// <summary>
     /// Class capable of configuring a set of search properties with information about classes.
     /// </summary>
-    internal class ClassConfigurator : ISearchPropertiesConfigurator
+    internal class ClassConfigurator : SearchConfigurator
     {
         private readonly string @class;
-        private readonly PropertyExpressionOperator conditionOperator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ClassConfigurator"/> class.
@@ -21,24 +20,24 @@ namespace CUITe.SearchConfigurations
         /// value contains the provided property value).
         /// </param>
         internal ClassConfigurator(string @class, PropertyExpressionOperator conditionOperator)
+            : base(conditionOperator)
         {
             if (@class == null)
                 throw new ArgumentNullException("class");
 
             this.@class = @class;
-            this.conditionOperator = conditionOperator;
         }
 
         /// <summary>
         /// Configures the specified search properties.
         /// </summary>
         /// <param name="searchProperties">The search properties.</param>
-        public void Configure(PropertyExpressionCollection searchProperties)
+        public override void Configure(PropertyExpressionCollection searchProperties)
         {
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            searchProperties.Add(HtmlControl.PropertyNames.Class, @class, conditionOperator);
+            searchProperties.Add(HtmlControl.PropertyNames.Class, @class, ConditionOperator);
         }
     }
 }

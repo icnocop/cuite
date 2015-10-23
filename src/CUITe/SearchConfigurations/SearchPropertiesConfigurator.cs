@@ -8,7 +8,7 @@ namespace CUITe.SearchConfigurations
     /// Class capable of configuring a set of search properties according to a advanced text
     /// syntax.
     /// </summary>
-    internal class SearchPropertiesConfigurator : ISearchPropertiesConfigurator
+    internal class SearchPropertiesConfigurator : ISearchConfigurator
     {
         private readonly string searchProperties;
 
