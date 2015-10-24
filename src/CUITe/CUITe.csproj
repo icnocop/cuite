@@ -263,6 +263,7 @@
     <Compile Include="Controls\InvalidTraversalException.cs" />
     <Compile Include="Controls\InvalidSearchPropertyNamesException.cs" />
     <Compile Include="Extensions\Microsoft\VisualStudio\TestTools\UITesting\UITestControlExtensions.cs" />
+    <Compile Include="ObjectRepository\ViewComponent.cs" />
     <Compile Include="ObjectRepository\Page.cs" />
     <Compile Include="ObjectRepository\PageComponent.cs" />
     <Compile Include="ObjectRepository\PageComponentOfT.cs" />
@@ -282,6 +283,7 @@
     <Compile Include="SearchConfigurations\ISearchConfigurator.cs" />
     <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
+    <Compile Include="Workflows\Workflow.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' != '10'">
