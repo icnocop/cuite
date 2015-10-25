@@ -5,6 +5,8 @@
         public NamePage()
         {
             InitializeComponent();
+
+            Loaded += (sender, args) => firstNameTextBox.Focus();
         }
     }
 }

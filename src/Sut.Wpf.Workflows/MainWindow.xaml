@@ -38,9 +38,11 @@
             Visibility="{Binding ButtonsVisibility}">
             
             <Button
+                AutomationProperties.AutomationId="kSIn53sjD0iQJnpTPiXP1w"
                 Content="Previous"
                 Command="{Binding PreviousCommand}" />
             <Button
+                AutomationProperties.AutomationId="UXusDRFCMUu3uZqhbDDf0g"
                 Content="Next"
                 Command="{Binding NextCommand}" />
         </StackPanel>

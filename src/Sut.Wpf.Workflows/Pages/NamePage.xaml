@@ -22,7 +22,9 @@
         <!-- First name -->
         <TextBlock Text="First name:" />
         <TextBox
+            x:Name="firstNameTextBox"
             Grid.Column="1"
+            AutomationProperties.AutomationId="dKY2UyRoTEa_40c0jSEIuQ"
             Text="{Binding FirstName}" />
         
         <!-- Surname -->
@@ -32,6 +34,7 @@
         <TextBox
             Grid.Row="1"
             Grid.Column="1"
+            AutomationProperties.AutomationId="JQT9WV1Be0CN0ps04dxnww"
             Text="{Binding Surname}" />
     </Grid>
 </UserControl>

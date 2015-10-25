@@ -5,6 +5,8 @@
         public AddressPage()
         {
             InitializeComponent();
+
+            Loaded += (sender, args) => addressTextBox.Focus();
         }
     }
 }

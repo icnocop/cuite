@@ -6,6 +6,7 @@
     <!-- Root element-->
     <StackPanel>
         <TextBlock
+            AutomationProperties.AutomationId="VFLNy3N30EeNzd8og89CLQ"
             TextAlignment="Center"
             Text="Congratulations!!!" />
         <TextBlock

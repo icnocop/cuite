@@ -23,30 +23,36 @@
         
         <!-- Address -->
         <TextBlock Text="Address:" />
-        <TextBox Grid.Column="1" />
-        
+        <TextBox
+            x:Name="addressTextBox"
+            Grid.Column="1"
+            AutomationProperties.AutomationId="mdNHebXTWk-wyMAT-s9E9w" />
+         
         <!-- City -->
         <TextBlock
             Grid.Row="1"
             Text="City:" />
         <TextBox
             Grid.Row="1"
-            Grid.Column="1" />
-
-        <!-- State -->
-        <TextBlock
-            Grid.Row="2"
-            Text="State:" />
-        <TextBox
-            Grid.Row="2"
-            Grid.Column="1" />
+            Grid.Column="1"
+            AutomationProperties.AutomationId="-AznSNfwFECcKnlU7ZP-_A" />
 
         <!-- Postal Code -->
         <TextBlock
-            Grid.Row="3"
+            Grid.Row="2"
             Text="Postal Code:" />
         <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            AutomationProperties.AutomationId="RjTuE6e3I06Q5mcPIS4uZw" />
+        
+        <!-- State -->
+        <TextBlock
             Grid.Row="3"
-            Grid.Column="1" />
+            Text="State:" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            AutomationProperties.AutomationId="F5PsSJJtB0SqhBZdswzhaQ" />
     </Grid>
 </UserControl>
