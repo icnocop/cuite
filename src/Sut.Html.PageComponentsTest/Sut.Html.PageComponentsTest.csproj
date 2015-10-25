@@ -76,7 +76,7 @@
     </ProjectReference>
     <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">
       <Project>{813fc5b1-d329-4ce3-903a-10ba647535af}</Project>
-      <Name>Test</Name>
+      <Name>TestHelpers</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
