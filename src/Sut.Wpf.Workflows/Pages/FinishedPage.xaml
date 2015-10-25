@@ -1,0 +1,16 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Workflows.Pages.FinishedPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Root element-->
+    <StackPanel>
+        <TextBlock
+            TextAlignment="Center"
+            Text="Congratulations!!!" />
+        <TextBlock
+            TextAlignment="Center"
+            Text="You made it through this worthless wizard." />
+    </StackPanel>
+    
+</UserControl>

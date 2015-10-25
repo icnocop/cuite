@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="Sut.Wpf.Workflows.Pages.AddressPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sut.Wpf.Workflows.Pages"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:AddressPageViewModel}">
+    
+    <!-- Root element -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Address -->
+        <TextBlock Text="Address:" />
+        <TextBox Grid.Column="1" />
+        
+        <!-- City -->
+        <TextBlock
+            Grid.Row="1"
+            Text="City:" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1" />
+
+        <!-- State -->
+        <TextBlock
+            Grid.Row="2"
+            Text="State:" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1" />
+
+        <!-- Postal Code -->
+        <TextBlock
+            Grid.Row="3"
+            Text="Postal Code:" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1" />
+    </Grid>
+</UserControl>
