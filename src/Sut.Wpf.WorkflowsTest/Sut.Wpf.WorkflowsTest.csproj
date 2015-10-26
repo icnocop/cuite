@@ -55,10 +55,9 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ObjectRepository\AddressScreenComponent.cs" />
-    <Compile Include="ObjectRepository\FinishedScreenComponent.cs" />
-    <Compile Include="ObjectRepository\MainScreen.cs" />
-    <Compile Include="ObjectRepository\NameScreenComponent.cs" />
+    <Compile Include="ObjectRepository\FinishedWizardPage.cs" />
+    <Compile Include="ObjectRepository\AddressWizardPage.cs" />
+    <Compile Include="ObjectRepository\NameWizardPage.cs" />
     <Compile Include="WorkflowsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Workflows\WizardWorkflow.cs" />

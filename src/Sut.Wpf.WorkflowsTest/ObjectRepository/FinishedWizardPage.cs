@@ -4,7 +4,7 @@ using CUITe.SearchConfigurations;
 
 namespace Sut.Wpf.WorkflowsTest.ObjectRepository
 {
-    public class FinishedScreenComponent : ScreenComponent
+    public class FinishedWizardPage : Screen
     {
         public bool CongratulationsExists
         {

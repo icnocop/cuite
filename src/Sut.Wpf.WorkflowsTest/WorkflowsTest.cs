@@ -14,7 +14,7 @@ namespace Sut.Wpf.WorkflowsTest
 #else
         private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Workflows\bin\Release\Sut.Wpf.Workflows.exe";
 #endif
-        private MainScreen mainScreen;
+        private NameWizardPage nameWizardPage;
 
         /// <summary>
         /// Gets or sets the test context which provides information about and functionality for
@@ -25,20 +25,20 @@ namespace Sut.Wpf.WorkflowsTest
         [TestInitialize]
         public void TestInitialize()
         {
-            mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
+            nameWizardPage = Screen.Launch<NameWizardPage>(ApplicationFilePath);
         }
 
         [TestMethod]
         public void StepThroughWizard()
         {
             // Arrange
-            var workflow = new WizardWorkflow(mainScreen.NamePage);
+            var workflow = new WizardWorkflow(nameWizardPage);
 
             // Act
-            FinishedScreenComponent finishedPage = workflow.StepThrough();
+            FinishedWizardPage finishedWizardPage = workflow.StepThrough();
 
             // Assert
-            Assert.IsTrue(finishedPage.CongratulationsExists);
+            Assert.IsTrue(finishedWizardPage.CongratulationsExists);
         }
     }
 }

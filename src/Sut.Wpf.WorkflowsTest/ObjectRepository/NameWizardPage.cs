@@ -4,7 +4,7 @@ using CUITe.SearchConfigurations;
 
 namespace Sut.Wpf.WorkflowsTest.ObjectRepository
 {
-    public class NameScreenComponent : ScreenComponent
+    public class NameWizardPage : Screen
     {
         public string FirstName
         {
@@ -16,10 +16,10 @@ namespace Sut.Wpf.WorkflowsTest.ObjectRepository
             set { Find<WpfEdit>(By.AutomationId("JQT9WV1Be0CN0ps04dxnww")).Text = value; }
         }
 
-        public AddressScreenComponent ClickNext()
+        public AddressWizardPage ClickNext()
         {
             Find<WpfButton>(By.AutomationId("UXusDRFCMUu3uZqhbDDf0g")).Click();
-            return GetComponent<AddressScreenComponent>();
+            return GetComponent<AddressWizardPage>();
         }
     }
 }

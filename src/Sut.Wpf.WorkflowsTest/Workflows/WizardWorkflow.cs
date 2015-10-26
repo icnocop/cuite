@@ -3,30 +3,30 @@ using Sut.Wpf.WorkflowsTest.ObjectRepository;
 
 namespace Sut.Wpf.WorkflowsTest.Workflows
 {
-    public class WizardWorkflow : Workflow<NameScreenComponent, FinishedScreenComponent>
+    public class WizardWorkflow : Workflow<NameWizardPage, FinishedWizardPage>
     {
-        public WizardWorkflow(NameScreenComponent start)
+        public WizardWorkflow(NameWizardPage start)
             : base(start)
         {
         }
 
-        public override FinishedScreenComponent StepThrough()
+        public override FinishedWizardPage StepThrough()
         {
             // Enter name
             Start.FirstName = "Some first name";
             Start.Surname = "Some surname";
 
             // Click next
-            AddressScreenComponent addressPage = Start.ClickNext();
+            AddressWizardPage addressWizardPage = Start.ClickNext();
 
             // Enter address
-            addressPage.Address = "Some address";
-            addressPage.City = "Some city";
-            addressPage.PostalCode = "Some postal code";
-            addressPage.State = "Some state";
+            addressWizardPage.Address = "Some address";
+            addressWizardPage.City = "Some city";
+            addressWizardPage.PostalCode = "Some postal code";
+            addressWizardPage.State = "Some state";
             
             // Click next
-            return addressPage.ClickNext();
+            return addressWizardPage.ClickNext();
         }
     }
 }
