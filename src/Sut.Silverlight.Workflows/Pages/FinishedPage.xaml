@@ -1,0 +1,16 @@
+﻿<UserControl
+    x:Class="Sut.Silverlight.Workflows.Pages.FinishedPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Root element-->
+    <StackPanel>
+        <TextBlock
+            AutomationProperties.AutomationId="TDwIrgVYv0ynSwGOZ2kyww"
+            TextAlignment="Center"
+            Text="Congratulations!!!" />
+        <TextBlock
+            TextAlignment="Center"
+            Text="You made it through this worthless wizard." />
+    </StackPanel>
+</UserControl>

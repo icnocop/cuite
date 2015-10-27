@@ -16,14 +16,14 @@ namespace Sut.Wpf.WorkflowsTest.ObjectRepository
             set { Find<WpfEdit>(By.AutomationId("-AznSNfwFECcKnlU7ZP-_A")).Text = value; }
         }
 
-        public string State
-        {
-            set { Find<WpfEdit>(By.AutomationId("F5PsSJJtB0SqhBZdswzhaQ")).Text = value; }
-        }
-
         public string PostalCode
         {
             set { Find<WpfEdit>(By.AutomationId("RjTuE6e3I06Q5mcPIS4uZw")).Text = value; }
+        }
+
+        public string State
+        {
+            set { Find<WpfEdit>(By.AutomationId("F5PsSJJtB0SqhBZdswzhaQ")).Text = value; }
         }
 
         public FinishedWizardPage ClickNext()

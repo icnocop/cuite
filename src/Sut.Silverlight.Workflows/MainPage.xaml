@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="Sut.Silverlight.Workflows.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Sut.Silverlight.Workflows"
+    mc:Ignorable="d"
+    Height="200"
+    Width="300"
+    d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
+
+    <!-- Resources -->
+    <UserControl.Resources>
+        <ResourceDictionary Source="MainPageResources.xaml" />
+    </UserControl.Resources>
+    
+    <!-- Root element -->
+    <Grid Margin="9">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Wizard pages -->
+        <ContentControl
+            VerticalAlignment="Center"
+            Content="{Binding CurrentPage}" />
+
+        <!-- Buttons -->
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal"
+            Visibility="{Binding ButtonsVisibility}">
+
+            <Button
+                AutomationProperties.AutomationId="o6G7N9jgykO7RmPcjivIwg"
+                Content="Previous"
+                Command="{Binding PreviousCommand}" />
+            <Button
+                AutomationProperties.AutomationId="bjkpOK_yG0eXEweEXWbeTg"
+                Content="Next"
+                Command="{Binding NextCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

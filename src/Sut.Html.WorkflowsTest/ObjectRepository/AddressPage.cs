@@ -16,14 +16,14 @@ namespace Sut.Html.WorkflowsTest.ObjectRepository
             set { Find<HtmlEdit>(By.Id("city")).Text = value; }
         }
 
-        public string State
-        {
-            set { Find<HtmlEdit>(By.Id("state")).Text = value; }
-        }
-
         public string PostalCode
         {
             set { Find<HtmlEdit>(By.Id("postalcode")).Text = value; }
+        }
+
+        public string State
+        {
+            set { Find<HtmlEdit>(By.Id("state")).Text = value; }
         }
 
         public FinishedPage ClickNext()
