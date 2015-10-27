@@ -81,6 +81,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems Under Test", "Syste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.WorkflowsTest", "Sut.Wpf.WorkflowsTest\Sut.Wpf.WorkflowsTest.csproj", "{0A42B4CE-A090-410F-BDEA-199848598059}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.WorkflowsTest", "Sut.Html.WorkflowsTest\Sut.Html.WorkflowsTest.csproj", "{D8E9A365-E3CE-46C9-A501-E49924336B42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -321,6 +323,16 @@ Global
 		{0A42B4CE-A090-410F-BDEA-199848598059}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0A42B4CE-A090-410F-BDEA-199848598059}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0A42B4CE-A090-410F-BDEA-199848598059}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D8E9A365-E3CE-46C9-A501-E49924336B42}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -345,5 +357,6 @@ Global
 		{3E624F8A-A115-4792-8C86-51FB529C34E5} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{ED312AAC-D022-49BA-A049-043D0091C9F5} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{0A42B4CE-A090-410F-BDEA-199848598059} = {0D358022-2827-4DDD-9945-FEC322B4E946}
+		{D8E9A365-E3CE-46C9-A501-E49924336B42} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 	EndGlobalSection
 EndGlobal
