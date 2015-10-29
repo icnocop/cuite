@@ -87,6 +87,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.Workflows",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.WorkflowsTest", "Sut.Silverlight.WorkflowsTest\Sut.Silverlight.WorkflowsTest.csproj", "{20AC600B-F91D-42EF-B763-F08674009437}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Workflows", "Sut.WinForms.Workflows\Sut.WinForms.Workflows.csproj", "{E941D076-41B8-4EBD-90B1-668EB25304F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -357,6 +359,16 @@ Global
 		{20AC600B-F91D-42EF-B763-F08674009437}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{20AC600B-F91D-42EF-B763-F08674009437}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{20AC600B-F91D-42EF-B763-F08674009437}.Release|x86.ActiveCfg = Release|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E941D076-41B8-4EBD-90B1-668EB25304F0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,5 +396,6 @@ Global
 		{D8E9A365-E3CE-46C9-A501-E49924336B42} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{EE2AB077-2630-4F38-944C-B1D623FCB41E} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{20AC600B-F91D-42EF-B763-F08674009437} = {0D358022-2827-4DDD-9945-FEC322B4E946}
+		{E941D076-41B8-4EBD-90B1-668EB25304F0} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 	EndGlobalSection
 EndGlobal
