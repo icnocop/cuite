@@ -1,6 +1,4 @@
 ﻿using System;
-using CUITe.Controls;
-using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.ObjectRepository
@@ -14,11 +12,10 @@ namespace CUITe.ObjectRepository
     /// </remarks>
     /// <seealso cref="Page"/>
     /// <seealso cref="PageComponent{T}"/>
-    public abstract class PageComponent
+    public abstract class PageComponent : ViewComponent
     {
         private BrowserWindow browser;
-        private UITestControl searchLimitContainer;
-
+        
         /// <summary>
         /// Gets the browser.
         /// </summary>
@@ -31,21 +28,6 @@ namespace CUITe.ObjectRepository
                     throw new ArgumentNullException("value");
 
                 browser = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the search limit container.
-        /// </summary>
-        internal virtual UITestControl SearchLimitContainer
-        {
-            get { return searchLimitContainer; }
-            set
-            {
-                if (value == null)
-                    throw new ArgumentNullException("value");
-
-                searchLimitContainer = value;
             }
         }
 
@@ -79,23 +61,6 @@ namespace CUITe.ObjectRepository
                 Browser = Browser,
                 SearchLimitContainer = Browser
             };
-        }
-
-        /// <summary>
-        /// Finds the control object from the descendants of this control using the specified
-        /// search configuration.
-        /// </summary>
-        /// <typeparam name="T">The type of control to find.</typeparam>
-        /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
-        protected T Find<T>(By searchConfiguration = null) where T : ControlBase
-        {
-            if (searchLimitContainer == null)
-                throw new InvalidOperationException("The page component has not been configured with a search limit container.");
-
-            return searchLimitContainer.Find<T>(searchConfiguration);
         }
     }
 }

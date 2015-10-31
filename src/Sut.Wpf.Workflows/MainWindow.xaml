@@ -1,0 +1,50 @@
+﻿<Window
+    x:Class="Sut.Wpf.Workflows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sut.Wpf.Workflows"
+    mc:Ignorable="d"
+    Title="System Under Test (Workflows)"
+    Icon="App.ico"
+    Height="200"
+    Width="300"
+    WindowStartupLocation="CenterScreen"
+    d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
+    
+    <!-- Resources -->
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml" />
+    </Window.Resources>
+    
+    <!-- Root element -->
+    <Grid Margin="9">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <!-- Wizard pages -->
+        <ContentControl
+            VerticalAlignment="Center"
+            Content="{Binding CurrentPage}" />
+        
+        <!-- Buttons -->
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal"
+            Visibility="{Binding ButtonsVisibility}">
+            
+            <Button
+                AutomationProperties.AutomationId="kSIn53sjD0iQJnpTPiXP1w"
+                Content="Previous"
+                Command="{Binding PreviousCommand}" />
+            <Button
+                AutomationProperties.AutomationId="UXusDRFCMUu3uZqhbDDf0g"
+                Content="Next"
+                Command="{Binding NextCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

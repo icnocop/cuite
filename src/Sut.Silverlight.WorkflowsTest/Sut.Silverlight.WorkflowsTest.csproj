@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}</ProjectGuid>
+    <ProjectGuid>{20AC600B-F91D-42EF-B763-F08674009437}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sut.HtmlTest</RootNamespace>
-    <AssemblyName>Sut.HtmlTest</AssemblyName>
+    <RootNamespace>Sut.Silverlight.WorkflowsTest</RootNamespace>
+    <AssemblyName>Sut.Silverlight.WorkflowsTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -40,7 +40,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CassiniDev4-lib, Version=4.0.1.7, Culture=neutral, PublicKeyToken=f7f6e0b4240c7c27, processorArchitecture=x86">
+      <HintPath>..\packages\CassiniDev.4.0\lib\net40\CassiniDev4-lib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -57,55 +62,28 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="BrowserWindowTests.cs" />
-    <Compile Include="CrossBrowserHtmlControlTests.cs" />
-    <Compile Include="HtmlControlTests.cs" />
-    <Compile Include="ObjectRepository\TeleriksASPNETComboBoxPage.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPage.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPage.Div1.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPage.Div2.cs" />
-    <Compile Include="ObjectRepository\HtmlTestPageFeeds.cs" />
-    <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
-    <Compile Include="ObjectRepository\TestHtmlPage.cs" />
+    <Compile Include="ObjectRepository\AddressPage.cs" />
+    <Compile Include="ObjectRepository\FinishedPage.cs" />
+    <Compile Include="ObjectRepository\NamePage.cs" />
+    <Compile Include="WorkflowsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workflows\WizardWorkflow.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DynamicBrowserWindowTitle.1.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DynamicBrowserWindowTitle.2.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DynamicBrowserWindowTitle.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="iframe.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="iframe_test.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="TestHtmlPage.html">
+    <None Include="packages.config" />
+    <None Include="Sut.Silverlight.Workflows.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\CUITe.Silverlight\CUITe.Silverlight.csproj">
+      <Project>{48cb8820-8baa-4588-bfb6-69d731c89bde}</Project>
+      <Name>CUITe.Silverlight</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CUITe\CUITe.csproj">
       <Project>{fe093159-2b72-438e-9c73-e3fbaeac5243}</Project>
       <Name>CUITe</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">
-      <Project>{813fc5b1-d329-4ce3-903a-10ba647535af}</Project>
-      <Name>TestHelpers</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
