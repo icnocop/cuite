@@ -111,6 +111,64 @@ namespace CUITe.SearchConfigurations
 
         #endregion
 
+        #region Control Name
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified control name.
+        /// </summary>
+        /// <param name="controlName">The control name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By ControlName(string controlName)
+        {
+            return new By().AndControlName(controlName);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the control name.
+        /// </summary>
+        /// <param name="controlNamePart">The part of the control name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public static By ControlNameContains(string controlNamePart)
+        {
+            return new By().AndControlNameContains(controlNamePart);
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified control name.
+        /// </summary>
+        /// <param name="controlName">The control name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndControlName(string controlName)
+        {
+            configurators.Add(new ControlNameConfigurator(controlName, PropertyExpressionOperator.EqualTo));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a mechanism to find controls by specified part of the control name.
+        /// </summary>
+        /// <param name="controlNamePart">The part of the control name.</param>
+        /// <returns>
+        /// The mechanisms by how particular instances of <see cref="UITestControl"/> are found in
+        /// the UI.
+        /// </returns>
+        public By AndControlNameContains(string controlNamePart)
+        {
+            configurators.Add(new ClassConfigurator(controlNamePart, PropertyExpressionOperator.Contains));
+            return this;
+        }
+
+        #endregion
+
         #region Id
 
         /// <summary>
