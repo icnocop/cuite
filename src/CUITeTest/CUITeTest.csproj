@@ -67,6 +67,7 @@
     <Compile Include="SearchConfigurations\AutomationIdConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\ByTest.cs" />
     <Compile Include="SearchConfigurations\ClassConfiguratorTest.cs" />
+    <Compile Include="SearchConfigurations\ControlNameConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\IdConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\NameConfiguratorTest.cs" />
     <Compile Include="SearchConfigurations\SearchPropertiesConfiguratorTest.cs" />

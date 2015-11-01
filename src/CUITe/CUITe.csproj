@@ -272,6 +272,7 @@
     <Compile Include="ObjectRepository\ScreenComponentOfT.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
     <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
+    <Compile Include="SearchConfigurations\ControlNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
     <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
     <Compile Include="DataSources\XmlDataSourceNotFoundException.cs" />
