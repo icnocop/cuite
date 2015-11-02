@@ -31,153 +31,126 @@ namespace Sut.WinForms.ControlsTest
         public void Button()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Button.Exists);
+            Assert.IsTrue(mainScreen.ButtonExists);
         }
 
         [TestMethod]
         public void CheckBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.CheckBox.Exists);
+            Assert.IsTrue(mainScreen.CheckBoxExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void ComboBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ComboBox.Exists);
+            Assert.IsTrue(mainScreen.ComboBoxExists);
         }
 
         [TestMethod]
         public void DateTimePicker()
         {
             // Assert
-            Assert.IsTrue(mainScreen.DateTimePicker.Exists);
+            Assert.IsTrue(mainScreen.DateTimePickerExists);
         }
 
         [TestMethod]
         public void GroupBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.GroupBox.Exists);
+            Assert.IsTrue(mainScreen.GroupBoxExists);
         }
 
         [TestMethod]
         public void Label()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Label.Exists);
+            Assert.IsTrue(mainScreen.LabelExists);
         }
 
         [TestMethod]
         public void LinkLabel()
         {
             // Assert
-            Assert.IsTrue(mainScreen.LinkLabel.Exists);
+            Assert.IsTrue(mainScreen.LinkLabelExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void ListBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ListBox.Exists);
+            Assert.IsTrue(mainScreen.ListBoxExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void ListView()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ListView.Exists);
+            Assert.IsTrue(mainScreen.ListViewExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void MaskedTextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.MaskedTextBox.Exists);
+            Assert.IsTrue(mainScreen.MaskedTextBoxExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void MonthCalendar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.MonthCalendar.Exists);
+            Assert.IsTrue(mainScreen.MonthCalendarExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void NumericUpDown()
         {
             // Assert
-            Assert.IsTrue(mainScreen.NumericUpDown.Exists);
+            Assert.IsTrue(mainScreen.NumericUpDownExists);
         }
 
-        [Ignore]
-        [TestMethod]
-        public void PictureBox()
-        {
-            // Assert
-            Assert.IsTrue(mainScreen.PictureBox.Exists);
-        }
-
-        [Ignore]
         [TestMethod]
         public void ProgressBar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ProgressBar.Exists);
+            Assert.IsTrue(mainScreen.ProgressBarExists);
         }
 
         [TestMethod]
         public void RadioButton()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RadioButton.Exists);
+            Assert.IsTrue(mainScreen.RadioButtonExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void RichTextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RichTextBox.Exists);
+            Assert.IsTrue(mainScreen.RichTextBoxExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void TabControl()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TabControl.Exists);
+            Assert.IsTrue(mainScreen.TabControlExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void TextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TextBox.Exists);
+            Assert.IsTrue(mainScreen.TextBoxExists);
         }
 
-        [Ignore]
         [TestMethod]
         public void TreeView()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TreeView.Exists);
-        }
-
-        [Ignore]
-        [TestMethod]
-        public void WebBrowser()
-        {
-            // Assert
-            Assert.IsTrue(mainScreen.WebBrowser.Exists);
+            Assert.IsTrue(mainScreen.TreeViewExists);
         }
     }
 }

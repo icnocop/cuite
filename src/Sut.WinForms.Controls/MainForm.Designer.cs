@@ -51,27 +51,24 @@
             this.linkLabel = new System.Windows.Forms.LinkLabel();
             this.listBox = new System.Windows.Forms.ListBox();
             this.listView = new System.Windows.Forms.ListView();
+            this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnCustomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnGender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.radioButton = new System.Windows.Forms.RadioButton();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageOne = new System.Windows.Forms.TabPage();
             this.tabPageTwo = new System.Windows.Forms.TabPage();
+            this.tabPageThree = new System.Windows.Forms.TabPage();
             this.textBox = new System.Windows.Forms.TextBox();
             this.treeView = new System.Windows.Forms.TreeView();
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
-            this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnCustomer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnGender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPageThree = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel.SuspendLayout();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,14 +89,12 @@
             this.flowLayoutPanel.Controls.Add(this.maskedTextBox);
             this.flowLayoutPanel.Controls.Add(this.monthCalendar);
             this.flowLayoutPanel.Controls.Add(this.numericUpDown);
-            this.flowLayoutPanel.Controls.Add(this.pictureBox);
             this.flowLayoutPanel.Controls.Add(this.progressBar);
             this.flowLayoutPanel.Controls.Add(this.radioButton);
             this.flowLayoutPanel.Controls.Add(this.richTextBox);
             this.flowLayoutPanel.Controls.Add(this.tabControl);
             this.flowLayoutPanel.Controls.Add(this.textBox);
             this.flowLayoutPanel.Controls.Add(this.treeView);
-            this.flowLayoutPanel.Controls.Add(this.webBrowser);
             this.flowLayoutPanel.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
             this.flowLayoutPanel.Size = new System.Drawing.Size(760, 538);
@@ -203,6 +198,18 @@
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
             // 
+            // columnName
+            // 
+            this.columnName.Text = "Name";
+            // 
+            // columnCustomer
+            // 
+            this.columnCustomer.Text = "Customer";
+            // 
+            // columnGender
+            // 
+            this.columnGender.Text = "Gender";
+            // 
             // maskedTextBox
             // 
             this.maskedTextBox.Location = new System.Drawing.Point(431, 54);
@@ -229,18 +236,9 @@
             0,
             0});
             // 
-            // pictureBox
-            // 
-            this.pictureBox.Image = global::Sut.WinForms.Controls.Properties.Resources.Sample;
-            this.pictureBox.Location = new System.Drawing.Point(318, 157);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(75, 83);
-            this.pictureBox.TabIndex = 11;
-            this.pictureBox.TabStop = false;
-            // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(399, 157);
+            this.progressBar.Location = new System.Drawing.Point(318, 157);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(100, 23);
             this.progressBar.TabIndex = 12;
@@ -249,7 +247,7 @@
             // radioButton
             // 
             this.radioButton.AutoSize = true;
-            this.radioButton.Location = new System.Drawing.Point(505, 157);
+            this.radioButton.Location = new System.Drawing.Point(424, 157);
             this.radioButton.Name = "radioButton";
             this.radioButton.Size = new System.Drawing.Size(123, 17);
             this.radioButton.TabIndex = 13;
@@ -259,7 +257,7 @@
             // 
             // richTextBox
             // 
-            this.richTextBox.Location = new System.Drawing.Point(634, 157);
+            this.richTextBox.Location = new System.Drawing.Point(553, 157);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.Size = new System.Drawing.Size(100, 96);
             this.richTextBox.TabIndex = 14;
@@ -296,6 +294,15 @@
             this.tabPageTwo.Text = "Two";
             this.tabPageTwo.UseVisualStyleBackColor = true;
             // 
+            // tabPageThree
+            // 
+            this.tabPageThree.Location = new System.Drawing.Point(4, 22);
+            this.tabPageThree.Name = "tabPageThree";
+            this.tabPageThree.Size = new System.Drawing.Size(192, 74);
+            this.tabPageThree.TabIndex = 2;
+            this.tabPageThree.Text = "Three";
+            this.tabPageThree.UseVisualStyleBackColor = true;
+            // 
             // textBox
             // 
             this.textBox.Location = new System.Drawing.Point(209, 337);
@@ -325,36 +332,6 @@
             this.treeView.Size = new System.Drawing.Size(150, 120);
             this.treeView.TabIndex = 17;
             // 
-            // webBrowser
-            // 
-            this.webBrowser.Location = new System.Drawing.Point(471, 337);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(250, 250);
-            this.webBrowser.TabIndex = 18;
-            this.webBrowser.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
-            // 
-            // columnName
-            // 
-            this.columnName.Text = "Name";
-            // 
-            // columnCustomer
-            // 
-            this.columnCustomer.Text = "Customer";
-            // 
-            // columnGender
-            // 
-            this.columnGender.Text = "Gender";
-            // 
-            // tabPageThree
-            // 
-            this.tabPageThree.Location = new System.Drawing.Point(4, 22);
-            this.tabPageThree.Name = "tabPageThree";
-            this.tabPageThree.Size = new System.Drawing.Size(192, 74);
-            this.tabPageThree.TabIndex = 2;
-            this.tabPageThree.Text = "Three";
-            this.tabPageThree.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,7 +346,6 @@
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -389,13 +365,11 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.NumericUpDown numericUpDown;
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.RadioButton radioButton;
         private System.Windows.Forms.RichTextBox richTextBox;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.TreeView treeView;
-        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageOne;

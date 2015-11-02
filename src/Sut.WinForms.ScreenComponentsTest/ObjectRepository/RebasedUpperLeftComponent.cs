@@ -7,13 +7,13 @@ namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
     public class RebasedUpperLeftComponent : ScreenComponent<WinGroup>
     {
         public RebasedUpperLeftComponent()
-            : base(By.Name("Upper Left Group"))
+            : base(By.ControlName("groupBoxUpperLeft"))
         {
         }
 
         public bool CheckBoxExists
         {
-            get { return Find<WinCheckBox>(By.Name("Upper left control")).Exists; }
+            get { return Find<WinCheckBox>(By.ControlName("checkBoxUpperLeft")).Exists; }
         }
     }
 }
