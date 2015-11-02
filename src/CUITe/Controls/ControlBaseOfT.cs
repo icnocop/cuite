@@ -46,6 +46,20 @@ namespace CUITe.Controls
         }
 
         /// <summary>
+        /// Finds the control object from the descendants of this control using the specified
+        /// search configuration.
+        /// </summary>
+        /// <typeparam name="TControl">The type of control to find.</typeparam>
+        /// <param name="searchConfiguration">The search configuration.</param>
+        /// <exception cref="InvalidSearchPropertyNamesException">
+        /// Search configuration contains a property namely that isn't applicable on the control.
+        /// </exception>
+        public TControl Find<TControl>(By searchConfiguration = null) where TControl : ControlBase
+        {
+            return sourceControl.Find<TControl>(searchConfiguration);
+        }
+
+        /// <summary>
         /// Adds a search property by using the provided property name, value, and operator.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
@@ -54,7 +68,7 @@ namespace CUITe.Controls
         /// The operator to use to compare the values (either the values are equal or the property
         /// value contains the provided property value).
         /// </param>
-        public void AddSearchProperty(
+        internal void AddSearchProperty(
             string propertyName,
             string propertyValue,
             PropertyExpressionOperator conditionOperator = PropertyExpressionOperator.EqualTo)
@@ -71,7 +85,7 @@ namespace CUITe.Controls
         /// Adds all search property in the provided collection.
         /// </summary>
         /// <param name="searchProperties">The search properties.</param>
-        public void AddSearchProperties(PropertyExpressionCollection searchProperties)
+        internal virtual void AddSearchProperties(PropertyExpressionCollection searchProperties)
         {
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
@@ -90,23 +104,9 @@ namespace CUITe.Controls
         /// <returns>
         /// A <see cref="PropertyExpression"/> object, if one is found; otherwise, null.
         /// </returns>
-        public PropertyExpression GetSearchProperty(string propertyName)
+        internal PropertyExpression GetSearchProperty(string propertyName)
         {
             return SourceControl.SearchProperties.Find(propertyName);
-        }
-
-        /// <summary>
-        /// Finds the control object from the descendants of this control using the specified
-        /// search configuration.
-        /// </summary>
-        /// <typeparam name="TControl">The type of control to find.</typeparam>
-        /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
-        public TControl Find<TControl>(By searchConfiguration = null) where TControl : ControlBase
-        {
-            return sourceControl.Find<TControl>(searchConfiguration);
         }
 
         private static void ValidateSearchPropertyNames(IEnumerable<PropertyExpression> searchProperties)
