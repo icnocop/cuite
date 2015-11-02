@@ -8,7 +8,7 @@ namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
     {
         public bool RadioButtonExists
         {
-            get { return Find<WinRadioButton>(By.Name("Lower right control")).Exists; }
+            get { return Find<WinRadioButton>(By.ControlName("radioButtonLowerRight")).Exists; }
         }
     }
 }

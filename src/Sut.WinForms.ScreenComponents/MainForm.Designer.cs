@@ -125,7 +125,7 @@
             this.groupBoxLowerRight.Size = new System.Drawing.Size(134, 50);
             this.groupBoxLowerRight.TabIndex = 4;
             this.groupBoxLowerRight.TabStop = false;
-            this.groupBoxLowerRight.Text = "Lower Left Group";
+            this.groupBoxLowerRight.Text = "Lower Right Group";
             // 
             // buttonOpenModalDialog
             // 

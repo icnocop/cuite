@@ -31,217 +31,217 @@ namespace Sut.Wpf.ControlsTest
         public void Button()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Button.Exists);            
+            Assert.IsTrue(mainScreen.ButtonExists);            
         }
 
         [TestMethod]
         public void Calendar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Calendar.Exists);
+            Assert.IsTrue(mainScreen.CalendarExists);
         }
 
         [TestMethod]
         public void CheckBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.CheckBox.Exists);
+            Assert.IsTrue(mainScreen.CheckBoxExists);
         }
 
         [TestMethod]
         public void ComboBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ComboBox.Exists);
+            Assert.IsTrue(mainScreen.ComboBoxExists);
         }
 
         [TestMethod]
         public void CustomControl()
         {
             // Assert
-            Assert.IsTrue(mainScreen.CustomControl.Exists);
+            Assert.IsTrue(mainScreen.CustomControlExists);
         }
 
         [TestMethod]
         public void DataGrid()
         {
             // Assert
-            Assert.IsTrue(mainScreen.DataGrid.Exists);
+            Assert.IsTrue(mainScreen.DataGridExists);
         }
 
         [TestMethod]
         public void DatePicker()
         {
             // Assert
-            Assert.IsTrue(mainScreen.DatePicker.Exists);
+            Assert.IsTrue(mainScreen.DatePickerExists);
         }
 
         [TestMethod]
         public void Expander()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Expander.Exists);
+            Assert.IsTrue(mainScreen.ExpanderExists);
         }
 
         [TestMethod]
         public void Frame()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Frame.Exists);
+            Assert.IsTrue(mainScreen.FrameExists);
         }
 
         [TestMethod]
         public void GroupBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.GroupBox.Exists);
+            Assert.IsTrue(mainScreen.GroupBoxExists);
         }
 
         [TestMethod]
         public void Hyperlink()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Hyperlink.Exists);
+            Assert.IsTrue(mainScreen.HyperlinkExists);
         }
 
         [TestMethod]
         public void Image()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Image.Exists);
+            Assert.IsTrue(mainScreen.ImageExists);
         }
 
         [TestMethod]
         public void Label()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Label.Exists);
+            Assert.IsTrue(mainScreen.LabelExists);
         }
 
         [TestMethod]
         public void ListBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ListBox.Exists);
+            Assert.IsTrue(mainScreen.ListBoxExists);
         }
 
         [TestMethod]
         public void ListView()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ListView.Exists);
+            Assert.IsTrue(mainScreen.ListViewExists);
         }
 
         [TestMethod]
         public void Menu()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Menu.Exists);
+            Assert.IsTrue(mainScreen.MenuExists);
         }
 
         [TestMethod]
         public void PasswordBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.PasswordBox.Exists);
+            Assert.IsTrue(mainScreen.PasswordBoxExists);
         }
 
         [TestMethod]
         public void ProgressBar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ProgressBar.Exists);
+            Assert.IsTrue(mainScreen.ProgressBarExists);
         }
 
         [TestMethod]
         public void RadioButton()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RadioButton.Exists);
+            Assert.IsTrue(mainScreen.RadioButtonExists);
         }
 
         [TestMethod]
         public void RichTextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RichTextBox.Exists);
+            Assert.IsTrue(mainScreen.RichTextBoxExists);
         }
 
         [TestMethod]
         public void ScrollBar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ScrollBar.Exists);
+            Assert.IsTrue(mainScreen.ScrollBarExists);
         }
 
         [TestMethod]
         public void ScrollViewer()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ScrollViewer.Exists);
+            Assert.IsTrue(mainScreen.ScrollViewerExists);
         }
 
         [TestMethod]
         public void Separator()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Separator.Exists);
+            Assert.IsTrue(mainScreen.SeparatorExists);
         }
 
         [TestMethod]
         public void Slider()
         {
             // Assert
-            Assert.IsTrue(mainScreen.Slider.Exists);
+            Assert.IsTrue(mainScreen.SliderExists);
         }
 
         [TestMethod]
         public void StatusBar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.StatusBar.Exists);
+            Assert.IsTrue(mainScreen.StatusBarExists);
         }
 
         [TestMethod]
         public void TabControl()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TabControl.Exists);
+            Assert.IsTrue(mainScreen.TabControlExists);
         }
 
         [TestMethod]
         public void TextBlock()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TextBlock.Exists);
+            Assert.IsTrue(mainScreen.TextBlockExists);
         }
 
         [TestMethod]
         public void TextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TextBox.Exists);
+            Assert.IsTrue(mainScreen.TextBoxExists);
         }
 
         [TestMethod]
         public void ToggleButton()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ToggleButton.Exists);
+            Assert.IsTrue(mainScreen.ToggleButtonExists);
         }
 
         [TestMethod]
         public void ToolBar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ToolBar.Exists);
+            Assert.IsTrue(mainScreen.ToolBarExists);
         }
 
         [TestMethod]
         public void TreeView()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TreeView.Exists);
+            Assert.IsTrue(mainScreen.TreeViewExists);
         }
     }
 }

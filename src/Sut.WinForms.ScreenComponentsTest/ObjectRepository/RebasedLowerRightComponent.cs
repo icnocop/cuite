@@ -7,13 +7,13 @@ namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
     public class RebasedLowerRightComponent : ScreenComponent<WinGroup>
     {
         public RebasedLowerRightComponent()
-            : base(By.Name("Lower Right Group"))
+            : base(By.ControlName("groupBoxLowerRight"))
         {
         }
 
         public bool RadioButtonExists
         {
-            get { return Find<WinRadioButton>(By.Name("Lower right control")).Exists; }
+            get { return Find<WinRadioButton>(By.ControlName("radioButtonLowerRight")).Exists; }
         }
     }
 }
