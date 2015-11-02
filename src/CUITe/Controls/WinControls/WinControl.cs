@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
 namespace CUITe.Controls.WinControls
@@ -84,6 +85,49 @@ namespace CUITe.Controls.WinControls
         public override IEnumerable<ControlBase> GetChildren()
         {
             return Enumerable.Empty<ControlBase>();
+        }
+
+        /// <summary>
+        /// Adds all search property in the provided collection.
+        /// </summary>
+        /// <param name="searchProperties">The search properties.</param>
+        internal override void AddSearchProperties(PropertyExpressionCollection searchProperties)
+        {
+            if (searchProperties == null)
+                throw new ArgumentNullException("searchProperties");
+
+            MoveControlNames(searchProperties);
+            
+            base.AddSearchProperties(searchProperties);
+        }
+
+        /// <summary>
+        /// Moves the property expressions with property name
+        /// <see cref="CUITControls.WinControl.PropertyNames.ControlName"/>. from the control to
+        /// search for to its parent.
+        /// </summary>
+        /// <remarks>
+        /// Searching for WinForms controls differs slightly from searching for WPF controls.
+        /// When searching for WPF controls using e.g. their automation id, the automation id
+        /// search property is added to the WPF control.
+        /// When searching for WinForms controls using their control name, the control name search
+        /// property is added to the parent WinForms control, not the actual control itself.
+        /// </remarks>
+        private void MoveControlNames(PropertyExpressionCollection searchProperties)
+        {
+            PropertyExpression[] controlNameExpressions = searchProperties
+                .Where(searchProperty => searchProperty.PropertyName == CUITControls.WinControl.PropertyNames.ControlName)
+                .ToArray();
+
+            if (!controlNameExpressions.Any())
+                return;
+
+            foreach (PropertyExpression controlNameExpression in controlNameExpressions)
+            {
+                searchProperties.Remove(controlNameExpression);
+            }
+
+            SourceControl.GetParent().SearchProperties.AddRange(controlNameExpressions);
         }
     }
 }
