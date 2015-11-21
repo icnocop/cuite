@@ -76,6 +76,7 @@
             // 
             // textBoxAddress
             // 
+            this.textBoxAddress.AccessibleName = "Address";
             this.textBoxAddress.Location = new System.Drawing.Point(76, 3);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(171, 20);
@@ -83,6 +84,7 @@
             // 
             // textBoxCity
             // 
+            this.textBoxCity.AccessibleName = "City";
             this.textBoxCity.Location = new System.Drawing.Point(76, 29);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(171, 20);
@@ -90,6 +92,7 @@
             // 
             // textBoxPostalCode
             // 
+            this.textBoxPostalCode.AccessibleName = "PostalCode";
             this.textBoxPostalCode.Location = new System.Drawing.Point(76, 55);
             this.textBoxPostalCode.Name = "textBoxPostalCode";
             this.textBoxPostalCode.Size = new System.Drawing.Size(171, 20);
@@ -97,6 +100,7 @@
             // 
             // textBoxState
             // 
+            this.textBoxState.AccessibleName = "State";
             this.textBoxState.Location = new System.Drawing.Point(76, 81);
             this.textBoxState.Name = "textBoxState";
             this.textBoxState.Size = new System.Drawing.Size(171, 20);
