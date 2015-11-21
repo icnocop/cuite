@@ -8,7 +8,7 @@ namespace Sut.WinForms.WorkflowsTest.ObjectRepository
     {
         public bool CongratulationsExists
         {
-            get { return Find<WinText>(By.Name("labelCongratulations")).Exists; }
+            get { return Find<WinText>(By.ControlName("labelCongratulations")).Exists; }
         }
     }
 }
