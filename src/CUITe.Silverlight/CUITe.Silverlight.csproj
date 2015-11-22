@@ -143,7 +143,7 @@
     <EmbeddedResource Include="CUITe.Silverlight.VS2012.nuspec" />
     <EmbeddedResource Include="CUITe.Silverlight.VS2013.nuspec" />
   </ItemGroup>
-  <Import Project="$(SolutionDir)\Targets\SilverlightExtension.targets" />
+  <Import Project="$(SolutionDir)\Targets\Silverlight.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -116,7 +116,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="$(SolutionDir)\Targets\SilverlightExtension.targets" />
+  <Import Project="$(SolutionDir)\Targets\Silverlight.targets" />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
