@@ -8,17 +8,17 @@ namespace Sut.WinForms.WorkflowsTest.ObjectRepository
     {
         public string FirstName
         {
-            set { Find<WinEdit>(By.Name("textBoxFirstName")).Text = value; }
+            set { Find<WinEdit>(By.ControlName("textBoxFirstName").AndName("FirstName")).Text = value; }
         }
 
         public string Surname
         {
-            set { Find<WinEdit>(By.Name("textBoxSurname")).Text = value; }
+            set { Find<WinEdit>(By.ControlName("textBoxSurname").AndName("Surname")).Text = value; }
         }
 
         public AddressWizardPage ClickNext()
         {
-            Find<WinButton>(By.Name("buttonNext")).Click();
+            Find<WinButton>(By.Name("Next")).Click();
             return GetComponent<AddressWizardPage>();
         }
     }

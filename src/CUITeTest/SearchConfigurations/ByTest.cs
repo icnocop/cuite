@@ -75,6 +75,50 @@ namespace CUITeTest.SearchConfigurations
         }
 
         [TestMethod]
+        public void ControlName()
+        {
+            // Act
+            By configuration = By.ControlName("SomeControlName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void ControlNameContains()
+        {
+            // Act
+            By configuration = By.ControlNameContains("SomeControlName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndControlName()
+        {
+            // Act
+            By configuration = new By().AndControlName("SomeControlName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndControlNameContains()
+        {
+            // Act
+            By configuration = new By().AndControlNameContains("SomeControlName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
         public void Id()
         {
             // Act

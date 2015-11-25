@@ -8,7 +8,7 @@ namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
     {
         public bool CloseButtonExists
         {
-            get { return Find<WinButton>(By.Name("Close")).Exists; }
+            get { return Find<WinButton>(By.ControlName("buttonClose")).Exists; }
         }
     }
 }

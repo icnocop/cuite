@@ -29,7 +29,6 @@ namespace Sut.WinForms.WorkflowsTest
             nameWizardPage = Screen.Launch<NameWizardPage>(ApplicationFilePath);
         }
 
-        [Ignore]
         [TestMethod]
         public void StepThroughWizard()
         {

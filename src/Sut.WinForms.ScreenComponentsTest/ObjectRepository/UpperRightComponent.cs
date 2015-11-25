@@ -8,7 +8,7 @@ namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
     {
         public bool CheckBoxExists
         {
-            get { return Find<WinCheckBox>(By.Name("Upper right control")).Exists; }
+            get { return Find<WinCheckBox>(By.ControlName("checkBoxUpperRight")).Exists; }
         }
     }
 }

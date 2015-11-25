@@ -1,5 +1,4 @@
-﻿using System;
-using CUITe.Controls.WinControls;
+﻿using CUITe.Controls.WinControls;
 using CUITe.ObjectRepository;
 using CUITe.SearchConfigurations;
 
@@ -7,104 +6,94 @@ namespace Sut.WinForms.ControlsTest.ObjectRepository
 {
     public class MainScreen : Screen
     {
-        public WinButton Button
+        public bool ButtonExists
         {
-            get { return Find<WinButton>(By.Name("This is a button")); }
+            get { return Find<WinButton>(By.ControlName("button")).Exists; }
         }
 
-        public WinCheckBox CheckBox
+        public bool CheckBoxExists
         {
-            get { return Find<WinCheckBox>(By.Name("This is a check box")); }
+            get { return Find<WinCheckBox>(By.ControlName("checkBox")).Exists; }
         }
 
-        public WinComboBox ComboBox
+        public bool ComboBoxExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinComboBox>(By.ControlName("comboBox")).Exists; }
         }
 
-        public WinDateTimePicker DateTimePicker
+        public bool DateTimePickerExists
         {
-            get { return Find<WinDateTimePicker>(By.Name(DateTime.Now.ToLongDateString())); }
+            get { return Find<WinDateTimePicker>(By.ControlName("dateTimePicker")).Exists; }
         }
 
-        public WinGroup GroupBox
+        public bool GroupBoxExists
         {
-            get { return Find<WinGroup>(By.Name("Group box")); }
+            get { return Find<WinGroup>(By.ControlName("groupBox")).Exists; }
         }
 
-        public WinText Label
+        public bool LabelExists
         {
-            get { return Find<WinText>(By.Name("This is a label")); }
+            get { return Find<WinText>(By.ControlName("label")).Exists; }
         }
 
-        public WinHyperlink LinkLabel
+        public bool LinkLabelExists
         {
-            get { return Find<WinHyperlink>(By.Name("This is a link label")); }
+            get { return Find<WinText>(By.ControlName("linkLabel")).Exists; }
         }
 
-        public WinList ListBox
+        public bool ListBoxExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinList>(By.ControlName("listBox")).Exists; }
         }
 
-        public WinTable ListView
+        public bool ListViewExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinList>(By.ControlName("listView")).Exists; }
         }
 
-        public WinEdit MaskedTextBox
+        public bool MaskedTextBoxExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinText>(By.ControlName("maskedTextBox")).Exists; }
         }
 
-        public WinCalendar MonthCalendar
+        public bool MonthCalendarExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinDateTimePicker>(By.ControlName("monthCalendar")).Exists; }
         }
 
-        public WinEdit NumericUpDown
+        public bool NumericUpDownExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinEdit>(By.ControlName("numericUpDown")).Exists; }
         }
 
-        public WinEdit PictureBox
+        public bool ProgressBarExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinProgressBar>(By.ControlName("progressBar")).Exists; }
         }
 
-        public WinProgressBar ProgressBar
+        public bool RadioButtonExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinRadioButton>(By.ControlName("radioButton")).Exists; }
         }
 
-        public WinRadioButton RadioButton
+        public bool RichTextBoxExists
         {
-            get { return Find<WinRadioButton>(By.Name("This is a radio button")); }
+            get { return Find<WinEdit>(By.ControlName("richTextBox")).Exists; }
         }
 
-        public WinEdit RichTextBox
+        public bool TabControlExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinTabList>(By.ControlName("tabControl")).Exists; }
         }
 
-        public WinTabList TabControl
+        public bool TextBoxExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinEdit>(By.ControlName("textBox")).Exists; }
         }
 
-        public WinEdit TextBox
+        public bool TreeViewExists
         {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
-        }
-
-        public WinTree TreeView
-        {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
-        }
-
-        public WinEdit WebBrowser
-        {
-            get { throw new NotImplementedException("CUITe support for WinForms needs some work before this control can be found."); }
+            get { return Find<WinTree>(By.ControlName("treeView")).Exists; }
         }
     }
 }

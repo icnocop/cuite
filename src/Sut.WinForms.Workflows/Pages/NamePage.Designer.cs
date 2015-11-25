@@ -54,6 +54,7 @@
             // 
             // textBoxFirstName
             // 
+            this.textBoxFirstName.AccessibleName = "FirstName";
             this.textBoxFirstName.Location = new System.Drawing.Point(76, 3);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(171, 20);
@@ -61,6 +62,7 @@
             // 
             // textBoxSurname
             // 
+            this.textBoxSurname.AccessibleName = "Surname";
             this.textBoxSurname.Location = new System.Drawing.Point(76, 29);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(171, 20);

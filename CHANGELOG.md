@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Added support for searching for WinForms controls using their control name.
 * Added support for workflows, a concept that should be thought of as an extra layer or maintainability on top of the already existing Page Objects.
 * Changed syntax of the `By` class by providing new methods that search for controls that contains specific information.
 * Changed support for the [Page Object](http://martinfowler.com/bliki/PageObject.html) pattern by adding a new namespace called `CUITe.ObjectRepository`. Both desktop and browser applications are supported.

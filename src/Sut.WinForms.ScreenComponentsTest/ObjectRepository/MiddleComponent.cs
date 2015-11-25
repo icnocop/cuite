@@ -8,13 +8,13 @@ namespace Sut.WinForms.ScreenComponentsTest.ObjectRepository
     {
         public DialogScreen NavigateToModalDialogScreen()
         {
-            Find<WinButton>(By.Name("Open Modal Dialog")).Click();
+            Find<WinButton>(By.ControlName("buttonOpenModalDialog")).Click();
             return NavigateTo<DialogScreen>();
         }
 
         public DialogScreen NavigateToNonModalDialogScreen()
         {
-            Find<WinButton>(By.Name("Open Non-Modal Dialog")).Click();
+            Find<WinButton>(By.ControlName("buttonOpenNonModalDialog")).Click();
             return NavigateTo<DialogScreen>();
         }
     }
