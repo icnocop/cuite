@@ -6,13 +6,14 @@ using Sut.Wpf.ScreenComponentsTest.ObjectRepository;
 namespace Sut.Wpf.ScreenComponentsTest
 {
     [CodedUITest]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.Wpf.ScreenComponents\bin\Debug\Sut.Wpf.ScreenComponents.exe")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.Wpf.ScreenComponents\bin\Release\Sut.Wpf.ScreenComponents.exe")]
+#endif
     public class ScreenComponentsTest
     {
-#if DEBUG
-        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.ScreenComponents\bin\Debug\Sut.Wpf.ScreenComponents.exe";
-#else
-        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.ScreenComponents\bin\Release\Sut.Wpf.ScreenComponents.exe";
-#endif
+        private const string ApplicationFilePath = @"Sut.Wpf.ScreenComponents.exe";
         private MainScreen mainScreen;
 
         /// <summary>

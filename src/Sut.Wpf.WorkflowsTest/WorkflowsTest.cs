@@ -7,13 +7,14 @@ using Sut.Wpf.WorkflowsTest.Workflows;
 namespace Sut.Wpf.WorkflowsTest
 {
     [CodedUITest]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.Wpf.Workflows\bin\Debug\Sut.Wpf.Workflows.exe")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.Wpf.Workflows\bin\Release\Sut.Wpf.Workflows.exe")]
+#endif
     public class WorkflowsTest
     {
-#if DEBUG
-        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Workflows\bin\Debug\Sut.Wpf.Workflows.exe";
-#else
-        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Workflows\bin\Release\Sut.Wpf.Workflows.exe";
-#endif
+        private const string ApplicationFilePath = @"Sut.Wpf.Workflows.exe";
         private NameWizardPage nameWizardPage;
 
         /// <summary>

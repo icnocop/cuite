@@ -7,13 +7,14 @@ using Sut.PeripheralInputTest.ObjectRepository;
 namespace Sut.PeripheralInputTest
 {
     [CodedUITest]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Debug\Sut.PeripheralInput.exe")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Release\Sut.PeripheralInput.exe")]
+#endif
     public class KeyboardTest
     {
-#if DEBUG
-        private const string ApplicationFilePath = @"..\..\..\Sut.PeripheralInput\bin\Debug\Sut.PeripheralInput.exe";
-#else
-        private const string ApplicationFilePath = @"..\..\..\Sut.PeripheralInput\bin\Release\Sut.PeripheralInput.exe";
-#endif
+        private const string ApplicationFilePath = @"Sut.PeripheralInput.exe";
         private MainScreen mainScreen;
 
         /// <summary>

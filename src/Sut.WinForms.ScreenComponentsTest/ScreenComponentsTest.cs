@@ -9,13 +9,14 @@ namespace Sut.WinForms.ScreenComponentsTest
     /// Summary description for ScreenComponentsTest
     /// </summary>
     [CodedUITest]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.WinForms.ScreenComponents\bin\Debug\Sut.WinForms.ScreenComponents.exe")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.WinForms.ScreenComponents\bin\Release\Sut.WinForms.ScreenComponents.exe")]
+#endif
     public class ScreenComponentsTest
     {
-#if DEBUG
-        private const string ApplicationFilePath = @"..\..\..\Sut.WinForms.ScreenComponents\bin\Debug\Sut.WinForms.ScreenComponents.exe";
-#else
-        private const string ApplicationFilePath = @"..\..\..\Sut.WinForms.ScreenComponents\bin\Release\Sut.WinForms.ScreenComponents.exe";
-#endif
+        private const string ApplicationFilePath = @"Sut.WinForms.ScreenComponents.exe";
         private MainScreen mainScreen;
 
         /// <summary>

@@ -6,13 +6,14 @@ using Sut.WinForms.ControlsTest.ObjectRepository;
 namespace Sut.WinForms.ControlsTest
 {
     [CodedUITest]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.WinForms.Controls\bin\Debug\Sut.WinForms.Controls.exe")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.WinForms.Controls\bin\Release\Sut.WinForms.Controls.exe")]
+#endif
     public class ControlTests
     {
-#if DEBUG
-        private const string ApplicationFilePath = @"..\..\..\Sut.WinForms.Controls\bin\Debug\Sut.WinForms.Controls.exe";
-#else
-        private const string ApplicationFilePath = @"..\..\..\Sut.WinForms.Controls\bin\Release\Sut.WinForms.Controls.exe";
-#endif
+        private const string ApplicationFilePath = @"Sut.WinForms.Controls.exe";
         private MainScreen mainScreen;
 
         /// <summary>

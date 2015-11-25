@@ -6,13 +6,14 @@ using Sut.Wpf.ControlsTest.ObjectRepository;
 namespace Sut.Wpf.ControlsTest
 {
     [CodedUITest]
+#if DEBUG
+    [DeploymentItem(@"..\..\..\Sut.Wpf.Controls\bin\Debug\Sut.Wpf.Controls.exe")]
+#else
+    [DeploymentItem(@"..\..\..\Sut.Wpf.Controls\bin\Release\Sut.Wpf.Controls.exe")]
+#endif
     public class ControlTests
     {
-#if DEBUG
-        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Controls\bin\Debug\Sut.Wpf.Controls.exe";
-#else
-        private const string ApplicationFilePath = @"..\..\..\Sut.Wpf.Controls\bin\Release\Sut.Wpf.Controls.exe";
-#endif
+        private const string ApplicationFilePath = @"Sut.Wpf.Controls.exe";
         private MainScreen mainScreen;
 
         /// <summary>
