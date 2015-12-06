@@ -67,7 +67,9 @@
     <Compile Include="ObjectRepository\HtmlTestPageFeeds.cs" />
     <Compile Include="ObjectRepository\GoogleHomePageWithInvalidControlSearchProperties.cs" />
     <Compile Include="ObjectRepository\TestHtmlPage.cs" />
+    <Compile Include="ProcessRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DynamicBrowserWindowTitle.1.html">

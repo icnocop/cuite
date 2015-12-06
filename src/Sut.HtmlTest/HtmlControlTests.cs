@@ -229,6 +229,10 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void HtmlTable_ClickOnColumnHeader_Succeeds()
         {
+            // allow Internet Explorer to run JavaScript
+            var runResult = ProcessRunner.Run("icacls.exe", string.Format("\"{0}\" /setintegritylevel (CI)(OI)Low", currentDirectory));
+            Assert.AreEqual(0, runResult.ExitCode);
+
             var browserWindow = BrowserWindow.Launch(currentDirectory + "/TestHtmlPage.html");
             var tbl = browserWindow.Find<HtmlTable>(By.Id("tableWithAlertOnHeaderClick"));
             tbl.FindHeaderCellAndClick(0, 0);
