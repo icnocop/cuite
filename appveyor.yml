@@ -17,6 +17,8 @@ install:
     REM This circumvents the "Open File - Security Warning" dialog that appears when exes (applications under test) are launched
 
     icacls "%appveyor_build_folder%" /setintegritylevel (CI)(OI)Medium
+nuget:
+  disable_publish_on_pr: true
 build_script:
 - cmd: >-
     call "%VS120COMNTOOLS%VsDevCmd.bat"
