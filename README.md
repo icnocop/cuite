@@ -20,33 +20,39 @@ CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Mic
 
 Install CUITe using NuGet and make sure you include prerelease packages.
 
-### Installing CUITe for HTML, WPF and WinForms
-
-Install CUITe using the NuGet Package Manager:
-
-```Install-Package CUITe -Pre```
+### Install CUITe using the NuGet Package Manager
 
 If your intent is to test HTML you might also want to install [Selenium components for Coded UI Cross Browser Testing](https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d).
 
-### Installing CUITe for Silverlight
-
 The NuGet package to install depends on the Visual Studio version you are using.
 
-#### CUITe for Silverlight in Visual Studio 2010
+#### CUITe in Visual Studio 2010
 
-Install CUITe for Silverlight using the NuGet Package Manager:
+Installing CUITe for HTML, WPF and WinForms:
+
+```Install-Package CUITe.VS2010 -Pre```
+
+Install CUITe for Silverlight:
 
 ```Install-Package CUITe.Silverlight.VS2010 -Pre```
 
-#### CUITe for Silverlight in Visual Studio 2012
+#### CUITe in Visual Studio 2012
 
-Install CUITe for Silverlight using the NuGet Package Manager:
+Installing CUITe for HTML, WPF and WinForms:
+
+```Install-Package CUITe.VS2012 -Pre```
+
+Install CUITe for Silverlight:
 
 ```Install-Package CUITe.Silverlight.VS2012 -Pre```
 
 You should also install the extension [Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4).
 
-#### CUITe for Silverlight in Visual Studio 2013
+#### CUITe in Visual Studio 2013
+
+Installing CUITe for HTML, WPF and WinForms:
+
+```Install-Package CUITe.VS2013 -Pre```
 
 Install CUITe for Silverlight using the NuGet Package Manager:
 

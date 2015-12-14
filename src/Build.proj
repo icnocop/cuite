@@ -20,17 +20,38 @@
 
   <!-- Builds CUITe in all supported configurations -->
   <Target Name="Build">
-    <!-- .NET45 -->
+    <!-- VS2010 .NET40 -->
     <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=Release"
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=10;TargetFrameworkVersion=v4.0"
       Targets="Rebuild"
       BuildInParallel="true" />
-    
-    <!-- .NET40 -->
+
+    <!-- VS2012 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2012 .NET45 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2013 .NET40 -->
     <MSBuild
       Projects="$(ProjectPath)"
       Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true" />
+
+    <!-- VS2013 .NET45 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=Release;VisualStudioVersion=12"
       Targets="Rebuild"
       BuildInParallel="true" />
   </Target>
@@ -72,10 +93,21 @@
       Targets="Rebuild"
       BuildInParallel="true" />
   </Target>
-  
+
   <!-- Creates CUITe NuGet package -->
   <Target Name="Pack">
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(ProjectPath)&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12;Configuration=Release" />
+    <GetAssemblyIdentity AssemblyFiles="$(CurrentDirectory)CUITe\bin\Release\VS2010\net40\CUITe.dll">
+      <Output TaskParameter="Assemblies" ItemName="CUITeAssemblyInfo"/>
+    </GetAssemblyIdentity>
+    
+    <Message Text="Version: %(CUITeAssemblyInfo.Version)" />
+    <PropertyGroup>
+      <NuGetVersion>$([System.Version]::Parse(%(CUITeAssemblyInfo.Version)).ToString(3))-beta</NuGetVersion>
+    </PropertyGroup>
+
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2010.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2012.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2013.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
   </Target>
 
   <!-- Creates CUITe Silverlight NuGet packages -->
