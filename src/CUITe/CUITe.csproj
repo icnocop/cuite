@@ -260,7 +260,9 @@
     </When>
   </Choose>
   <ItemGroup>
-    <EmbeddedResource Include="CUITe.nuspec" />
+    <EmbeddedResource Include="CUITe for Visual Studio 2013.nuspec" />
+    <EmbeddedResource Include="CUITe for Visual Studio 2010.nuspec" />
+    <EmbeddedResource Include="CUITe for Visual Studio 2012.nuspec" />
     <None Include="NuGet\app.config.transform" />
     <None Include="NuGet\app.config.uninstall.xdt" />
     <None Include="NuGet\app.config.install.xdt" />
