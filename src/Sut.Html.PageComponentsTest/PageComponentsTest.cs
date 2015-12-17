@@ -38,6 +38,7 @@ namespace Sut.Html.PageComponentsTest
                 var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
+                Assert.IsTrue(mainPage.RebasedUpperLeft.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
             }
         }
@@ -64,6 +65,7 @@ namespace Sut.Html.PageComponentsTest
                 var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
+                Assert.IsTrue(mainPage.RebasedUpperRight.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
             }
         }
@@ -90,6 +92,7 @@ namespace Sut.Html.PageComponentsTest
                 var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
+                Assert.IsTrue(mainPage.RebasedLowerLeft.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
             }
         }
@@ -116,6 +119,7 @@ namespace Sut.Html.PageComponentsTest
                 var mainPage = Page.Launch<MainPage>(homePage.FilePath);
 
                 // Assert
+                Assert.IsTrue(mainPage.RebasedLowerRight.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
             }
         }
