@@ -39,6 +39,7 @@ namespace Sut.Wpf.ScreenComponentsTest
         public void RebasedUpperLeft()
         {
             // Assert
+            Assert.IsTrue(mainScreen.RebasedUpperLeft.Self.Exists);
             Assert.IsTrue(mainScreen.RebasedUpperLeft.CheckBoxExists);
         }
 
@@ -53,6 +54,7 @@ namespace Sut.Wpf.ScreenComponentsTest
         public void RebasedUpperRight()
         {
             // Assert
+            Assert.IsTrue(mainScreen.RebasedUpperRight.Self.Exists);
             Assert.IsTrue(mainScreen.RebasedUpperRight.CheckBoxExists);
         }
 
@@ -67,6 +69,7 @@ namespace Sut.Wpf.ScreenComponentsTest
         public void RebasedLowerLeft()
         {
             // Assert
+            Assert.IsTrue(mainScreen.RebasedLowerLeft.Self.Exists);
             Assert.IsTrue(mainScreen.RebasedLowerLeft.RadioButtonExists);
         }
 
@@ -81,6 +84,7 @@ namespace Sut.Wpf.ScreenComponentsTest
         public void RebasedLowerRight()
         {
             // Assert
+            Assert.IsTrue(mainScreen.RebasedLowerRight.Self.Exists);
             Assert.IsTrue(mainScreen.RebasedLowerRight.RadioButtonExists);
         }
 

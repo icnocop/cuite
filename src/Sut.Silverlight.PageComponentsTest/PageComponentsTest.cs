@@ -55,6 +55,7 @@ namespace Sut.Silverlight.PageComponentsTest
         public void RebasedUpperLeft()
         {
             // Assert
+            Assert.IsTrue(mainPage.RebasedUpperLeft.Self.Exists);
             Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
         }
 
@@ -69,6 +70,7 @@ namespace Sut.Silverlight.PageComponentsTest
         public void RebasedUpperRight()
         {
             // Assert
+            Assert.IsTrue(mainPage.RebasedUpperRight.Self.Exists);
             Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
         }
 
@@ -83,6 +85,7 @@ namespace Sut.Silverlight.PageComponentsTest
         public void RebasedLowerLeft()
         {
             // Assert
+            Assert.IsTrue(mainPage.RebasedLowerLeft.Self.Exists);
             Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
         }
 
@@ -97,6 +100,7 @@ namespace Sut.Silverlight.PageComponentsTest
         public void RebasedLowerRight()
         {
             // Assert
+            Assert.IsTrue(mainPage.RebasedLowerRight.Self.Exists);
             Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
         }
 

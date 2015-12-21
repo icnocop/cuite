@@ -41,6 +41,15 @@ namespace CUITe.ObjectRepository
         }
 
         /// <summary>
+        /// Gets the rebased control specified by the search configuration in
+        /// <see cref="ScreenComponent{T}(By)"/>.
+        /// </summary>
+        public UITestControl Self
+        {
+            get { return SearchLimitContainer; }
+        }
+
+        /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>
         internal override UITestControl SearchLimitContainer
