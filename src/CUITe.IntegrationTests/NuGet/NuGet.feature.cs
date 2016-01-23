@@ -315,12 +315,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2013 and .NET Framework 4 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2013 and .NET Framework 4 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2013")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2013")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2013And_NETFramework4AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4 and Silverlight 5", "2012", "4.0", "CUITe.Silverlight.VS2013", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4 and Silverlight 5", "2013", "4.0", "CUITe.Silverlight.VS2013", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -328,12 +328,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2013 and .NET Framework 4.5 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2013 and .NET Framework 4.5 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2013")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2013")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2013And_NETFramework4_5AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.5 and Silverlight 5", "2012", "4.5", "CUITe.Silverlight.VS2013", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.5 and Silverlight 5", "2013", "4.5", "CUITe.Silverlight.VS2013", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -341,12 +341,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2013 and .NET Framework 4.5.1 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2013 and .NET Framework 4.5.1 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2013")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.5.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2013")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2013And_NETFramework4_5_1AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.5.1 and Silverlight 5", "2012", "4.5.1", "CUITe.Silverlight.VS2013", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.5.1 and Silverlight 5", "2013", "4.5.1", "CUITe.Silverlight.VS2013", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -354,12 +354,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2013 and .NET Framework 4.5.2 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2013 and .NET Framework 4.5.2 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2013")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.5.3")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2013")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2013And_NETFramework4_5_2AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.5.2 and Silverlight 5", "2012", "4.5.3", "CUITe.Silverlight.VS2013", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.5.2 and Silverlight 5", "2013", "4.5.3", "CUITe.Silverlight.VS2013", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -367,12 +367,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2013 and .NET Framework 4.6 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2013 and .NET Framework 4.6 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2013")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2013")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2013And_NETFramework4_6AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.6 and Silverlight 5", "2012", "4.6", "CUITe.Silverlight.VS2013", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2013 and .NET Framework 4.6 and Silverlight 5", "2013", "4.6", "CUITe.Silverlight.VS2013", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -445,12 +445,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2015 and .NET Framework 4 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2015 and .NET Framework 4 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2015")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.0")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2015")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2015And_NETFramework4AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4 and Silverlight 5", "2012", "4.0", "CUITe.Silverlight.VS2015", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4 and Silverlight 5", "2015", "4.0", "CUITe.Silverlight.VS2015", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -458,12 +458,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2015 and .NET Framework 4.5 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2015 and .NET Framework 4.5 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2015")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2015")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2015And_NETFramework4_5AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.5 and Silverlight 5", "2012", "4.5", "CUITe.Silverlight.VS2015", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.5 and Silverlight 5", "2015", "4.5", "CUITe.Silverlight.VS2015", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -471,12 +471,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2015")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.5.1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2015")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2015And_NETFramework4_5_1AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5", "2012", "4.5.1", "CUITe.Silverlight.VS2015", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5", "2015", "4.5.1", "CUITe.Silverlight.VS2015", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -484,12 +484,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2015")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.5.2")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2015")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2015And_NETFramework4_5_2AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5", "2012", "4.5.2", "CUITe.Silverlight.VS2015", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5", "2015", "4.5.2", "CUITe.Silverlight.VS2015", ((string[])(null)));
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
@@ -497,12 +497,12 @@ this.ScenarioSetup(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "NuGet")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2012")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:VisualStudioVersion", "2015")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:TargetFrameworkVersion", "4.6")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:NuGetPackageId", "CUITe.Silverlight.VS2015")]
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject_VisualStudio2015And_NETFramework4_6AndSilverlight5()
         {
-            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5", "2012", "4.6", "CUITe.Silverlight.VS2015", ((string[])(null)));
+            this.AddingTheCUITeNuGetPackageToACodedUITestProject("Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5", "2015", "4.6", "CUITe.Silverlight.VS2015", ((string[])(null)));
         }
     }
 }

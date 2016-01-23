@@ -29,18 +29,18 @@ Scenario Outline: Adding the CUITe NuGet package to a Coded UI test project
 	| Visual Studio 2013 and .NET Framework 4.5.1                   | 2013                | 4.5.1                  | CUITe.VS2013             |
 	| Visual Studio 2013 and .NET Framework 4.5.2                   | 2013                | 4.5.2                  | CUITe.VS2013             |
 	| Visual Studio 2013 and .NET Framework 4.6                     | 2013                | 4.6                    | CUITe.VS2013             |
-	| Visual Studio 2013 and .NET Framework 4 and Silverlight 5     | 2012                | 4.0                    | CUITe.Silverlight.VS2013 |
-	| Visual Studio 2013 and .NET Framework 4.5 and Silverlight 5   | 2012                | 4.5                    | CUITe.Silverlight.VS2013 |
-	| Visual Studio 2013 and .NET Framework 4.5.1 and Silverlight 5 | 2012                | 4.5.1                  | CUITe.Silverlight.VS2013 |
-	| Visual Studio 2013 and .NET Framework 4.5.2 and Silverlight 5 | 2012                | 4.5.3                  | CUITe.Silverlight.VS2013 |
-	| Visual Studio 2013 and .NET Framework 4.6 and Silverlight 5   | 2012                | 4.6                    | CUITe.Silverlight.VS2013 |
+	| Visual Studio 2013 and .NET Framework 4 and Silverlight 5     | 2013                | 4.0                    | CUITe.Silverlight.VS2013 |
+	| Visual Studio 2013 and .NET Framework 4.5 and Silverlight 5   | 2013                | 4.5                    | CUITe.Silverlight.VS2013 |
+	| Visual Studio 2013 and .NET Framework 4.5.1 and Silverlight 5 | 2013                | 4.5.1                  | CUITe.Silverlight.VS2013 |
+	| Visual Studio 2013 and .NET Framework 4.5.2 and Silverlight 5 | 2013                | 4.5.3                  | CUITe.Silverlight.VS2013 |
+	| Visual Studio 2013 and .NET Framework 4.6 and Silverlight 5   | 2013                | 4.6                    | CUITe.Silverlight.VS2013 |
 	| Visual Studio 2015 and .NET Framework 4                       | 2015                | 4.0                    | CUITe.VS2015             |
 	| Visual Studio 2015 and .NET Framework 4.5                     | 2015                | 4.5                    | CUITe.VS2015             |
 	| Visual Studio 2015 and .NET Framework 4.5.1                   | 2015                | 4.5.1                  | CUITe.VS2015             |
 	| Visual Studio 2015 and .NET Framework 4.5.2                   | 2015                | 4.5.2                  | CUITe.VS2015             |
 	| Visual Studio 2015 and .NET Framework 4.6                     | 2015                | 4.6                    | CUITe.VS2015             |
-	| Visual Studio 2015 and .NET Framework 4 and Silverlight 5     | 2012                | 4.0                    | CUITe.Silverlight.VS2015 |
-	| Visual Studio 2015 and .NET Framework 4.5 and Silverlight 5   | 2012                | 4.5                    | CUITe.Silverlight.VS2015 |
-	| Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5 | 2012                | 4.5.1                  | CUITe.Silverlight.VS2015 |
-	| Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5 | 2012                | 4.5.2                  | CUITe.Silverlight.VS2015 |
-	| Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5   | 2012                | 4.6                    | CUITe.Silverlight.VS2015 |
+	| Visual Studio 2015 and .NET Framework 4 and Silverlight 5     | 2015                | 4.0                    | CUITe.Silverlight.VS2015 |
+	| Visual Studio 2015 and .NET Framework 4.5 and Silverlight 5   | 2015                | 4.5                    | CUITe.Silverlight.VS2015 |
+	| Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5 | 2015                | 4.5.1                  | CUITe.Silverlight.VS2015 |
+	| Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5 | 2015                | 4.5.2                  | CUITe.Silverlight.VS2015 |
+	| Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5   | 2015                | 4.6                    | CUITe.Silverlight.VS2015 |
