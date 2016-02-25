@@ -33,7 +33,7 @@ namespace CUITe.Controls.WpfControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 
                 try
                 {

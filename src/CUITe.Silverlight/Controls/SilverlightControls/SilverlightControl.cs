@@ -30,7 +30,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.LabeledBy;
             }
         }
@@ -45,7 +45,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 
                 try
                 {
@@ -68,7 +68,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -91,7 +91,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -114,7 +114,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -132,7 +132,7 @@ namespace CUITe.Controls.SilverlightControls
         /// </summary>
         public override IEnumerable<ControlBase> GetChildren()
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             var uicol = new List<ControlBase>();
             foreach (UITestControl uitestcontrol in SourceControl.GetChildren())
             {

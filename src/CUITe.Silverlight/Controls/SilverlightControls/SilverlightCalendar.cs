@@ -37,7 +37,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedDateRange = value;
             }
         }
@@ -49,7 +49,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedDateRangeAsString = value;
             }
         }
@@ -61,7 +61,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectionMode;
             }
         }
@@ -73,12 +73,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedDates;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedDates = value;
             }
         }
@@ -90,12 +90,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedDatesAsString;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedDatesAsString = value;
             }
         }

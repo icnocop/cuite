@@ -35,7 +35,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.DisplayText;
             }
         }

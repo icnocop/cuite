@@ -34,7 +34,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.LabelFor;
             }
         }

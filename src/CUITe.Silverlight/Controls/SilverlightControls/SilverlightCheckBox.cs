@@ -58,12 +58,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Checked;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.Checked = value;
             }
         }

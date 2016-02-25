@@ -38,7 +38,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Items;
             }
         }
@@ -51,12 +51,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedIndices;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedIndices = value;
             }
         }
@@ -68,12 +68,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedItems;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedItems = value;
             }
         }
@@ -85,12 +85,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedItemsAsString;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedItemsAsString = value;
             }
         }
@@ -102,7 +102,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectionMode;
             }
         }

@@ -34,7 +34,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Disabled;
             }
         }
@@ -46,7 +46,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Max;
             }
         }
@@ -58,7 +58,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Min;
             }
         }
@@ -70,7 +70,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Required;
             }
         }
@@ -82,7 +82,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Step;
             }
         }
@@ -94,7 +94,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Value;
             }
         }
@@ -106,7 +106,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.ValueAsNumber;
             }
         }

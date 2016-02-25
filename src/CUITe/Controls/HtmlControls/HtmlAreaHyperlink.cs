@@ -34,7 +34,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.AbsolutePath;
             }
         }
@@ -46,7 +46,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Alt;
             }
         }
@@ -58,7 +58,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Href;
             }
         }
@@ -70,7 +70,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Target;
             }
         }

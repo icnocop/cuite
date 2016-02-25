@@ -34,12 +34,12 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.FileName;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.FileName = value;
             }
         }

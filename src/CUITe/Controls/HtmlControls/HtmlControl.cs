@@ -31,7 +31,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.InnerText;
             }
         }
@@ -43,7 +43,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.HelpText;
             }
         }
@@ -55,7 +55,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Title;
             }
         }
@@ -67,7 +67,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.ValueAttribute;
             }
         }
@@ -79,7 +79,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.AccessKey;
             }
         }
@@ -94,7 +94,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -117,7 +117,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -140,7 +140,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -171,7 +171,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {
@@ -189,7 +189,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public override IEnumerable<ControlBase> GetChildren()
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
 
             return SourceControl.GetChildren()
                 .Select(child => WrapUtil((CUITControls.HtmlControl)child))

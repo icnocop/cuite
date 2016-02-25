@@ -36,7 +36,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.ColumnCount;
             }
         }
@@ -48,7 +48,7 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Rows.Count;
             }
         }
@@ -130,7 +130,7 @@ namespace CUITe.Controls.HtmlControls
             int columnIndex,
             HtmlTableSearchOptions searchOptions)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             int iRow = -1;
             int rowCount = -1;
 
@@ -310,7 +310,7 @@ namespace CUITe.Controls.HtmlControls
 
         private T GetCell<T>(int iRow, int iCol) where T : ControlBase, IHasInnerText
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             UITestControl htmlCell = null;
             int rowCount = -1;
 
