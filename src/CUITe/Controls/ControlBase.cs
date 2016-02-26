@@ -16,7 +16,6 @@ namespace CUITe.Controls
     public abstract class ControlBase
     {
         private readonly UITestControl sourceControl;
-        private static bool isControlReadinessAwaitedByDefault;
 
         protected static readonly PropertyNamesCache PropertyNamesCache;
 
@@ -82,11 +81,7 @@ namespace CUITe.Controls
         /// <summary>
         /// Gets or sets a value indicating whether or not the <see cref="WaitForControlReady"/> method is executed each time the control is used.
         /// </summary>
-        public static bool IsControlReadinessChecked
-        {
-            get { return isControlReadinessAwaitedByDefault; }
-            set { isControlReadinessAwaitedByDefault = value; }
-        }
+        public static bool IsControlReadinessAwaitedByDefault { get; set; }
         
         /// <summary>
         /// Gets the parent of the control.
@@ -128,9 +123,9 @@ namespace CUITe.Controls
         /// <summary>
         /// Waits for the control to be ready.
         /// </summary>
-        public void WaitForControlReady()
+        public bool WaitForControlReady()
         {
-            sourceControl.WaitForControlReady();
+            return sourceControl.WaitForControlReady();
         }
 
         /// <summary>
@@ -138,7 +133,7 @@ namespace CUITe.Controls
         /// </summary>
         protected void WaitForControlReadyIfNecessary()
         {
-            if (isControlReadinessAwaitedByDefault)
+            if (IsControlReadinessAwaitedByDefault)
             {
                 sourceControl.WaitForControlReady();
             }
@@ -147,17 +142,20 @@ namespace CUITe.Controls
         /// <summary>
         /// Waits for the control to appear in the user interface.
         /// </summary>
-        public void WaitForControlExist()
+        /// <returns><code>true</code> if this control exists before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlExist()
         {
-            sourceControl.WaitForControlExist();
+            return sourceControl.WaitForControlExist();
         }
 
         /// <summary>
         /// Waits for the control to appear in the user interface, or for the specified timeout to expire.
         /// </summary>
-        public void WaitForControlExist(int millisecondsTimeout)
+        /// <param name="millisecondsTimeout">The number of milliseconds before time-out.</param>
+        /// <returns><code>true</code> if this control exists before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlExist(int millisecondsTimeout)
         {
-            sourceControl.WaitForControlExist(millisecondsTimeout);
+            return sourceControl.WaitForControlExist(millisecondsTimeout);
         }
 
         /// <summary>
