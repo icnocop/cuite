@@ -36,7 +36,7 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="item">The item to select.</param>
         public void SelectItem(string item)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             SourceControl.SelectedItem = item;
         }
 
@@ -46,7 +46,7 @@ namespace CUITe.Controls.SilverlightControls
         /// <param name="index">The index of the item to select.</param>
         public void SelectIndex(int index)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             SourceControl.SelectedIndex = index;
         }
 
@@ -57,12 +57,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedItem;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedItem = value;
             }
         }
@@ -74,12 +74,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.SelectedIndex;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.SelectedIndex = value;
             }
         }
@@ -91,7 +91,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Items.Count;
             }
         }
@@ -104,7 +104,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Items;
             }
         }

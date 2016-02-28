@@ -47,7 +47,7 @@ namespace CUITe.Controls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return sourceControl.Enabled;
             }
         }
@@ -77,6 +77,11 @@ namespace CUITe.Controls
         {
             get { return sourceControl.GetType(); }
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not the <see cref="WaitForControlReady"/> method is executed each time the control is used.
+        /// </summary>
+        public static bool IsControlReadinessAwaitedByDefault { get; set; }
         
         /// <summary>
         /// Gets the parent of the control.
@@ -118,9 +123,39 @@ namespace CUITe.Controls
         /// <summary>
         /// Waits for the control to be ready.
         /// </summary>
-        public void WaitForControlReady()
+        public bool WaitForControlReady()
         {
-            sourceControl.WaitForControlReady();
+            return sourceControl.WaitForControlReady();
+        }
+
+        /// <summary>
+        /// Waits for the control to be ready.
+        /// </summary>
+        protected void WaitForControlReadyIfNecessary()
+        {
+            if (IsControlReadinessAwaitedByDefault)
+            {
+                sourceControl.WaitForControlReady();
+            }
+        }
+
+        /// <summary>
+        /// Waits for the control to appear in the user interface.
+        /// </summary>
+        /// <returns><code>true</code> if this control exists before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlExist()
+        {
+            return sourceControl.WaitForControlExist();
+        }
+
+        /// <summary>
+        /// Waits for the control to appear in the user interface, or for the specified timeout to expire.
+        /// </summary>
+        /// <param name="millisecondsTimeout">The number of milliseconds before time-out.</param>
+        /// <returns><code>true</code> if this control exists before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlExist(int millisecondsTimeout)
+        {
+            return sourceControl.WaitForControlExist(millisecondsTimeout);
         }
 
         /// <summary>
@@ -128,7 +163,7 @@ namespace CUITe.Controls
         /// </summary>
         public void SetFocus()
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             sourceControl.SetFocus();
         }
 
@@ -140,7 +175,7 @@ namespace CUITe.Controls
         /// </param>
         public void Click(MouseButtons button = MouseButtons.Left)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Mouse.Click(sourceControl, button);
         }
 
@@ -153,7 +188,7 @@ namespace CUITe.Controls
         /// </param>
         public void Click(ModifierKeys modifierKeys)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Mouse.Click(sourceControl, modifierKeys);
         }
 
@@ -165,7 +200,7 @@ namespace CUITe.Controls
         /// </param>
         public void DoubleClick(MouseButtons button = MouseButtons.Left)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Mouse.DoubleClick(sourceControl, button);
         }
 
@@ -178,7 +213,7 @@ namespace CUITe.Controls
         /// </param>
         public void DoubleClick(ModifierKeys modifierKeys)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Mouse.DoubleClick(sourceControl, modifierKeys);
         }
 
@@ -194,7 +229,7 @@ namespace CUITe.Controls
         /// </remarks>
         public void PointAndClick()
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             int centerX = sourceControl.BoundingRectangle.X + sourceControl.BoundingRectangle.Width / 2;
             int centerY = sourceControl.BoundingRectangle.Y + sourceControl.BoundingRectangle.Height / 2;
             Mouse.Click(new Point(centerX, centerY));
@@ -213,7 +248,7 @@ namespace CUITe.Controls
         /// </remarks>
         public void PressModifierKeys(ModifierKeys keys)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Keyboard.PressModifierKeys(sourceControl, keys);
         }
 
@@ -226,7 +261,7 @@ namespace CUITe.Controls
         /// </param>
         public void ReleaseModifierKeys(ModifierKeys keys)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Keyboard.ReleaseModifierKeys(sourceControl, keys);
         }
 
@@ -246,7 +281,7 @@ namespace CUITe.Controls
         /// </remarks>
         public IDisposable HoldModifierKeys(ModifierKeys keys)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             return new ModifierKeysLifetime(this, keys);
         }
 
@@ -283,7 +318,7 @@ namespace CUITe.Controls
             bool isEncoded = false,
             bool isUnicode = true)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             Keyboard.SendKeys(sourceControl, text, modifierKeys, isEncoded, isUnicode);
         }
     }

@@ -37,7 +37,7 @@ namespace CUITe.Controls.SilverlightControls
             get { return base.Text; }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.Password = Playback.EncryptText(value);
             }
         }

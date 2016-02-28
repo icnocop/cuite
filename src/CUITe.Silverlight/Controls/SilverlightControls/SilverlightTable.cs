@@ -36,7 +36,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.RowCount;
             }
         }
@@ -105,7 +105,7 @@ namespace CUITe.Controls.SilverlightControls
             int columnIndex,
             SilverlightTableSearchOptions searchOptions)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
 
             int rowIndex = -1;
             int rowCount = -1;
@@ -177,7 +177,7 @@ namespace CUITe.Controls.SilverlightControls
 
         private CUITControls.SilverlightCell GetCell(int rowIndex, int columnIndex)
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             CUITControls.SilverlightCell _SlCell = null;
             int rowCount = -1;
             foreach (CUITControls.SilverlightRow cont in SourceControl.Rows)

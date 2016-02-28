@@ -33,7 +33,7 @@ namespace CUITe.Controls.WinControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
 
                 try
                 {

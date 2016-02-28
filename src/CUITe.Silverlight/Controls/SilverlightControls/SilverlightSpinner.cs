@@ -37,12 +37,12 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return TextBox.Text;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 TextBox.Text = value;
             }
         }
@@ -54,7 +54,7 @@ namespace CUITe.Controls.SilverlightControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return TextBox.ReadOnly;
             }
         }

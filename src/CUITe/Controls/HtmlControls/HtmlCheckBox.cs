@@ -43,7 +43,7 @@ namespace CUITe.Controls.HtmlControls
         /// </summary>
         public void Check2()
         {
-            WaitForControlReady();
+            WaitForControlReadyIfNecessary();
             string sOnClick = (string)SourceControl.GetProperty("onclick");
             string sId = SourceControl.Id;
             if (sId == null || sId == "")
@@ -71,12 +71,12 @@ namespace CUITe.Controls.HtmlControls
         {
             get
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 return SourceControl.Checked;
             }
             set
             {
-                WaitForControlReady();
+                WaitForControlReadyIfNecessary();
                 SourceControl.Checked = value;
             }
         }
