@@ -159,6 +159,115 @@ namespace CUITe.Controls
         }
 
         /// <summary>
+        /// Waits for the control to be enabled in the user interface.
+        /// </summary>
+        /// <returns><code>true</code> if this control is enabled before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlEnabled()
+        {
+            return sourceControl.WaitForControlEnabled();
+        }
+
+        /// <summary>
+        /// Waits for the control to be enabled in the user interface, or for the specified timeout to expire.
+        /// </summary>
+        /// <returns><code>true</code> if this control is enabled before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlEnabled(int millisecondsTimeout)
+        {
+            return sourceControl.WaitForControlEnabled(millisecondsTimeout);
+        }
+
+        /// <summary>
+        /// Waits for the control to disappear from the user interface.
+        /// </summary>
+        /// <returns><code>true</code> if this control has disappeared before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlNotExist()
+        {
+            return sourceControl.WaitForControlNotExist();
+        }
+
+        /// <summary>
+        /// Waits for the control to disappear from the user interface, or for the specified timeout to expire.
+        /// </summary>
+        /// <returns><code>true</code> if this control has disappeared before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlNotExist(int millisecondsTimeout)
+        {
+            return sourceControl.WaitForControlNotExist(millisecondsTimeout);
+        }
+
+        /// <summary>
+        /// Waits for the given property of this control to have the specified value.
+        /// </summary>
+        /// <returns><code>true</code> if the specified property has the expected value before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlPropertyEqual(string propertyName, object propertyValue)
+        {
+            return sourceControl.WaitForControlPropertyEqual(propertyName, propertyValue);
+        }
+
+        /// <summary>
+        /// Waits for the given property of this control to have the specified value, or for the timeout to expire.
+        /// </summary>
+        /// <returns><code>true</code> if the specified property has the expected value before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlPropertyEqual(string propertyName, object propertyValue, int millisecondsTimeout)
+        {
+            return sourceControl.WaitForControlPropertyEqual(propertyName, propertyValue, millisecondsTimeout);
+        }
+
+        /// <summary>
+        /// Waits until the given property of this control does not have the specified value.
+        /// </summary>
+        /// <returns><code>true</code> if the specified property does not have the specified value before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlPropertyNotEqual(string propertyName, object propertyValue)
+        {
+            return sourceControl.WaitForControlPropertyNotEqual(propertyName, propertyValue);
+        }
+
+        /// <summary>
+        /// Waits until the given property of this control does not have the specified value, or until the timeout expires.
+        /// </summary>
+        /// <returns><code>true</code> if the specified property does not have the specified value before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlPropertyNotEqual(string propertyName, object propertyValue, int millisecondsTimeout)
+        {
+            return sourceControl.WaitForControlPropertyNotEqual(propertyName, propertyValue, millisecondsTimeout);
+        }
+
+        /// <summary>
+        /// Gets the value of a given property.
+        /// </summary>
+        /// <param name="propertyName">Property Name.</param>
+        /// <returns>Value of the specified property.</returns>
+        public object GetProperty(string propertyName)
+        {
+            return sourceControl.GetProperty(propertyName);
+        }
+
+        /// <summary>
+        /// Sets the value of a given property.
+        /// </summary>
+        /// <param name="propertyName">Property Name.</param>
+        /// <param name="propertyValue">Value to set.</param>
+        public void SetProperty(string propertyName, object propertyValue)
+        {
+            sourceControl.SetProperty(propertyName, propertyValue);
+        }
+
+        /// <summary>
+        /// Ensures the control is clickable by scrolling if necessary.
+        /// </summary>
+        public void EnsureClickable()
+        {
+            sourceControl.EnsureClickable();
+        }
+
+        /// <summary>
+        /// Ensures the control is clickable at the specified relative point by scrolling if necessary.
+        /// </summary>
+        /// <param name="point">Location relative to the control</param>
+        public void EnsureClickable(Point point)
+        {
+            sourceControl.EnsureClickable(point);
+        }
+
+        /// <summary>
         /// Waits for the control to be ready and attempts to set focus.
         /// </summary>
         public void SetFocus()
