@@ -61,21 +61,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenComponents", "Sut.Wpf.ScreenComponents\Sut.Wpf.ScreenComponents.csproj", "{729F30CB-E99A-48C5-A945-0C9BD2B225E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjects", "Sut.Wpf.ScreenObjects\Sut.Wpf.ScreenObjects.csproj", "{729F30CB-E99A-48C5-A945-0C9BD2B225E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenComponentsTest", "Sut.Wpf.ScreenComponentsTest\Sut.Wpf.ScreenComponentsTest.csproj", "{7BC249D6-3DBA-45AA-8C14-0657B25EDE92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjectsTest", "Sut.Wpf.ScreenObjectsTest\Sut.Wpf.ScreenObjectsTest.csproj", "{7BC249D6-3DBA-45AA-8C14-0657B25EDE92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenComponents", "Sut.WinForms.ScreenComponents\Sut.WinForms.ScreenComponents.csproj", "{E7DA3FC7-12EB-4086-A929-C77376BA02E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjects", "Sut.WinForms.ScreenObjects\Sut.WinForms.ScreenObjects.csproj", "{E7DA3FC7-12EB-4086-A929-C77376BA02E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenComponentsTest", "Sut.WinForms.ScreenComponentsTest\Sut.WinForms.ScreenComponentsTest.csproj", "{15714E76-8A05-4023-B924-C911B0CD4122}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjectsTest", "Sut.WinForms.ScreenObjectsTest\Sut.WinForms.ScreenObjectsTest.csproj", "{15714E76-8A05-4023-B924-C911B0CD4122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.PageComponentsTest", "Sut.Html.PageComponentsTest\Sut.Html.PageComponentsTest.csproj", "{42937C6D-41D3-423D-BC71-05E1C21401A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.PageObjectsTest", "Sut.Html.PageObjectsTest\Sut.Html.PageObjectsTest.csproj", "{42937C6D-41D3-423D-BC71-05E1C21401A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelpers", "TestHelpers\TestHelpers.csproj", "{813FC5B1-D329-4CE3-903A-10BA647535AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageComponents", "Sut.Silverlight.PageComponents\Sut.Silverlight.PageComponents.csproj", "{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjects", "Sut.Silverlight.PageObjects\Sut.Silverlight.PageObjects.csproj", "{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageComponentsTest", "Sut.Silverlight.PageComponentsTest\Sut.Silverlight.PageComponentsTest.csproj", "{3E624F8A-A115-4792-8C86-51FB529C34E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjectsTest", "Sut.Silverlight.PageObjectsTest\Sut.Silverlight.PageObjectsTest.csproj", "{3E624F8A-A115-4792-8C86-51FB529C34E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Workflows", "Sut.Wpf.Workflows\Sut.Wpf.Workflows.csproj", "{ED312AAC-D022-49BA-A049-043D0091C9F5}"
 EndProject

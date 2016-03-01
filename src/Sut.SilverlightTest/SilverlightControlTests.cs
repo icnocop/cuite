@@ -3,11 +3,11 @@ using System.IO;
 using CassiniDev;
 using CUITe.Controls;
 using CUITe.Controls.SilverlightControls;
-using CUITe.ObjectRepository;
+using CUITe.PageObjects;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.SilverlightTest.ObjectRepository;
+using Sut.SilverlightTest.PageObjects;
 
 namespace Sut.SilverlightTest
 {
@@ -54,7 +54,7 @@ namespace Sut.SilverlightTest
         }
 
         [TestMethod]
-        public void SlList_InObjectRepository_Succeeds()
+        public void SlList_PageObjects_Succeeds()
         {
             var page = Page.Launch<TestPage>(PageUrl);
             page.List.SelectedIndices = new[] { 2 };

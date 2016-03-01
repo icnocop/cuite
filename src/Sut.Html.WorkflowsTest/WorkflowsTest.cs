@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using CUITe.ObjectRepository;
+using CUITe.PageObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.Html.WorkflowsTest.ObjectRepository;
+using Sut.Html.WorkflowsTest.PageObjects;
 using Sut.Html.WorkflowsTest.Workflows;
 using TestHelpers;
 
