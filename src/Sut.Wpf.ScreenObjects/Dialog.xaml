@@ -1,0 +1,22 @@
+﻿<Window
+    x:Class="Sut.Wpf.ScreenObjects.Dialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="System Under Test (WPF)"
+    Icon="App.ico"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="WidthAndHeight">
+    
+    <!-- Root element -->
+    <StackPanel>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="This is a dialog." />
+        
+        <Button
+            AutomationProperties.AutomationId="X_069FQuNE-ju0UKv24OUA"
+            Content="Close"
+            Click="OnClose_Click" />
+    </StackPanel>
+</Window>

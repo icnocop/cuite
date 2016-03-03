@@ -2,8 +2,8 @@
 using System.Windows.Input;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.PeripheralInputTest.ObjectRepository;
-using Screen = CUITe.ObjectRepository.Screen;
+using Sut.PeripheralInputTest.ScreenObjects;
+using Screen = CUITe.ScreenObjects.Screen;
 
 namespace Sut.PeripheralInputTest
 {

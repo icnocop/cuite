@@ -1,7 +1,7 @@
-﻿using CUITe.ObjectRepository;
+﻿using CUITe.ScreenObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.WinForms.WorkflowsTest.ObjectRepository;
+using Sut.WinForms.WorkflowsTest.ScreenObjects;
 using Sut.WinForms.WorkflowsTest.Workflows;
 
 namespace Sut.WinForms.WorkflowsTest

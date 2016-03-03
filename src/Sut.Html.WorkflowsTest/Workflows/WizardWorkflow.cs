@@ -1,5 +1,5 @@
 ﻿using CUITe.Workflows;
-using Sut.Html.WorkflowsTest.ObjectRepository;
+using Sut.Html.WorkflowsTest.PageObjects;
 
 namespace Sut.Html.WorkflowsTest.Workflows
 {

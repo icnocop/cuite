@@ -1,5 +1,5 @@
-﻿using CUITe.ObjectRepository;
-using Sut.HtmlTest.ObjectRepository;
+﻿using CUITe.PageObjects;
+using Sut.HtmlTest.PageObjects;
 using TestHelpers;
 
 namespace Sut.HtmlTest

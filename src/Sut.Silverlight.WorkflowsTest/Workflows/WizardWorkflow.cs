@@ -1,5 +1,5 @@
 ﻿using CUITe.Workflows;
-using Sut.Silverlight.WorkflowsTest.ObjectRepository;
+using Sut.Silverlight.WorkflowsTest.PageObjects;
 
 namespace Sut.Silverlight.WorkflowsTest.Workflows
 {

@@ -1,7 +1,7 @@
-﻿using CUITe.ObjectRepository;
+﻿using CUITe.ScreenObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.WinForms.ControlsTest.ObjectRepository;
+using Sut.WinForms.ControlsTest.ScreenObjects;
 
 namespace Sut.WinForms.ControlsTest
 {

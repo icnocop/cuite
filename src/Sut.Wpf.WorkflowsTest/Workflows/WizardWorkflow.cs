@@ -1,5 +1,5 @@
 ﻿using CUITe.Workflows;
-using Sut.Wpf.WorkflowsTest.ObjectRepository;
+using Sut.Wpf.WorkflowsTest.ScreenObjects;
 
 namespace Sut.Wpf.WorkflowsTest.Workflows
 {
