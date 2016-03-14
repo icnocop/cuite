@@ -106,6 +106,16 @@ namespace Sut.WinForms.ScreenObjectsTest
         }
 
         [TestMethod]
+        public void FromProcess()
+        {
+            //Act
+            var appFromProcess = Screen.FromProcess<MainScreen>(mainScreen.Application.Process);
+
+            //Assert
+            Assert.IsTrue(appFromProcess.Application.Exists);
+        }
+
+        [TestMethod]
         public void NavigateToModalDialog()
         {
             // Act

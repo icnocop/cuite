@@ -46,5 +46,26 @@ namespace CUITe.ScreenObjects
                 SearchLimitContainer = application
             };
         }
+
+
+        /// <summary>
+        /// Creates a reference to an application from an existing process
+        /// </summary>
+        /// <typeparam name="T">The type of the screen to return.</typeparam>
+        /// <param name="processToWrap">The process to create from</param>
+        /// <returns>A screen representing the launched application.</returns>
+        public static T FromProcess<T>(Process processToWrap) where T : Screen, new()
+        {
+            if (processToWrap == null)
+                throw new ArgumentNullException("processToWrap");
+
+            var application = ApplicationUnderTest.FromProcess(processToWrap);
+
+            return new T
+            {
+                Application = application,
+                SearchLimitContainer = application
+            };
+        }
     }
 }
