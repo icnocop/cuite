@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Added method `Screen.FromProcess` to support attaching to running WPF and WinForms applications. -[@thePantz](https://github.com/thePantz)
 * Moved page object classes into namespace `CUITe.PageObjects` and screen object classes into namespace `CUITe.ScreenObjects` to clearly separate their purpose from the object repository. - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Added support for `ControlBase.WaitForControlEnabled`, `ControlBase.WaitForControlNotExist`, `ControlBase.WaitForControlPropertyEqual`, `ControlBase.WaitForControlPropertyNotEqual`, `ControlBase.GetProperty`, `ControlBase.SetProperty` and `ControlBase.EnsureClickable`. - [@aannenko](https://github.com/aannenko)
 * Added support for `ControlBase.WaitForControlReadyIfNecessary` and `ControlBase.WaitForControlExist`. - [@aannenko](https://github.com/aannenko)
