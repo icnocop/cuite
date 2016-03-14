@@ -49,7 +49,8 @@ namespace CUITe.ScreenObjects
 
 
         /// <summary>
-        /// Creates a reference to an application from an existing process
+        /// Creates a reference to an application from an existing process and returns a screen of
+        /// type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the screen to return.</typeparam>
         /// <param name="processToWrap">The process to create from</param>
