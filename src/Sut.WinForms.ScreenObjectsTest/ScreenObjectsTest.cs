@@ -109,10 +109,10 @@ namespace Sut.WinForms.ScreenObjectsTest
         public void FromProcess()
         {
             //Act
-            var appFromProcess = Screen.FromProcess<MainScreen>(mainScreen.Application.Process);
+            mainScreen = Screen.FromProcess<MainScreen>(mainScreen.Application.Process);
 
             //Assert
-            Assert.IsTrue(appFromProcess.Application.Exists);
+            Assert.IsTrue(mainScreen.Application.Exists);
         }
 
         [TestMethod]
