@@ -71,13 +71,14 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Controls\SilverlightControls\SilverlightControl.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightListItem.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightButton.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCalendar.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCell.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightCheckBox.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightComboBox.cs" />
-    <Compile Include="Controls\SilverlightControls\SilverlightControl.cs" />
+    <Compile Include="Controls\SilverlightControls\SilverlightControlOfT.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightDataPager.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightDatePicker.cs" />
     <Compile Include="Controls\SilverlightControls\SilverlightEdit.cs" />
