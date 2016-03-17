@@ -152,6 +152,7 @@
     <Compile Include="Controls\WinControls\WinColumnHeader.cs" />
     <Compile Include="Controls\WinControls\WinComboBox.cs" />
     <Compile Include="Controls\WinControls\WinControl.cs" />
+    <Compile Include="Controls\WinControls\WinControlOfT.cs" />
     <Compile Include="Controls\WinControls\WinCustom.cs" />
     <Compile Include="Controls\WinControls\WinDateTimePicker.cs" />
     <Compile Include="Controls\WinControls\WinEdit.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Controls\WpfControls\WpfCheckBox.cs" />
     <Compile Include="Controls\WpfControls\WpfComboBox.cs" />
     <Compile Include="Controls\WpfControls\WpfControl.cs" />
+    <Compile Include="Controls\WpfControls\WpfControlOfT.cs" />
     <Compile Include="Controls\WpfControls\WpfCustom.cs" />
     <Compile Include="Controls\WpfControls\WpfDatePicker.cs" />
     <Compile Include="Controls\WpfControls\WpfEdit.cs" />
