@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Fixed [#67](https://github.com/icnocop/cuite/issues/67) - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Added support for getting the rebased control of `PageComponent<T>` and `ScreenComponent<T>`. - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Added support for searching WinForms controls using their control name. - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Added support for workflows, a concept that should be thought of as an extra layer or maintainability on top of the already existing Page Objects. - [@FantasticFiasco](https://github.com/FantasticFiasco)
