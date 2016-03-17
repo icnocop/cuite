@@ -2,7 +2,11 @@
 =========
 
 * Fixed [#67](https://github.com/icnocop/cuite/issues/67) - [@FantasticFiasco](https://github.com/FantasticFiasco)
-* Added support for getting the rebased control of `PageComponent<T>` and `ScreenComponent<T>`. - [@FantasticFiasco](https://github.com/FantasticFiasco)
+* Added method `Screen.FromProcess` to support attaching to running WPF and WinForms applications. -[@thePantz](https://github.com/thePantz)
+* Moved page object classes into namespace `CUITe.PageObjects` and screen object classes into namespace `CUITe.ScreenObjects` to clearly separate their purpose from the object repository. - [@FantasticFiasco](https://github.com/FantasticFiasco)
+* Added support for `ControlBase.WaitForControlEnabled`, `ControlBase.WaitForControlNotExist`, `ControlBase.WaitForControlPropertyEqual`, `ControlBase.WaitForControlPropertyNotEqual`, `ControlBase.GetProperty`, `ControlBase.SetProperty` and `ControlBase.EnsureClickable`. - [@aannenko](https://github.com/aannenko)
+* Added support for `ControlBase.WaitForControlReadyIfNecessary` and `ControlBase.WaitForControlExist`. - [@aannenko](https://github.com/aannenko)
+* Added support for getting the rebased control of `PageObject<T>` and `ScreenObject<T>`. - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Added support for searching WinForms controls using their control name. - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Added support for workflows, a concept that should be thought of as an extra layer or maintainability on top of the already existing Page Objects. - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Changed syntax of the `By` class by providing new methods that search for controls that contains specific information. - [@FantasticFiasco](https://github.com/FantasticFiasco)

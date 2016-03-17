@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using CassiniDev;
-using CUITe.ObjectRepository;
+using CUITe.PageObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.Silverlight.WorkflowsTest.ObjectRepository;
+using Sut.Silverlight.WorkflowsTest.PageObjects;
 using Sut.Silverlight.WorkflowsTest.Workflows;
 
 namespace Sut.Silverlight.WorkflowsTest

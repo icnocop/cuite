@@ -16,6 +16,20 @@ All contribution is welcome. Did you find a typo? Found a bug and know how to fi
 
 For the unexperienced GitHub developer, [GitHub Collaborating](https://help.github.com/categories/collaborating/) contains information about forking and syncing while [GitHub Flow](https://guides.github.com/introduction/flow/) describes the preferred way of working with branches.
 
+## Submitting a pull request
+
+To help easily identify what has actually changed between commits in the main repository, we recommend squashing commits down to as few discreet changesets as possible before submitting a pull request. Fixing a bug usually only requires one commit but adding a large feature may require a few commits in order to help track the improvements with each change.
+
+See [Squashing commits with rebase](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html) for help.
+
+Some changes may have been made in the main repository while you were working in your fork. If that's the case, rebase your changes on top of the latest source code from the main repository.
+
+See [About Git rebase](https://help.github.com/articles/about-git-rebase/) for additional help.
+
+Your commit should have a descriptive message like "Fixed #123: CodedUI SetFocus on TextBox".
+
+See [Changing a commit message](https://help.github.com/articles/changing-a-commit-message/) if you need help to change your commit message.
+
 ## Development prerequisites
 
 To successfully build and run tests, the following prerequisites are required:

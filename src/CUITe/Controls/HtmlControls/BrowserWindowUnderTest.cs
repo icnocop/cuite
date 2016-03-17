@@ -86,7 +86,7 @@ namespace CUITe.Controls.HtmlControls
         }
 
         /// <summary>
-        /// Gets the instance of T, which is an Object repository class (page definition).
+        /// Gets the instance of T, which is an object repository class (page definition).
         /// </summary>
         /// <typeparam name="T">Object repository class</typeparam>
         /// <returns>instance of T</returns>

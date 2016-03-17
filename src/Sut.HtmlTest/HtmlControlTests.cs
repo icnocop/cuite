@@ -8,12 +8,12 @@ using CUITe.Browsers;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls;
 using CUITe.Controls.WinControls;
-using CUITe.ObjectRepository;
+using CUITe.PageObjects;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sut.HtmlTest.ObjectRepository;
+using Sut.HtmlTest.PageObjects;
 using TestHelpers;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -523,7 +523,7 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        public void HtmlParagraph_InObjectRepository_Succeeds()
+        public void HtmlParagraph_PageObjects_Succeeds()
         {
             var page = Page.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
             string content = page.Paragraph.InnerText;
@@ -640,7 +640,7 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        public void HtmlUnorderedListInObjectRepository_WithListItems_CanAssertOnListItems()
+        public void HtmlUnorderedList_PageObjects_WithListItems_CanAssertOnListItems()
         {
             // Arrange
             var page = Page.Launch<TestHtmlPage>(currentDirectory + "/TestHtmlPage.html");
@@ -980,7 +980,7 @@ namespace Sut.HtmlTest
         /// https://cuite.codeplex.com/discussions/440720
         /// </summary>
         [TestMethod]
-        public void SetText_UsingScreenComponents_Succeeds()
+        public void SetText_UsingScreenObjects_Succeeds()
         {
             //Arrange
             using (var webPage = new TempWebPage(
@@ -1085,7 +1085,7 @@ namespace Sut.HtmlTest
         /// https://cuite.codeplex.com/discussions/442631
         /// </summary>
         [TestMethod]
-        public void Launch_ObjectRepositoryTempHtmlFile_CanFindUnorderedListsByTagAndClassName()
+        public void Launch_PageObjects_CanFindUnorderedListsByTagAndClassName()
         {
             // Arrange
             using (var webPage = new TempWebPage(

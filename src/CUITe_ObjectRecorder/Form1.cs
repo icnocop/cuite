@@ -606,7 +606,7 @@ namespace CUITe_ObjectRecorder
                 sb.AppendLine(isCodeLanguageVB ? "Imports Microsoft.VisualStudio.TestTools.UITesting" : "using Microsoft.VisualStudio.TestTools.UITesting;");
                 sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.Controls.HtmlControls" : "using CUITe.Controls.HtmlControls;");
                 sb.AppendLine();
-                sb.AppendLine(isCodeLanguageVB ? "Namespace ObjectRepository" : "namespace $ProjectNameSpace$.ObjectRepository");
+                sb.AppendLine(isCodeLanguageVB ? "Namespace PageObjects" : "namespace $ProjectNameSpace$.PageObjects");
                 
                 if (!isCodeLanguageVB) sb.AppendLine("{");
                 
