@@ -3,7 +3,7 @@
   <metadata>
     <id>CUITe.Silverlight.VS2010</id>
     <version>$version$</version>
-    <authors>$author$</authors>
+    <authors>Suresh Balasubramanian, Matt Gray, Rami Abughazaleh, Mattias Kindborg, and contributors</authors>
     <title>CUITe Silverlight for Visual Studio 2010</title>
     <language>en-US</language>
     <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/master/LICENSE</licenseUrl>

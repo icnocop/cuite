@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CUITe</RootNamespace>
     <AssemblyName>CUITe.Silverlight</AssemblyName>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
     <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -26,6 +27,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\</OutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +37,8 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.Silverlight.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.Silverlight.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\CUITe.Silverlight.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +48,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT_SUPPORT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,6 +58,8 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.Silverlight.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.Silverlight.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\CUITe.Silverlight.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\CUITe.Silverlight.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -105,9 +114,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CUITe.Silverlight.VS2010.nuspec" />
-    <EmbeddedResource Include="CUITe.Silverlight.VS2012.nuspec" />
-    <EmbeddedResource Include="CUITe.Silverlight.VS2013.nuspec" />
+    <None Include="CUITe.Silverlight.VS2010.nuspec" />
+    <None Include="CUITe.Silverlight.VS2012.nuspec" />
+    <None Include="CUITe.Silverlight.VS2013.nuspec" />
+    <None Include="CUITe.Silverlight.VS2015.nuspec" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.Silverlight.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

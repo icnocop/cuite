@@ -6,13 +6,20 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.InteropServices;
+    using System.Text.RegularExpressions;
     using System.Threading;
+    using System.Windows.Forms;
     using System.Xml;
+    using System.Xml.Serialization;
     using EnvDTE;
+    using EnvDTE80;
     using Microsoft.VisualStudio;
+    using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.Win32;
     using TechTalk.SpecFlow;
+    using TestHelpers;
     using VSLangProj;
 
     [Binding]
@@ -44,6 +51,8 @@
 
         private string testProjectTemplatePath;
 
+        private const string ProjectName = "TestProject";
+
         public NuGetFeatureSteps()
         {
             MessageFilter.Register();
@@ -61,7 +70,7 @@
                 { "2010", "10" },
                 { "2012", "11" },
                 { "2013", "12" },
-                { "2015", "13" }
+                { "2015", "14" }
             };
 
             if (!visualStudioVersionMap.ContainsKey(visualStudioVersion))
@@ -93,7 +102,7 @@
                     break;
                 case "11":
                 case "12":
-                case "13":
+                case "14":
                     this.testProjectTemplatePath = Path.Combine(this.visualStudioProjectTemplateCachePath, @"CSharp\Test\1033\TestProject");
                     this.codedUiTestTemplatePath = Path.Combine(this.visualStudioItemTemplateCachePath, @"CSharp\Test\1033\CodedUITest");
                     break;
@@ -107,9 +116,13 @@
         [When(@"a new Coded UI test project is created with platform (.*)")]
         public void WhenANewCodedUITestProjectIsCreatedWithPlatform(string platform)
         {
-            Type type = Type.GetTypeFromProgID(this.visualStudioProgramId);
-            Object obj = Activator.CreateInstance(type, true);
-            this.dte = (DTE)obj;
+            using (new TemporaryEnvironmentVariable("VisualStudioVersion", string.Format("{0}.0", this.visualStudioVersionNumber)))
+            {
+                Type type = Type.GetTypeFromProgID(this.visualStudioProgramId);
+                Object obj = Activator.CreateInstance(type, true);
+
+                this.dte = (DTE)obj;
+            }
 
             this.dte.MainWindow.Visible = true;
             this.dte.UserControl = true;
@@ -124,8 +137,7 @@
             this.solution = this.dte.Solution;
 
             // create a test project
-            string projectName = "TestProject";
-            this.testProjectPath = Path.Combine(this.solutionDirectory.DirectoryPath, projectName);
+            this.testProjectPath = Path.Combine(this.solutionDirectory.DirectoryPath, ProjectName);
 
             using (TempDirectory projectTemplateDirectory = new TempDirectory())
             {
@@ -133,13 +145,13 @@
 
                 string testProjectTemplateFilePath = Path.Combine(projectTemplateDirectory.DirectoryPath, "TestProject.vstemplate");
 
-                Trace.WriteLine(string.Format("Creating test project '{0}' in '{1}' using template '{2}'...", projectName, this.testProjectPath, testProjectTemplateFilePath));
+                Trace.WriteLine(string.Format("Creating test project '{0}' in '{1}' using template '{2}'...", ProjectName, this.testProjectPath, testProjectTemplateFilePath));
 
-                this.solution.AddFromTemplate(string.Format("{0}|$targetframeworkversion$={1}", testProjectTemplateFilePath, platform), this.testProjectPath, projectName);
+                this.solution.AddFromTemplate(string.Format("{0}|$targetframeworkversion$={1}", testProjectTemplateFilePath, platform), this.testProjectPath, ProjectName);
 
                 foreach (Project project in this.solution.Projects)
                 {
-                    if (project.Name != projectName)
+                    if (project.Name != ProjectName)
                     {
                         continue;
                     }
@@ -163,6 +175,27 @@
                 Trace.WriteLine(string.Format("Adding project item '{0}' from template '{1}'...", name, templateFile));
 
                 this.testProject.ProjectItems.AddFromTemplate(templateFile, name);
+            }
+
+            VSProject vsProject = this.testProject.Object as VSProject;
+            if (vsProject == null)
+            {
+                throw new Exception("Failed to convert Project to VSProject.");
+            }
+
+            foreach (Reference projectReference in vsProject.References)
+            {
+                if (new[]
+                    {
+                        "Microsoft.VisualStudio.QualityTools.CodedUITestFramework",
+                        "Microsoft.VisualStudio.TestTools.UITest.Common",
+                        "Microsoft.VisualStudio.TestTools.UITest.Extension",
+                        "Microsoft.VisualStudio.TestTools.UITest.Extension.Firefox",
+                        "Microsoft.VisualStudio.TestTools.UITesting"
+                    }.Contains(projectReference.Name))
+                {
+                    projectReference.CopyLocal = false;
+                }
             }
         }
 
@@ -271,7 +304,14 @@
 
             string registryKeyName = string.Join(@"\", registryKeys);
 
-            return Registry.GetValue(registryKeyName, "CacheFolder", null).ToString();
+            string registryValueName = "CacheFolder";
+            object cacheFolder = Registry.GetValue(registryKeyName, registryValueName, null);
+            if (cacheFolder == null)
+            {
+                throw new Exception(string.Format("Failed to get registry value '{0}' from key '{1}'", registryValueName, registryKeyName));
+            }
+
+            return cacheFolder.ToString();
         }
 
         private string GetVisualStudioProjectTemplateCachePath(string visualStudioVersion)
@@ -287,16 +327,25 @@
         [When(@"the CUITe nuget package ""(.*)"" is added to the project")]
         public void WhenTheCUITeNugetPackageIsAddedToTheProject(string nugetPackageId)
         {
-            this.InstallNuGetPackage(this.testProject, nugetPackageId);
+            this.InstallNuGetPackage(this.testProject, nugetPackageId, ProjectName);
         }
 
-        private void InstallNuGetPackage(Project project, string package)
+        private void InstallNuGetPackage(Project project, string package, string projectName)
         {
+            // activate Package Manager Console window
+            const string packageManagerConsoleGuid = "{0AD07096-BBA9-4900-A651-0598D26F6D24}";
+
+            Window packageManagerConsoleWindow = this.dte.Windows.Item(packageManagerConsoleGuid);
+            packageManagerConsoleWindow.Activate();
+            
+            string commandName = "View.PackageManagerConsole";
+
+            // Execute Install-Command in Package Manager Console
             string[] nugetCommandArguments =
             {
                 string.Format("Install-Package {0}", package),
                 string.Format("-Source \"{0}\"", Directory.GetCurrentDirectory()),
-                "-ProjectName TestProject",
+                string.Format("-ProjectName {0}", projectName),
                 "-IncludePrerelease"
             };
 
@@ -318,16 +367,9 @@
                     autoResetEvent.Set();
                 }
             };
-            
-            this.dte.ExecuteCommand("View.PackageManagerConsole");
 
-            // Wait for 5 secs for the powershell host to initialize before executing the next command
-            // TODO: implement a better approach because this may fail randomly
-            Trace.WriteLine("Waiting 5 seconds");
-            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
-            Trace.WriteLine("Finished waiting 5 seconds");
+            this.ExecuteCommand(commandName, nugetCommand);
 
-            this.dte.ExecuteCommand("View.PackageManagerConsole", nugetCommand);
             autoResetEvent.WaitOne();
 
             Trace.WriteLine(string.Format("Finished executing command {0}", nugetCommand));
@@ -347,6 +389,45 @@
                 }
 
                 Trace.WriteLine("Could not find project reference to CUITe");
+            }
+        }
+
+        private void ExecuteCommand(string commandName, string commandArgs = "")
+        {
+            const int maximumRetryCount = 10;
+            const int waitBetweenRetriesInSeconds = 5;
+
+            int retryCount = 0;
+
+            while (retryCount < maximumRetryCount)
+            {
+                try
+                {
+                    this.dte.ExecuteCommand(commandName, commandArgs);
+
+                    break;
+                }
+                catch (COMException ex)
+                {
+                    if (ex.ErrorCode != unchecked((int)0x80004005))
+                    {
+                        throw;
+                    }
+
+                    // Command "{0}" is not available.
+
+                    Trace.WriteLine(ex);
+                    retryCount++;
+                }
+
+                Trace.WriteLine(string.Format("Waiting {0} seconds", waitBetweenRetriesInSeconds));
+                System.Threading.Thread.Sleep(TimeSpan.FromSeconds(waitBetweenRetriesInSeconds));
+                Trace.WriteLine(string.Format("Finished waiting {0} seconds", waitBetweenRetriesInSeconds));
+            }
+
+            if (retryCount >= maximumRetryCount)
+            {
+                throw new Exception(string.Format("Failed to execute command: {0} {1}.", commandName, commandArgs));
             }
         }
 
@@ -490,28 +571,292 @@
 
         private void RunAllTests()
         {
-            Trace.WriteLine("Running all tets...");
+            Trace.WriteLine("Running all tests...");
 
-            AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+            int expectedPassedTests = 2;
+            string testResultsFilePath = null;
 
-            if (this.visualStudioVersion == "2010")
+            using (TempFile testResultsFile = new TempFile())
             {
-                this.dte.ExecuteCommand("Test.RunAllTestsInSolution");
+
+                if (this.visualStudioVersion == "2010")
+                {
+                    expectedPassedTests = 3;
+                    string testResultsPath = Path.Combine(this.solutionDirectory.DirectoryPath, "TestResults");
+
+                    // directory must exist for FileSystemWatcher
+                    Directory.CreateDirectory(testResultsPath);
+
+                    AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+
+                    FileSystemWatcher fileSystemWatcher = new FileSystemWatcher(testResultsPath, "*.trx");
+                    fileSystemWatcher.Created += (sender, args) =>
+                    {
+                        Trace.WriteLine(string.Format("File created Name: '{0}' FullPath: '{1}' ChangeType: '{2}'", args.Name, args.FullPath, args.ChangeType));
+                        testResultsFilePath = args.FullPath;
+                    };
+                    fileSystemWatcher.Changed += (sender, args) =>
+                    {
+                        Trace.WriteLine(string.Format("File changed Name: '{0}' FullPath: '{1}' ChangeType: '{2}'", args.Name, args.FullPath, args.ChangeType));
+                        autoResetEvent.Set();
+                    };
+
+                    fileSystemWatcher.EnableRaisingEvents = true;
+
+                    this.dte.ExecuteCommand("Test.RunAllTestsInSolution");
+
+                    autoResetEvent.WaitOne();
+                }
+                else
+                {
+                    // Activate "Test Explorer" window
+                    const string testExplorerGuid = "{E1B7D1F8-9B3C-49B1-8F4F-BFC63A88835D}";
+
+                    Window testExplorerWindow = this.dte.Windows.Item(testExplorerGuid);
+                    testExplorerWindow.Activate();
+
+                    this.ExecuteCommand("TestExplorer.RunAllTests");
+
+                    // read the tests window output
+                    string output = this.GetTestsOutput();
+                    while (!output.Contains("Run test finished"))
+                    {
+                        Trace.WriteLine(output);
+                        System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
+                        output = this.GetTestsOutput();
+                    }
+
+                    Match testsRunMatch = Regex.Match(output, @"Run test finished: (\d+)");
+                    Assert.IsTrue(testsRunMatch.Success, output);
+                    Assert.IsNotNull(testsRunMatch, output);
+                    Assert.IsNotNull(testsRunMatch.Groups, output);
+                    Assert.AreEqual(expectedPassedTests, testsRunMatch.Groups.Count, output);
+                    Group testsRunGroup = testsRunMatch.Groups[1];
+                    string testsRunString = testsRunGroup.Value;
+                    Assert.AreEqual(expectedPassedTests.ToString(), testsRunString, output);
+                    int testsRun = Int32.Parse(testsRunString);
+                    Assert.AreEqual(expectedPassedTests, testsRun, output);
+
+                    // results file must not exist
+                    File.Delete(testResultsFile.FilePath);
+
+                    string fileName = string.Format(@"C:\Program Files (x86)\Microsoft Visual Studio {0}.0\Common7\IDE\MSTest.exe", this.visualStudioVersionNumber);
+                    string[] arguments =
+                    {
+                        string.Format("/testcontainer:{0}", Path.Combine(this.testProjectPath, "bin", "Debug", string.Format("{0}.dll", ProjectName))),
+                        string.Format("/resultsfile:{0}", testResultsFile.FilePath)
+                    };
+
+                    RunResult runResult = ProcessRunner.Run(fileName, string.Join(" ", arguments));
+                    Assert.AreEqual(0, runResult.ExitCode, string.Join(Environment.NewLine, new { runResult.StandardOutput, runResult.StandardError }));
+
+                    testResultsFilePath = testResultsFile.FilePath;
+                }
+
+                // Deserialize TestRunType object from the trx file
+                // To support a new version of visual studio:
+                // 1. xsd.exe "C:\Program Files (x86)\Microsoft Visual Studio 14.0\Xml\Schemas\vstst.xsd" /c /namespace:CUITe.IntegrationTests.NuGet.VisualStudio2015
+                // 2. Manually fix runtime errors "There was an error reflecting property 'Items'. ---> System.InvalidOperationException: Member 'GenericTestType.Items' hides inherited member 'BaseTestType.Items', but has different custom attributes."
+                // See http://stackoverflow.com/a/10872961/90287
+                // 3. Replace "[][]" with "[]" in generated class
+                int testsPassedCount;
+                switch (this.visualStudioVersionNumber)
+                {
+                    case "10":
+                        testsPassedCount = this.GetNumberOfPassedTestsInVisualStudio2010(testResultsFilePath);
+                        break;
+                    case "11":
+                        testsPassedCount = this.GetNumberOfPassedTestsInVisualStudio2012(testResultsFilePath);
+                        break;
+                    case "12":
+                        testsPassedCount = this.GetNumberOfPassedTestsInVisualStudio2013(testResultsFilePath);
+                        break;
+                    case "14":
+                        testsPassedCount = this.GetNumberOfPassedTestsInVisualStudio2015(testResultsFilePath);
+                        break;
+                    default:
+                        throw new NotSupportedException(this.visualStudioVersionNumber);
+                }
+
+                Assert.AreEqual(expectedPassedTests, testsPassedCount, File.ReadAllText(testResultsFilePath));
             }
-            else
+        }
+
+        private int GetNumberOfPassedTestsInVisualStudio2010(string trxFilePath)
+        {
+            int testsPassedCount = 0;
+            using (StreamReader fileStreamReader = new StreamReader(trxFilePath))
             {
-                this.dte.ExecuteCommand("TestExplorer.ShowTestExplorer");
+                XmlSerializer xmlSer = new XmlSerializer(typeof(VisualStudio2010.TestRunType));
+                VisualStudio2010.TestRunType testRunType = (VisualStudio2010.TestRunType)xmlSer.Deserialize(fileStreamReader);
+                // Navigate to UnitTestResultType object and update the sheet with test result information
+                foreach (object itob1 in testRunType.Items)
+                {
+                    VisualStudio2010.ResultsType resultsType = itob1 as VisualStudio2010.ResultsType;
+                    if (resultsType != null)
+                    {
+                        foreach (object itob2 in resultsType.Items)
+                        {
+                            VisualStudio2010.UnitTestResultType unitTestResultType = itob2 as VisualStudio2010.UnitTestResultType;
+                            if (unitTestResultType != null)
+                            {
+                                string errorMessage = null;
+                                if (unitTestResultType.Items != null)
+                                {
+                                    VisualStudio2010.OutputType outputType = (VisualStudio2010.OutputType)unitTestResultType.Items[0];
+                                    VisualStudio2010.OutputTypeErrorInfo errorInfo = outputType.ErrorInfo;
+                                    if (errorInfo != null)
+                                    {
+                                        errorMessage = ((XmlNode[])errorInfo.Message)[0].Value;
+                                    }
+                                }
 
-                System.Threading.Thread.Sleep(TimeSpan.FromMinutes(1));
-
-                this.dte.ExecuteCommand("TestExplorer.RunAllTests");
+                                Assert.AreEqual("Passed", unitTestResultType.outcome, errorMessage);
+                                testsPassedCount++;
+                            }
+                        }
+                    }
+                }
             }
 
-            autoResetEvent.WaitOne(30000);
+            return testsPassedCount;
+        }
 
-            Trace.WriteLine("Test execution finished.");
+        private int GetNumberOfPassedTestsInVisualStudio2012(string trxFilePath)
+        {
+            int testsPassedCount = 0;
+            using (StreamReader fileStreamReader = new StreamReader(trxFilePath))
+            {
+                XmlSerializer xmlSer = new XmlSerializer(typeof(VisualStudio2012.TestRunType));
+                VisualStudio2012.TestRunType testRunType = (VisualStudio2012.TestRunType)xmlSer.Deserialize(fileStreamReader);
+                // Navigate to UnitTestResultType object and update the sheet with test result information
+                foreach (object itob1 in testRunType.Items)
+                {
+                    VisualStudio2012.ResultsType resultsType = itob1 as VisualStudio2012.ResultsType;
+                    if (resultsType != null)
+                    {
+                        foreach (object itob2 in resultsType.Items)
+                        {
+                            VisualStudio2012.UnitTestResultType unitTestResultType = itob2 as VisualStudio2012.UnitTestResultType;
+                            if (unitTestResultType != null)
+                            {
+                                string errorMessage = null;
+                                if (unitTestResultType.Items != null)
+                                {
+                                    VisualStudio2012.OutputType outputType = (VisualStudio2012.OutputType)unitTestResultType.Items[0];
+                                    VisualStudio2012.OutputTypeErrorInfo errorInfo = outputType.ErrorInfo;
+                                    if (errorInfo != null)
+                                    {
+                                        errorMessage = ((XmlNode[])errorInfo.Message)[0].Value;
+                                    }
+                                }
 
-            ScenarioContext.Current.Pending();
+                                Assert.AreEqual("Passed", unitTestResultType.outcome, errorMessage);
+                                testsPassedCount++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return testsPassedCount;
+        }
+
+        private int GetNumberOfPassedTestsInVisualStudio2013(string trxFilePath)
+        {
+            int testsPassedCount = 0;
+            using (StreamReader fileStreamReader = new StreamReader(trxFilePath))
+            {
+                XmlSerializer xmlSer = new XmlSerializer(typeof(VisualStudio2013.TestRunType));
+                VisualStudio2013.TestRunType testRunType = (VisualStudio2013.TestRunType)xmlSer.Deserialize(fileStreamReader);
+                // Navigate to UnitTestResultType object and update the sheet with test result information
+                foreach (object itob1 in testRunType.Items)
+                {
+                    VisualStudio2013.ResultsType resultsType = itob1 as VisualStudio2013.ResultsType;
+                    if (resultsType != null)
+                    {
+                        foreach (object itob2 in resultsType.Items)
+                        {
+                            VisualStudio2013.UnitTestResultType unitTestResultType = itob2 as VisualStudio2013.UnitTestResultType;
+                            if (unitTestResultType != null)
+                            {
+                                string errorMessage = null;
+                                if (unitTestResultType.Items != null)
+                                {
+                                    VisualStudio2013.OutputType outputType = (VisualStudio2013.OutputType)unitTestResultType.Items[0];
+                                    VisualStudio2013.OutputTypeErrorInfo errorInfo = outputType.ErrorInfo;
+                                    if (errorInfo != null)
+                                    {
+                                        errorMessage = ((XmlNode[])errorInfo.Message)[0].Value;
+                                    }
+                                }
+
+                                Assert.AreEqual("Passed", unitTestResultType.outcome, errorMessage);
+                                testsPassedCount++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return testsPassedCount;
+        }
+
+        private int GetNumberOfPassedTestsInVisualStudio2015(string trxFilePath)
+        {
+            int testsPassedCount = 0;
+            using (StreamReader fileStreamReader = new StreamReader(trxFilePath))
+            {
+                XmlSerializer xmlSer = new XmlSerializer(typeof(VisualStudio2015.TestRunType));
+                VisualStudio2015.TestRunType testRunType = (VisualStudio2015.TestRunType)xmlSer.Deserialize(fileStreamReader);
+                // Navigate to UnitTestResultType object and update the sheet with test result information
+                foreach (object itob1 in testRunType.Items)
+                {
+                    VisualStudio2015.ResultsType resultsType = itob1 as VisualStudio2015.ResultsType;
+                    if (resultsType != null)
+                    {
+                        foreach (object itob2 in resultsType.Items)
+                        {
+                            VisualStudio2015.UnitTestResultType unitTestResultType = itob2 as VisualStudio2015.UnitTestResultType;
+                            if (unitTestResultType != null)
+                            {
+                                string errorMessage = null;
+                                if (unitTestResultType.Items != null)
+                                {
+                                    VisualStudio2015.OutputType outputType = (VisualStudio2015.OutputType)unitTestResultType.Items[0];
+                                    VisualStudio2015.OutputTypeErrorInfo errorInfo = outputType.ErrorInfo;
+                                    if (errorInfo != null)
+                                    {
+                                        errorMessage = ((XmlNode[])errorInfo.Message)[0].Value;
+                                    }
+                                }
+
+                                Assert.AreEqual("Passed", unitTestResultType.outcome, errorMessage);
+                                testsPassedCount++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return testsPassedCount;
+        }
+
+        private string GetTestsOutput()
+        {
+            Window outputToolWindow = this.dte.Windows.Item(Constants.vsWindowKindOutput);
+            OutputWindow outputWindow = (OutputWindow)outputToolWindow.Object;
+
+            OutputWindowPane outputWindowPane = outputWindow.OutputWindowPanes.Item("Tests");
+
+            // Create a reference to the pane contents.
+            // Select the Tests pane in the Output window.
+            outputWindowPane.Activate();
+            TextDocument outputWindowPaneTextDocument = outputWindowPane.TextDocument;
+
+            // Retrieve the text contents of the pane.
+            EditPoint2 strtPt = (EditPoint2)outputWindowPaneTextDocument.StartPoint.CreateEditPoint();
+            return strtPt.GetText(outputWindowPaneTextDocument.EndPoint);
         }
 
         public void Dispose()
