@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+#if NETFX_45
 using System.Runtime.CompilerServices;
+#endif
 using System.Windows;
 using System.Windows.Input;
 using Sut.Wpf.Workflows.Pages;
@@ -68,7 +70,11 @@ namespace Sut.Wpf.Workflows
             }
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(
+#if NETFX_45
+            [CallerMemberName]
+#endif
+            string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)

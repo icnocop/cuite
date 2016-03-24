@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.VisualStudio.QualityTools.CodedUITestFramework</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute">
+      <summary> Used to activate the extension so that we recognize a class as  Unit Test extension class. Use [CodedUITest] attribute in test class to indicate that it is a Coded UI Test </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute.#ctor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute.#ctor(Microsoft.VisualStudio.TestTools.UITesting.CodedUITestType)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute.ExtensionId"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute.GetClientSide"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestAttribute.GetExecution"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestType">
+      <summary> Represents the CodedUITest type for a test class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.CodedUITestType.Desktop">
+      <summary> CodedUITest type that represents testing of Desktop Applications. </summary>
+    </member>
+  </members>
+</doc>

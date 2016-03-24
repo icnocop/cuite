@@ -24,9 +24,6 @@ namespace CUITe.IntegrationTests.NuGet
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "NuGet.feature"
-#line hidden
-        
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
@@ -72,20 +69,13 @@ namespace CUITe.IntegrationTests.NuGet
         public virtual void AddingTheCUITeNuGetPackageToACodedUITestProject(string description, string visualStudioVersion, string targetFrameworkVersion, string nuGetPackageId, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding the CUITe NuGet package to a Coded UI test project", exampleTags);
-#line 6
-this.ScenarioSetup(scenarioInfo);
-#line 7
- testRunner.Given(string.Format("the Visual Studio version {0}", visualStudioVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 8
- testRunner.When(string.Format("a new Coded UI test project is created with platform {0}", targetFrameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 9
- testRunner.And(string.Format("the CUITe nuget package \"{0}\" is added to the project", nuGetPackageId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.And("test methods are added to the project which use CUITe to test the sample applicat" +
+            this.ScenarioSetup(scenarioInfo);
+            testRunner.Given(string.Format("the Visual Studio version {0}", visualStudioVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            testRunner.When(string.Format("a new Coded UI test project is created with platform {0}", targetFrameworkVersion), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.And(string.Format("the CUITe nuget package \"{0}\" is added to the project", nuGetPackageId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("test methods are added to the project which use CUITe to test the sample applicat" +
                     "ion(s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
- testRunner.Then("the project should build and its tests run successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
+            testRunner.Then("the project should build and its tests run successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
             this.ScenarioCleanup();
         }
         

@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+#if NETFX_45
 using System.Runtime.CompilerServices;
+#endif
 
 namespace Sut.WinForms.Controls.Models
 {
@@ -50,7 +52,11 @@ namespace Sut.WinForms.Controls.Models
             }
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(
+#if NETFX_45
+            [CallerMemberName]
+#endif
+            string propertyName = null)
         {
             var handler = PropertyChanged;
             if (handler != null)

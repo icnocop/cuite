@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CUITe</RootNamespace>
     <AssemblyName>CUITe</AssemblyName>
+    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
     <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -26,6 +27,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +37,8 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\CUITe.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +48,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,6 +58,8 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '11' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\CUITe.xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\CUITe.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -262,9 +271,10 @@
     </When>
   </Choose>
   <ItemGroup>
-    <EmbeddedResource Include="CUITe for Visual Studio 2013.nuspec" />
-    <EmbeddedResource Include="CUITe for Visual Studio 2010.nuspec" />
-    <EmbeddedResource Include="CUITe for Visual Studio 2012.nuspec" />
+    <None Include="CUITe for Visual Studio 2010.nuspec" />
+    <None Include="CUITe for Visual Studio 2012.nuspec" />
+    <None Include="CUITe for Visual Studio 2013.nuspec" />
+    <None Include="CUITe for Visual Studio 2015.nuspec" />
     <None Include="NuGet\app.config.transform" />
     <None Include="NuGet\app.config.uninstall.xdt" />
     <None Include="NuGet\app.config.install.xdt" />

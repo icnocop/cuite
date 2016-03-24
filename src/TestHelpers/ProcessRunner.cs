@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text;
 
-namespace Sut.HtmlTest
+namespace TestHelpers
 {
     using System.Diagnostics;
     using System.Threading;
 
-    internal static class ProcessRunner
+    public static class ProcessRunner
     {
-        internal static RunResult Run(
+        public static RunResult Run(
            string fileName,
            string arguments)
         {

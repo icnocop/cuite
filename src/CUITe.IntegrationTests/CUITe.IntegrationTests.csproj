@@ -8,10 +8,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CUITe.IntegrationTests</RootNamespace>
     <AssemblyName>CUITe.IntegrationTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
@@ -160,6 +161,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Compile Include="NuGet\AssemblyResourceLoader.cs" />
+    <Compile Include="NuGet\TempFile.cs" />
+    <Compile Include="NuGet\TemporaryEnvironmentVariable.cs" />
+    <Compile Include="NuGet\VisualStudio2010\vstst.cs" />
+    <Compile Include="NuGet\VisualStudio2012\vstst.cs" />
+    <Compile Include="NuGet\VisualStudio2013\vstst.cs" />
+    <Compile Include="NuGet\VisualStudio2015\vstst.cs" />
     <Compile Include="NuGet\VisualStudioAutomation.cs" />
     <EmbeddedResource Include="NuGet\HtmlTests.cs" />
     <Compile Include="NuGet\MessageFilter.cs" />
@@ -183,6 +190,13 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">
+      <Project>{813fc5b1-d329-4ce3-903a-10ba647535af}</Project>
+      <Name>TestHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
