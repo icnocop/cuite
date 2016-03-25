@@ -275,10 +275,6 @@
     <None Include="CUITe for Visual Studio 2012.nuspec" />
     <None Include="CUITe for Visual Studio 2013.nuspec" />
     <None Include="CUITe for Visual Studio 2015.nuspec" />
-    <None Include="NuGet\app.config.transform" />
-    <None Include="NuGet\app.config.uninstall.xdt" />
-    <None Include="NuGet\app.config.install.xdt" />
-    <None Include="NuGet\install.ps1" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
