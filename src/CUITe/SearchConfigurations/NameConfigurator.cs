@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.SearchConfigurations
 {
@@ -8,8 +7,6 @@ namespace CUITe.SearchConfigurations
     /// </summary>
     internal class NameConfigurator : SearchConfigurator
     {
-        private readonly string name;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="NameConfigurator"/> class.
         /// </summary>
@@ -19,24 +16,8 @@ namespace CUITe.SearchConfigurations
         /// value contains the provided property value).
         /// </param>
         internal NameConfigurator(string name, PropertyExpressionOperator conditionOperator)
-            : base(conditionOperator)
+            : base(UITestControl.PropertyNames.Name, name, conditionOperator)
         {
-            if (name == null)
-                throw new ArgumentNullException("name");
-
-            this.name = name;
-        }
-
-        /// <summary>
-        /// Configures the specified search properties.
-        /// </summary>
-        /// <param name="searchProperties">The search properties.</param>
-        public override void Configure(PropertyExpressionCollection searchProperties)
-        {
-            if (searchProperties == null)
-                throw new ArgumentNullException("searchProperties");
-
-            searchProperties.Add(UITestControl.PropertyNames.Name, name, ConditionOperator);
         }
     }
 }

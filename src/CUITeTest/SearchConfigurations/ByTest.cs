@@ -313,5 +313,93 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(1, configuration.Configuration.Count);
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
+
+        [TestMethod]
+        public void ClassName()
+        {
+            // Act
+            By configuration = By.ClassName("SomeClassName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void ClassNameContains()
+        {
+            // Act
+            By configuration = By.ClassNameContains("SomeClassName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndClassName()
+        {
+            // Act
+            By configuration = new By().AndClassName("SomeClassName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndClassNameContains()
+        {
+            // Act
+            By configuration = new By().AndClassNameContains("SomeClassName");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void ControlId()
+        {
+            // Act
+            By configuration = By.ControlId("SomeControlId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void ControlIdContains()
+        {
+            // Act
+            By configuration = By.ControlIdContains("SomeControlId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndControlId()
+        {
+            // Act
+            By configuration = new By().AndControlId("SomeControlId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
+        }
+
+        [TestMethod]
+        public void AndControlIdContains()
+        {
+            // Act
+            By configuration = new By().AndControlIdContains("SomeControlId");
+
+            // Assert
+            Assert.AreEqual(1, configuration.Configuration.Count);
+            Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
+        }
     }
 }

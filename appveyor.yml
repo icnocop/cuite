@@ -4,7 +4,415 @@ branches:
   - master
 image: Visual Studio 2015
 init:
-- ps: "Function Get-IniContent {  \n    <#  \n    .Synopsis  \n        Gets the content of an INI file  \n          \n    .Description  \n        Gets the content of an INI file and returns it as a hashtable  \n          \n    .Notes  \n        Author        : Oliver Lipkau <oliver@lipkau.net>  \n        Blog        : http://oliver.lipkau.net/blog/  \n        Source        : https://github.com/lipkau/PsIni \n                      http://gallery.technet.microsoft.com/scriptcenter/ea40c1ef-c856-434b-b8fb-ebd7a76e8d91 \n        Version        : 1.0 - 2010/03/12 - Initial release  \n                      1.1 - 2014/12/11 - Typo (Thx SLDR) \n                                         Typo (Thx Dave Stiff) \n          \n        #Requires -Version 2.0  \n          \n    .Inputs  \n        System.String  \n          \n    .Outputs  \n        System.Collections.Hashtable  \n          \n    .Parameter FilePath  \n        Specifies the path to the input file.  \n          \n    .Example  \n        $FileContent = Get-IniContent \"C:\\myinifile.ini\"  \n        -----------  \n        Description  \n        Saves the content of the c:\\myinifile.ini in a hashtable called $FileContent  \n      \n    .Example  \n        $inifilepath | $FileContent = Get-IniContent  \n        -----------  \n        Description  \n        Gets the content of the ini file passed through the pipe into a hashtable called $FileContent  \n      \n    .Example  \n        C:\\PS>$FileContent = Get-IniContent \"c:\\settings.ini\"  \n        C:\\PS>$FileContent[\"Section\"][\"Key\"]  \n        -----------  \n        Description  \n        Returns the key \"Key\" of the section \"Section\" from the C:\\settings.ini file  \n          \n    .Link  \n        Out-IniFile  \n    #>  \n      \n    [CmdletBinding()]  \n    Param(  \n        [ValidateNotNullOrEmpty()]  \n        [ValidateScript({(Test-Path $_) -and ((Get-Item $_).Extension -eq \".ini\")})]  \n        [Parameter(ValueFromPipeline=$True,Mandatory=$True)]  \n        [string]$FilePath  \n    )  \n      \n    Begin  \n        {Write-Verbose \"$($MyInvocation.MyCommand.Name):: Function started\"}  \n          \n    Process  \n    {  \n        Write-Verbose \"$($MyInvocation.MyCommand.Name):: Processing file: $Filepath\"  \n              \n        $ini = @{}  \n        switch -regex -file $FilePath  \n        {  \n            \"^\\[(.+)\\]$\" # Section  \n            {  \n                $section = $matches[1]  \n                $ini[$section] = @{}  \n                $CommentCount = 0  \n            }  \n            \"^(;.*)$\" # Comment  \n            {  \n                if (!($section))  \n                {  \n                    $section = \"No-Section\"  \n                    $ini[$section] = @{}  \n                }  \n                $value = $matches[1]  \n                $CommentCount = $CommentCount + 1  \n                $name = \"Comment\" + $CommentCount  \n                $ini[$section][$name] = $value  \n            }   \n            \"(.+?)\\s*=\\s*(.*)\" # Key  \n            {  \n                if (!($section))  \n                {  \n                    $section = \"No-Section\"  \n                    $ini[$section] = @{}  \n                }  \n                $name,$value = $matches[1..2]  \n                $ini[$section][$name] = $value  \n            }  \n        }  \n        Write-Verbose \"$($MyInvocation.MyCommand.Name):: Finished Processing file: $FilePath\"  \n        Return $ini  \n    }  \n          \n    End  \n        {Write-Verbose \"$($MyInvocation.MyCommand.Name):: Function ended\"}  \n} \n\nFunction Out-IniFile {  \n    <#  \n    .Synopsis  \n        Write hash content to INI file  \n          \n    .Description  \n        Write hash content to INI file  \n          \n    .Notes  \n        Author        : Oliver Lipkau <oliver@lipkau.net>  \n        Blog        : http://oliver.lipkau.net/blog/  \n        Source        : https://github.com/lipkau/PsIni \n                      http://gallery.technet.microsoft.com/scriptcenter/ea40c1ef-c856-434b-b8fb-ebd7a76e8d91 \n        Version        : 1.0 - 2010/03/12 - Initial release  \n                      1.1 - 2012/04/19 - Bugfix/Added example to help (Thx Ingmar Verheij)  \n                      1.2 - 2014/12/11 - Improved handling for missing output file (Thx SLDR) \n          \n        #Requires -Version 2.0  \n          \n    .Inputs  \n        System.String  \n        System.Collections.Hashtable  \n          \n    .Outputs  \n        System.IO.FileSystemInfo  \n          \n    .Parameter Append  \n        Adds the output to the end of an existing file, instead of replacing the file contents.  \n          \n    .Parameter InputObject  \n        Specifies the Hashtable to be written to the file. Enter a variable that contains the objects or type a command or expression that gets the objects.  \n  \n    .Parameter FilePath  \n        Specifies the path to the output file.  \n       \n     .Parameter Encoding  \n        Specifies the type of character encoding used in the file. Valid values are \"Unicode\", \"UTF7\",  \n         \"UTF8\", \"UTF32\", \"ASCII\", \"BigEndianUnicode\", \"Default\", and \"OEM\". \"Unicode\" is the default.  \n          \n        \"Default\" uses the encoding of the system's current ANSI code page.   \n          \n        \"OEM\" uses the current original equipment manufacturer code page identifier for the operating   \n        system.  \n       \n     .Parameter Force  \n        Allows the cmdlet to overwrite an existing read-only file. Even using the Force parameter, the cmdlet cannot override security restrictions.  \n          \n     .Parameter PassThru  \n        Passes an object representing the location to the pipeline. By default, this cmdlet does not generate any output.  \n                  \n    .Example  \n        Out-IniFile $IniVar \"C:\\myinifile.ini\"  \n        -----------  \n        Description  \n        Saves the content of the $IniVar Hashtable to the INI File c:\\myinifile.ini  \n          \n    .Example  \n        $IniVar | Out-IniFile \"C:\\myinifile.ini\" -Force  \n        -----------  \n        Description  \n        Saves the content of the $IniVar Hashtable to the INI File c:\\myinifile.ini and overwrites the file if it is already present  \n          \n    .Example  \n        $file = Out-IniFile $IniVar \"C:\\myinifile.ini\" -PassThru  \n        -----------  \n        Description  \n        Saves the content of the $IniVar Hashtable to the INI File c:\\myinifile.ini and saves the file into $file  \n  \n    .Example  \n        $Category1 = @{“Key1”=”Value1”;”Key2”=”Value2”}  \n    $Category2 = @{“Key1”=”Value1”;”Key2”=”Value2”}  \n    $NewINIContent = @{“Category1”=$Category1;”Category2”=$Category2}  \n    Out-IniFile -InputObject $NewINIContent -FilePath \"C:\\MyNewFile.INI\"  \n        -----------  \n        Description  \n        Creating a custom Hashtable and saving it to C:\\MyNewFile.INI  \n    .Link  \n        Get-IniContent  \n    #>  \n      \n    [CmdletBinding()]  \n    Param(  \n        [switch]$Append,  \n          \n        [ValidateSet(\"Unicode\",\"UTF7\",\"UTF8\",\"UTF32\",\"ASCII\",\"BigEndianUnicode\",\"Default\",\"OEM\")]  \n        [Parameter()]  \n        [string]$Encoding = \"Unicode\",  \n \n          \n        [ValidateNotNullOrEmpty()]  \n        [ValidatePattern('^([a-zA-Z]\\:)?.+\\.ini$')]  \n        [Parameter(Mandatory=$True)]  \n        [string]$FilePath,  \n          \n        [switch]$Force,  \n          \n        [ValidateNotNullOrEmpty()]  \n        [Parameter(ValueFromPipeline=$True,Mandatory=$True)]  \n        [Hashtable]$InputObject,  \n          \n        [switch]$Passthru  \n    )  \n      \n    Begin  \n        {Write-Verbose \"$($MyInvocation.MyCommand.Name):: Function started\"}  \n          \n    Process  \n    {  \n        Write-Verbose \"$($MyInvocation.MyCommand.Name):: Writing to file: $Filepath\"  \n          \n        if ($append) {$outfile = Get-Item $FilePath}  \n        else {$outFile = New-Item -ItemType file -Path $Filepath -Force:$Force}  \n        if (!($outFile)) {Throw \"Could not create File\"}  \n        foreach ($i in $InputObject.keys)  \n        {  \n            if (!($($InputObject[$i].GetType().Name) -eq \"Hashtable\"))  \n            {  \n                #No Sections  \n                Write-Verbose \"$($MyInvocation.MyCommand.Name):: Writing key: $i\"  \n                Add-Content -Path $outFile -Value \"$i=$($InputObject[$i])\" -Encoding $Encoding  \n            } else {  \n                #Sections  \n                Write-Verbose \"$($MyInvocation.MyCommand.Name):: Writing Section: [$i]\"  \n                Add-Content -Path $outFile -Value \"[$i]\" -Encoding $Encoding  \n                Foreach ($j in $($InputObject[$i].keys | Sort-Object))  \n                {  \n                    if ($j -match \"^Comment[\\d]+\") {  \n                        Write-Verbose \"$($MyInvocation.MyCommand.Name):: Writing comment: $j\"  \n                        Add-Content -Path $outFile -Value \"$($InputObject[$i][$j])\" -Encoding $Encoding  \n                    } else {  \n                        Write-Verbose \"$($MyInvocation.MyCommand.Name):: Writing key: $j\"  \n                        Add-Content -Path $outFile -Value \"$j=$($InputObject[$i][$j])\" -Encoding $Encoding  \n                    }  \n                      \n                }  \n                Add-Content -Path $outFile -Value \"\" -Encoding $Encoding  \n            }  \n        }  \n        Write-Verbose \"$($MyInvocation.MyCommand.Name):: Finished Writing to file: $path\"  \n        if ($PassThru) {Return $outFile}  \n    }  \n          \n    End  \n        {Write-Verbose \"$($MyInvocation.MyCommand.Name):: Function ended\"}  \n}\n\n# Allow Remote Desktop\n$blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))\n\n# Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight\n$msiFilePath = \"$($env:USERPROFILE)\\UITestPluginForSilverlightVS2013.msi\"\n$logFilePath = \"$($env:TEMP)\\UITestPluginForSilverlightVS2013.txt\"\n(New-Object Net.WebClient).DownloadFile('https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da/file/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)\n$process = (Start-Process -FilePath \"msiexec.exe\" -ArgumentList \"/i $msiFilePath /quiet /l*v $logFilePath\" -Wait -Passthru)\n$exitCode = $process.ExitCode\nif ($exitCode -ne 0)\n{\n  Get-Content $logFilePath\n  throw \"Command failed with exit code $exitCode.\"\n}\ndel $msiFilePath\ndel $logFilePath\nWrite-Host \"Visual Studio 2013 Coded UI Test Plugin for Silverlight successfully installed\" -ForegroundColor Green\n\n# Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight\n$msiFilePath = \"$($env:USERPROFILE)\\UITestPluginForSilverlightVS2015.msi\"\n$logFilePath = \"$($env:TEMP)\\UITestPluginForSilverlightVS2015.txt\"\n(New-Object Net.WebClient).DownloadFile('https://visualstudiogallery.msdn.microsoft.com/bf0caedc-90eb-46af-9c1a-8e68d013bb99/file/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)\n$process = (Start-Process -FilePath \"msiexec.exe\" -ArgumentList \"/i $msiFilePath /quiet /l*v $logFilePath\" -Wait -Passthru)\n$exitCode = $process.ExitCode\nif ($exitCode -ne 0)\n{\n  Get-Content $logFilePath\n  throw \"Command failed with exit code $exitCode.\"\n}\ndel $msiFilePath\ndel $logFilePath\nWrite-Host \"Visual Studio 2015 Coded UI Test Plugin for Silverlight successfully installed\" -ForegroundColor Green\n\n\n# Microsoft Silverlight 5 Toolkit - December 2011\n$msiFilePath = \"$($env:USERPROFILE)\\Silverlight_5_Toolkit_December_2011.msi\"\n$logFilePath = \"$($env:TEMP)\\Silverlight_5_Toolkit_December_2011.txt\"\n(New-Object Net.WebClient).DownloadFile('http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=silverlight&DownloadId=311823&FileTime=129679336571930000&Build=21031', $msiFilePath)\n$process = (Start-Process -FilePath \"msiexec.exe\" -ArgumentList \"/i $msiFilePath /quiet /l*v $logFilePath\" -Wait -Passthru)\n$exitCode = $process.ExitCode\nif ($exitCode -ne 0)\n{\n  Get-Content $logFilePath\n  throw \"Command failed with exit code $exitCode.\"\n}\ndel $msiFilePath\ndel $logFilePath\nWrite-Host \"Microsoft Silverlight 5 Toolkit - December 2011 successfully installed\" -ForegroundColor Green\n\n# Google Chrome\n$msiFilePath = \"$($env:USERPROFILE)\\GoogleChromeStandaloneEnterprise.msi\"\n$logFilePath = \"$($env:TEMP)\\GoogleChromeStandaloneEnterprise.txt\"\n(New-Object Net.WebClient).DownloadFile('https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B7ACD904C-E309-ADA4-8671-783B10D723FD%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi', $msiFilePath)\n$process = (Start-Process -FilePath \"msiexec.exe\" -ArgumentList \"/i $msiFilePath /quiet /l*v $logFilePath\" -Wait -Passthru)\n$exitCode = $process.ExitCode\nif ($exitCode -ne 0)\n{\n  Get-Content $logFilePath\n  throw \"Command failed with exit code $exitCode.\"\n}\ndel $msiFilePath\ndel $logFilePath\nWrite-Host \"Google Chrome successfully installed\" -ForegroundColor Green\n\n# Mozilla Firefox 27.0.1\n$exeFilePath = \"$($env:USERPROFILE)\\Firefox Setup 27.0.1.exe\"\n(New-Object Net.WebClient).DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/27.0.1/win32/es-ES/Firefox%20Setup%2027.0.1.exe', $exeFilePath)\n$process = (Start-Process -FilePath $exeFilePath -ArgumentList \"-ms\" -Wait -Passthru)\n$exitCode = $process.ExitCode\nif ($exitCode -ne 0)\n{\n  throw \"Command failed with exit code $exitCode.\"\n}\ndel $exeFilePath\nWrite-Host \"Mozilla Firefox 27.0.1 successfully installed\" -ForegroundColor Green\n\n# Disable Firefox First Run Import Settings and Data Wizard\n$ProgramFiles = ${Env:ProgramFiles(x86)}\n$FilePath = $ProgramFiles + \"\\Mozilla Firefox\\override.ini\"\nif (!(test-path ($FilePath)))\n{\n  # create the override.ini per https://developer.mozilla.org/en/Command_Line_Options\n  $err=@()\n  New-Item -type file -force $FilePath -ErrorVariable err | Out-Null\n  if (!($err.count -eq 0))\n  {\n    throw \"Failed to create override.ini.\"\n  }\n}\n\n# read in the override.ini file\n$iniData = Get-IniContent $FilePath\n\nif (!($iniData.XRE))\n{\n  $iniData.XRE = @{}\n}\n\nif (!($iniData.XRE.EnableProfileMigrator -eq 0))\n{\n  $iniData.XRE.EnableProfileMigrator = 0\n  Out-IniFile -InputObject $iniData -FilePath $FilePath -Append\n}\nWrite-Host \"Mozilla Firefox Profile Migrator disabled\" -ForegroundColor Green\n\n# Selenium components for Coded UI Cross Browser Testing\n$msiFilePath = \"$($env:USERPROFILE)\\CodedUITestCrossBrowserSetup.msi\"\n$logFilePath = \"$($env:TEMP)\\CodedUITestCrossBrowserSetup.txt\"\n(New-Object Net.WebClient).DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/12/CodedUITestCrossBrowserSetup.msi', $msiFilePath)\n$process = (Start-Process -FilePath \"msiexec.exe\" -ArgumentList \"/i $msiFilePath /quiet /l*v $logFilePath\" -Wait -Passthru)\n$exitCode = $process.ExitCode\nif ($exitCode -ne 0)\n{\n  Get-Content $logFilePath\n  throw \"Command failed with exit code $exitCode.\"\n}\ndel $msiFilePath\ndel $logFilePath\nWrite-Host \"Selenium components for Coded UI Cross Browser Testing successfully installed\" -ForegroundColor Green\n\nif(-not $screen_resolution) {\n  $screen_resolution = '1024x768'\n}\n\nWrite-Host \"Setting up active Desktop...\" -ForegroundColor cyan\n# https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface\n#$zipPath = \"$($env:USERPROFILE)\\wfreerdp-1.1.zip\"\n#(New-Object Net.WebClient).DownloadFile('http://av1southus4workers.blob.core.windows.net/downloads/tools/wfreerdp-1.1.zip', $zipPath)\n#7z x $zipPath -y -o\"$env:TEMP\" | Out-Null\n#Write-Host \"Starting Remote Desktop session...\"\n#$psw = (get-itemproperty -path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' -name DefaultPassword).DefaultPassword\n#Start-Process \"$env:TEMP\\wfreerdp.exe\" -ArgumentList '/v:127.0.0.1','/u:appveyor',\"/p:$psw\",\"/size:$screen_resolution\" -WindowStyle Hidden\n#Write-Host \"Waiting for RDP to connect...\"\n#Start-Sleep -s 5\n#Write-Host \"Desktop ready\"-ForegroundColor green\n\n# Load remote sources with full trust\n$ConfigFilePath = ${Env:ProgramFiles(x86)} + \"\\Microsoft Visual Studio 12.0\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow\\vstest.console.exe.config\"\n[xml]$Configuration = Get-Content -Path $ConfigFilePath\n$element = $Configuration.CreateElement('loadFromRemoteSources')\n$element.Attributes.Append($Configuration.CreateAttribute(\"enabled\"))\n$element.enabled = \"true\"\n$Configuration.configuration.runtime.AppendChild($element)\n$Configuration.Save($ConfigFilePath)\n\n# $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))"
+- ps: |
+    Function Get-IniContent {  
+        <#  
+        .Synopsis  
+            Gets the content of an INI file  
+          
+        .Description  
+            Gets the content of an INI file and returns it as a hashtable  
+          
+        .Notes  
+            Author        : Oliver Lipkau <oliver@lipkau.net>  
+            Blog        : http://oliver.lipkau.net/blog/  
+            Source        : https://github.com/lipkau/PsIni 
+                          http://gallery.technet.microsoft.com/scriptcenter/ea40c1ef-c856-434b-b8fb-ebd7a76e8d91 
+            Version        : 1.0 - 2010/03/12 - Initial release  
+                          1.1 - 2014/12/11 - Typo (Thx SLDR) 
+                                             Typo (Thx Dave Stiff) 
+          
+            #Requires -Version 2.0  
+          
+        .Inputs  
+            System.String  
+          
+        .Outputs  
+            System.Collections.Hashtable  
+          
+        .Parameter FilePath  
+            Specifies the path to the input file.  
+          
+        .Example  
+            $FileContent = Get-IniContent "C:\myinifile.ini"  
+            -----------  
+            Description  
+            Saves the content of the c:\myinifile.ini in a hashtable called $FileContent  
+      
+        .Example  
+            $inifilepath | $FileContent = Get-IniContent  
+            -----------  
+            Description  
+            Gets the content of the ini file passed through the pipe into a hashtable called $FileContent  
+      
+        .Example  
+            C:\PS>$FileContent = Get-IniContent "c:\settings.ini"  
+            C:\PS>$FileContent["Section"]["Key"]  
+            -----------  
+            Description  
+            Returns the key "Key" of the section "Section" from the C:\settings.ini file  
+          
+        .Link  
+            Out-IniFile  
+        #>  
+      
+        [CmdletBinding()]  
+        Param(  
+            [ValidateNotNullOrEmpty()]  
+            [ValidateScript({(Test-Path $_) -and ((Get-Item $_).Extension -eq ".ini")})]  
+            [Parameter(ValueFromPipeline=$True,Mandatory=$True)]  
+            [string]$FilePath  
+        )  
+      
+        Begin  
+            {Write-Verbose "$($MyInvocation.MyCommand.Name):: Function started"}  
+          
+        Process  
+        {  
+            Write-Verbose "$($MyInvocation.MyCommand.Name):: Processing file: $Filepath"  
+              
+            $ini = @{}  
+            switch -regex -file $FilePath  
+            {  
+                "^\[(.+)\]$" # Section  
+                {  
+                    $section = $matches[1]  
+                    $ini[$section] = @{}  
+                    $CommentCount = 0  
+                }  
+                "^(;.*)$" # Comment  
+                {  
+                    if (!($section))  
+                    {  
+                        $section = "No-Section"  
+                        $ini[$section] = @{}  
+                    }  
+                    $value = $matches[1]  
+                    $CommentCount = $CommentCount + 1  
+                    $name = "Comment" + $CommentCount  
+                    $ini[$section][$name] = $value  
+                }   
+                "(.+?)\s*=\s*(.*)" # Key  
+                {  
+                    if (!($section))  
+                    {  
+                        $section = "No-Section"  
+                        $ini[$section] = @{}  
+                    }  
+                    $name,$value = $matches[1..2]  
+                    $ini[$section][$name] = $value  
+                }  
+            }  
+            Write-Verbose "$($MyInvocation.MyCommand.Name):: Finished Processing file: $FilePath"  
+            Return $ini  
+        }  
+          
+        End  
+            {Write-Verbose "$($MyInvocation.MyCommand.Name):: Function ended"}  
+    } 
+
+    Function Out-IniFile {  
+        <#  
+        .Synopsis  
+            Write hash content to INI file  
+          
+        .Description  
+            Write hash content to INI file  
+          
+        .Notes  
+            Author        : Oliver Lipkau <oliver@lipkau.net>  
+            Blog        : http://oliver.lipkau.net/blog/  
+            Source        : https://github.com/lipkau/PsIni 
+                          http://gallery.technet.microsoft.com/scriptcenter/ea40c1ef-c856-434b-b8fb-ebd7a76e8d91 
+            Version        : 1.0 - 2010/03/12 - Initial release  
+                          1.1 - 2012/04/19 - Bugfix/Added example to help (Thx Ingmar Verheij)  
+                          1.2 - 2014/12/11 - Improved handling for missing output file (Thx SLDR) 
+          
+            #Requires -Version 2.0  
+          
+        .Inputs  
+            System.String  
+            System.Collections.Hashtable  
+          
+        .Outputs  
+            System.IO.FileSystemInfo  
+          
+        .Parameter Append  
+            Adds the output to the end of an existing file, instead of replacing the file contents.  
+          
+        .Parameter InputObject  
+            Specifies the Hashtable to be written to the file. Enter a variable that contains the objects or type a command or expression that gets the objects.  
+  
+        .Parameter FilePath  
+            Specifies the path to the output file.  
+       
+         .Parameter Encoding  
+            Specifies the type of character encoding used in the file. Valid values are "Unicode", "UTF7",  
+             "UTF8", "UTF32", "ASCII", "BigEndianUnicode", "Default", and "OEM". "Unicode" is the default.  
+          
+            "Default" uses the encoding of the system's current ANSI code page.   
+          
+            "OEM" uses the current original equipment manufacturer code page identifier for the operating   
+            system.  
+       
+         .Parameter Force  
+            Allows the cmdlet to overwrite an existing read-only file. Even using the Force parameter, the cmdlet cannot override security restrictions.  
+          
+         .Parameter PassThru  
+            Passes an object representing the location to the pipeline. By default, this cmdlet does not generate any output.  
+                  
+        .Example  
+            Out-IniFile $IniVar "C:\myinifile.ini"  
+            -----------  
+            Description  
+            Saves the content of the $IniVar Hashtable to the INI File c:\myinifile.ini  
+          
+        .Example  
+            $IniVar | Out-IniFile "C:\myinifile.ini" -Force  
+            -----------  
+            Description  
+            Saves the content of the $IniVar Hashtable to the INI File c:\myinifile.ini and overwrites the file if it is already present  
+          
+        .Example  
+            $file = Out-IniFile $IniVar "C:\myinifile.ini" -PassThru  
+            -----------  
+            Description  
+            Saves the content of the $IniVar Hashtable to the INI File c:\myinifile.ini and saves the file into $file  
+  
+        .Example  
+            $Category1 = @{“Key1”=”Value1”;”Key2”=”Value2”}  
+        $Category2 = @{“Key1”=”Value1”;”Key2”=”Value2”}  
+        $NewINIContent = @{“Category1”=$Category1;”Category2”=$Category2}  
+        Out-IniFile -InputObject $NewINIContent -FilePath "C:\MyNewFile.INI"  
+            -----------  
+            Description  
+            Creating a custom Hashtable and saving it to C:\MyNewFile.INI  
+        .Link  
+            Get-IniContent  
+        #>  
+      
+        [CmdletBinding()]  
+        Param(  
+            [switch]$Append,  
+          
+            [ValidateSet("Unicode","UTF7","UTF8","UTF32","ASCII","BigEndianUnicode","Default","OEM")]  
+            [Parameter()]  
+            [string]$Encoding = "Unicode",  
+ 
+          
+            [ValidateNotNullOrEmpty()]  
+            [ValidatePattern('^([a-zA-Z]\:)?.+\.ini$')]  
+            [Parameter(Mandatory=$True)]  
+            [string]$FilePath,  
+          
+            [switch]$Force,  
+          
+            [ValidateNotNullOrEmpty()]  
+            [Parameter(ValueFromPipeline=$True,Mandatory=$True)]  
+            [Hashtable]$InputObject,  
+          
+            [switch]$Passthru  
+        )  
+      
+        Begin  
+            {Write-Verbose "$($MyInvocation.MyCommand.Name):: Function started"}  
+          
+        Process  
+        {  
+            Write-Verbose "$($MyInvocation.MyCommand.Name):: Writing to file: $Filepath"  
+          
+            if ($append) {$outfile = Get-Item $FilePath}  
+            else {$outFile = New-Item -ItemType file -Path $Filepath -Force:$Force}  
+            if (!($outFile)) {Throw "Could not create File"}  
+            foreach ($i in $InputObject.keys)  
+            {  
+                if (!($($InputObject[$i].GetType().Name) -eq "Hashtable"))  
+                {  
+                    #No Sections  
+                    Write-Verbose "$($MyInvocation.MyCommand.Name):: Writing key: $i"  
+                    Add-Content -Path $outFile -Value "$i=$($InputObject[$i])" -Encoding $Encoding  
+                } else {  
+                    #Sections  
+                    Write-Verbose "$($MyInvocation.MyCommand.Name):: Writing Section: [$i]"  
+                    Add-Content -Path $outFile -Value "[$i]" -Encoding $Encoding  
+                    Foreach ($j in $($InputObject[$i].keys | Sort-Object))  
+                    {  
+                        if ($j -match "^Comment[\d]+") {  
+                            Write-Verbose "$($MyInvocation.MyCommand.Name):: Writing comment: $j"  
+                            Add-Content -Path $outFile -Value "$($InputObject[$i][$j])" -Encoding $Encoding  
+                        } else {  
+                            Write-Verbose "$($MyInvocation.MyCommand.Name):: Writing key: $j"  
+                            Add-Content -Path $outFile -Value "$j=$($InputObject[$i][$j])" -Encoding $Encoding  
+                        }  
+                      
+                    }  
+                    Add-Content -Path $outFile -Value "" -Encoding $Encoding  
+                }  
+            }  
+            Write-Verbose "$($MyInvocation.MyCommand.Name):: Finished Writing to file: $path"  
+            if ($PassThru) {Return $outFile}  
+        }  
+          
+        End  
+            {Write-Verbose "$($MyInvocation.MyCommand.Name):: Function ended"}  
+    }  
+      
+    $webclient = New-Object System.Net.WebClient  
+    # Allow Remote Desktop  
+    $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
+      
+    # Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight  
+    $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2013.msi"  
+    $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2013.txt"  
+    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da/file/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)  
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      Get-Content $logFilePath  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $msiFilePath  
+    del $logFilePath  
+    Write-Host "Visual Studio 2013 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
+      
+    # Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight  
+    $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2015.msi"  
+    $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2015.txt"  
+    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/bf0caedc-90eb-46af-9c1a-8e68d013bb99/file/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)  
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      Get-Content $logFilePath  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $msiFilePath  
+    del $logFilePath  
+    Write-Host "Visual Studio 2015 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
+      
+      
+    # Microsoft Silverlight 5 Toolkit - December 2011  
+    $msiFilePath = "$($env:USERPROFILE)\Silverlight_5_Toolkit_December_2011.msi"  
+    $logFilePath = "$($env:TEMP)\Silverlight_5_Toolkit_December_2011.txt"  
+    $webclient.DownloadFile('http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=silverlight&DownloadId=311823&FileTime=129679336571930000&Build=21031', $msiFilePath)  
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      Get-Content $logFilePath  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $msiFilePath  
+    del $logFilePath  
+    Write-Host "Microsoft Silverlight 5 Toolkit - December 2011 successfully installed" -ForegroundColor Green  
+      
+    # Google Chrome  
+    $msiFilePath = "$($env:USERPROFILE)\GoogleChromeStandaloneEnterprise.msi"  
+    $logFilePath = "$($env:TEMP)\GoogleChromeStandaloneEnterprise.txt"  
+    $webclient.DownloadFile('https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B7ACD904C-E309-ADA4-8671-783B10D723FD%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi', $msiFilePath)  
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      Get-Content $logFilePath  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $msiFilePath  
+    del $logFilePath  
+    Write-Host "Google Chrome successfully installed" -ForegroundColor Green  
+      
+    # Mozilla Firefox 27.0.1  
+    $exeFilePath = "$($env:USERPROFILE)\Firefox Setup 27.0.1.exe"  
+    $retry_attempts = 3  
+    for($i=0; $i -lt $retry_attempts; $i++){  
+        try {  
+            $webclient.DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/27.0.1/win32/es-ES/Firefox%20Setup%2027.0.1.exe', $exeFilePath)  
+            break  
+        }  
+        Catch [Exception]{  
+            Start-Sleep 1  
+        }  
+    }  
+    $process = (Start-Process -FilePath $exeFilePath -ArgumentList "-ms" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $exeFilePath  
+    Write-Host "Mozilla Firefox 27.0.1 successfully installed" -ForegroundColor Green  
+      
+    # Disable Firefox First Run Import Settings and Data Wizard  
+    $ProgramFiles = ${Env:ProgramFiles(x86)}  
+    $FilePath = $ProgramFiles + "\Mozilla Firefox\override.ini"  
+    if (!(test-path ($FilePath)))  
+    {  
+      # create the override.ini per https://developer.mozilla.org/en/Command_Line_Options  
+      $err=@()  
+      New-Item -type file -force $FilePath -ErrorVariable err | Out-Null  
+      if (!($err.count -eq 0))  
+      {  
+        throw "Failed to create override.ini."  
+      }  
+    }  
+      
+    # read in the override.ini file  
+    $iniData = Get-IniContent $FilePath  
+      
+    if (!($iniData.XRE))  
+    {  
+      $iniData.XRE = @{}  
+    }  
+      
+    if (!($iniData.XRE.EnableProfileMigrator -eq 0))  
+    {  
+      $iniData.XRE.EnableProfileMigrator = 0  
+      Out-IniFile -InputObject $iniData -FilePath $FilePath -Append  
+    }  
+    Write-Host "Mozilla Firefox Profile Migrator disabled" -ForegroundColor Green  
+      
+    # Selenium components for Coded UI Cross Browser Testing  
+    $msiFilePath = "$($env:USERPROFILE)\CodedUITestCrossBrowserSetup.msi"  
+    $logFilePath = "$($env:TEMP)\CodedUITestCrossBrowserSetup.txt"  
+    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/12/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
+    $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      Get-Content $logFilePath  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $msiFilePath  
+    del $logFilePath  
+    Write-Host "Selenium components for Coded UI Cross Browser Testing successfully installed" -ForegroundColor Green  
+      
+    if(-not $screen_resolution) {  
+      $screen_resolution = '1024x768'  
+    }  
+      
+    Write-Host "Setting up active Desktop..." -ForegroundColor cyan  
+    # https://github.com/FreeRDP/FreeRDP/wiki/CommandLineInterface  
+    #$zipPath = "$($env:USERPROFILE)\wfreerdp-1.1.zip"  
+    #$webclient.DownloadFile('http://av1southus4workers.blob.core.windows.net/downloads/tools/wfreerdp-1.1.zip', $zipPath)  
+    #7z x $zipPath -y -o"$env:TEMP" | Out-Null  
+    #Write-Host "Starting Remote Desktop session..."  
+    #$psw = (get-itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -name DefaultPassword).DefaultPassword  
+    #Start-Process "$env:TEMP\wfreerdp.exe" -ArgumentList '/v:127.0.0.1','/u:appveyor',"/p:$psw","/size:$screen_resolution" -WindowStyle Hidden  
+    #Write-Host "Waiting for RDP to connect..."  
+    #Start-Sleep -s 5  
+    #Write-Host "Desktop ready"-ForegroundColor green  
+      
+    # Load remote sources with full trust  
+    $ConfigFilePath = ${Env:ProgramFiles(x86)} + "\Microsoft Visual Studio 12.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe.config"  
+    [xml]$Configuration = Get-Content -Path $ConfigFilePath  
+    $element = $Configuration.CreateElement('loadFromRemoteSources')  
+    $element.Attributes.Append($Configuration.CreateAttribute("enabled"))  
+    $element.enabled = "true"  
+    $Configuration.configuration.runtime.AppendChild($element)  
+    $Configuration.Save($ConfigFilePath)  
+      
+    # $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))"  
 assembly_info:
   patch: true
   file: src\CommonAssemblyInfo.cs
@@ -30,7 +438,6 @@ build_script:
 
     msbuild.exe src\build.proj /t:Build;Pack;BuildSilverlight;PackSilverlight
 
-
     REM icacls src\Sut.HtmlTest\bin\Release\TestHtmlPage.html /setintegritylevel (CI)(OI)Low
 test:
   assemblies: '**\bin\Release\*Test.dll'
@@ -45,22 +452,15 @@ deploy:
 on_finish:
 - ps: >-
     # Collect test results
-
     Write-Host "Publishing test results..."
-
     Get-ChildItem '.\TestResults\*\In' -Recurse -Include '*.*' | % { Push-AppveyorArtifact $_.FullName -FileName $(-Join $(Split-Path (Split-Path (Split-Path $_.FullName -Parent) -Parent ) -Leaf) + '_' + $_.Name) -DeploymentName TestResult }
 
-
     # Collect UI test log
-
     Write-Host "Publishing UI test log..."
-
     Push-AppveyorArtifact $env:temp\UITestLogs\LastRun\UITestLog.html -DeploymentName UITestLog
 
-
     # Allow Remote Desktop
-
-    # $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-
+    # $webclient = New-Object System.Net.WebClient
+    # $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
     Write-Host "Build finished."

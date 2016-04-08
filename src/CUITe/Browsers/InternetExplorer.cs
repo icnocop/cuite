@@ -3,10 +3,19 @@ using SHDocVw;
 
 namespace CUITe.Browsers
 {
+    /// <summary>
+    /// Internet explorer
+    /// </summary>
     public class InternetExplorer : Browser, IBrowser
     {
-        public static string Name = "ie";
+        /// <summary>
+        /// The name
+        /// </summary>
+        public new const string Name = "ie";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InternetExplorer"/> class.
+        /// </summary>
         public InternetExplorer()
             : base(Name, "iexplore", "IEFrame", "Internet Explorer_TridentDlgFrame")
         {
