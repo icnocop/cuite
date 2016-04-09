@@ -17,6 +17,9 @@ namespace CUITe.Controls
     {
         private readonly UITestControl sourceControl;
 
+        /// <summary>
+        /// The property names cache
+        /// </summary>
         protected static readonly PropertyNamesCache PropertyNamesCache;
 
         /// <summary>
@@ -82,7 +85,7 @@ namespace CUITe.Controls
         /// Gets or sets a value indicating whether or not the <see cref="WaitForControlReady"/> method is executed each time the control is used.
         /// </summary>
         public static bool IsControlReadinessAwaitedByDefault { get; set; }
-        
+
         /// <summary>
         /// Gets the parent of the control.
         /// </summary>

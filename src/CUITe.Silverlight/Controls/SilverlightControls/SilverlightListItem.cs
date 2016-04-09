@@ -5,6 +5,9 @@ namespace CUITe.Controls.SilverlightControls
 {
     using CUITe.SearchConfigurations;
 
+    /// <summary>
+    /// Silverlight list item
+    /// </summary>
     public class SilverlightListItem : SilverlightControl<CUITControls.SilverlightListItem>
     {
         /// <summary>

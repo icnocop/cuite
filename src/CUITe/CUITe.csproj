@@ -245,6 +245,8 @@
     <Compile Include="ScreenObjects\ScreenObjectOfT.cs" />
     <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
     <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
+    <Compile Include="SearchConfigurations\ControlIdConfigurator.cs" />
+    <Compile Include="SearchConfigurations\ClassNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\ControlNameConfigurator.cs" />
     <Compile Include="SearchConfigurations\IdConfigurator.cs" />
     <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
