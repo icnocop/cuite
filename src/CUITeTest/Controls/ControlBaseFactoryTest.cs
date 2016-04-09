@@ -55,6 +55,17 @@ namespace CUITeTest.Controls
             }
         }
 
+        [TestMethod]
+        public void CreateWinControlsUsingParameterlessConstructor()
+        {
+            // Arrange
+            foreach (Type controlType in ControlTypes.Where(x => typeof(WinControl).IsAssignableFrom(x)))
+            {
+                // Act (this code throws exception if the control cannot be created)
+                ControlBaseFactory.Create(controlType);
+            }
+        }
+
         #region Helper properties and methods
 
         private static IEnumerable<Type> ControlTypes
