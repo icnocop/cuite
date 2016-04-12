@@ -33,10 +33,15 @@ namespace CUITe.Controls
         /// <returns>
         /// A UI test control of type <paramref name="controlType"/> with specified search configuration.
         /// </returns>
-        internal static ControlBase Create(Type controlType, By searchConfiguration)
+        internal static ControlBase Create(Type controlType, By searchConfiguration = null)
         {
             if (controlType == null)
                 throw new ArgumentNullException("controlType");
+
+            string errorMessage = string.Format(
+                "No constructor for type '{0}' contains arguments in the following order:" + Environment.NewLine +
+                "  1. By - Search configuration",
+                controlType);
 
             try
             {
@@ -44,12 +49,21 @@ namespace CUITe.Controls
             }
             catch (MissingMethodException)
             {
-                string message = string.Format(
-                    "No constructor for type '{0}' contains arguments in the following order:" + Environment.NewLine +
-                    "  1. By - Search configuration",
-                    controlType);
+                if (searchConfiguration != null)
+                {
+                    throw new ArgumentException(errorMessage);
+                }
 
-                throw new ArgumentException(message);
+                try
+                {
+                    return (ControlBase)Activator.CreateInstance(controlType);
+                }
+                catch (MissingMethodException)
+                {
+                    errorMessage += Environment.NewLine + "Or a parameterless constructor doesn't exists.";
+
+                    throw new ArgumentException(errorMessage);
+                }
             }
         }
 
