@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{26221FFA-E635-4D86-B7CE-53BB16F0399C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sut.Wpf.Controls</RootNamespace>
+    <AssemblyName>Sut.Wpf.Controls</AssemblyName>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Controls\ButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CalendarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CheckBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ComboBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CustomControlControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DatePickerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ExpanderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FrameControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GroupBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HyperlinkControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LabelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PasswordBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProgressBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RadioButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RichTextBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScrollBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScrollViewerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SeparatorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SliderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StatusBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TabControlControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToggleButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToolBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TreeViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ButtonControl.xaml.cs">
+      <DependentUpon>ButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CalendarControl.xaml.cs">
+      <DependentUpon>CalendarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CheckBoxControl.xaml.cs">
+      <DependentUpon>CheckBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ComboBoxControl.xaml.cs">
+      <DependentUpon>ComboBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomControl.cs" />
+    <Compile Include="Controls\CustomControlAutomationPeer.cs" />
+    <Compile Include="Controls\CustomControlControl.xaml.cs">
+      <DependentUpon>CustomControlControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGridControl.xaml.cs">
+      <DependentUpon>DataGridControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DatePickerControl.xaml.cs">
+      <DependentUpon>DatePickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpanderControl.xaml.cs">
+      <DependentUpon>ExpanderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FrameControl.xaml.cs">
+      <DependentUpon>FrameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Controls\GroupBoxControl.xaml.cs">
+      <DependentUpon>GroupBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HyperlinkControl.xaml.cs">
+      <DependentUpon>HyperlinkControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageControl.xaml.cs">
+      <DependentUpon>ImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LabelControl.xaml.cs">
+      <DependentUpon>LabelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListBoxControl.xaml.cs">
+      <DependentUpon>ListBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListViewControl.xaml.cs">
+      <DependentUpon>ListViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MenuControl.xaml.cs">
+      <DependentUpon>MenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mocked.cs" />
+    <Compile Include="Controls\PasswordBoxControl.xaml.cs">
+      <DependentUpon>PasswordBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Controls\ProgressBarControl.xaml.cs">
+      <DependentUpon>ProgressBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadioButtonControl.xaml.cs">
+      <DependentUpon>RadioButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RichTextBoxControl.xaml.cs">
+      <DependentUpon>RichTextBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScrollBarControl.xaml.cs">
+      <DependentUpon>ScrollBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScrollViewerControl.xaml.cs">
+      <DependentUpon>ScrollViewerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SeparatorControl.xaml.cs">
+      <DependentUpon>SeparatorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SliderControl.xaml.cs">
+      <DependentUpon>SliderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatusBarControl.xaml.cs">
+      <DependentUpon>StatusBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TabControlControl.xaml.cs">
+      <DependentUpon>TabControlControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextBlockControl.xaml.cs">
+      <DependentUpon>TextBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextBoxControl.xaml.cs">
+      <DependentUpon>TextBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToggleButtonControl.xaml.cs">
+      <DependentUpon>ToggleButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToolBarControl.xaml.cs">
+      <DependentUpon>ToolBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TreeViewControl.xaml.cs">
+      <DependentUpon>TreeViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MainWindowResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\DefineNetFxCompilationConstants.prop" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

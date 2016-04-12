@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe", "CUITe\CUITe.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe_ObjectRecorder", "CUITe_ObjectRecorder\CUITe_ObjectRecorder.csproj", "{4CA5CDA2-0678-430B-9079-F11906B54070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.HtmlTest", "Sut.HtmlTest\Sut.HtmlTest.csproj", "{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.HtmlTest", "SystemsUnderTest\Sut.HtmlTest\Sut.HtmlTest.csproj", "{8EA1EB80-66EF-4877-B082-3BFAD597ADEB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5966864-ABF9-4923-B7E3-F31F95C9AABA}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DefineNetFxCompilationConstants.prop = DefineNetFxCompilationConstants.prop
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight", "Sut.Silverlight\Sut.Silverlight.csproj", "{B38FF342-51EB-4338-AE14-D73AF81E5622}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight", "SystemsUnderTest\Sut.Silverlight\Sut.Silverlight.csproj", "{B38FF342-51EB-4338-AE14-D73AF81E5622}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{73F2487C-924C-4984-8CF0-0CEC0B0B650C}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,19 +40,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298
 		..\Test.bat = ..\Test.bat
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Controls", "Sut.Wpf.Controls\Sut.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Controls", "SystemsUnderTest\Sut.Wpf.Controls\Sut.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ControlsTest", "Sut.Wpf.ControlsTest\Sut.Wpf.ControlsTest.csproj", "{AF645712-A7CA-4D8C-8684-FFF737CD0701}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ControlsTest", "SystemsUnderTest\Sut.Wpf.ControlsTest\Sut.Wpf.ControlsTest.csproj", "{AF645712-A7CA-4D8C-8684-FFF737CD0701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Controls", "Sut.WinForms.Controls\Sut.WinForms.Controls.csproj", "{A987CABE-0533-4E26-9418-D5B4B8E15B16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Controls", "SystemsUnderTest\Sut.WinForms.Controls\Sut.WinForms.Controls.csproj", "{A987CABE-0533-4E26-9418-D5B4B8E15B16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ControlsTest", "Sut.WinForms.ControlsTest\Sut.WinForms.ControlsTest.csproj", "{7C86AD84-3EE2-4932-9C1C-F57BFFD0EFFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ControlsTest", "SystemsUnderTest\Sut.WinForms.ControlsTest\Sut.WinForms.ControlsTest.csproj", "{7C86AD84-3EE2-4932-9C1C-F57BFFD0EFFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInput", "Sut.PeripheralInput\Sut.PeripheralInput.csproj", "{74419630-9433-4DD4-99FB-80B7A0E8977A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInput", "SystemsUnderTest\Sut.PeripheralInput\Sut.PeripheralInput.csproj", "{74419630-9433-4DD4-99FB-80B7A0E8977A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInputTest", "Sut.PeripheralInputTest\Sut.PeripheralInputTest.csproj", "{52D01CC6-6C4A-4B39-8C9B-2C6390608B04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInputTest", "SystemsUnderTest\Sut.PeripheralInputTest\Sut.PeripheralInputTest.csproj", "{52D01CC6-6C4A-4B39-8C9B-2C6390608B04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.SilverlightTest", "Sut.SilverlightTest\Sut.SilverlightTest.csproj", "{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.SilverlightTest", "SystemsUnderTest\Sut.SilverlightTest\Sut.SilverlightTest.csproj", "{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITeTest", "CUITeTest\CUITeTest.csproj", "{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}"
 EndProject
@@ -66,37 +66,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjects", "Sut.Wpf.ScreenObjects\Sut.Wpf.ScreenObjects.csproj", "{729F30CB-E99A-48C5-A945-0C9BD2B225E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjects", "SystemsUnderTest\Sut.Wpf.ScreenObjects\Sut.Wpf.ScreenObjects.csproj", "{729F30CB-E99A-48C5-A945-0C9BD2B225E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjectsTest", "Sut.Wpf.ScreenObjectsTest\Sut.Wpf.ScreenObjectsTest.csproj", "{7BC249D6-3DBA-45AA-8C14-0657B25EDE92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjectsTest", "SystemsUnderTest\Sut.Wpf.ScreenObjectsTest\Sut.Wpf.ScreenObjectsTest.csproj", "{7BC249D6-3DBA-45AA-8C14-0657B25EDE92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjects", "Sut.WinForms.ScreenObjects\Sut.WinForms.ScreenObjects.csproj", "{E7DA3FC7-12EB-4086-A929-C77376BA02E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjects", "SystemsUnderTest\Sut.WinForms.ScreenObjects\Sut.WinForms.ScreenObjects.csproj", "{E7DA3FC7-12EB-4086-A929-C77376BA02E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjectsTest", "Sut.WinForms.ScreenObjectsTest\Sut.WinForms.ScreenObjectsTest.csproj", "{15714E76-8A05-4023-B924-C911B0CD4122}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjectsTest", "SystemsUnderTest\Sut.WinForms.ScreenObjectsTest\Sut.WinForms.ScreenObjectsTest.csproj", "{15714E76-8A05-4023-B924-C911B0CD4122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.PageObjectsTest", "Sut.Html.PageObjectsTest\Sut.Html.PageObjectsTest.csproj", "{42937C6D-41D3-423D-BC71-05E1C21401A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.PageObjectsTest", "SystemsUnderTest\Sut.Html.PageObjectsTest\Sut.Html.PageObjectsTest.csproj", "{42937C6D-41D3-423D-BC71-05E1C21401A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelpers", "TestHelpers\TestHelpers.csproj", "{813FC5B1-D329-4CE3-903A-10BA647535AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelpers", "SystemsUnderTest\TestHelpers\TestHelpers.csproj", "{813FC5B1-D329-4CE3-903A-10BA647535AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjects", "Sut.Silverlight.PageObjects\Sut.Silverlight.PageObjects.csproj", "{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjects", "SystemsUnderTest\Sut.Silverlight.PageObjects\Sut.Silverlight.PageObjects.csproj", "{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjectsTest", "Sut.Silverlight.PageObjectsTest\Sut.Silverlight.PageObjectsTest.csproj", "{3E624F8A-A115-4792-8C86-51FB529C34E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjectsTest", "SystemsUnderTest\Sut.Silverlight.PageObjectsTest\Sut.Silverlight.PageObjectsTest.csproj", "{3E624F8A-A115-4792-8C86-51FB529C34E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Workflows", "Sut.Wpf.Workflows\Sut.Wpf.Workflows.csproj", "{ED312AAC-D022-49BA-A049-043D0091C9F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Workflows", "SystemsUnderTest\Sut.Wpf.Workflows\Sut.Wpf.Workflows.csproj", "{ED312AAC-D022-49BA-A049-043D0091C9F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems Under Test", "Systems Under Test", "{0D358022-2827-4DDD-9945-FEC322B4E946}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.WorkflowsTest", "Sut.Wpf.WorkflowsTest\Sut.Wpf.WorkflowsTest.csproj", "{0A42B4CE-A090-410F-BDEA-199848598059}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.WorkflowsTest", "SystemsUnderTest\Sut.Wpf.WorkflowsTest\Sut.Wpf.WorkflowsTest.csproj", "{0A42B4CE-A090-410F-BDEA-199848598059}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.WorkflowsTest", "Sut.Html.WorkflowsTest\Sut.Html.WorkflowsTest.csproj", "{D8E9A365-E3CE-46C9-A501-E49924336B42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.WorkflowsTest", "SystemsUnderTest\Sut.Html.WorkflowsTest\Sut.Html.WorkflowsTest.csproj", "{D8E9A365-E3CE-46C9-A501-E49924336B42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.Workflows", "Sut.Silverlight.Workflows\Sut.Silverlight.Workflows.csproj", "{EE2AB077-2630-4F38-944C-B1D623FCB41E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.Workflows", "SystemsUnderTest\Sut.Silverlight.Workflows\Sut.Silverlight.Workflows.csproj", "{EE2AB077-2630-4F38-944C-B1D623FCB41E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.WorkflowsTest", "Sut.Silverlight.WorkflowsTest\Sut.Silverlight.WorkflowsTest.csproj", "{20AC600B-F91D-42EF-B763-F08674009437}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.WorkflowsTest", "SystemsUnderTest\Sut.Silverlight.WorkflowsTest\Sut.Silverlight.WorkflowsTest.csproj", "{20AC600B-F91D-42EF-B763-F08674009437}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Workflows", "Sut.WinForms.Workflows\Sut.WinForms.Workflows.csproj", "{E941D076-41B8-4EBD-90B1-668EB25304F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Workflows", "SystemsUnderTest\Sut.WinForms.Workflows\Sut.WinForms.Workflows.csproj", "{E941D076-41B8-4EBD-90B1-668EB25304F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.WorkflowsTest", "Sut.WinForms.WorkflowsTest\Sut.WinForms.WorkflowsTest.csproj", "{2BF7540C-E1AB-4E3B-A37C-A7D621AAF4CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.WorkflowsTest", "SystemsUnderTest\Sut.WinForms.WorkflowsTest\Sut.WinForms.WorkflowsTest.csproj", "{2BF7540C-E1AB-4E3B-A37C-A7D621AAF4CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe.IntegrationTests", "CUITe.IntegrationTests\CUITe.IntegrationTests.csproj", "{9E236576-EA59-46B1-A6C9-FB9A17D32118}"
 EndProject

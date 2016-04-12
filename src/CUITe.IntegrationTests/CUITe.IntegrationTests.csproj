@@ -154,7 +154,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <EmbeddedResource Include="..\testhelpers\TempWebPage.cs">
+    <EmbeddedResource Include="..\SystemsUnderTest\TestHelpers\TempWebPage.cs">
       <Link>NuGet\TempWebPage.cs</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\CUITe.*.nupkg">
@@ -191,7 +191,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">
+    <ProjectReference Include="..\SystemsUnderTest\TestHelpers\TestHelpers.csproj">
       <Project>{813fc5b1-d329-4ce3-903a-10ba647535af}</Project>
       <Name>TestHelpers</Name>
     </ProjectReference>
