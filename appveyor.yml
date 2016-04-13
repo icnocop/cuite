@@ -322,27 +322,6 @@ init:
     del $logFilePath  
     Write-Host "Google Chrome successfully installed" -ForegroundColor Green  
       
-    # Mozilla Firefox 27.0.1  
-    $exeFilePath = "$($env:USERPROFILE)\Firefox Setup 27.0.1.exe"  
-    $retry_attempts = 3  
-    for($i=0; $i -lt $retry_attempts; $i++){  
-        try {  
-            $webclient.DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/27.0.1/win32/es-ES/Firefox%20Setup%2027.0.1.exe', $exeFilePath)  
-            break  
-        }  
-        Catch [Exception]{  
-            Start-Sleep 1  
-        }  
-    }  
-    $process = (Start-Process -FilePath $exeFilePath -ArgumentList "-ms" -Wait -Passthru)  
-    $exitCode = $process.ExitCode  
-    if ($exitCode -ne 0)  
-    {  
-      throw "Command failed with exit code $exitCode."  
-    }  
-    del $exeFilePath  
-    Write-Host "Mozilla Firefox 27.0.1 successfully installed" -ForegroundColor Green  
-      
     # Disable Firefox First Run Import Settings and Data Wizard  
     $ProgramFiles = ${Env:ProgramFiles(x86)}  
     $FilePath = $ProgramFiles + "\Mozilla Firefox\override.ini"  
