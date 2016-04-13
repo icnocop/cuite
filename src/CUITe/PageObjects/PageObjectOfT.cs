@@ -28,9 +28,6 @@ namespace CUITe.PageObjects
         /// <param name="searchConfiguration">
         /// The search configuration for the control to rebase to.
         /// </param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
         protected PageObject(By searchConfiguration)
         {
             if (searchConfiguration == null)

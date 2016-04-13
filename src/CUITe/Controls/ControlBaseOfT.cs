@@ -20,9 +20,6 @@ namespace CUITe.Controls
         /// </summary>
         /// <param name="sourceControl">The source control.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
         protected ControlBase(T sourceControl, By searchConfiguration = null)
             : base(sourceControl)
         {
@@ -51,9 +48,6 @@ namespace CUITe.Controls
         /// </summary>
         /// <typeparam name="TControl">The type of control to find.</typeparam>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
         public TControl Find<TControl>(By searchConfiguration = null) where TControl : ControlBase
         {
             return sourceControl.Find<TControl>(searchConfiguration);
@@ -90,7 +84,6 @@ namespace CUITe.Controls
             if (searchProperties == null)
                 throw new ArgumentNullException("searchProperties");
 
-            ValidateSearchPropertyNames(searchProperties);
             SourceControl.SearchProperties.AddRange(searchProperties);
         }
 
@@ -107,20 +100,6 @@ namespace CUITe.Controls
         internal PropertyExpression GetSearchProperty(string propertyName)
         {
             return SourceControl.SearchProperties.Find(propertyName);
-        }
-
-        private static void ValidateSearchPropertyNames(IEnumerable<PropertyExpression> searchProperties)
-        {
-            string[] validSearchPropertyNames = PropertyNamesCache.GetPropertyNamesFor<T>()
-                .ToArray();
-
-            string[] invalidSearchPropertyNames = searchProperties
-                .Select(searchProperty => searchProperty.PropertyName)
-                .Except(validSearchPropertyNames, StringComparer.OrdinalIgnoreCase)
-                .ToArray();
-
-            if (invalidSearchPropertyNames.Any())
-                throw new InvalidSearchPropertyNamesException(invalidSearchPropertyNames, validSearchPropertyNames);
         }
     }
 }

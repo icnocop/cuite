@@ -433,5 +433,13 @@ namespace CUITe.Controls
             WaitForControlReadyIfNecessary();
             Keyboard.SendKeys(sourceControl, text, modifierKeys, isEncoded, isUnicode);
         }
+
+        /// <summary>
+        /// Highlights the control.
+        /// </summary>
+        public void DrawHighlight()
+        {
+            sourceControl.DrawHighlight();
+        }
     }
 }

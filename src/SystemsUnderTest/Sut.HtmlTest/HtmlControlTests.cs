@@ -67,25 +67,6 @@ namespace Sut.HtmlTest
         }
 
         [TestMethod]
-        [WorkItem(588)]
-        public void HtmlControl_WithInvalidSearchProperties_ThrowsInvalidSearchPropertyNamesException()
-        {
-            //TODO: use known html
-            try
-            {
-                var page = Page.Launch<GoogleHomePageWithInvalidControlSearchProperties>("http://www.google.com");
-                Assert.IsFalse(page.ControlWithInvalidSearchProperties.Exists);
-                Assert.Fail("InvalidSearchPropertyNamesException not thrown");
-            }
-            catch (TargetInvocationException ex)
-            {
-                Console.WriteLine(ex.ToString());
-
-                Assert.AreEqual(typeof(InvalidSearchPropertyNamesException), ex.InnerException.GetType());
-            }
-        }
-
-        [TestMethod]
         public void HtmlControl_NonExistent_DoesNotExist()
         {
             //Arrange

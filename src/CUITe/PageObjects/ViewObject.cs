@@ -33,9 +33,6 @@ namespace CUITe.PageObjects
         /// </summary>
         /// <typeparam name="T">The type of control to find.</typeparam>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
         protected T Find<T>(By searchConfiguration = null) where T : ControlBase
         {
             if (searchLimitContainer == null)
