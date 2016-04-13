@@ -1,6 +1,8 @@
 2.0 (TBD)
 =========
 
+* Removed validation of search property names to support custom arbitrary search property names [#77](https://github.com/icnocop/cuite/issues/77)
+* Added DrawHighlight method for UI test controls - [@icnocop](https://github.com/icnocop)
 * Added support for ControlId and ClassName search properties [#72](https://github.com/icnocop/cuite/issues/72) and [#74](https://github.com/icnocop/cuite/issues/74) - [@icnocop](https://github.com/icnocop)
 * Created NuGet packages for Visual Studio 2015 to support Visual Studio 2015 without requiring previous versions of Visual Studio to be installed - [@icnocop](https://www.codeplex.com/site/users/view/icnocop)
 * Fixed [#67](https://github.com/icnocop/cuite/issues/67) - [@FantasticFiasco](https://github.com/FantasticFiasco)

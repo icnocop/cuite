@@ -19,9 +19,6 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
         /// <typeparam name="T">The type of control to find.</typeparam>
         /// <param name="self">The control whose descendants to search.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        /// <exception cref="InvalidSearchPropertyNamesException">
-        /// Search configuration contains a property namely that isn't applicable on the control.
-        /// </exception>
         public static T Find<T>(this UITestControl self, By searchConfiguration = null) where T : ControlBase
         {
             if (self == null)
