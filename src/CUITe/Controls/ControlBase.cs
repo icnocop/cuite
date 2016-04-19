@@ -65,6 +65,18 @@ namespace CUITe.Controls
         }
 
         /// <summary>
+        /// Gets a value indicating whether this element is visible in the user interface.
+        /// </summary>
+        public bool Visible
+        {
+            get
+            {
+                Point clickablePoint;
+                return sourceControl.TryGetClickablePoint(out clickablePoint);
+            }
+        }
+
+        /// <summary>
         /// Gets the source control.
         /// </summary>
         internal UITestControl SourceControl
@@ -159,6 +171,27 @@ namespace CUITe.Controls
         public bool WaitForControlExist(int millisecondsTimeout)
         {
             return sourceControl.WaitForControlExist(millisecondsTimeout);
+        }
+
+        /// <summary>
+        /// Waits for the control to become visible in the user interface.
+        /// </summary>
+        /// <returns><code>true</code> if this control is visible before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlVisible()
+        {
+            Point clickablePoint;
+            return sourceControl.WaitForControlCondition(control => control.TryGetClickablePoint(out clickablePoint));
+        }
+
+        /// <summary>
+        /// Waits for the control to become visible in the user interface, or for the specified timeout to expire.
+        /// </summary>
+        /// <param name="millisecondsTimeout">The number of milliseconds before time-out.</param>
+        /// <returns><code>true</code> if this control is visible before the time-out; otherwise, <code>false</code>.</returns>
+        public bool WaitForControlVisible(int millisecondsTimeout)
+        {
+            Point clickablePoint;
+            return sourceControl.WaitForControlCondition(control => control.TryGetClickablePoint(out clickablePoint), millisecondsTimeout);
         }
 
         /// <summary>
@@ -268,6 +301,16 @@ namespace CUITe.Controls
         public void EnsureClickable(Point point)
         {
             sourceControl.EnsureClickable(point);
+        }
+
+        /// <summary>
+        /// Returns a clickable point within the control. If the control is not clickable, this method returns <code>false</code>.
+        /// </summary>
+        /// <param name="point">Clickable point within the control.</param>
+        /// <returns><code>true</code> if the control is clickable</returns>
+        public bool TryGetClickablePoint(out Point point)
+        {
+            return sourceControl.TryGetClickablePoint(out point);
         }
 
         /// <summary>
