@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Fixed [#83](https://github.com/icnocop/cuite/issues/83) - [@aannenko](https://github.com/aannenko)
 * Removed validation of search property names to support custom arbitrary search property names [#77](https://github.com/icnocop/cuite/issues/77)
 * Added DrawHighlight method for UI test controls - [@icnocop](https://github.com/icnocop)
 * Added support for ControlId and ClassName search properties [#72](https://github.com/icnocop/cuite/issues/72) and [#74](https://github.com/icnocop/cuite/issues/74) - [@icnocop](https://github.com/icnocop)
