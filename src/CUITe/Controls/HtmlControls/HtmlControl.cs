@@ -199,19 +199,22 @@ namespace CUITe.Controls.HtmlControls
 
             foreach (ControlBase child in children)
             {
-                int tagInstances;
-                if (tagInstancesByType.ContainsKey(child.GetType()))
+                if (child.SourceControl.SearchProperties.Any())
                 {
-                    tagInstances = tagInstancesByType[child.GetType()] += 1;
+                    int tagInstances;
+                    if (tagInstancesByType.ContainsKey(child.GetType()))
+                    {
+                        tagInstances = tagInstancesByType[child.GetType()] += 1;
+                    }
+                    else
+                    {
+                        tagInstances = tagInstancesByType[child.GetType()] = 1;
+                    }
+
+                    child.SourceControl.FilterProperties.Add(
+                        CUITControls.HtmlControl.PropertyNames.TagInstance,
+                        tagInstances.ToString());    
                 }
-                else
-                {
-                    tagInstances = tagInstancesByType[child.GetType()] = 1;
-                }
-                
-                child.SourceControl.FilterProperties.Add(
-                    CUITControls.HtmlControl.PropertyNames.TagInstance,
-                    tagInstances.ToString());
 
                 yield return child;
             }
