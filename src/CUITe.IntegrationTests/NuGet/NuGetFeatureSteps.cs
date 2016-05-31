@@ -9,13 +9,11 @@
     using System.Runtime.InteropServices;
     using System.Text.RegularExpressions;
     using System.Threading;
-    using System.Windows.Forms;
     using System.Xml;
     using System.Xml.Serialization;
     using EnvDTE;
     using EnvDTE80;
     using Microsoft.VisualStudio;
-    using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.Win32;
     using TechTalk.SpecFlow;

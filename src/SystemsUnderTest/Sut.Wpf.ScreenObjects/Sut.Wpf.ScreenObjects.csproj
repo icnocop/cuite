@@ -62,6 +62,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="IdenticalButtonContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +79,9 @@
     </Compile>
     <Compile Include="Dialog.xaml.cs">
       <DependentUpon>Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IdenticalButtonContentDialog.xaml.cs">
+      <DependentUpon>IdenticalButtonContentDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
