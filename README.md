@@ -1,5 +1,7 @@
 ## What is CUITe?
 
+[![Join the chat at https://gitter.im/icnocop/cuite](https://badges.gitter.im/icnocop/cuite.svg)](https://gitter.im/icnocop/cuite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
 
 ## Supported technologies
