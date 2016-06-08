@@ -28,5 +28,15 @@ namespace Sut.Wpf.ScreenObjects
 
             dialog.Show();
         }
+
+        private void OnOpenIdenticalButtonContentDialog(object sender, RoutedEventArgs e)
+        {
+            var dialog = new IdenticalButtonContentDialog
+            {
+                Owner = this
+            };
+
+            dialog.ShowDialog();
+        }
     }
 }

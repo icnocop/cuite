@@ -51,20 +51,42 @@
                 AutomationProperties.AutomationId="C_-kLEiiN0Odz20KncjQJQ"
                 Content="Upper right control" />
         </GroupBox>
-
-        <!-- Open dialog buttons -->
-        <Button
+        
+        <!-- Middle control -->
+        <GroupBox
             Grid.Row="1"
-            AutomationProperties.AutomationId="wimAM1xvJkqKO5jO9uUrSg"
-            Content="Open Modal Dialog"
-            Click="OnOpenModalDialog_Click"/>
-        <Button
-            Grid.Row="1"
-            Grid.Column="1"
-            AutomationProperties.AutomationId="i_mSaEucbU-ohslSj7y9aA"
-            Content="Open Non-Modal Dialog"
-            Click="OnOpenNonModalDialog"/>
+            Grid.ColumnSpan="2"
+            Header="Middle Group">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
+                <!-- Open dialog buttons -->
+                <Button
+                    AutomationProperties.AutomationId="wimAM1xvJkqKO5jO9uUrSg"
+                    Content="Open Modal Dialog"
+                    Click="OnOpenModalDialog_Click"/>
+                <Button
+                    Grid.Column="1"
+                    AutomationProperties.AutomationId="i_mSaEucbU-ohslSj7y9aA"
+                    Content="Open Non-Modal Dialog"
+                    Click="OnOpenNonModalDialog"/>
+
+                <!-- Open dialog with a button identical to this -->
+                <Button
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Content="Identical Button Content"
+                    Click="OnOpenIdenticalButtonContentDialog"/>
+            </Grid>
+        </GroupBox>
+        
         <!-- Lower left control -->
         <GroupBox
             Grid.Row="2"

@@ -18,5 +18,10 @@ namespace Sut.WinForms.ScreenObjects
         {
             new Dialog().Show(this);
         }
+
+        private void buttonIdenticalContent_Click(object sender, System.EventArgs e)
+        {
+            new IdenticalButtonContentDialog().ShowDialog(this);
+        }
     }
 }

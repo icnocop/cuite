@@ -1,6 +1,8 @@
 ﻿using System;
 using CUITe.PageObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
+using CUITWinWindow = Microsoft.VisualStudio.TestTools.UITesting.WinControls.WinWindow;
+using CUITWpfWindow = Microsoft.VisualStudio.TestTools.UITesting.WpfControls.WpfWindow;
 
 namespace CUITe.ScreenObjects
 {
@@ -55,13 +57,36 @@ namespace CUITe.ScreenObjects
         /// Navigates to a new screen.
         /// </summary>
         /// <typeparam name="T">The type of screen to navigate to.</typeparam>
+        /// <param name="title">The title of the screen.</param>
         /// <returns>The new screen.</returns>
-        protected T NavigateTo<T>() where T : Screen, new()
+        protected T NavigateTo<T>(string title) where T : Screen, new()
         {
+            if (title == null)
+                throw new ArgumentNullException("title");
+
+            UITestControl searchLimitContainer;
+            
+            switch (Application.TechnologyName)
+            {
+                case "MSAA":
+                    searchLimitContainer = new CUITWinWindow();
+                    break;
+
+                case "UIA":
+                    searchLimitContainer = new CUITWpfWindow();
+                    break;
+
+                default:
+                    throw new NotSupportedException(string.Format("Technology {0} is not supported.", Application.TechnologyName));
+            }
+
+            searchLimitContainer.SearchProperties[UITestControl.PropertyNames.Name] = title;
+            searchLimitContainer.WindowTitles.Add(title);
+
             return new T
             {
                 Application = Application,
-                SearchLimitContainer = Application
+                SearchLimitContainer = searchLimitContainer
             };
         }
     }

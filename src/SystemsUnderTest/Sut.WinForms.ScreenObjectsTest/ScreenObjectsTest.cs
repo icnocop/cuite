@@ -134,5 +134,18 @@ namespace Sut.WinForms.ScreenObjectsTest
             // Assert
             Assert.IsTrue(dialogScreen.CloseButtonExists);
         }
+
+        [TestMethod]
+        public void ButtonInDialogWithIdenticalContent()
+        {
+            // Arrange
+            var identicalButtonContentScreen = mainScreen.MiddleScreenObject.NavigateToIdenticalButtonContentScreen();
+
+            // Act
+            identicalButtonContentScreen.ClickIdenticalButton();
+
+            // Assert
+            Assert.IsFalse(identicalButtonContentScreen.Self.Exists);
+        }
     }
 }
