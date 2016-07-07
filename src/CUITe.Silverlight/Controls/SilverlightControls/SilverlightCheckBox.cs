@@ -1,5 +1,5 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -11,11 +11,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightCheckBox : SilverlightControl<CUITControls.SilverlightCheckBox>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightCheckBox"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightCheckBox" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightCheckBox(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightCheckBox(), searchConfiguration)
+        public SilverlightCheckBox(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightCheckBox(parent), searchConfiguration)
         {
         }
 
@@ -69,4 +70,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

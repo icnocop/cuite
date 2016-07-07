@@ -29,7 +29,7 @@ namespace Sut.Silverlight.PageObjectsTest
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-            WebServer.StartServer(Directory.GetCurrentDirectory(), 8080, "/", "localhost");
+            WebServer.StartServer(Directory.GetCurrentDirectory());
         }
 
         [ClassCleanup]

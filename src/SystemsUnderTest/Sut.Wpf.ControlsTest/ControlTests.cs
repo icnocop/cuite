@@ -32,7 +32,7 @@ namespace Sut.Wpf.ControlsTest
         public void Button()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ButtonExists);            
+            Assert.IsTrue(mainScreen.ButtonExists);
         }
 
         [TestMethod]

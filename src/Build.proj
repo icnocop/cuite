@@ -7,122 +7,170 @@
     <CvsRootPath>$(CurrentDirectory)..</CvsRootPath>
     <SolutionPath>$(CurrentDirectory)CUITe.sln</SolutionPath>
     <!-- CUITe -->
-    <ProjectPath>$(CurrentDirectory)CUITe\CUITe.csproj</ProjectPath>
+    <ProjectPath>$(CurrentDirectory)CUITe.IntegrationTests\CUITe.IntegrationTests.csproj</ProjectPath>
     <!-- CUITe Silverlight -->
     <SilverlightProjectDir>$(CurrentDirectory)CUITe.Silverlight</SilverlightProjectDir>
-    <SilverlightProjectPath>$(SilverlightProjectDir)\CUITe.Silverlight.csproj</SilverlightProjectPath>
     <!-- NuGet -->
     <NuGetPath>$(CurrentDirectory).nuget\NuGet.exe</NuGetPath>
     <!-- VSTest -->
     <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
+    <ConfigurationName>Release</ConfigurationName>
   </PropertyGroup>
 
-  <!-- Builds CUITe in all supported configurations -->
-  <Target Name="Build">
-    <!-- VS2010 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=10;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2012 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2012 .NET45 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2013 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2013 .NET45 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=Release;VisualStudioVersion=12"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2015 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=14;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2015 .NET45 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=Release;VisualStudioVersion=14"
-      Targets="Rebuild"
-      BuildInParallel="true" />
+  <!-- Restore NuGet packages -->
+  <Target Name="Restore">
+    <Exec Command="&quot;$(NuGetPath)&quot; restore &quot;$(CurrentDirectory)CUITe.sln&quot;" />
   </Target>
 
-  <!-- Builds CUITe Silverlight in all supported configurations -->
-  <Target Name="BuildSilverlight">
-    <!-- VS2015 .NET45 -->
+  <!-- Builds CUITe in all supported configurations -->
+  <Target Name="Build" DependsOnTargets="Restore">
+    <!-- VS2010 .NET40 -->
     <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=14"
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0"
       Targets="Rebuild"
-      BuildInParallel="true" />
+      BuildInParallel="true"
+      StopOnFirstFailure="true"
+      ContinueOnError="true" />
 
-    <!-- VS2015 .NET40 -->
-    <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=14;TargetFrameworkVersion=v4.0;DefineConstants=TRACE"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-    
-    <!-- VS2013 .NET45 -->
-    <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=12"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2013 .NET40 -->
-    <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=12;TargetFrameworkVersion=v4.0;DefineConstants=TRACE"
-      Targets="Rebuild"
-      BuildInParallel="true" />
-
-    <!-- VS2012 .NET45 -->
-    <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
-      BuildInParallel="true" />
+    <Error Text="Visual Studio 2010 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2012 .NET40 -->
     <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=11;TargetFrameworkVersion=v4.0"
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0"
       Targets="Rebuild"
-      BuildInParallel="true" />
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2012 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2012 .NET45 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2012 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2013 .NET40 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2013 .NET45 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2013 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2015 .NET40 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2015 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2015 .NET45 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2015 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- CUITe.IntegrationTests -->
 
     <!-- VS2010 .NET40 -->
     <MSBuild
-      Projects="$(SilverlightProjectPath)"
-      Properties="Configuration=Release;VisualStudioVersion=10;TargetFrameworkVersion=v4.0"
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0"
       Targets="Rebuild"
-      BuildInParallel="true" />
+      BuildInParallel="true"
+      StopOnFirstFailure="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2010 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2012 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2012 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2012 .NET45 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2012 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2013 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2013 .NET45 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2015 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2015 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2015 .NET45 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.5"
+      Targets="Rebuild"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2015 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
   </Target>
 
   <Target Name="GetNuGetVersion">
-    <GetAssemblyIdentity AssemblyFiles="$(CurrentDirectory)CUITe\bin\Release\VS2010\net40\CUITe.dll">
+    <GetAssemblyIdentity AssemblyFiles="$(CurrentDirectory)CUITe\bin\$(ConfigurationName)\VS2010\net40\CUITe.dll">
       <Output TaskParameter="Assemblies" ItemName="CUITeAssemblyInfo"/>
     </GetAssemblyIdentity>
 
@@ -134,31 +182,27 @@
   
   <!-- Creates CUITe NuGet package -->
   <Target Name="Pack" DependsOnTargets="GetNuGetVersion">
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2010.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2012.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2013.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2015.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
-  </Target>
-
-  <!-- Creates CUITe Silverlight NuGet packages -->
-  <Target Name="PackSilverlight" DependsOnTargets="GetNuGetVersion">
-    <!-- VS2015 -->
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2015.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=14 -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
-    
-    <!-- VS2013 -->
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2013.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12 -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
+    <!-- VS2010 -->
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2010.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2010.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=10.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
 
     <!-- VS2012 -->
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2012.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=11 -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2012.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2012.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=11.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
 
-    <!-- VS2010 -->
-    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2010.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=10 -Prop Configuration=Release -Prop Version=$(NuGetVersion)" />
+    <!-- VS2013 -->
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2013.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2013.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=12.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+
+    <!-- VS2015 -->
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2015.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2015.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=14.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
   </Target>
 
   <!-- Runs all tests -->
   <Target Name="Test">
     <ItemGroup>
-      <TestAssemblies Include="$(CurrentDirectory)**\bin\Release\*Test.dll" />
+      <TestAssemblies Include="$(CurrentDirectory)**\bin\$(ConfigurationName)\*Test.dll" />
     </ItemGroup>
       
     <Exec Command="&quot;$(VSTestPath)&quot; @(TestAssemblies->'&quot;%(FullPath)&quot;', ' ')" />

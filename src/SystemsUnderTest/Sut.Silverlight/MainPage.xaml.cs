@@ -43,5 +43,11 @@ namespace Sut.Silverlight
         {
             textBlock1.Text = "asdasdadasdasdasdasdadadsd";
         }
+
+        private void displayChildWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            TestChildWindow testChildWindow = new TestChildWindow();
+            testChildWindow.Show();
+        }
     }
 }

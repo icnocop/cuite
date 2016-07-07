@@ -1,5 +1,5 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -11,11 +11,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightRadioButton : SilverlightControl<CUITControls.SilverlightRadioButton>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightRadioButton"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightRadioButton" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightRadioButton(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightRadioButton(), searchConfiguration)
+        public SilverlightRadioButton(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightRadioButton(parent), searchConfiguration)
         {
         }
 
@@ -47,4 +48,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

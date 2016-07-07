@@ -1,5 +1,5 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -10,11 +10,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightTabItem : SilverlightControl<CUITControls.SilverlightTabItem>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightTabItem"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightTabItem" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightTabItem(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightTabItem(), searchConfiguration)
+        public SilverlightTabItem(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightTabItem(parent), searchConfiguration)
         {
         }
 
@@ -29,4 +30,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif
