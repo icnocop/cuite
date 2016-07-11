@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Fixed [#82](https://github.com/icnocop/cuite/issues/82) - [@icnocop](https://github.com/icnocop)
 * Fixed [#89](https://github.com/icnocop/cuite/issues/89) - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Fixed [#87](https://github.com/icnocop/cuite/issues/87) - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Fixed [#92](https://github.com/icnocop/cuite/issues/92) - [@FantasticFiasco](https://github.com/FantasticFiasco)

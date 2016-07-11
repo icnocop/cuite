@@ -1,5 +1,5 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -11,11 +11,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightDataPager : SilverlightControl<CUITControls.SilverlightDataPager>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightDataPager"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightDataPager" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightDataPager(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightDataPager(), searchConfiguration)
+        public SilverlightDataPager(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightDataPager(parent), searchConfiguration)
         {
         }
 
@@ -30,4 +31,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

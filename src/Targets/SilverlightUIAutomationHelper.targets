@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Reference Condition="'$(VisualStudioVersion)' == '10.0'" Include="Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages\SilverlightUIAutomationHelper\Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper.dll</HintPath>
+    </Reference>
+    <Reference Condition="'$(VisualStudioVersion)' != '10.0'" Include="Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages\SilverlightUIAutomationHelper\$(SilverlightVersion)\Microsoft.VisualStudio.TestTools.UITest.Extension.SilverlightUIAutomationHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

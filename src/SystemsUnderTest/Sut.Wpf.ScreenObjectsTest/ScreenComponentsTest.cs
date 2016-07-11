@@ -122,7 +122,7 @@ namespace Sut.Wpf.ScreenObjectsTest
             var dialogScreen = mainScreen.MiddleScreenObject.NavigateToModalDialogScreen();
 
             // Assert
-            Assert.IsTrue(dialogScreen.CloseButtonExists);
+            Assert.IsTrue(dialogScreen.CloseButton.Exists);
         }
 
         [TestMethod]
@@ -132,7 +132,7 @@ namespace Sut.Wpf.ScreenObjectsTest
             var dialogScreen = mainScreen.MiddleScreenObject.NavigateToNonModalDialogScreen();
 
             // Assert
-            Assert.IsTrue(dialogScreen.CloseButtonExists);
+            Assert.IsTrue(dialogScreen.CloseButton.Exists);
         }
 
         [TestMethod]

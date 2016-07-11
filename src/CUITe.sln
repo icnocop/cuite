@@ -19,7 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Targets\CUIT.Silverlight.targets = Targets\CUIT.Silverlight.targets
 		Targets\CUIT.targets = Targets\CUIT.targets
 		CUITe.snk = CUITe.snk
+		CUITe.vsmdi = CUITe.vsmdi
 		DefineNetFxCompilationConstants.prop = DefineNetFxCompilationConstants.prop
+		Local.testsettings = Local.testsettings
+		Targets\SilverlightUIAutomationHelper.targets = Targets\SilverlightUIAutomationHelper.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight", "SystemsUnderTest\Sut.Silverlight\Sut.Silverlight.csproj", "{B38FF342-51EB-4338-AE14-D73AF81E5622}"
@@ -101,6 +104,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe.IntegrationTests", "CUITe.IntegrationTests\CUITe.IntegrationTests.csproj", "{9E236576-EA59-46B1-A6C9-FB9A17D32118}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CUITe.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -405,7 +411,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8EA1EB80-66EF-4877-B082-3BFAD597ADEB} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{B38FF342-51EB-4338-AE14-D73AF81E5622} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{26221FFA-E635-4D86-B7CE-53BB16F0399C} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{AF645712-A7CA-4D8C-8684-FFF737CD0701} = {0D358022-2827-4DDD-9945-FEC322B4E946}
@@ -423,6 +428,7 @@ Global
 		{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{3E624F8A-A115-4792-8C86-51FB529C34E5} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{ED312AAC-D022-49BA-A049-043D0091C9F5} = {0D358022-2827-4DDD-9945-FEC322B4E946}
+		{8EA1EB80-66EF-4877-B082-3BFAD597ADEB} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{0A42B4CE-A090-410F-BDEA-199848598059} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{D8E9A365-E3CE-46C9-A501-E49924336B42} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{EE2AB077-2630-4F38-944C-B1D623FCB41E} = {0D358022-2827-4DDD-9945-FEC322B4E946}

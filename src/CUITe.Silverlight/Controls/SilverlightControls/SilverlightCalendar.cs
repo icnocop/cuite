@@ -1,7 +1,7 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
 using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -12,11 +12,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightCalendar : SilverlightControl<CUITControls.SilverlightCalendar>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightCalendar"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightCalendar" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightCalendar(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightCalendar(), searchConfiguration)
+        public SilverlightCalendar(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightCalendar(parent), searchConfiguration)
         {
         }
 
@@ -101,4 +102,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

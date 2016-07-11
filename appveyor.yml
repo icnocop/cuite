@@ -291,7 +291,6 @@ init:
     del $logFilePath  
     Write-Host "Visual Studio 2015 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
       
-      
     # Microsoft Silverlight 5 Toolkit - December 2011  
     $msiFilePath = "$($env:USERPROFILE)\Silverlight_5_Toolkit_December_2011.msi"  
     $logFilePath = "$($env:TEMP)\Silverlight_5_Toolkit_December_2011.txt"  
@@ -306,6 +305,27 @@ init:
     del $msiFilePath  
     del $logFilePath  
     Write-Host "Microsoft Silverlight 5 Toolkit - December 2011 successfully installed" -ForegroundColor Green  
+      
+    # Microsoft Silverlight 5 Developer Runtime for Windows (64 bit)  
+    $exeFilePath = "$($env:USERPROFILE)\Silverlight_Developer_x64.exe"  
+    $retry_attempts = 3  
+    for($i=0; $i -lt $retry_attempts; $i++){  
+        try {  
+            $webclient.DownloadFile('http://download.microsoft.com/download/1/F/6/1F637DB3-8EF9-4D96-A8F1-909DFD7C5E69/50428.00/Silverlight_Developer_x64.exe', $exeFilePath)  
+            break  
+        }  
+        Catch [Exception]{  
+            Start-Sleep 1  
+        }  
+    }  
+    $process = (Start-Process -FilePath $exeFilePath -ArgumentList "/q" -Wait -Passthru)  
+    $exitCode = $process.ExitCode  
+    if ($exitCode -ne 0)  
+    {  
+      throw "Command failed with exit code $exitCode."  
+    }  
+    del $exeFilePath  
+    Write-Host "Microsoft Silverlight 5 Developer Runtime for Windows (64 bit) successfully installed" -ForegroundColor Green  
       
     # Google Chrome  
     $msiFilePath = "$($env:USERPROFILE)\GoogleChromeStandaloneEnterprise.msi"  
@@ -436,7 +456,7 @@ build_script:
 
     call "%VS140COMNTOOLS%VsDevCmd.bat"
 
-    msbuild.exe src\build.proj /t:Build;Pack;BuildSilverlight;PackSilverlight
+    msbuild.exe src\build.proj /t:Build;Pack
 
     REM icacls src\Sut.HtmlTest\bin\Release\TestHtmlPage.html /setintegritylevel (CI)(OI)Low
 test:
@@ -450,17 +470,17 @@ deploy:
     secure: g78LUTxqGPAeE0eliIasoLHL2fGxcWkPcojy06FwWUqtRUK3E4ToYSQ34GlEUYj5
   artifact: NuGet
 on_finish:
-- ps: >-
-    # Collect test results
-    Write-Host "Publishing test results..."
-    Get-ChildItem '.\TestResults\*\In' -Recurse -Include '*.*' | % { Push-AppveyorArtifact $_.FullName -FileName $(-Join $(Split-Path (Split-Path (Split-Path $_.FullName -Parent) -Parent ) -Leaf) + '_' + $_.Name) -DeploymentName TestResult }
+- ps: |
+    # Collect test results  
+    Write-Host "Publishing test results..."  
+    Get-ChildItem '.\TestResults\*\In' -Recurse -Include '*.*' | % { Push-AppveyorArtifact $_.FullName -FileName $(-Join $(Split-Path (Split-Path (Split-Path $_.FullName -Parent) -Parent ) -Leaf) + '_' + $_.Name) -DeploymentName TestResult }  
 
-    # Collect UI test log
-    Write-Host "Publishing UI test log..."
-    Push-AppveyorArtifact $env:temp\UITestLogs\LastRun\UITestLog.html -DeploymentName UITestLog
+    # Collect UI test log  
+    Write-Host "Publishing UI test log..."  
+    Push-AppveyorArtifact $env:temp\UITestLogs\LastRun\UITestLog.html -DeploymentName UITestLog  
 
-    # Allow Remote Desktop
-    # $webclient = New-Object System.Net.WebClient
-    # $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+    # Allow Remote Desktop  
+    # $webclient = New-Object System.Net.WebClient  
+    # $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
 
     Write-Host "Build finished."

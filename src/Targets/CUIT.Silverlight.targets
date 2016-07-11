@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(SolutionDir)\Targets\CUIT.targets" />
   <Choose>
-    <When Condition="'$(VisualStudioVersion)' == '10'">
+    <When Condition="'$(VisualStudioVersion)' == '10.0'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -9,7 +9,7 @@
         </Reference>
       </ItemGroup>
     </When>
-    <When Condition="'$(VisualStudioVersion)' == '11'">
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=11.0.0.0, Culture=neutral, PublicKeyToken=374b4c93160c098c, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -17,7 +17,7 @@
         </Reference>
       </ItemGroup>
     </When>
-    <When Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.0'">
+    <When Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=11.0.0.0, Culture=neutral, PublicKeyToken=374b4c93160c098c, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -25,7 +25,7 @@
         </Reference>
       </ItemGroup>
     </When>
-    <When Condition="'$(VisualStudioVersion)' == '12' And '$(TargetFrameworkVersion)' == 'v4.5'">
+    <When Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -33,7 +33,7 @@
         </Reference>
       </ItemGroup>
     </When>
-    <When Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.0'">
+    <When Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=11.0.0.0, Culture=neutral, PublicKeyToken=374b4c93160c098c, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -41,7 +41,7 @@
         </Reference>
       </ItemGroup>
     </When>
-    <When Condition="'$(VisualStudioVersion)' == '14' And '$(TargetFrameworkVersion)' == 'v4.5'">
+    <When Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>

@@ -1,5 +1,4 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
@@ -12,11 +11,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightComboBox : SilverlightControl<CUITControls.SilverlightComboBox>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightComboBox"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightComboBox" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightComboBox(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightComboBox(), searchConfiguration)
+        public SilverlightComboBox(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightComboBox(parent), searchConfiguration)
         {
         }
 
@@ -110,4 +110,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

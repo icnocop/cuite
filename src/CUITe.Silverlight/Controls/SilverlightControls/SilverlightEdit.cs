@@ -1,5 +1,5 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -10,11 +10,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightEdit : SilverlightControl<CUITControls.SilverlightEdit>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightEdit"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightEdit" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightEdit(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightEdit(), searchConfiguration)
+        public SilverlightEdit(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightEdit(parent), searchConfiguration)
         {
         }
 
@@ -58,4 +59,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

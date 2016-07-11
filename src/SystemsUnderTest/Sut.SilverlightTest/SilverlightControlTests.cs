@@ -5,6 +5,7 @@ using CUITe.Controls;
 using CUITe.Controls.SilverlightControls;
 using CUITe.PageObjects;
 using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITest.Extension;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.SilverlightTest.PageObjects;
@@ -14,9 +15,25 @@ namespace Sut.SilverlightTest
     [CodedUITest]
     [DeploymentItem("Sut.Silverlight.html")]
 #if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\Sut.Silverlight.xap")]
+    #if VS2010
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2010\Sut.Silverlight.xap")]
+    #elif VS2012
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2012\Sut.Silverlight.xap")]
+    #elif VS2013
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2013\Sut.Silverlight.xap")]
+    #elif VS2015
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2015\Sut.Silverlight.xap")]
+    #endif
 #else
-    [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\Sut.Silverlight.xap")]
+    #if VS2010
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2010\Sut.Silverlight.xap")]
+    #elif VS2012
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2012\Sut.Silverlight.xap")]
+    #elif VS2013
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2013\Sut.Silverlight.xap")]
+    #elif VS2015
+        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2015\Sut.Silverlight.xap")]
+    #endif
 #endif
     public class SilverlightControlTests
     {
@@ -24,20 +41,40 @@ namespace Sut.SilverlightTest
         //treat web pages differently between http://localhost and file:// (compatibility mode\view)
 
         private static readonly CassiniDevServer WebServer = new CassiniDevServer();
-        private static readonly string HostName = "localhost";
-        private static readonly int Port = 8080;
-        private static readonly string PageUrl = string.Format("http://{0}:{1}/Sut.Silverlight.html", HostName, Port);
-        
+
+        private string PageUrl
+        {
+            get
+            {
+                return string.Format("{0}Sut.Silverlight.html", WebServer.RootUrl);
+            }
+        }
+
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-            WebServer.StartServer(Directory.GetCurrentDirectory(), Port, "/", HostName);
+            WebServer.StartServer(Directory.GetCurrentDirectory());
         }
 
         [ClassCleanup]
         public static void ClassCleanup()
         {
             WebServer.StopServer();
+        }
+        [TestInitialize]
+        public void TestInitialize()
+        {
+#if !VS2010 && !VS2012
+            Playback.PlaybackSettings.AlwaysSearchControls = true; // false
+#elif !VS2010
+            Playback.PlaybackSettings.MaximumRetryCount = 3; // 1
+#endif
+            Playback.PlaybackSettings.MatchExactHierarchy = false; // false
+            Playback.PlaybackSettings.SearchTimeout = 120000; // 120000
+            Playback.PlaybackSettings.ShouldSearchFailFast = false; // true
+            Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None; // SmartMatchOptions.Control
+            Playback.PlaybackSettings.WaitForReadyLevel = WaitForReadyLevel.UIThreadOnly; // .UIThreadOnly
+            Playback.PlaybackSettings.WaitForReadyTimeout = 60000; // 60000
         }
 
         [TestMethod]
@@ -116,6 +153,21 @@ namespace Sut.SilverlightTest
             }
             Assert.IsTrue(((SilverlightTab)btnOK.Parent).SelectedItem == "tabItem1");
             b.Close();
+        }
+
+        [TestMethod]
+        public void Click_ButtonInChildWindow_Succeeds()
+        {
+            BrowserWindow browserWindow = BrowserWindow.Launch(PageUrl);
+            browserWindow.SetFocus();
+            SilverlightButton button = browserWindow.Find<SilverlightButton>(By.AutomationId("displayChildWindowButton"));
+            button.Click();
+
+            SilverlightChildWindow childWindow = browserWindow.Find<SilverlightChildWindow>(By.AutomationId("TestChildWindow"));
+            SilverlightButton okButton = childWindow.Find<SilverlightButton>(By.AutomationId("OKButton"));
+            okButton.Click();
+
+            browserWindow.Close();
         }
     }
 }

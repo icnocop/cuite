@@ -53,6 +53,12 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
+  <PropertyGroup>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '10.0'">$(DefineConstants);VS2010;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '11.0'">$(DefineConstants);VS2012;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '12.0'">$(DefineConstants);VS2013;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '14.0'">$(DefineConstants);VS2015;</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
       <Visible>False</Visible>

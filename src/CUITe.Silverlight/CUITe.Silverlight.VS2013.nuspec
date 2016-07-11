@@ -16,9 +16,7 @@
   <files>
     <file src="bin\Release\VS2013\net45\CUITe.dll" target="lib\net45\CUITe.dll" />
     <file src="bin\Release\VS2013\net45\CUITe.xml" target="lib\net45\CUITe.xml" />
-    <file src="bin\Release\VS2013\net40\CUITe.Silverlight.dll" target="lib\net40\CUITe.Silverlight.dll" />
-    <file src="bin\Release\VS2013\net40\CUITe.Silverlight.xml" target="lib\net40\CUITe.Silverlight.xml" />
-    <file src="bin\Release\VS2013\net40\CUITe.dll" target="lib\net40\CUITe.dll" />
-    <file src="bin\Release\VS2013\net40\CUITe.xml" target="lib\net40\CUITe.xml" />
+    <file src="bin\Release\VS2013\net45\CUITe.Silverlight.dll" target="lib\net45\CUITe.Silverlight.dll" />
+    <file src="bin\Release\VS2013\net45\CUITe.Silverlight.xml" target="lib\net45\CUITe.Silverlight.xml" />
   </files>
 </package>

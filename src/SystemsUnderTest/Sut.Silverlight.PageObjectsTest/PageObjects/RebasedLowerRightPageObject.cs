@@ -4,7 +4,7 @@ using CUITe.SearchConfigurations;
 
 namespace Sut.Silverlight.PageObjectsTest.PageObjects
 {
-    public class RebasedLowerRightPageObject : PageObject<SilverlightTabItem>
+    public class RebasedLowerRightPageObject : PageObject<SilverlightTab>
     {
         public RebasedLowerRightPageObject()
             : base(By.AutomationId("vzoWE0pag0S7yk0Wmb9iug"))

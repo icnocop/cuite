@@ -1,5 +1,5 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
+using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
 namespace CUITe.Controls.SilverlightControls
@@ -10,11 +10,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightTab : SilverlightControl<CUITControls.SilverlightTab>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightTab"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightTab" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightTab(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightTab(), searchConfiguration)
+        public SilverlightTab(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightTab(parent), searchConfiguration)
         {
         }
 
@@ -80,4 +81,3 @@ namespace CUITe.Controls.SilverlightControls
         // TODO: Tab item enabled or disabled
     }
 }
-#endif

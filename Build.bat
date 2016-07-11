@@ -5,12 +5,29 @@ call "%VS120COMNTOOLS%VsDevCmd.bat"
 rem Parameters
 set PROJECT=.\src\Build.proj
 
+set ConfigurationName=%1
+
+if '%ConfigurationName%'=='' set ConfigurationName=Release
+
 rem Build
-msbuild.exe %PROJECT% /t:Build
-msbuild.exe %PROJECT% /t:Pack
+msbuild.exe %PROJECT% /t:Build /p:ConfigurationName=%ConfigurationName%
+if %errorlevel% neq 0 (
+    goto error
+)
 
-rem Build Silverlight
-msbuild.exe %PROJECT% /t:BuildSilverlight
-msbuild.exe %PROJECT% /t:PackSilverlight
+msbuild.exe %PROJECT% /t:Pack /p:ConfigurationName=%ConfigurationName%
+if %errorlevel% neq 0 (
+    goto error
+)
 
+goto end:
+
+:error
+echo An error has occurred.
 pause
+exit /b 1
+
+:end
+echo Finished successfully.
+pause
+exit /b 0
