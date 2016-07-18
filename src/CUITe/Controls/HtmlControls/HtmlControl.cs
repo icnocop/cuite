@@ -191,9 +191,33 @@ namespace CUITe.Controls.HtmlControls
         {
             WaitForControlReadyIfNecessary();
 
-            return SourceControl.GetChildren()
+            ControlBase[] children = SourceControl.GetChildren()
                 .Select(child => WrapUtil((CUITControls.HtmlControl)child))
                 .ToArray();
+
+            Dictionary<Type, int> tagInstancesByType = new Dictionary<Type, int>();
+
+            foreach (ControlBase child in children)
+            {
+                if (child.SourceControl.SearchProperties.Any())
+                {
+                    int tagInstances;
+                    if (tagInstancesByType.ContainsKey(child.GetType()))
+                    {
+                        tagInstances = tagInstancesByType[child.GetType()] += 1;
+                    }
+                    else
+                    {
+                        tagInstances = tagInstancesByType[child.GetType()] = 1;
+                    }
+
+                    child.SourceControl.FilterProperties.Add(
+                        CUITControls.HtmlControl.PropertyNames.TagInstance,
+                        tagInstances.ToString());    
+                }
+
+                yield return child;
+            }
         }
 
         /// <summary>

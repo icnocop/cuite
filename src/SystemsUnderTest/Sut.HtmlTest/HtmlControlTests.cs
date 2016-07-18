@@ -338,7 +338,7 @@ namespace Sut.HtmlTest
                 if (BrowserWindowUnderTest.GetCurrentBrowser() is InternetExplorer)
                 {
                     //read JavaScript alert text
-                    WinWindow popup = new WinWindow(By.Name("Message from webpage").AndSearchProperties("ClassName=#32770"));
+                    WinWindow popup = new WinWindow(By.Name("Message from webpage").AndClassName("#32770"));
                     WinText text = popup.Find<WinText>();
                     Assert.AreEqual("onclick", text.DisplayText);
                 }
@@ -1398,6 +1398,92 @@ namespace Sut.HtmlTest
                 hyperlink.Click();
 
                 // TODO: Assert
+                browserWindow.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://github.com/icnocop/cuite/issues/92
+        /// </summary>
+        [TestMethod]
+        public void GetChildrenOfSameType()
+        {
+            // Arrange
+            using (var webPage = new TempWebPage(
+                @"<html>
+                    <head>
+                        <title>test</title>
+                    </head>
+                    <body>
+                        <div id=""panel"">
+                            <p>1</p>
+                            <p>2</p>
+                            <p>3</p>
+                        </div>
+                    </body>
+                </html>"))
+            {
+                var browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var panel = browserWindow.Find<HtmlDiv>(By.Id("panel"));
+
+                // Act
+                ControlBase[] children = panel.GetChildren().ToArray();
+
+                // Assert
+                Assert.AreEqual(3, children.Length);
+                
+                Assert.IsInstanceOfType(children[0], typeof(HtmlParagraph));
+                Assert.AreEqual("1", ((HtmlParagraph)children[0]).InnerText);
+
+                Assert.IsInstanceOfType(children[1], typeof(HtmlParagraph));
+                Assert.AreEqual("2", ((HtmlParagraph)children[1]).InnerText);
+
+                Assert.IsInstanceOfType(children[2], typeof(HtmlParagraph));
+                Assert.AreEqual("3", ((HtmlParagraph)children[2]).InnerText);
+                
+                browserWindow.Close();
+            }
+        }
+
+        /// <summary>
+        /// https://github.com/icnocop/cuite/issues/92
+        /// </summary>
+        [TestMethod]
+        public void GetChildrenOfMixedType()
+        {
+            // Arrange
+            using (var webPage = new TempWebPage(
+                @"<html>
+                    <head>
+                        <title>test</title>
+                    </head>
+                    <body>
+                        <div id=""panel"">
+                            <p>1</p>
+                            <h1>2</h1>
+                            <p>3</p>
+                        </div>
+                    </body>
+                </html>"))
+            {
+                var browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var panel = browserWindow.Find<HtmlDiv>(By.Id("panel"));
+
+                // Act
+                ControlBase[] children = panel.GetChildren().ToArray();
+
+                // Assert
+                Assert.AreEqual(3, children.Length);
+
+                Assert.IsInstanceOfType(children[0], typeof(HtmlParagraph));
+                Assert.AreEqual("1", ((HtmlParagraph)children[0]).InnerText);
+
+                Assert.IsInstanceOfType(children[1], typeof(HtmlHeading1));
+                Assert.AreEqual("2", ((HtmlHeading1)children[1]).InnerText);
+
+                Assert.IsInstanceOfType(children[2], typeof(HtmlParagraph));
+                Assert.AreEqual("3", ((HtmlParagraph)children[2]).InnerText);
+
                 browserWindow.Close();
             }
         }

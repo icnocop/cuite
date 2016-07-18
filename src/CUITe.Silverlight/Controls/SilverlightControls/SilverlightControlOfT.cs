@@ -1,5 +1,4 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UITesting;
@@ -160,6 +159,10 @@ namespace CUITe.Controls.SilverlightControls
             {
                 _con = new SilverlightCheckBox((CUITControls.SilverlightCheckBox)control);
             }
+            else if (control.GetType() == typeof(CUITControls.SilverlightChildWindow))
+            {
+                _con = new SilverlightChildWindow((CUITControls.SilverlightChildWindow)control);
+            }
             else if (control.GetType() == typeof(CUITControls.SilverlightComboBox))
             {
                 _con = new SilverlightComboBox((CUITControls.SilverlightComboBox)control);
@@ -191,6 +194,10 @@ namespace CUITe.Controls.SilverlightControls
             else if (control.GetType() == typeof(CUITControls.SilverlightList))
             {
                 _con = new SilverlightList((CUITControls.SilverlightList)control);
+            }
+            else if (control.GetType() == typeof(CUITControls.SilverlightListItem))
+            {
+                _con = new SilverlightListItem((CUITControls.SilverlightListItem)control);
             }
             else if (control.GetType() == typeof(CUITControls.SilverlightRadioButton))
             {
@@ -243,4 +250,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif

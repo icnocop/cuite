@@ -80,6 +80,7 @@
             </controls:TabItem>
             <controls:TabItem Header="Second Tab" Name="tabItem2"/>
         </controls:TabControl>
+        <Button AutomationProperties.AutomationId="displayChildWindowButton" Content="Display Child Window" Height="25" Width="150" HorizontalAlignment="Left" Margin="100,100,0,0" Click="displayChildWindowButton_Click" />
     </Grid>
 
 </UserControl>

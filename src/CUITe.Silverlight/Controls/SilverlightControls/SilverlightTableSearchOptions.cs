@@ -1,5 +1,4 @@
-﻿#if SILVERLIGHT_SUPPORT
-namespace CUITe.Controls.SilverlightControls
+﻿namespace CUITe.Controls.SilverlightControls
 {
     /// <summary>
     /// Enum describing how cells are searched for in <see cref="SilverlightTable"/>.
@@ -32,4 +31,3 @@ namespace CUITe.Controls.SilverlightControls
         EndsWith
     }
 }
-#endif

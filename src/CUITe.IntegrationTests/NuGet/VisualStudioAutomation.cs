@@ -2,21 +2,21 @@
 {
     using System;
     using System.Threading;
-    using EnvDTE;
+    using EnvDTE80;
     using Microsoft.VisualStudio.Shell;
 
     public class VisualStudioAutomation : IDisposable
     {
-        private readonly DTE dteInternal;
+        private readonly DTE2 dteInternal;
 
         private readonly SolutionEventsListener solutionEventsListener;
 
-        public VisualStudioAutomation(DTE dte)
+        public VisualStudioAutomation(DTE2 dte)
         {
             this.dteInternal = dte;
 
             ServiceProvider serviceProvider = new ServiceProvider(dte as Microsoft.VisualStudio.OLE.Interop.IServiceProvider);
-            
+
             this.solutionEventsListener = new SolutionEventsListener(serviceProvider);
 
             this.QuitVisualStudioOnDispose = true;

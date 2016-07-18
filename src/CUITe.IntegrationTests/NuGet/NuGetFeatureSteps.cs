@@ -1,6 +1,4 @@
-﻿namespace CUITe.IntegrationTests.NuGet
-{
-    using System;
+﻿    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
@@ -10,6 +8,7 @@
     using System.Text.RegularExpressions;
     using System.Threading;
     using System.Xml;
+using System.Xml.Linq;
     using System.Xml.Serialization;
     using EnvDTE;
     using EnvDTE80;
@@ -19,7 +18,11 @@
     using TechTalk.SpecFlow;
     using TestHelpers;
     using VSLangProj;
+using CUITe.ScreenObjects;
+using Microsoft.VisualStudio.TestTools.UITesting;
 
+namespace CUITe.IntegrationTests.NuGet
+{
     [Binding]
     public class NuGetFeatureSteps : IDisposable
     {
@@ -31,13 +34,13 @@
 
         private TempDirectory solutionDirectory;
 
-        private DTE dte;
+        private DTE2 dte;
 
         private VisualStudioAutomation visualStudio;
 
-        private Solution solution;
+        private Solution2 solution;
 
-        private Project testProject;
+        private VSProject testProject;
 
         private string testProjectPath;
 
@@ -49,12 +52,25 @@
 
         private string testProjectTemplatePath;
 
+        private bool isSilverlightNuGetPackage;
+
+        private string solutionFilePath;
+
+        private string testSettingsFilePath;
+
+        private string codedUiTestCsFilePath;
+
+        private const string SolutionName = "NewSolution";
         private const string ProjectName = "TestProject";
 
         public NuGetFeatureSteps()
         {
             MessageFilter.Register();
         }
+
+        private string NuGetPackageId { get; set; }
+
+        private string TargetFrameworkVersion { get; set; }
 
         [Given(@"the Visual Studio version (.*)")]
         public void GivenTheVisualStudioVersion(string visualStudioVersion)
@@ -84,10 +100,14 @@
 
             Trace.WriteLine(string.Format("Visual Studio Program Id: {0}", this.visualStudioProgramId));
 
+            // get the visual studio project template cache path
+            // ex. c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ProjectTemplatesCache
             this.visualStudioProjectTemplateCachePath = this.GetVisualStudioProjectTemplateCachePath(this.visualStudioVersionNumber);
 
             Trace.WriteLine(string.Format("Visual Studio Project Template Cache Path: {0}", this.visualStudioProjectTemplateCachePath));
 
+            // get the visual studio item template cache path
+            // ex. c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ItemTemplatesCache
             this.visualStudioItemTemplateCachePath = this.GetVisualStudioItemTemplateCachePath(this.visualStudioVersionNumber);
 
             Trace.WriteLine(string.Format("Visual Studio Item Template Cache Path: {0}", this.visualStudioItemTemplateCachePath));
@@ -114,12 +134,14 @@
         [When(@"a new Coded UI test project is created with platform (.*)")]
         public void WhenANewCodedUITestProjectIsCreatedWithPlatform(string platform)
         {
+            this.TargetFrameworkVersion = platform;
+
             using (new TemporaryEnvironmentVariable("VisualStudioVersion", string.Format("{0}.0", this.visualStudioVersionNumber)))
             {
                 Type type = Type.GetTypeFromProgID(this.visualStudioProgramId);
                 Object obj = Activator.CreateInstance(type, true);
 
-                this.dte = (DTE)obj;
+                this.dte = (DTE2)obj;
             }
 
             this.dte.MainWindow.Visible = true;
@@ -127,12 +149,15 @@
 
             // create a new solution
             this.solutionDirectory = new TempDirectory();
-            // this.solutionDirectory.DeleteDirectoryOnDispose = false;
 
-            this.dte.Solution.Create(this.solutionDirectory.DirectoryPath, "NewSolution");
+            this.dte.Solution.Create(this.solutionDirectory.DirectoryPath, SolutionName);
+            this.solutionFilePath = Path.Combine(this.solutionDirectory.DirectoryPath, SolutionName + ".sln");
             this.visualStudio = new VisualStudioAutomation(this.dte);
-            // this.visualStudio.QuitVisualStudioOnDispose = false;
-            this.solution = this.dte.Solution;
+            this.solution = (Solution2)this.dte.Solution;
+
+            // for troubleshooting purposes, uncomment the next two lines
+            //this.solutionDirectory.DeleteDirectoryOnDispose = false;
+            //this.visualStudio.QuitVisualStudioOnDispose = false;
 
             // create a test project
             this.testProjectPath = Path.Combine(this.solutionDirectory.DirectoryPath, ProjectName);
@@ -154,7 +179,11 @@
                         continue;
                     }
 
-                    this.testProject = project;
+                    this.testProject = (VSProject)project.Object;
+                    if (this.testProject == null)
+                    {
+                        throw new Exception("Failed to convert Project to VSProject.");
+                    }
 
                     break;
                 }
@@ -172,16 +201,21 @@
 
                 Trace.WriteLine(string.Format("Adding project item '{0}' from template '{1}'...", name, templateFile));
 
-                this.testProject.ProjectItems.AddFromTemplate(templateFile, name);
-            }
+                this.testProject.Project.ProjectItems.AddFromTemplate(templateFile, name);
 
-            VSProject vsProject = this.testProject.Object as VSProject;
-            if (vsProject == null)
+                foreach (ProjectItem projectItem in this.testProject.Project.ProjectItems)
             {
-                throw new Exception("Failed to convert Project to VSProject.");
+                    if (projectItem.Name.Equals(name))
+                    {
+                        this.codedUiTestCsFilePath = projectItem.Properties.Item("FullPath").Value.ToString();
+                        break;
+            }
+                }
+
+                Assert.IsFalse(string.IsNullOrEmpty(this.codedUiTestCsFilePath));
             }
 
-            foreach (Reference projectReference in vsProject.References)
+            foreach (Reference projectReference in this.testProject.References)
             {
                 if (new[]
                     {
@@ -278,6 +312,15 @@
             return string.Format("{0}, Version={1}.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL", assemblyName, majorVersionNumber);
         }
 
+        /// <summary>
+        /// Gets the visual studio template cache path.
+        /// </summary>
+        /// <param name="visualStudioVersion">The visual studio version.</param>
+        /// <param name="templateType">Type of the template.</param>
+        /// <returns>
+        /// The visual studio template cache path.
+        /// For example, c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ItemTemplatesCache
+        /// </returns>
         private string GetVisualStudioTemplateCachePath(string visualStudioVersion, string templateType)
         {
             List<string> registryKeys = new List<string>
@@ -289,7 +332,7 @@
             if (Environment.Is64BitOperatingSystem)
             {
                 registryKeys.Add("Wow6432Node");
-            };
+            }
 
             registryKeys.AddRange(new[]
             {
@@ -312,23 +355,49 @@
             return cacheFolder.ToString();
         }
 
+        /// <summary>
+        /// Gets the visual studio project template cache path.
+        /// </summary>
+        /// <param name="visualStudioVersion">The visual studio version.</param>
+        /// <returns>
+        /// The visual studio project template cache path.
+        /// For example, c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ProjectTemplatesCache
+        /// </returns>
         private string GetVisualStudioProjectTemplateCachePath(string visualStudioVersion)
         {
             return this.GetVisualStudioTemplateCachePath(visualStudioVersion, "Project");
         }
 
+        /// <summary>
+        /// Gets the visual studio item template cache path.
+        /// </summary>
+        /// <param name="visualStudioVersion">The visual studio version.</param>
+        /// <returns>
+        /// The visual studio item template cache path.
+        /// For example, c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ItemTemplatesCache
+        /// </returns>
         private string GetVisualStudioItemTemplateCachePath(string visualStudioVersion)
         {
             return this.GetVisualStudioTemplateCachePath(visualStudioVersion, "Item");
         }
 
-        [When(@"the CUITe nuget package ""(.*)"" is added to the project")]
-        public void WhenTheCUITeNugetPackageIsAddedToTheProject(string nugetPackageId)
+        [When(@"the CUITe nuget package ""(.*)"", ""(.*)"" is added to the project")]
+        public void WhenTheCUITeNugetPackageIsAddedToTheProject(string nugetPackageId, string nuGetProjectReferenceName)
         {
-            this.InstallNuGetPackage(this.testProject, nugetPackageId, ProjectName);
+            this.NuGetPackageId = nugetPackageId;
+            this.isSilverlightNuGetPackage = this.NuGetPackageId.Contains("Silverlight");
+
+            this.InstallNuGetPackage(this.testProject, nugetPackageId, ProjectName, nuGetProjectReferenceName, Directory.GetCurrentDirectory(), true);
         }
 
-        private void InstallNuGetPackage(Project project, string package, string projectName)
+        private void InstallNuGetPackage(
+            VSProject project,
+            string package,
+            string projectName,
+            string projectReferenceName,
+            string source = null,
+            bool includePrerelease = false,
+            string version = null)
         {
             // activate Package Manager Console window
             const string packageManagerConsoleGuid = "{0AD07096-BBA9-4900-A651-0598D26F6D24}";
@@ -339,24 +408,40 @@
             string commandName = "View.PackageManagerConsole";
 
             // Execute Install-Command in Package Manager Console
-            string[] nugetCommandArguments =
+            List<string> nugetCommandArguments = new List<string>
             {
-                string.Format("Install-Package {0}", package),
-                string.Format("-Source \"{0}\"", Directory.GetCurrentDirectory()),
-                string.Format("-ProjectName {0}", projectName),
-                "-IncludePrerelease"
+                string.Format("Install-Package {0}", package)
             };
+
+            if (source != null)
+            {
+                nugetCommandArguments.Add(string.Format("-Source \"{0}\"", source));
+            }
+
+            nugetCommandArguments.Add(string.Format("-ProjectName {0}", projectName));
+
+            if (includePrerelease)
+            {
+                nugetCommandArguments.Add("-IncludePrerelease");
+            }
+
+            if (version != null)
+            {
+                nugetCommandArguments.Add(string.Format("-Version {0}", version));
+            }
 
             string nugetCommand = string.Join(" ", nugetCommandArguments);
 
             AutoResetEvent autoResetEvent = new AutoResetEvent(false);
 
-            this.dte.Events.CommandEvents.BeforeExecute += (string guid, int id, object @in, object @out, ref bool cancelDefault) =>
+            _dispCommandEvents_BeforeExecuteEventHandler commandEventsOnBeforeExecute = (string guid, int id, object @in, object @out, ref bool cancelDefault) =>
             {
                 Trace.WriteLine(string.Format("Before Executing Command Guid: {0} In: {1} Out: {2}", this.ConvertGuidAndId(guid, id), @in, @out));
             };
 
-            this.dte.Events.CommandEvents.AfterExecute += (guid, id, @in, @out) =>
+            this.dte.Events.CommandEvents.BeforeExecute += commandEventsOnBeforeExecute;
+
+            _dispCommandEvents_AfterExecuteEventHandler commandEventsOnAfterExecute = (guid, id, @in, @out) =>
             {
                 Trace.WriteLine(string.Format("After Executing Command Guid: {0} In: {1} Out: {2}", this.ConvertGuidAndId(guid, id), @in, @out));
 
@@ -366,27 +451,34 @@
                 }
             };
 
+            this.dte.Events.CommandEvents.AfterExecute += commandEventsOnAfterExecute;
+
             this.ExecuteCommand(commandName, nugetCommand);
 
             autoResetEvent.WaitOne();
 
+            this.dte.Events.CommandEvents.BeforeExecute -= commandEventsOnBeforeExecute;
+            this.dte.Events.CommandEvents.AfterExecute -= commandEventsOnAfterExecute;
+
             Trace.WriteLine(string.Format("Finished executing command {0}", nugetCommand));
 
-            VSProject vsproject = project.Object as VSProject;
-
-            Assert.IsNotNull(vsproject);
+            Assert.IsNotNull(project);
 
             while (true)
             {
-                if (vsproject.References.Cast<Reference>()
+                if (project.References.Cast<Reference>()
                     .Where(reference => reference.SourceProject == null)
-                    .Any(reference => reference.Name == "CUITe"))
+                    .Any(reference => reference.Name == projectReferenceName))
                 {
-                    Trace.WriteLine("Found project reference to CUITe");
-                    return;
+                    Trace.WriteLine(string.Format("Found project reference to {0}", projectReferenceName));
+                    break;
                 }
 
-                Trace.WriteLine("Could not find project reference to CUITe");
+                Trace.WriteLine(string.Format("Could not find project reference to {0}", projectReferenceName));
+
+                Trace.WriteLine(string.Format("Active Window Caption: {0}", this.dte.ActiveWindow.Caption));
+
+                System.Threading.Thread.Sleep(1000);
             }
         }
 
@@ -493,13 +585,229 @@
 
             string htmlTestsCsFilePath = Path.Combine(this.testProjectPath, "HtmlTests.cs");
             AssemblyResourceLoader.ExtractEmbeddedResource(assembly, "CUITe.IntegrationTests.NuGet.HtmlTests.cs", htmlTestsCsFilePath);
-            this.testProject.ProjectItems.AddFromFile(htmlTestsCsFilePath);
+            this.testProject.Project.ProjectItems.AddFromFile(htmlTestsCsFilePath);
 
             string tempWebPageCsFilePath = Path.Combine(this.testProjectPath, "TempWebPage.cs");
             AssemblyResourceLoader.ExtractEmbeddedResource(assembly, "CUITe.IntegrationTests.NuGet.TempWebPage.cs", tempWebPageCsFilePath);
-            this.testProject.ProjectItems.AddFromFile(tempWebPageCsFilePath);
+            this.testProject.Project.ProjectItems.AddFromFile(tempWebPageCsFilePath);
 
-            // TODO: Silverlight
+            if (this.isSilverlightNuGetPackage)
+            {
+                // Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll
+                string microsoftVisualStudioTestToolsUITestExtensionSilverlightDllFilePath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFilesX86),
+                    "microsoft shared",
+                    "VSTT",
+                    string.Format("{0}.0", this.visualStudioVersionNumber),
+                    "UITestExtensionPackages",
+                    "Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll");
+
+                Assert.IsTrue(File.Exists(microsoftVisualStudioTestToolsUITestExtensionSilverlightDllFilePath),
+                    string.Format("File doesn't exist: {0}", microsoftVisualStudioTestToolsUITestExtensionSilverlightDllFilePath));
+
+                this.testProject.References.Add(microsoftVisualStudioTestToolsUITestExtensionSilverlightDllFilePath);
+
+                // SilverlightControlTests.cs
+                string silverlightControlTestsCsFilePath = Path.Combine(this.testProjectPath, "SilverlightControlTests.cs");
+                AssemblyResourceLoader.ExtractEmbeddedResource(assembly, "CUITe.IntegrationTests.NuGet.SilverlightControlTests.cs", silverlightControlTestsCsFilePath);
+                this.testProject.Project.ProjectItems.AddFromFile(silverlightControlTestsCsFilePath);
+
+                // TestPage.cs
+                string testPageCsFilePath = Path.Combine(this.testProjectPath, "TestPage.cs");
+                AssemblyResourceLoader.ExtractEmbeddedResource(assembly, "CUITe.IntegrationTests.NuGet.TestPage.cs", testPageCsFilePath);
+                this.testProject.Project.ProjectItems.AddFromFile(testPageCsFilePath);
+
+                // CassiniDev 4.0
+                // wait for 10 seconds otherwise the following error may appear in a message box for which can't be dismissed programmatically when trying to install multiple NuGet packages:
+                // "Package Manager Console busy at the moment..."
+                System.Threading.Thread.Sleep(10000);
+
+                this.InstallNuGetPackage(this.testProject, "CassiniDev", ProjectName, "CassiniDev4-lib", version: "4.0.0");
+
+                // Sut.Silverlight.html
+                const string silverlightHtmlFileName = "Sut.Silverlight.html";
+                string sutSilverlightHtmlFilePath = Path.Combine(this.testProjectPath, silverlightHtmlFileName);
+                string sutSilverlightHtmlFileResourceName = string.Format("CUITe.IntegrationTests.NuGet.{0}", silverlightHtmlFileName);
+                Trace.WriteLine(string.Format("Extracting embedded resource '{0}' to '{1}'", sutSilverlightHtmlFileResourceName, sutSilverlightHtmlFilePath));
+                AssemblyResourceLoader.ExtractEmbeddedResource(assembly, sutSilverlightHtmlFileResourceName, sutSilverlightHtmlFilePath);
+                ProjectItem sutSilverlightHtmlProjectItem = this.testProject.Project.ProjectItems.AddFromFile(sutSilverlightHtmlFilePath);
+                this.SetCopyToOutputDirectory(sutSilverlightHtmlProjectItem);
+
+                // Sut.Silverlight.xap
+                const string silverlightXapFileName = "Sut.Silverlight.xap";
+                string sutSilverlightXapFilePath = Path.Combine(this.testProjectPath, silverlightXapFileName);
+                string sutSilverlightXapFileResourceName = string.Format("CUITe.IntegrationTests.NuGet.VisualStudio{0}.{1}", this.visualStudioVersion, silverlightXapFileName);
+                Trace.WriteLine(string.Format("Extracting embedded resource '{0}' to '{1}'", sutSilverlightXapFileResourceName, sutSilverlightXapFilePath));
+                AssemblyResourceLoader.ExtractEmbeddedResource(assembly, sutSilverlightXapFileResourceName, sutSilverlightXapFilePath);
+                ProjectItem sutSilverlightXapProjectItem = this.testProject.Project.ProjectItems.AddFromFile(sutSilverlightXapFilePath);
+                this.SetCopyToOutputDirectory(sutSilverlightXapProjectItem);
+
+                const string localTestSettingsFileName = "Local.testsettings";
+                this.testSettingsFilePath = Path.Combine(this.solutionDirectory.DirectoryPath, localTestSettingsFileName);
+
+                const string namespaceUri = "http://microsoft.com/schemas/VisualStudio/TeamTest/2010";
+
+                if (this.visualStudioVersionNumber != "10")
+                {
+                    // Visual Studio 2010 will automatically create a Local.testsettings file but with deployment disabled
+                    // add new test settings solution item
+                    /*Project solutionItemsProject =*/ this.solution.AddSolutionFolder("Solution Items");
+
+                    XNamespace ns = XNamespace.Get(namespaceUri);
+
+                    XDocument doc = new XDocument(
+                        new XDeclaration("1.0", "UTF-8", ""),
+                        new XElement(ns + "TestSettings",
+                            new XAttribute("name", "Local"),
+                            new XAttribute("id", Guid.NewGuid().ToString()),
+                            new XElement(ns + "Description", "These are default test settings for a local test run."),
+                            new XElement(ns + "Deployment",
+                                new XAttribute("enabled", "true"))));
+                    doc.Save(this.testSettingsFilePath);
+
+                    // if we try to add the file to the solution using automation, the file will automatically open
+                    // when specifically adding a test settings file, a modal wizard dialog will automatically be displayed that needs to be manually closed
+                    // solutionItemsProject.ProjectItems.AddFromFile(this.testSettingsFilePath);
+                    // so update the sln file directly
+
+                    // select test settings file
+                    System.Diagnostics.Process visualStudioProcess = System.Diagnostics.Process.GetProcessesByName("devenv").Single(x => x.MainWindowTitle.Contains(SolutionName));
+                    VisualStudioScreen visualStudio = Screen.FromProcess<VisualStudioScreen>(visualStudioProcess);
+                    visualStudio.TestMenuItem.Click();
+                    visualStudio.TestSettingsMenuItem.Click();
+                    visualStudio.SelectTestSettingsFileMenuItem.Click();
+
+                    Playback.PlaybackSettings.WaitForReadyTimeout = 1000; // 60000
+
+                    OpenTestSettingsFileWindow openTestSettingsFileWindow  = new OpenTestSettingsFileWindow();
+                    openTestSettingsFileWindow.FileName.EditableItem = this.testSettingsFilePath;
+                    openTestSettingsFileWindow.OpenButton.Click();
+                }
+
+                // For troubleshooting purposes, enable logging in App.config:
+                string appConfigFilePath = Path.Combine(this.testProjectPath, "App.config");
+                Assert.IsTrue(!File.Exists(appConfigFilePath));
+                const string appConfigFileResourceName = "CUITe.IntegrationTests.NuGet.App.config";
+                Trace.WriteLine(string.Format("Extracting embedded resource '{0}' to '{1}'", appConfigFileResourceName, appConfigFilePath));
+                AssemblyResourceLoader.ExtractEmbeddedResource(assembly, appConfigFileResourceName, appConfigFilePath);
+                this.testProject.Project.ProjectItems.AddFromFile(appConfigFilePath);
+                //File.WriteAllLines(appConfigFilePath, new[]
+                //{
+                //    "<configuration>",
+                //    "  <system.diagnostics>",
+                //    "    <switches>",
+                //    "      <add name=\"EqtTraceLevel\" value=\"4\" />",
+                //    "    </switches>",
+                //    "  </system.diagnostics>",
+                //    "</configuration>"
+                //});
+                //xmlDocument.Load(appConfigFilePath);
+
+                //string xpath = "/configuration";
+                //XmlNode configurationNode = xmlDocument.SelectSingleNode(xpath);
+                //if (configurationNode == null)
+                //{
+                //    throw new Exception(string.Format("Failed to select single node with xpath '{0}' in file '{1}'", xpath, appConfigFilePath));
+                //}
+
+                //xpath = "/system.diagnostics";
+                //XmlNode systemDiagnosticsNode = configurationNode.SelectSingleNode(xpath);
+                //if (systemDiagnosticsNode == null)
+                //{
+                //    throw new Exception(string.Format("Failed to select single node with xpath '{0}' in file '{1}'", xpath, appConfigFilePath));
+                //}
+
+                //xpath = "/switches";
+                //XmlNode switchesNode = systemDiagnosticsNode.SelectSingleNode(xpath);
+                //if (switchesNode == null)
+                //{
+                //    throw new Exception(string.Format("Failed to select single node with xpath '{0}' in file '{1}'", xpath, appConfigFilePath));
+                //}
+
+                //xpath = "/add[@name='EqTaceLevel']";
+                //XmlNode addNode = switchesNode.SelectSingleNode(xpath);
+                //if (addNode == null)
+                //{
+                //    throw new Exception(string.Format("Failed to select single node with xpath '{0}' in file '{1}'", xpath, appConfigFilePath));
+                //}
+
+                //if (addNode.Attributes == null)
+                //{
+                //    throw new Exception(string.Format("Xml node attributes at xpath '{0}' in file '{1}' is null", xpath, appConfigFilePath));
+                //}
+
+                //addNode.Attributes["value"].Value = "4";
+                //xmlDocument.Save(appConfigFilePath);
+
+                // add Sut.Silverlight.xap as a deployment item
+                // enable deployment
+                // Change the following:
+                // <TestSettings>
+                //   <Deployment enabled="false" />
+                // ...
+                // To this:
+                // <TestSettings>
+                //   <Deployment enabled="true">
+                //     <DeploymentItem filename="TestProject\Sut.Silverlight.xap" />
+                //   </Deployment>
+                // ...
+                XmlDocument xmlDocument = new XmlDocument();
+                XmlNamespaceManager xmlNamespaceManager = new XmlNamespaceManager(xmlDocument.NameTable);
+                xmlNamespaceManager.AddNamespace("mstt", namespaceUri);
+                xmlDocument.Load(this.testSettingsFilePath);
+
+                XmlNode testSettingsXmlNode = xmlDocument.SelectSingleNode("//mstt:TestSettings", xmlNamespaceManager);
+                Assert.IsNotNull(testSettingsXmlNode);
+                XmlNode deploymentXmlNode = testSettingsXmlNode.SelectSingleNode("//mstt:Deployment", xmlNamespaceManager);
+                Assert.IsNotNull(deploymentXmlNode);
+                Assert.IsNotNull(deploymentXmlNode.Attributes);
+                deploymentXmlNode.Attributes["enabled"].Value = "true";
+
+                XmlElement deploymentItem = xmlDocument.CreateElement(string.Empty, "DeploymentItem", namespaceUri);
+                deploymentItem.SetAttribute("filename", string.Format(@"{0}\{1}", ProjectName, silverlightXapFileName));
+                deploymentXmlNode.AppendChild(deploymentItem);
+                xmlDocument.Save(this.testSettingsFilePath);
+
+                // force solution to reload
+                this.dte.ExecuteCommand("File.SaveAll");
+                this.dte.Solution.Close();
+                this.dte.Solution.Open(this.solutionFilePath);
+            }
+        }
+
+        private void SetCopyToOutputDirectory(ProjectItem projectItem)
+        {
+            // Set "Copy to Output Directory" property
+            this.SetPropertyValue(projectItem, "CopyToOutputDirectory", CopyToOutputDirectory.CopyIfNewer);
+        }
+
+        private void SetPropertyValue(ProjectItem projectItem, string propertyName, object propertyValue)
+        {
+            Property property = projectItem.Properties.Item(propertyName);
+            Assert.IsNotNull(property);
+            property.Value = propertyValue;
+        }
+
+        /// <summary>
+        /// Defines if and when a file is copied to the output directory.
+        /// </summary>
+        private enum CopyToOutputDirectory
+        {
+            /// <summary>
+            /// Do not copy this file to the output directory.
+            /// </summary>
+            DoNotCopy = 0,
+
+            /// <summary>
+            /// Always copy this file to the output directory.
+            /// </summary>
+            CopyAlways = 1,
+
+            /// <summary>
+            /// Copy this file to the output directory only if it is 
+            /// newer than the same file in the output directory.
+            /// </summary>
+            CopyIfNewer = 2,
         }
         
         [Then(@"the project should build and its tests run successfully")]
@@ -607,6 +915,11 @@
                 }
                 else
                 {
+                    if (this.isSilverlightNuGetPackage)
+                    {
+                        expectedPassedTests = 8;
+                    }
+
                     // Activate "Test Explorer" window
                     const string testExplorerGuid = "{E1B7D1F8-9B3C-49B1-8F4F-BFC63A88835D}";
 
@@ -628,7 +941,7 @@
                     Assert.IsTrue(testsRunMatch.Success, output);
                     Assert.IsNotNull(testsRunMatch, output);
                     Assert.IsNotNull(testsRunMatch.Groups, output);
-                    Assert.AreEqual(expectedPassedTests, testsRunMatch.Groups.Count, output);
+                    Assert.AreEqual(2, testsRunMatch.Groups.Count, output);
                     Group testsRunGroup = testsRunMatch.Groups[1];
                     string testsRunString = testsRunGroup.Value;
                     Assert.AreEqual(expectedPassedTests.ToString(), testsRunString, output);
@@ -639,11 +952,16 @@
                     File.Delete(testResultsFile.FilePath);
 
                     string fileName = string.Format(@"C:\Program Files (x86)\Microsoft Visual Studio {0}.0\Common7\IDE\MSTest.exe", this.visualStudioVersionNumber);
-                    string[] arguments =
+                    List<string> arguments = new List<string>
                     {
                         string.Format("/testcontainer:{0}", Path.Combine(this.testProjectPath, "bin", "Debug", string.Format("{0}.dll", ProjectName))),
                         string.Format("/resultsfile:{0}", testResultsFile.FilePath)
                     };
+
+                    if (!string.IsNullOrEmpty(this.testSettingsFilePath))
+                    {
+                        arguments.Add(string.Format("/testsettings:{0}", this.testSettingsFilePath));
+                    }
 
                     RunResult runResult = ProcessRunner.Run(fileName, string.Join(" ", arguments));
                     Assert.AreEqual(0, runResult.ExitCode, string.Join(Environment.NewLine, new { runResult.StandardOutput, runResult.StandardError }));

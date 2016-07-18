@@ -32,9 +32,9 @@
         </Grid.ColumnDefinitions>
 
         <!-- Upper left control -->
-        <sdk:TabControl>
+        <sdk:TabControl
+            AutomationProperties.AutomationId="YATJVQnvMk6SNHFQAHb9CQ">
             <sdk:TabItem
-                AutomationProperties.AutomationId="YATJVQnvMk6SNHFQAHb9CQ"
                 Header="Upper Left Tab">
                 <CheckBox
                     AutomationProperties.AutomationId="Pb67nqNzdkKZPTz-cUXtTQ"
@@ -44,9 +44,10 @@
         </sdk:TabControl>
 
         <!-- Upper right control -->
-        <sdk:TabControl Grid.Column="1">
+        <sdk:TabControl
+            Grid.Column="1"
+            AutomationProperties.AutomationId="sk0ELlIxRkSChVuWnKrEMw">
             <sdk:TabItem
-                AutomationProperties.AutomationId="sk0ELlIxRkSChVuWnKrEMw"
                 Header="Upper Right Tab">
                 <CheckBox
                     AutomationProperties.AutomationId="pxr987yTh0u0k72WGfOimw"
@@ -64,9 +65,10 @@
             Click="OnOpenDialog_Click"/>
 
         <!-- Lower left control -->
-        <sdk:TabControl Grid.Row="2">
+        <sdk:TabControl
+            Grid.Row="2"
+            AutomationProperties.AutomationId="6B4YMUMZz0CAxPbskr1MgQ">
             <sdk:TabItem
-                AutomationProperties.AutomationId="6B4YMUMZz0CAxPbskr1MgQ"
                 Header="Lower Left Tab">
                 <RadioButton
                     AutomationProperties.AutomationId="R96eNzWZrUeCOUOiCb5qEQ"
@@ -78,9 +80,9 @@
         <!-- Lower right -->
         <sdk:TabControl
             Grid.Row="2"
-            Grid.Column="1">
+            Grid.Column="1"
+            AutomationProperties.AutomationId="vzoWE0pag0S7yk0Wmb9iug">
             <sdk:TabItem
-                AutomationProperties.AutomationId="vzoWE0pag0S7yk0Wmb9iug"
                 Header="Lower Right Tab">
                 <RadioButton
                     AutomationProperties.AutomationId="0IZpFrh750Kps3zMlrFFcA"

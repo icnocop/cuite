@@ -1,0 +1,20 @@
+﻿<Window
+    x:Class="Sut.Wpf.ScreenObjects.IdenticalButtonContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Identical Button Content Dialog"
+    Icon="App.ico"
+    WindowStartupLocation="CenterOwner"
+    Width="200"
+    SizeToContent="Height">
+    
+    <StackPanel>
+        <TextBlock
+            AutomationProperties.AutomationId="fumKtarA_UGA-ODl3itsiA"
+            Text="Button has identical content as the button in the parent window."
+            TextWrapping="Wrap" />
+        <Button
+            Content="Identical Button Content"
+            IsCancel="True" />
+    </StackPanel>
+</Window>

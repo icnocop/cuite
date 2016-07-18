@@ -1,6 +1,10 @@
 2.0 (TBD)
 =========
 
+* Fixed [#82](https://github.com/icnocop/cuite/issues/82) - [@icnocop](https://github.com/icnocop)
+* Fixed [#89](https://github.com/icnocop/cuite/issues/89) - [@FantasticFiasco](https://github.com/FantasticFiasco)
+* Fixed [#87](https://github.com/icnocop/cuite/issues/87) - [@FantasticFiasco](https://github.com/FantasticFiasco)
+* Fixed [#92](https://github.com/icnocop/cuite/issues/92) - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Fixed [#83](https://github.com/icnocop/cuite/issues/83) - [@aannenko](https://github.com/aannenko)
 * Removed validation of search property names to support custom arbitrary search property names [#77](https://github.com/icnocop/cuite/issues/77)
 * Added DrawHighlight method for UI test controls - [@icnocop](https://github.com/icnocop)

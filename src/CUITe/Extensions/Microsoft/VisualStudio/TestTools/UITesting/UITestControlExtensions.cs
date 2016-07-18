@@ -23,21 +23,34 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
         {
             if (self == null)
                 throw new ArgumentNullException("self");
-            
-            var control = ControlBaseFactory.Create<T>(searchConfiguration);
+
+            T control;
 
             // TODO: This assembly should have no knowledge of the Silverlight assembly
             if (typeof(T).Namespace.Equals("CUITe.Controls.SilverlightControls"))
             {
-                control.SourceControl.Container = FindSilverlightContainer(self);
-            }
-            else if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
-            {
-                (control as ComboBox).SetWindow(FindBrowserWindow(self));
+                if (self is BrowserWindow)
+                {
+                    UITestControl silverlightObject = FindSilverlightContainer(self);
+                    control = ControlBaseFactory.Create<T>(silverlightObject, searchConfiguration);
+                }
+                else
+                {
+                    control = ControlBaseFactory.Create<T>(self, searchConfiguration);
+                }
             }
             else
             {
-                control.SourceControl.Container = self;
+                control = ControlBaseFactory.Create<T>(searchConfiguration);
+
+                if (typeof(T).Namespace.Equals(typeof(ComboBox).Namespace))
+                {
+                    (control as ComboBox).SetWindow(FindBrowserWindow(self));
+                }
+                else
+                {
+                    control.SourceControl.Container = self;
+                }
             }
 
             return control;

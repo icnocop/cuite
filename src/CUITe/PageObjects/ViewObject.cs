@@ -13,6 +13,22 @@ namespace CUITe.PageObjects
         private UITestControl searchLimitContainer;
 
         /// <summary>
+        /// Highlights the control.
+        /// </summary>
+        public void DrawHighlight()
+        {
+            searchLimitContainer.DrawHighlight();
+        }
+
+        /// <summary>
+        /// Gets the control object represented by the view object.
+        /// </summary>
+        public ControlBase Self
+        {
+            get { return ControlBaseFactory.Create(searchLimitContainer); }
+        }
+
+        /// <summary>
         /// Gets or sets the search limit container.
         /// </summary>
         internal virtual UITestControl SearchLimitContainer

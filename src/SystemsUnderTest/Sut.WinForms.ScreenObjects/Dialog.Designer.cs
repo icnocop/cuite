@@ -62,7 +62,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "System Under Test (WinForms)";
+            this.Text = "Dialog";
             this.ResumeLayout(false);
 
         }

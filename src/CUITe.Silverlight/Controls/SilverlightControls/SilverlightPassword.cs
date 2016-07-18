@@ -1,5 +1,4 @@
-﻿#if SILVERLIGHT_SUPPORT
-using CUITe.SearchConfigurations;
+﻿using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.SilverlightControls;
 
@@ -11,11 +10,12 @@ namespace CUITe.Controls.SilverlightControls
     public class SilverlightPassword : SilverlightEdit
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SilverlightPassword"/> class.
+        /// Initializes a new instance of the <see cref="SilverlightPassword" /> class.
         /// </summary>
+        /// <param name="parent">The parent.</param>
         /// <param name="searchConfiguration">The search configuration.</param>
-        public SilverlightPassword(By searchConfiguration = null)
-            : this(new CUITControls.SilverlightEdit(), searchConfiguration)
+        public SilverlightPassword(UITestControl parent, By searchConfiguration = null)
+            : this(new CUITControls.SilverlightEdit(parent), searchConfiguration)
         {
         }
 
@@ -43,4 +43,3 @@ namespace CUITe.Controls.SilverlightControls
         }
     }
 }
-#endif
