@@ -40,7 +40,7 @@ To successfully build and run tests, the following prerequisites are required:
 
 ## Code guidelines
 
-ReSharper is configured to our code guidelines. Use ReSharper and act on its error and warnings. Other than that the following guidelines are of importance:
+ReSharper is configured to our code guidelines. If you need to make changes to the configuration, please select Visual Studio menu item _ReSharper > Manage Options... > Solution 'CUITe' team-shared > Edit Layer_ and make sure to save the changes. Use ReSharper and act on its error and warnings. Other than that the following guidelines are of importance:
 
 - Indent with 4 spaces, not tabs
 - Use `var` only when type is obvious
