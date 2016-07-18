@@ -1,23 +1,23 @@
-﻿    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-    using System.Runtime.InteropServices;
-    using System.Text.RegularExpressions;
-    using System.Threading;
-    using System.Xml;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Xml;
 using System.Xml.Linq;
-    using System.Xml.Serialization;
-    using EnvDTE;
-    using EnvDTE80;
-    using Microsoft.VisualStudio;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Microsoft.Win32;
-    using TechTalk.SpecFlow;
-    using TestHelpers;
-    using VSLangProj;
+using System.Xml.Serialization;
+using EnvDTE;
+using EnvDTE80;
+using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Win32;
+using TechTalk.SpecFlow;
+using TestHelpers;
+using VSLangProj;
 using CUITe.ScreenObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
@@ -196,7 +196,7 @@ namespace CUITe.IntegrationTests.NuGet
                 this.ConfigureTemplate(this.codedUiTestTemplatePath, "CodedUITest.vstemplate", templateDirectory.DirectoryPath, true);
 
                 string templateFile = Path.Combine(templateDirectory.DirectoryPath, "CodedUITest.vstemplate");
-                
+
                 string name = "CodedUITest.cs";
 
                 Trace.WriteLine(string.Format("Adding project item '{0}' from template '{1}'...", name, templateFile));
@@ -204,12 +204,12 @@ namespace CUITe.IntegrationTests.NuGet
                 this.testProject.Project.ProjectItems.AddFromTemplate(templateFile, name);
 
                 foreach (ProjectItem projectItem in this.testProject.Project.ProjectItems)
-            {
+                {
                     if (projectItem.Name.Equals(name))
                     {
                         this.codedUiTestCsFilePath = projectItem.Properties.Item("FullPath").Value.ToString();
                         break;
-            }
+                    }
                 }
 
                 Assert.IsFalse(string.IsNullOrEmpty(this.codedUiTestCsFilePath));
@@ -404,7 +404,7 @@ namespace CUITe.IntegrationTests.NuGet
 
             Window packageManagerConsoleWindow = this.dte.Windows.Item(packageManagerConsoleGuid);
             packageManagerConsoleWindow.Activate();
-            
+
             string commandName = "View.PackageManagerConsole";
 
             // Execute Install-Command in Package Manager Console
@@ -809,7 +809,7 @@ namespace CUITe.IntegrationTests.NuGet
             /// </summary>
             CopyIfNewer = 2,
         }
-        
+
         [Then(@"the project should build and its tests run successfully")]
         public void ThenTheProjectShouldBuildAndItsTestsRunSuccessfully()
         {
