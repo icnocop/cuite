@@ -1,4 +1,8 @@
-﻿using CUITe.ScreenObjects;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CUITe.Controls;
+using CUITe.Controls.WinControls;
+using CUITe.ScreenObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sut.WinForms.ControlsTest.ScreenObjects;
@@ -152,6 +156,27 @@ namespace Sut.WinForms.ControlsTest
         {
             // Assert
             Assert.IsTrue(mainScreen.TreeViewExists);
+        }
+
+        [TestMethod]
+        public void GetChildren()
+        {
+            List<ControlBase> children = mainScreen.GetChildrenOfTabControl();
+
+            // Assert
+            Assert.AreEqual(4, children.Count);
+
+            Assert.AreEqual(typeof(WinTabPage).Name, children[0].GetType().Name);
+            Assert.AreEqual("One", ((WinTabPage)children[0]).DisplayText);
+
+            Assert.AreEqual(typeof(WinTabPage).Name, children[1].GetType().Name);
+            Assert.AreEqual("Two", ((WinTabPage)children[1]).DisplayText);
+
+            Assert.AreEqual(typeof(WinTabPage).Name, children[2].GetType().Name);
+            Assert.AreEqual("Three", ((WinTabPage)children[2]).DisplayText);
+
+            Assert.AreEqual(typeof(WinWindow).Name, children[3].GetType().Name);
+            Assert.AreEqual("One", ((WinWindow)children[3]).GetProperty("Name"));
         }
     }
 }

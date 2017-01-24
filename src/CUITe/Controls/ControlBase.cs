@@ -94,6 +94,17 @@ namespace CUITe.Controls
         }
 
         /// <summary>
+        /// Gets the bounding rectangle.
+        /// </summary>
+        /// <value>
+        /// The bounding rectangle.
+        /// </value>
+        public Rectangle BoundingRectangle
+        {
+            get { return sourceControl.BoundingRectangle; }
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether or not the <see cref="WaitForControlReady"/> method is executed each time the control is used.
         /// </summary>
         public static bool IsControlReadinessAwaitedByDefault { get; set; }

@@ -50,17 +50,27 @@ namespace CUITe.ScreenObjects
 
         /// <summary>
         /// Creates a reference to an application from an existing process and returns a screen of
-        /// type <typeparamref name="T"/>.
+        /// type <typeparamref name="T" />.
         /// </summary>
         /// <typeparam name="T">The type of the screen to return.</typeparam>
         /// <param name="processToWrap">The process to create from</param>
-        /// <returns>A screen representing the launched application.</returns>
-        public static T FromProcess<T>(Process processToWrap) where T : Screen, new()
+        /// <param name="title">The title.</param>
+        /// <returns>
+        /// A screen representing the launched application.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">processToWrap</exception>
+        public static T FromProcess<T>(Process processToWrap, string title = null) where T : Screen, new()
         {
             if (processToWrap == null)
                 throw new ArgumentNullException("processToWrap");
 
             var application = ApplicationUnderTest.FromProcess(processToWrap);
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                application.SearchProperties[UITestControl.PropertyNames.Name] = title;
+                application.WindowTitles.Add(title);
+            }
 
             return new T
             {

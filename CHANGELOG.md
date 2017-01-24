@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Fixed [#104](https://github.com/icnocop/cuite/issues/104) - Added support for getting children of a WinControl - [@icnocop](https://github.com/icnocop)
 * Fixed [#82](https://github.com/icnocop/cuite/issues/82) - [@icnocop](https://github.com/icnocop)
 * Fixed [#89](https://github.com/icnocop/cuite/issues/89) - [@FantasticFiasco](https://github.com/FantasticFiasco)
 * Fixed [#87](https://github.com/icnocop/cuite/issues/87) - [@FantasticFiasco](https://github.com/FantasticFiasco)

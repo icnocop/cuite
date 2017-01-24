@@ -84,7 +84,7 @@ namespace CUITe.Controls.WinControls
         /// </summary>
         public override IEnumerable<ControlBase> GetChildren()
         {
-            return Enumerable.Empty<ControlBase>();
+            return SourceControl.GetChildren().Select(ControlBaseFactory.Create);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace CUITe.Controls.WinControls
                 throw new ArgumentNullException("searchProperties");
 
             MoveControlNames(searchProperties);
-            
+
             base.AddSearchProperties(searchProperties);
         }
 
