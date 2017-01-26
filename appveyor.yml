@@ -342,12 +342,12 @@ init:
     del $logFilePath  
     Write-Host "Google Chrome successfully installed" -ForegroundColor Green  
       
-    # Mozilla Firefox 27.0.1  
-    $exeFilePath = "$($env:USERPROFILE)\Firefox Setup 27.0.1.exe"  
+    # Mozilla Firefox 47.0.1  
+    $exeFilePath = "$($env:USERPROFILE)\Firefox Setup 47.0.1.exe"  
     $retry_attempts = 3  
     for($i=0; $i -lt $retry_attempts; $i++){  
         try {  
-            $webclient.DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/27.0.1/win32/es-ES/Firefox%20Setup%2027.0.1.exe', $exeFilePath)  
+            $webclient.DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/47.0.1/win32/es-ES/Firefox%20Setup%2047.0.1.exe', $exeFilePath)  
             break  
         }  
         Catch [Exception]{  
@@ -392,10 +392,10 @@ init:
     }  
     Write-Host "Mozilla Firefox Profile Migrator disabled" -ForegroundColor Green  
       
-    # Selenium components for Coded UI Cross Browser Testing  
+    # Selenium components for Coded UI Cross Browser Testing Version 1.7  
     $msiFilePath = "$($env:USERPROFILE)\CodedUITestCrossBrowserSetup.msi"  
     $logFilePath = "$($env:TEMP)\CodedUITestCrossBrowserSetup.txt"  
-    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/12/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
+    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/13/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -407,6 +407,12 @@ init:
     del $logFilePath  
     Write-Host "Selenium components for Coded UI Cross Browser Testing successfully installed" -ForegroundColor Green  
       
+    # Chrome driver 2.27
+    $zipPath = "$($env:USERPROFILE)\chromedriver_win32.zip"  
+    $webclient.DownloadFile('http://chromedriver.storage.googleapis.com/2.27/chromedriver_win32.zip', $zipPath)  
+    7z x $zipPath -y -o"$($ProgramFiles)\Common Files\Microsoft Shared\VSTT\Cross Browser Selenium Components" | Out-Null  
+    Write-Host "Chrome driver 2.27 successfully installed" -ForegroundColor Green  
+
     if(-not $screen_resolution) {  
       $screen_resolution = '1024x768'  
     }  

@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using CUITe.Browsers;
 using CUITe.Controls.HtmlControls;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Win32;
 
 namespace Sut.HtmlTest
 {
@@ -13,16 +16,39 @@ namespace Sut.HtmlTest
         [TestMethod]
         public void SetText_OnHtmlEditUsingFirefox_Succeeds()
         {
+            // get the version of Firefox
+            string firefoxExeFilePath = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\firefox.exe", "", null);
+            Assert.IsNotNull(firefoxExeFilePath);
+
+            Version version = new Version(FileVersionInfo.GetVersionInfo(firefoxExeFilePath).FileVersion);
+            Console.WriteLine("Firefox version: {0}", version);
+
             SetTextOnHtmlEdit(Firefox.Name);
         }
 
         [TestMethod]
+        [Ignore] // Selenium components for Coded UI Cross Browser Testing v1.7 does not support Chrome 55
+        // and Chrome 54 (GoogleChromeStandaloneEnterprise.msi) is no longer available for download
         public void SetText_OnHtmlEditUsingChrome_Succeeds()
         {
+            // get the version of Chrome
+            string registryPath = @"\Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe";
+            string chromeExeFilePath = (string)Registry.GetValue("HKEY_LOCAL_MACHINE" + registryPath, "", null);
+            if (chromeExeFilePath == null)
+            {
+                // check HKEY_CURRENT_USER
+                chromeExeFilePath = (string)Registry.GetValue("HKEY_CURRENT_USER" + registryPath, "", null);
+            }
+
+            Assert.IsNotNull(chromeExeFilePath);
+
+            Version version = new Version(FileVersionInfo.GetVersionInfo(chromeExeFilePath).FileVersion);
+            Console.WriteLine("Chrome version: {0}", version);
+
             SetTextOnHtmlEdit(Chrome.Name);
         }
 
-        public void SetTextOnHtmlEdit(string browser)
+        private void SetTextOnHtmlEdit(string browser)
         {
             //Arrange
             IBrowser previousBrowser = BrowserWindowUnderTest.GetCurrentBrowser();

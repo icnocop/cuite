@@ -40,7 +40,7 @@ namespace Sut.SilverlightTest
         //TODO: the silverlight control must be hosted on a page served through a web server (ex. iis, cassini \ web dev server) because IE 9 may
         //treat web pages differently between http://localhost and file:// (compatibility mode\view)
 
-        private static readonly CassiniDevServer WebServer = new CassiniDevServer();
+        private CassiniDevServer WebServer;
 
         private string PageUrl
         {
@@ -50,17 +50,6 @@ namespace Sut.SilverlightTest
             }
         }
 
-        [ClassInitialize]
-        public static void ClassInitialize(TestContext testContext)
-        {
-            WebServer.StartServer(Directory.GetCurrentDirectory());
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            WebServer.StopServer();
-        }
         [TestInitialize]
         public void TestInitialize()
         {
@@ -75,6 +64,21 @@ namespace Sut.SilverlightTest
             Playback.PlaybackSettings.SmartMatchOptions = SmartMatchOptions.None; // SmartMatchOptions.Control
             Playback.PlaybackSettings.WaitForReadyLevel = WaitForReadyLevel.UIThreadOnly; // .UIThreadOnly
             Playback.PlaybackSettings.WaitForReadyTimeout = 60000; // 60000
+
+            // start the web server for every test because sometimes the web server will stop for whatever reason
+            // and display "This page can't be displayed"
+            WebServer = new CassiniDevServer();
+            WebServer.StartServer(Directory.GetCurrentDirectory());
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            // stop and dispose the web server if it's running
+            if (WebServer != null)
+            {
+                WebServer.Dispose();
+            }
         }
 
         [TestMethod]
@@ -82,7 +86,9 @@ namespace Sut.SilverlightTest
         {
             BrowserWindow b = BrowserWindow.Launch(PageUrl);
             b.SetFocus();
-            b.Find<SilverlightButton>(By.AutomationId("button1")).Click();
+            SilverlightButton button1 = b.Find<SilverlightButton>(By.AutomationId("button1"));
+            button1.WaitForControlExist();
+            button1.Click();
             SilverlightEdit oEdit = b.Find<SilverlightEdit>(By.AutomationId("textBox1"));
             oEdit.Text = "asddasdasdasdadasdadasdadadadasd";
             SilverlightDatePicker dp = b.Find<SilverlightDatePicker>(By.AutomationId("datePicker1"));

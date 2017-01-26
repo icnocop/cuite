@@ -1,4 +1,7 @@
-﻿using CUITe.Controls.WinControls;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CUITe.Controls;
+using CUITe.Controls.WinControls;
 using CUITe.ScreenObjects;
 using CUITe.SearchConfigurations;
 
@@ -94,6 +97,11 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
         public bool TreeViewExists
         {
             get { return Find<WinTree>(By.ControlName("treeView")).Exists; }
+        }
+
+        public List<ControlBase> GetChildrenOfTabControl()
+        {
+            return Find<WinTabList>(By.ControlName("tabControl")).GetChildren().ToList();
         }
     }
 }

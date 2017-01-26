@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading;
 using CassiniDev;
 using CUITe.PageObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
@@ -47,8 +48,24 @@ namespace Sut.Silverlight.PageObjectsTest
         [TestMethod]
         public void UpperLeft()
         {
+            bool checkBoxExists = false;
+
+            // this test randomly fails; so try a few times
+            for (int i = 0; i < 5; i++)
+            {
+                if (mainPage.UpperLeft.CheckBoxExists)
+                {
+                    checkBoxExists = true;
+                    break;
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+
             // Assert
-            Assert.IsTrue(mainPage.UpperLeft.CheckBoxExists);
+            Assert.IsTrue(checkBoxExists);
         }
 
         [TestMethod]
