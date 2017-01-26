@@ -95,6 +95,9 @@ namespace Sut.Wpf.ScreenObjectsTest
             ApplicationUnderTest actual = mainScreen.Application;
 
             // Assert
+            Assert.IsTrue(mainScreen.Self.WaitForControlExist());
+            Assert.IsTrue(mainScreen.Self.Exists);
+            Assert.IsTrue(mainScreen.Self.Visible);
             Assert.AreEqual(mainScreen.UpperLeft.Application, actual);
             Assert.AreEqual(mainScreen.RebasedUpperLeft.Application, actual);
             Assert.AreEqual(mainScreen.UpperRight.Application, actual);
