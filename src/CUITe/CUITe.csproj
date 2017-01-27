@@ -150,7 +150,9 @@
     <Compile Include="Controls\HtmlControls\IHasInnerText.cs" />
     <Compile Include="Controls\ModifierKeysLifetime.cs" />
     <Compile Include="Controls\HtmlControls\Telerik\ComboBox.cs" />
+    <Compile Include="Controls\UITesting\BrowserWindow.cs" />
     <Compile Include="Controls\UIWindowsSecurityWindow.cs" />
+    <Compile Include="Controls\UITesting\ApplicationUnderTest.cs" />
     <Compile Include="Controls\WinControls\WinButton.cs" />
     <Compile Include="Controls\WinControls\WinCalendar.cs" />
     <Compile Include="Controls\WinControls\WinCell.cs" />

@@ -146,7 +146,7 @@ namespace CUITe.Controls
             if (targetType == null)
             {
                 throw new ArgumentException(
-                    string.Format("Control of type '{0}' is not supported.", sourceControlType),
+                    string.Format("Control of type '{0}' is not supported. Could not find type '{1}'.", sourceControlType, typeFullName),
                     "sourceControl");
             }
 

@@ -45,5 +45,20 @@ namespace CUITe.PageObjects
                 SearchLimitContainer = browser
             };
         }
+
+        /// <summary>
+        /// Gets an instance of a page of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the page to return.</typeparam>
+        /// <returns>The page.</returns>
+        public static T Get<T>() where T : Page, new()
+        {
+            BrowserWindow browser = new BrowserWindow();
+            return new T
+            {
+                Browser = browser,
+                SearchLimitContainer = browser
+            };
+        }
     }
 }

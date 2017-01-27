@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Threading;
 using CassiniDev;
+using CUITe.Controls;
 using CUITe.PageObjects;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,7 +19,7 @@ namespace Sut.Silverlight.PageObjectsTest
     public class PageObjectsTest
     {
         private static readonly CassiniDevServer WebServer = new CassiniDevServer();
-        
+
         private MainPage mainPage;
 
         /// <summary>
@@ -31,6 +32,9 @@ namespace Sut.Silverlight.PageObjectsTest
         public static void ClassInitialize(TestContext testContext)
         {
             WebServer.StartServer(Directory.GetCurrentDirectory());
+
+            // always wait until controls are ready
+            ControlBase.IsControlReadinessAwaitedByDefault = true;
         }
 
         [ClassCleanup]
@@ -50,8 +54,8 @@ namespace Sut.Silverlight.PageObjectsTest
         {
             bool checkBoxExists = false;
 
-            // this test randomly fails; so try a few times
-            for (int i = 0; i < 5; i++)
+            // this test randomly fails because its usually run first; so try several times
+            for (int i = 0; i < 10; i++)
             {
                 if (mainPage.UpperLeft.CheckBoxExists)
                 {
@@ -61,6 +65,8 @@ namespace Sut.Silverlight.PageObjectsTest
                 else
                 {
                     Thread.Sleep(1000);
+
+                    mainPage = Page.Get<MainPage>();
                 }
             }
 
@@ -136,6 +142,15 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.AreEqual(mainPage.RebasedLowerLeft.Browser, actual);
             Assert.AreEqual(mainPage.LowerRight.Browser, actual);
             Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
+        }
+
+        [TestMethod]
+        public void Self()
+        {
+            // Assert
+            Assert.IsTrue(mainPage.Self.WaitForControlExist());
+            Assert.IsTrue(mainPage.Self.Exists);
+            Assert.IsTrue(mainPage.Self.Enabled);
         }
 
         [TestMethod]

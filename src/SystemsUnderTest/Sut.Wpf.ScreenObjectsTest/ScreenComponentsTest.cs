@@ -106,6 +106,15 @@ namespace Sut.Wpf.ScreenObjectsTest
         }
 
         [TestMethod]
+        public void Self()
+        {
+            // Assert
+            Assert.IsTrue(mainScreen.Self.WaitForControlExist());
+            Assert.IsTrue(mainScreen.Self.Exists);
+            Assert.IsTrue(mainScreen.Self.Visible);
+        }
+
+        [TestMethod]
         public void FromProcess()
         {
             //Act
