@@ -95,9 +95,6 @@ namespace Sut.WinForms.ScreenObjectsTest
             ApplicationUnderTest actual = mainScreen.Application;
 
             // Assert
-            Assert.IsTrue(mainScreen.Self.WaitForControlExist());
-            Assert.IsTrue(mainScreen.Self.Exists);
-            Assert.IsTrue(mainScreen.Self.Visible);
             Assert.AreEqual(mainScreen.UpperLeft.Application, actual);
             Assert.AreEqual(mainScreen.RebasedUpperLeft.Application, actual);
             Assert.AreEqual(mainScreen.UpperRight.Application, actual);
@@ -106,6 +103,15 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.AreEqual(mainScreen.RebasedLowerLeft.Application, actual);
             Assert.AreEqual(mainScreen.LowerRight.Application, actual);
             Assert.AreEqual(mainScreen.RebasedLowerRight.Application, actual);
+        }
+
+        [TestMethod]
+        public void Self()
+        {
+            // Assert
+            Assert.IsTrue(mainScreen.Self.WaitForControlExist());
+            Assert.IsTrue(mainScreen.Self.Exists);
+            Assert.IsTrue(mainScreen.Self.Visible);
         }
 
         [TestMethod]

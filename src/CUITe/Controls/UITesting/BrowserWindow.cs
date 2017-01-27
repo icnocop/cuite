@@ -32,47 +32,47 @@ namespace CUITe.Controls.UITesting
         /// <summary>
         /// Gets the parent of the control.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="System.NotSupportedException"></exception>
         public override ControlBase Parent
         {
-            get { throw new System.NotImplementedException(); }
+            get { throw new System.NotSupportedException(); }
         }
 
         /// <summary>
         /// Gets the previous sibling of the control.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="System.NotSupportedException"></exception>
         public override ControlBase PreviousSibling
         {
-            get { throw new System.NotImplementedException(); }
+            get { throw new System.NotSupportedException(); }
         }
 
         /// <summary>
         /// Gets the next sibling of the control.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="System.NotSupportedException"></exception>
         public override ControlBase NextSibling
         {
-            get { throw new System.NotImplementedException(); }
+            get { throw new System.NotSupportedException(); }
         }
 
         /// <summary>
         /// Gets the first child of the control.
         /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="System.NotSupportedException"></exception>
         public override ControlBase FirstChild
         {
-            get { throw new System.NotImplementedException(); }
+            get { throw new System.NotSupportedException(); }
         }
 
         /// <summary>
         /// Returns a sequence of all first level children of the control.
         /// </summary>
         /// <returns>The children.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
+        /// <exception cref="System.NotSupportedException"></exception>
         public override IEnumerable<ControlBase> GetChildren()
         {
-            throw new System.NotImplementedException();
+            throw new System.NotSupportedException();
         }
     }
 }

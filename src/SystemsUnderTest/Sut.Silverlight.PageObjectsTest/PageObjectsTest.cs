@@ -134,9 +134,6 @@ namespace Sut.Silverlight.PageObjectsTest
             BrowserWindow actual = mainPage.Browser;
 
             // Assert
-            Assert.IsTrue(mainPage.Self.WaitForControlExist());
-            Assert.IsTrue(mainPage.Self.Exists);
-            Assert.IsTrue(mainPage.Self.Enabled);
             Assert.AreEqual(mainPage.UpperLeft.Browser, actual);
             Assert.AreEqual(mainPage.RebasedUpperLeft.Browser, actual);
             Assert.AreEqual(mainPage.UpperRight.Browser, actual);
@@ -145,6 +142,15 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.AreEqual(mainPage.RebasedLowerLeft.Browser, actual);
             Assert.AreEqual(mainPage.LowerRight.Browser, actual);
             Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
+        }
+
+        [TestMethod]
+        public void Self()
+        {
+            // Assert
+            Assert.IsTrue(mainPage.Self.WaitForControlExist());
+            Assert.IsTrue(mainPage.Self.Exists);
+            Assert.IsTrue(mainPage.Self.Enabled);
         }
 
         [TestMethod]
