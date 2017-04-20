@@ -1,6 +1,7 @@
 ﻿using System;
 using CUITe.Controls;
 using CUITe.Controls.HtmlControls.Telerik;
+using CUITe.Controls.WinControls;
 using CUITe.SearchConfigurations;
 using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
@@ -50,10 +51,35 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
                 else
                 {
                     control.SourceControl.Container = self;
+
+                    if ((searchConfiguration != null)
+                        && IsSubclassOfRawGeneric(typeof(WinControl<>), control.GetType()))
+                    {
+                        // Searching for WinForms controls differs slightly from searching for WPF controls.
+                        // When searching for WPF controls using e.g. their automation id, the automation id
+                        // search property is added to the WPF control.
+                        // When searching for WinForms controls using their control name, the control name search
+                        // property is added to the parent WinForms control, not the actual control itself.
+                        control.SourceControl.Container.SearchProperties.AddRange(searchConfiguration.Configuration);
+                    }
                 }
             }
 
             return control;
+        }
+
+        private static bool IsSubclassOfRawGeneric(Type generic, Type toCheck)
+        {
+            while (toCheck != null && toCheck != typeof(object))
+            {
+                var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
+                if (generic == cur)
+                {
+                    return true;
+                }
+                toCheck = toCheck.BaseType;
+            }
+            return false;
         }
 
         private static UITestControl FindSilverlightContainer(UITestControl control)

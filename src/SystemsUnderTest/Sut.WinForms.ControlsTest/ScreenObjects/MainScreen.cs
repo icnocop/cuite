@@ -19,9 +19,9 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
             get { return Find<WinCheckBox>(By.ControlName("checkBox")).Exists; }
         }
 
-        public bool ComboBoxExists
+        public WinComboBox ComboBox
         {
-            get { return Find<WinComboBox>(By.ControlName("comboBox")).Exists; }
+            get { return Find<WinComboBox>(By.ControlName("comboBox")); }
         }
 
         public bool DateTimePickerExists
@@ -54,19 +54,19 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
             get { return Find<WinList>(By.ControlName("listView")).Exists; }
         }
 
-        public bool MaskedTextBoxExists
+        public WinEdit MaskedTextBox
         {
-            get { return Find<WinText>(By.ControlName("maskedTextBox")).Exists; }
+            get { return Find<WinEdit>(By.ControlName("maskedTextBox")); }
         }
 
         public bool MonthCalendarExists
         {
-            get { return Find<WinDateTimePicker>(By.ControlName("monthCalendar")).Exists; }
+            get { return Find<WinCalendar>(By.ControlName("monthCalendar")).Exists; }
         }
 
-        public bool NumericUpDownExists
+        public WinEdit NumericUpDown
         {
-            get { return Find<WinEdit>(By.ControlName("numericUpDown")).Exists; }
+            get { return Find<WinEdit>(By.ControlName("numericUpDown")); }
         }
 
         public bool ProgressBarExists
@@ -79,9 +79,9 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
             get { return Find<WinRadioButton>(By.ControlName("radioButton")).Exists; }
         }
 
-        public bool RichTextBoxExists
+        public WinEdit RichTextBox
         {
-            get { return Find<WinEdit>(By.ControlName("richTextBox")).Exists; }
+            get { return Find<WinEdit>(By.ControlName("richTextBox")); }
         }
 
         public bool TabControlExists
@@ -89,9 +89,9 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
             get { return Find<WinTabList>(By.ControlName("tabControl")).Exists; }
         }
 
-        public bool TextBoxExists
+        public WinEdit TextBox
         {
-            get { return Find<WinEdit>(By.ControlName("textBox")).Exists; }
+            get { return Find<WinEdit>(By.ControlName("textBox")); }
         }
 
         public bool TreeViewExists

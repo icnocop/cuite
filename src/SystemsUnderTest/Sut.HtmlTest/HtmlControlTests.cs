@@ -612,10 +612,10 @@ namespace Sut.HtmlTest
                 .ToList();
 
             // Assert
-            Assert.AreEqual(3, children.Count());
-            Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
-            Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText);
-            Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText);
+            Assert.AreEqual(3, children.Count);
+            Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText.Trim());
+            Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText.Trim());
+            Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText.Trim());
             
             window.Close();
         }
@@ -633,9 +633,9 @@ namespace Sut.HtmlTest
 
             // Assert
             Assert.AreEqual(3, children.Count());
-            Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText);
-            Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText);
-            Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText);
+            Assert.AreEqual("List Item 1", children.ElementAt(0).InnerText.Trim());
+            Assert.AreEqual("List Item 2", children.ElementAt(1).InnerText.Trim());
+            Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText.Trim());
         }
 
         [TestMethod]

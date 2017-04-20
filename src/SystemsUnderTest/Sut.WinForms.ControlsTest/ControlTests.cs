@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using CUITe.Controls;
 using CUITe.Controls.WinControls;
 using CUITe.ScreenObjects;
@@ -50,7 +49,7 @@ namespace Sut.WinForms.ControlsTest
         public void ComboBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.ComboBoxExists);
+            Assert.IsTrue(mainScreen.ComboBox.Exists);
         }
 
         [TestMethod]
@@ -99,7 +98,8 @@ namespace Sut.WinForms.ControlsTest
         public void MaskedTextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.MaskedTextBoxExists);
+            Assert.IsTrue(mainScreen.MaskedTextBox.Exists);
+            Assert.AreEqual("This is a masked text box", mainScreen.MaskedTextBox.Text);
         }
 
         [TestMethod]
@@ -113,7 +113,9 @@ namespace Sut.WinForms.ControlsTest
         public void NumericUpDown()
         {
             // Assert
-            Assert.IsTrue(mainScreen.NumericUpDownExists);
+            Assert.IsTrue(mainScreen.NumericUpDown.Exists);
+            this.mainScreen.NumericUpDown.Click();
+            Assert.AreEqual("25", mainScreen.NumericUpDown.Text);
         }
 
         [TestMethod]
@@ -134,7 +136,8 @@ namespace Sut.WinForms.ControlsTest
         public void RichTextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.RichTextBoxExists);
+            Assert.IsTrue(mainScreen.RichTextBox.Exists);
+            Assert.AreEqual("This is a rich text box\r", mainScreen.RichTextBox.Text);
         }
 
         [TestMethod]
@@ -148,7 +151,8 @@ namespace Sut.WinForms.ControlsTest
         public void TextBox()
         {
             // Assert
-            Assert.IsTrue(mainScreen.TextBoxExists);
+            Assert.IsTrue(mainScreen.TextBox.Exists);
+            Assert.AreEqual("This is a text box", mainScreen.TextBox.Text);
         }
 
         [TestMethod]

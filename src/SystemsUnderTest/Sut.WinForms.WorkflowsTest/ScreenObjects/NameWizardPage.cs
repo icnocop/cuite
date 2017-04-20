@@ -8,17 +8,17 @@ namespace Sut.WinForms.WorkflowsTest.ScreenObjects
     {
         public string FirstName
         {
-            set { Find<WinEdit>(By.ControlName("textBoxFirstName").AndName("FirstName")).Text = value; }
+            set { Find<WinWindow>(By.ControlName("textBoxFirstName")).Find<WinEdit>(By.Name("FirstName")).Text = value; }
         }
 
         public string Surname
         {
-            set { Find<WinEdit>(By.ControlName("textBoxSurname").AndName("Surname")).Text = value; }
+            set { Find<WinWindow>(By.ControlName("textBoxSurname")).Find<WinEdit>(By.Name("Surname")).Text = value; }
         }
 
         public AddressWizardPage ClickNext()
         {
-            Find<WinButton>(By.Name("Next")).Click();
+            Find<WinWindow>(By.ControlName("buttonNext")).Find<WinButton>(By.Name("Next")).Click();
             return GetScreenObject<AddressWizardPage>();
         }
     }

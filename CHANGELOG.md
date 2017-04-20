@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Fixed [#114](https://github.com/icnocop/cuite/issues/114) - Fixed issue when trying to find multiple WinControls of the same control type in the same parent control - [@icnocop](https://github.com/icnocop)
 * Fixed [#104](https://github.com/icnocop/cuite/issues/104) - Added support for getting children of a WinControl - [@icnocop](https://github.com/icnocop)
 * Fixed [#82](https://github.com/icnocop/cuite/issues/82) - [@icnocop](https://github.com/icnocop)
 * Fixed [#89](https://github.com/icnocop/cuite/issues/89) - [@FantasticFiasco](https://github.com/FantasticFiasco)
