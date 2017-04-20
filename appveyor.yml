@@ -259,12 +259,15 @@ init:
       
     $webclient = New-Object System.Net.WebClient  
     # Allow Remote Desktop  
+    Write-Host "Builds require a Remote Desktop Connection (RDP) to continue..."  
     $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
       
     # Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight  
+    Write-Host "Downloading Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
     $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2013.msi"  
     $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2013.txt"  
     $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da/file/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)  
+    Write-Host "Installing Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -277,9 +280,11 @@ init:
     Write-Host "Visual Studio 2013 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
       
     # Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight  
+    Write-Host "Downloading Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight..."  
     $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2015.msi"  
     $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2015.txt"  
     $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/bf0caedc-90eb-46af-9c1a-8e68d013bb99/file/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)  
+    Write-Host "Installing Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -292,9 +297,11 @@ init:
     Write-Host "Visual Studio 2015 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
       
     # Microsoft Silverlight 5 Toolkit - December 2011  
+    Write-Host "Downloading Microsoft Silverlight 5 Toolkit - December 2011..."  
     $msiFilePath = "$($env:USERPROFILE)\Silverlight_5_Toolkit_December_2011.msi"  
     $logFilePath = "$($env:TEMP)\Silverlight_5_Toolkit_December_2011.txt"  
-    $webclient.DownloadFile('http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=silverlight&DownloadId=311823&FileTime=129679336571930000&Build=21031', $msiFilePath)  
+    $webclient.DownloadFile('http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=silverlight&DownloadId=311823&FileTime=129679336571930000&Build=21050', $msiFilePath)  
+    Write-Host "Installing Microsoft Silverlight 5 Toolkit - December 2011..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -307,6 +314,7 @@ init:
     Write-Host "Microsoft Silverlight 5 Toolkit - December 2011 successfully installed" -ForegroundColor Green  
       
     # Microsoft Silverlight 5 Developer Runtime for Windows (64 bit)  
+    Write-Host "Downloading Microsoft Silverlight 5 Developer Runtime for Windows (64 bit)..."  
     $exeFilePath = "$($env:USERPROFILE)\Silverlight_Developer_x64.exe"  
     $retry_attempts = 3  
     for($i=0; $i -lt $retry_attempts; $i++){  
@@ -318,6 +326,7 @@ init:
             Start-Sleep 1  
         }  
     }  
+    Write-Host "Installing Microsoft Silverlight 5 Developer Runtime for Windows (64 bit)..."  
     $process = (Start-Process -FilePath $exeFilePath -ArgumentList "/q" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -328,9 +337,11 @@ init:
     Write-Host "Microsoft Silverlight 5 Developer Runtime for Windows (64 bit) successfully installed" -ForegroundColor Green  
       
     # Google Chrome  
+    Write-Host "Downloading Google Chrome..."  
     $msiFilePath = "$($env:USERPROFILE)\GoogleChromeStandaloneEnterprise.msi"  
     $logFilePath = "$($env:TEMP)\GoogleChromeStandaloneEnterprise.txt"  
     $webclient.DownloadFile('https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7B7ACD904C-E309-ADA4-8671-783B10D723FD%7D%26lang%3Den%26browser%3D4%26usagestats%3D0%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers/edgedl/chrome/install/GoogleChromeStandaloneEnterprise.msi', $msiFilePath)  
+    Write-Host "Installing Google Chrome..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -343,6 +354,7 @@ init:
     Write-Host "Google Chrome successfully installed" -ForegroundColor Green  
       
     # Mozilla Firefox 47.0.1  
+    Write-Host "Downloading Mozilla Firefox 47.0.1..."  
     $exeFilePath = "$($env:USERPROFILE)\Firefox Setup 47.0.1.exe"  
     $retry_attempts = 3  
     for($i=0; $i -lt $retry_attempts; $i++){  
@@ -354,6 +366,7 @@ init:
             Start-Sleep 1  
         }  
     }  
+    Write-Host "Installing Mozilla Firefox 47.0.1..."  
     $process = (Start-Process -FilePath $exeFilePath -ArgumentList "-ms" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -364,6 +377,7 @@ init:
     Write-Host "Mozilla Firefox 27.0.1 successfully installed" -ForegroundColor Green  
       
     # Disable Firefox First Run Import Settings and Data Wizard  
+    Write-Host "Disabling Mozilla Firefox Profile Migrator..."  
     $ProgramFiles = ${Env:ProgramFiles(x86)}  
     $FilePath = $ProgramFiles + "\Mozilla Firefox\override.ini"  
     if (!(test-path ($FilePath)))  
@@ -393,9 +407,11 @@ init:
     Write-Host "Mozilla Firefox Profile Migrator disabled" -ForegroundColor Green  
       
     # Selenium components for Coded UI Cross Browser Testing Version 1.7  
+    Write-Host "Downloading Selenium components for Coded UI Cross Browser Testing Version 1.7..."  
     $msiFilePath = "$($env:USERPROFILE)\CodedUITestCrossBrowserSetup.msi"  
     $logFilePath = "$($env:TEMP)\CodedUITestCrossBrowserSetup.txt"  
     $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/13/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
+    Write-Host "Installing Selenium components for Coded UI Cross Browser Testing Version 1.7..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
     if ($exitCode -ne 0)  
@@ -405,11 +421,13 @@ init:
     }  
     del $msiFilePath  
     del $logFilePath  
-    Write-Host "Selenium components for Coded UI Cross Browser Testing successfully installed" -ForegroundColor Green  
+    Write-Host "Selenium components for Coded UI Cross Browser Testing Version 1.7 successfully installed" -ForegroundColor Green  
       
     # Chrome driver 2.27
+    Write-Host "Downloading Chrome driver 2.27..."  
     $zipPath = "$($env:USERPROFILE)\chromedriver_win32.zip"  
     $webclient.DownloadFile('http://chromedriver.storage.googleapis.com/2.27/chromedriver_win32.zip', $zipPath)  
+    Write-Host "Installing Chrome driver 2.27..."  
     7z x $zipPath -y -o"$($ProgramFiles)\Common Files\Microsoft Shared\VSTT\Cross Browser Selenium Components" | Out-Null  
     Write-Host "Chrome driver 2.27 successfully installed" -ForegroundColor Green  
 
@@ -485,8 +503,6 @@ on_finish:
     Write-Host "Publishing UI test log..."  
     Push-AppveyorArtifact $env:temp\UITestLogs\LastRun\UITestLog.html -DeploymentName UITestLog  
 
-    # Allow Remote Desktop  
-    # $webclient = New-Object System.Net.WebClient  
-    # $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
-
-    Write-Host "Build finished."
+    Write-Host "Build finished."  
+on_failure:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
