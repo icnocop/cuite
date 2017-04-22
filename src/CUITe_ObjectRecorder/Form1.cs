@@ -66,21 +66,6 @@ namespace CUITe_ObjectRecorder
             btnRecord.Checked = false;
         }
 
-        private void txtAddress_TextChanged(object sender, EventArgs e)
-        {
-            if (toolStripTextBox1.Text.Trim() != "")
-            {
-                try
-                {
-                    webBrowser1.Url = new Uri(toolStripTextBox1.Text.Trim());
-                }
-                catch (Exception exception)
-                {
-                    toolStripStatusLabel1.Text = exception.Message;
-                }
-            }
-        }
-
         private void btnRecord_Click(object sender, EventArgs e)
         {
             if (document == null)
@@ -316,7 +301,7 @@ namespace CUITe_ObjectRecorder
                         if (sFilter != null && sFilter != 'Filter:') {
                             objInQuestion = FindParentForFilter(objInQuestion);
                         }
-                        if (objInQuestion != null && !isElementIframe(objInQuestion.nodeName)) {
+                        if ((objInQuestion != null) && (!isElementIframe(objInQuestion.nodeName)) && (objInQuestion.nodeName != 'XMP') && (objInQuestion.nodeName != 'BODY')) {
                             sOutHtml = objInQuestion.outerHTML;
                             var posdic = Position.get(objInQuestion);
                             var divTag2 = AddDiv2();
@@ -336,7 +321,11 @@ namespace CUITe_ObjectRecorder
                     if (evt.stopPropagation) evt.stopPropagation();
                     if (objInQuestion != null && objInQuestion.id != 'CUITe_div2') {
                         objInQuestion.style.cssText = oStyle;
-                        document.getElementById('CUITe_div2').style.visibility = 'hidden';
+                        var div2 = document.getElementById('CUITe_div2');
+                        if (div2 != null)
+                        {
+                            div2.style.visibility = 'hidden';
+                        }
                     }
                 }
                 document.onclick = function(e) {
@@ -535,6 +524,11 @@ namespace CUITe_ObjectRecorder
                     else if (sId != '') {
                         sVarName = sId;
                     }
+                    else
+                    {
+                        sVarName = 'Undefined';
+                    }
+
                     sVarName = sVarName.camelCase();
                     sVarName = sVarName.replace(/ /g, '');
                     sVarName = sVarName.replace(/[^a-zA-Z 0-9]+/g, '');
@@ -605,31 +599,16 @@ namespace CUITe_ObjectRecorder
                 sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.SearchConfigurations" : "using CUITe.SearchConfigurations;");
                 sb.AppendLine(isCodeLanguageVB ? "Imports Microsoft.VisualStudio.TestTools.UITesting" : "using Microsoft.VisualStudio.TestTools.UITesting;");
                 sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.Controls.HtmlControls" : "using CUITe.Controls.HtmlControls;");
+                sb.AppendLine(isCodeLanguageVB ? "Imports CUITe.PageObjects" : "using CUITe.PageObjects;");
                 sb.AppendLine();
                 sb.AppendLine(isCodeLanguageVB ? "Namespace PageObjects" : "namespace $ProjectNameSpace$.PageObjects");
                 
                 if (!isCodeLanguageVB) sb.AppendLine("{");
                 
                 string sWinTitle = (string)document.InvokeScript("getWinTitForClassName");
-                sb.AppendLine(isCodeLanguageVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : BrowserWindowUnderTest");
-                if (isCodeLanguageVB) sb.AppendLine("\t\tInherits BrowserWindowUnderTest");
+                sb.AppendLine(isCodeLanguageVB ? "\tPublic Class " + sWinTitle : "\tpublic class " + sWinTitle + " : Page");
+                if (isCodeLanguageVB) sb.AppendLine("\t\tInherits Page");
                 if (!isCodeLanguageVB) sb.AppendLine("\t{");
-
-                var windowTitle = (string)document.InvokeScript("getWindowTitle");
-                if (isCodeLanguageVB)
-                {
-                    sb.AppendLine("\t\tPublic Sub New()");
-                    sb.AppendLine("\t\t\tMyBase.New(" + windowTitle + ")");
-                    sb.AppendLine("\t\tEnd Sub");
-                }
-                else
-                {
-                    sb.AppendLine("\t\tpublic " + sWinTitle + "() : base(" + windowTitle + ")");
-                    sb.AppendLine("\t\t{");
-                    sb.AppendLine("\t\t}");
-                }
-
-                sb.AppendLine();  
 
                 foreach (string sLine in listBox1.Items)
                 {
@@ -639,10 +618,7 @@ namespace CUITe_ObjectRecorder
                 sb.AppendLine(isCodeLanguageVB ? "\tEnd Class" : "\t}");
                 sb.AppendLine(isCodeLanguageVB ? "End Namespace" : "}");
 
-                using (var outfile = new StreamWriter(mydocpath + @"\CUITe_ObjectRecorder_temp.txt"))
-                {
-                    outfile.Write(sb.ToString());
-                }
+                File.WriteAllText(mydocpath + @"\CUITe_ObjectRecorder_temp.txt", sb.ToString());
 
                 Process.Start("notepad.exe", mydocpath + @"\CUITe_ObjectRecorder_temp.txt");
             }
@@ -710,6 +686,36 @@ namespace CUITe_ObjectRecorder
             listBox1.Items.Clear();
             btnRecord.Checked = false;
             btnRecord.PerformClick();
+        }
+
+        private void toolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Navigate(toolStripTextBox1.Text);
+            }
+        }
+
+        private void btnGo_Click(object sender, EventArgs e)
+        {
+            Navigate(toolStripTextBox1.Text);
+        }
+
+        private void Navigate(String address)
+        {
+            try
+            {
+                webBrowser1.Navigate(new Uri(address));
+            }
+            catch (Exception ex)
+            {
+                toolStripStatusLabel1.Text = ex.Message;
+            }
+        }
+
+        private void webBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            toolStripTextBox1.Text = webBrowser1.Url.ToString();
         }
     }
 }

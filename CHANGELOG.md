@@ -1,6 +1,7 @@
 2.0 (TBD)
 =========
 
+* Fixed [#115](https://github.com/icnocop/cuite/issues/115) - Updated Object Recorder so that generated code inherits from Page instead of BrowserWindowUnderTest - [@icnocop](https://github.com/icnocop)
 * Fixed [#114](https://github.com/icnocop/cuite/issues/114) - Fixed issue when trying to find multiple WinControls of the same control type in the same parent control - [@icnocop](https://github.com/icnocop)
 * Fixed [#104](https://github.com/icnocop/cuite/issues/104) - Added support for getting children of a WinControl - [@icnocop](https://github.com/icnocop)
 * Fixed [#82](https://github.com/icnocop/cuite/issues/82) - [@icnocop](https://github.com/icnocop)
