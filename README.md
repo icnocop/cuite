@@ -177,3 +177,5 @@ browserWindow.LastName.Text ="Doe";
 // Click on the Save button
 browserWindow.Save.Click();
 ```
+
+Follow the steps from [this guide](http://www.codewrecks.com/blog/index.php/2011/06/06/witch-version-of-browser-is-used-by-the-webbrowser-control/) to use a more recent version of IE in the Object Recorder.
