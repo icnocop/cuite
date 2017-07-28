@@ -8,15 +8,14 @@ using Sut.WinForms.ControlsTest.ScreenObjects;
 
 namespace Sut.WinForms.ControlsTest
 {
+    /// <summary>
+    /// Control Tests
+    /// </summary>
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.WinForms.Controls\bin\Debug\Sut.WinForms.Controls.exe")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.WinForms.Controls\bin\Release\Sut.WinForms.Controls.exe")]
-#endif
+    [DeploymentItem("Sut.WinForms.Controls.exe")]
     public class ControlTests
     {
-        private const string ApplicationFilePath = @"Sut.WinForms.Controls.exe";
+        private const string ApplicationFilePath = "Sut.WinForms.Controls.exe";
         private MainScreen mainScreen;
 
         /// <summary>
@@ -25,12 +24,18 @@ namespace Sut.WinForms.ControlsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
+        /// <summary>
+        /// Button.
+        /// </summary>
         [TestMethod]
         public void Button()
         {
@@ -38,6 +43,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.ButtonExists);
         }
 
+        /// <summary>
+        /// CheckBox.
+        /// </summary>
         [TestMethod]
         public void CheckBox()
         {
@@ -45,6 +53,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.CheckBoxExists);
         }
 
+        /// <summary>
+        /// ComboBox.
+        /// </summary>
         [TestMethod]
         public void ComboBox()
         {
@@ -52,6 +63,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.ComboBox.Exists);
         }
 
+        /// <summary>
+        /// Date time picker.
+        /// </summary>
         [TestMethod]
         public void DateTimePicker()
         {
@@ -59,6 +73,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.DateTimePickerExists);
         }
 
+        /// <summary>
+        /// Group box.
+        /// </summary>
         [TestMethod]
         public void GroupBox()
         {
@@ -66,6 +83,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.GroupBoxExists);
         }
 
+        /// <summary>
+        /// Label.
+        /// </summary>
         [TestMethod]
         public void Label()
         {
@@ -73,6 +93,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.LabelExists);
         }
 
+        /// <summary>
+        /// Link label.
+        /// </summary>
         [TestMethod]
         public void LinkLabel()
         {
@@ -80,6 +103,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.LinkLabelExists);
         }
 
+        /// <summary>
+        /// ListBox.
+        /// </summary>
         [TestMethod]
         public void ListBox()
         {
@@ -87,6 +113,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.ListBoxExists);
         }
 
+        /// <summary>
+        /// ListView.
+        /// </summary>
         [TestMethod]
         public void ListView()
         {
@@ -94,6 +123,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.ListViewExists);
         }
 
+        /// <summary>
+        /// Masked text box.
+        /// </summary>
         [TestMethod]
         public void MaskedTextBox()
         {
@@ -102,6 +134,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.AreEqual("This is a masked text box", mainScreen.MaskedTextBox.Text);
         }
 
+        /// <summary>
+        /// Month calendar.
+        /// </summary>
         [TestMethod]
         public void MonthCalendar()
         {
@@ -109,6 +144,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.MonthCalendarExists);
         }
 
+        /// <summary>
+        /// Numeric up down.
+        /// </summary>
         [TestMethod]
         public void NumericUpDown()
         {
@@ -118,6 +156,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.AreEqual("25", mainScreen.NumericUpDown.Text);
         }
 
+        /// <summary>
+        /// Progress bar.
+        /// </summary>
         [TestMethod]
         public void ProgressBar()
         {
@@ -125,6 +166,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.ProgressBarExists);
         }
 
+        /// <summary>
+        /// RadioButton.
+        /// </summary>
         [TestMethod]
         public void RadioButton()
         {
@@ -132,6 +176,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Rich text box.
+        /// </summary>
         [TestMethod]
         public void RichTextBox()
         {
@@ -140,6 +187,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.AreEqual("This is a rich text box\r", mainScreen.RichTextBox.Text);
         }
 
+        /// <summary>
+        /// Tab control.
+        /// </summary>
         [TestMethod]
         public void TabControl()
         {
@@ -147,6 +197,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.TabControlExists);
         }
 
+        /// <summary>
+        /// Text box.
+        /// </summary>
         [TestMethod]
         public void TextBox()
         {
@@ -155,6 +208,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.AreEqual("This is a text box", mainScreen.TextBox.Text);
         }
 
+        /// <summary>
+        /// TreeView.
+        /// </summary>
         [TestMethod]
         public void TreeView()
         {
@@ -162,6 +218,9 @@ namespace Sut.WinForms.ControlsTest
             Assert.IsTrue(mainScreen.TreeViewExists);
         }
 
+        /// <summary>
+        /// Gets the children.
+        /// </summary>
         [TestMethod]
         public void GetChildren()
         {

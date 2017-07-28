@@ -19,6 +19,9 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace Sut.HtmlTest
 {
+    /// <summary>
+    /// HTML Control Tests
+    /// </summary>
     [CodedUITest]
     [DeploymentItem("TestHtmlPage.html")]
     public class HtmlControlTests
@@ -32,6 +35,9 @@ namespace Sut.HtmlTest
         // ReSharper disable once MemberCanBePrivate.Global; MsTest requirements
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
@@ -47,6 +53,9 @@ namespace Sut.HtmlTest
             Trace.WriteLine(string.Format("Test Results Directory: {0}", TestContext.TestResultsDirectory));
         }
 
+        /// <summary>
+        /// Sets the text on telerik aspnet ComboBox selects item by text.
+        /// </summary>
         [TestMethod]
         public void SetText_OnTelerikASPNETComboBox_SelectsItemByText()
         {
@@ -66,6 +75,9 @@ namespace Sut.HtmlTest
             Keyboard.SendKeys("{Tab}"); // close drop down menu
         }
 
+        /// <summary>
+        /// Non existent HTML control does not exist.
+        /// </summary>
         [TestMethod]
         public void HtmlControl_NonExistent_DoesNotExist()
         {
@@ -106,6 +118,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Get column headers for an HTML table.
+        /// </summary>
         [TestMethod]
         public void HtmlTable_GetColumnHeaders_Succeeds()
         {
@@ -119,6 +134,9 @@ namespace Sut.HtmlTest
             browserWindow.Close();
         }
 
+        /// <summary>
+        /// Finds and clicks the header for an HTML table.
+        /// </summary>
         [TestMethod]
         public void HtmlTable_FindHeaderAndClick_Succeeds()
         {
@@ -198,6 +216,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Counts the columns on an HTML table.
+        /// </summary>
         [TestMethod]
         public void HtmlTable_ColumnCount_Succeeds()
         {
@@ -207,6 +228,9 @@ namespace Sut.HtmlTest
             browserWindow.Close();
         }
 
+        /// <summary>
+        /// Clicks on a column header on an HTML table.
+        /// </summary>
         [TestMethod]
         public void HtmlTable_ClickOnColumnHeader_Succeeds()
         {
@@ -221,6 +245,9 @@ namespace Sut.HtmlTest
             browserWindow.Close();
         }
 
+        /// <summary>
+        /// Finds a row using an HTML table with row headers.
+        /// </summary>
         [TestMethod]
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithRowHeaders_Succeeds()
@@ -232,6 +259,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Finds a row using an HTML table without row headers.
+        /// </summary>
         [TestMethod]
         [WorkItem(638)]
         public void HtmlTable_FindRowUsingTableWithoutRowHeaders_Succeeds()
@@ -243,6 +273,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Gets the cell value using an HTML table with header cell.
+        /// </summary>
         [TestMethod]
         public void HtmlTable_GetCellValueWithHeaderCell_Succeeds()
         {
@@ -255,6 +288,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Gets the cell value using an HTML table with TH in TBODY succeeds.
+        /// </summary>
         [TestMethod]
         public void HtmlTable_GetCellValueUsingTableWithTHInTBODY_Succeeds()
         {
@@ -310,6 +346,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Find HTML input button using a search property with the value as key succeeds.
+        /// </summary>
         [TestMethod]
         public void HtmlInputButton_UsingSearchPropertyWithValueAsKey_Succeeds()
         {
@@ -349,6 +388,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Points and clicks on an HTML input button.
+        /// </summary>
         [TestMethod]
         public void PointAndClick_OnHtmlInputButton_Succeeds()
         {
@@ -376,6 +418,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Sets the file on an HTML file input box.
+        /// </summary>
         [TestMethod]
         public void HtmlFileInput_SetFile_Succeeds()
         {
@@ -405,6 +450,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Finds an HTML hyperlink on Share Point 2010.
+        /// </summary>
         [TestMethod]
         [Ignore]
         public void HtmlHyperlink_OnSharePoint2010_Succeeds()
@@ -418,6 +466,9 @@ namespace Sut.HtmlTest
             InternetExplorer.RunScript(browserWindow, @"STSNavigate2(event,'/sites/sureba/_layouts/SignOut.aspx');");
         }
 
+        /// <summary>
+        /// Gets the children of an HTML control.
+        /// </summary>
         [TestMethod]
         public void HtmlControl_GetChildren_Succeeds()
         {
@@ -432,6 +483,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Gets the inner text of an HTML paragraph.
+        /// </summary>
         [TestMethod]
         public void HtmlParagraph_InnertText_Succeeds()
         {
@@ -440,6 +494,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Gets the items of an HTML combo box.
+        /// </summary>
         [TestMethod]
         public void HtmlComboBox_Items_Succeeds()
         {
@@ -471,6 +528,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Selects the item by index on an HTML ComboBox.
+        /// </summary>
         [TestMethod]
         public void SelectItem_ByIndexOnHtmlComboBox_Succeeds()
         {
@@ -503,6 +563,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Gets the inner text of an HTML paragraph using page objects.
+        /// </summary>
         [TestMethod]
         public void HtmlParagraph_PageObjects_Succeeds()
         {
@@ -511,6 +574,9 @@ namespace Sut.HtmlTest
             Assert.IsTrue(content.Contains("HtmlParagraph"));
         }
 
+        /// <summary>
+        /// Traverses siblings, parents, and children on an HTML paragraph.
+        /// </summary>
         [TestMethod]
         public void HtmlParagraph_TraverseSiblingsParentAndChildren_Succeeds()
         {
@@ -523,6 +589,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Clicks an HTML input button in an iframe.
+        /// </summary>
         [TestMethod]
         [DeploymentItem("iframe_test.html")]
         [DeploymentItem("iframe.html")]
@@ -533,6 +602,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Clicks an HTML input button in a CUITe iframe.
+        /// </summary>
         [TestMethod]
         [DeploymentItem("iframe_test.html")]
         [DeploymentItem("iframe.html")]
@@ -544,6 +616,9 @@ namespace Sut.HtmlTest
             bWin.Close();
         }
 
+        /// <summary>
+        /// Gets the HTML input button with a value containing whitespace.
+        /// </summary>
         [TestMethod]
         [WorkItem(882)]
         public void HtmlInputButton_GetWithValueContainingWhitespace_Succeeds()
@@ -570,6 +645,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Finds an HTML button hidden by style.
+        /// </summary>
         [TestMethod]
         [Ignore] // this test currently fails
         public void HtmlButton_HiddenByStyle_ControlExistsAndCanAssertOnStyle()
@@ -599,6 +677,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Finds an HTML unordered list and gets the inner text of its children.
+        /// </summary>
         [TestMethod]
         public void HtmlUnorderedList_WithListItems_CanAssertOnListItems()
         {
@@ -620,6 +701,9 @@ namespace Sut.HtmlTest
             window.Close();
         }
 
+        /// <summary>
+        /// Gets an HTML unordered list using page objects and gets the inner text of its children.
+        /// </summary>
         [TestMethod]
         public void HtmlUnorderedList_PageObjects_WithListItems_CanAssertOnListItems()
         {
@@ -638,6 +722,9 @@ namespace Sut.HtmlTest
             Assert.AreEqual("List Item 3", children.ElementAt(2).InnerText.Trim());
         }
 
+        /// <summary>
+        /// Finds an HTML check box disabled by style and its checked state.
+        /// </summary>
         [TestMethod]
         public void HtmlCheckBox_DisabledByStyle_ControlExistsAndCanGetCheckedState()
         {
@@ -665,6 +752,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Selects an HTML combo box item.
+        /// </summary>
         [TestMethod]
         public void SelectItem_UsingHtmlComboBoxThatAlertsOnChange_Succeeds()
         {
@@ -699,6 +789,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Sets the text on an HTML edit box.
+        /// </summary>
         [TestMethod]
         public void SetText_OnHtmlEdit_Succeeds()
         {
@@ -729,6 +822,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Finds an HTML5 control.
+        /// </summary>
         [TestMethod]
         [Ignore] // this test currently fails
         public void GetHtmlControl_OnHtml5Control_Succeeds()
@@ -769,6 +865,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Gets the selected items on an HTML list.
+        /// </summary>
         [TestMethod]
         public void SelectedItems_OnHtmlList_Succeeds()
         {
@@ -802,6 +901,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Clicks on the HTML input button with an equals sign in the search property value.
+        /// </summary>
         [TestMethod]
         public void Click_OnHtmlInputButtonWithEqualsSignInSearchPropertyValue_Succeeds()
         {
@@ -829,6 +931,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Finds the inner text in an HTML combo box with disabled items.
+        /// </summary>
         [TestMethod]
         public void InnerText_OnHtmlComboBoxWithDisabledItems_Succeeds()
         {
@@ -860,6 +965,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Gets an HTML label's for attribute.
+        /// </summary>
         [TestMethod]
         public void LabelFor_OnHtmlLabel_Succeeds()
         {
@@ -917,10 +1025,12 @@ namespace Sut.HtmlTest
                 ControlBase a = browserWindow.Find<HtmlHyperlink>(By.SearchProperties("InnerText=test"));
                 a.Click();
 
-                List<Type> list = new List<Type>();
-                list.Add(typeof(HtmlHyperlink));
-                list.Add(typeof(HtmlButton));
-                list.Add(typeof(HtmlEdit));
+                List<Type> list = new List<Type>
+                {
+                    typeof(HtmlHyperlink),
+                    typeof(HtmlButton),
+                    typeof(HtmlEdit)
+                };
 
                 MethodInfo getMethodInfo = typeof(UITestControlExtensions).GetMethod("Find", BindingFlags.Public | BindingFlags.Static);
 
@@ -1250,6 +1360,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Asserts that the enabled property of a disabled HTML input button returns false.
+        /// </summary>
         [TestMethod]
         public void Enabled_OnDisabledHtmlInputButton_ReturnsFalse()
         {
@@ -1275,6 +1388,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Finds an HTML span element using multiple values of the class attribute.
+        /// </summary>
         [TestMethod]
         public void Get_UsingMultipleValuesOfClassAttributeWithContainsOperatorOfHtmlSpan_ReturnsTheSpecificElementWithAllSpecifiedClassValues()
         {
@@ -1304,6 +1420,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Gets the selected value of a radio button.
+        /// </summary>
         [TestMethod]
         public void GetSelectedValue_OfRadioButton_Succeeds()
         {
@@ -1333,6 +1452,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Sets the text on an HTML password field.
+        /// </summary>
         [TestMethod]
         public void SetText_OnHtmlPassword_Succeeds()
         {

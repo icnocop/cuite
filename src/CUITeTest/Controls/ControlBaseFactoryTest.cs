@@ -12,9 +12,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.Controls
 {
+    /// <summary>
+    /// Constrol Base Factory Test
+    /// </summary>
     [CodedUITest]
     public class ControlBaseFactoryTest
     {
+        /// <summary>
+        /// Creates the using search properties.
+        /// </summary>
         [TestMethod]
         public void CreateUsingSearchProperties()
         {
@@ -28,6 +34,9 @@ namespace CUITeTest.Controls
             }
         }
 
+        /// <summary>
+        /// Creates the using source control and search properties.
+        /// </summary>
         [TestMethod]
         public void CreateUsingSourceControlAndSearchProperties()
         {
@@ -42,6 +51,9 @@ namespace CUITeTest.Controls
             }
         }
 
+        /// <summary>
+        /// Creates from source control.
+        /// </summary>
         [TestMethod]
         public void CreateFromSourceControl()
         {
@@ -55,6 +67,9 @@ namespace CUITeTest.Controls
             }
         }
 
+        /// <summary>
+        /// Creates the win controls using parameterless constructor.
+        /// </summary>
         [TestMethod]
         public void CreateWinControlsUsingParameterlessConstructor()
         {

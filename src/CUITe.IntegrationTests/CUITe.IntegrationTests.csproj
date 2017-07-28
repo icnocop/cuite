@@ -23,25 +23,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+  <Import Project="..\Project.props" />
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
@@ -152,6 +134,7 @@
     <DefineConstants Condition="'$(VisualStudioVersion)' == '11.0'">$(DefineConstants);VS2012;</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '12.0'">$(DefineConstants);VS2013;</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '14.0'">$(DefineConstants);VS2015;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '15.0'">$(DefineConstants);VS2017;</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -162,6 +145,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="NuGet\VisualStudio2017\vstst.cs" />
     <Compile Include="ObjectRecorder\Screens\Notepad.cs" />
     <EmbeddedResource Include="..\SystemsUnderTest\TestHelpers\TempWebPage.cs">
       <Link>NuGet\TempWebPage.cs</Link>
@@ -252,6 +236,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\SystemsUnderTest\Sut.Silverlight\Bin\$(ConfigurationName)\VS2015\Sut.Silverlight.xap">
       <Link>NuGet\VisualStudio2015\Sut.Silverlight.xap</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup Condition="'$(VisualStudioVersion)' == '15.0'">
+    <EmbeddedResource Include="..\SystemsUnderTest\Sut.Silverlight\Bin\$(ConfigurationName)\VS2017\Sut.Silverlight.xap">
+      <Link>NuGet\VisualStudio2017\Sut.Silverlight.xap</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

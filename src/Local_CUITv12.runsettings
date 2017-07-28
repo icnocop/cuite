@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <MSTest>
+    <AssemblyResolution>
+      <Directory path="{APPVEYOR_BUILD_FOLDER}\src\ThirdParty\CUIT\v12\" includeSubDirectories="false"/>
+    </AssemblyResolution>
+  </MSTest>
+</RunSettings>

@@ -12,29 +12,12 @@ using Sut.SilverlightTest.PageObjects;
 
 namespace Sut.SilverlightTest
 {
+    /// <summary>
+    /// Silverlight Controls Tests
+    /// </summary>
     [CodedUITest]
     [DeploymentItem("Sut.Silverlight.html")]
-#if DEBUG
-    #if VS2010
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2010\Sut.Silverlight.xap")]
-    #elif VS2012
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2012\Sut.Silverlight.xap")]
-    #elif VS2013
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2013\Sut.Silverlight.xap")]
-    #elif VS2015
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Debug\VS2015\Sut.Silverlight.xap")]
-    #endif
-#else
-    #if VS2010
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2010\Sut.Silverlight.xap")]
-    #elif VS2012
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2012\Sut.Silverlight.xap")]
-    #elif VS2013
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2013\Sut.Silverlight.xap")]
-    #elif VS2015
-        [DeploymentItem(@"..\..\..\Sut.Silverlight\Bin\Release\VS2015\Sut.Silverlight.xap")]
-    #endif
-#endif
+    [DeploymentItem("Sut.Silverlight.xap")]
     public class SilverlightControlTests
     {
         //TODO: the silverlight control must be hosted on a page served through a web server (ex. iis, cassini \ web dev server) because IE 9 may
@@ -50,6 +33,9 @@ namespace Sut.SilverlightTest
             }
         }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
@@ -71,6 +57,9 @@ namespace Sut.SilverlightTest
             WebServer.StartServer(Directory.GetCurrentDirectory());
         }
 
+        /// <summary>
+        /// Cleans up the test.
+        /// </summary>
         [TestCleanup]
         public void TestCleanup()
         {
@@ -81,6 +70,9 @@ namespace Sut.SilverlightTest
             }
         }
 
+        /// <summary>
+        /// Sets the selected date of a date picker.
+        /// </summary>
         [TestMethod]
         public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
@@ -96,6 +88,9 @@ namespace Sut.SilverlightTest
             b.Close();
         }
 
+        /// <summary>
+        /// Gets a Silverlight list page object.
+        /// </summary>
         [TestMethod]
         public void SlList_PageObjects_Succeeds()
         {
@@ -104,6 +99,9 @@ namespace Sut.SilverlightTest
             Assert.IsTrue(page.List.SelectedItemsAsString == "Coded UI Test");
         }
 
+        /// <summary>
+        /// Selects items of a Silverlight List using an index.
+        /// </summary>
         [TestMethod]
         public void SlList_DynamicObjectRecognition_Succeeds()
         {
@@ -115,6 +113,9 @@ namespace Sut.SilverlightTest
             b.Close();
         }
 
+        /// <summary>
+        /// Selects items of a Silverlight ComboBox by index.
+        /// </summary>
         [TestMethod]
         public void SlComboBox_SelectItem_Succeeds()
         {
@@ -129,6 +130,9 @@ namespace Sut.SilverlightTest
             browserWindow.Close();
         }
 
+        /// <summary>
+        /// Selects a Silverlight tab by index.
+        /// </summary>
         [TestMethod]
         public void SlTab_SelectedIndex_Succeeds()
         {
@@ -140,6 +144,9 @@ namespace Sut.SilverlightTest
             b.Close();
         }
 
+        /// <summary>
+        /// Traverses through the children of a Silverlight tab.
+        /// </summary>
         [TestMethod]
         public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
@@ -161,6 +168,9 @@ namespace Sut.SilverlightTest
             b.Close();
         }
 
+        /// <summary>
+        /// Clicks a button in a child window.
+        /// </summary>
         [TestMethod]
         public void Click_ButtonInChildWindow_Succeeds()
         {

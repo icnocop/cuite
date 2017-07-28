@@ -5,9 +5,9 @@ using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 namespace CUITe.Controls.UITesting
 {
     /// <summary>
-    /// Application under test
+    /// Application Under Test
     /// </summary>
-    /// <seealso cref="CUITe.Controls.ControlBase{Microsoft.VisualStudio.TestTools.UITesting.ApplicationUnderTest}" />
+    /// <seealso cref="CUITe.Controls.ControlBase{ApplicationUnderTest}" />
     public class ApplicationUnderTest : ControlBase<Microsoft.VisualStudio.TestTools.UITesting.ApplicationUnderTest>
     {
         /// <summary>

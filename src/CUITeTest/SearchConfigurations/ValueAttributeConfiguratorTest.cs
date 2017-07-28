@@ -4,9 +4,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.SearchConfigurations
 {
+    /// <summary>
+    /// Value Attribute Configurator Test
+    /// </summary>
     [CodedUITest]
     public class ValueAttributeConfiguratorTest
     {
+        /// <summary>
+        /// Configure strict.
+        /// </summary>
         [TestMethod]
         public void ConfigureStrict()
         {
@@ -23,6 +29,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, searchProperties.Find("ValueAttribute").PropertyOperator);
         }
 
+        /// <summary>
+        /// Configure loose.
+        /// </summary>
         [TestMethod]
         public void ConfigureLoose()
         {

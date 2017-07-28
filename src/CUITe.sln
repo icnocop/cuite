@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe", "CUITe\CUITe.csproj", "{FE093159-2B72-438E-9C73-E3FBAEAC5243}"
 EndProject
@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
-		..\appveyor.yml = ..\appveyor.yml
 		Targets\CodedUITests.targets = Targets\CodedUITests.targets
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		Targets\CUIT.Silverlight.targets = Targets\CUIT.Silverlight.targets
@@ -22,6 +21,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CUITe.vsmdi = CUITe.vsmdi
 		DefineNetFxCompilationConstants.prop = DefineNetFxCompilationConstants.prop
 		Local.testsettings = Local.testsettings
+		Local_CUITv10.runsettings = Local_CUITv10.runsettings
+		Local_CUITv11.runsettings = Local_CUITv11.runsettings
+		Local_CUITv12.runsettings = Local_CUITv12.runsettings
+		Local_CUITv14.runsettings = Local_CUITv14.runsettings
+		Local_CUITv15.runsettings = Local_CUITv15.runsettings
+		Project.props = Project.props
 		Targets\SilverlightUIAutomationHelper.targets = Targets\SilverlightUIAutomationHelper.targets
 	EndProjectSection
 EndProject
@@ -37,25 +42,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{73F248
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298-FDAF-430B-A9B0-FD91848BD21B}"
 	ProjectSection(SolutionItems) = preProject
+		..\build\ApplyVersionToAssemblies.ps1 = ..\build\ApplyVersionToAssemblies.ps1
 		..\appveyor.yml = ..\appveyor.yml
+		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\Build.bat = ..\Build.bat
 		Build.proj = Build.proj
+		..\build\Chocolatey\CopyChocolateyLogs.ps1 = ..\build\Chocolatey\CopyChocolateyLogs.ps1
+		..\build\DownloadAndInstallDependencies.ps1 = ..\build\DownloadAndInstallDependencies.ps1
+		..\build\ProcessRunner.ps1 = ..\build\ProcessRunner.ps1
+		..\SetDevelopmentEnvironment.bat = ..\SetDevelopmentEnvironment.bat
 		..\Test.bat = ..\Test.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Controls", "SystemsUnderTest\Sut.Wpf.Controls\Sut.Wpf.Controls.csproj", "{26221FFA-E635-4D86-B7CE-53BB16F0399C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ControlsTest", "SystemsUnderTest\Sut.Wpf.ControlsTest\Sut.Wpf.ControlsTest.csproj", "{AF645712-A7CA-4D8C-8684-FFF737CD0701}"
+	ProjectSection(ProjectDependencies) = postProject
+		{26221FFA-E635-4D86-B7CE-53BB16F0399C} = {26221FFA-E635-4D86-B7CE-53BB16F0399C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Controls", "SystemsUnderTest\Sut.WinForms.Controls\Sut.WinForms.Controls.csproj", "{A987CABE-0533-4E26-9418-D5B4B8E15B16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ControlsTest", "SystemsUnderTest\Sut.WinForms.ControlsTest\Sut.WinForms.ControlsTest.csproj", "{7C86AD84-3EE2-4932-9C1C-F57BFFD0EFFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A987CABE-0533-4E26-9418-D5B4B8E15B16} = {A987CABE-0533-4E26-9418-D5B4B8E15B16}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInput", "SystemsUnderTest\Sut.PeripheralInput\Sut.PeripheralInput.csproj", "{74419630-9433-4DD4-99FB-80B7A0E8977A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.PeripheralInputTest", "SystemsUnderTest\Sut.PeripheralInputTest\Sut.PeripheralInputTest.csproj", "{52D01CC6-6C4A-4B39-8C9B-2C6390608B04}"
+	ProjectSection(ProjectDependencies) = postProject
+		{74419630-9433-4DD4-99FB-80B7A0E8977A} = {74419630-9433-4DD4-99FB-80B7A0E8977A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.SilverlightTest", "SystemsUnderTest\Sut.SilverlightTest\Sut.SilverlightTest.csproj", "{C1E6FB2D-2804-4F3E-AC6B-9AED4E25DFB6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B38FF342-51EB-4338-AE14-D73AF81E5622} = {B38FF342-51EB-4338-AE14-D73AF81E5622}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITeTest", "CUITeTest\CUITeTest.csproj", "{313F3E35-5C0D-40FC-AE5E-EBDD4A9EDE2E}"
 EndProject
@@ -72,10 +95,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjects", "SystemsUnderTest\Sut.Wpf.ScreenObjects\Sut.Wpf.ScreenObjects.csproj", "{729F30CB-E99A-48C5-A945-0C9BD2B225E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.ScreenObjectsTest", "SystemsUnderTest\Sut.Wpf.ScreenObjectsTest\Sut.Wpf.ScreenObjectsTest.csproj", "{7BC249D6-3DBA-45AA-8C14-0657B25EDE92}"
+	ProjectSection(ProjectDependencies) = postProject
+		{729F30CB-E99A-48C5-A945-0C9BD2B225E9} = {729F30CB-E99A-48C5-A945-0C9BD2B225E9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjects", "SystemsUnderTest\Sut.WinForms.ScreenObjects\Sut.WinForms.ScreenObjects.csproj", "{E7DA3FC7-12EB-4086-A929-C77376BA02E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.ScreenObjectsTest", "SystemsUnderTest\Sut.WinForms.ScreenObjectsTest\Sut.WinForms.ScreenObjectsTest.csproj", "{15714E76-8A05-4023-B924-C911B0CD4122}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E7DA3FC7-12EB-4086-A929-C77376BA02E9} = {E7DA3FC7-12EB-4086-A929-C77376BA02E9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.PageObjectsTest", "SystemsUnderTest\Sut.Html.PageObjectsTest\Sut.Html.PageObjectsTest.csproj", "{42937C6D-41D3-423D-BC71-05E1C21401A6}"
 EndProject
@@ -84,26 +113,57 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjects", "SystemsUnderTest\Sut.Silverlight.PageObjects\Sut.Silverlight.PageObjects.csproj", "{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.PageObjectsTest", "SystemsUnderTest\Sut.Silverlight.PageObjectsTest\Sut.Silverlight.PageObjectsTest.csproj", "{3E624F8A-A115-4792-8C86-51FB529C34E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082} = {A71A6E0C-D9EB-4593-9B9B-AA0AC48F1082}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.Workflows", "SystemsUnderTest\Sut.Wpf.Workflows\Sut.Wpf.Workflows.csproj", "{ED312AAC-D022-49BA-A049-043D0091C9F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems Under Test", "Systems Under Test", "{0D358022-2827-4DDD-9945-FEC322B4E946}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Wpf.WorkflowsTest", "SystemsUnderTest\Sut.Wpf.WorkflowsTest\Sut.Wpf.WorkflowsTest.csproj", "{0A42B4CE-A090-410F-BDEA-199848598059}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ED312AAC-D022-49BA-A049-043D0091C9F5} = {ED312AAC-D022-49BA-A049-043D0091C9F5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Html.WorkflowsTest", "SystemsUnderTest\Sut.Html.WorkflowsTest\Sut.Html.WorkflowsTest.csproj", "{D8E9A365-E3CE-46C9-A501-E49924336B42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.Workflows", "SystemsUnderTest\Sut.Silverlight.Workflows\Sut.Silverlight.Workflows.csproj", "{EE2AB077-2630-4F38-944C-B1D623FCB41E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.Silverlight.WorkflowsTest", "SystemsUnderTest\Sut.Silverlight.WorkflowsTest\Sut.Silverlight.WorkflowsTest.csproj", "{20AC600B-F91D-42EF-B763-F08674009437}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE2AB077-2630-4F38-944C-B1D623FCB41E} = {EE2AB077-2630-4F38-944C-B1D623FCB41E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.Workflows", "SystemsUnderTest\Sut.WinForms.Workflows\Sut.WinForms.Workflows.csproj", "{E941D076-41B8-4EBD-90B1-668EB25304F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sut.WinForms.WorkflowsTest", "SystemsUnderTest\Sut.WinForms.WorkflowsTest\Sut.WinForms.WorkflowsTest.csproj", "{2BF7540C-E1AB-4E3B-A37C-A7D621AAF4CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E941D076-41B8-4EBD-90B1-668EB25304F0} = {E941D076-41B8-4EBD-90B1-668EB25304F0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUITe.IntegrationTests", "CUITe.IntegrationTests\CUITe.IntegrationTests.csproj", "{9E236576-EA59-46B1-A6C9-FB9A17D32118}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4CA5CDA2-0678-430B-9079-F11906B54070} = {4CA5CDA2-0678-430B-9079-F11906B54070}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chocolatey", "Chocolatey", "{907C048D-1D9C-4532-BE04-6A459EF485E6}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\Chocolatey\CopyChocolateyLogs.ps1 = ..\build\Chocolatey\CopyChocolateyLogs.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TeamViewer", "TeamViewer", "{C812E996-2A5F-41EB-8B1C-F5B896B46B25}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\TeamViewer\EnableRemoteConnection.ps1 = ..\build\TeamViewer\EnableRemoteConnection.ps1
+		..\build\TeamViewer\TeamViewer_Settings.reg = ..\build\TeamViewer\TeamViewer_Settings.reg
+		..\build\TeamViewer\WaitForRemoteConnection.ps1 = ..\build\TeamViewer\WaitForRemoteConnection.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Firefox", "Firefox", "{31234E55-E834-4396-BC55-4C8D34201EE4}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\Firefox\local-settings.js = ..\build\Firefox\local-settings.js
+		..\build\Firefox\mozilla.cfg = ..\build\Firefox\mozilla.cfg
+		..\build\Firefox\override.ini = ..\build\Firefox\override.ini
 	EndProjectSection
 EndProject
 Global
@@ -435,6 +495,12 @@ Global
 		{20AC600B-F91D-42EF-B763-F08674009437} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{E941D076-41B8-4EBD-90B1-668EB25304F0} = {0D358022-2827-4DDD-9945-FEC322B4E946}
 		{2BF7540C-E1AB-4E3B-A37C-A7D621AAF4CD} = {0D358022-2827-4DDD-9945-FEC322B4E946}
+		{907C048D-1D9C-4532-BE04-6A459EF485E6} = {90152298-FDAF-430B-A9B0-FD91848BD21B}
+		{C812E996-2A5F-41EB-8B1C-F5B896B46B25} = {90152298-FDAF-430B-A9B0-FD91848BD21B}
+		{31234E55-E834-4396-BC55-4C8D34201EE4} = {90152298-FDAF-430B-A9B0-FD91848BD21B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27968D72-7EA2-449F-A022-A45E29C77974}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CUITe.vsmdi

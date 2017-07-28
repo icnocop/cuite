@@ -4,9 +4,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.DataSources
 {
+    /// <summary>
+    /// XML Data Source Test
+    /// </summary>
     [TestClass]
     public class XmlDataSourceTest
     {
+        /// <summary>
+        /// Invalid data source.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(XmlDataSourceNotFoundException))]
         public void InvalidDataSource()
@@ -15,6 +21,9 @@ namespace CUITeTest.DataSources
             XmlDataSource.GetDataBlock(typeof(XmlDataSourceTest), "InvalidFileName.xml", "indifferent");
         }
 
+        /// <summary>
+        /// Invalid identifier.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(DataBlockIdNotFoundException))]
         public void InvalidId()
@@ -23,6 +32,9 @@ namespace CUITeTest.DataSources
             XmlDataSource.GetDataBlock(typeof(XmlDataSourceTest), "XmlDataSource.xml", "invalidid");
         }
 
+        /// <summary>
+        /// Non overridden data.
+        /// </summary>
         [TestMethod]
         public void NonOverriddenData()
         {
@@ -33,6 +45,9 @@ namespace CUITeTest.DataSources
             Assert.AreEqual("2", data["numberofwheels"]);
         }
 
+        /// <summary>
+        /// Overridden data.
+        /// </summary>
         [TestMethod]
         public void OverriddenData()
         {
@@ -43,6 +58,9 @@ namespace CUITeTest.DataSources
             Assert.AreEqual("3", data["numberofwheels"]);
         }
 
+        /// <summary>
+        /// First generation data.
+        /// </summary>
         [TestMethod]
         public void FirstGenerationData()
         {
@@ -53,6 +71,9 @@ namespace CUITeTest.DataSources
             AssertName(data);
         }
 
+        /// <summary>
+        /// Second generation data.
+        /// </summary>
         [TestMethod]
         public void SecondGenerationData()
         {
@@ -63,6 +84,9 @@ namespace CUITeTest.DataSources
             AssertDateOfBirth(data);
         }
 
+        /// <summary>
+        /// Third generation data.
+        /// </summary>
         [TestMethod]
         public void ThirdGenerationData()
         {

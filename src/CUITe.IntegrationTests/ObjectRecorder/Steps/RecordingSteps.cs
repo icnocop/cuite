@@ -10,19 +10,30 @@ using TechTalk.SpecFlow;
 
 namespace CUITe.IntegrationTests.ObjectRecorder.Steps
 {
+    /// <summary>
+    /// Recoding Steps
+    /// </summary>
+    /// <seealso cref="System.IDisposable" />
     [Binding]
     public class RecordingSteps : IDisposable
     {
         private TempFile tempFile;
         private MainScreen mainScreen;
 
+        /// <summary>
+        /// Given an HTML file with the contents.
+        /// </summary>
+        /// <param name="multilineText">The multiline text.</param>
         [Given(@"an html file with the contents")]
         public void GivenAnHtmlFileWithTheContents(string multilineText)
         {
             tempFile = new TempFile();
             File.WriteAllText(tempFile.FilePath, multilineText);
         }
-        
+
+        /// <summary>
+        /// Given the HTML file is launched with the recorder.
+        /// </summary>
         [Given(@"the html file is launched with the recorder")]
         public void GivenTheHtmlFileIsLaunchedWithTheRecorder()
         {
@@ -32,19 +43,29 @@ namespace CUITe.IntegrationTests.ObjectRecorder.Steps
             mainScreen.AddressTextBox.Text = tempFile.FilePath;
             mainScreen.GoButton.Click();
         }
-        
+
+        /// <summary>
+        /// When the recording is started.
+        /// </summary>
         [When(@"recording is started")]
         public void WhenRecordingIsStarted()
         {
             mainScreen.RecordButton.Click();
         }
-        
+
+        /// <summary>
+        /// When the textbox is clicked.
+        /// </summary>
         [When(@"the textbox is clicked")]
         public void WhenTheTextboxIsClicked()
         {
             mainScreen.TestTextBox.Click();
         }
-        
+
+        /// <summary>
+        /// Then the generated file should contain.
+        /// </summary>
+        /// <param name="multilineText">The multiline text.</param>
         [Then(@"the generated file should contain")]
         public void ThenTheGeneratedFileShouldContain(string multilineText)
         {
@@ -115,6 +136,9 @@ namespace CUITe.IntegrationTests.ObjectRecorder.Steps
                 string.Join(Environment.NewLine, message));
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             tempFile.Dispose();

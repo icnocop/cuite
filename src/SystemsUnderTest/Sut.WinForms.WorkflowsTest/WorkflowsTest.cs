@@ -6,15 +6,14 @@ using Sut.WinForms.WorkflowsTest.Workflows;
 
 namespace Sut.WinForms.WorkflowsTest
 {
+    /// <summary>
+    /// Workflows Test
+    /// </summary>
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.WinForms.Workflows\bin\Debug\Sut.WinForms.Workflows.exe")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.WinForms.Workflows\bin\Release\Sut.WinForms.Workflows.exe")]
-#endif
+    [DeploymentItem("Sut.WinForms.Workflows.exe")]
     public class WorkflowsTest
     {
-        private const string ApplicationFilePath = @"Sut.WinForms.Workflows.exe";
+        private const string ApplicationFilePath = "Sut.WinForms.Workflows.exe";
         private NameWizardPage nameWizardPage;
 
         /// <summary>
@@ -23,12 +22,18 @@ namespace Sut.WinForms.WorkflowsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             nameWizardPage = Screen.Launch<NameWizardPage>(ApplicationFilePath);
         }
 
+        /// <summary>
+        /// Steps through the wizard.
+        /// </summary>
         [TestMethod]
         public void StepThroughWizard()
         {

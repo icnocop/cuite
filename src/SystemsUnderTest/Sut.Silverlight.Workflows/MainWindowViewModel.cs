@@ -9,16 +9,14 @@ namespace Sut.Silverlight.Workflows
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private readonly ICommand previousCommand;
-        private readonly ICommand nextCommand;
         private readonly INotifyPropertyChanged[] pages;
 
         private INotifyPropertyChanged currentPage;
 
         public MainWindowViewModel()
         {
-            previousCommand = new RelayCommand(Previous, CanPrevious);
-            nextCommand = new RelayCommand(Next, CanNext);
+            PreviousCommand = new RelayCommand(Previous, CanPrevious);
+            NextCommand = new RelayCommand(Next, CanNext);
 
             pages = new INotifyPropertyChanged[]
             {
@@ -46,15 +44,9 @@ namespace Sut.Silverlight.Workflows
             }
         }
 
-        public ICommand PreviousCommand
-        {
-            get { return previousCommand; }
-        }
+        public ICommand PreviousCommand { get; }
 
-        public ICommand NextCommand
-        {
-            get { return nextCommand; }
-        }
+        public ICommand NextCommand { get; }
 
         public Visibility ButtonsVisibility
         {

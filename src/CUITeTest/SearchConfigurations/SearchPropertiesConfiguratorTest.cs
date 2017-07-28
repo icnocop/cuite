@@ -4,9 +4,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.SearchConfigurations
 {
+    /// <summary>
+    /// Search Properties Configurator Test
+    /// </summary>
     [CodedUITest]
     public class SearchPropertiesConfiguratorTest
     {
+        /// <summary>
+        /// Configure strict search property.
+        /// </summary>
         [TestMethod]
         public void ConfigureStrictSearchProperty()
         {
@@ -23,6 +29,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, searchProperties.Find("Name").PropertyOperator);
         }
 
+        /// <summary>
+        /// Configure strict search properties.
+        /// </summary>
         [TestMethod]
         public void ConfigureStrictSearchProperties()
         {
@@ -41,6 +50,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, searchProperties.Find("Name2").PropertyOperator);
         }
 
+        /// <summary>
+        /// Configure loose search property.
+        /// </summary>
         [TestMethod]
         public void ConfigureLooseSearchProperty()
         {

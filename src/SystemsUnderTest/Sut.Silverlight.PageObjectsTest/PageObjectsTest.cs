@@ -9,13 +9,12 @@ using Sut.Silverlight.PageObjectsTest.PageObjects;
 
 namespace Sut.Silverlight.PageObjectsTest
 {
+    /// <summary>
+    /// Page Objects Test
+    /// </summary>
     [CodedUITest]
     [DeploymentItem("Sut.Silverlight.PageObjects.html")]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.Silverlight.PageObjects\Bin\Debug\Sut.Silverlight.PageObjects.xap")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.Silverlight.PageObjects\Bin\Release\Sut.Silverlight.PageObjects.xap")]
-#endif
+    [DeploymentItem("Sut.Silverlight.PageObjects.xap")]
     public class PageObjectsTest
     {
         private static readonly CassiniDevServer WebServer = new CassiniDevServer();
@@ -28,6 +27,10 @@ namespace Sut.Silverlight.PageObjectsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the class.
+        /// </summary>
+        /// <param name="testContext">The test context.</param>
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
@@ -37,18 +40,27 @@ namespace Sut.Silverlight.PageObjectsTest
             ControlBase.IsControlReadinessAwaitedByDefault = true;
         }
 
+        /// <summary>
+        /// Cleans up the class.
+        /// </summary>
         [ClassCleanup]
         public static void ClassCleanup()
         {
             WebServer.StopServer();
         }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             mainPage = Page.Launch<MainPage>(WebServer.RootUrl + "Sut.Silverlight.PageObjects.html");
         }
 
+        /// <summary>
+        /// Upper left.
+        /// </summary>
         [TestMethod]
         public void UpperLeft()
         {
@@ -74,6 +86,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(checkBoxExists);
         }
 
+        /// <summary>
+        /// Rebased upper left.
+        /// </summary>
         [TestMethod]
         public void RebasedUpperLeft()
         {
@@ -82,6 +97,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Upper right.
+        /// </summary>
         [TestMethod]
         public void UpperRight()
         {
@@ -89,6 +107,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.UpperRight.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Rebased upper right.
+        /// </summary>
         [TestMethod]
         public void RebasedUpperRight()
         {
@@ -97,6 +118,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Lower left.
+        /// </summary>
         [TestMethod]
         public void LowerLeft()
         {
@@ -104,6 +128,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.LowerLeft.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Rebased lower left.
+        /// </summary>
         [TestMethod]
         public void RebasedLowerLeft()
         {
@@ -112,6 +139,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Lower right.
+        /// </summary>
         [TestMethod]
         public void LowerRight()
         {
@@ -119,6 +149,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.LowerRight.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Rebased lower right.
+        /// </summary>
         [TestMethod]
         public void RebasedLowerRight()
         {
@@ -127,6 +160,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Browser.
+        /// </summary>
         [TestMethod]
         public void Browser()
         {
@@ -144,6 +180,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
         }
 
+        /// <summary>
+        /// Self.
+        /// </summary>
         [TestMethod]
         public void Self()
         {
@@ -153,6 +192,9 @@ namespace Sut.Silverlight.PageObjectsTest
             Assert.IsTrue(mainPage.Self.Enabled);
         }
 
+        /// <summary>
+        /// Navigates to dialog.
+        /// </summary>
         [TestMethod]
         public void NavigateToDialog()
         {

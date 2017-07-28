@@ -4,9 +4,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.SearchConfigurations
 {
+    /// <summary>
+    /// Tag Name Configurator Test
+    /// </summary>
     [CodedUITest]
     public class TagNameConfiguratorTest
     {
+        /// <summary>
+        /// Configure strict.
+        /// </summary>
         [TestMethod]
         public void ConfigureStrict()
         {
@@ -23,6 +29,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, searchProperties.Find("TagName").PropertyOperator);
         }
 
+        /// <summary>
+        /// Configure loose.
+        /// </summary>
         [TestMethod]
         public void ConfigureLoose()
         {

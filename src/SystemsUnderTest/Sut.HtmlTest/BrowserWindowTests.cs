@@ -41,6 +41,9 @@ namespace Sut.HtmlTest
             Trace.WriteLine(string.Format("Test Results Directory: {0}", TestContext.TestResultsDirectory));
         }
 
+        /// <summary>
+        /// Gets the window title from the process.
+        /// </summary>
         [TestMethod]
         public void FromProcess_GetWindowTitle_Succeeds()
         {
@@ -65,6 +68,9 @@ namespace Sut.HtmlTest
             }
         }
 
+        /// <summary>
+        /// Gets the window title from launched browser window.
+        /// </summary>
         [TestMethod]
         public void Launch_GetWindowTitle_Succeeds()
         {
@@ -81,6 +87,9 @@ namespace Sut.HtmlTest
             window.Close();
         }
 
+        /// <summary>
+        /// Gets the HTML document from browser window can get outer HTML property.
+        /// </summary>
         [TestMethod]
         public void GetHtmlDocument_FromBrowserWindow_CanGetOuterHtmlProperty()
         {
@@ -95,11 +104,14 @@ namespace Sut.HtmlTest
             // so just check for <body
             const string expected = "<body";
 
-            string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString();
+            string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString().Trim();
 
             Assert.AreEqual(expected, outerHtml.Substring(0, expected.Length), true, outerHtml);
         }
 
+        /// <summary>
+        /// Find all browser windows from process name can get URI and title.
+        /// </summary>
         [TestMethod]
         public void FromProcess_FindAllBrowserWindows_CanGetUriAndTitle()
         {

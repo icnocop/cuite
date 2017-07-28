@@ -10,56 +10,15 @@
     <RootNamespace>CUITe</RootNamespace>
     <AssemblyName>CUITe</AssemblyName>
     <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
-    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\CUITe.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\CUITe.xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\CUITe.xml</DocumentationFile>
-  </PropertyGroup>
+  <Import Project="..\Project.props" />
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
@@ -67,10 +26,11 @@
     <AssemblyOriginatorKeyFile>..\CUITe.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Unofficial.Microsoft.mshtml.7.0.3300\lib\net40\Microsoft.mshtml.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -279,6 +239,8 @@
     <None Include="CUITe for Visual Studio 2012.nuspec" />
     <None Include="CUITe for Visual Studio 2013.nuspec" />
     <None Include="CUITe for Visual Studio 2015.nuspec" />
+    <None Include="CUITe for Visual Studio 2017.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

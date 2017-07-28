@@ -6,15 +6,14 @@ using Sut.PeripheralInputTest.ScreenObjects;
 
 namespace Sut.PeripheralInputTest
 {
+    /// <summary>
+    /// Keyboard Test
+    /// </summary>
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Debug\Sut.PeripheralInput.exe")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Release\Sut.PeripheralInput.exe")]
-#endif
+    [DeploymentItem("Sut.PeripheralInput.exe")]
     public class KeyboardTest
     {
-        private const string ApplicationFilePath = @"Sut.PeripheralInput.exe";
+        private const string ApplicationFilePath = "Sut.PeripheralInput.exe";
         private MainScreen mainScreen;
 
         /// <summary>
@@ -23,12 +22,18 @@ namespace Sut.PeripheralInputTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
+        /// <summary>
+        /// Send text.
+        /// </summary>
         [TestMethod]
         public void SendText()
         {
@@ -43,6 +48,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual(expected, mainScreen.KeyboardResult.Text);
         }
 
+        /// <summary>
+        /// Send text with modifier.
+        /// </summary>
         [TestMethod]
         public void SendTextWithModifier()
         {
@@ -57,6 +65,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual(expected, mainScreen.KeyboardResult.Text);
         }
 
+        /// <summary>
+        /// Press and release modifier keys.
+        /// </summary>
         [TestMethod]
         public void PressAndReleaseModifierKeys()
         {
@@ -74,6 +85,9 @@ namespace Sut.PeripheralInputTest
         }
 
 
+        /// <summary>
+        /// Hold modifier keys.
+        /// </summary>
         [TestMethod]
         public void HoldModifierKeys()
         {
@@ -91,6 +105,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual(expected, mainScreen.KeyboardResult.Text);
         }
 
+        /// <summary>
+        /// Send text after holding modifier keys.
+        /// </summary>
         [TestMethod]
         public void SendTextAfterHoldingModifierKeys()
         {

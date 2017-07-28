@@ -6,6 +6,13 @@ namespace CUITe.IntegrationTests.NuGet
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Shell.Interop;
 
+    /// <summary>
+    /// Solution Events Listener
+    /// </summary>
+    /// <seealso cref="Microsoft.VisualStudio.Shell.Interop.IVsSolutionEvents" />
+    /// <seealso cref="Microsoft.VisualStudio.Shell.Interop.IVsShellPropertyEvents" />
+    /// <seealso cref="Microsoft.VisualStudio.Shell.Interop.IVsBroadcastMessageEvents" />
+    /// <seealso cref="System.IDisposable" />
     public class SolutionEventsListener : IVsSolutionEvents, IVsShellPropertyEvents, IVsBroadcastMessageEvents, IDisposable
     {
         private IVsSolution solution;
@@ -18,10 +25,25 @@ namespace CUITe.IntegrationTests.NuGet
 
         private uint broadcastMessageEventsCookie;
 
+        /// <summary>
+        /// Occurs after the solution is loaded.
+        /// </summary>
         public event Action AfterSolutionLoaded;
+
+        /// <summary>
+        /// Occurs before the solution is closed.
+        /// </summary>
         public event Action BeforeSolutionClosed;
+
+        /// <summary>
+        /// Occurs after the solution is closed.
+        /// </summary>
         public event Action AfterSolutionClosed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolutionEventsListener"/> class.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
         public SolutionEventsListener(IServiceProvider serviceProvider)
         {
             this.InitNullEvents();
@@ -131,6 +153,9 @@ namespace CUITe.IntegrationTests.NuGet
 
         #region IDisposable Members
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             if (this.solution != null && this.solutionEventsCookie != 0)
@@ -166,6 +191,12 @@ namespace CUITe.IntegrationTests.NuGet
 
         #endregion
 
+        /// <summary>
+        /// Called when a shell property changes.
+        /// </summary>
+        /// <param name="propid">The property identifier.</param>
+        /// <param name="var">The variable.</param>
+        /// <returns></returns>
         public int OnShellPropertyChange(int propid, object var)
         {
             Trace.WriteLine(string.Format("Shell Property Changed '{0} '{1}'", propid, var));
@@ -173,6 +204,13 @@ namespace CUITe.IntegrationTests.NuGet
             return VSConstants.S_OK;
         }
 
+        /// <summary>
+        /// Called when a message is broadcast.
+        /// </summary>
+        /// <param name="msg">The message identifier.</param>
+        /// <param name="wParam">The first parameter.</param>
+        /// <param name="lParam">The second parameter.</param>
+        /// <returns></returns>
         public int OnBroadcastMessage(uint msg, IntPtr wParam, IntPtr lParam)
         {
             Trace.WriteLine(string.Format("Broadcast Message '{0} '{1}' '{2}'", msg, wParam, lParam));

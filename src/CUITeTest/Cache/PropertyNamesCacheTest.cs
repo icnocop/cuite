@@ -5,17 +5,26 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.Cache
 {
+    /// <summary>
+    /// Property names cache test
+    /// </summary>
     [CodedUITest]
     public class PropertyNamesCacheTest
     {
         private PropertyNamesCache propertyNamesCache;
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             propertyNamesCache = new PropertyNamesCache();
         }
 
+        /// <summary>
+        /// Gets the property names for a.
+        /// </summary>
         [TestMethod]
         public void GetPropertyNamesForA()
         {
@@ -34,6 +43,9 @@ namespace CUITeTest.Cache
             CollectionAssert.IsSubsetOf(expected, actual);
         }
 
+        /// <summary>
+        /// Gets the property names for b.
+        /// </summary>
         [TestMethod]
         public void GetPropertyNamesForB()
         {
@@ -51,6 +63,9 @@ namespace CUITeTest.Cache
             CollectionAssert.IsSubsetOf(expected, actual);
         }
 
+        /// <summary>
+        /// Gets the property names for c.
+        /// </summary>
         [TestMethod]
         public void GetPropertyNamesForC()
         {
