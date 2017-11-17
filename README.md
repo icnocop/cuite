@@ -106,7 +106,7 @@ ApplicationUnderTest.Launch(@"C:\path to your application.exe");
 WpfWindow window = new WpfWindow(By.Name("Main Window Title"));
 
 // Enter the first name
-window.Find<WpfEdit>(By.Name("FirstName")).Text = "John"
+window.Find<WpfEdit>(By.Name("FirstName")).Text = "John";
 
 // Enter the last name
 window.Find<WpfEdit>(By.Name("LastName")).Text = "Doe";
@@ -124,7 +124,7 @@ ApplicationUnderTest.Launch(@"C:\path to your application.exe");
 WinWindow window = new WinWindow(By.Name("Main Window Title"));
 
 // Enter the first name
-window.Find<WinEdit>(By.Name("FirstName")).Text = "John"
+window.Find<WinEdit>(By.Name("FirstName")).Text = "John";
 
 // Enter the last name
 window.Find<WinEdit>(By.Name("LastName")).Text = "Doe";
