@@ -45,7 +45,7 @@ namespace CUITe.Controls.SilverlightControls
             get
             {
                 WaitForControlReadyIfNecessary();
-                
+
                 try
                 {
                     return WrapUtil((CUITControls.SilverlightControl)SourceControl.GetParent());
@@ -226,6 +226,10 @@ namespace CUITe.Controls.SilverlightControls
             else if (control.GetType() == typeof(CUITControls.SilverlightTree))
             {
                 _con = new SilverlightTree((CUITControls.SilverlightTree)control);
+            }
+            else if (control.GetType() == typeof(CUITControls.SilverlightControl))
+            {
+                _con = new SilverlightControl(control);
             }
             else
             {
