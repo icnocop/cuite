@@ -300,7 +300,7 @@ init:
     Write-Host "Downloading Microsoft Silverlight 5 Toolkit - December 2011..."  
     $msiFilePath = "$($env:USERPROFILE)\Silverlight_5_Toolkit_December_2011.msi"  
     $logFilePath = "$($env:TEMP)\Silverlight_5_Toolkit_December_2011.txt"  
-    $webclient.DownloadFile('http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=silverlight&DownloadId=311823&FileTime=129679336571930000&Build=21050', $msiFilePath)  
+    $webclient.DownloadFile('https://github.com/MicrosoftArchive/SilverlightToolkit/releases/download/5/Silverlight_5_Toolkit_December_2011.1.msi', $msiFilePath)  
     Write-Host "Installing Microsoft Silverlight 5 Toolkit - December 2011..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
