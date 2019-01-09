@@ -410,7 +410,7 @@ init:
     Write-Host "Downloading Selenium components for Coded UI Cross Browser Testing Version 1.7..."  
     $msiFilePath = "$($env:USERPROFILE)\CodedUITestCrossBrowserSetup.msi"  
     $logFilePath = "$($env:TEMP)\CodedUITestCrossBrowserSetup.txt"  
-    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/11cfc881-f8c9-4f96-b303-a2780156628d/file/85444/13/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
+    $webclient.DownloadFile('https://atinbansal.gallerycdn.vsassets.io/extensions/atinbansal/seleniumcomponentsforcodeduicrossbrowsertesting/1.7/1482138134269/85444/13/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
     Write-Host "Installing Selenium components for Coded UI Cross Browser Testing Version 1.7..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
