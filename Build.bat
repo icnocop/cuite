@@ -1,9 +1,9 @@
 @echo off
 
-call "%VS120COMNTOOLS%VsDevCmd.bat"
+call %~dp0SetDevelopmentEnvironment.bat
 
 rem Parameters
-set PROJECT=.\src\Build.proj
+set PROJECT=%~dp0src\Build.proj
 
 set ConfigurationName=%1
 

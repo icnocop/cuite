@@ -1,6 +1,6 @@
 @echo off
 
-call "%VS120COMNTOOLS%VsDevCmd.bat"
+call SetDevelopmentEnvironment.bat
 
 rem Parameters
 set PROJECT=.\src\Build.proj
