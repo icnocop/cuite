@@ -266,7 +266,7 @@ init:
     Write-Host "Downloading Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
     $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2013.msi"  
     $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2013.txt"  
-    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da/file/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)  
+    $webclient.DownloadFile('https://prachiboramsft.gallerycdn.vsassets.io/extensions/prachiboramsft/microsoftvisualstudio2013codeduitestpluginforsilve/1.0/1482140133605/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)  
     Write-Host "Installing Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
@@ -283,7 +283,7 @@ init:
     Write-Host "Downloading Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight..."  
     $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2015.msi"  
     $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2015.txt"  
-    $webclient.DownloadFile('https://visualstudiogallery.msdn.microsoft.com/bf0caedc-90eb-46af-9c1a-8e68d013bb99/file/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)  
+    $webclient.DownloadFile('https://atinbansal.gallerycdn.vsassets.io/extensions/atinbansal/microsoftvisualstudio2015codeduitestpluginforsilve/1.0/1482142639885/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)  
     Write-Host "Installing Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight..."  
     $process = (Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath" -Wait -Passthru)  
     $exitCode = $process.ExitCode  
