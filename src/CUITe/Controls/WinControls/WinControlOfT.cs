@@ -106,13 +106,6 @@ namespace CUITe.Controls.WinControls
         /// <see cref="CUITControls.WinControl.PropertyNames.ControlName"/>. from the control to
         /// search for to its parent.
         /// </summary>
-        /// <remarks>
-        /// Searching for WinForms controls differs slightly from searching for WPF controls.
-        /// When searching for WPF controls using e.g. their automation id, the automation id
-        /// search property is added to the WPF control.
-        /// When searching for WinForms controls using their control name, the control name search
-        /// property is added to the parent WinForms control, not the actual control itself.
-        /// </remarks>
         private void MoveControlNames(PropertyExpressionCollection searchProperties)
         {
             PropertyExpression[] controlNameExpressions = searchProperties
@@ -127,7 +120,7 @@ namespace CUITe.Controls.WinControls
                 searchProperties.Remove(controlNameExpression);
             }
 
-            SourceControl.GetParent().SearchProperties.AddRange(controlNameExpressions);
+            SourceControl.SearchProperties.AddRange(controlNameExpressions);
         }
     }
 }

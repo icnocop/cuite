@@ -8,7 +8,15 @@ namespace Sut.WinForms.ScreenObjectsTest.ScreenObjects
     {
         public bool RadioButtonExists
         {
-            get { return Find<WinRadioButton>(By.ControlName("radioButtonLowerRight")).Exists; }
+            get { return this.Window.Find<WinRadioButton>().Exists; }
+        }
+
+        private WinWindow Window
+        {
+            get
+            {
+                return this.Find<WinWindow>(By.ControlName("radioButtonLowerRight"));
+            }
         }
     }
 }

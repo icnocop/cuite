@@ -4,7 +4,7 @@ using CUITe.SearchConfigurations;
 
 namespace Sut.WinForms.ScreenObjectsTest.ScreenObjects
 {
-    public class RebasedLowerRightScreenObject : ScreenObject<WinGroup>
+    public class RebasedLowerRightScreenObject : ScreenObject<WinWindow>
     {
         public RebasedLowerRightScreenObject()
             : base(By.ControlName("groupBoxLowerRight"))
@@ -13,7 +13,7 @@ namespace Sut.WinForms.ScreenObjectsTest.ScreenObjects
 
         public bool RadioButtonExists
         {
-            get { return Find<WinRadioButton>(By.ControlName("radioButtonLowerRight")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("radioButtonLowerRight")).Find<WinRadioButton>().Exists; }
         }
     }
 }

@@ -55,12 +55,7 @@ namespace Microsoft.VisualStudio.TestTools.UITesting
                     if ((searchConfiguration != null)
                         && IsSubclassOfRawGeneric(typeof(WinControl<>), control.GetType()))
                     {
-                        // Searching for WinForms controls differs slightly from searching for WPF controls.
-                        // When searching for WPF controls using e.g. their automation id, the automation id
-                        // search property is added to the WPF control.
-                        // When searching for WinForms controls using their control name, the control name search
-                        // property is added to the parent WinForms control, not the actual control itself.
-                        control.SourceControl.Container.SearchProperties.AddRange(searchConfiguration.Configuration);
+                        control.SourceControl.SearchProperties.AddRange(searchConfiguration.Configuration);
                     }
                 }
             }

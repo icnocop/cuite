@@ -8,7 +8,15 @@ namespace Sut.WinForms.ScreenObjectsTest.ScreenObjects
     {
         public bool CheckBoxExists
         {
-            get { return Find<WinCheckBox>(By.ControlName("checkBoxUpperLeft")).Exists; }
+            get { return this.Window.Find<WinCheckBox>().Exists; }
+        }
+
+        private WinWindow Window
+        {
+            get
+            {
+                return this.Find<WinWindow>(By.ControlName("checkBoxUpperLeft"));
+            }
         }
     }
 }

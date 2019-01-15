@@ -5,6 +5,51 @@ branches:
 image: Visual Studio 2015
 init:
 - ps: |
+    # Allow Remote Desktop  
+    $webclient = New-Object System.Net.WebClient  
+    # Write-Host "Builds require a Remote Desktop Connection (RDP) to continue..."  
+    # $blockRdp = $true;
+    iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
+
+    Write-Host "Tests are required to run interactively"
+    $user = whoami
+
+    $pwd = ''
+    if ($env:appveyor_rdp_password) {
+        Write-Host "Using password from environment variable."
+        $pwd = $env:appveyor_rdp_password
+    }
+    else {
+        Write-Host "Using password from registry."
+        $pwd = [Microsoft.Win32.Registry]::GetValue("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon", "DefaultPassword", '')
+        if (!$pwd) {
+            Write-Host "Failed to get password from registry."
+            $host.SetShouldExit(1)
+        }
+    }
+
+    Remove-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon -ErrorAction SilentlyContinue
+    New-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoAdminLogon -PropertyType String -Value 1
+
+    Remove-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultUsername -ErrorAction SilentlyContinue
+    New-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultUsername -PropertyType String -Value $user 
+
+    Remove-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultPassword -ErrorAction SilentlyContinue
+    New-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name DefaultPassword -PropertyType String -Value $pwd
+
+    Write-Output "Restarting worker in 5 seconds...";
+    Start-Sleep -Seconds 5
+    Restart-Computer -Force -Confirm:$false;
+    Write-Output "Waiting 5 seconds for a restart...";
+    Start-Sleep -Seconds 5
+assembly_info:
+  patch: true
+  file: src\CommonAssemblyInfo.cs
+  assembly_version: '{version}.0'
+  assembly_file_version: '{version}.0'
+  assembly_informational_version: '{version}-beta'
+install:
+- ps: |
     Function Get-IniContent {  
         <#  
         .Synopsis  
@@ -257,11 +302,8 @@ init:
             {Write-Verbose "$($MyInvocation.MyCommand.Name):: Function ended"}  
     }  
       
-    $webclient = New-Object System.Net.WebClient  
-    # Allow Remote Desktop  
-    Write-Host "Builds require a Remote Desktop Connection (RDP) to continue..."  
-    $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))  
-      
+    $webclient = New-Object System.Net.WebClient
+
     # Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight  
     Write-Host "Downloading Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
     $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2013.msi"  
@@ -457,21 +499,12 @@ init:
     $Configuration.Save($ConfigFilePath)  
       
     # $blockRdp = $true; iex ($webclient.DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))"  
-assembly_info:
-  patch: true
-  file: src\CommonAssemblyInfo.cs
-  assembly_version: '{version}.0'
-  assembly_file_version: '{version}.0'
-  assembly_informational_version: '{version}-beta'
-install:
-- cmd: >-
-    REM Apply low integrity label on html files to mark them as accessible from an Enhanced Protected Mode process
 
-    REM http://blogs.msdn.com/b/ieinternals/archive/2012/06/20/loading-local-files-in-enhanced-protected-mode-in-internet-explorer-10.aspx
+    # Apply low integrity label on html files to mark them as accessible from an Enhanced Protected Mode process
+    # http://blogs.msdn.com/b/ieinternals/archive/2012/06/20/loading-local-files-in-enhanced-protected-mode-in-internet-explorer-10.aspx
+    # This circumvents the "Open File - Security Warning" dialog that appears when exes (applications under test) are launched
 
-    REM This circumvents the "Open File - Security Warning" dialog that appears when exes (applications under test) are launched
-
-    icacls "%appveyor_build_folder%" /setintegritylevel (CI)(OI)Medium
+    icacls "$env:appveyor_build_folder" /setintegritylevel "(CI)(OI)Medium"
 nuget:
   disable_publish_on_pr: true
 build_script:

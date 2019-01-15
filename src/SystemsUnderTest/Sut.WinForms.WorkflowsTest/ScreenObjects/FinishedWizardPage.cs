@@ -8,7 +8,7 @@ namespace Sut.WinForms.WorkflowsTest.ScreenObjects
     {
         public bool CongratulationsExists
         {
-            get { return Find<WinText>(By.ControlName("labelCongratulations")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("labelCongratulations")).Find<WinText>().Exists; }
         }
     }
 }

@@ -4,7 +4,7 @@ using CUITe.SearchConfigurations;
 
 namespace Sut.WinForms.ScreenObjectsTest.ScreenObjects
 {
-    public class RebasedUpperLeftScreenObject : ScreenObject<WinGroup>
+    public class RebasedUpperLeftScreenObject : ScreenObject<WinWindow>
     {
         public RebasedUpperLeftScreenObject()
             : base(By.ControlName("groupBoxUpperLeft"))
@@ -13,7 +13,7 @@ namespace Sut.WinForms.ScreenObjectsTest.ScreenObjects
 
         public bool CheckBoxExists
         {
-            get { return Find<WinCheckBox>(By.ControlName("checkBoxUpperLeft")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("checkBoxUpperLeft")).Find<WinCheckBox>().Exists; }
         }
     }
 }

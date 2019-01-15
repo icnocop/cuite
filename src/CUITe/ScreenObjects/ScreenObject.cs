@@ -65,7 +65,7 @@ namespace CUITe.ScreenObjects
                 throw new ArgumentNullException("title");
 
             UITestControl searchLimitContainer;
-            
+
             switch (Application.TechnologyName)
             {
                 case "MSAA":

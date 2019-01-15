@@ -11,97 +11,97 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
     {
         public bool ButtonExists
         {
-            get { return Find<WinButton>(By.ControlName("button")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("button")).Find<WinButton>().Exists; }
         }
 
         public bool CheckBoxExists
         {
-            get { return Find<WinCheckBox>(By.ControlName("checkBox")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("checkBox")).Find<WinCheckBox>().Exists; }
         }
 
         public WinComboBox ComboBox
         {
-            get { return Find<WinComboBox>(By.ControlName("comboBox")); }
+            get { return Find<WinWindow>(By.ControlName("comboBox")).Find<WinComboBox>(); }
         }
 
         public bool DateTimePickerExists
         {
-            get { return Find<WinDateTimePicker>(By.ControlName("dateTimePicker")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("dateTimePicker")).Find<WinDateTimePicker>().Exists; }
         }
 
         public bool GroupBoxExists
         {
-            get { return Find<WinGroup>(By.ControlName("groupBox")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("groupBox")).Find<WinGroup>().Exists; }
         }
 
         public bool LabelExists
         {
-            get { return Find<WinText>(By.ControlName("label")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("label")).Find<WinText>().Exists; }
         }
 
         public bool LinkLabelExists
         {
-            get { return Find<WinText>(By.ControlName("linkLabel")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("linkLabel")).Find<WinText>().Exists; }
         }
 
         public bool ListBoxExists
         {
-            get { return Find<WinList>(By.ControlName("listBox")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("listBox")).Find<WinList>().Exists; }
         }
 
         public bool ListViewExists
         {
-            get { return Find<WinList>(By.ControlName("listView")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("listView")).Find<WinList>().Exists; }
         }
 
         public WinEdit MaskedTextBox
         {
-            get { return Find<WinEdit>(By.ControlName("maskedTextBox")); }
+            get { return Find<WinWindow>(By.ControlName("maskedTextBox")).Find<WinEdit>(); }
         }
 
         public bool MonthCalendarExists
         {
-            get { return Find<WinCalendar>(By.ControlName("monthCalendar")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("monthCalendar")).Find<WinCalendar>().Exists; }
         }
 
         public WinEdit NumericUpDown
         {
-            get { return Find<WinEdit>(By.ControlName("numericUpDown")); }
+            get { return Find<WinWindow>(By.ControlName("numericUpDown")).Find<WinEdit>(); }
         }
 
         public bool ProgressBarExists
         {
-            get { return Find<WinProgressBar>(By.ControlName("progressBar")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("progressBar")).Find<WinProgressBar>().Exists; }
         }
 
         public bool RadioButtonExists
         {
-            get { return Find<WinRadioButton>(By.ControlName("radioButton")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("radioButton")).Find<WinRadioButton>().Exists; }
         }
 
         public WinEdit RichTextBox
         {
-            get { return Find<WinEdit>(By.ControlName("richTextBox")); }
+            get { return Find<WinWindow>(By.ControlName("richTextBox")).Find<WinEdit>(); }
         }
 
         public bool TabControlExists
         {
-            get { return Find<WinTabList>(By.ControlName("tabControl")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("tabControl")).Find<WinTabList>().Exists; }
         }
 
         public WinEdit TextBox
         {
-            get { return Find<WinEdit>(By.ControlName("textBox")); }
+            get { return Find<WinWindow>(By.ControlName("textBox")).Find<WinEdit>(); }
         }
 
         public bool TreeViewExists
         {
-            get { return Find<WinTree>(By.ControlName("treeView")).Exists; }
+            get { return Find<WinWindow>(By.ControlName("treeView")).Find<WinTree>().Exists; }
         }
 
         public List<ControlBase> GetChildrenOfTabControl()
         {
-            return Find<WinTabList>(By.ControlName("tabControl")).GetChildren().ToList();
+            return Find<WinWindow>(By.ControlName("tabControl")).Find<WinTabList>().GetChildren().ToList();
         }
     }
 }
