@@ -1,6 +1,6 @@
-## What is CUITe?
+[![Build Status](https://dev.azure.com/rami/cuite/_apis/build/status/cuite-CI?branchName=master)](https://dev.azure.com/rami/cuite/_build/latest?definitionId=9&branchName=master)
 
-[![Join the chat at https://gitter.im/icnocop/cuite](https://badges.gitter.im/icnocop/cuite.svg)](https://gitter.im/icnocop/cuite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+## What is CUITe?
 
 CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
 
@@ -190,3 +190,7 @@ browserWindow.LastName.Text ="Doe";
 // Click on the Save button
 browserWindow.Save.Click();
 ```
+
+## Contact
+
+[![Join the chat at https://gitter.im/icnocop/cuite](https://badges.gitter.im/icnocop/cuite.svg)](https://gitter.im/icnocop/cuite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
