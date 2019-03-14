@@ -38,9 +38,9 @@ namespace CUITe.PageObjects
 
         /// <summary>
         /// Gets the rebased control specified by the search configuration in
-        /// <see cref="PageObject{T}(By)"/>.
+        /// <see cref="PageObject{T}(By)" />.
         /// </summary>
-        public UITestControl Self
+        public new UITestControl Self
         {
             get { return SearchLimitContainer; }
         }

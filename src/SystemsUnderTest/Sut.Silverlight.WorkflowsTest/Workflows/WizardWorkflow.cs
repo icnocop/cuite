@@ -3,13 +3,27 @@ using Sut.Silverlight.WorkflowsTest.PageObjects;
 
 namespace Sut.Silverlight.WorkflowsTest.Workflows
 {
+    /// <summary>
+    /// Wizard Workflow
+    /// </summary>
+    /// <seealso cref="CUITe.Workflows.Workflow{NamePage, FinishedPage}" />
     public class WizardWorkflow : Workflow<NamePage, FinishedPage>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WizardWorkflow"/> class.
+        /// </summary>
+        /// <param name="start">The view object where the workflow start.</param>
         public WizardWorkflow(NamePage start)
             : base(start)
         {
         }
 
+        /// <summary>
+        /// Steps through the workflow.
+        /// </summary>
+        /// <returns>
+        /// The view object where the workflow end.
+        /// </returns>
         public override FinishedPage StepThrough()
         {
             // Enter name

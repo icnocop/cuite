@@ -17,6 +17,7 @@ CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Mic
 - Visual Studio 2012 Ultimate or Premium
 - Visual Studio 2013 Ultimate or Premium
 - Visual Studio 2015 Enterprise
+- Visual Studio 2017 Enterprise
 
 ## Installation
 
@@ -48,7 +49,7 @@ Install CUITe for Silverlight:
 
 ```Install-Package CUITe.Silverlight.VS2012 -Pre```
 
-You should also install the extension [Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/28312a61-9451-451a-990c-c9929b751eb4).
+You should also install the extension [Microsoft Visual Studio 2012 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=PrachiBoraMSFT.MicrosoftVisualStudioUITestPluginforSilverlight).
 
 #### CUITe in Visual Studio 2013
 
@@ -60,7 +61,7 @@ Install CUITe for Silverlight using the NuGet Package Manager:
 
 ```Install-Package CUITe.Silverlight.VS2013 -Pre```
 
-You should also install the extension [Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/51b4a94a-1878-4dcc-81e0-7dc92131d2da).
+You should also install the extension [Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=PrachiBoraMSFT.MicrosoftVisualStudio2013CodedUITestPluginforSilve).
 
 #### CUITe in Visual Studio 2015
 
@@ -72,7 +73,19 @@ Install CUITe for Silverlight using the NuGet Package Manager:
 
 ```Install-Package CUITe.Silverlight.VS2015 -Pre```
 
-You should also install the extension [Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight](https://visualstudiogallery.msdn.microsoft.com/bf0caedc-90eb-46af-9c1a-8e68d013bb99).
+You should also install the extension [Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=AtinBansal.MicrosoftVisualStudio2015CodedUITestPluginforSilve).
+
+#### CUITe in Visual Studio 2017
+
+Installing CUITe for HTML, WPF and WinForms:
+
+```Install-Package CUITe.VS2017 -Pre```
+
+Install CUITe for Silverlight using the NuGet Package Manager:
+
+```Install-Package CUITe.Silverlight.VS2017 -Pre```
+
+You should also install the extension [Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=RamiAbughazaleh.CodedUITestPluginForSilverlight).
 
 ## Using CUITe
 

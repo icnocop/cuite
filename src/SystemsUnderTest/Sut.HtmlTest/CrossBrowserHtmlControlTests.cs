@@ -10,9 +10,15 @@ using Microsoft.Win32;
 
 namespace Sut.HtmlTest
 {
+    /// <summary>
+    /// Cross-browser HTML Control Tests
+    /// </summary>
     [CodedUITest]
     public class CrossBrowserHtmlControlTests
     {
+        /// <summary>
+        /// Sets the text on HTML edit using firefox succeeds.
+        /// </summary>
         [TestMethod]
         public void SetText_OnHtmlEditUsingFirefox_Succeeds()
         {
@@ -26,6 +32,9 @@ namespace Sut.HtmlTest
             SetTextOnHtmlEdit(Firefox.Name);
         }
 
+        /// <summary>
+        /// Sets the text on HTML edit using chrome succeeds.
+        /// </summary>
         [TestMethod]
         [Ignore] // Selenium components for Coded UI Cross Browser Testing v1.7 does not support Chrome 55
         // and Chrome 54 (GoogleChromeStandaloneEnterprise.msi) is no longer available for download

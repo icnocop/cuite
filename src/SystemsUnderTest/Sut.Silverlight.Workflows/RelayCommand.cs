@@ -24,7 +24,12 @@ namespace Sut.Silverlight.Workflows
             this.canExecute = canExecute;
         }
 
+        /// <summary>
+        /// Occurs when changes occur that affect whether the command should execute.
+        /// </summary>
+#pragma warning disable 67
         public event EventHandler CanExecuteChanged;
+#pragma warning restore 67
 
         public bool CanExecute(object parameter)
         {

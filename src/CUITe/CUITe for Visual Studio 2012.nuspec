@@ -16,8 +16,6 @@
   <files>
     <file src="bin\Release\VS2012\net40\CUITe.dll" target="lib\net40\CUITe.dll" />
     <file src="bin\Release\VS2012\net40\CUITe.xml" target="lib\net40\CUITe.xml" />
-    <file src="bin\Release\VS2012\net45\CUITe.dll" target="lib\net45\CUITe.dll" />
-    <file src="bin\Release\VS2012\net45\CUITe.xml" target="lib\net45\CUITe.xml" />
     <file src="..\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" target="tools\CUITe_ObjectRecorder.exe" />
   </files>
 </package>

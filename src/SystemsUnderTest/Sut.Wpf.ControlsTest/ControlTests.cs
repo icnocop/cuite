@@ -5,15 +5,15 @@ using Sut.Wpf.ControlsTest.ScreenObjects;
 
 namespace Sut.Wpf.ControlsTest
 {
+    /// <summary>
+    /// Control Tests
+    /// </summary>
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.Wpf.Controls\bin\Debug\Sut.Wpf.Controls.exe")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.Wpf.Controls\bin\Release\Sut.Wpf.Controls.exe")]
-#endif
+    [DeploymentItem("Sut.Wpf.Controls.exe")]
+    [DeploymentItem("Sut.Wpf.Controls.exe")]
     public class ControlTests
     {
-        private const string ApplicationFilePath = @"Sut.Wpf.Controls.exe";
+        private const string ApplicationFilePath = "Sut.Wpf.Controls.exe";
         private MainScreen mainScreen;
 
         /// <summary>
@@ -22,12 +22,18 @@ namespace Sut.Wpf.ControlsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
+        /// <summary>
+        /// Button.
+        /// </summary>
         [TestMethod]
         public void Button()
         {
@@ -35,6 +41,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ButtonExists);
         }
 
+        /// <summary>
+        /// Calendar.
+        /// </summary>
         [TestMethod]
         public void Calendar()
         {
@@ -42,6 +51,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.CalendarExists);
         }
 
+        /// <summary>
+        /// CheckBox.
+        /// </summary>
         [TestMethod]
         public void CheckBox()
         {
@@ -49,6 +61,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.CheckBoxExists);
         }
 
+        /// <summary>
+        /// ComboBox.
+        /// </summary>
         [TestMethod]
         public void ComboBox()
         {
@@ -56,6 +71,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ComboBoxExists);
         }
 
+        /// <summary>
+        /// Custom control.
+        /// </summary>
         [TestMethod]
         public void CustomControl()
         {
@@ -63,6 +81,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.CustomControlExists);
         }
 
+        /// <summary>
+        /// Data grid.
+        /// </summary>
         [TestMethod]
         public void DataGrid()
         {
@@ -70,6 +91,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.DataGridExists);
         }
 
+        /// <summary>
+        /// Date picker.
+        /// </summary>
         [TestMethod]
         public void DatePicker()
         {
@@ -77,6 +101,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.DatePickerExists);
         }
 
+        /// <summary>
+        /// Expander.
+        /// </summary>
         [TestMethod]
         public void Expander()
         {
@@ -84,6 +111,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ExpanderExists);
         }
 
+        /// <summary>
+        /// Frame.
+        /// </summary>
         [TestMethod]
         public void Frame()
         {
@@ -91,6 +121,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.FrameExists);
         }
 
+        /// <summary>
+        /// Group box.
+        /// </summary>
         [TestMethod]
         public void GroupBox()
         {
@@ -98,6 +131,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.GroupBoxExists);
         }
 
+        /// <summary>
+        /// Hyperlink.
+        /// </summary>
         [TestMethod]
         public void Hyperlink()
         {
@@ -105,6 +141,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.HyperlinkExists);
         }
 
+        /// <summary>
+        /// Image.
+        /// </summary>
         [TestMethod]
         public void Image()
         {
@@ -112,6 +151,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ImageExists);
         }
 
+        /// <summary>
+        /// Label.
+        /// </summary>
         [TestMethod]
         public void Label()
         {
@@ -119,6 +161,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.LabelExists);
         }
 
+        /// <summary>
+        /// ListBox.
+        /// </summary>
         [TestMethod]
         public void ListBox()
         {
@@ -126,6 +171,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ListBoxExists);
         }
 
+        /// <summary>
+        /// ListView.
+        /// </summary>
         [TestMethod]
         public void ListView()
         {
@@ -133,6 +181,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ListViewExists);
         }
 
+        /// <summary>
+        /// Menu.
+        /// </summary>
         [TestMethod]
         public void Menu()
         {
@@ -140,6 +191,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.MenuExists);
         }
 
+        /// <summary>
+        /// Password box.
+        /// </summary>
         [TestMethod]
         public void PasswordBox()
         {
@@ -147,6 +201,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.PasswordBoxExists);
         }
 
+        /// <summary>
+        /// Progress bar.
+        /// </summary>
         [TestMethod]
         public void ProgressBar()
         {
@@ -154,6 +211,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ProgressBarExists);
         }
 
+        /// <summary>
+        /// RadioButton.
+        /// </summary>
         [TestMethod]
         public void RadioButton()
         {
@@ -161,6 +221,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Rich text box.
+        /// </summary>
         [TestMethod]
         public void RichTextBox()
         {
@@ -168,6 +231,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.RichTextBoxExists);
         }
 
+        /// <summary>
+        /// Scroll bar.
+        /// </summary>
         [TestMethod]
         public void ScrollBar()
         {
@@ -175,6 +241,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ScrollBarExists);
         }
 
+        /// <summary>
+        /// Scroll viewer.
+        /// </summary>
         [TestMethod]
         public void ScrollViewer()
         {
@@ -182,6 +251,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ScrollViewerExists);
         }
 
+        /// <summary>
+        /// Separator.
+        /// </summary>
         [TestMethod]
         public void Separator()
         {
@@ -189,6 +261,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.SeparatorExists);
         }
 
+        /// <summary>
+        /// Slider.
+        /// </summary>
         [TestMethod]
         public void Slider()
         {
@@ -196,6 +271,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.SliderExists);
         }
 
+        /// <summary>
+        /// Status bar.
+        /// </summary>
         [TestMethod]
         public void StatusBar()
         {
@@ -203,6 +281,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.StatusBarExists);
         }
 
+        /// <summary>
+        /// Tab control.
+        /// </summary>
         [TestMethod]
         public void TabControl()
         {
@@ -210,6 +291,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.TabControlExists);
         }
 
+        /// <summary>
+        /// Text block.
+        /// </summary>
         [TestMethod]
         public void TextBlock()
         {
@@ -217,6 +301,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.TextBlockExists);
         }
 
+        /// <summary>
+        /// Text box.
+        /// </summary>
         [TestMethod]
         public void TextBox()
         {
@@ -224,6 +311,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.TextBoxExists);
         }
 
+        /// <summary>
+        /// Toggle button.
+        /// </summary>
         [TestMethod]
         public void ToggleButton()
         {
@@ -231,6 +321,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ToggleButtonExists);
         }
 
+        /// <summary>
+        /// Tool bar.
+        /// </summary>
         [TestMethod]
         public void ToolBar()
         {
@@ -238,6 +331,9 @@ namespace Sut.Wpf.ControlsTest
             Assert.IsTrue(mainScreen.ToolBarExists);
         }
 
+        /// <summary>
+        /// TreeView.
+        /// </summary>
         [TestMethod]
         public void TreeView()
         {

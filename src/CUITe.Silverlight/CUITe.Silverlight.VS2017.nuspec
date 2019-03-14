@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CUITe.Silverlight.VS2017</id>
+    <version>$version$</version>
+    <authors>Suresh Balasubramanian, Matt Gray, Rami Abughazaleh, Mattias Kindborg, and contributors</authors>
+    <title>CUITe Silverlight for Visual Studio 2017</title>
+    <language>en-US</language>
+    <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/icnocop/cuite</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/icnocop/cuite/master/images/NuGet_32x32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.</description>
+    <tags>cuit cuite coded ui test enhanced silverlight visual studio 2017 vs2017</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\VS2017\net40\CUITe.dll" target="lib\net40\CUITe.dll" />
+    <file src="bin\Release\VS2017\net40\CUITe.xml" target="lib\net40\CUITe.xml" />
+    <file src="bin\Release\VS2017\net40\CUITe.Silverlight.dll" target="lib\net40\CUITe.Silverlight.dll" />
+    <file src="bin\Release\VS2017\net40\CUITe.Silverlight.xml" target="lib\net40\CUITe.Silverlight.xml" />
+  </files>
+</package>

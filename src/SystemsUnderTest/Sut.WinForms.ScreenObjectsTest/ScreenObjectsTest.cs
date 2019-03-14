@@ -5,12 +5,11 @@ using Sut.WinForms.ScreenObjectsTest.ScreenObjects;
 
 namespace Sut.WinForms.ScreenObjectsTest
 {
+    /// <summary>
+    /// Screen Objects Test
+    /// </summary>
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.WinForms.ScreenObjects\bin\Debug\Sut.WinForms.ScreenObjects.exe")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.WinForms.ScreenObjects\bin\Release\Sut.WinForms.ScreenObjects.exe")]
-#endif
+    [DeploymentItem("Sut.WinForms.ScreenObjects.exe")]
     public class ScreenObjectsTest
     {
         private const string ApplicationFilePath = "Sut.WinForms.ScreenObjects.exe";
@@ -22,12 +21,18 @@ namespace Sut.WinForms.ScreenObjectsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
+        /// <summary>
+        /// Upper left.
+        /// </summary>
         [TestMethod]
         public void UpperLeft()
         {
@@ -35,6 +40,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.UpperLeft.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Rebased upper left.
+        /// </summary>
         [TestMethod]
         public void RebasedUpperLeft()
         {
@@ -43,6 +51,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.RebasedUpperLeft.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Upper right.
+        /// </summary>
         [TestMethod]
         public void UpperRight()
         {
@@ -50,6 +61,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.UpperRight.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Rebased upper right.
+        /// </summary>
         [TestMethod]
         public void RebasedUpperRight()
         {
@@ -58,6 +72,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.RebasedUpperRight.CheckBoxExists);
         }
 
+        /// <summary>
+        /// Lower left.
+        /// </summary>
         [TestMethod]
         public void LowerLeft()
         {
@@ -65,6 +82,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.LowerLeft.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Rebased lower left.
+        /// </summary>
         [TestMethod]
         public void RebasedLowerLeft()
         {
@@ -73,6 +93,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.RebasedLowerLeft.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Lower right.
+        /// </summary>
         [TestMethod]
         public void LowerRight()
         {
@@ -80,6 +103,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.LowerRight.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Rebased lower right.
+        /// </summary>
         [TestMethod]
         public void RebasedLowerRight()
         {
@@ -88,6 +114,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.RebasedLowerRight.RadioButtonExists);
         }
 
+        /// <summary>
+        /// Application.
+        /// </summary>
         [TestMethod]
         public void Application()
         {
@@ -105,6 +134,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.AreEqual(mainScreen.RebasedLowerRight.Application, actual);
         }
 
+        /// <summary>
+        /// Self.
+        /// </summary>
         [TestMethod]
         public void Self()
         {
@@ -114,6 +146,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.Self.Visible);
         }
 
+        /// <summary>
+        /// From process.
+        /// </summary>
         [TestMethod]
         public void FromProcess()
         {
@@ -124,6 +159,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(mainScreen.Application.Exists);
         }
 
+        /// <summary>
+        /// Navigates to modal dialog.
+        /// </summary>
         [TestMethod]
         public void NavigateToModalDialog()
         {
@@ -134,6 +172,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(dialogScreen.CloseButtonExists);
         }
 
+        /// <summary>
+        /// Navigates to non modal dialog.
+        /// </summary>
         [TestMethod]
         public void NavigateToNonModalDialog()
         {
@@ -144,6 +185,9 @@ namespace Sut.WinForms.ScreenObjectsTest
             Assert.IsTrue(dialogScreen.CloseButtonExists);
         }
 
+        /// <summary>
+        /// Button in dialog with identical content.
+        /// </summary>
         [TestMethod]
         public void ButtonInDialogWithIdenticalContent()
         {

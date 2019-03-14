@@ -1,0 +1,81 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+name: 2.1.$(revision).0
+
+trigger:
+- master
+
+variables:
+  solution: 'src\Build.proj'
+  buildConfiguration: 'Release'
+  revision: $[counter('', 0)]
+
+jobs:
+- job: Build
+  timeoutInMinutes: 360
+  pool:
+    vmImage: 'VS2017-Win2016'
+  steps:
+    - task: PowerShell@2
+      displayName: 'Enable remote connection'
+      inputs:
+        filePath: 'build\TeamViewer\EnableRemoteConnection.ps1'
+
+    - task: PowerShell@2
+      displayName: 'Download and install dependencies'
+      inputs:
+        filePath: 'build\DownloadAndInstallDependencies.ps1'
+
+    - task: PowerShell@2
+      displayName: 'Apply version to assemblies'
+      inputs:
+        filePath: 'build\ApplyVersionToAssemblies.ps1'
+
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solution)'
+        configuration: '$(buildConfiguration)'
+        msbuildArgs: '/target:Build;Pack'
+
+    - task: VSTest@2
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: '**\bin\$(buildConfiguration)\**\*Test.dll'
+        vsTestVersion: '14.0'
+        uiTests: true
+        rerunFailedTests: true
+        runSettingsFile: '$(Build.SourcesDirectory)\src\Local.testsettings'
+
+    - task: CopyFiles@2
+      inputs:
+        contents: '*.nupkg'
+        targetFolder: $(Build.ArtifactStagingDirectory)
+
+    - task: PowerShell@2
+      displayName: 'Copy Chocolatey Logs'
+      condition: failed()
+      inputs:
+        filePath: 'build\Chocolatey\CopyChocolateyLogs.ps1'
+
+    - task: PublishBuildArtifacts@1
+      condition: always()
+      inputs:
+        pathtoPublish: $(Build.ArtifactStagingDirectory)
+        artifactName: drop
+
+    - task: NuGetCommand@2
+      displayName: 'Publish NuGet Packages'
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      inputs:
+        command: 'push'
+        nuGetFeedType: 'external'
+        publishFeedCredentials: 'NuGet Service Connection'
+
+    - task: PowerShell@2
+      displayName: 'Wait for remote connection'
+      condition: failed()
+      inputs:
+        filePath: 'build\TeamViewer\WaitForRemoteConnection.ps1'

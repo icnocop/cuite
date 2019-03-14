@@ -20,6 +20,9 @@ namespace Sut.Html.WorkflowsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Steps the through wizard.
+        /// </summary>
         [TestMethod]
         public void StepThroughWizard()
         {

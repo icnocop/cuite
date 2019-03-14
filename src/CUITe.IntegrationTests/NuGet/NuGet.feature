@@ -41,3 +41,8 @@ Scenario Outline: Adding the CUITe NuGet package to a Coded UI test project
 	| Visual Studio 2015 and .NET Framework 4.5.1 and Silverlight 5 | 2015                | 4.5.1                  | CUITe.Silverlight.VS2015 | CUITe.Silverlight         |
 	| Visual Studio 2015 and .NET Framework 4.5.2 and Silverlight 5 | 2015                | 4.5.2                  | CUITe.Silverlight.VS2015 | CUITe.Silverlight         |
 	| Visual Studio 2015 and .NET Framework 4.6 and Silverlight 5   | 2015                | 4.6                    | CUITe.Silverlight.VS2015 | CUITe.Silverlight         |
+	| Visual Studio 2017 and .NET Framework 4                       | 2017                | 4.0                    | CUITe.VS2017             | CUITe                     |
+	| Visual Studio 2017 and .NET Framework 4.5                     | 2017                | 4.5                    | CUITe.VS2017             | CUITe                     |
+	| Visual Studio 2017 and .NET Framework 4.5.1                   | 2017                | 4.5.1                  | CUITe.VS2017             | CUITe                     |
+	| Visual Studio 2017 and .NET Framework 4.5.2                   | 2017                | 4.5.2                  | CUITe.VS2017             | CUITe                     |
+	| Visual Studio 2017 and .NET Framework 4.6                     | 2017                | 4.6                    | CUITe.VS2017             | CUITe                     |

@@ -7,7 +7,7 @@ namespace CUITe.Controls.UITesting
     /// <summary>
     /// Browser window
     /// </summary>
-    /// <seealso cref="CUITe.Controls.ControlBase{Microsoft.VisualStudio.TestTools.UITesting.BrowserWindow}" />
+    /// <seealso cref="CUITe.Controls.ControlBase{BrowserWindow}" />
     public class BrowserWindow : ControlBase<Microsoft.VisualStudio.TestTools.UITesting.BrowserWindow>
     {
         /// <summary>

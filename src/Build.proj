@@ -15,6 +15,7 @@
     <!-- VSTest -->
     <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
     <ConfigurationName>Release</ConfigurationName>
+    <Targets>Rebuild</Targets>
   </PropertyGroup>
 
   <!-- Restore NuGet packages -->
@@ -28,7 +29,7 @@
     <MSBuild
       Projects="$(SolutionPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       StopOnFirstFailure="true"
       ContinueOnError="true" />
@@ -39,61 +40,51 @@
     <MSBuild
       Projects="$(SolutionPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2012 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
-    <!-- VS2012 .NET45 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
-      BuildInParallel="true"
-      ContinueOnError="true" />
-
-    <Error Text="Visual Studio 2012 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
-
-    <!-- VS2013 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true"
-      ContinueOnError="true" />
-
-    <Error Text="Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
-
     <!-- VS2013 .NET45 -->
     <MSBuild
       Projects="$(SolutionPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2013 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
+    <!-- VS2013 .NET40 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
+      Targets="$(Targets)"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
     <!-- VS2015 .NET40 -->
     <MSBuild
       Projects="$(SolutionPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2015 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
-    <!-- VS2015 .NET45 -->
+    <!-- VS2017 .NET40 -->
     <MSBuild
       Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=15.0;TargetFrameworkVersion=v4.0"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
-    <Error Text="Visual Studio 2015 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+    <Error Text="Visual Studio 2017 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- CUITe.IntegrationTests -->
 
@@ -101,7 +92,7 @@
     <MSBuild
       Projects="$(ProjectPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       StopOnFirstFailure="true"
       ContinueOnError="true" />
@@ -112,7 +103,7 @@
     <MSBuild
       Projects="$(ProjectPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
@@ -122,51 +113,52 @@
     <MSBuild
       Projects="$(ProjectPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2012 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
-    <!-- VS2013 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
-      BuildInParallel="true"
-      ContinueOnError="true" />
-
-    <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
-
     <!-- VS2013 .NET45 -->
     <MSBuild
       Projects="$(ProjectPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
+    <!-- VS2013 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
+      Targets="$(Targets)"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
     <!-- VS2015 .NET40 -->
     <MSBuild
       Projects="$(ProjectPath)"
       Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0"
-      Targets="Rebuild"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2015 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
-    <!-- VS2015 .NET45 -->
+    <!-- VS2017 .NET40 -->
     <MSBuild
       Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.5"
-      Targets="Rebuild"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=15.0;TargetFrameworkVersion=v4.0"
+      Targets="$(Targets)"
       BuildInParallel="true"
       ContinueOnError="true" />
 
-    <Error Text="CUITe.IntegrationTests Visual Studio 2015 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+    <Error Text="CUITe.IntegrationTests Visual Studio 2017 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
   </Target>
 
   <Target Name="GetNuGetVersion">
@@ -197,6 +189,10 @@
     <!-- VS2015 -->
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2015.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2015.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=14.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+
+    <!-- VS2017 -->
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2017.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2017.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=15.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
   </Target>
 
   <!-- Runs all tests -->

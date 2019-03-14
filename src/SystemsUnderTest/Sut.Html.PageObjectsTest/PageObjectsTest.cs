@@ -7,6 +7,9 @@ using TestHelpers;
 
 namespace Sut.Html.PageObjectsTest
 {
+    /// <summary>
+    /// Page Object Tests
+    /// </summary>
     [CodedUITest]
     public class PageObjectsTest
     {
@@ -16,6 +19,9 @@ namespace Sut.Html.PageObjectsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Upper left.
+        /// </summary>
         [TestMethod]
         public void UpperLeft()
         {
@@ -29,6 +35,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Rebased upper left.
+        /// </summary>
         [TestMethod]
         public void RebasedUpperLeft()
         {
@@ -43,6 +52,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Upper right.
+        /// </summary>
         [TestMethod]
         public void UpperRight()
         {
@@ -56,6 +68,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Rebased upper right.
+        /// </summary>
         [TestMethod]
         public void RebasedUpperRight()
         {
@@ -70,6 +85,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Lower left.
+        /// </summary>
         [TestMethod]
         public void LowerLeft()
         {
@@ -83,6 +101,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Rebased lower left.
+        /// </summary>
         [TestMethod]
         public void RebasedLowerLeft()
         {
@@ -97,6 +118,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Lower right.
+        /// </summary>
         [TestMethod]
         public void LowerRight()
         {
@@ -110,6 +134,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Rebased lower right.
+        /// </summary>
         [TestMethod]
         public void RebasedLowerRight()
         {
@@ -124,6 +151,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Browser.
+        /// </summary>
         [TestMethod]
         public void Browser()
         {
@@ -147,6 +177,9 @@ namespace Sut.Html.PageObjectsTest
             }
         }
 
+        /// <summary>
+        /// Navigate to non modal dialog.
+        /// </summary>
         [TestMethod]
         public void NavigateToNonModalDialog()
         {

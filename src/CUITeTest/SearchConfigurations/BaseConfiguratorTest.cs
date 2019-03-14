@@ -6,6 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.SearchConfigurations
 {
+    /// <summary>
+    /// Base Configurator Test
+    /// </summary>
     [TestClass]
     public abstract class BaseConfiguratorTest
     {
@@ -15,6 +18,13 @@ namespace CUITeTest.SearchConfigurations
 
         private const BindingFlags BindingFlags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseConfiguratorTest"/> class.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <param name="propertyValue">The property value.</param>
+        /// <exception cref="ArgumentException">Type must inherit from ISearchConfigurator - type</exception>
         protected BaseConfiguratorTest(Type type, string propertyName, string propertyValue)
         {
             if (!typeof(ISearchConfigurator).IsAssignableFrom(type))
@@ -27,6 +37,9 @@ namespace CUITeTest.SearchConfigurations
             this.propertyValue = propertyValue;
         }
 
+        /// <summary>
+        /// Configure strict.
+        /// </summary>
         [TestMethod]
         public void ConfigureStrict()
         {
@@ -43,6 +56,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, searchProperties.Find(this.propertyName).PropertyOperator);
         }
 
+        /// <summary>
+        /// Configure loose.
+        /// </summary>
         [TestMethod]
         public void ConfigureLoose()
         {

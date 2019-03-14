@@ -4,8 +4,16 @@
     using System.Diagnostics;
     using System.IO;
 
+    /// <summary>
+    /// Temporary directory
+    /// </summary>
+    /// <seealso cref="System.IDisposable" />
     public class TempDirectory : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TempDirectory"/> class.
+        /// </summary>
+        /// <exception cref="Exception">Failed to get temporary file name without extension</exception>
         public TempDirectory()
         {
             string tempFileName = Path.GetTempFileName();
@@ -30,6 +38,12 @@
         /// </value>
         public string DirectoryPath { get; internal set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether to delete the directory on dispose.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the directory is deleted on dispose; otherwise, <c>false</c>.
+        /// </value>
         public bool DeleteDirectoryOnDispose { get; set; }
 
         /// <summary>

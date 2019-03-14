@@ -8,13 +8,12 @@ using Sut.Silverlight.WorkflowsTest.Workflows;
 
 namespace Sut.Silverlight.WorkflowsTest
 {
+    /// <summary>
+    /// Workflows test
+    /// </summary>
     [CodedUITest]
     [DeploymentItem("Sut.Silverlight.Workflows.html")]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.Silverlight.Workflows\Bin\Debug\Sut.Silverlight.Workflows.xap")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.Silverlight.Workflows\Bin\Release\Sut.Silverlight.Workflows.xap")]
-#endif
+    [DeploymentItem("Sut.Silverlight.Workflows.xap")]
     public class WorkflowsTest
     {
         private static readonly CassiniDevServer WebServer = new CassiniDevServer();
@@ -27,24 +26,37 @@ namespace Sut.Silverlight.WorkflowsTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the class.
+        /// </summary>
+        /// <param name="testContext">The test context.</param>
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
             WebServer.StartServer(Directory.GetCurrentDirectory());
         }
 
+        /// <summary>
+        /// Cleans up the class.
+        /// </summary>
         [ClassCleanup]
         public static void ClassCleanup()
         {
             WebServer.StopServer();
         }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
             namePage = Page.Launch<NamePage>(WebServer.RootUrl + "Sut.Silverlight.Workflows.html");
         }
 
+        /// <summary>
+        /// Steps the through wizard.
+        /// </summary>
         [TestMethod]
         public void StepThroughWizard()
         {

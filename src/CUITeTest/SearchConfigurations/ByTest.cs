@@ -5,9 +5,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CUITeTest.SearchConfigurations
 {
+    /// <summary>
+    /// By Test
+    /// </summary>
     [CodedUITest]
     public class ByTest
     {
+        /// <summary>
+        /// Automation identifier.
+        /// </summary>
         [TestMethod]
         public void AutomationId()
         {
@@ -19,6 +25,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Automation identifier contains.
+        /// </summary>
         [TestMethod]
         public void AutomationIdContains()
         {
@@ -30,6 +39,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Class.
+        /// </summary>
         [TestMethod]
         public void Class()
         {
@@ -41,6 +53,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Class contains.
+        /// </summary>
         [TestMethod]
         public void ClassContains()
         {
@@ -52,6 +67,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And class.
+        /// </summary>
         [TestMethod]
         public void AndClass()
         {
@@ -63,6 +81,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And class contains.
+        /// </summary>
         [TestMethod]
         public void AndClassContains()
         {
@@ -74,6 +95,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Control name.
+        /// </summary>
         [TestMethod]
         public void ControlName()
         {
@@ -85,6 +109,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Control name contains.
+        /// </summary>
         [TestMethod]
         public void ControlNameContains()
         {
@@ -96,6 +123,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And control name.
+        /// </summary>
         [TestMethod]
         public void AndControlName()
         {
@@ -107,6 +137,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And control name contains.
+        /// </summary>
         [TestMethod]
         public void AndControlNameContains()
         {
@@ -118,6 +151,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Identifiers.
+        /// </summary>
         [TestMethod]
         public void Id()
         {
@@ -129,6 +165,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Identifier contains.
+        /// </summary>
         [TestMethod]
         public void IdContains()
         {
@@ -140,6 +179,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And identifier.
+        /// </summary>
         [TestMethod]
         public void AndId()
         {
@@ -151,6 +193,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And identifier contains.
+        /// </summary>
         [TestMethod]
         public void AndIdContains()
         {
@@ -162,6 +207,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Name.
+        /// </summary>
         [TestMethod]
         public void Name()
         {
@@ -173,6 +221,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Name contains.
+        /// </summary>
         [TestMethod]
         public void NameContains()
         {
@@ -184,6 +235,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And name.
+        /// </summary>
         [TestMethod]
         public void AndName()
         {
@@ -195,6 +249,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And name contains.
+        /// </summary>
         [TestMethod]
         public void AndNameContains()
         {
@@ -206,6 +263,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Search properties.
+        /// </summary>
         [TestMethod]
         public void SearchProperties()
         {
@@ -216,6 +276,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(1, configuration.Configuration.Count);
         }
 
+        /// <summary>
+        /// And search properties.
+        /// </summary>
         [TestMethod]
         public void AndSearchProperties()
         {
@@ -226,6 +289,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(1, configuration.Configuration.Count);
         }
 
+        /// <summary>
+        /// Tag name.
+        /// </summary>
         [TestMethod]
         public void TagName()
         {
@@ -237,6 +303,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Tag name contains.
+        /// </summary>
         [TestMethod]
         public void TagNameContains()
         {
@@ -248,6 +317,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And tag name.
+        /// </summary>
         [TestMethod]
         public void AndTagName()
         {
@@ -259,6 +331,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And tag name contains.
+        /// </summary>
         [TestMethod]
         public void AndTagNameContains()
         {
@@ -270,6 +345,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Value attribute.
+        /// </summary>
         [TestMethod]
         public void ValueAttribute()
         {
@@ -281,6 +359,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Value attribute contains.
+        /// </summary>
         [TestMethod]
         public void ValueAttributeContains()
         {
@@ -292,6 +373,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And value attribute.
+        /// </summary>
         [TestMethod]
         public void AndValueAttribute()
         {
@@ -303,6 +387,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And value attribute contains.
+        /// </summary>
         [TestMethod]
         public void AndValueAttributeContains()
         {
@@ -314,6 +401,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Class name.
+        /// </summary>
         [TestMethod]
         public void ClassName()
         {
@@ -325,6 +415,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Class name contains.
+        /// </summary>
         [TestMethod]
         public void ClassNameContains()
         {
@@ -336,6 +429,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And class name.
+        /// </summary>
         [TestMethod]
         public void AndClassName()
         {
@@ -347,6 +443,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And class name contains.
+        /// </summary>
         [TestMethod]
         public void AndClassNameContains()
         {
@@ -358,6 +457,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Control identifier.
+        /// </summary>
         [TestMethod]
         public void ControlId()
         {
@@ -369,6 +471,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// Control identifier contains.
+        /// </summary>
         [TestMethod]
         public void ControlIdContains()
         {
@@ -380,6 +485,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.Contains, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And control identifier.
+        /// </summary>
         [TestMethod]
         public void AndControlId()
         {
@@ -391,6 +499,9 @@ namespace CUITeTest.SearchConfigurations
             Assert.AreEqual(PropertyExpressionOperator.EqualTo, configuration.Configuration.First().PropertyOperator);
         }
 
+        /// <summary>
+        /// And control identifier contains.
+        /// </summary>
         [TestMethod]
         public void AndControlIdContains()
         {

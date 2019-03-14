@@ -7,15 +7,14 @@ using Screen = CUITe.ScreenObjects.Screen;
 
 namespace Sut.PeripheralInputTest
 {
+    /// <summary>
+    /// Mouse Test
+    /// </summary>
     [CodedUITest]
-#if DEBUG
-    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Debug\Sut.PeripheralInput.exe")]
-#else
-    [DeploymentItem(@"..\..\..\Sut.PeripheralInput\bin\Release\Sut.PeripheralInput.exe")]
-#endif
+    [DeploymentItem("Sut.PeripheralInput.exe")]
     public class MouseTest
     {
-        private const string ApplicationFilePath = @"Sut.PeripheralInput.exe";
+        private const string ApplicationFilePath = "Sut.PeripheralInput.exe";
         private MainScreen mainScreen;
 
         /// <summary>
@@ -24,6 +23,9 @@ namespace Sut.PeripheralInputTest
         ///</summary>
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Initializes the test.
+        /// </summary>
         [TestInitialize]
         public void TestInitialize()
         {
@@ -32,6 +34,9 @@ namespace Sut.PeripheralInputTest
 
         #region Click
 
+        /// <summary>
+        /// Left click.
+        /// </summary>
         [TestMethod]
         public void LeftClick()
         {
@@ -42,6 +47,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Left click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// Middle click.
+        /// </summary>
         [TestMethod]
         public void MiddleClick()
         {
@@ -52,6 +60,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Middle click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// Right click.
+        /// </summary>
         [TestMethod]
         public void RightClick()
         {
@@ -61,7 +72,10 @@ namespace Sut.PeripheralInputTest
             // Assert
             Assert.AreEqual("Right click", mainScreen.MouseClickResult.Text);
         }
-        
+
+        /// <summary>
+        /// X button 1 click.
+        /// </summary>
         [TestMethod]
         public void XButton1Click()
         {
@@ -72,6 +86,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("XButton1 click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// X button 2 click.
+        /// </summary>
         [TestMethod]
         public void XButton2Click()
         {
@@ -86,6 +103,9 @@ namespace Sut.PeripheralInputTest
 
         #region Double click
 
+        /// <summary>
+        /// Left double click.
+        /// </summary>
         [TestMethod]
         public void LeftDoubleClick()
         {
@@ -96,6 +116,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Left double click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// Middle double click.
+        /// </summary>
         [TestMethod]
         public void MiddleDoubleClick()
         {
@@ -106,6 +129,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Middle double click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// Right double click.
+        /// </summary>
         [TestMethod]
         public void RightDoubleClick()
         {
@@ -116,6 +142,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Right double click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// X button 1 double click.
+        /// </summary>
         [TestMethod]
         public void XButton1DoubleClick()
         {
@@ -126,6 +155,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("XButton1 double click", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// X button 2 double click.
+        /// </summary>
         [TestMethod]
         public void XButton2DoubleClick()
         {
@@ -140,6 +172,9 @@ namespace Sut.PeripheralInputTest
 
         #region Click with modifier
 
+        /// <summary>
+        /// Click with alt modifier.
+        /// </summary>
         [TestMethod]
         public void ClickWithAltModifier()
         {
@@ -150,6 +185,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Left click with Alt", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// Click with control modifier.
+        /// </summary>
         [TestMethod]
         public void ClickWithControlModifier()
         {
@@ -160,6 +198,9 @@ namespace Sut.PeripheralInputTest
             Assert.AreEqual("Left click with Control", mainScreen.MouseClickResult.Text);
         }
 
+        /// <summary>
+        /// Click with shift modifier.
+        /// </summary>
         [TestMethod]
         public void ClickWithShiftModifier()
         {
