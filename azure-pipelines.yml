@@ -69,15 +69,22 @@ jobs:
         nuGetFeedType: 'external'
         publishFeedCredentials: 'NuGet Service Connection'
 
-    - task: GithubRelease@0 
-      displayName: 'Create GitHub Release'
+    - task: PowerShell@2
+      displayName: 'Git Tag'
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      env:
+        tag: '$(Build.BuildNumber)'
       inputs:
-        githubConnection: icnocop
-        repositoryName: icnocop/cuite
-        target: '$(Build.SourceVersion)'
-        tagSource: 'Git tag'
-        assets: ''
+        targetType: 'inline'
+        workingDirectory: $(Build.SourcesDirectory)
+        ignoreLASTEXITCODE: false
+        errorActionPreference: continue
+        failOnStderr: true
+        script: |
+          Write-Host "git tag $env:tag"
+          git tag $env:tag
+          Write-Host "git push origin $env:tag"
+          git push origin $env:tag
 
     - task: PowerShell@2
       displayName: 'Wait for remote connection'
