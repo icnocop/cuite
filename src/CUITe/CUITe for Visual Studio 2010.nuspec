@@ -10,7 +10,10 @@
     <projectUrl>https://github.com/icnocop/cuite</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/icnocop/cuite/master/images/NuGet_32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.</description>
+    <description>
+      CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
+      This package requires Visual Studio 2010 Ultimate or Premium with Feature Pack 2.
+    </description>
     <tags>cuit cuite coded ui test enhanced visual studio 2010 vs2010</tags>
   </metadata>
   <files>

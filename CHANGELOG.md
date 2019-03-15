@@ -1,4 +1,9 @@
-2.0 (TBD)
+2.1.150 (March 14th, 2019)
+=========
+
+* [#117](https://github.com/icnocop/cuite/issues/117) Added support for Visual Studio 2017 - [@icnocop](https://github.com/icnocop)
+
+2.0.464 (January 15th, 2019)
 =========
 
 * Fixed [#115](https://github.com/icnocop/cuite/issues/115) - Updated Object Recorder so that generated code inherits from Page instead of BrowserWindowUnderTest - [@icnocop](https://github.com/icnocop)
