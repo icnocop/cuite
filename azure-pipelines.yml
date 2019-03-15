@@ -74,6 +74,15 @@ jobs:
         nuGetFeedType: 'external'
         publishFeedCredentials: 'NuGet Service Connection'
 
+    - task: GithubRelease@0 
+      displayName: 'Create GitHub Release'
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      inputs:
+        githubConnection: icnocop
+        repositoryName: icnocop/cuite
+        tagSource: auto
+        assets: ''
+
     - task: PowerShell@2
       displayName: 'Wait for remote connection'
       condition: failed()

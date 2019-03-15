@@ -168,7 +168,7 @@
 
     <Message Text="Version: %(CUITeAssemblyInfo.Version)" />
     <PropertyGroup>
-      <NuGetVersion>$([System.Version]::Parse(%(CUITeAssemblyInfo.Version)).ToString(3))-beta</NuGetVersion>
+      <NuGetVersion>$([System.Version]::Parse(%(CUITeAssemblyInfo.Version)).ToString(3))</NuGetVersion>
     </PropertyGroup>
   </Target>
   

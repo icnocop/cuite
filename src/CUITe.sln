@@ -47,7 +47,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\Build.bat = ..\Build.bat
 		Build.proj = Build.proj
-		..\build\Chocolatey\CopyChocolateyLogs.ps1 = ..\build\Chocolatey\CopyChocolateyLogs.ps1
 		..\build\DownloadAndInstallDependencies.ps1 = ..\build\DownloadAndInstallDependencies.ps1
 		..\build\ProcessRunner.ps1 = ..\build\ProcessRunner.ps1
 		..\SetDevelopmentEnvironment.bat = ..\SetDevelopmentEnvironment.bat
