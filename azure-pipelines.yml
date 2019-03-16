@@ -15,6 +15,7 @@ jobs:
     vmImage: 'VS2017-Win2016'
   steps:
     - checkout: self
+      displayName: 'Get sources'
       persistCredentials: true
 
     - task: PowerShell@2
@@ -82,7 +83,7 @@ jobs:
         workingDirectory: $(Build.SourcesDirectory)
         ignoreLASTEXITCODE: false
         errorActionPreference: continue
-        failOnStderr: true
+        failOnStderr: false
         script: |
           Write-Host "git tag $env:tag"
           git tag $env:tag
