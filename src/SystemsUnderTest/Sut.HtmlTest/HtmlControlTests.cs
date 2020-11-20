@@ -62,6 +62,9 @@ namespace Sut.HtmlTest
             // Arrange
             var page = Page.Launch<TeleriksASPNETComboBoxPage>("http://demos.telerik.com/aspnet-ajax/combobox/examples/default/defaultcs.aspx");
 
+            // accept the GDPR cookie policy otherwise the banner may block access to the control
+            page.AcceptCookies.Click();
+
             // Act
             page.Product.Text = "Tofu";
             Keyboard.SendKeys("{Tab}"); // close drop down menu

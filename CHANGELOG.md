@@ -1,3 +1,8 @@
+2.2.x (November 19th, 2020)
+=========
+
+* Added support for Visual Studio 2019 - [@icnocop](https://github.com/icnocop)
+
 2.1.150 (March 14th, 2019)
 =========
 

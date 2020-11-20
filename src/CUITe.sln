@@ -43,7 +43,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{90152298-FDAF-430B-A9B0-FD91848BD21B}"
 	ProjectSection(SolutionItems) = preProject
 		..\build\ApplyVersionToAssemblies.ps1 = ..\build\ApplyVersionToAssemblies.ps1
-		..\appveyor.yml = ..\appveyor.yml
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\Build.bat = ..\Build.bat
 		Build.proj = Build.proj

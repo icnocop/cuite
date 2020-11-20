@@ -63,6 +63,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '12.0'">bin\Release\VS2013</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '14.0'">bin\Release\VS2015</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '15.0'">bin\Release\VS2017</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Release\VS2019</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>

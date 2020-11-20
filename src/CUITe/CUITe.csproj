@@ -240,6 +240,7 @@
     <None Include="CUITe for Visual Studio 2013.nuspec" />
     <None Include="CUITe for Visual Studio 2015.nuspec" />
     <None Include="CUITe for Visual Studio 2017.nuspec" />
+    <None Include="CUITe for Visual Studio 2019.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.targets" />

@@ -135,6 +135,7 @@
     <DefineConstants Condition="'$(VisualStudioVersion)' == '12.0'">$(DefineConstants);VS2013;</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '14.0'">$(DefineConstants);VS2015;</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '15.0'">$(DefineConstants);VS2017;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '16.0'">$(DefineConstants);VS2019;</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -241,6 +242,11 @@
   <ItemGroup Condition="'$(VisualStudioVersion)' == '15.0'">
     <EmbeddedResource Include="..\SystemsUnderTest\Sut.Silverlight\Bin\$(ConfigurationName)\VS2017\Sut.Silverlight.xap">
       <Link>NuGet\VisualStudio2017\Sut.Silverlight.xap</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup Condition="'$(VisualStudioVersion)' == '16.0'">
+    <EmbeddedResource Include="..\SystemsUnderTest\Sut.Silverlight\Bin\$(ConfigurationName)\VS2019\Sut.Silverlight.xap">
+      <Link>NuGet\VisualStudio2019\Sut.Silverlight.xap</Link>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

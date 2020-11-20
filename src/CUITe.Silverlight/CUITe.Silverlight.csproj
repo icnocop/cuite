@@ -35,6 +35,7 @@
       <HintPath Condition="'$(VisualStudioVersion)' == '12.0'">..\CUITe\bin\$(Configuration)\VS2013\net45\CUITe.dll</HintPath>
       <HintPath Condition="'$(VisualStudioVersion)' == '14.0'">..\CUITe\bin\$(Configuration)\VS2015\net40\CUITe.dll</HintPath>
       <HintPath Condition="'$(VisualStudioVersion)' == '15.0'">..\CUITe\bin\$(Configuration)\VS2017\net40\CUITe.dll</HintPath>
+      <HintPath Condition="'$(VisualStudioVersion)' == '16.0'">..\CUITe\bin\$(Configuration)\VS2019\net40\CUITe.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -79,11 +80,10 @@
   <ItemGroup>
     <None Include="CUITe.Silverlight.VS2010.nuspec" />
     <None Include="CUITe.Silverlight.VS2012.nuspec" />
-    <None Include="CUITe.Silverlight.VS2013.nuspec">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="CUITe.Silverlight.VS2013.nuspec" />
     <None Include="CUITe.Silverlight.VS2015.nuspec" />
     <None Include="CUITe.Silverlight.VS2017.nuspec" />
+    <None Include="CUITe.Silverlight.VS2019.nuspec" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.Silverlight.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

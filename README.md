@@ -18,6 +18,7 @@ CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Mic
 - Visual Studio 2013 Ultimate or Premium
 - Visual Studio 2015 Enterprise
 - Visual Studio 2017 Enterprise
+- Visual Studio 2019 Enterprise
 
 ## Installation
 
@@ -86,6 +87,18 @@ Install CUITe for Silverlight using the NuGet Package Manager:
 ```Install-Package CUITe.Silverlight.VS2017 -Pre```
 
 You should also install the extension [Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=RamiAbughazaleh.CodedUITestPluginForSilverlight).
+
+#### CUITe in Visual Studio 2019
+
+Installing CUITe for HTML, WPF and WinForms:
+
+```Install-Package CUITe.VS2019 -Pre```
+
+Install CUITe for Silverlight using the NuGet Package Manager:
+
+```Install-Package CUITe.Silverlight.VS2019 -Pre```
+
+You should also install the extension [Unofficial Microsoft Visual Studio 2019 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=RamiAbughazaleh.VisualStudio2019CodedUITestPluginForSilverlight).
 
 ## Using CUITe
 
