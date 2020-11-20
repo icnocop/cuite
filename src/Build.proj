@@ -86,6 +86,16 @@
 
     <Error Text="Visual Studio 2017 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
+    <!-- VS2019 .NET40 -->
+    <MSBuild
+      Projects="$(SolutionPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=16.0;TargetFrameworkVersion=v4.0"
+      Targets="$(Targets)"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2019 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
     <!-- CUITe.IntegrationTests -->
 
     <!-- VS2010 .NET40 -->
@@ -159,6 +169,16 @@
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2017 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
+    <!-- VS2019 .NET40 -->
+    <MSBuild
+      Projects="$(ProjectPath)"
+      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=16.0;TargetFrameworkVersion=v4.0"
+      Targets="$(Targets)"
+      BuildInParallel="true"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2019 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
   </Target>
 
   <Target Name="GetNuGetVersion">
@@ -193,6 +213,10 @@
     <!-- VS2017 -->
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2017.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2017.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=15.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+
+    <!-- VS2019 -->
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2019.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2019.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=16.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
   </Target>
 
   <!-- Runs all tests -->

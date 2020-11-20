@@ -110,6 +110,32 @@ if (Test-Path $logFilePath)
 }
 Write-Host "Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
 
+# Microsoft Visual Studio 2017 Enterprise  
+# https://chocolatey.org/packages/visualstudio2017enterprise
+$logFilePath = "$($env:TEMP)\chocolatey\vs.log"  
+$chocolateyLogFilePath = "$($env:ProgramData)\chocolatey\logs\chocolatey.log"
+Write-Host "Installing Microsoft Visual Studio 2017 Enterprise..."  
+$exitCode = Run-Process -FilePath "choco.exe" -ArgumentList "install --execution-timeout=0 -y VisualStudio2017Enterprise  -packageParameters ""--add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.NetWeb"""
+if (($exitCode -ne 3010) -and ($exitCode -ne 0))  
+{  
+    if (Test-Path $logFilePath) 
+    {
+        Get-Content $logFilePath  
+    }
+
+    if (Test-Path $chocolateyLogFilePath) 
+    {
+        Get-Content $chocolateyLogFilePath
+    }
+
+    throw "Command failed with exit code $exitCode."  
+}  
+if (Test-Path $logFilePath) 
+{
+    Remove-Item $logFilePath  
+}
+Write-Host "Microsoft Visual Studio 2017 Enterprise successfully installed" -ForegroundColor Green  
+
 # Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight  
 Write-Host "Downloading Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight..."  
 $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2017.msi"  
@@ -192,11 +218,27 @@ else
 }
 
 # Microsoft Silverlight 5 SDK
+Write-Host "Downloading Microsoft Silverlight 5 SDK..."  
+$exeFilePath = "$($env:USERPROFILE)\silverlight_sdk.exe"  
+$logFilePath = "$($env:TEMP)\silverlight_sdk.txt"  
+$webclient.DownloadFile('https://web.archive.org/web/20190126163602if_/http://download.microsoft.com/download/3/A/3/3A35179D-5C87-4D0A-91EB-BF5FEDC601A4/sdk/silverlight_sdk.exe', $exeFilePath)  
 Write-Host "Installing Microsoft Silverlight 5 SDK..."  
-$exitCode = Run-Process -FilePath "choco.exe" -ArgumentList "install silverlight5sdk -y"
+$exitCode = Run-Process -FilePath $exeFilePath -ArgumentList "/qb /norestart /l*v $logFilePath"
 if ($exitCode -ne 0)  
 {  
+    if (Test-Path $logFilePath) 
+    {
+        Get-Content $logFilePath  
+    }
     throw "Command failed with exit code $exitCode."  
+}  
+if (Test-Path $exeFilePath) 
+{
+    Remove-Item $exeFilePath  
+}
+if (Test-Path $logFilePath) 
+{
+    Remove-Item $logFilePath  
 }  
 Write-Host "Microsoft Silverlight 5 SDK successfully installed" -ForegroundColor Green  
 

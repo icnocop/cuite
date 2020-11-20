@@ -46,3 +46,8 @@ Scenario Outline: Adding the CUITe NuGet package to a Coded UI test project
 	| Visual Studio 2017 and .NET Framework 4.5.1                   | 2017                | 4.5.1                  | CUITe.VS2017             | CUITe                     |
 	| Visual Studio 2017 and .NET Framework 4.5.2                   | 2017                | 4.5.2                  | CUITe.VS2017             | CUITe                     |
 	| Visual Studio 2017 and .NET Framework 4.6                     | 2017                | 4.6                    | CUITe.VS2017             | CUITe                     |
+	| Visual Studio 2019 and .NET Framework 4                       | 2019                | 4.0                    | CUITe.VS2019             | CUITe                     |
+	| Visual Studio 2019 and .NET Framework 4.5                     | 2019                | 4.5                    | CUITe.VS2019             | CUITe                     |
+	| Visual Studio 2019 and .NET Framework 4.5.1                   | 2019                | 4.5.1                  | CUITe.VS2019             | CUITe                     |
+	| Visual Studio 2019 and .NET Framework 4.5.2                   | 2019                | 4.5.2                  | CUITe.VS2019             | CUITe                     |
+	| Visual Studio 2019 and .NET Framework 4.6                     | 2019                | 4.6                    | CUITe.VS2019             | CUITe                     |

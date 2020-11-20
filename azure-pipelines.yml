@@ -1,4 +1,4 @@
-name: 2.1.$(revision).0
+name: 2.2.$(revision).0
 
 trigger:
 - master
@@ -12,7 +12,7 @@ jobs:
 - job: Build
   timeoutInMinutes: 360
   pool:
-    vmImage: 'VS2017-Win2016'
+    vmImage: 'windows-2019'
   steps:
     - checkout: self
       displayName: 'Get sources'
