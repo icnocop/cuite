@@ -140,7 +140,7 @@ Write-Host "Microsoft Visual Studio 2017 Enterprise successfully installed" -For
 Write-Host "Downloading Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight..."  
 $msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2017.msi"  
 $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2017.txt"  
-$webclient.DownloadFile('https://ramiabughazaleh.gallerycdn.vsassets.io/extensions/ramiabughazaleh/codeduitestpluginforsilverlight/15.0.307.1/1551929118142/UITestPluginForSilverlightVS2017.msi', $msiFilePath)  
+$webclient.DownloadFile('https://ramiabughazaleh.gallerycdn.vsassets.io/extensions/ramiabughazaleh/codeduitestpluginforsilverlight/15.0.2321.0/1606001510488/UITestPluginForSilverlightVS2017.msi', $msiFilePath)  
 Write-Host "Installing Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight..."  
 $exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
 if ($exitCode -ne 0)  
