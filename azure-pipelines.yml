@@ -23,6 +23,11 @@ jobs:
       inputs:
         filePath: 'build\TeamViewer\EnableRemoteConnection.ps1'
 
+    - task: Cache@2
+      inputs:
+        key: deps | deps.lock
+        path: $(Pipeline.Workspace)/.deps
+
     - task: PowerShell@2
       displayName: 'Download and install dependencies'
       inputs:

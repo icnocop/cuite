@@ -1,4 +1,10 @@
-2.2.x (November 19th, 2020)
+2.2.x (March 28th, 2022)
+=========
+
+* Added support for Visual Studio 2022 - [@icnocop](https://github.com/icnocop)
+* Added support for the Silverlight ProgressBar control - [@icnocop](https://github.com/icnocop)
+
+2.2.71 (November 21st, 2020)
 =========
 
 * Added support for Visual Studio 2019 - [@icnocop](https://github.com/icnocop)

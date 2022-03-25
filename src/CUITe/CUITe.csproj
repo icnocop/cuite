@@ -10,6 +10,7 @@
     <RootNamespace>CUITe</RootNamespace>
     <AssemblyName>CUITe</AssemblyName>
     <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '17.0' ">v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -241,6 +242,7 @@
     <None Include="CUITe for Visual Studio 2015.nuspec" />
     <None Include="CUITe for Visual Studio 2017.nuspec" />
     <None Include="CUITe for Visual Studio 2019.nuspec" />
+    <None Include="CUITe for Visual Studio 2022.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.targets" />

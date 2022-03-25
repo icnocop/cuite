@@ -15,30 +15,37 @@ if ($exitCode -ne 0)
     throw "Command failed with exit code $exitCode."  
 }  
 
+$depsPath = Join-Path $env:AGENT_BUILDDIRECTORY '.deps'
+Write-Host $depsPath
+if (-not(Test-Path -Path $depsPath -PathType Container)) {
+    New-Item -Path $depsPath -ItemType Directory
+}
+
 # Microsoft Visual Studio 2013 Premium with Update 5  
-# https://chocolatey.org/packages/VisualStudio2013Premium
-$logFilePath = "$($env:TEMP)\chocolatey\vs.log"  
-Write-Host "Installing Microsoft Visual Studio 2013 Premium with Update 5..."  
-$exitCode = Run-Process -FilePath "choco.exe" -ArgumentList "install VisualStudio2013Premium -InstallArguments ""/Features:'VC_MFC_Libraries,WebTools,SilverLight_Developer_Kit'"" -y"
+Write-Host "Downloading Microsoft Visual Studio 2013 Premium..."  
+$isoFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\VS2013_RTM_PREM_ENU.iso"
+Write-Host "$isoFilePath"  
+if (-not(Test-Path -Path $isoFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('http://download.microsoft.com/download/D/B/D/DBDEE6BB-AF28-4C76-A5F8-710F610615F7/VS2013_RTM_PREM_ENU.iso', $isoFilePath)  
+}
+Write-Host "Installing Microsoft Visual Studio 2013 Premium..."  
+$mountResult = Mount-DiskImage -ImagePath $isoFilePath
+$driveLetter = ($mountResult | Get-Volume).DriveLetter
+$exitCode = Run-Process -FilePath "$($driveLetter[0]):\vs_premium.exe" -ArgumentList "/Q /Passive /NoRestart /NoWeb /Full"
 if ($exitCode -ne 0)  
 {  
-    if (Test-Path $logFilePath) 
-    {
-        Get-Content $logFilePath  
-    }
     throw "Command failed with exit code $exitCode."  
-}  
-if (Test-Path $logFilePath) 
-{
-    Remove-Item $logFilePath  
 }
-Write-Host "Microsoft Visual Studio 2013 Premium with Update 5 successfully installed" -ForegroundColor Green  
+Write-Host "Microsoft Visual Studio 2013 Premium successfully installed" -ForegroundColor Green  
+Dismount-DiskImage -ImagePath $isoFilePath  
 
 # Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight  
 Write-Host "Downloading Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
-$msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2013.msi"  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\UITestPluginForSilverlightVS2013.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://prachiboramsft.gallerycdn.vsassets.io/extensions/prachiboramsft/microsoftvisualstudio2013codeduitestpluginforsilve/1.0/1482140133605/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)  
+}
 $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2013.txt"  
-$webclient.DownloadFile('https://prachiboramsft.gallerycdn.vsassets.io/extensions/prachiboramsft/microsoftvisualstudio2013codeduitestpluginforsilve/1.0/1482140133605/133666/1/UITestPluginForSilverlightVS2013.msi', $msiFilePath)  
 Write-Host "Installing Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight..."  
 $exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
 if ($exitCode -ne 0)  
@@ -60,36 +67,29 @@ if (Test-Path $logFilePath)
 Write-Host "Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
       
 # Microsoft Visual Studio 2015 Enterprise Update 3  
-# https://chocolatey.org/packages/VisualStudio2015Enterprise
-$logFilePath = "$($env:TEMP)\chocolatey\vs.log"  
-$chocolateyLogFilePath = "$($env:ProgramData)\chocolatey\logs\chocolatey.log"
+Write-Host "Downloading Microsoft Visual Studio 2015 Enterprise Update 3..."  
+$isoFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\vs2015.3.ent_enu.iso"
+if (-not(Test-Path -Path $isoFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://download.microsoft.com/download/8/4/3/843ec655-1b67-46c3-a7a4-10a1159cfa84/vs2015.3.ent_enu.iso', $isoFilePath)  
+}
 Write-Host "Installing Microsoft Visual Studio 2015 Enterprise Update 3..."  
-$exitCode = Run-Process -FilePath "choco.exe" -ArgumentList "install --execution-timeout=0 -y VisualStudio2015Enterprise  -packageParameters ""--Features VC_MFC_Libraries,WebTools,SilverLight_Developer_Kit"""
-if (($exitCode -ne 3010) -and ($exitCode -ne 0))  
+$mountResult = Mount-DiskImage -ImagePath $isoFilePath
+$driveLetter = ($mountResult | Get-Volume).DriveLetter
+$exitCode = Run-Process -FilePath "$($driveLetter[0]):\vs_enterprise.exe" -ArgumentList "/Q /Passive /NoRestart /NoWeb /Full"
+if ($exitCode -ne -2147185721)  
 {  
-    if (Test-Path $logFilePath) 
-    {
-        Get-Content $logFilePath  
-    }
-
-    if (Test-Path $chocolateyLogFilePath) 
-    {
-        Get-Content $chocolateyLogFilePath
-    }
-
     throw "Command failed with exit code $exitCode."  
-}  
-if (Test-Path $logFilePath) 
-{
-    Remove-Item $logFilePath  
 }
 Write-Host "Microsoft Visual Studio 2015 Enterprise Update 3 successfully installed" -ForegroundColor Green  
+Dismount-DiskImage -ImagePath $isoFilePath  
 
 # Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight  
 Write-Host "Downloading Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight..."  
-$msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2015.msi"  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\UITestPluginForSilverlightVS2015.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://atinbansal.gallerycdn.vsassets.io/extensions/atinbansal/microsoftvisualstudio2015codeduitestpluginforsilve/1.0/1482142639885/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)  
+}
 $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2015.txt"  
-$webclient.DownloadFile('https://atinbansal.gallerycdn.vsassets.io/extensions/atinbansal/microsoftvisualstudio2015codeduitestpluginforsilve/1.0/1482142639885/189320/1/UITestPluginForSilverlightVS2015.msi', $msiFilePath)  
 Write-Host "Installing Microsoft Visual Studio 2015 Coded UI Test Plugin for Silverlight..."  
 $exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
 if ($exitCode -ne 0)  
@@ -138,9 +138,11 @@ Write-Host "Microsoft Visual Studio 2017 Enterprise successfully installed" -For
 
 # Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight  
 Write-Host "Downloading Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight..."  
-$msiFilePath = "$($env:USERPROFILE)\UITestPluginForSilverlightVS2017.msi"  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\UITestPluginForSilverlightVS2017.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://ramiabughazaleh.gallerycdn.vsassets.io/extensions/ramiabughazaleh/codeduitestpluginforsilverlight/15.0.2321.0/1606001510488/UITestPluginForSilverlightVS2017.msi', $msiFilePath)  
+}
 $logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2017.txt"  
-$webclient.DownloadFile('https://ramiabughazaleh.gallerycdn.vsassets.io/extensions/ramiabughazaleh/codeduitestpluginforsilverlight/15.0.2321.0/1606001510488/UITestPluginForSilverlightVS2017.msi', $msiFilePath)  
 Write-Host "Installing Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight..."  
 $exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
 if ($exitCode -ne 0)  
@@ -161,19 +163,73 @@ if (Test-Path $logFilePath)
 }
 Write-Host "Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
 
+# Microsoft Visual Studio 2022 Enterprise
+# https://chocolatey.org/packages/visualstudio2022enterprise
+$logFilePath = "$($env:TEMP)\chocolatey\visualstudio2022enterprise.log"  
+Write-Host "Installing Microsoft Visual Studio 2022 Enterprise..."  
+$exitCode = Run-Process -FilePath "choco.exe" -ArgumentList "install --execution-timeout=0 -y VisualStudio2022Enterprise  -packageParameters ""--add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Component.TestTools.CodedUITest"""
+if (($exitCode -ne 3010) -and ($exitCode -ne 0))  
+{  
+    if (Test-Path $logFilePath) 
+    {
+        Get-Content $logFilePath  
+    }
+
+    if (Test-Path $chocolateyLogFilePath) 
+    {
+        Get-Content $chocolateyLogFilePath
+    }
+
+    throw "Command failed with exit code $exitCode."  
+}  
+if (Test-Path $logFilePath) 
+{
+    Remove-Item $logFilePath  
+}
+Write-Host "Microsoft Visual Studio 2022 Enterprise successfully installed" -ForegroundColor Green  
+
+# Unofficial Microsoft Visual Studio 2022 Coded UI Test Plugin for Silverlight  
+Write-Host "Downloading Unofficial Microsoft Visual Studio 2022 Coded UI Test Plugin for Silverlight..."  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\UITestPluginForSilverlightVS2022.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://ramiabughazaleh.gallerycdn.vsassets.io/extensions/ramiabughazaleh/visualstudio2022codeduitestpluginforsilverlight/17.0.306.13/1646595365211/UITestPluginForSilverlightVS2022.msi', $msiFilePath)  
+}
+$logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2022.txt"  
+Write-Host "Installing Unofficial Microsoft Visual Studio 2022 Coded UI Test Plugin for Silverlight..."  
+$exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
+if ($exitCode -ne 0)  
+{  
+    if (Test-Path $logFilePath) 
+    {
+        Get-Content $logFilePath  
+    }
+    throw "Command failed with exit code $exitCode."  
+}  
+if (Test-Path $msiFilePath) 
+{
+    Remove-Item $msiFilePath  
+}
+if (Test-Path $logFilePath) 
+{
+    Remove-Item $logFilePath  
+}
+Write-Host "Unofficial Microsoft Visual Studio 2022 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
+
 # Microsoft Silverlight 5
 Write-Host "Downloading Microsoft Silverlight 5 (64 bit) 5.1.50918.00..."  
-$exeFilePath = "$($env:USERPROFILE)\Silverlight_x64.exe"  
-$retry_attempts = 3  
-for($i=0; $i -lt $retry_attempts; $i++){  
-    try {  
-        $webclient.DownloadFile('https://download.microsoft.com/download/D/D/F/DDF23DF4-0186-495D-AA35-C93569204409/50918.00/Silverlight_x64.exe', $exeFilePath)  
-        break  
+$exeFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\Silverlight_x64.exe"  
+if (-not(Test-Path -Path $exeFilePath -PathType Leaf)) {
+    $retry_attempts = 3  
+    for($i=0; $i -lt $retry_attempts; $i++){  
+        try {  
+            $webclient.DownloadFile('https://web.archive.org/web/20211013031912if_/https://download.microsoft.com/download/D/D/F/DDF23DF4-0186-495D-AA35-C93569204409/50918.00/Silverlight_x64.exe', $exeFilePath)  
+            break  
+        }  
+        Catch [Exception]{  
+            Start-Sleep 1  
+        }  
     }  
-    Catch [Exception]{  
-        Start-Sleep 1  
-    }  
-}  
+}
 Write-Host "Installing Microsoft Silverlight 5 (64 bit) 5.1.50918.00..."  
 $exitCode = Run-Process -FilePath $exeFilePath -ArgumentList "/q"
 if ($exitCode -ne 0)  
@@ -219,9 +275,11 @@ else
 
 # Microsoft Silverlight 5 SDK
 Write-Host "Downloading Microsoft Silverlight 5 SDK..."  
-$exeFilePath = "$($env:USERPROFILE)\silverlight_sdk.exe"  
+$exeFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\silverlight_sdk.exe"  
+if (-not(Test-Path -Path $exeFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://web.archive.org/web/20190126163602if_/http://download.microsoft.com/download/3/A/3/3A35179D-5C87-4D0A-91EB-BF5FEDC601A4/sdk/silverlight_sdk.exe', $exeFilePath)  
+}
 $logFilePath = "$($env:TEMP)\silverlight_sdk.txt"  
-$webclient.DownloadFile('https://web.archive.org/web/20190126163602if_/http://download.microsoft.com/download/3/A/3/3A35179D-5C87-4D0A-91EB-BF5FEDC601A4/sdk/silverlight_sdk.exe', $exeFilePath)  
 Write-Host "Installing Microsoft Silverlight 5 SDK..."  
 $exitCode = Run-Process -FilePath $exeFilePath -ArgumentList "/qb /norestart /l*v $logFilePath"
 if ($exitCode -ne 0)  
@@ -244,9 +302,11 @@ Write-Host "Microsoft Silverlight 5 SDK successfully installed" -ForegroundColor
 
 # Microsoft Silverlight 5 Toolkit - December 2011  
 Write-Host "Downloading Microsoft Silverlight 5 Toolkit - December 2011..."  
-$msiFilePath = "$($env:USERPROFILE)\Silverlight_5_Toolkit_December_2011.msi"  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\Silverlight_5_Toolkit_December_2011.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://github.com/MicrosoftArchive/SilverlightToolkit/releases/download/5/Silverlight_5_Toolkit_December_2011.1.msi', $msiFilePath)  
+}
 $logFilePath = "$($env:TEMP)\Silverlight_5_Toolkit_December_2011.txt"  
-$webclient.DownloadFile('https://github.com/MicrosoftArchive/SilverlightToolkit/releases/download/5/Silverlight_5_Toolkit_December_2011.1.msi', $msiFilePath)  
 Write-Host "Installing Microsoft Silverlight 5 Toolkit - December 2011..."  
 $exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
 if ($exitCode -ne 0)  
@@ -270,17 +330,19 @@ Write-Host "Microsoft Silverlight 5 Toolkit - December 2011 successfully install
 # Microsoft Silverlight 5 Developer Runtime for Windows (64 bit) 5.1.50918.00
 # https://www.microsoft.com/en-us/download/details.aspx?id=57768
 Write-Host "Downloading Microsoft Silverlight 5 Developer Runtime for Windows (64 bit) 5.1.50918.00..."  
-$exeFilePath = "$($env:USERPROFILE)\Silverlight_Developer_x64.exe"  
-$retry_attempts = 3  
-for($i=0; $i -lt $retry_attempts; $i++){  
-    try {  
-        $webclient.DownloadFile('https://download.microsoft.com/download/D/D/F/DDF23DF4-0186-495D-AA35-C93569204409/50918.00/Silverlight_Developer_x64.exe', $exeFilePath)  
-        break  
+$exeFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\Silverlight_Developer_x64.exe"  
+if (-not(Test-Path -Path $exeFilePath -PathType Leaf)) {
+    $retry_attempts = 3  
+    for($i=0; $i -lt $retry_attempts; $i++){  
+        try {  
+            $webclient.DownloadFile('https://web.archive.org/web/20210306113945if_/https://download.microsoft.com/download/D/D/F/DDF23DF4-0186-495D-AA35-C93569204409/50918.00/Silverlight_Developer_x64.exe', $exeFilePath)  
+            break  
+        }  
+        Catch [Exception]{  
+            Start-Sleep 1  
+        }  
     }  
-    Catch [Exception]{  
-        Start-Sleep 1  
-    }  
-}  
+}
 Write-Host "Installing Microsoft Silverlight 5 Developer Runtime for Windows (64 bit) 5.1.50918.00..."  
 $exitCode = Run-Process -FilePath $exeFilePath -ArgumentList "/q"
 if ($exitCode -ne 0)  
@@ -305,17 +367,19 @@ Write-Host "Mozilla Firefox (64-bit) successfully uninstalled."
 
 # Mozilla Firefox 47.0.1  
 Write-Host "Downloading Mozilla Firefox 47.0.1..."  
-$exeFilePath = "$($env:USERPROFILE)\Firefox Setup 47.0.1.exe"  
-$retry_attempts = 3  
-for($i=0; $i -lt $retry_attempts; $i++){  
-    try {  
-        $webclient.DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/47.0.1/win32/en-US/Firefox%20Setup%2047.0.1.exe', $exeFilePath)  
-        break  
+$exeFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\Firefox Setup 47.0.1.exe"  
+if (-not(Test-Path -Path $exeFilePath -PathType Leaf)) {
+    $retry_attempts = 3  
+    for($i=0; $i -lt $retry_attempts; $i++){  
+        try {  
+            $webclient.DownloadFile('http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/47.0.1/win32/en-US/Firefox%20Setup%2047.0.1.exe', $exeFilePath)  
+            break  
+        }  
+        Catch [Exception]{  
+            Start-Sleep 1  
+        }  
     }  
-    Catch [Exception]{  
-        Start-Sleep 1  
-    }  
-}  
+}
 Write-Host "Installing Mozilla Firefox 47.0.1..."  
 $exitCode = Run-Process -FilePath $exeFilePath -ArgumentList "-ms"
 if ($exitCode -ne 0)  
@@ -346,9 +410,11 @@ Write-Host "Default Mozilla Firefox profile created successfully" -ForegroundCol
 
 # Selenium components for Coded UI Cross Browser Testing Version 1.7  
 Write-Host "Downloading Selenium components for Coded UI Cross Browser Testing Version 1.7..."  
-$msiFilePath = "$($env:USERPROFILE)\CodedUITestCrossBrowserSetup.msi"  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\CodedUITestCrossBrowserSetup.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://atinbansal.gallerycdn.vsassets.io/extensions/atinbansal/seleniumcomponentsforcodeduicrossbrowsertesting/1.7/1482138134269/85444/13/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
+}
 $logFilePath = "$($env:TEMP)\CodedUITestCrossBrowserSetup.txt"  
-$webclient.DownloadFile('https://atinbansal.gallerycdn.vsassets.io/extensions/atinbansal/seleniumcomponentsforcodeduicrossbrowsertesting/1.7/1482138134269/85444/13/CodedUITestCrossBrowserSetup.msi', $msiFilePath)  
 Write-Host "Installing Selenium components for Coded UI Cross Browser Testing Version 1.7..."  
 $exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
 if ($exitCode -ne 0)  
@@ -371,16 +437,20 @@ Write-Host "Selenium components for Coded UI Cross Browser Testing Version 1.7 s
       
 # Google Chrome driver 2.27
 Write-Host "Downloading Google Chrome driver 2.27..."  
-$zipPath = "$($env:USERPROFILE)\chromedriver_win32.zip"  
-$webclient.DownloadFile('http://chromedriver.storage.googleapis.com/2.27/chromedriver_win32.zip', $zipPath)  
+$zipPath = "$Env:AGENT_BUILDDIRECTORY\.deps\chromedriver_win32.zip"  
+if (-not(Test-Path -Path $zipPath -PathType Leaf)) {
+    $webclient.DownloadFile('http://chromedriver.storage.googleapis.com/2.27/chromedriver_win32.zip', $zipPath)  
+}
 Write-Host "Installing Google Chrome driver 2.27..."  
 7z x $zipPath -y -o"$($ProgramFiles)\Common Files\Microsoft Shared\VSTT\Cross Browser Selenium Components" | Out-Null  
 Write-Host "Google Chrome driver 2.27 successfully installed" -ForegroundColor Green  
 
 # Mozilla Firefox driver v0.17.0 (Win32)
 Write-Host "Downloading Mozilla Firefox driver v0.17.0  (Win32)..."  
-$zipPath = "$($env:USERPROFILE)\geckodriver-v0.17.0-win32.zip"  
-$webclient.DownloadFile('https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-win32.zip', $zipPath)  
+$zipPath = "$Env:AGENT_BUILDDIRECTORY\.deps\geckodriver-v0.17.0-win32.zip"  
+if (-not(Test-Path -Path $zipPath -PathType Leaf)) {
+    $webclient.DownloadFile('https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-win32.zip', $zipPath)  
+}
 Write-Host "Installing Mozilla Firefox driver v0.17.0  (Win32)..."  
 7z x $zipPath -y -o"$($ProgramFiles)\Common Files\Microsoft Shared\VSTT\Cross Browser Selenium Components" | Out-Null  
 Write-Host "Mozilla Firefox driver v0.17.0  (Win32) successfully installed" -ForegroundColor Green  

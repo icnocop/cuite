@@ -49,6 +49,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '12.0'">bin\Debug\VS2013</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '14.0'">bin\Debug\VS2015</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '15.0'">bin\Debug\VS2017</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Debug\VS2019</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '17.0'">bin\Debug\VS2022</OutputPath>
     <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
@@ -64,6 +66,7 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '14.0'">bin\Release\VS2015</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '15.0'">bin\Release\VS2017</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Release\VS2019</OutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '17.0'">bin\Release\VS2022</OutputPath>
     <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
