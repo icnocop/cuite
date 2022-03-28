@@ -20,6 +20,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2019\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2019\net45\</OutputPath>
     <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Debug\VS2019\</SilverlightOutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Debug\VS2022\net472\</OutputPath>
+    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '17.0'">bin\Debug\VS2022\</SilverlightOutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,6 +36,7 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2017\net45\$(AssemblyName).xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2019\net40\$(AssemblyName).xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2019\net45\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Debug\VS2022\net472\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -55,6 +58,8 @@
     <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2019\net40\</OutputPath>
     <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2019\net45\</OutputPath>
     <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Release\VS2019\</SilverlightOutputPath>
+    <OutputPath Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Release\VS2022\net472\</OutputPath>
+    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '17.0'">bin\Release\VS2022\</SilverlightOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -69,5 +74,6 @@
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2017\net45\$(AssemblyName).xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2019\net40\$(AssemblyName).xml</DocumentationFile>
     <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2019\net45\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Release\VS2022\net472\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
 </Project>

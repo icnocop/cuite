@@ -72,5 +72,17 @@
         </Reference>
       </ItemGroup>
     </When>
+    <When Condition="'$(VisualStudioVersion)' == '17.0'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v17\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v17\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
   </Choose>
 </Project>

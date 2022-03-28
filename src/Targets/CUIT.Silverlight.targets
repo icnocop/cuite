@@ -55,5 +55,14 @@
         </Reference>
       </ItemGroup>
     </When>
+    <!-- Visual Studio 2022 -->
+    <When Condition="'$(VisualStudioVersion)' == '17.0'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=17.0.306.10, Culture=neutral, PublicKeyToken=dc7d797155f95aab, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v17\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
   </Choose>
 </Project>

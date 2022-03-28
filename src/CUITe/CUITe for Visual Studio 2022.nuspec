@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CUITe.VS2022</id>
+    <version>$version$</version>
+    <authors>Suresh Balasubramanian, Matt Gray, Rami Abughazaleh, Mattias Kindborg, and contributors</authors>
+    <title>CUITe for Visual Studio 2022</title>
+    <language>en-US</language>
+    <licenseUrl>https://raw.githubusercontent.com/icnocop/cuite/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/icnocop/cuite</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/icnocop/cuite/master/images/NuGet_32x32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Microsoft Visual Studio Team Test's Coded UI Test engine which helps reduce code, increases readability and maintainability, while also providing a bunch of cool features for the automation engineer.
+      This package requires Visual Studio 2022 Enterprise.
+    </description>
+    <tags>cuit cuite coded ui test enhanced visual studio 2022 vs2022</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\VS2022\net472\CUITe.dll" target="lib\net472\CUITe.dll" />
+    <file src="bin\Release\VS2022\net472\CUITe.xml" target="lib\net472\CUITe.xml" />
+    <file src="..\CUITe_ObjectRecorder\bin\Release\CUITe_ObjectRecorder.exe" target="tools\CUITe_ObjectRecorder.exe" />
+  </files>
+</package>

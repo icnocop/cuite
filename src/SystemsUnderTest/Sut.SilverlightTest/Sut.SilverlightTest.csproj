@@ -46,6 +46,7 @@
     <DefineConstants Condition="'$(VisualStudioVersion)' == '14.0'">$(DefineConstants);VS2015;</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '15.0'">$(DefineConstants);VS2017;</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '16.0'">$(DefineConstants);VS2019;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '17.0'">$(DefineConstants);VS2022;</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
