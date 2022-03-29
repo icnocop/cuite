@@ -71,13 +71,12 @@ jobs:
         pathtoPublish: $(Build.ArtifactStagingDirectory)
         artifactName: drop
 
-    - task: NuGetCommand@2
+    - task: PowerShell@2
       displayName: 'Publish NuGet Packages'
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
       inputs:
-        command: 'push'
-        nuGetFeedType: 'external'
-        publishFeedCredentials: 'NuGet Service Connection'
+        targetType: 'inline'
+        script: 'nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json'
 
     - task: PowerShell@2
       displayName: 'Git Tag'
