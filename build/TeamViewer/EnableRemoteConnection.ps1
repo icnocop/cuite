@@ -19,10 +19,10 @@ if ($exitCode -ne 0)
     throw "Command failed with exit code $exitCode."  
 }  
 
-Start-Process -FilePath "${env:ProgramFiles(x86)}\TeamViewer\TeamViewer.exe"
+Start-Process -FilePath "${env:ProgramFiles}\TeamViewer\TeamViewer.exe"
 
 # get User ID
-$key = 'HKLM:\SOFTWARE\WOW6432Node\TeamViewer'
+$key = 'HKLM:\SOFTWARE\TeamViewer'
 
 while (!(Get-ItemProperty -Path $key -Name "ClientID" -ErrorAction SilentlyContinue))
 {

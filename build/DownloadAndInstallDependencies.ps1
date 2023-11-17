@@ -26,7 +26,7 @@ Write-Host "Downloading Microsoft Visual Studio 2013 Premium..."
 $isoFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\VS2013_RTM_PREM_ENU.iso"
 Write-Host "$isoFilePath"  
 if (-not(Test-Path -Path $isoFilePath -PathType Leaf)) {
-    $webclient.DownloadFile('http://download.microsoft.com/download/D/B/D/DBDEE6BB-AF28-4C76-A5F8-710F610615F7/VS2013_RTM_PREM_ENU.iso', $isoFilePath)  
+    $webclient.DownloadFile('https://download.microsoft.com/download/D/B/D/DBDEE6BB-AF28-4C76-A5F8-710F610615F7/VS2013_RTM_PREM_ENU.iso', $isoFilePath)  
 }
 Write-Host "Installing Microsoft Visual Studio 2013 Premium..."  
 $mountResult = Mount-DiskImage -ImagePath $isoFilePath

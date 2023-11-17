@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.PageObjects
@@ -58,6 +59,30 @@ namespace CUITe.PageObjects
             {
                 Browser = browser,
                 SearchLimitContainer = browser
+            };
+        }
+
+        /// <summary>
+        /// Creates a reference to an application from an existing process and returns a page of
+        /// type <typeparamref name="T" />.
+        /// </summary>
+        /// <typeparam name="T">The type of the page to return.</typeparam>
+        /// <param name="processToWrap">The process to create from</param>
+        /// <returns>
+        /// A page representing the launched application.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException">processToWrap</exception>
+        public static T FromProcess<T>(Process processToWrap) where T : Page, new()
+        {
+            if (processToWrap == null)
+                throw new ArgumentNullException(nameof(processToWrap));
+
+            var browserWindow = BrowserWindow.FromProcess(processToWrap);
+
+            return new T
+            {
+                Browser = browserWindow,
+                SearchLimitContainer = browserWindow
             };
         }
     }

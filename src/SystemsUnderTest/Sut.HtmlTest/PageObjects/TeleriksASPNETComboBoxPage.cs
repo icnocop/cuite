@@ -11,17 +11,6 @@ namespace Sut.HtmlTest.PageObjects
     public class TeleriksASPNETComboBoxPage : Page
     {
         /// <summary>
-        /// Gets the "Accept Cookies" button.
-        /// </summary>
-        /// <value>
-        /// The "Accept Cookies" button.
-        /// </value>
-        public HtmlButton AcceptCookies
-        {
-            get { return Find<HtmlButton>(By.Id("onetrust-accept-btn-handler")); }
-        }
-
-        /// <summary>
         /// Gets the product.
         /// </summary>
         /// <value>
