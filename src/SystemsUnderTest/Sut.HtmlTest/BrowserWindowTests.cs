@@ -56,10 +56,10 @@ namespace Sut.HtmlTest
     <body/>
 </html>"))
             {
-                BrowserWindow.Launch(webPage.FilePath);
+                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
 
                 // Act
-                BrowserWindow browserWindow = BrowserWindow.FromProcess(Process.GetProcessesByName("iexplore").Single(x => !string.IsNullOrEmpty(x.MainWindowTitle)));
+                browserWindow = BrowserWindow.FromProcess(browserWindow.Process);
 
                 // Assert
                 Assert.IsTrue(browserWindow.Title.Contains("A Test"), browserWindow.Title);

@@ -1,4 +1,9 @@
-2.2.x (March 28th, 2022)
+2.3.x (November 19th, 2023)
+=======
+
+* Added the ability to attach to a BrowserWindow from a process - [@icnocop](https://github.com/icnocop)
+
+2.2.100 (March 30th, 2022)
 =========
 
 * Added support for Visual Studio 2022 - [@icnocop](https://github.com/icnocop)

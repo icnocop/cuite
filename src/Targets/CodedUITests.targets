@@ -1,6 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0'">
+      <!-- Visual Studio 2010 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -10,9 +11,11 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v10\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
+        <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <!-- Visual Studio 2012 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -22,9 +25,11 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v11\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
+        <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '12.0'">
+      <!-- Visual Studio 2013 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -37,6 +42,7 @@
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '14.0'">
+      <!-- Visual Studio 2015 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -46,9 +52,11 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v14\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
+        <Reference Include="UIAComWrapper, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '15.0'">
+      <!-- Visual Studio 2017 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -58,9 +66,12 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v15\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
+        <Reference Include="UIAComWrapper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+        <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '16.0'">
+      <!-- Visual Studio 2019 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
@@ -70,9 +81,12 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v16\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
+        <Reference Include="UIAComWrapper, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+        <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '17.0'">
+      <!-- Visual Studio 2022 -->
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
           <Private>False</Private>
