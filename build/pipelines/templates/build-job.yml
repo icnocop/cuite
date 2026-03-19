@@ -1,0 +1,311 @@
+# Build and test job template for a single Visual Studio version.
+# Produces up to 3 jobs:
+#   Build_<vsVersion>   – compiles, packs NuGet, publishes pipeline artifact for test agents
+#   Test_<vsVersion>    – runs tests in parallel across multiple agents (when runTests=true)
+#   Publish_<vsVersion> – pushes NuGet to nuget.org after tests pass (when publishNuGet=true)
+
+parameters:
+  - name: vsDisplayName
+    type: string
+  - name: vsVersion
+    type: string
+    # Valid: 2010, 2012, 2013, 2015, 2017, 2019, 2022, 2026
+  - name: visualStudioVersion
+    type: string
+    # MSBuild VisualStudioVersion property (e.g., 10.0, 11.0, 12.0, 14.0, 15.0, 16.0, 17.0, 18.0)
+  - name: targetFrameworkVersions
+    type: object
+    # List of TargetFrameworkVersion values to build (e.g., ['v4.0'], ['v4.0', 'v4.5'], ['v4.7.2'])
+  - name: includeIntegrationTests
+    type: boolean
+    default: true
+  - name: integrationTestTargetFrameworkVersions
+    type: object
+    default: []
+    # If empty, uses targetFrameworkVersions. Override for VS versions with different integration test TFVs.
+  - name: runTests
+    type: boolean
+    default: true
+  - name: msBuildPath
+    type: string
+    default: ''
+    # Full path to MSBuild.exe on the build agent.
+    # When empty, vswhere is used to discover MSBuild automatically.
+  - name: publishNuGet
+    type: boolean
+    default: false
+  - name: runSettingsFile
+    type: string
+    default: 'src\Local.testsettings'
+    # Run settings file path relative to repo root. Use .runsettings for VS2022+ to avoid legacy MSTest v1 runner.
+  - name: testPlatformVersion
+    type: string
+    default: ''
+    # When set, installs the Microsoft.TestPlatform NuGet package at this version
+    # and uses it as the test runner (vsTestVersion: toolsInstaller).
+    # Required for VS2026 where the Coded UI Test adapter was removed.
+  - name: testAssemblyExcludes
+    type: string
+    default: ''
+    # Newline-separated glob exclusion patterns (prefixed with !) to skip specific test assemblies.
+    # Example: '!**\Sut.Silverlight*' to exclude Silverlight test DLLs.
+  - name: vmImage
+    type: string
+    default: 'windows-2025'
+    # Azure Pipelines VM image to use. Use 'windows-2025-vs2026' for VS2026 (pre-installed).
+  - name: testParallelism
+    type: number
+    default: 5
+    # Number of parallel agents to distribute test assemblies across.
+    # Each agent runs a subset of test assemblies concurrently.
+
+jobs:
+# ---------------------------------------------------------------------------
+# Job 1: Build
+# ---------------------------------------------------------------------------
+- job: Build_${{ parameters.vsVersion }}
+  displayName: 'VS${{ parameters.vsVersion }} Build - ${{ parameters.vsDisplayName }}'
+  timeoutInMinutes: 360
+  pool:
+    vmImage: '${{ parameters.vmImage }}'
+  variables:
+    solution: 'src\CUITe.sln'
+    buildConfiguration: 'Release'
+    integrationTestProject: 'src\CUITe.IntegrationTests\CUITe.IntegrationTests.csproj'
+    nugetPath: 'src\.nuget\NuGet.exe'
+    msBuildPath: '${{ parameters.msBuildPath }}'
+    WaitForRemoteConnectionOnFailure: false
+    TESTINGPLATFORM_TELEMETRY_OPTOUT: '1'
+  steps:
+    - checkout: self
+      displayName: 'Get sources'
+      persistCredentials: true
+
+    - task: PowerShell@2
+      displayName: 'Enable remote connection'
+      inputs:
+        filePath: 'build\TeamViewer\EnableRemoteConnection.ps1'
+
+    - task: Cache@2
+      inputs:
+        key: deps-vs${{ parameters.vsVersion }} | deps.lock
+        path: $(Pipeline.Workspace)/.deps
+
+    - task: PowerShell@2
+      displayName: 'Install common dependencies'
+      inputs:
+        filePath: 'build\Install-CommonDependencies.ps1'
+
+    - task: PowerShell@2
+      displayName: 'Install VS${{ parameters.vsVersion }} dependencies'
+      inputs:
+        filePath: 'build\Install-VSDependencies.ps1'
+        arguments: '-VSVersion "${{ parameters.vsVersion }}"'
+
+    - task: PowerShell@2
+      displayName: 'Discover MSBuild via vswhere'
+      inputs:
+        targetType: 'inline'
+        script: |
+          $configuredPath = '$(msBuildPath)'
+          if ($configuredPath -and (Test-Path $configuredPath)) {
+            Write-Host "Using configured MSBuild path: $configuredPath"
+            return
+          }
+          $vswherePath = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+          if (-not (Test-Path $vswherePath)) { $vswherePath = 'vswhere' }
+          $discovered = & $vswherePath -latest -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\MSBuild.exe' | Select-Object -First 1
+          if ($discovered) {
+            Write-Host "Discovered MSBuild at: $discovered"
+            Write-Host "##vso[task.setvariable variable=msBuildPath]$discovered"
+          } else {
+            Write-Error "vswhere could not find MSBuild. Ensure Visual Studio is installed with the MSBuild component."
+          }
+
+    - task: PowerShell@2
+      displayName: 'Apply version to assemblies'
+      inputs:
+        filePath: 'build\ApplyVersionToAssemblies.ps1'
+
+    # Restore NuGet packages
+    - script: '"%nugetPath%" restore "%solution%"'
+      displayName: 'NuGet Restore'
+
+    # Build solution for each target framework version
+    - ${{ each tfv in parameters.targetFrameworkVersions }}:
+      - script: '"$(msBuildPath)" "$(solution)" /t:Rebuild /p:Configuration=$(buildConfiguration);VisualStudioVersion=${{ parameters.visualStudioVersion }};TargetFrameworkVersion=${{ tfv }} /m'
+        displayName: 'Build VS${{ parameters.vsVersion }} ${{ tfv }}'
+
+    # Build integration tests
+    - ${{ if eq(parameters.includeIntegrationTests, true) }}:
+      - ${{ each tfv in coalesce(parameters.integrationTestTargetFrameworkVersions, parameters.targetFrameworkVersions) }}:
+        - script: '"$(msBuildPath)" "$(integrationTestProject)" /t:Rebuild /p:Configuration=$(buildConfiguration);VisualStudioVersion=${{ parameters.visualStudioVersion }};TargetFrameworkVersion=${{ tfv }};SolutionDir=$(Build.SourcesDirectory)\src\\ /m'
+          displayName: 'Build Integration Tests VS${{ parameters.vsVersion }} ${{ tfv }}'
+
+    # Pack NuGet packages
+    - script: '"$(nugetPath)" pack "src\CUITe\CUITe for Visual Studio ${{ parameters.vsVersion }}.nuspec" -OutputDirectory "$(Build.ArtifactStagingDirectory)" -Verbosity detailed -Prop Configuration=$(buildConfiguration) -Prop Version=$(Build.BuildNumber)'
+      displayName: 'Pack CUITe NuGet (VS${{ parameters.vsVersion }})'
+
+    - script: '"$(nugetPath)" pack "src\CUITe.Silverlight\CUITe.Silverlight.VS${{ parameters.vsVersion }}.nuspec" -OutputDirectory "$(Build.ArtifactStagingDirectory)" -Verbosity detailed -Prop VisualStudioVersion=${{ parameters.visualStudioVersion }} -Prop Configuration=$(buildConfiguration) -Prop Version=$(Build.BuildNumber)'
+      displayName: 'Pack CUITe.Silverlight NuGet (VS${{ parameters.vsVersion }})'
+
+    # Publish built source tree as pipeline artifact for test agents
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish build output for tests'
+      inputs:
+        targetPath: '$(Build.SourcesDirectory)\src'
+        artifactName: 'build-output-vs${{ parameters.vsVersion }}'
+
+    # Publish NuGet packages as build artifact (always, for manual download)
+    - task: PublishBuildArtifacts@1
+      condition: always()
+      inputs:
+        pathtoPublish: $(Build.ArtifactStagingDirectory)
+        artifactName: 'drop-vs${{ parameters.vsVersion }}'
+
+    - task: PowerShell@2
+      displayName: 'Copy Chocolatey Logs'
+      condition: failed()
+      inputs:
+        filePath: 'build\Chocolatey\CopyChocolateyLogs.ps1'
+
+    - task: PowerShell@2
+      displayName: 'Wait for remote connection'
+      condition: and(failed(), eq(variables['WaitForRemoteConnectionOnFailure'], 'true'))
+      inputs:
+        filePath: 'build\TeamViewer\WaitForRemoteConnection.ps1'
+
+# ---------------------------------------------------------------------------
+# Job 2: Test (parallel across multiple agents)
+# ---------------------------------------------------------------------------
+- ${{ if eq(parameters.runTests, true) }}:
+  - job: Test_${{ parameters.vsVersion }}
+    displayName: 'VS${{ parameters.vsVersion }} Test - ${{ parameters.vsDisplayName }}'
+    dependsOn: Build_${{ parameters.vsVersion }}
+    timeoutInMinutes: 360
+    strategy:
+      parallel: ${{ parameters.testParallelism }}
+    pool:
+      vmImage: '${{ parameters.vmImage }}'
+    variables:
+      buildConfiguration: 'Release'
+      WaitForRemoteConnectionOnFailure: false
+      TESTINGPLATFORM_TELEMETRY_OPTOUT: '1'
+    steps:
+      - checkout: self
+        displayName: 'Get sources'
+
+      - task: PowerShell@2
+        displayName: 'Enable remote connection'
+        inputs:
+          filePath: 'build\TeamViewer\EnableRemoteConnection.ps1'
+
+      - task: Cache@2
+        inputs:
+          key: deps-vs${{ parameters.vsVersion }} | deps.lock
+          path: $(Pipeline.Workspace)/.deps
+
+      - task: PowerShell@2
+        displayName: 'Install common dependencies'
+        inputs:
+          filePath: 'build\Install-CommonDependencies.ps1'
+
+      - task: PowerShell@2
+        displayName: 'Install VS${{ parameters.vsVersion }} dependencies'
+        inputs:
+          filePath: 'build\Install-VSDependencies.ps1'
+          arguments: '-VSVersion "${{ parameters.vsVersion }}"'
+
+      # Download built binaries from Build job
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download build output'
+        inputs:
+          artifactName: 'build-output-vs${{ parameters.vsVersion }}'
+          targetPath: '$(Build.SourcesDirectory)\src'
+
+      # Install test platform (if needed)
+      - ${{ if ne(parameters.testPlatformVersion, '') }}:
+        - task: VisualStudioTestPlatformInstaller@1
+          displayName: 'Install Test Platform ${{ parameters.testPlatformVersion }}'
+          inputs:
+            packageFeedSelector: 'nugetOrg'
+            versionSelector: 'specificVersion'
+            testPlatformVersion: '${{ parameters.testPlatformVersion }}'
+        - task: PowerShell@2
+          displayName: 'Register CUIT COM DLLs and enable diagnostics'
+          inputs:
+            filePath: 'src\build\Register-CUITComDlls.ps1'
+            arguments: '-TestPlatformVersion "${{ parameters.testPlatformVersion }}"'
+
+      # Run tests – VSTest distributes assemblies across parallel agents
+      - task: VSTest@3
+        displayName: 'Run Tests VS${{ parameters.vsVersion }}'
+        inputs:
+          testSelector: 'testAssemblies'
+          testAssemblyVer2: |
+            **\bin\$(buildConfiguration)\**\*Test.dll
+            ${{ parameters.testAssemblyExcludes }}
+          ${{ if ne(parameters.testPlatformVersion, '') }}:
+            vsTestVersion: 'toolsInstaller'
+          ${{ else }}:
+            vsTestVersion: '${{ parameters.visualStudioVersion }}'
+          uiTests: true
+          rerunFailedTests: true
+          runSettingsFile: '$(Build.SourcesDirectory)\${{ parameters.runSettingsFile }}'
+          distributionBatchType: 'basedOnAssembly'
+
+      # Publish Fusion assembly binding logs on failure (when test platform diagnostics are enabled)
+      - ${{ if ne(parameters.testPlatformVersion, '') }}:
+        - task: CopyFiles@2
+          displayName: 'Copy Fusion Logs to staging'
+          condition: failed()
+          inputs:
+            sourceFolder: '$(TEMP)\FusionLogs'
+            contents: '**'
+            targetFolder: '$(Build.ArtifactStagingDirectory)\FusionLogs'
+          continueOnError: true
+
+      - task: PowerShell@2
+        displayName: 'Copy Chocolatey Logs'
+        condition: failed()
+        inputs:
+          filePath: 'build\Chocolatey\CopyChocolateyLogs.ps1'
+
+      - task: PublishBuildArtifacts@1
+        condition: failed()
+        inputs:
+          pathtoPublish: $(Build.ArtifactStagingDirectory)
+          artifactName: 'test-logs-vs${{ parameters.vsVersion }}-$(System.JobPositionInPhase)'
+
+      - task: PowerShell@2
+        displayName: 'Wait for remote connection'
+        condition: and(failed(), eq(variables['WaitForRemoteConnectionOnFailure'], 'true'))
+        inputs:
+          filePath: 'build\TeamViewer\WaitForRemoteConnection.ps1'
+
+# ---------------------------------------------------------------------------
+# Job 3: Publish NuGet (only when enabled, after tests pass)
+# ---------------------------------------------------------------------------
+- ${{ if eq(parameters.publishNuGet, true) }}:
+  - job: Publish_${{ parameters.vsVersion }}
+    displayName: 'VS${{ parameters.vsVersion }} Publish NuGet'
+    dependsOn:
+      - Build_${{ parameters.vsVersion }}
+      - ${{ if eq(parameters.runTests, true) }}:
+        - Test_${{ parameters.vsVersion }}
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    pool:
+      vmImage: '${{ parameters.vmImage }}'
+    steps:
+      - task: DownloadBuildArtifacts@1
+        displayName: 'Download NuGet packages'
+        inputs:
+          buildType: 'current'
+          downloadType: 'single'
+          artifactName: 'drop-vs${{ parameters.vsVersion }}'
+          downloadPath: '$(Build.ArtifactStagingDirectory)'
+      - task: PowerShell@2
+        displayName: 'Publish NuGet Packages'
+        inputs:
+          targetType: 'inline'
+          script: 'nuget push $(Build.ArtifactStagingDirectory)\drop-vs${{ parameters.vsVersion }}\*.nupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json'

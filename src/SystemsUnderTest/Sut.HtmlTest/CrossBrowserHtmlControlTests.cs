@@ -81,7 +81,7 @@ namespace Sut.HtmlTest
 
                 BrowserWindow.CurrentBrowser = browser;
 
-                BrowserWindow window = BrowserWindow.Launch(tempFilePath);
+                BrowserWindow window = BrowserWindowLauncher.Launch(tempFilePath);
                 var div = window.Find<HtmlDiv>(By.Id("div1"));
                 var inputTextBox = div.Find<HtmlEdit>();
 

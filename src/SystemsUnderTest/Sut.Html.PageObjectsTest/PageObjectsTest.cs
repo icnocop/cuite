@@ -29,9 +29,11 @@ namespace Sut.Html.PageObjectsTest
             {
                 // Arrange
                 var mainPage = Page.Launch<MainPage>(homePage.FilePath);
-                
+
                 // Assert
                 Assert.IsTrue(mainPage.UpperLeft.CheckBoxExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -49,6 +51,8 @@ namespace Sut.Html.PageObjectsTest
                 // Assert
                 Assert.IsTrue(mainPage.RebasedUpperLeft.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedUpperLeft.CheckBoxExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -65,6 +69,8 @@ namespace Sut.Html.PageObjectsTest
 
                 // Assert
                 Assert.IsTrue(mainPage.UpperRight.CheckBoxExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -82,6 +88,8 @@ namespace Sut.Html.PageObjectsTest
                 // Assert
                 Assert.IsTrue(mainPage.RebasedUpperRight.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedUpperRight.CheckBoxExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -98,6 +106,8 @@ namespace Sut.Html.PageObjectsTest
 
                 // Assert
                 Assert.IsTrue(mainPage.LowerLeft.RadioButtonExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -115,6 +125,8 @@ namespace Sut.Html.PageObjectsTest
                 // Assert
                 Assert.IsTrue(mainPage.RebasedLowerLeft.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedLowerLeft.RadioButtonExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -131,6 +143,8 @@ namespace Sut.Html.PageObjectsTest
 
                 // Assert
                 Assert.IsTrue(mainPage.LowerRight.RadioButtonExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -148,6 +162,8 @@ namespace Sut.Html.PageObjectsTest
                 // Assert
                 Assert.IsTrue(mainPage.RebasedLowerRight.Self.Exists);
                 Assert.IsTrue(mainPage.RebasedLowerRight.RadioButtonExists);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -174,6 +190,8 @@ namespace Sut.Html.PageObjectsTest
                 Assert.AreEqual(mainPage.RebasedLowerLeft.Browser, actual);
                 Assert.AreEqual(mainPage.LowerRight.Browser, actual);
                 Assert.AreEqual(mainPage.RebasedLowerRight.Browser, actual);
+
+                mainPage.Browser.Close();
             }
         }
 
@@ -194,6 +212,8 @@ namespace Sut.Html.PageObjectsTest
 
                 // Assert
                 Assert.IsTrue(dialogScreen.FrameworkMessageExists);
+
+                mainPage.Browser.Close();
             }
         }
 

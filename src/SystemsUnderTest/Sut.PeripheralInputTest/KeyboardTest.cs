@@ -32,6 +32,15 @@ namespace Sut.PeripheralInputTest
         }
 
         /// <summary>
+        /// Cleans up the test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            mainScreen.Application.Close();
+        }
+
+        /// <summary>
         /// Send text.
         /// </summary>
         [TestMethod]

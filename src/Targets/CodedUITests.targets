@@ -52,7 +52,9 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v14\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UIAComWrapper, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+        <Reference Include="UIAComWrapper, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v14\UIAComWrapper.dll</HintPath>
+        </Reference>
       </ItemGroup>
     </When>
     <When Condition="'$(VisualStudioVersion)' == '15.0'">
@@ -66,7 +68,9 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v15\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UIAComWrapper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+        <Reference Include="UIAComWrapper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v15\UIAComWrapper.dll</HintPath>
+        </Reference>
         <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
@@ -81,7 +85,9 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v16\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UIAComWrapper, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+        <Reference Include="UIAComWrapper, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v16\UIAComWrapper.dll</HintPath>
+        </Reference>
         <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
@@ -96,6 +102,20 @@
           <Private>False</Private>
           <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v17\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
         </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(VisualStudioVersion)' == '18.0'">
+      <!-- Visual Studio 2026 -->
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework">
+          <Private>True</Private>
+          <HintPath>$(PkgMicrosoft_TestPlatform)\tools\net462\Common7\IDE\Extensions\TestPlatform\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common">
+          <Private>True</Private>
+          <HintPath>$(PkgMicrosoft_TestPlatform)\tools\net462\Common7\IDE\Extensions\TestPlatform\Microsoft.VisualStudio.TestTools.UITest.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="UIAutomationClient" />
       </ItemGroup>
     </When>
   </Choose>

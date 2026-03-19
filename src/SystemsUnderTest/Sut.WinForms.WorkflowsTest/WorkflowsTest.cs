@@ -32,6 +32,15 @@ namespace Sut.WinForms.WorkflowsTest
         }
 
         /// <summary>
+        /// Cleans up the test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            nameWizardPage.Application.Close();
+        }
+
+        /// <summary>
         /// Steps through the wizard.
         /// </summary>
         [TestMethod]

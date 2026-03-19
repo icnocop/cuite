@@ -31,6 +31,15 @@ namespace Sut.WinForms.ScreenObjectsTest
         }
 
         /// <summary>
+        /// Cleans up the test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            mainScreen.Application.Close();
+        }
+
+        /// <summary>
         /// Upper left.
         /// </summary>
         [TestMethod]

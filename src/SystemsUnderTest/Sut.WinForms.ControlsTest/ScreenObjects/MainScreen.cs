@@ -124,14 +124,14 @@ namespace Sut.WinForms.ControlsTest.ScreenObjects
         }
 
         /// <summary>
-        /// Gets a value indicating whether the month calendar exists.
+        /// Gets the month calendar.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if the month calendar exists; otherwise, <c>false</c>.
+        /// The month calendar.
         /// </value>
-        public bool MonthCalendarExists
+        public WinWindow MonthCalendar
         {
-            get { return Find<WinWindow>(By.ControlName("monthCalendar")).Find<WinCalendar>().Exists; }
+            get { return Find<WinWindow>(By.ControlName("monthCalendar")); }
         }
 
         /// <summary>

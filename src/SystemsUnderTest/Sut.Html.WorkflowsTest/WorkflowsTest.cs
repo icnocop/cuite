@@ -39,6 +39,8 @@ namespace Sut.Html.WorkflowsTest
 
                 // Assert
                 Assert.IsTrue(finishedPage.CongratulationsExists);
+
+                namePage.Browser.Close();
             }
         }
 

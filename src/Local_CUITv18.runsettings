@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <TargetPlatform>x86</TargetPlatform>
+    <TargetFrameworkVersion>net472</TargetFrameworkVersion>
+  </RunConfiguration>
+  <MSTest>
+    <DeploymentEnabled>true</DeploymentEnabled>
+    <AssemblyResolution>
+      <Directory path="{APPVEYOR_BUILD_FOLDER}\src\ThirdParty\CUIT\v18\" includeSubDirectories="false"/>
+    </AssemblyResolution>
+  </MSTest>
+</RunSettings>

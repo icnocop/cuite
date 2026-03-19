@@ -3,12 +3,24 @@ Defines the NETFX_* compilation constants
 -->
 
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <PropertyGroup>
-        <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('4.5.1')))) &gt;= 0">$(DefineConstants);NETFX_451</DefineConstants>
-        <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('4.5'))))   &gt;= 0">$(DefineConstants);NETFX_45</DefineConstants>
-        <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('4.0'))))   &gt;= 0">$(DefineConstants);NETFX_40</DefineConstants>
-        <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('3.5'))))   &gt;= 0">$(DefineConstants);NETFX_35</DefineConstants>
-        <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('3.0'))))   &gt;= 0">$(DefineConstants);NETFX_30</DefineConstants>
-        <DefineConstants Condition="$([System.Version]::Parse('$(TargetFrameworkVersion.Substring(1))').CompareTo($([System.Version]::Parse('2.0'))))   &gt;= 0">$(DefineConstants);NETFX_20</DefineConstants>
+    <!-- Derive version from TargetFrameworkVersion (non-SDK projects, e.g. v4.7.2) -->
+    <PropertyGroup Condition="'$(TargetFrameworkVersion)' != ''">
+        <_NetFxVersionForCompare>$(TargetFrameworkVersion.Substring(1))</_NetFxVersionForCompare>
+    </PropertyGroup>
+
+    <!-- Derive version from TargetFramework (SDK-style projects, e.g. net472) -->
+    <PropertyGroup Condition="'$(_NetFxVersionForCompare)' == '' and '$(TargetFramework)' != '' and $(TargetFramework.StartsWith('net')) and !$(TargetFramework.Contains('.'))">
+        <_NetFxDigits>$(TargetFramework.Substring(3))</_NetFxDigits>
+        <_NetFxVersionForCompare Condition="$(_NetFxDigits.Length) == 2">$(_NetFxDigits.Substring(0,1)).$(_NetFxDigits.Substring(1,1))</_NetFxVersionForCompare>
+        <_NetFxVersionForCompare Condition="$(_NetFxDigits.Length) == 3">$(_NetFxDigits.Substring(0,1)).$(_NetFxDigits.Substring(1,1)).$(_NetFxDigits.Substring(2,1))</_NetFxVersionForCompare>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(_NetFxVersionForCompare)' != ''">
+        <DefineConstants Condition="$([System.Version]::Parse('$(_NetFxVersionForCompare)').CompareTo($([System.Version]::Parse('4.5.1')))) &gt;= 0">$(DefineConstants);NETFX_451</DefineConstants>
+        <DefineConstants Condition="$([System.Version]::Parse('$(_NetFxVersionForCompare)').CompareTo($([System.Version]::Parse('4.5'))))   &gt;= 0">$(DefineConstants);NETFX_45</DefineConstants>
+        <DefineConstants Condition="$([System.Version]::Parse('$(_NetFxVersionForCompare)').CompareTo($([System.Version]::Parse('4.0'))))   &gt;= 0">$(DefineConstants);NETFX_40</DefineConstants>
+        <DefineConstants Condition="$([System.Version]::Parse('$(_NetFxVersionForCompare)').CompareTo($([System.Version]::Parse('3.5'))))   &gt;= 0">$(DefineConstants);NETFX_35</DefineConstants>
+        <DefineConstants Condition="$([System.Version]::Parse('$(_NetFxVersionForCompare)').CompareTo($([System.Version]::Parse('3.0'))))   &gt;= 0">$(DefineConstants);NETFX_30</DefineConstants>
+        <DefineConstants Condition="$([System.Version]::Parse('$(_NetFxVersionForCompare)').CompareTo($([System.Version]::Parse('2.0'))))   &gt;= 0">$(DefineConstants);NETFX_20</DefineConstants>
     </PropertyGroup>
 </Project>

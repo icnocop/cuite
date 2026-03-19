@@ -1,79 +1,62 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Normalize the target framework moniker for both SDK-style and non-SDK-style projects.
+    SDK-style projects define $(TargetFramework) (e.g. net472) but $(TargetFrameworkVersion)
+    is not resolved until later in the SDK targets.
+    Non-SDK-style projects define $(TargetFrameworkVersion) (e.g. v4.7.2) directly.
+  -->
+  <PropertyGroup>
+    <_CUITeTargetFramework Condition="'$(TargetFramework)' != ''">$(TargetFramework)</_CUITeTargetFramework>
+    <_CUITeTargetFramework Condition="'$(_CUITeTargetFramework)' == '' And '$(TargetFrameworkVersion)' == 'v4.0'">net40</_CUITeTargetFramework>
+    <_CUITeTargetFramework Condition="'$(_CUITeTargetFramework)' == '' And '$(TargetFrameworkVersion)' == 'v4.5'">net45</_CUITeTargetFramework>
+    <_CUITeTargetFramework Condition="'$(_CUITeTargetFramework)' == '' And '$(TargetFrameworkVersion)' == 'v4.7.2'">net472</_CUITeTargetFramework>
+  </PropertyGroup>
+  <!-- Map $(VisualStudioVersion) to a display name used in output paths -->
+  <PropertyGroup>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '10.0'">VS2010</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '11.0'">VS2012</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '12.0'">VS2013</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '14.0'">VS2015</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '15.0'">VS2017</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '16.0'">VS2019</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '17.0'">VS2022</_CUITeVSName>
+    <_CUITeVSName Condition="'$(VisualStudioVersion)' == '18.0'">VS2026</_CUITeVSName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '10.0'">$(DefineConstants);VS2010;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '11.0'">$(DefineConstants);VS2012;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '12.0'">$(DefineConstants);VS2013;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '14.0'">$(DefineConstants);VS2015;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '15.0'">$(DefineConstants);VS2017;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '16.0'">$(DefineConstants);VS2019;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '17.0'">$(DefineConstants);VS2022;</DefineConstants>
+    <DefineConstants Condition="'$(VisualStudioVersion)' == '18.0'">$(DefineConstants);VS2026;</DefineConstants>
+  </PropertyGroup>
+  <!-- Shared output paths (use $(Configuration) to avoid duplicating Debug/Release) -->
+  <PropertyGroup>
+    <!--
+      SDK-style projects automatically append $(TargetFramework) to OutputPath.
+      Disable that behaviour so the explicit $(_CUITeTargetFramework) segment below
+      is the single source of the TFM in the path for both project styles.
+    -->
+    <AppendTargetFrameworkToOutputPath Condition="'$(TargetFramework)' != ''">false</AppendTargetFrameworkToOutputPath>
+    <OutputPath Condition="'$(_CUITeVSName)' != '' And '$(_CUITeTargetFramework)' != ''">bin\$(Configuration)\$(_CUITeVSName)\$(_CUITeTargetFramework)\</OutputPath>
+    <SilverlightOutputPath Condition="'$(_CUITeVSName)' != ''">bin\$(Configuration)\$(_CUITeVSName)\</SilverlightOutputPath>
+    <DocumentationFile Condition="'$(_CUITeVSName)' != '' And '$(_CUITeTargetFramework)' != ''">bin\$(Configuration)\$(_CUITeVSName)\$(_CUITeTargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- Debug-specific settings -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '10.0'">bin\Debug\VS2010\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '11.0'">bin\Debug\VS2012\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '12.0'">bin\Debug\VS2013\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '14.0'">bin\Debug\VS2015\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2017\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2017\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '15.0'">bin\Debug\VS2017\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2019\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2019\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Debug\VS2019\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Debug\VS2022\net472\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '17.0'">bin\Debug\VS2022\</SilverlightOutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2010\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2012\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2012\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2013\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2013\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2015\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2015\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2017\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2017\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Debug\VS2019\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Debug\VS2019\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Debug\VS2022\net472\$(AssemblyName).xml</DocumentationFile>
+    <DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
+  <!-- Release-specific settings -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '10.0'">bin\Release\VS2010\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '11.0'">bin\Release\VS2012\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '12.0'">bin\Release\VS2013\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '14.0'">bin\Release\VS2015\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2017\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2017\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '15.0'">bin\Release\VS2017\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2019\net40\</OutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2019\net45\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '16.0'">bin\Release\VS2019\</SilverlightOutputPath>
-    <OutputPath Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Release\VS2022\net472\</OutputPath>
-    <SilverlightOutputPath Condition="'$(VisualStudioVersion)' == '17.0'">bin\Release\VS2022\</SilverlightOutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '10.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2010\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2012\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '11.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2012\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2013\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '12.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2013\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2015\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '14.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2015\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2017\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '15.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2017\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.0'">bin\Release\VS2019\net40\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '16.0' And '$(TargetFrameworkVersion)' == 'v4.5'">bin\Release\VS2019\net45\$(AssemblyName).xml</DocumentationFile>
-    <DocumentationFile Condition="'$(VisualStudioVersion)' == '17.0' And '$(TargetFrameworkVersion)' == 'v4.7.2'">bin\Release\VS2022\net472\$(AssemblyName).xml</DocumentationFile>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
   </PropertyGroup>
 </Project>

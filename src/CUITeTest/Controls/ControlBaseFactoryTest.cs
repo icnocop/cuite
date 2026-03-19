@@ -15,7 +15,11 @@ namespace CUITeTest.Controls
     /// <summary>
     /// Constrol Base Factory Test
     /// </summary>
+#if VS2026
+    [TestClass]
+#else
     [CodedUITest]
+#endif
     public class ControlBaseFactoryTest
     {
         /// <summary>

@@ -7,7 +7,11 @@ namespace CUITeTest.SearchConfigurations
     /// <summary>
     /// Search Properties Configurator Test
     /// </summary>
+#if VS2026
+    [TestClass]
+#else
     [CodedUITest]
+#endif
     public class SearchPropertiesConfiguratorTest
     {
         /// <summary>

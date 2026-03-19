@@ -64,5 +64,14 @@
         </Reference>
       </ItemGroup>
     </When>
+    <When Condition="'$(VisualStudioVersion)' == '18.0'">
+      <!-- Visual Studio 2026 -->
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight, Version=18.0.306.20, Culture=neutral, PublicKeyToken=dc7d797155f95aab, processorArchitecture=MSIL">
+          <Private>False</Private>
+          <HintPath>$(MSBuildThisFileDirectory)..\ThirdParty\CUIT\v18\Microsoft.VisualStudio.TestTools.UITest.Extension.Silverlight.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
   </Choose>
 </Project>

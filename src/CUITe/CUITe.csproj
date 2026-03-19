@@ -1,23 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE093159-2B72-438E-9C73-E3FBAEAC5243}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CUITe</RootNamespace>
-    <AssemblyName>CUITe</AssemblyName>
-    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '10.0' ">v4.0</TargetFrameworkVersion>
-    <TargetFrameworkVersion Condition=" '$(VisualStudioVersion)' == '17.0' ">v4.7.2</TargetFrameworkVersion>
-    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == ''">v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <TargetFramework Condition="'$(VisualStudioVersion)' == ''">net40</TargetFramework>
+    <TargetFramework Condition="'$(VisualStudioVersion)' == '10.0'">net40</TargetFramework>
+    <TargetFramework Condition="'$(VisualStudioVersion)' == '17.0'">net472</TargetFramework>
+    <TargetFramework Condition="'$(VisualStudioVersion)' == '18.0'">net472</TargetFramework>
+    <OutputType>Library</OutputType>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <Import Project="..\Project.props" />
   <PropertyGroup>
@@ -28,15 +20,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\Unofficial.Microsoft.mshtml.7.0.3300\lib\net40\Microsoft.mshtml.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -54,205 +39,10 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Browsers\Browser.cs" />
-    <Compile Include="Browsers\Chrome.cs" />
-    <Compile Include="Browsers\Firefox.cs" />
-    <Compile Include="Browsers\IBrowser.cs" />
-    <Compile Include="Browsers\InternetExplorer.cs" />
-    <Compile Include="Caches\PropertyNamesCache.cs" />
-    <Compile Include="Controls\ControlBase.cs" />
-    <Compile Include="Controls\ControlBaseOfT.cs" />
-    <Compile Include="Controls\ControlBaseFactory.cs" />
-    <Compile Include="Controls\HtmlControls\BrowserDialogUnderTest.cs" />
-    <Compile Include="Controls\HtmlControls\BrowserWindowUnderTest.cs" />
-    <Compile Include="Controls\HtmlControls\DynamicBrowserWindowUnderTest.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlAreaHyperlink.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlButton.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlCell.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlCheckBox.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlComboBox.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlControl.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlCustom.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlDiv.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlDocument.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlEdit.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlEditableDiv.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlEditableSpan.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlFileInput.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlFrame.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeaderCell.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeading1.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeading2.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeading3.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeading4.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeading5.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHeading6.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlHyperlink.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlIFrame.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlImage.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlInputButton.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlIns.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlLabel.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlList.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlCustomListItem.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlListItem.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlOrderedList.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlParagraph.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlPassword.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlRadioButton.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlRow.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlScrollBar.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlSpan.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlTable.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlTableSearchOptions.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlTextArea.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlUnorderedList.cs" />
-    <Compile Include="Controls\HtmlControls\HtmlXml.cs" />
-    <Compile Include="Controls\HtmlControls\IHasInnerText.cs" />
-    <Compile Include="Controls\ModifierKeysLifetime.cs" />
-    <Compile Include="Controls\HtmlControls\Telerik\ComboBox.cs" />
-    <Compile Include="Controls\UITesting\BrowserWindow.cs" />
-    <Compile Include="Controls\UIWindowsSecurityWindow.cs" />
-    <Compile Include="Controls\UITesting\ApplicationUnderTest.cs" />
-    <Compile Include="Controls\WinControls\WinButton.cs" />
-    <Compile Include="Controls\WinControls\WinCalendar.cs" />
-    <Compile Include="Controls\WinControls\WinCell.cs" />
-    <Compile Include="Controls\WinControls\WinCheckBox.cs" />
-    <Compile Include="Controls\WinControls\WinCheckBoxTreeItem.cs" />
-    <Compile Include="Controls\WinControls\WinClient.cs" />
-    <Compile Include="Controls\WinControls\WinColumnHeader.cs" />
-    <Compile Include="Controls\WinControls\WinComboBox.cs" />
-    <Compile Include="Controls\WinControls\WinControl.cs" />
-    <Compile Include="Controls\WinControls\WinControlOfT.cs" />
-    <Compile Include="Controls\WinControls\WinCustom.cs" />
-    <Compile Include="Controls\WinControls\WinDateTimePicker.cs" />
-    <Compile Include="Controls\WinControls\WinEdit.cs" />
-    <Compile Include="Controls\WinControls\WinGroup.cs" />
-    <Compile Include="Controls\WinControls\WinHyperlink.cs" />
-    <Compile Include="Controls\WinControls\WinList.cs" />
-    <Compile Include="Controls\WinControls\WinListItem.cs" />
-    <Compile Include="Controls\WinControls\WinMenu.cs" />
-    <Compile Include="Controls\WinControls\WinMenuBar.cs" />
-    <Compile Include="Controls\WinControls\WinMenuItem.cs" />
-    <Compile Include="Controls\WinControls\WinPane.cs" />
-    <Compile Include="Controls\WinControls\WinProgressBar.cs" />
-    <Compile Include="Controls\WinControls\WinRadioButton.cs" />
-    <Compile Include="Controls\WinControls\WinRow.cs" />
-    <Compile Include="Controls\WinControls\WinRowHeader.cs" />
-    <Compile Include="Controls\WinControls\WinScrollBar.cs" />
-    <Compile Include="Controls\WinControls\WinSeparator.cs" />
-    <Compile Include="Controls\WinControls\WinSlider.cs" />
-    <Compile Include="Controls\WinControls\WinSpinner.cs" />
-    <Compile Include="Controls\WinControls\WinSplitButton.cs" />
-    <Compile Include="Controls\WinControls\WinStatusBar.cs" />
-    <Compile Include="Controls\WinControls\WinTable.cs" />
-    <Compile Include="Controls\WinControls\WinTabList.cs" />
-    <Compile Include="Controls\WinControls\WinTabPage.cs" />
-    <Compile Include="Controls\WinControls\WinText.cs" />
-    <Compile Include="Controls\WinControls\WinTitleBar.cs" />
-    <Compile Include="Controls\WinControls\WinToolBar.cs" />
-    <Compile Include="Controls\WinControls\WinToolTip.cs" />
-    <Compile Include="Controls\WinControls\WinTree.cs" />
-    <Compile Include="Controls\WinControls\WinTreeItem.cs" />
-    <Compile Include="Controls\WinControls\WinWindow.cs" />
-    <Compile Include="Controls\WpfControls\WpfButton.cs" />
-    <Compile Include="Controls\WpfControls\WpfCalendar.cs" />
-    <Compile Include="Controls\WpfControls\WpfCell.cs" />
-    <Compile Include="Controls\WpfControls\WpfCheckBox.cs" />
-    <Compile Include="Controls\WpfControls\WpfComboBox.cs" />
-    <Compile Include="Controls\WpfControls\WpfControl.cs" />
-    <Compile Include="Controls\WpfControls\WpfControlOfT.cs" />
-    <Compile Include="Controls\WpfControls\WpfCustom.cs" />
-    <Compile Include="Controls\WpfControls\WpfDatePicker.cs" />
-    <Compile Include="Controls\WpfControls\WpfEdit.cs" />
-    <Compile Include="Controls\WpfControls\WpfExpander.cs" />
-    <Compile Include="Controls\WpfControls\WpfGroup.cs" />
-    <Compile Include="Controls\WpfControls\WpfHyperlink.cs" />
-    <Compile Include="Controls\WpfControls\WpfImage.cs" />
-    <Compile Include="Controls\WpfControls\WpfList.cs" />
-    <Compile Include="Controls\WpfControls\WpfListItem.cs" />
-    <Compile Include="Controls\WpfControls\WpfMenu.cs" />
-    <Compile Include="Controls\WpfControls\WpfMenuItem.cs" />
-    <Compile Include="Controls\WpfControls\WpfPane.cs" />
-    <Compile Include="Controls\WpfControls\WpfProgressBar.cs" />
-    <Compile Include="Controls\WpfControls\WpfRadioButton.cs" />
-    <Compile Include="Controls\WpfControls\WpfRow.cs" />
-    <Compile Include="Controls\WpfControls\WpfScrollBar.cs" />
-    <Compile Include="Controls\WpfControls\WpfSeparator.cs" />
-    <Compile Include="Controls\WpfControls\WpfSlider.cs" />
-    <Compile Include="Controls\WpfControls\WpfStatusBar.cs" />
-    <Compile Include="Controls\WpfControls\WpfTable.cs" />
-    <Compile Include="Controls\WpfControls\WpfTabList.cs" />
-    <Compile Include="Controls\WpfControls\WpfTabPage.cs" />
-    <Compile Include="Controls\WpfControls\WpfText.cs" />
-    <Compile Include="Controls\WpfControls\WpfTitleBar.cs" />
-    <Compile Include="Controls\WpfControls\WpfToggleButton.cs" />
-    <Compile Include="Controls\WpfControls\WpfToolBar.cs" />
-    <Compile Include="Controls\WpfControls\WpfToolTip.cs" />
-    <Compile Include="Controls\WpfControls\WpfTree.cs" />
-    <Compile Include="Controls\WpfControls\WpfTreeItem.cs" />
-    <Compile Include="Controls\WpfControls\WpfWindow.cs" />
-    <Compile Include="DataSources\DataBlockIdNotFoundException.cs" />
-    <Compile Include="DataSources\XmlDataSource.cs" />
-    <Compile Include="Controls\GenericException.cs" />
-    <Compile Include="Controls\InvalidTraversalException.cs" />
-    <Compile Include="Extensions\Microsoft\VisualStudio\TestTools\UITesting\UITestControlExtensions.cs" />
-    <Compile Include="PageObjects\ViewObject.cs" />
-    <Compile Include="PageObjects\Page.cs" />
-    <Compile Include="PageObjects\PageObject.cs" />
-    <Compile Include="PageObjects\PageObjectOfT.cs" />
-    <Compile Include="ScreenObjects\Screen.cs" />
-    <Compile Include="ScreenObjects\ScreenObject.cs" />
-    <Compile Include="ScreenObjects\ScreenObjectOfT.cs" />
-    <Compile Include="SearchConfigurations\AutomationIdConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ClassConfigurator.cs" />
-    <Compile Include="SearchConfigurations\InstanceConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ControlIdConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ClassNameConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ControlTypeConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ControlNameConfigurator.cs" />
-    <Compile Include="SearchConfigurations\IdConfigurator.cs" />
-    <Compile Include="SearchConfigurations\InvalidSearchPropertiesFormatException.cs" />
-    <Compile Include="DataSources\XmlDataSourceNotFoundException.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchConfigurations\By.cs" />
-    <Compile Include="SearchConfigurations\NameConfigurator.cs" />
-    <Compile Include="SearchConfigurations\SearchConfigurator.cs" />
-    <Compile Include="SearchConfigurations\SearchPropertiesConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ISearchConfigurator.cs" />
-    <Compile Include="SearchConfigurations\TagNameConfigurator.cs" />
-    <Compile Include="SearchConfigurations\ValueAttributeConfigurator.cs" />
-    <Compile Include="Workflows\Workflow.cs" />
   </ItemGroup>
-  <Choose>
-    <When Condition="'$(VisualStudioVersion)' != '10.0'">
-      <ItemGroup>
-        <Compile Include="Controls\HtmlControls\HtmlAudio.cs" />
-        <Compile Include="Controls\HtmlControls\HtmlMedia.cs" />
-        <Compile Include="Controls\HtmlControls\HtmlProgressBar.cs" />
-        <Compile Include="Controls\HtmlControls\HtmlSlider.cs" />
-        <Compile Include="Controls\HtmlControls\HtmlVideo.cs" />
-      </ItemGroup>
-    </When>
-  </Choose>
   <ItemGroup>
-    <None Include="CUITe for Visual Studio 2010.nuspec" />
-    <None Include="CUITe for Visual Studio 2012.nuspec" />
-    <None Include="CUITe for Visual Studio 2013.nuspec" />
-    <None Include="CUITe for Visual Studio 2015.nuspec" />
-    <None Include="CUITe for Visual Studio 2017.nuspec" />
-    <None Include="CUITe for Visual Studio 2019.nuspec" />
-    <None Include="CUITe for Visual Studio 2022.nuspec" />
-    <None Include="packages.config" />
+    <PackageReference Include="Microsoft.TestPlatform" Version="17.13.0" GeneratePathProperty="true" />
+    <PackageReference Include="Unofficial.Microsoft.mshtml" Version="7.0.3300" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\Targets\CUIT.targets" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

@@ -1,5 +1,21 @@
 :: Set up the development environment to use Msbuild
-IF EXIST "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" (
+IF EXIST "%programfiles%\Microsoft Visual Studio\18\Enterprise\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\18\Enterprise\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\18\Professional\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\18\Professional\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\18\Community\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\18\Community\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\18\BuildTools\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\18\BuildTools\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\2022\Professional\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\2022\Professional\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles%\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\VsDevCmd.bat" (
+    CALL "%programfiles%\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\VsDevCmd.bat"
+) ELSE IF EXIST "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" (
     CALL "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat"
 ) ELSE IF EXIST "%programfiles(x86)%\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat" (
     CALL "%programfiles(x86)%\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"

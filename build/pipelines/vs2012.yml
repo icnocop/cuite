@@ -1,0 +1,25 @@
+# Standalone pipeline for building CUITe for Visual Studio 2012.
+
+name: 2.3.$(revision).0
+
+trigger: none  # Manual trigger only
+
+variables:
+  revision: $[counter('vs2012', 0)]
+  WaitForRemoteConnectionOnFailure: false
+
+jobs:
+- template: templates/build-job.yml
+  parameters:
+    vsDisplayName: 'Visual Studio 2012'
+    vsVersion: '2012'
+    visualStudioVersion: '11.0'
+    msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+    targetFrameworkVersions:
+      - v4.0
+    includeIntegrationTests: true
+    integrationTestTargetFrameworkVersions:
+      - v4.0
+      - v4.5
+    runTests: true
+    publishNuGet: true

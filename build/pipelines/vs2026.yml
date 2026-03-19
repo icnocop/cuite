@@ -1,0 +1,28 @@
+# Standalone pipeline for building CUITe for Visual Studio 2026.
+# Run this pipeline when you only need the VS2026 NuGet package.
+
+name: 2.3.$(revision).0
+
+trigger: none  # Manual trigger only
+
+variables:
+  revision: $[counter('vs2026', 0)]
+  WaitForRemoteConnectionOnFailure: false
+
+jobs:
+- template: templates/build-job.yml
+  parameters:
+    vsDisplayName: 'Visual Studio 2026'
+    vsVersion: '2026'
+    visualStudioVersion: '18.0'
+    targetFrameworkVersions:
+      - v4.7.2
+    includeIntegrationTests: true
+    integrationTestTargetFrameworkVersions:
+      - v4.7.2
+    runTests: true
+    runSettingsFile: 'src\Local_CUITv18.runsettings'
+    testPlatformVersion: '17.13.0'
+    testAssemblyExcludes: '!**\Sut.Silverlight*'
+    vmImage: 'windows-2025-vs2026'
+    publishNuGet: true

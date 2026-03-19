@@ -40,7 +40,7 @@ namespace CUITe.DataSources
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            Assembly dataSourceAssembly = Assembly.GetCallingAssembly();
+            Assembly dataSourceAssembly = type.Assembly;
             return GetDataBlock(dataSourceAssembly, type, fileName, id);
         }
 

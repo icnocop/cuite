@@ -163,6 +163,58 @@ if (Test-Path $logFilePath)
 }
 Write-Host "Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
 
+# Microsoft Visual Studio 2019 Enterprise
+# https://chocolatey.org/packages/visualstudio2019enterprise
+$logFilePath = "$($env:TEMP)\chocolatey\visualstudio2019enterprise.log"  
+Write-Host "Installing Microsoft Visual Studio 2019 Enterprise..."  
+$exitCode = Run-Process -FilePath "choco.exe" -ArgumentList "install --execution-timeout=0 -y VisualStudio2019Enterprise  -packageParameters ""--add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Component.TestTools.CodedUITest"""
+if (($exitCode -ne 3010) -and ($exitCode -ne 0))  
+{  
+    if (Test-Path $logFilePath) 
+    {
+        Get-Content $logFilePath  
+    }
+
+    if (Test-Path $chocolateyLogFilePath) 
+    {
+        Get-Content $chocolateyLogFilePath
+    }
+
+    throw "Command failed with exit code $exitCode."  
+}  
+if (Test-Path $logFilePath) 
+{
+    Remove-Item $logFilePath  
+}
+Write-Host "Microsoft Visual Studio 2019 Enterprise successfully installed" -ForegroundColor Green  
+
+# Unofficial Microsoft Visual Studio 2019 Coded UI Test Plugin for Silverlight  
+Write-Host "Downloading Unofficial Microsoft Visual Studio 2019 Coded UI Test Plugin for Silverlight..."  
+$msiFilePath = "$Env:AGENT_BUILDDIRECTORY\.deps\UITestPluginForSilverlightVS2019.msi"  
+if (-not(Test-Path -Path $msiFilePath -PathType Leaf)) {
+    $webclient.DownloadFile('https://ramiabughazaleh.gallerycdn.vsassets.io/extensions/ramiabughazaleh/visualstudio2019codeduitestpluginforsilverlight/16.0.1127.1/1574849731387/UITestPluginForSilverlightVS2019.msi', $msiFilePath)  
+}
+$logFilePath = "$($env:TEMP)\UITestPluginForSilverlightVS2019.txt"  
+Write-Host "Installing Unofficial Microsoft Visual Studio 2019 Coded UI Test Plugin for Silverlight..."  
+$exitCode = Run-Process -FilePath "msiexec.exe" -ArgumentList "/i $msiFilePath /quiet /l*v $logFilePath"
+if ($exitCode -ne 0)  
+{  
+    if (Test-Path $logFilePath) 
+    {
+        Get-Content $logFilePath  
+    }
+    throw "Command failed with exit code $exitCode."  
+}  
+if (Test-Path $msiFilePath) 
+{
+    Remove-Item $msiFilePath  
+}
+if (Test-Path $logFilePath) 
+{
+    Remove-Item $logFilePath  
+}
+Write-Host "Unofficial Microsoft Visual Studio 2019 Coded UI Test Plugin for Silverlight successfully installed" -ForegroundColor Green  
+
 # Microsoft Visual Studio 2022 Enterprise
 # https://chocolatey.org/packages/visualstudio2022enterprise
 $logFilePath = "$($env:TEMP)\chocolatey\visualstudio2022enterprise.log"  

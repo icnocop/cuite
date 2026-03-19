@@ -1,5 +1,6 @@
 ﻿namespace CUITe.IntegrationTests.NuGet
 {
+    using CUITe.Browsers;
     using CUITe.Controls.HtmlControls;
     using Microsoft.VisualStudio.TestTools.UITesting;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,7 +23,7 @@
     </body>
 </html>"))
             {
-                var browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                var browserWindow = BrowserWindowLauncher.Launch(webPage.FilePath);
                 HtmlEdit inputTextBox = browserWindow.Find<HtmlEdit>();
 
                 // Act

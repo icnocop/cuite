@@ -80,7 +80,7 @@ namespace CUITe.Controls.HtmlControls
         public static T Launch<T>(string url) where T : BrowserWindowUnderTest, new()
         {
             var browserWindow = new T();
-            browserWindow.CopyFrom(Launch(new Uri(url)));
+            browserWindow.CopyFrom(BrowserWindowLauncher.Launch(new Uri(url)));
 
             return browserWindow;
         }
