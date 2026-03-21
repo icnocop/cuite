@@ -58,6 +58,15 @@ parameters:
     default: 5
     # Number of parallel agents to distribute test assemblies across.
     # Each agent runs a subset of test assemblies concurrently.
+  - name: publishToNuGetOrg
+    type: boolean
+    default: false
+    # When true, the Publish job pushes NuGet packages to nuget.org.
+  - name: stableRelease
+    type: boolean
+    default: false
+    # When true, the NuGet package version has no pre-release suffix.
+    # When false (default), the package version includes a -ci.<datetime>.<revision> suffix.
 
 jobs:
 # ---------------------------------------------------------------------------
@@ -127,6 +136,25 @@ jobs:
       inputs:
         filePath: 'build\ApplyVersionToAssemblies.ps1'
 
+    - task: PowerShell@2
+      displayName: 'Compute package version'
+      inputs:
+        targetType: 'inline'
+        script: |
+          $baseVersion = "$(Build.BuildNumber)"
+          $isStable = "${{ parameters.stableRelease }}" -eq "True"
+          if ($isStable) {
+            $packageVersion = $baseVersion
+          } else {
+            $currentDate = (Get-Date).ToUniversalTime()
+            $dateTimeStamp = $currentDate.ToString("yyyy-MM-dd'T'HH-mm-ss'Z'")
+            $parts = $baseVersion.Split('.')
+            $runNumber = $parts[2]
+            $packageVersion = "$baseVersion-ci.$dateTimeStamp.$runNumber"
+          }
+          Write-Host "Package version: $packageVersion"
+          Write-Host "##vso[task.setvariable variable=packageVersion]$packageVersion"
+
     # Restore NuGet packages
     - script: '"%nugetPath%" restore "%solution%"'
       displayName: 'NuGet Restore'
@@ -143,10 +171,10 @@ jobs:
           displayName: 'Build Integration Tests VS${{ parameters.vsVersion }} ${{ tfv }}'
 
     # Pack NuGet packages
-    - script: '"$(nugetPath)" pack "src\CUITe\CUITe for Visual Studio ${{ parameters.vsVersion }}.nuspec" -OutputDirectory "$(Build.ArtifactStagingDirectory)" -Verbosity detailed -Prop Configuration=$(buildConfiguration) -Prop Version=$(Build.BuildNumber)'
+    - script: '"$(nugetPath)" pack "src\CUITe\CUITe for Visual Studio ${{ parameters.vsVersion }}.nuspec" -OutputDirectory "$(Build.ArtifactStagingDirectory)" -Verbosity detailed -Prop Configuration=$(buildConfiguration) -Prop Version=$(packageVersion)'
       displayName: 'Pack CUITe NuGet (VS${{ parameters.vsVersion }})'
 
-    - script: '"$(nugetPath)" pack "src\CUITe.Silverlight\CUITe.Silverlight.VS${{ parameters.vsVersion }}.nuspec" -OutputDirectory "$(Build.ArtifactStagingDirectory)" -Verbosity detailed -Prop VisualStudioVersion=${{ parameters.visualStudioVersion }} -Prop Configuration=$(buildConfiguration) -Prop Version=$(Build.BuildNumber)'
+    - script: '"$(nugetPath)" pack "src\CUITe.Silverlight\CUITe.Silverlight.VS${{ parameters.vsVersion }}.nuspec" -OutputDirectory "$(Build.ArtifactStagingDirectory)" -Verbosity detailed -Prop VisualStudioVersion=${{ parameters.visualStudioVersion }} -Prop Configuration=$(buildConfiguration) -Prop Version=$(packageVersion)'
       displayName: 'Pack CUITe.Silverlight NuGet (VS${{ parameters.vsVersion }})'
 
     # Publish built source tree as pipeline artifact for test agents
@@ -293,7 +321,7 @@ jobs:
       - Build_${{ parameters.vsVersion }}
       - ${{ if eq(parameters.runTests, true) }}:
         - Test_${{ parameters.vsVersion }}
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), eq('${{ parameters.publishToNuGetOrg }}', 'True'))
     pool:
       vmImage: '${{ parameters.vmImage }}'
     steps:

@@ -1,13 +1,15 @@
 # Main pipeline: builds selected Visual Studio versions in parallel.
 # For individual VS version builds, use the standalone pipelines in build/pipelines/.
 #
-# By default, only VS2026 is built on commit/PR to master.
-# To build other versions, set the 'vsVersions' parameter when queuing the build manually.
+# By default, only VS2026 is built. To build other versions, set the
+# 'vsVersions' parameter when queuing the build manually.
 
 name: 2.3.$(revision).0
 
 trigger:
-- master
+  branches:
+    include:
+      - '*'
 
 parameters:
   - name: vsVersions
@@ -15,6 +17,14 @@ parameters:
     type: object
     default:
       - vs2026
+  - name: publishToNuGetOrg
+    displayName: 'Publish NuGet packages to NuGet.org'
+    type: boolean
+    default: false
+  - name: stableRelease
+    displayName: 'Stable/release build (no pre-release suffix)'
+    type: boolean
+    default: false
 
 variables:
   revision: $[counter('', 0)]
@@ -154,6 +164,8 @@ jobs:
       testPlatformVersion: '17.13.0'
       testAssemblyExcludes: '!**\Sut.Silverlight*'
       publishNuGet: true
+      publishToNuGetOrg: ${{ parameters.publishToNuGetOrg }}
+      stableRelease: ${{ parameters.stableRelease }}
 
 # Git tag after all jobs succeed
 - job: GitTag
@@ -175,7 +187,7 @@ jobs:
       - Publish_2022
     - ${{ if containsValue(parameters.vsVersions, 'vs2026') }}:
       - Publish_2026
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  condition: and(succeeded(), eq(${{ parameters.publishToNuGetOrg }}, true))
   pool:
     vmImage: 'windows-2025'
   steps:
