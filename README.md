@@ -1,4 +1,5 @@
 [![Build Status](https://dev.azure.com/rami/cuite/_apis/build/status/cuite-CI?branchName=master)](https://dev.azure.com/rami/cuite/_build/latest?definitionId=9&branchName=master)
+[![NuGet](https://img.shields.io/nuget/vpre/CUITe.VS2026.svg?label=nuget)](https://www.nuget.org/packages/CUITe.VS2026/)
 
 ## What is CUITe?
 
@@ -20,6 +21,7 @@ CUITe (Coded UI Test enhanced) Framework is a thin layer developed on top of Mic
 - Visual Studio 2017 Enterprise
 - Visual Studio 2019 Enterprise
 - Visual Studio 2022 Enterprise
+- Visual Studio 2026 Enterprise, Professional, or Community
 
 ## Installation
 
@@ -33,6 +35,9 @@ The NuGet package to install depends on the Visual Studio version you are using.
 
 #### CUITe in Visual Studio 2010
 
+[![CUITe.VS2010](https://img.shields.io/nuget/vpre/CUITe.VS2010.svg)](https://www.nuget.org/packages/CUITe.VS2010/)
+[![CUITe.Silverlight.VS2010](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2010.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2010/)
+
 Installing CUITe for HTML, WPF and WinForms:
 
 ```Install-Package CUITe.VS2010 -Pre```
@@ -42,6 +47,9 @@ Install CUITe for Silverlight:
 ```Install-Package CUITe.Silverlight.VS2010 -Pre```
 
 #### CUITe in Visual Studio 2012
+
+[![CUITe.VS2012](https://img.shields.io/nuget/vpre/CUITe.VS2012.svg)](https://www.nuget.org/packages/CUITe.VS2012/)
+[![CUITe.Silverlight.VS2012](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2012.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2012/)
 
 Installing CUITe for HTML, WPF and WinForms:
 
@@ -55,6 +63,9 @@ You should also install the extension [Microsoft Visual Studio 2012 Coded UI Tes
 
 #### CUITe in Visual Studio 2013
 
+[![CUITe.VS2013](https://img.shields.io/nuget/vpre/CUITe.VS2013.svg)](https://www.nuget.org/packages/CUITe.VS2013/)
+[![CUITe.Silverlight.VS2013](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2013.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2013/)
+
 Installing CUITe for HTML, WPF and WinForms:
 
 ```Install-Package CUITe.VS2013 -Pre```
@@ -66,6 +77,9 @@ Install CUITe for Silverlight using the NuGet Package Manager:
 You should also install the extension [Microsoft Visual Studio 2013 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=PrachiBoraMSFT.MicrosoftVisualStudio2013CodedUITestPluginforSilve).
 
 #### CUITe in Visual Studio 2015
+
+[![CUITe.VS2015](https://img.shields.io/nuget/vpre/CUITe.VS2015.svg)](https://www.nuget.org/packages/CUITe.VS2015/)
+[![CUITe.Silverlight.VS2015](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2015.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2015/)
 
 Installing CUITe for HTML, WPF and WinForms:
 
@@ -79,6 +93,9 @@ You should also install the extension [Microsoft Visual Studio 2015 Coded UI Tes
 
 #### CUITe in Visual Studio 2017
 
+[![CUITe.VS2017](https://img.shields.io/nuget/vpre/CUITe.VS2017.svg)](https://www.nuget.org/packages/CUITe.VS2017/)
+[![CUITe.Silverlight.VS2017](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2017.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2017/)
+
 Installing CUITe for HTML, WPF and WinForms:
 
 ```Install-Package CUITe.VS2017 -Pre```
@@ -90,6 +107,9 @@ Install CUITe for Silverlight using the NuGet Package Manager:
 You should also install the extension [Unofficial Microsoft Visual Studio 2017 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=RamiAbughazaleh.CodedUITestPluginForSilverlight).
 
 #### CUITe in Visual Studio 2019
+
+[![CUITe.VS2019](https://img.shields.io/nuget/vpre/CUITe.VS2019.svg)](https://www.nuget.org/packages/CUITe.VS2019/)
+[![CUITe.Silverlight.VS2019](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2019.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2019/)
 
 Installing CUITe for HTML, WPF and WinForms:
 
@@ -103,6 +123,9 @@ You should also install the extension [Unofficial Microsoft Visual Studio 2019 C
 
 #### CUITe in Visual Studio 2022
 
+[![CUITe.VS2022](https://img.shields.io/nuget/vpre/CUITe.VS2022.svg)](https://www.nuget.org/packages/CUITe.VS2022/)
+[![CUITe.Silverlight.VS2022](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2022.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2022/)
+
 Installing CUITe for HTML, WPF and WinForms:
 
 ```Install-Package CUITe.VS2022 -Pre```
@@ -113,6 +136,21 @@ Install CUITe for Silverlight using the NuGet Package Manager:
 
 You should also install the extension [Unofficial Microsoft Visual Studio 2022 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=RamiAbughazaleh.VisualStudio2022CodedUITestPluginForSilverlight).
 
+#### CUITe in Visual Studio 2026
+
+[![CUITe.VS2026](https://img.shields.io/nuget/vpre/CUITe.VS2026.svg)](https://www.nuget.org/packages/CUITe.VS2026/)
+[![CUITe.Silverlight.VS2026](https://img.shields.io/nuget/vpre/CUITe.Silverlight.VS2026.svg)](https://www.nuget.org/packages/CUITe.Silverlight.VS2026/)
+
+Installing CUITe for HTML, WPF and WinForms:
+
+```Install-Package CUITe.VS2026 -Pre```
+
+Install CUITe for Silverlight using the NuGet Package Manager:
+
+```Install-Package CUITe.Silverlight.VS2026 -Pre```
+
+You should also install the extension [Unofficial Microsoft Visual Studio 2026 Coded UI Test Plugin for Silverlight](https://marketplace.visualstudio.com/items?itemName=RamiAbughazaleh.VisualStudio2026CodedUITestPluginForSilverlight).
+
 ## Using CUITe
 
 As best practice, we recommend writing object repositories for a more object-oriented approach to testing.
@@ -122,22 +160,22 @@ For more information see [Recording objects using the CUITe Object Recorder](#re
 Here are simple examples of testing filling out a form:
 
 ### HTML
-```
+```csharp
 // Launch the web browser and navigate to the homepage
-BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch("https://website.com");
+BrowserWindowUnderTest browserWindow = BrowserWindowUnderTest.Launch<BrowserWindowUnderTest>("https://website.com");
 
 // Enter the first name
 browserWindow.Find<HtmlEdit>(By.Id("FirstName")).Text = "John";
 
 // Enter the last name
-browserWindow.Find<HtmlPassword>(By.Id("LastName")).Text ="Doe";
+browserWindow.Find<HtmlPassword>(By.Id("LastName")).Text = "Doe";
 
 // Click the Save button
 browserWindow.Find<HtmlInputButton>(By.Id("Save")).Click();
 ```
 
 ### WPF
-```
+```csharp
 // Launch the application
 ApplicationUnderTest.Launch(@"C:\path to your application.exe");
 
@@ -155,7 +193,7 @@ window.Find<WinButton>(By.Name("Save")).Click();
 ```
 
 ### WinForms
-```
+```csharp
 // Launch the application
 ApplicationUnderTest.Launch(@"C:\path to your application.exe");
 
@@ -174,9 +212,9 @@ window.Find<WinButton>(By.Name("Save")).Click();
 
 ### Silverlight
 
-```
+```csharp
 // Launch the browser where the silverlight application is hosted
-BrowserWindowUnderTest browser = BrowserWindowUnderTest.Launch("https://website.com");
+BrowserWindowUnderTest browser = BrowserWindowUnderTest.Launch<BrowserWindowUnderTest>("https://website.com");
 
 // Enter the first name
 browser.Find<SilverlightEdit>(By.AutomationId("FirstName")).Text = "John";
@@ -203,7 +241,7 @@ The CUITe Object Recorder supports recording objects from an HTML web page only.
 6. Copy the code and paste it in a new file in your Coded UI Test project.
 7. Change the placeholder '$ProjectNameSpace$' with your namespace.
 8. Use the class and generated code in a more object-oriented fashion:
-```
+```csharp
 // Launch the web page
 MyObjectRepository browserWindow = BrowserWindowUnderTest.Launch<MyObjectRepository>("https://website.com");
 
@@ -211,12 +249,8 @@ MyObjectRepository browserWindow = BrowserWindowUnderTest.Launch<MyObjectReposit
 browserWindow.FirstName.Text = "John";
 
 // Enter the last name
-browserWindow.LastName.Text ="Doe";
+browserWindow.LastName.Text = "Doe";
 
 // Click on the Save button
 browserWindow.Save.Click();
 ```
-
-## Contact
-
-[![Join the chat at https://gitter.im/icnocop/cuite](https://badges.gitter.im/icnocop/cuite.svg)](https://gitter.im/icnocop/cuite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)

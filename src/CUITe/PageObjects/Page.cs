@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using CUITe.Browsers;
 using Microsoft.VisualStudio.TestTools.UITesting;
 
 namespace CUITe.PageObjects
@@ -38,7 +39,7 @@ namespace CUITe.PageObjects
             if (uri == null)
                 throw new ArgumentNullException("uri");
 
-            var browser = BrowserWindow.Launch(uri);
+            var browser = BrowserWindowLauncher.Launch(uri);
 
             return new T
             {

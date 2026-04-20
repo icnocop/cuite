@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:Sut.Wpf.Workflows"
     mc:Ignorable="d"
     Title="System Under Test (Workflows)"
-    Icon="App.ico"
+    Icon="/App.ico"
     Height="200"
     Width="300"
     WindowStartupLocation="CenterScreen"

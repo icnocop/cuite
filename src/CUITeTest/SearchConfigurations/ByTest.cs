@@ -8,7 +8,11 @@ namespace CUITeTest.SearchConfigurations
     /// <summary>
     /// By Test
     /// </summary>
+#if VS2026
+    [TestClass]
+#else
     [CodedUITest]
+#endif
     public class ByTest
     {
         /// <summary>

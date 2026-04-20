@@ -34,6 +34,15 @@ namespace Sut.WinForms.ControlsTest
         }
 
         /// <summary>
+        /// Cleans up the test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            mainScreen.Application.Close();
+        }
+
+        /// <summary>
         /// Button.
         /// </summary>
         [TestMethod]
@@ -141,7 +150,7 @@ namespace Sut.WinForms.ControlsTest
         public void MonthCalendar()
         {
             // Assert
-            Assert.IsTrue(mainScreen.MonthCalendarExists);
+            Assert.IsTrue(mainScreen.MonthCalendar.Exists);
         }
 
         /// <summary>

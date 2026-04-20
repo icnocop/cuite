@@ -1,86 +1,200 @@
+# Main pipeline: builds selected Visual Studio versions in parallel.
+# For individual VS version builds, use the standalone pipelines in build/pipelines/.
+#
+# By default, only VS2026 is built. To build other versions, set the
+# 'vsVersions' parameter when queuing the build manually.
+
 name: 2.3.$(revision).0
 
 trigger:
-- master
+  branches:
+    include:
+      - '*'
+
+parameters:
+  - name: vsVersions
+    displayName: 'VS versions to build (select one or more)'
+    type: object
+    default:
+      - vs2026
+  - name: publishToNuGetOrg
+    displayName: 'Publish NuGet packages to NuGet.org'
+    type: boolean
+    default: false
+  - name: stableRelease
+    displayName: 'Stable/release build (no pre-release suffix)'
+    type: boolean
+    default: false
 
 variables:
-  solution: 'src\Build.proj'
-  buildConfiguration: 'Release'
   revision: $[counter('', 0)]
   WaitForRemoteConnectionOnFailure: false
 
 jobs:
-- job: Build
-  timeoutInMinutes: 360
+# VS2010
+- ${{ if containsValue(parameters.vsVersions, 'vs2010') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2010'
+      vsVersion: '2010'
+      visualStudioVersion: '10.0'
+      msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.0
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.0
+      runTests: true
+      publishNuGet: true
+
+# VS2012
+- ${{ if containsValue(parameters.vsVersions, 'vs2012') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2012'
+      vsVersion: '2012'
+      visualStudioVersion: '11.0'
+      msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.0
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.0
+        - v4.5
+      runTests: true
+      publishNuGet: true
+
+# VS2013
+- ${{ if containsValue(parameters.vsVersions, 'vs2013') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2013'
+      vsVersion: '2013'
+      visualStudioVersion: '12.0'
+      msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.5
+        - v4.0
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.5
+        - v4.0
+      runTests: true
+      publishNuGet: true
+
+# VS2015
+- ${{ if containsValue(parameters.vsVersions, 'vs2015') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2015'
+      vsVersion: '2015'
+      visualStudioVersion: '14.0'
+      msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.0
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.0
+      runTests: true
+      publishNuGet: true
+
+# VS2017
+- ${{ if containsValue(parameters.vsVersions, 'vs2017') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2017'
+      vsVersion: '2017'
+      visualStudioVersion: '15.0'
+      msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.0
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.0
+      runTests: true
+      publishNuGet: true
+
+# VS2019
+- ${{ if containsValue(parameters.vsVersions, 'vs2019') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2019'
+      vsVersion: '2019'
+      visualStudioVersion: '16.0'
+      msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.0
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.0
+      runTests: true
+      publishNuGet: true
+
+# VS2022
+- ${{ if containsValue(parameters.vsVersions, 'vs2022') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2022'
+      vsVersion: '2022'
+      visualStudioVersion: '17.0'
+      msBuildPath: 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+      targetFrameworkVersions:
+        - v4.7.2
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.7.2
+      runTests: true
+      runSettingsFile: 'src\Local_CUITv17.runsettings'
+      publishNuGet: true
+
+# VS2026
+- ${{ if containsValue(parameters.vsVersions, 'vs2026') }}:
+  - template: build/pipelines/templates/build-job.yml
+    parameters:
+      vsDisplayName: 'Visual Studio 2026'
+      vsVersion: '2026'
+      visualStudioVersion: '18.0'
+      targetFrameworkVersions:
+        - v4.7.2
+      includeIntegrationTests: true
+      integrationTestTargetFrameworkVersions:
+        - v4.7.2
+      runTests: true
+      runSettingsFile: 'src\Local_CUITv18.runsettings'
+      testPlatformVersion: '17.13.0'
+      testAssemblyExcludes: '!**\Sut.Silverlight*'
+      publishNuGet: true
+      publishToNuGetOrg: ${{ parameters.publishToNuGetOrg }}
+      stableRelease: ${{ parameters.stableRelease }}
+
+# Git tag after all jobs succeed
+- job: GitTag
+  displayName: 'Git Tag'
+  dependsOn:
+    - ${{ if containsValue(parameters.vsVersions, 'vs2010') }}:
+      - Publish_2010
+    - ${{ if containsValue(parameters.vsVersions, 'vs2012') }}:
+      - Publish_2012
+    - ${{ if containsValue(parameters.vsVersions, 'vs2013') }}:
+      - Publish_2013
+    - ${{ if containsValue(parameters.vsVersions, 'vs2015') }}:
+      - Publish_2015
+    - ${{ if containsValue(parameters.vsVersions, 'vs2017') }}:
+      - Publish_2017
+    - ${{ if containsValue(parameters.vsVersions, 'vs2019') }}:
+      - Publish_2019
+    - ${{ if containsValue(parameters.vsVersions, 'vs2022') }}:
+      - Publish_2022
+    - ${{ if containsValue(parameters.vsVersions, 'vs2026') }}:
+      - Publish_2026
+  condition: and(succeeded(), eq(${{ parameters.publishToNuGetOrg }}, true))
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-2025'
   steps:
     - checkout: self
-      displayName: 'Get sources'
       persistCredentials: true
-
-    - task: PowerShell@2
-      displayName: 'Enable remote connection'
-      inputs:
-        filePath: 'build\TeamViewer\EnableRemoteConnection.ps1'
-
-    - task: Cache@2
-      inputs:
-        key: deps | deps.lock
-        path: $(Pipeline.Workspace)/.deps
-
-    - task: PowerShell@2
-      displayName: 'Download and install dependencies'
-      inputs:
-        filePath: 'build\DownloadAndInstallDependencies.ps1'
-
-    - task: PowerShell@2
-      displayName: 'Apply version to assemblies'
-      inputs:
-        filePath: 'build\ApplyVersionToAssemblies.ps1'
-
-    - task: VSBuild@1
-      inputs:
-        solution: '$(solution)'
-        configuration: '$(buildConfiguration)'
-        msbuildArgs: '/target:Build;Pack'
-
-    - task: VSTest@2
-      inputs:
-        testSelector: 'testAssemblies'
-        testAssemblyVer2: '**\bin\$(buildConfiguration)\**\*Test.dll'
-        vsTestVersion: '14.0'
-        uiTests: true
-        rerunFailedTests: true
-        runSettingsFile: '$(Build.SourcesDirectory)\src\Local.testsettings'
-
-    - task: CopyFiles@2
-      inputs:
-        contents: '*.nupkg'
-        targetFolder: $(Build.ArtifactStagingDirectory)
-
-    - task: PowerShell@2
-      displayName: 'Copy Chocolatey Logs'
-      condition: failed()
-      inputs:
-        filePath: 'build\Chocolatey\CopyChocolateyLogs.ps1'
-
-    - task: PublishBuildArtifacts@1
-      condition: always()
-      inputs:
-        pathtoPublish: $(Build.ArtifactStagingDirectory)
-        artifactName: drop
-
-    - task: PowerShell@2
-      displayName: 'Publish NuGet Packages'
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-      inputs:
-        targetType: 'inline'
-        script: 'nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json'
-
     - task: PowerShell@2
       displayName: 'Git Tag'
-      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
       env:
         tag: '$(Build.BuildNumber)'
       inputs:
@@ -94,9 +208,3 @@ jobs:
           git tag $env:tag
           Write-Host "git push origin $env:tag"
           git push origin $env:tag
-
-    - task: PowerShell@2
-      displayName: 'Wait for remote connection'
-      condition: and(failed(), eq(variables['WaitForRemoteConnectionOnFailure'], 'true'))
-      inputs:
-        filePath: 'build\TeamViewer\WaitForRemoteConnection.ps1'

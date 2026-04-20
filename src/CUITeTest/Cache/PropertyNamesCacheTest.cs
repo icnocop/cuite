@@ -8,7 +8,11 @@ namespace CUITeTest.Cache
     /// <summary>
     /// Property names cache test
     /// </summary>
+#if VS2026
+    [TestClass]
+#else
     [CodedUITest]
+#endif
     public class PropertyNamesCacheTest
     {
         private PropertyNamesCache propertyNamesCache;

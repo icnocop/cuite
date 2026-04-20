@@ -16,6 +16,8 @@
     <VSTestPath>%VSINSTALLDIR%Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTestPath>
     <ConfigurationName>Release</ConfigurationName>
     <Targets>Rebuild</Targets>
+    <!-- VS2019 MSBuild -->
+    <VS2019MSBuildPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe</VS2019MSBuildPath>
   </PropertyGroup>
 
   <!-- Restore NuGet packages -->
@@ -26,178 +28,139 @@
   <!-- Builds CUITe in all supported configurations -->
   <Target Name="Build" DependsOnTargets="Restore">
     <!-- VS2010 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
-      StopOnFirstFailure="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2010 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2012 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2012 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2013 .NET45 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2013 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2013 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2015 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2015 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2017 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=15.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=15.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2017 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2019 .NET40 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=16.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=16.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2019 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2022 .NET472 -->
-    <MSBuild
-      Projects="$(SolutionPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=17.0;TargetFrameworkVersion=v4.7.2"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=17.0;TargetFrameworkVersion=v4.7.2 /m"
       ContinueOnError="true" />
 
     <Error Text="Visual Studio 2022 .NET 4.7.2 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
+    <!-- VS2026 .NET472 -->
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(SolutionPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=18.0;TargetFrameworkVersion=v4.7.2 /m"
+      ContinueOnError="true" />
+
+    <Error Text="Visual Studio 2026 .NET 4.7.2 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
     <!-- CUITe.IntegrationTests -->
 
     <!-- VS2010 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
-      StopOnFirstFailure="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=10.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2010 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2012 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2012 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2012 .NET45 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.5"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=11.0;TargetFrameworkVersion=v4.5 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2012 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2013 .NET45 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.5 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.5 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2013 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=12.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2013 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2015 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=14.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2015 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2017 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=15.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=15.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2017 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2019 .NET40 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=16.0;TargetFrameworkVersion=v4.0"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=16.0;TargetFrameworkVersion=v4.0 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2019 .NET 4.0 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
     <!-- VS2022 .NET472 -->
-    <MSBuild
-      Projects="$(ProjectPath)"
-      Properties="Configuration=$(ConfigurationName);VisualStudioVersion=17.0;TargetFrameworkVersion=v4.7.2"
-      Targets="$(Targets)"
-      BuildInParallel="true"
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=17.0;TargetFrameworkVersion=v4.7.2 /m"
       ContinueOnError="true" />
 
     <Error Text="CUITe.IntegrationTests Visual Studio 2022 .NET 4.7.2 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
+
+    <!-- VS2026 .NET472 -->
+    <Exec
+      Command="&quot;$(VS2019MSBuildPath)&quot; &quot;$(ProjectPath)&quot; /t:$(Targets) /p:Configuration=$(ConfigurationName);VisualStudioVersion=18.0;TargetFrameworkVersion=v4.7.2 /m"
+      ContinueOnError="true" />
+
+    <Error Text="CUITe.IntegrationTests Visual Studio 2026 .NET 4.7.2 build failed!" Condition="'$(MSBuildLastTaskResult)' == 'False'" />
 
   </Target>
 
@@ -241,6 +204,10 @@
     <!-- VS2022 -->
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2022.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
     <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2022.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=17.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+
+    <!-- VS2026 -->
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(CurrentDirectory)CUITe\CUITe for Visual Studio 2026.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
+    <Exec Command="&quot;$(NuGetPath)&quot; pack &quot;$(SilverlightProjectDir)\CUITe.Silverlight.VS2026.nuspec&quot; -OutputDirectory &quot;$(CvsRootPath)&quot; -Verbosity detailed -Prop VisualStudioVersion=18.0 -Prop Configuration=$(ConfigurationName) -Prop Version=$(NuGetVersion)" />
   </Target>
 
   <!-- Runs all tests -->

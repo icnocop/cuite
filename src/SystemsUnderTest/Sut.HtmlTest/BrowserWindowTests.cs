@@ -1,4 +1,5 @@
-﻿using CUITe.PageObjects;
+﻿using CUITe.Browsers;
+using CUITe.PageObjects;
 using Sut.HtmlTest.PageObjects;
 using TestHelpers;
 
@@ -56,7 +57,7 @@ namespace Sut.HtmlTest
     <body/>
 </html>"))
             {
-                BrowserWindow browserWindow = BrowserWindow.Launch(webPage.FilePath);
+                BrowserWindow browserWindow = BrowserWindowLauncher.Launch(webPage.FilePath);
 
                 // Act
                 browserWindow = BrowserWindow.FromProcess(browserWindow.Process);
@@ -79,7 +80,7 @@ namespace Sut.HtmlTest
             string windowTitle = "A Test";
 
             // Act
-            BrowserWindow window = BrowserWindow.Launch(url);
+            BrowserWindow window = BrowserWindowLauncher.Launch(url);
             
             // Assert
             Assert.IsTrue(window.Title.Contains(windowTitle));
@@ -107,6 +108,8 @@ namespace Sut.HtmlTest
             string outerHtml = doc.SourceControl.GetProperty("OuterHtml").ToString().Trim();
 
             Assert.AreEqual(expected, outerHtml.Substring(0, expected.Length), true, outerHtml);
+
+            page.Browser.Close();
         }
 
         /// <summary>

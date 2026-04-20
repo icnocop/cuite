@@ -1,0 +1,25 @@
+# Standalone pipeline for building CUITe for Visual Studio 2022.
+
+name: 2.3.$(revision).0
+
+trigger: none  # Manual trigger only
+
+variables:
+  revision: $[counter('vs2022', 0)]
+  WaitForRemoteConnectionOnFailure: false
+
+jobs:
+- template: templates/build-job.yml
+  parameters:
+    vsDisplayName: 'Visual Studio 2022'
+    vsVersion: '2022'
+    visualStudioVersion: '17.0'
+    msBuildPath: 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+    targetFrameworkVersions:
+      - v4.7.2
+    includeIntegrationTests: true
+    integrationTestTargetFrameworkVersions:
+      - v4.7.2
+    runTests: true
+    runSettingsFile: 'src\Local_CUITv17.runsettings'
+    publishNuGet: true

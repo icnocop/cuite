@@ -2,6 +2,7 @@
 using mshtml;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using CUITControls = Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using System.Collections;
 
 namespace CUITe.Controls.HtmlControls
 {
@@ -349,13 +350,14 @@ namespace CUITe.Controls.HtmlControls
 
         private static IHTMLElement GetEmbeddedCheckBoxNativeElement(IHTMLElement parent)
         {
+            var childrenCollection = parent.children;
             while (true)
             {
-                foreach (IHTMLElement ele2 in parent.children)
+                foreach (IHTMLElement ele2 in (IEnumerable)childrenCollection)
                 {
                     if (ele2.tagName.ToUpper() == "INPUT")
                     {
-                        string sType = ele2.getAttribute("type");
+                        string sType = (string)ele2.getAttribute("type");
                         if (sType.ToLower() == "checkbox")
                         {
                             return ele2;

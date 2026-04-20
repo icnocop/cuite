@@ -32,6 +32,15 @@ namespace Sut.Wpf.ControlsTest
         }
 
         /// <summary>
+        /// Cleans up the test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            mainScreen.Application.Close();
+        }
+
+        /// <summary>
         /// Button.
         /// </summary>
         [TestMethod]

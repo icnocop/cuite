@@ -1,0 +1,24 @@
+# Standalone pipeline for building CUITe for Visual Studio 2010.
+
+name: 2.3.$(revision).0
+
+trigger: none  # Manual trigger only
+
+variables:
+  revision: $[counter('vs2010', 0)]
+  WaitForRemoteConnectionOnFailure: false
+
+jobs:
+- template: templates/build-job.yml
+  parameters:
+    vsDisplayName: 'Visual Studio 2010'
+    vsVersion: '2010'
+    visualStudioVersion: '10.0'
+    msBuildPath: 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe'
+    targetFrameworkVersions:
+      - v4.0
+    includeIntegrationTests: true
+    integrationTestTargetFrameworkVersions:
+      - v4.0
+    runTests: true
+    publishNuGet: true

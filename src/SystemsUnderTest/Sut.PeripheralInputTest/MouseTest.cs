@@ -32,6 +32,15 @@ namespace Sut.PeripheralInputTest
             mainScreen = Screen.Launch<MainScreen>(ApplicationFilePath);
         }
 
+        /// <summary>
+        /// Cleans up the test.
+        /// </summary>
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            mainScreen.Application.Close();
+        }
+
         #region Click
 
         /// <summary>

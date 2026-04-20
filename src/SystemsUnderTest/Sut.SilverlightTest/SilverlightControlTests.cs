@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.IO;
 using CassiniDev;
+using CUITe.Browsers;
 using CUITe.Controls;
 using CUITe.Controls.SilverlightControls;
 using CUITe.PageObjects;
@@ -76,7 +77,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlButtonAndEditAndDTP_ClickAndSetTextAndSelectedDateAsString_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(PageUrl);
+            BrowserWindow b = BrowserWindowLauncher.Launch(PageUrl);
             b.SetFocus();
             SilverlightButton button1 = b.Find<SilverlightButton>(By.AutomationId("button1"));
             button1.WaitForControlExist();
@@ -105,7 +106,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlList_DynamicObjectRecognition_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(PageUrl);
+            BrowserWindow b = BrowserWindowLauncher.Launch(PageUrl);
             b.SetFocus();
             SilverlightList oList = b.Find<SilverlightList>(By.AutomationId("listBox1"));
             oList.SelectedIndices = new[] { 2 };
@@ -119,7 +120,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlComboBox_SelectItem_Succeeds()
         {
-            var browserWindow = BrowserWindow.Launch(PageUrl);
+            var browserWindow = BrowserWindowLauncher.Launch(PageUrl);
             browserWindow.SetFocus();
             var oCombo = browserWindow.Find<SilverlightComboBox>(By.AutomationId("comboBox1"));
             oCombo.SelectIndex(3);
@@ -136,7 +137,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_SelectedIndex_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(PageUrl);
+            BrowserWindow b = BrowserWindowLauncher.Launch(PageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex= 1;
@@ -150,7 +151,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void SlTab_TraverseSiblingsAndChildren_Succeeds()
         {
-            BrowserWindow b = BrowserWindow.Launch(PageUrl);
+            BrowserWindow b = BrowserWindowLauncher.Launch(PageUrl);
             b.SetFocus();
             SilverlightTab oTab = b.Find<SilverlightTab>(By.AutomationId("tabControl1"));
             oTab.SelectedIndex = 0;
@@ -174,7 +175,7 @@ namespace Sut.SilverlightTest
         [TestMethod]
         public void Click_ButtonInChildWindow_Succeeds()
         {
-            BrowserWindow browserWindow = BrowserWindow.Launch(PageUrl);
+            BrowserWindow browserWindow = BrowserWindowLauncher.Launch(PageUrl);
             browserWindow.SetFocus();
             SilverlightButton button = browserWindow.Find<SilverlightButton>(By.AutomationId("displayChildWindowButton"));
             button.Click();
